@@ -41,11 +41,13 @@ final List<String> hexfullList = [
   'assets/silenceblack.png',
 ];
 
-void main() => runApp(CarouselDemo());
+void main() => runApp(const CarouselDemo());
 
 final themeMode = ValueNotifier(2);
 
 class CarouselDemo extends StatelessWidget {
+  const CarouselDemo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
@@ -85,7 +87,7 @@ class CarouselDemo extends StatelessWidget {
 class DemoItem extends StatelessWidget {
   final String title;
   final String route;
-  DemoItem(this.title, this.route);
+  const DemoItem(this.title, this.route);
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +95,7 @@ class DemoItem extends StatelessWidget {
       title: Text(
         title,
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 30.0,
         ),
       ),
@@ -109,17 +111,17 @@ class CarouselDemoHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Time for iChange'),
+        title: const Text('Time for iChange'),
         actions: [
           IconButton(
-              icon: Icon(Icons.nightlight_round),
+              icon: const Icon(Icons.nightlight_round),
               onPressed: () {
                 themeMode.value = themeMode.value == 1 ? 2 : 1;
               })
         ],
       ),
       body: ListView(
-        children: <Widget>[
+        children: const <Widget>[
           //DemoItem('Basic demo', '/basic'),
           //DemoItem('GFG Slider', '/gfgslider'),
           // DemoItem('No center mode demo', '/nocenter'),
@@ -148,7 +150,7 @@ class BasicDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     List<int> list = [1, 2, 3, 4];
     return Scaffold(
-      appBar: AppBar(title: Text('Basic demo')),
+      appBar: AppBar(title: const Text('Basic demo')),
       body: Container(
           child: CarouselSlider(
             options: CarouselOptions(),
@@ -168,7 +170,7 @@ class NoCenterDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     List<int> list = [1, 2, 3, 4, 5];
     return Scaffold(
-      appBar: AppBar(title: Text('Basic demo')),
+      appBar: AppBar(title: const Text('Basic demo')),
       body: Container(
           child: CarouselSlider(
             options: CarouselOptions(
@@ -189,7 +191,7 @@ class ImageSliderDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Image slider demo')),
+      appBar: AppBar(title: const Text('Image slider demo')),
       body: Container(
           child: CarouselSlider(
             options: CarouselOptions(),
@@ -207,9 +209,9 @@ class ImageSliderDemo extends StatelessWidget {
 final List<Widget> imageSliders = hexList
     .map((item) => Container(
   child: Container(
-    margin: EdgeInsets.all(5.0),
+    margin: const EdgeInsets.all(5.0),
     child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(5.0)),
+        borderRadius: const BorderRadius.all(const Radius.circular(5.0)),
         child: Stack(
           children: <Widget>[
             Image.asset(item, fit: BoxFit.cover, width: 500.0),
@@ -250,7 +252,7 @@ class ComplicatedImageDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Complicated image slider demo')),
+      appBar: AppBar(title: const Text('Complicated image slider demo')),
       body: Container(
         child: CarouselSlider(
           options: CarouselOptions(
@@ -269,7 +271,7 @@ class EnlargeStrategyDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Complicated image slider demo')),
+      appBar: AppBar(title: const Text('Complicated image slider demo')),
       body: Container(
         child: CarouselSlider(
           options: CarouselOptions(
@@ -306,7 +308,7 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Manually controlled slider')),
+        appBar: AppBar(title: const Text('Manually controlled slider')),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -321,13 +323,13 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
                   Flexible(
                     child: ElevatedButton(
                       onPressed: () => _controllertop.previousPage(),
-                      child: Text('←'),
+                      child: const Text('←'),
                     ),
                   ),
                   Flexible(
                     child: ElevatedButton(
                       onPressed: () => _controllertop.nextPage(),
-                      child: Text('→'),
+                      child: const Text('→'),
                     ),
                   ),
                   ...Iterable<int>.generate(hexList.length).map(
@@ -352,13 +354,13 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
                   Flexible(
                     child: ElevatedButton(
                       onPressed: () => _controllermid.previousPage(),
-                      child: Text('←'),
+                      child: const Text('←'),
                     ),
                   ),
                   Flexible(
                     child: ElevatedButton(
                       onPressed: () => _controllermid.nextPage(),
-                      child: Text('→'),
+                      child: const Text('→'),
                     ),
                   ),
                   ...Iterable<int>.generate(hexList.length).map(
@@ -383,13 +385,13 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
                   Flexible(
                     child: ElevatedButton(
                       onPressed: () => _controllerbot.previousPage(),
-                      child: Text('←'),
+                      child: const Text('←'),
                     ),
                   ),
                   Flexible(
                     child: ElevatedButton(
                       onPressed: () => _controllerbot.nextPage(),
-                      child: Text('→'),
+                      child: const Text('→'),
                     ),
                   ),
                   ...Iterable<int>.generate(hexList.length).map(
@@ -413,7 +415,7 @@ class NoonLoopingDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Noon-looping carousel demo')),
+      appBar: AppBar(title: const Text('Noon-looping carousel demo')),
       body: Container(
           child: CarouselSlider(
             options: CarouselOptions(
@@ -433,7 +435,7 @@ class VerticalSliderDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Vertical sliding carousel demo')),
+      appBar: AppBar(title: const Text('Vertical sliding carousel demo')),
       body: Container(
         alignment: Alignment.center,
         width: 150,
@@ -457,7 +459,7 @@ class FullscreenSliderDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Fullscreen sliding carousel demo')),
+      appBar: AppBar(title: const Text('Fullscreen sliding carousel demo')),
       body: Builder(
         builder: (context) {
           final double height = MediaQuery.of(context).size.height;
@@ -489,7 +491,7 @@ class OnDemandCarouselDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('On-demand carousel demo')),
+      appBar: AppBar(title: const Text('On-demand carousel demo')),
       body: Container(
           child: CarouselSlider.builder(
             itemCount: 100,
@@ -545,7 +547,7 @@ class _PrefetchImageDemoState extends State<PrefetchImageDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Prefetch image slider demo')),
+      appBar: AppBar(title: const Text('Prefetch image slider demo')),
       body: Container(
           child: CarouselSlider.builder(
             itemCount: images.length,
@@ -586,7 +588,7 @@ class _CarouselChangeReasonDemoState extends State<CarouselChangeReasonDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Change reason demo')),
+        appBar: AppBar(title: const Text('Change reason demo')),
         body: Column(
           children: <Widget>[
             Expanded(
@@ -607,13 +609,13 @@ class _CarouselChangeReasonDemoState extends State<CarouselChangeReasonDemo> {
                 Flexible(
                   child: ElevatedButton(
                     onPressed: () => _controller.previousPage(),
-                    child: Text('←'),
+                    child: const Text('←'),
                   ),
                 ),
                 Flexible(
                   child: ElevatedButton(
                     onPressed: () => _controller.nextPage(),
-                    child: Text('→'),
+                    child: const Text('→'),
                   ),
                 ),
                 ...Iterable<int>.generate(hexList.length).map(
@@ -629,7 +631,7 @@ class _CarouselChangeReasonDemoState extends State<CarouselChangeReasonDemo> {
             Center(
               child: Column(
                 children: [
-                  Text('page change reason: '),
+                  const Text('page change reason: '),
                   Text(reason),
                 ],
               ),
@@ -643,7 +645,7 @@ class KeepPageviewPositionDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Keep pageview position demo')),
+      appBar: AppBar(title: const Text('Keep pageview position demo')),
       body: ListView.builder(itemBuilder: (ctx, index) {
         if (index == 4) {
           return Container(
@@ -651,16 +653,16 @@ class KeepPageviewPositionDemo extends StatelessWidget {
                 options: CarouselOptions(
                   aspectRatio: 2.0,
                   enlargeCenterPage: true,
-                  pageViewKey: PageStorageKey<String>('carousel_slider'),
+                  pageViewKey: const PageStorageKey<String>('carousel_slider'),
                 ),
                 items: imageSliders,
               ));
         } else {
           return Container(
-            margin: EdgeInsets.symmetric(vertical: 20),
+            margin: const EdgeInsets.symmetric(vertical: 20),
             color: Colors.blue,
             height: 200,
-            child: Center(
+            child: const Center(
               child: Text('other content'),
             ),
           );
@@ -674,7 +676,7 @@ class MultipleItemDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('All Items')),
+      appBar: AppBar(title: const Text('All Items')),
       body: Container(
           child: CarouselSlider.builder(
             options: CarouselOptions(
@@ -693,7 +695,7 @@ class MultipleItemDemo extends StatelessWidget {
                   return Expanded(
                     flex: 1,
                     child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
                       child: Image.asset(hexfullList[idx.key], fit: BoxFit.cover),
                     ),
                   );
@@ -710,7 +712,7 @@ class GFGSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("GFG Slider"),
+        title: const Text("GFG Slider"),
       ),
       body: ListView(
         children: [
@@ -718,10 +720,10 @@ class GFGSlider extends StatelessWidget {
             items: [
               //1st Image of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
+                margin: const EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage("assets/yangyang.png"),
                     fit: BoxFit.cover,
                   ),
@@ -730,10 +732,10 @@ class GFGSlider extends StatelessWidget {
 
               //2nd Image of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
+                margin: const EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage("assets/yangyang.png"),
                     fit: BoxFit.cover,
                   ),
@@ -742,10 +744,10 @@ class GFGSlider extends StatelessWidget {
 
               //3rd Image of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
+                margin: const EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage("assets/yangyang.png"),
                     fit: BoxFit.cover,
                   ),
@@ -754,11 +756,11 @@ class GFGSlider extends StatelessWidget {
 
               //4th Image of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
+                margin: const EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  image: DecorationImage(
-                    image: AssetImage("assets/yangyang.png"),
+                  image: const DecorationImage(
+                    image: const AssetImage("assets/yangyang.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -766,11 +768,11 @@ class GFGSlider extends StatelessWidget {
 
               //5th Image of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
+                margin: const EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  image: DecorationImage(
-                    image: AssetImage("assets/yangyang.png"),
+                  image: const DecorationImage(
+                    image: const AssetImage("assets/yangyang.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -785,7 +787,7 @@ class GFGSlider extends StatelessWidget {
               aspectRatio: 16 / 9,
               autoPlayCurve: Curves.fastOutSlowIn,
               enableInfiniteScroll: true,
-              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              autoPlayAnimationDuration: const Duration(milliseconds: 800),
               viewportFraction: 0.8,
             ),
           ),
@@ -935,11 +937,11 @@ class _RotateHexagramLayersState extends State<RotateHexagramLayers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Rotate Hexagrams')),
+      appBar: AppBar(title: const Text('Rotate Hexagrams')),
       body: Column(children: [
         TextField(
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 25.0,
             fontWeight: FontWeight.bold,
@@ -1293,7 +1295,7 @@ class _RotateHexagramLayersState extends State<RotateHexagramLayers> {
         ),
         TextField(
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 25.0,
             fontWeight: FontWeight.bold,
@@ -1530,7 +1532,7 @@ class _RotateHexagramLayersState extends State<RotateHexagramLayers> {
               child: Container(
                 width: 12.0,
                 height: 12.0,
-                margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: (Theme.of(context).brightness == Brightness.dark
@@ -1767,7 +1769,7 @@ class _RotateHexagramLayersState extends State<RotateHexagramLayers> {
               child: Container(
                 width: 12.0,
                 height: 12.0,
-                margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: (Theme.of(context).brightness == Brightness.dark
@@ -2003,7 +2005,7 @@ class _RotateHexagramLayersState extends State<RotateHexagramLayers> {
               child: Container(
                 width: 12.0,
                 height: 12.0,
-                margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: (Theme.of(context).brightness == Brightness.dark

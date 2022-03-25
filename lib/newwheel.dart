@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 List<Widget> items = [
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
           AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -10,7 +10,7 @@ List<Widget> items = [
     title: Text('Complex'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -18,7 +18,7 @@ List<Widget> items = [
     title: Text('Complex'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -27,7 +27,7 @@ List<Widget> items = [
     subtitle: Text('Mind'),
   ),
 
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
           AssetImage('assets/simplein.png'), // no matter how big it is, it won't overflow
@@ -35,7 +35,7 @@ List<Widget> items = [
     title: Text('Simple'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -43,7 +43,7 @@ List<Widget> items = [
     title: Text('Complex'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -51,7 +51,7 @@ List<Widget> items = [
     title: Text('Complex'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
           AssetImage('assets/breathout.png'), // no matter how big it is, it won't overflow
@@ -59,7 +59,7 @@ List<Widget> items = [
     title: Text('Breath'),
     subtitle: Text('Body'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -67,7 +67,7 @@ List<Widget> items = [
     title: Text('Complex'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -75,7 +75,7 @@ List<Widget> items = [
     title: Text('Complex'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
           AssetImage('assets/silencedown.png'), // no matter how big it is, it won't overflow
@@ -83,7 +83,7 @@ List<Widget> items = [
     title: Text('Silence'),
     subtitle: Text('Body'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -91,7 +91,7 @@ List<Widget> items = [
     title: Text('Complex'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -101,7 +101,7 @@ List<Widget> items = [
   ),
 
   // Mutation 2
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -109,7 +109,7 @@ List<Widget> items = [
     title: Text('Complex'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/simplein.png'), // no matter how big it is, it won't overflow
@@ -117,7 +117,7 @@ List<Widget> items = [
     title: Text('Simple'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -126,7 +126,7 @@ List<Widget> items = [
     subtitle: Text('Mind'),
   ),
 
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/simplein.png'), // no matter how big it is, it won't overflow
@@ -134,7 +134,7 @@ List<Widget> items = [
     title: Text('Simple'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/simplein.png'), // no matter how big it is, it won't overflow
@@ -142,7 +142,7 @@ List<Widget> items = [
     title: Text('Simple'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -150,7 +150,7 @@ List<Widget> items = [
     title: Text('Complex'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/breathout.png'), // no matter how big it is, it won't overflow
@@ -158,7 +158,7 @@ List<Widget> items = [
     title: Text('Breath'),
     subtitle: Text('Body'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/simplein.png'), // no matter how big it is, it won't overflow
@@ -166,7 +166,7 @@ List<Widget> items = [
     title: Text('Simple'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -174,7 +174,7 @@ List<Widget> items = [
     title: Text('Complex'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/silencedown.png'), // no matter how big it is, it won't overflow
@@ -182,7 +182,7 @@ List<Widget> items = [
     title: Text('Silence'),
     subtitle: Text('Body'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/simplein.png'), // no matter how big it is, it won't overflow
@@ -190,7 +190,7 @@ List<Widget> items = [
     title: Text('Simple'),
     subtitle: Text('Mind'),
   ),
-  ListTile(
+  const ListTile(
     leading: CircleAvatar(
       backgroundImage:
       AssetImage('assets/complexup.png'), // no matter how big it is, it won't overflow
@@ -203,6 +203,8 @@ List<Widget> items = [
 ];
 
 class WheelNew extends StatefulWidget {
+  const WheelNew({Key? key}) : super(key: key);
+
   @override
   _WheelNewState createState() => _WheelNewState();
 }
@@ -212,7 +214,7 @@ class _WheelNewState extends State<WheelNew> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("I Do Not Know Meditation"),
+        title: const Text("I Do Not Know Meditation"),
         backgroundColor: Colors.blue,
       ),
       body: ListWheelScrollView(

@@ -110,7 +110,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/northnode.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/northnode.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -134,7 +134,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/sun.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/sun.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -158,7 +158,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/moon.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/moon.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -182,7 +182,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/mercury.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/mercury.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -206,7 +206,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/venus.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/venus.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -230,7 +230,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/mars.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/mars.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -254,7 +254,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/jupiter.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/jupiter.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -278,7 +278,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/saturn.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/saturn.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -302,7 +302,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/uranus.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/uranus.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -326,7 +326,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/neptune.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/neptune.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -350,7 +350,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/pluto.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/pluto.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -374,7 +374,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/earth.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/earth.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
@@ -398,7 +398,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 width: 20,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    image: DecorationImage(image: AssetImage("assets/planets/southnode.png")),
+                    image: const DecorationImage(image: AssetImage("assets/planets/southnode.png")),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
