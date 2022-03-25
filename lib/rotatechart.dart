@@ -10,112 +10,100 @@ class RotateChart extends StatefulWidget {
 }
 
 class _RotateChartState extends State<RotateChart> {
-  bool isHeadVisible = true;
-  bool isAjnaVisible = true;
-  bool isThroatVisible = true;
-  bool isGVisible = true;
-  bool isSacralVisible = true;
-  bool isRootVisible = true;
-  bool isSpleenVisible = true;
-  bool isSolarVisible = true;
-  bool isHeartVisible = true;
-  bool isIntegrationVisible = true;
+  bool isHeadVisible = true,
+   isAjnaVisible = true,
+   isThroatVisible = true,
+   isGVisible = true,
+   isSacralVisible = true,
+   isRootVisible = true,
+   isSpleenVisible = true,
+   isSolarVisible = true,
+   isHeartVisible = true,
+   isIntegrationVisible = true;
 
   double fontSizeGate = 18.0;
 
-  final List<bool> _isHeadList = List<bool>.filled(3, false, growable: false);
+  final List<bool> _isHeadList = List<bool>.filled(3, false, growable: false),
+   _isAjnaTopList =
+      List<bool>.filled(3, false, growable: false),
+   _isAjnaBottomList =
+      List<bool>.filled(3, false, growable: false),
+   _isThroatFirstBottomList =
+      List<bool>.filled(2, false, growable: false),
 
-  final List<bool> _isAjnaTopList =
-      List<bool>.filled(3, false, growable: false);
-  final List<bool> _isAjnaBottomList =
-      List<bool>.filled(3, false, growable: false);
+   _isThroatSecondBottomList =
+      List<bool>.filled(1, false, growable: false),
+   _isThroatThirdTopList =
+      List<bool>.filled(3, false, growable: false),
+   _isThroatThirdBottomList =
+      List<bool>.filled(3, false, growable: false),
 
-  //final List<bool> _isThroatFirstTopList =
-  // List<bool>.filled(2, false, growable: false);
-  final List<bool> _isThroatFirstBottomList =
-      List<bool>.filled(2, false, growable: false);
-  //final List<bool> _isThroatSecondTopList =
-  //    List<bool>.filled(3, false, growable: false);
-  final List<bool> _isThroatSecondBottomList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isThroatThirdTopList =
-      List<bool>.filled(3, false, growable: false);
-  final List<bool> _isThroatThirdBottomList =
-      List<bool>.filled(3, false, growable: false);
-  //final List<bool> _isThroatFourthTopList =
-  //  List<bool>.filled(2, false, growable: false);
-  final List<bool> _isThroatFourthBottomList =
-      List<bool>.filled(1, false, growable: false);
-  //final List<bool> _isThroatFifthTopList =
-  // List<bool>.filled(2, false, growable: false);
-  final List<bool> _isThroatFifthBottomList =
-      List<bool>.filled(2, false, growable: false);
+   _isThroatFourthBottomList =
+      List<bool>.filled(1, false, growable: false),
 
-  final List<bool> _isGTopSelectedList =
-      List<bool>.filled(3, false, growable: false);
-  final List<bool> _isGBottomSelectedList =
-      List<bool>.filled(5, false, growable: false);
-  final List<bool> _isSacralTopSelectedList =
-      List<bool>.filled(5, false, growable: false);
-  final List<bool> _isSacralBottomSelectedList =
-      List<bool>.filled(5, false, growable: false);
+   _isThroatFifthBottomList =
+      List<bool>.filled(2, false, growable: false),
 
-  final List<bool> _isRootFirstList =
-      List<bool>.filled(2, false, growable: false);
-  final List<bool> _isRootSecondList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isRootThirdList =
-      List<bool>.filled(3, false, growable: false);
-  final List<bool> _isRootFourthList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isRootFifthList =
-      List<bool>.filled(2, false, growable: false);
+   _isGTopSelectedList =
+      List<bool>.filled(3, false, growable: false),
+   _isGBottomSelectedList =
+      List<bool>.filled(5, false, growable: false),
+   _isSacralTopSelectedList =
+      List<bool>.filled(5, false, growable: false),
+   _isSacralBottomSelectedList =
+      List<bool>.filled(5, false, growable: false),
 
-  final List<bool> _isHeartFirstTopList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isHeartFirstBottomList =
-      List<bool>.filled(1, false, growable: false);
-  //final List<bool> _isHeartSecondTopList =
-  //  List<bool>.filled(1, false, growable: false);
-  final List<bool> _isHeartSecondBottomList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isHeartThirdTopList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isHeartThirdBottomList =
-      List<bool>.filled(1, false, growable: false);
+   _isRootFirstList =
+      List<bool>.filled(2, false, growable: false),
+   _isRootSecondList =
+      List<bool>.filled(1, false, growable: false),
+   _isRootThirdList =
+      List<bool>.filled(3, false, growable: false),
+   _isRootFourthList =
+      List<bool>.filled(1, false, growable: false),
+   _isRootFifthList =
+      List<bool>.filled(2, false, growable: false),
 
-  //final List<bool> _isSolarFirstTopList =
-  // List<bool>.filled(1, false, growable: false);
-  final List<bool> _isSolarFirstBottomList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isSolarSecondTopList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isSolarSecondBottomList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isSolarThirdTopList =
-      List<bool>.filled(2, false, growable: false);
-  final List<bool> _isSolarThirdBottomList =
-      List<bool>.filled(2, false, growable: false);
+   _isHeartFirstTopList =
+      List<bool>.filled(1, false, growable: false),
+   _isHeartFirstBottomList =
+      List<bool>.filled(1, false, growable: false),
 
-  final List<bool> _isSpleenFirstTopList =
-      List<bool>.filled(2, false, growable: false);
-  final List<bool> _isSpleenFirstBottomList =
-      List<bool>.filled(2, false, growable: false);
-  final List<bool> _isSpleenSecondTopList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isSpleenSecondBottomList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isSpleenThirdTopList =
-      List<bool>.filled(1, false, growable: false);
-  final List<bool> _isSpleenThirdBottomList =
-      List<bool>.filled(1, false, growable: false);
+   _isHeartSecondBottomList =
+      List<bool>.filled(1, false, growable: false),
+   _isHeartThirdTopList =
+      List<bool>.filled(1, false, growable: false),
+   _isHeartThirdBottomList =
+      List<bool>.filled(1, false, growable: false),
 
-  //final List<bool> _isIntegrationTopSelectedList =
-  //  List<bool>.filled(1, false, growable: false);
-  final List<bool> _isIntegrationBottomSelectedList =
-      List<bool>.filled(1, false, growable: false);
+   _isSolarFirstBottomList =
+      List<bool>.filled(1, false, growable: false),
+   _isSolarSecondTopList =
+      List<bool>.filled(1, false, growable: false),
+   _isSolarSecondBottomList =
+      List<bool>.filled(1, false, growable: false),
+   _isSolarThirdTopList =
+      List<bool>.filled(2, false, growable: false),
+   _isSolarThirdBottomList =
+      List<bool>.filled(2, false, growable: false),
 
-  final List<bool> _isCenterList = List<bool>.filled(9, true, growable: false);
+   _isSpleenFirstTopList =
+      List<bool>.filled(2, false, growable: false),
+   _isSpleenFirstBottomList =
+      List<bool>.filled(2, false, growable: false),
+   _isSpleenSecondTopList =
+      List<bool>.filled(1, false, growable: false),
+   _isSpleenSecondBottomList =
+      List<bool>.filled(1, false, growable: false),
+   _isSpleenThirdTopList =
+      List<bool>.filled(1, false, growable: false),
+   _isSpleenThirdBottomList =
+      List<bool>.filled(1, false, growable: false),
+
+   _isIntegrationBottomSelectedList =
+      List<bool>.filled(1, false, growable: false),
+
+   _isCenterList = List<bool>.filled(9, true, growable: false);
 
   @override
   Widget build(BuildContext context) {
@@ -353,7 +341,7 @@ class _RotateChartState extends State<RotateChart> {
                             color: Colors.purple,
                           ),
                           child: Column(children: [
-                            Container(height: 45),
+                            Container(height: 40),
                             Expanded(
                               child: ToggleButtons(
                                 borderWidth: 10.0,
@@ -470,7 +458,7 @@ class _RotateChartState extends State<RotateChart> {
                             color: Colors.purple,
                           ),
                           child: Column(children: [
-                            Container(height: 45),
+                            Container(height: 40),
                             Expanded(
                               child: ToggleButtons(
                                 borderWidth: 10.0,
@@ -519,7 +507,7 @@ class _RotateChartState extends State<RotateChart> {
                           color: Colors.purple,
                         ),
                         child: Column(children: [
-                          Container(height: 45),
+                          Container(height: 40),
                           Expanded(
                             child: ToggleButtons(
                               borderWidth: 10.0,
@@ -638,9 +626,10 @@ class _RotateChartState extends State<RotateChart> {
                         padding: const EdgeInsets.all(3.0),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.purple),
+                          color: Colors.purple,
                         ),
                         child: Column(children: [
-                          Container(height: 45),
+                          Container(height: 40),
                           Expanded(
                             child: ToggleButtons(
                               borderWidth: 10.0,
@@ -771,15 +760,7 @@ class _RotateChartState extends State<RotateChart> {
                       ),
                       child: Row(children: [
                         Column(children: [
-                          Container(
-                            margin: const EdgeInsets.all(15.0),
-                            padding: const EdgeInsets.all(3.0),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              border:
-                                  Border.all(width: 5.0, color: Colors.black),
-                            ),
-                          ),
+                          Container(height: 40),
                           Expanded(
                             child: ToggleButtons(
                               borderWidth: 10.0,
@@ -886,7 +867,7 @@ class _RotateChartState extends State<RotateChart> {
                           color: Colors.purple,
                         ),
                         child: Column(children: [
-                          Container(height: 45),
+                          Container(height: 40),
                           Expanded(
                             child: ToggleButtons(
                               borderWidth: 10.0,
@@ -1270,15 +1251,7 @@ class _RotateChartState extends State<RotateChart> {
                           ),
                           child: Row(children: [
                             Column(children: [
-                              Container(
-                                margin: const EdgeInsets.all(15.0),
-                                padding: const EdgeInsets.all(3.0),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  border: Border.all(
-                                      width: 5.0, color: Colors.black),
-                                ),
-                              ),
+                              Container(height: 40),
                               Expanded(
                                 child: ToggleButtons(
                                   borderWidth: 10.0,

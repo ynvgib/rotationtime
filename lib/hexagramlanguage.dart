@@ -14,64 +14,54 @@ class RotateHexLanguage extends StatefulWidget {
 }
 
 class _RotateHexLanguageState extends State<RotateHexLanguage> {
-  int _currentfirsttop = 0;
-  int _currentfirstmid = 0;
-  int _currentfirstbot = 0;
+  int _currentfirsttop = 0,
+      _currentfirstmid = 0,
+      _currentfirstbot = 0,
+      _currentsecondtop = 0,
+      _currentsecondmid = 0,
+      _currentsecondbot = 0,
+      _currentthirdtop = 0,
+      _currentthirdmid = 0,
+      _currentthirdbot = 0,
+      _currentfourthtop = 0,
+      _currentfourthmid = 0,
+      _currentfourthbot = 0,
+      hexagramVal = 0;
 
-  int _currentsecondtop = 0;
-  int _currentsecondmid = 0;
-  int _currentsecondbot = 0;
+  final CarouselController _controllerfirsttop = CarouselController(),
+      _controllerfirstmid = CarouselController(),
+      _controllerfirstbot = CarouselController(),
+      _controllersecondtop = CarouselController(),
+      _controllersecondmid = CarouselController(),
+      _controllersecondbot = CarouselController(),
+      _controllerthirdtop = CarouselController(),
+      _controllerthirdmid = CarouselController(),
+      _controllerthirdbot = CarouselController(),
+      _controllerfourthtop = CarouselController(),
+      _controllerfourthmid = CarouselController(),
+      _controllerfourthbot = CarouselController();
 
-  int _currentthirdtop = 0;
-  int _currentthirdmid = 0;
-  int _currentthirdbot = 0;
+  final TextEditingController _controllerfirsttoptxt = TextEditingController(),
+      _controllerfirstbottxt = TextEditingController(),
+      _controllersecondtoptxt = TextEditingController(),
+      _controllersecondbottxt = TextEditingController(),
+      _controllerthirdtoptxt = TextEditingController(),
+      _controllerthirdbottxt = TextEditingController(),
+      _controllerfourthtoptxt = TextEditingController(),
+      _controllerfourthbottxt = TextEditingController();
 
-  int _currentfourthtop = 0;
-  int _currentfourthmid = 0;
-  int _currentfourthbot = 0;
-
-  int hexagramVal = 0;
-
-  final CarouselController _controllerfirsttop = CarouselController();
-  final CarouselController _controllerfirstmid = CarouselController();
-  final CarouselController _controllerfirstbot = CarouselController();
-  final TextEditingController _controllerfirsttoptxt = TextEditingController();
-  final TextEditingController _controllerfirstbottxt = TextEditingController();
-
-  final CarouselController _controllersecondtop = CarouselController();
-  final CarouselController _controllersecondmid = CarouselController();
-  final CarouselController _controllersecondbot = CarouselController();
-  final TextEditingController _controllersecondtoptxt = TextEditingController();
-  final TextEditingController _controllersecondbottxt = TextEditingController();
-
-  final CarouselController _controllerthirdtop = CarouselController();
-  final CarouselController _controllerthirdmid = CarouselController();
-  final CarouselController _controllerthirdbot = CarouselController();
-  final TextEditingController _controllerthirdtoptxt = TextEditingController();
-  final TextEditingController _controllerthirdbottxt = TextEditingController();
-
-  final CarouselController _controllerfourthtop = CarouselController();
-  final CarouselController _controllerfourthmid = CarouselController();
-  final CarouselController _controllerfourthbot = CarouselController();
-  final TextEditingController _controllerfourthtoptxt = TextEditingController();
-  final TextEditingController _controllerfourthbottxt = TextEditingController();
-
-  //var items = [for (var i = 1; i <= 64; i++) i];
-  var dropdownfirstvalue = hexagramslist[1];
-  var dropdownfirstichingvalue = orderiChingFontHexagrams[0];
-  var dropdownfirstichingordervalue = orderHexagramsWheel[0];
-
-  var dropdownsecondvalue = hexagramslist[1];
-  var dropdownsecondichingvalue = orderiChingFontHexagrams[0];
-  var dropdownsecondichingordervalue = orderHexagramsWheel[0];
-
-  var dropdownthirdvalue = hexagramslist[1];
-  var dropdownthirdichingvalue = orderiChingFontHexagrams[0];
-  var dropdownthirdichingordervalue = orderHexagramsWheel[0];
-
-  var dropdownfourthvalue = hexagramslist[1];
-  var dropdownfourthichingvalue = orderiChingFontHexagrams[0];
-  var dropdownfourthichingordervalue = orderHexagramsWheel[0];
+  var dropdownfirstvalue = hexagramslist[1],
+      dropdownfirstichingvalue = orderiChingFontHexagrams[0],
+      dropdownfirstichingordervalue = orderHexagramsWheel[0],
+      dropdownsecondvalue = hexagramslist[1],
+      dropdownsecondichingvalue = orderiChingFontHexagrams[0],
+      dropdownsecondichingordervalue = orderHexagramsWheel[0],
+      dropdownthirdvalue = hexagramslist[1],
+      dropdownthirdichingvalue = orderiChingFontHexagrams[0],
+      dropdownthirdichingordervalue = orderHexagramsWheel[0],
+      dropdownfourthvalue = hexagramslist[1],
+      dropdownfourthichingvalue = orderiChingFontHexagrams[0],
+      dropdownfourthichingordervalue = orderHexagramsWheel[0];
 
   @override
   Widget build(BuildContext context) {
@@ -9078,7 +9068,6 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
               }).toList(),
             ),
           ])),
-
         ],
       ),
     );

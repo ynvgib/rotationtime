@@ -70,7 +70,6 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
                           int.parse(dropdowichingordervalue)];
                           _controllerhexadverbtext.text = hexagramAdverbList[
                           int.parse(dropdowichingordervalue)];
-
                           switch (dropdowichingordervalue) {
                           //Quarter of Mutation
                             case '1':
@@ -1695,43 +1694,15 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
                         hexagramVal = ((_currenttop + 1) * 100 +
                             (_currentmid + 1) * 10 +
                             (_currentbot + 1));
+
                         carouselvalueindex = hexCarouselValueList.indexWhere(
                                 (element) => element == hexagramVal.toString());
                         carouselvalueindex++;
                         _controllerhextext.text =
                         hexCarouselValueList[carouselvalueindex];
-
-                        _controllerhexadjtext.text = hexagramAdjectiveList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
-                        _controllerhexsubtext.text = hexagramSubjectList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
-                        _controllerhexverbtext.text = hexagramVerbList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
-                        _controllerhexadverbtext.text = hexagramAdverbList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
                       });
                     }),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: hexList.asMap().entries.map((entry) {
-                return GestureDetector(
-                  onTap: () => _controllertop.animateToPage(entry.key),
-                  child: Container(
-                    width: 12.0,
-                    height: 12.0,
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 4.0),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: (Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black)
-                            .withOpacity(_currenttop == entry.key ? 0.9 : 0.4)),
-                  ),
-                );
-              }).toList(),
             ),
             Expanded(
               child: CarouselSlider(
@@ -1755,38 +1726,9 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
                         _controllerhextext.text =
                         hexCarouselValueList[carouselvalueindex];
 
-                        _controllerhexadjtext.text = hexagramAdjectiveList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
-                        _controllerhexsubtext.text = hexagramSubjectList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
-                        _controllerhexverbtext.text = hexagramVerbList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
-                        _controllerhexadverbtext.text = hexagramAdverbList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
-
                       });
                     }),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: hexList.asMap().entries.map((entry) {
-                return GestureDetector(
-                  onTap: () => _controllermid.animateToPage(entry.key),
-                  child: Container(
-                    width: 12.0,
-                    height: 12.0,
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 4.0),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: (Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black)
-                            .withOpacity(_currentmid == entry.key ? 0.9 : 0.4)),
-                  ),
-                );
-              }).toList(),
             ),
             Expanded(
               child: CarouselSlider(
@@ -1807,38 +1749,9 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
                         carouselvalueindex++;
                         _controllerhextext.text =
                         hexCarouselValueList[carouselvalueindex];
-
-                        _controllerhexadjtext.text = hexagramAdjectiveList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
-                        _controllerhexsubtext.text = hexagramSubjectList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
-                        _controllerhexverbtext.text = hexagramVerbList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
-                        _controllerhexadverbtext.text = hexagramAdverbList[
-                        int.parse(hexCarouselValueList[carouselvalueindex])];
                       });
                     }),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: hexList.asMap().entries.map((entry) {
-                return GestureDetector(
-                  onTap: () => _controllerbot.animateToPage(entry.key),
-                  child: Container(
-                    width: 12.0,
-                    height: 12.0,
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 4.0),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: (Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black)
-                            .withOpacity(_currentbot == entry.key ? 0.9 : 0.4)),
-                  ),
-                );
-              }).toList(),
             ),
             Expanded(
                 child: Container(
@@ -2041,23 +1954,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                     }),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllerlefttop.previousPage(),
-                    icon: const Icon(Icons.arrow_back, color: Colors.blue),
-                  ),
-                ),
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllerlefttop.nextPage(),
-                    icon: const Icon(Icons.arrow_forward, color: Colors.blue),
-                  ),
-                ),
-              ],
-            ),
             Expanded(
               child: CarouselSlider(
                 items: allItemsSliders,
@@ -2073,23 +1969,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                     }),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllerleftmid.previousPage(),
-                    icon: const Icon(Icons.arrow_back, color: Colors.orange),
-                  ),
-                ),
-                Flexible(
-                  child: IconButton(
-                      onPressed: () => _controllerleftmid.nextPage(),
-                      icon: const Icon(Icons.arrow_forward,
-                          color: Colors.orange)),
-                ),
-              ],
-            ),
             Expanded(
               child: CarouselSlider(
                 items: allItemsSliders,
@@ -2104,23 +1983,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                       });
                     }),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllerleftbot.previousPage(),
-                    icon: const Icon(Icons.arrow_back, color: Colors.red),
-                  ),
-                ),
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllerleftbot.nextPage(),
-                    icon: const Icon(Icons.arrow_forward, color: Colors.red),
-                  ),
-                ),
-              ],
             ),
           ]),
         ),
@@ -2171,23 +2033,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                     }),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllercenterlefttop.previousPage(),
-                    icon: const Icon(Icons.arrow_back, color: Colors.blue),
-                  ),
-                ),
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllercenterlefttop.nextPage(),
-                    icon: const Icon(Icons.arrow_forward, color: Colors.blue),
-                  ),
-                ),
-              ],
-            ),
             Expanded(
               child: CarouselSlider(
                 items: allItemsSliders,
@@ -2203,23 +2048,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                     }),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllercenterleftmid.previousPage(),
-                    icon: const Icon(Icons.arrow_back, color: Colors.orange),
-                  ),
-                ),
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllercenterleftmid.nextPage(),
-                    icon: const Icon(Icons.arrow_forward, color: Colors.orange),
-                  ),
-                ),
-              ],
-            ),
             Expanded(
               child: CarouselSlider(
                 items: allItemsSliders,
@@ -2234,23 +2062,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                       });
                     }),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllercenterleftbot.previousPage(),
-                    icon: const Icon(Icons.arrow_back, color: Colors.red),
-                  ),
-                ),
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllercenterleftbot.nextPage(),
-                    icon: const Icon(Icons.arrow_forward, color: Colors.red),
-                  ),
-                ),
-              ],
             ),
           ]),
         ),
@@ -2301,23 +2112,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                     }),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllercenterrighttop.previousPage(),
-                    icon: const Icon(Icons.arrow_back, color: Colors.blue),
-                  ),
-                ),
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllercenterrighttop.nextPage(),
-                    icon: const Icon(Icons.arrow_forward, color: Colors.blue),
-                  ),
-                ),
-              ],
-            ),
             Expanded(
               child: CarouselSlider(
                 items: allItemsSliders,
@@ -2333,23 +2127,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                     }),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllercenterrightmid.previousPage(),
-                    icon: const Icon(Icons.arrow_back, color: Colors.orange),
-                  ),
-                ),
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllercenterrightmid.nextPage(),
-                    icon: const Icon(Icons.arrow_forward, color: Colors.orange),
-                  ),
-                ),
-              ],
-            ),
             Expanded(
               child: CarouselSlider(
                 items: allItemsSliders,
@@ -2364,21 +2141,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                       });
                     }),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                      onPressed: () => _controllercenterrightbot.previousPage(),
-                      icon: const Icon(Icons.arrow_back, color: Colors.red)),
-                ),
-                Flexible(
-                  child: IconButton(
-                      onPressed: () => _controllercenterrightbot.nextPage(),
-                      icon: const Icon(Icons.arrow_forward, color: Colors.red)),
-                ),
-              ],
             ),
           ]),
         ),
@@ -2432,23 +2194,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                     }),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllerrighttop.previousPage(),
-                    icon: const Icon(Icons.arrow_back, color: Colors.blue),
-                  ),
-                ),
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllerrighttop.nextPage(),
-                    icon: const Icon(Icons.arrow_forward, color: Colors.blue),
-                  ),
-                ),
-              ],
-            ),
             Expanded(
               child: CarouselSlider(
                 items: allItemsSliders,
@@ -2464,23 +2209,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                     }),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllerrightmid.previousPage(),
-                    icon: const Icon(Icons.arrow_back, color: Colors.orange),
-                  ),
-                ),
-                Flexible(
-                  child: IconButton(
-                    onPressed: () => _controllerrightmid.nextPage(),
-                    icon: const Icon(Icons.arrow_forward, color: Colors.orange),
-                  ),
-                ),
-              ],
-            ),
             Expanded(
               child: CarouselSlider(
                 items: allItemsSliders,
@@ -2495,21 +2223,6 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
                       });
                     }),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  child: IconButton(
-                      onPressed: () => _controllerrightbot.previousPage(),
-                      icon: const Icon(Icons.arrow_back, color: Colors.red)),
-                ),
-                Flexible(
-                  child: IconButton(
-                      onPressed: () => _controllerrightbot.nextPage(),
-                      icon: const Icon(Icons.arrow_forward, color: Colors.red)),
-                ),
-              ],
             ),
           ]),
         ),
