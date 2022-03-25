@@ -97,14 +97,15 @@ class MainPageHome extends StatelessWidget {
             MappingItem('ONE HEXAGRAM', '/rotatehexwithlogic'),
             MappingItem('HEXAGRAM LANGUAGE', '/hexlanguage'),
             MappingItem('MULTIPLE HEXAGRAMS', '/multiplehexagrams'),
-            MappingItem('PLANETS', '/rotateplanets'),
-            MappingItem('PLANETS', '/rotatechart'),
+            MappingItem('ASTRO PLANETS', '/rotateplanets'),
+            MappingItem('HD CHART', '/rotatechart'),
             MappingItem('HEXGRAM TABLE', '/rotatehexagramtable'),
           ],
         )),
         Row(children: [
           Expanded(
-            child: Container(
+            child:
+            Container(
               height: 50,
               width: 500,
               margin: const EdgeInsets.all(20.0),

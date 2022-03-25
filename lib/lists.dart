@@ -84,6 +84,32 @@ final List<String> orderiChingFontHexagrams = [
   'Z'
 ];
 
+final List<String> fontHexbyWheel = [
+  //qurater mutation complex
+  '1', '44', '13', '10',
+  '9', '14', '43', '33',
+  '25', '61', '26', '34',
+  '6', '37', '38', '5',
+
+  //quarter initation simple
+  '57', '30', '58', '50',
+  '49', '28', '12', '42',
+  '41', '11', '62', '45',
+  '29', '39', '40', '24',
+
+  //quarter civilization silence
+  '7', '15', '16', '8',
+  '23', '2', '59', '22',
+  '54', '53', '21', '60',
+  '18', '55', '56', '17',
+
+  //quarter duality breath
+  '32', '31', '47', '48',
+  '63', '64', '20', '27',
+  '19', '4', '36', '52',
+  '51', '35', '3', '46',
+];
+
 final List<String> orderHexagramsWheel = [
   //qurater mutation complex
   '1', '43', '14', '34',
@@ -110,31 +136,7 @@ final List<String> orderHexagramsWheel = [
   '32', '50', '28', '44',
 ];
 
-final List<String> fontHexbyWheel = [
-  //qurater mutation complex
-  '1', '44', '13', '10',
-  '9', '14', '43', '33',
-  '25', '61', '26', '34',
-  '6', '37', '38', '5',
 
-  //quarter initation simple
-  '57', '30', '58', '50',
-  '49', '28', '12', '42',
-  '41', '11', '62', '45',
-  '29', '39', '40', '24',
-
-  //quarter civilization silence
-  '7', '15', '16', '8',
-  '23', '2', '59', '22',
-  '54', '53', '21', '60',
-  '18', '55', '56', '17',
-
-  //quarter duality breath
-  '32', '31', '47', '48',
-  '63', '64', '20', '27',
-  '19', '4', '36', '52',
-  '51', '35', '3', '46',
-];
 
 final List<String> hexagramNames = [
   //qurater mutation complex
@@ -345,7 +347,7 @@ final List<String> hexagramSubjectList = [
       'Fantasy',
       'End',
       'Insight',
-      'ALert',
+      'Alert',
       'Boss',
       'Determination',
       'Oppression',
@@ -505,6 +507,205 @@ final List<String> hexagramAdverbList = [
   'Confusingly',
 ];
 
+final List<String> hexCarouselValueList = [
+'111',
+'1',
+
+'211',
+'43',
+
+'311',
+'14',
+
+'411',
+'34',
+
+'121',
+'9',
+
+'221',
+'5',
+
+'321',
+'26',
+
+'421',
+'11',
+
+'131',
+'10',
+
+'231',
+'58',
+
+'331',
+'38',
+
+'431',
+'54',
+
+'141',
+'61',
+
+'241',
+'60',
+
+'341',
+'41',
+
+'441',
+'19',
+
+//Quarter of Initiation
+'112',
+'13',
+
+'212',
+'49',
+
+'312',
+'30',
+
+'412',
+'55',
+
+'122',
+'37',
+
+'222',
+'63',
+
+'322',
+'22',
+
+'422',
+'36',
+
+'132',
+'25',
+
+'232',
+'17',
+
+'332',
+'21',
+
+'432',
+'51',
+
+'142',
+'42',
+
+'242',
+'3',
+
+'342',
+'27',
+
+'442',
+'24',
+
+
+//Quarter of Duality
+'113',
+'44',
+
+'213',
+'28',
+
+'313',
+'50',
+
+'413',
+'32',
+
+'123',
+'57',
+
+'223',
+'48',
+
+'323',
+'18',
+
+'423',
+'46',
+
+'133',
+'6',
+
+'233',
+'47',
+
+'333',
+'64',
+
+'433',
+'40',
+
+'143',
+'59',
+
+'243',
+'29',
+
+'343',
+'4',
+
+'443',
+'7',
+
+//Quarter of Civilization
+'114',
+'33',
+
+'214',
+'31',
+
+'314',
+'56',
+
+'414',
+'62',
+
+'124',
+'53',
+
+'224',
+'39',
+
+'324',
+'52',
+
+'424',
+'15',
+
+'134',
+'12',
+
+'234',
+'45',
+
+'334',
+'35',
+
+'434',
+'16',
+
+'144',
+'20',
+
+'244',
+'8',
+
+'344',
+'23',
+
+'444',
+'2',
+
+];
+
 
 
 /// FULL SENTENCE
@@ -622,9 +823,7 @@ final List<DropdownMenuItem<String>> hexDropDownNumbersList =
     child: Text(
       hexagramsnew,
       style: const TextStyle(
-          color: Colors.grey,
-          fontSize: 30.0,
-          fontWeight: FontWeight.bold),
+          color: Colors.grey,),
     ),
   );
 }).toList();
@@ -637,7 +836,6 @@ final List<DropdownMenuItem<String>> fontHexList =
         style: const TextStyle(
           color: Colors.black,
           fontSize: 30.0,
-          fontWeight: FontWeight.bold,
           fontFamily: 'iChing',
         )),
   );
@@ -650,8 +848,6 @@ final List<DropdownMenuItem<String>> orderHexagramsWheelList =
       child: Text(orderWheelHexagrams,
           style: const TextStyle(
             color: Colors.grey,
-            fontSize: 30.0,
-            fontWeight: FontWeight.bold,
           )));
 }).toList();
 
@@ -663,7 +859,6 @@ final List<DropdownMenuItem<String>> iChingFontList =
         style: const TextStyle(
           color: Colors.black,
           fontSize: 30.0,
-          fontWeight: FontWeight.bold,
           fontFamily: 'iChing',
         )),
   );

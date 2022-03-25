@@ -96,7 +96,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text('Rotate Planets'),
+        title: const Text('Rotate Astro Planets'),
         backgroundColor: Colors.blueGrey,
         actions: [
           ToggleButtons(
