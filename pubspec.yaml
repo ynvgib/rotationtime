@@ -29,6 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: # Add this line
+    sdk: flutter         # Add this line
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -37,9 +39,7 @@ dependencies:
   carousel_slider: ^4.0.0
   flutter_icons: ^1.1.0
   screenshot: ^1.2.3
-  flutter_spinwheel:
   dropdown_search: ^2.0.1
-  flutter_svg: ^1.0.3
   flutter_font_picker: ^0.3.3
 
 
@@ -66,6 +66,7 @@ flutter_icons:
 
 # The following section is specific to Flutter.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

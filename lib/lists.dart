@@ -110,6 +110,8 @@ final List<String> fontHexbyWheel = [
   '51', '35', '3', '46',
 ];
 
+
+
 final List<String> orderHexagramsWheel = [
   //qurater mutation complex
   '1', '43', '14', '34',
@@ -136,8 +138,10 @@ final List<String> orderHexagramsWheel = [
   '32', '50', '28', '44',
 ];
 
+final List<int> hexCarouselAlignList = [
+  1,
 
-
+  ];
 final List<String> hexagramNames = [
   //qurater mutation complex
   'The Creative', 'The Responsive', 'Mutative', 'Logic',
@@ -167,7 +171,7 @@ final List<String> hexagramNames = [
 /// FULL SENTENCE
 
 final List<String> hexagramSentenceList = [
-  '0','Zero','Zero','Zero','Zero','Zero','Zero',
+  '0','Adjective','Subject','Verb','Adverb',
   '1','Creative','Creativity','Creates','Creatively',
   '2','Responsive','Response','Responds','Responsively',
   '3','Different','Mutation','Mutates','Differently',
@@ -203,7 +207,144 @@ final List<String> hexagramSentenceList = [
   '33','Remembered','Memory','Remembers','Privately',
   '34','Powerful','Power','Powers','Powerfully',
   '35','Progressive','Change','Changes','Progressively',
-  '36','Endarkaned','Feeling','Feels','Fully',
+  '36','Endarkened','Feeling','Feels','Fully',
+  '37','Friendful','Friend','Befriends','Friendly',
+  '38','Fighting','Fighter','Fights','Oppositely',
+  '39','Provocative','Provocation','Provokes','Provocatively',
+  '40','Loyal','Worker','Works','Loyally',
+  '41','Fanciful','Fantasy','Fantasises','Fancifully',
+  '42','Ending','End','Ends','Happily Ever After',
+  '43','Insightful','Insight','Insights','Insightfully',
+  '44','Alertful','Alert','Alerts','Alertly',
+  '45','Bossy','Boss','Bosses','Boastfully',
+  '46','Determined','Determination','Determines','Determinately',
+  '47','Oppressed','Oppression','Oppresses','Oppressively',
+  '48','Deep','Depth','Deepens','Deeply',
+  '49','Revolutionary','Revolution','Revolutionizes','Revolutionarily',
+  '50','Valuable','Value','Values','Valuably',
+  '51','Shocking','Shock','Shocks','Shockingly',
+  '52','Mounted','Mountain','Mounts','Mountfully',
+  '53','First','Beginning','Begins','At the Beginning',
+  '54','Ambitious','Ambition','Drives','Ambitiously',
+  '55','Spirited','Spirit','Spirits','Spiritually',
+  '56','Believed','Believer','Believes','Wonderingly',
+  '57','Gentle','GentleWind','Blows','Gently',
+  '58','Joyous','Joy','Enjoys','Joyously',
+  '59','Sexual','Sex','Disperses','Sexually',
+  '60','Limited','Limitation','Limits','Limitedly',
+  '61','Truthful','Truth','Truths','Truthfully',
+  '62','Detailed','Detail','Details','Detailedly',
+  '63','Doubting','Doubt','Doubts','Doubtfully',
+  '64','Confusing','Confusion','Confuses','Confusingly',
+];
+
+final List<String> hexagramOriginSentenceList = [
+  '0','Zero','Zero','Zero','Zero',
+  '1','Creative','Creativity','Creates','Creatively',
+  '2','Responsive','Response','Responds','Responsively',
+  '3','Different','Mutation','Mutates','Differently',
+  '4','Chaotic','Answer','Answers','Chaotically',
+  '5','Patient','Patience','Waits','Patiently',
+  '6','Conflicting','Conflict','Conflicts','Conflictingly',
+  '7','Interactive','Interaction','Interacts','Interactively',
+  '8','Contributing','Contribution','Contributes','Uniquely',
+  '9','Focused','Focus','Focuses','Focusingly',
+  '10','Selfing','Self','Selfs','Selfingly',
+  '11','Ideal','Idea','Ideas','Ideally',
+  '12','Cautious','Caution','Cautions','Cautiously',
+  '13','Secret','Secret','Hides','Secretly',
+  '14','Wealthy','Wealth','Enriches','Wealthfully',
+  '15','Extreme','Extreme','Extremes','Extremely',
+  '16','Skillful','Skill','Identifies','Skillfully',
+  '17','Hierarchical','Hierarchy','Organizes','Hierarchically',
+  '18','Corrective','Correction','Corrects','Correctly',
+  '19','Needful','Need','Needs','Needfully',
+  '20','Attentive','Attention','Attends','Attentively',
+  '21','Controlled','Control','Controls','Controllably',
+  '22','Graceful','Grace','Graces','Gracefully',
+  '23','Assimilated','Assimilation','Assimilates','Assimilably',
+  '24','Rationalised','Rationalisation','Rationalises','Rationally',
+  '25','Innocent','Innocence','Innocences','Innocently',
+  '26','Tricky','Trickster','Tricks','Trickily',
+  '27','Caring','Care','Cares','Carefully',
+  '28','Risky','Risk','Risks','Riskily',
+  '29','Persevered','Perseverance','Perseveres','Perseveringly',
+  '30','Fiery','Fire','Fires','Fiercely',
+  '31','Leading','Lead','Leads','Leadingly',
+  '32','Failing','Failure','Fails','Failingly',
+  '33','Remembered','Memory','Remembers','Privately',
+  '34','Powerful','Power','Powers','Powerfully',
+  '35','Progressive','Change','Changes','Progressively',
+  '36','Endarkened','Feeling','Feels','Fully',
+  '37','Friendful','Friend','Befriends','Friendly',
+  '38','Fighting','Fighter','Fights','Oppositely',
+  '39','Provocative','Provocation','Provokes','Provocatively',
+  '40','Loyal','Worker','Works','Loyally',
+  '41','Fanciful','Fantasy','Fantasises','Fancifully',
+  '42','Ending','End','Ends','Happily Ever After',
+  '43','Insightful','Insight','Insights','Insightfully',
+  '44','Alertful','Alert','Alerts','Alertly',
+  '45','Bossy','Boss','Bosses','Boastfully',
+  '46','Determined','Determination','Determines','Determinately',
+  '47','Oppressed','Oppression','Oppresses','Oppressively',
+  '48','Deep','Depth','Deepens','Deeply',
+  '49','Revolutionary','Revolution','Revolutionizes','Revolutionarily',
+  '50','Valuable','Value','Values','Valuably',
+  '51','Shocking','Shock','Shocks','Shockingly',
+  '52','Mounted','Mountain','Mounts','Mountfully',
+  '53','First','Beginning','Begins','At the Beginning',
+  '54','Ambitious','Ambition','Drives','Ambitiously',
+  '55','Spirited','Spirit','Spirits','Spiritually',
+  '56','Believed','Believer','Believes','Wonderingly',
+  '57','Gentle','GentleWind','Blows','Gently',
+  '58','Joyous','Joy','Enjoys','Joyously',
+  '59','Sexual','Sex','Disperses','Sexually',
+  '60','Limited','Limitation','Limits','Limitedly',
+  '61','Truthful','Truth','Truths','Truthfully',
+  '62','Detailed','Detail','Details','Detailedly',
+  '63','Doubting','Doubt','Doubts','Doubtfully',
+  '64','Confusing','Confusion','Confuses','Confusingly',
+];
+
+// not final
+List<String> hexagramNewSentenceList = [
+  '0','Zero','Zero','Zero','Zero',
+  '1','Creative','Creativity','Creates','Creatively',
+  '2','Responsive','Response','Responds','Responsively',
+  '3','Different','Mutation','Mutates','Differently',
+  '4','Chaotic','Answer','Answers','Chaotically',
+  '5','Patient','Patience','Waits','Patiently',
+  '6','Conflicting','Conflict','Conflicts','Conflictingly',
+  '7','Interactive','Interaction','Interacts','Interactively',
+  '8','Contributing','Contribution','Contributes','Uniquely',
+  '9','Focused','Focus','Focuses','Focusingly',
+  '10','Selfing','Self','Selfs','Selfingly',
+  '11','Ideal','Idea','Ideas','Ideally',
+  '12','Cautious','Caution','Cautions','Cautiously',
+  '13','Secret','Secret','Hides','Secretly',
+  '14','Wealthy','Wealth','Enriches','Wealthfully',
+  '15','Extreme','Extreme','Extremes','Extremely',
+  '16','Skillful','Skill','Identifies','Skillfully',
+  '17','Hierarchical','Hierarchy','Organizes','Hierarchically',
+  '18','Corrective','Correction','Corrects','Correctly',
+  '19','Needful','Need','Needs','Needfully',
+  '20','Attentive','Attention','Attends','Attentively',
+  '21','Controlled','Control','Controls','Controllably',
+  '22','Graceful','Grace','Graces','Gracefully',
+  '23','Assimilated','Assimilation','Assimilates','Assimilably',
+  '24','Rationalised','Rationalisation','Rationalises','Rationally',
+  '25','Innocent','Innocence','Innocences','Innocently',
+  '26','Tricky','Trickster','Tricks','Trickily',
+  '27','Caring','Care','Cares','Carefully',
+  '28','Risky','Risk','Risks','Riskily',
+  '29','Persevered','Perseverance','Perseveres','Perseveringly',
+  '30','Fiery','Fire','Fires','Fiercely',
+  '31','Leading','Lead','Leads','Leadingly',
+  '32','Failing','Failure','Fails','Failingly',
+  '33','Remembered','Memory','Remembers','Privately',
+  '34','Powerful','Power','Powers','Powerfully',
+  '35','Progressive','Change','Changes','Progressively',
+  '36','Endarkened','Feeling','Feels','Fully',
   '37','Friendful','Friend','Befriends','Friendly',
   '38','Fighting','Fighter','Fights','Oppositely',
   '39','Provocative','Provocation','Provokes','Provocatively',
@@ -271,7 +412,7 @@ final List<String> hexagramAdjectiveList = [
       'Remembered',
       'Powerful',
       'Progressive',
-      'Endarkaned',
+      'Endarkened',
       'Friendful',
       'Fighting',
       'Provocative',
@@ -706,7 +847,60 @@ final List<String> hexCarouselValueList = [
 
 ];
 
+class HexCross {
+  String? angle;
+  int? gatepersonsun;
+  int? gatepersonearth;
+  int? gatebodysun;
+  int? gatebodynearth;
+  String? crosshdname;
+  String? crossname;
+  String? language;
 
+  HexCross({
+    required this.angle,
+    required this.gatepersonsun,
+    this.gatepersonearth,
+    this.gatebodysun,
+    this.gatebodynearth,
+    this.crosshdname,
+    this.crossname,
+    this.language
+  });
+}
+
+final List<HexCross> hexcrosses = [
+  HexCross(
+    gatepersonsun: 1,
+    gatepersonearth: 2,
+    gatebodysun: 13,
+    gatebodynearth: 7,
+    crosshdname: 'sphinx',
+    angle: 'right',
+    language: 'complex'
+  ),
+  HexCross(
+    gatepersonsun: 1,
+    gatepersonearth: 2,
+    gatebodysun: 13,
+    gatebodynearth: 7,
+    crosshdname: 'sphinx',
+    crossname: 'complex ',
+    angle: 'jux',
+    language: 'complex'
+  ),
+];
+
+final List<String> hexCrossesList = [
+  '1R','1','Right','Complex Personal Creative',
+  '1X','1','Jux','Complex Fixed Creative',
+  '1L','1','Left','Complex Interactive Creative',
+  '2R','2','Right','Silent Sphinx',
+  '2X','2','Jux','Silent Fixed Driver',
+  '2L','2','Left','Silent Interactive Driver',
+
+
+];
 
 /// FULL SENTENCE
 

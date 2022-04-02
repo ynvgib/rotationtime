@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:finallyicanlearn/lists.dart';
 
 // /rotatehexwithlogic
+// rotate one hexagram
 class RotateHexagramWithLogic extends StatefulWidget {
   const RotateHexagramWithLogic({Key? key}) : super(key: key);
 
@@ -74,335 +75,335 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
                           switch (dropdowichingordervalue) {
                           //Quarter of Mutation
                             case '1':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '43':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '14':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '34':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '9':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '5':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '26':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '11':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '10':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '58':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '38':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '54':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '61':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '60':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '41':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '19':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
 
                           //Quarter of Initiation
                             case '13':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '49':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '30':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '55':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '37':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '63':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '22':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '36':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '25':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '17':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '21':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '51':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '42':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '3':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '27':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '24':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
 
                           //Quarter of Duality
                             case '44':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '28':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '50':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '32':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '57':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '48':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '18':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '46':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '6':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '47':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '64':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '40':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '59':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '29':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '4':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '7':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
 
                           //Quarter of Civilization
                             case '33':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '31':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '56':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '62':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '53':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '39':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '52':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '15':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '12':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '45':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '35':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '16':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '20':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '8':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '23':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '2':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                             default:
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                           }
                         });
@@ -430,461 +431,461 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
                           switch (dropdowichingvalue) {
                           //Quarter of Mutation
                             case 'a':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '43':
                           //case '44':
                             case 'b':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '14':
                           //case '13':
                             case 'c':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '34':
                           //case '10':
                             case 'd':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '9':
                           //case '9':
                             case 'e':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '5':
                           //case '14':
                             case 'f':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '26':
                           //case '43':
                             case 'g':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '11':
                           //case '33':
                             case 'h':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '10':
                           //case '25':
                             case 'i':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '58':
                           //case '61':
                             case 'j':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '38':
                           //case '26':
                             case 'k':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '54':
                           //case '34':
                             case 'l':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '61':
                           //case '6':
                             case 'm':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '60':
                           //case '37':
                             case 'n':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '41':
                           //case '38':
                             case 'o':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '19':
                           //case '5':
                             case 'p':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
 
                           //Quarter of Initiation
                           //case '13':
                           //case '57':
                             case 'q':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '49':
                           //case '30':
                             case 'r':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '30':
                           //case '58':
                             case 's':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '55':
                           //case '50':
                             case 't':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '37':
                           //case '49'':
                             case 'u':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '63':
                           //case '28':
                             case 'v':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '22':
                           //case '12':
                             case 'w':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '36':
                           //case '42':
                             case 'x':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '25':
                           //case '41':
                             case 'y':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '17':
                           //case '11':
                             case 'z':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '21':
                           //case '62':
                             case '1':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '51':
                           //case '45':
                             case '2':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '42':
                           //case '29':
                             case '3':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '3':
                           //case '39':
                             case '4':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '27':
                           //case '40':
                             case '5':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '24':
                           //case '24':
                             case '6':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
 
                           //Quarter of Duality
                           //case '44':
                           //case '7':
                             case '7':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '28':
                           //case '15':
                             case '8':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '50':
                           //case '16':
                             case '9':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '32':
                           //case '8':
                             case '0':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '57':
                           //case '23':
                             case '!':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '48':
                           //case '2':
                             case '@':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '18':
                           //case '59':
                             case 'A':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '46':
                           //case '22':
                             case 'B':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '6':
                           //case '54':
                             case 'C':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '47':
                           //case '53':
                             case 'D':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '64':
                           //case '21':
                             case 'E':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '40':
                           //case '60':
                             case 'F':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '59':
                           //case '18':
                             case 'G':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '29':
                           //case '55':
                             case 'H':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '4':
                           //case '56':
                             case 'I':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '7':
                           //case '17':
                             case 'J':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
 
                           //Quarter of Civilization
                           //case '33':
                           //case '32':
                             case 'K':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '31':
                           //case '31':
                             case 'L':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '56':
                           //case '47':
                             case 'M':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '62':
                           //case '48':
                             case 'N':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '53':
                           //case '63':
                             case 'O':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '39':
                           //case '64':
                             case 'P':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '52':
                           //case '20':
                             case 'Q':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '15':
                           //case '27':
                             case 'R':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '12':
                           //case '19':
                             case 'S':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
                           //case '45':
                           //case '4':
                             case 'T':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
                           //case '35':
                           //case '36':
                             case 'U':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '16':
                           //case '52':
                             case 'V':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '20':
                           //case '51':
                             case 'W':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '8':
                           //case '35':
                             case 'X':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                           //case '23':
                           //case '3':
                             case 'Y':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
                           //case '2':
                           //case '46':
                             case 'Z':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                             default:
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                           }
                         });
@@ -909,335 +910,335 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
                           switch (dropdownvalue) {
                           //Quarter of Mutation
                             case '1':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '43':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '14':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '34':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '9':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '5':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '26':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '11':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '10':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '58':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '38':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '54':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '61':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '60':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '41':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
                             case '19':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(0);
                               break;
 
                           //Quarter of Initiation
                             case '13':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '49':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '30':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '55':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '37':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '63':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '22':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '36':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '25':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '17':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '21':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '51':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '42':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '3':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '27':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
                             case '24':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(1);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(1);
                               break;
 
                           //Quarter of Duality
                             case '44':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '28':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '50':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '32':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '57':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '48':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '18':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '46':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '6':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '47':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '64':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '40':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '59':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '29':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '4':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
                             case '7':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(2);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(2);
                               break;
 
                           //Quarter of Civilization
                             case '33':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '31':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '56':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '62':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '53':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '39':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '52':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '15':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(1);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(1);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '12':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '45':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '35':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '16':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(2);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(2);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '20':
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '8':
-                              _controllertop.animateToPage(1);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(1);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '23':
-                              _controllertop.animateToPage(2);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(2);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                             case '2':
-                              _controllertop.animateToPage(3);
-                              _controllermid.animateToPage(3);
-                              _controllerbot.animateToPage(3);
+                              _controllertop.jumpToPage(3);
+                              _controllermid.jumpToPage(3);
+                              _controllerbot.jumpToPage(3);
                               break;
                             default:
-                              _controllertop.animateToPage(0);
-                              _controllermid.animateToPage(0);
-                              _controllerbot.animateToPage(0);
+                              _controllertop.jumpToPage(0);
+                              _controllermid.jumpToPage(0);
+                              _controllerbot.jumpToPage(0);
                               break;
                           }
                         });
@@ -1265,335 +1266,335 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
                             switch (_textHexValueChange) {
                             //Quarter of Mutation
                               case '1':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '43':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '14':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '34':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '9':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '5':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '26':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '11':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '10':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '58':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '38':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '54':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '61':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '60':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '41':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(0);
                                 break;
                               case '19':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(0);
                                 break;
 
                             //Quarter of Initiation
                               case '13':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '49':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '30':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '55':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '37':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '63':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '22':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '36':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '25':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '17':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '21':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '51':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '42':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '3':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '27':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(1);
                                 break;
                               case '24':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(1);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(1);
                                 break;
 
                             //Quarter of Duality
                               case '44':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '28':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '50':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '32':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '57':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '48':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '18':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '46':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '6':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '47':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '64':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '40':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '59':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '29':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '4':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(2);
                                 break;
                               case '7':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(2);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(2);
                                 break;
 
                             //Quarter of Civilization
                               case '33':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '31':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '56':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '62':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '53':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '39':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '52':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '15':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(1);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(1);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '12':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '45':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '35':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '16':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(2);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(2);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '20':
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '8':
-                                _controllertop.animateToPage(1);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(1);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '23':
-                                _controllertop.animateToPage(2);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(2);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               case '2':
-                                _controllertop.animateToPage(3);
-                                _controllermid.animateToPage(3);
-                                _controllerbot.animateToPage(3);
+                                _controllertop.jumpToPage(3);
+                                _controllermid.jumpToPage(3);
+                                _controllerbot.jumpToPage(3);
                                 break;
                               default:
-                                _controllertop.animateToPage(0);
-                                _controllermid.animateToPage(0);
-                                _controllerbot.animateToPage(0);
+                                _controllertop.jumpToPage(0);
+                                _controllermid.jumpToPage(0);
+                                _controllerbot.jumpToPage(0);
                                 break;
                             }
                           });
@@ -1717,7 +1718,7 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: hexList.asMap().entries.map((entry) {
                 return GestureDetector(
-                  onTap: () => _controllertop.animateToPage(entry.key),
+                  onTap: () => _controllertop.jumpToPage(entry.key),
                   child: Container(
                     width: 12.0,
                     height: 12.0,
@@ -1772,7 +1773,7 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: hexList.asMap().entries.map((entry) {
                 return GestureDetector(
-                  onTap: () => _controllermid.animateToPage(entry.key),
+                  onTap: () => _controllermid.jumpToPage(entry.key),
                   child: Container(
                     width: 12.0,
                     height: 12.0,
@@ -1824,7 +1825,7 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: hexList.asMap().entries.map((entry) {
                 return GestureDetector(
-                  onTap: () => _controllerbot.animateToPage(entry.key),
+                  onTap: () => _controllerbot.jumpToPage(entry.key),
                   child: Container(
                     width: 12.0,
                     height: 12.0,
@@ -1859,6 +1860,7 @@ class _RotateHexagramWithLogicState extends State<RotateHexagramWithLogic> {
 }
 
 // /indicatorNoLogic
+// rotate multiple hexagarms
 class RotateMultipleHexagrams extends StatefulWidget {
   const RotateMultipleHexagrams({Key? key}) : super(key: key);
 
@@ -1908,21 +1910,21 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
           IconButton(
               icon: const Icon(Icons.color_lens),
               onPressed: () {
-                _controllerlefttop.animateToPage(0);
-                _controllerleftmid.animateToPage(0);
-                _controllerleftbot.animateToPage(0);
+                _controllerlefttop.jumpToPage(0);
+                _controllerleftmid.jumpToPage(0);
+                _controllerleftbot.jumpToPage(0);
 
-                _controllercenterlefttop.animateToPage(5);
-                _controllercenterleftmid.animateToPage(5);
-                _controllercenterleftbot.animateToPage(5);
+                _controllercenterlefttop.jumpToPage(5);
+                _controllercenterleftmid.jumpToPage(5);
+                _controllercenterleftbot.jumpToPage(5);
 
-                _controllercenterrighttop.animateToPage(10);
-                _controllercenterrightmid.animateToPage(10);
-                _controllercenterrightbot.animateToPage(10);
+                _controllercenterrighttop.jumpToPage(10);
+                _controllercenterrightmid.jumpToPage(10);
+                _controllercenterrightbot.jumpToPage(10);
 
-                _controllerrighttop.animateToPage(15);
-                _controllerrightmid.animateToPage(15);
-                _controllerrightbot.animateToPage(15);
+                _controllerrighttop.jumpToPage(15);
+                _controllerrightmid.jumpToPage(15);
+                _controllerrightbot.jumpToPage(15);
 
                 _controllertextlefttop.text = "Complex";
                 _controllertextleftbot.text = "Mind";
@@ -1936,21 +1938,21 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
           IconButton(
               icon: const Icon(Icons.color_lens_outlined),
               onPressed: () {
-                _controllerlefttop.animateToPage(0);
-                _controllerleftmid.animateToPage(0);
-                _controllerleftbot.animateToPage(0);
+                _controllerlefttop.jumpToPage(0);
+                _controllerleftmid.jumpToPage(0);
+                _controllerleftbot.jumpToPage(0);
 
-                _controllercenterlefttop.animateToPage(0);
-                _controllercenterleftmid.animateToPage(0);
-                _controllercenterleftbot.animateToPage(0);
+                _controllercenterlefttop.jumpToPage(0);
+                _controllercenterleftmid.jumpToPage(0);
+                _controllercenterleftbot.jumpToPage(0);
 
-                _controllercenterrighttop.animateToPage(0);
-                _controllercenterrightmid.animateToPage(0);
-                _controllercenterrightbot.animateToPage(0);
+                _controllercenterrighttop.jumpToPage(0);
+                _controllercenterrightmid.jumpToPage(0);
+                _controllercenterrightbot.jumpToPage(0);
 
-                _controllerrighttop.animateToPage(0);
-                _controllerrightmid.animateToPage(0);
-                _controllerrightbot.animateToPage(0);
+                _controllerrighttop.jumpToPage(0);
+                _controllerrightmid.jumpToPage(0);
+                _controllerrightbot.jumpToPage(0);
 
                 _controllertextlefttop.text = "";
                 _controllertextleftbot.text = "";

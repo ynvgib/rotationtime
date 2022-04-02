@@ -1,4 +1,5 @@
 import 'package:finallyicanlearn/hexagramlanguage.dart';
+import 'package:finallyicanlearn/rotateincrosses.dart';
 import 'package:flutter/material.dart';
 import 'package:finallyicanlearn/logic.dart';
 import 'package:finallyicanlearn/rotateplanets.dart';
@@ -23,6 +24,7 @@ class MainPage extends StatelessWidget {
             '/': (ctx) => const MainPageHome(),
             '/multiplehexagrams': (ctx) => const RotateMultipleHexagrams(),
             '/rotatehexwithlogic': (ctx) => const RotateHexagramWithLogic(),
+            '/rotateincrosses': (ctx) => const RotateInCrosses(),
             '/hexlanguage': (ctx) => const RotateHexLanguage(),
             '/rotateplanets': (ctx) => const RotatePlanets(),
             '/rotatechart': (ctx) => const RotateChart(),
@@ -97,6 +99,7 @@ class MainPageHome extends StatelessWidget {
             MappingItem('ONE HEXAGRAM', '/rotatehexwithlogic'),
             MappingItem('HEXAGRAM LANGUAGE', '/hexlanguage'),
             MappingItem('MULTIPLE HEXAGRAMS', '/multiplehexagrams'),
+            MappingItem('CROSSES HEXAGRAMS', '/rotateincrosses'),
             MappingItem('ASTRO PLANETS', '/rotateplanets'),
             MappingItem('HD CHART', '/rotatechart'),
             MappingItem('HEXGRAM TABLE', '/rotatehexagramtable'),
