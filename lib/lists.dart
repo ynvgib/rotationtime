@@ -1,5 +1,29 @@
 import 'package:flutter/material.dart';
 
+final List<String> planetsfullList = [
+  'assets/planets/northnode.png',
+  'assets/planets/sun.png',
+  'assets/planets/moon.png',
+  'assets/planets/mercury.png',
+  'assets/planets/venus.png',
+  'assets/planets/mars.png',
+  'assets/planets/jupiter.png',
+  'assets/planets/saturn.png',
+  'assets/planets/uranus.png',
+  'assets/planets/neptune.png',
+  'assets/planets/pluto.png',
+  'assets/planets/earth.png',
+  'assets/planets/southnode.png',
+];
+
+final List<String> planetsCrossList = [
+  'assets/planets/northnode.png',
+  'assets/planets/sun.png',
+  'assets/planets/earth.png',
+  'assets/planets/southnode.png',
+];
+
+
 final List<String> hexList = [
   'assets/complexup.png',
   'assets/simplein.png',
@@ -7,15 +31,7 @@ final List<String> hexList = [
   'assets/silencedown.png',
 ];
 
-final List<String> aboutmeList = [
-  'assets/about.png',
-  'assets/complexup.png',
-];
 
-final List<String> idonotknowList = [
-  'assets/idonotknow.png',
-  'assets/silencedown.png',
-];
 
 final List<String> orderiChingFontHexagrams = [
   'a',
@@ -84,7 +100,29 @@ final List<String> orderiChingFontHexagrams = [
   'Z'
 ];
 
-final List<String> fontHexbyWheel = [
+final List<int> fontHexbyWheel = [
+  1, 44, 13, 10,
+  9, 14, 43, 33,
+  25, 61, 26, 34,
+  6, 37, 38, 5,
+
+  57, 30, 58, 50,
+  49, 28, 12, 42,
+  41, 11, 62, 45,
+  29, 39, 40, 24,
+
+  7, 15, 16, 8,
+  23, 2, 59, 22,
+  54, 53, 21, 60,
+  18, 55, 56, 17,
+
+  32, 31, 47, 48,
+  63, 64, 20, 27,
+  19, 4, 36, 52,
+  51, 35, 3, 46
+];
+
+final List<String> fontHexbyWheelSTRING = [
   //qurater mutation complex
   '1', '44', '13', '10',
   '9', '14', '43', '33',
@@ -112,7 +150,33 @@ final List<String> fontHexbyWheel = [
 
 
 
-final List<String> orderHexagramsWheel = [
+final List<int> orderHexagramsWheel = [
+  //qurater mutation complex
+  1, 43, 14, 34,
+  9, 5, 26, 11,
+  10, 58, 38, 54,
+  61, 60, 41, 19,
+
+  //quarter initation simple
+  13, 49, 30, 55,
+  37, 63, 22, 36,
+  25, 17, 21, 51,
+  42, 3, 27, 24,
+
+  //quarter civilization silence
+  2, 23, 8, 20,
+  16, 35, 45, 12,
+  15, 52, 39, 53,
+  62, 56, 31, 33,
+
+  //quarter duality breath
+  7, 4, 29, 59,
+  40, 64, 47, 6,
+  46, 18, 48, 57,
+  32, 50, 28, 44,
+];
+
+final List<String> orderHexagramsWheelORIGINAL = [
   //qurater mutation complex
   '1', '43', '14', '34',
   '9', '5', '26', '11',
@@ -580,6 +644,74 @@ final List<String> hexagramVerbList = [
   'Confuses',
 ];
 
+final List<String> hexagramVerbNewList = [
+  'Zero',
+  'Creates',
+  'Responds',
+  'Mutates',
+  'will Answer',
+  'will Wait',
+  'Conflicts',
+  'will Interact',
+  'Contributes',
+  'will Focus',
+  'Selfs',
+  'Idead',
+  'Cautions',
+  'Hid',
+  'Enriches',
+  'will Extreme',
+  'will Identify',
+  'will Organize',
+  'will Correct',
+  'Needs',
+  'Attends',
+  'Controls',
+  'Graces',
+  'Assimilates',
+  'Rationalises',
+  'Innocences',
+  'Tricks',
+  'Cares',
+  'Risks',
+  'Persevered',
+  'Fired',
+  'will Lead',
+  'Fails',
+  'Remembered',
+  'Powers',
+  'Changed',
+  'Felt',
+  'Befriends',
+  'Fights',
+  'Provokes',
+  'Works',
+  'Fantasised',
+  'Ended',
+  'Insights',
+  'Alerts',
+  'Bosses',
+  'Determined',
+  'Oppressed',
+  'will Deepen',
+  'Revolutionizes',
+  'Values',
+  'Shocks',
+  'will Mount',
+  'Began',
+  'Drives',
+  'Spirits',
+  'Believed',
+  'Blows',
+  'will Enjoy',
+  'Disperses',
+  'Limits',
+  'Truths',
+  'will Detail',
+  'will Doubt',
+  'Confused',
+];
+
 final List<String> hexagramAdverbList = [
   'Zero',
   'Creatively',
@@ -963,10 +1095,36 @@ final List<String> hexFullList = [
 ];
 
 // variables
-var hexagramslist = List<String>.generate(65, (counter) => "$counter");
+var hexagramslist = List<int>.generate(65, (counter) => counter++);
 var hexagramslistfinal = hexagramslist.getRange(1, hexagramslist.length);
 
 // SLIDERS
+
+final List<Widget> planetsFullSliders = planetsfullList
+    .map((planet) => Container(
+  margin: const EdgeInsets.all(5.0),
+  child: ClipRRect(
+      borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+      child: Stack(
+        children: <Widget>[
+          Image.asset(planet, fit: BoxFit.cover, width: 100.0),
+        ],
+      )),
+))
+    .toList();
+
+final List<Widget> planetsCrossSliders = planetsCrossList
+    .map((planet) => Container(
+  margin: const EdgeInsets.all(5.0),
+  child: ClipRRect(
+      borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+      child: Stack(
+        children: <Widget>[
+          Image.asset(planet, fit: BoxFit.cover, width: 100.0),
+        ],
+      )),
+))
+    .toList();
 
 final List<Widget> allItemsSliders = hexFullList
     .map((hexImage) => CircleAvatar(
@@ -1010,12 +1168,12 @@ final List<Widget> mixHexagramSlidersNew = hexBasicMixList
 
 // DROPDOWN
 
-final List<DropdownMenuItem<String>> hexDropDownNumbersList =
-    hexagramslistfinal.map((String hexagramsnew) {
+final List<DropdownMenuItem<int>> hexDropDownNumbersList =
+    hexagramslistfinal.map((int hexagramsnew) {
   return DropdownMenuItem(
     value: hexagramsnew,
     child: Text(
-      hexagramsnew,
+      hexagramsnew.toString(),
       style: const TextStyle(
           color: Colors.grey,),
     ),
@@ -1035,11 +1193,11 @@ final List<DropdownMenuItem<String>> fontHexList =
   );
 }).toList();
 
-final List<DropdownMenuItem<String>> orderHexagramsWheelList =
-    orderHexagramsWheel.map((String orderWheelHexagrams) {
+final List<DropdownMenuItem<int>> orderHexagramsWheelList =
+    orderHexagramsWheel.map((int orderWheelHexagrams) {
   return DropdownMenuItem(
       value: orderWheelHexagrams,
-      child: Text(orderWheelHexagrams,
+      child: Text(orderWheelHexagrams.toString(),
           style: const TextStyle(
             color: Colors.grey,
           )));

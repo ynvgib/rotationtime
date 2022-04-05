@@ -1,29 +1,27 @@
-import 'package:finallyicanlearn/hexagramlanguage.dart';
-import 'package:finallyicanlearn/rotateincrosses.dart';
 import 'package:flutter/material.dart';
-import 'package:finallyicanlearn/logic.dart';
-import 'package:finallyicanlearn/rotateplanets.dart';
-import 'package:finallyicanlearn/rotatechart.dart';
-import 'package:finallyicanlearn/rotatehexagrams.dart';
+
+import 'rotations/rotatechart.dart';
+import 'rotations/rotatehexagrams.dart';
+import 'rotations/rotatehexlanguage.dart';
+import 'rotations/rotateincrosses.dart';
+//import 'rotations/rotatemultiple.dart';
+import 'rotations/rotateone.dart';
+import 'rotations/rotateplanets.dart';
 
 void main() => runApp(const MainPage());
-
-final themeMode = ValueNotifier(2);
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      builder: (context, value, g) {
         return MaterialApp(
           initialRoute: '/',
           debugShowCheckedModeBanner: false,
           routes: {
-            '/': (ctx) => const MainPageHome(),
-            '/multiplehexagrams': (ctx) => const RotateMultipleHexagrams(),
-            '/rotatehexwithlogic': (ctx) => const RotateHexagramWithLogic(),
+            '/': (ctx) => const HomePage(),
+            //'/multiplehexagrams': (ctx) => const RotateMultipleHexagrams(),
+            '/rotateone': (ctx) => const RotateOneHexagram(),
             '/rotateincrosses': (ctx) => const RotateInCrosses(),
             '/hexlanguage': (ctx) => const RotateHexLanguage(),
             '/rotateplanets': (ctx) => const RotatePlanets(),
@@ -31,14 +29,11 @@ class MainPage extends StatelessWidget {
             '/rotatehexagramtable': (ctx) => const RotateHexagramTable(),
           },
         );
-      },
-      valueListenable: themeMode,
-    );
   }
 }
 
-class MainPageHome extends StatelessWidget {
-  const MainPageHome({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -96,9 +91,9 @@ class MainPageHome extends StatelessWidget {
             child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           children: const <Widget>[
-            MappingItem('ONE HEXAGRAM', '/rotatehexwithlogic'),
+            MappingItem('ONE HEXAGRAM', '/rotateone'),
             MappingItem('HEXAGRAM LANGUAGE', '/hexlanguage'),
-            MappingItem('MULTIPLE HEXAGRAMS', '/multiplehexagrams'),
+            //MappingItem('MULTIPLE HEXAGRAMS', '/multiplehexagrams'),
             MappingItem('CROSSES HEXAGRAMS', '/rotateincrosses'),
             MappingItem('ASTRO PLANETS', '/rotateplanets'),
             MappingItem('HD CHART', '/rotatechart'),
@@ -221,7 +216,7 @@ class MappingItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Container(
-        height: 50,
+        height: 40,
         margin: const EdgeInsets.all(5.0),
         child: FittedBox(
           fit: BoxFit.scaleDown,
@@ -229,7 +224,7 @@ class MappingItem extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: const TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
           ),
         ),
         decoration: BoxDecoration(
