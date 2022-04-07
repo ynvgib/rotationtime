@@ -457,8 +457,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   onChanged: (int? _dropdownSunChange) {
                     setState(() {
                       _dropdownSun = _dropdownSunChange!;
-                      fontMapSun = fontHexbyWheel.indexOf(_dropdownSun);
-                      fontMapFinalSun = orderiChingFontHexagrams[fontMapSun];
+                      fontMapSun = fontHexNumbersList.indexOf(_dropdownSun);
+                      fontMapFinalSun = fontHexOrderList[fontMapSun];
                       _controllerSun.text = fontMapFinalSun;
 
                       _controllerSunText.text =
@@ -483,9 +483,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownNorthNode = _dropdownNorthNodeChange!;
                           fontMapNorthNode =
-                              fontHexbyWheel.indexOf(_dropdownNorthNode);
+                              fontHexNumbersList.indexOf(_dropdownNorthNode);
                           fontMapFinalNorthNode =
-                          orderiChingFontHexagrams[fontMapNorthNode];
+                          fontHexOrderList[fontMapNorthNode];
                           _controllerNorthNode.text = fontMapFinalNorthNode;
                           _controllerNorthNodeText.text =
                           hexagramSubjectList[_dropdownNorthNode];
@@ -508,9 +508,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       onChanged: (int? _dropdownMoonChange) {
                         setState(() {
                           _dropdownMoon = _dropdownMoonChange!;
-                          fontMapMoon = fontHexbyWheel.indexOf(_dropdownMoon);
+                          fontMapMoon = fontHexNumbersList.indexOf(_dropdownMoon);
                           fontMapFinalMoon =
-                          orderiChingFontHexagrams[fontMapMoon];
+                          fontHexOrderList[fontMapMoon];
                           _controllerMoon.text = fontMapFinalMoon;
                           _controllerMoonText.text =
                           hexagramSubjectList[_dropdownMoon];
@@ -534,9 +534,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownMercury = _dropdownMercuryChange!;
                           fontMapMercury =
-                              fontHexbyWheel.indexOf(_dropdownMercury);
+                              fontHexNumbersList.indexOf(_dropdownMercury);
                           fontMapFinalMercury =
-                          orderiChingFontHexagrams[fontMapMercury];
+                          fontHexOrderList[fontMapMercury];
                           _controllerMercury.text = fontMapFinalMercury;
                           _controllerMercuryText.text =
                           hexagramSubjectList[_dropdownMercury];
@@ -560,9 +560,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownVenus = _dropdownVenusChange!;
                           fontMapVenus =
-                              fontHexbyWheel.indexOf(_dropdownVenus);
+                              fontHexNumbersList.indexOf(_dropdownVenus);
                           fontMapFinalVenus =
-                          orderiChingFontHexagrams[fontMapVenus];
+                          fontHexOrderList[fontMapVenus];
                           _controllerVenus.text = fontMapFinalVenus;
 
                           _controllerVenusText.text =
@@ -587,9 +587,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownMars = _dropdownMarsChange!;
                           fontMapMars =
-                              fontHexbyWheel.indexOf(_dropdownMars);
+                              fontHexNumbersList.indexOf(_dropdownMars);
                           fontMapFinalMars =
-                          orderiChingFontHexagrams[fontMapMars];
+                          fontHexOrderList[fontMapMars];
                           _controllerMars.text = fontMapFinalMars;
 
                           _controllerMarsText.text =
@@ -614,9 +614,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownJupiter = _dropdownJupiterChange!;
                           fontMapJupiter =
-                              fontHexbyWheel.indexOf(_dropdownJupiter);
+                              fontHexNumbersList.indexOf(_dropdownJupiter);
                           fontMapFinalJupiter =
-                          orderiChingFontHexagrams[fontMapJupiter];
+                          fontHexOrderList[fontMapJupiter];
                           _controllerJupiter.text = fontMapFinalJupiter;
 
                           _controllerJupiterText.text =
@@ -641,9 +641,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownSaturn = _dropdownSaturnChange!;
                           fontMapSaturn =
-                              fontHexbyWheel.indexOf(_dropdownSaturn);
+                              fontHexNumbersList.indexOf(_dropdownSaturn);
                           fontMapFinalSaturn =
-                          orderiChingFontHexagrams[fontMapSaturn];
+                          fontHexOrderList[fontMapSaturn];
                           _controllerSaturn.text = fontMapFinalSaturn;
 
                           _controllerSaturnText.text =
@@ -668,9 +668,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownUranus = _dropdownUranusChange!;
                           fontMapUranus =
-                              fontHexbyWheel.indexOf(_dropdownUranus);
+                              fontHexNumbersList.indexOf(_dropdownUranus);
                           fontMapFinalUranus =
-                          orderiChingFontHexagrams[fontMapUranus];
+                          fontHexOrderList[fontMapUranus];
                           _controllerUranus.text = fontMapFinalUranus;
                           _controllerUranusText.text =
                           hexagramSubjectList[_dropdownUranus];
@@ -694,9 +694,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownNeptune = _dropdownNeptuneChange!;
                           fontMapNeptune =
-                              fontHexbyWheel.indexOf(_dropdownNeptune);
+                              fontHexNumbersList.indexOf(_dropdownNeptune);
                           fontMapFinalNeptune =
-                          orderiChingFontHexagrams[fontMapNeptune];
+                          fontHexOrderList[fontMapNeptune];
                           _controllerNeptune.text = fontMapFinalNeptune;
                           _controllerNeptuneText.text =
                           hexagramSubjectList[_dropdownNeptune];
@@ -720,9 +720,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownPluto = _dropdownPlutoChange!;
                           fontMapPluto =
-                              fontHexbyWheel.indexOf(_dropdownPluto);
+                              fontHexNumbersList.indexOf(_dropdownPluto);
                           fontMapFinalPluto =
-                          orderiChingFontHexagrams[fontMapPluto];
+                          fontHexOrderList[fontMapPluto];
                           _controllerPluto.text = fontMapFinalPluto;
                           _controllerPlutoText.text =
                           hexagramSubjectList[_dropdownPluto];
@@ -746,9 +746,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownEarth = _dropdownEarthChange!;
                           fontMapEarth =
-                              fontHexbyWheel.indexOf(_dropdownEarth);
+                              fontHexNumbersList.indexOf(_dropdownEarth);
                           fontMapFinalEarth =
-                          orderiChingFontHexagrams[fontMapEarth];
+                          fontHexOrderList[fontMapEarth];
                           _controllerEarth.text = fontMapFinalEarth;
                           _controllerEarthText.text =
                           hexagramSubjectList[_dropdownEarth];
@@ -772,9 +772,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownSouthNode = _dropdownSouthNodeChange!;
                           fontMapSouthNode =
-                              fontHexbyWheel.indexOf(_dropdownSouthNode);
+                              fontHexNumbersList.indexOf(_dropdownSouthNode);
                           fontMapFinalSouthNode =
-                          orderiChingFontHexagrams[fontMapSouthNode];
+                          fontHexOrderList[fontMapSouthNode];
                           _controllerSouthNode.text = fontMapFinalSouthNode;
                           _controllerSouthNodeText.text =
                           hexagramSubjectList[_dropdownSouthNode];
@@ -814,9 +814,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         onChanged: (int? _dropdownSunChange) {
                           setState(() {
                             _dropdownSun = _dropdownSunChange!;
-                            fontMapSun = fontHexbyWheel.indexOf(_dropdownSun);
+                            fontMapSun = fontHexNumbersList.indexOf(_dropdownSun);
                             fontMapFinalSun =
-                                orderiChingFontHexagrams[fontMapSun];
+                                fontHexOrderList[fontMapSun];
                             _controllerSun.text = fontMapFinalSun;
 
                             _controllerSunText.text =
@@ -882,9 +882,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         setState(() {
                           _dropdownNorthNode = _dropdownNorthNodeChange!;
                           fontMapNorthNode =
-                              fontHexbyWheel.indexOf(_dropdownNorthNode);
+                              fontHexNumbersList.indexOf(_dropdownNorthNode);
                           fontMapFinalNorthNode =
-                              orderiChingFontHexagrams[fontMapNorthNode];
+                              fontHexOrderList[fontMapNorthNode];
                           _controllerNorthNode.text = fontMapFinalNorthNode;
                           _controllerNorthNodeText.text =
                               hexagramSubjectList[_dropdownNorthNode];
@@ -953,9 +953,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         onChanged: (int? _dropdownMoonChange) {
                           setState(() {
                             _dropdownMoon = _dropdownMoonChange!;
-                            fontMapMoon = fontHexbyWheel.indexOf(_dropdownMoon);
+                            fontMapMoon = fontHexNumbersList.indexOf(_dropdownMoon);
                             fontMapFinalMoon =
-                                orderiChingFontHexagrams[fontMapMoon];
+                                fontHexOrderList[fontMapMoon];
                             _controllerMoon.text = fontMapFinalMoon;
                             _controllerMoonText.text =
                                 hexagramSubjectList[_dropdownMoon];
@@ -1026,9 +1026,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             setState(() {
                               _dropdownMercury = _dropdownMercuryChange!;
                               fontMapMercury =
-                                  fontHexbyWheel.indexOf(_dropdownMercury);
+                                  fontHexNumbersList.indexOf(_dropdownMercury);
                               fontMapFinalMercury =
-                                  orderiChingFontHexagrams[fontMapMercury];
+                                  fontHexOrderList[fontMapMercury];
                               _controllerMercury.text = fontMapFinalMercury;
                               _controllerMercuryText.text =
                                   hexagramSubjectList[_dropdownMercury];
@@ -1091,9 +1091,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             setState(() {
                               _dropdownVenus = _dropdownVenusChange!;
                               fontMapVenus =
-                                  fontHexbyWheel.indexOf(_dropdownVenus);
+                                  fontHexNumbersList.indexOf(_dropdownVenus);
                               fontMapFinalVenus =
-                                  orderiChingFontHexagrams[fontMapVenus];
+                                  fontHexOrderList[fontMapVenus];
                               _controllerVenus.text = fontMapFinalVenus;
 
                               _controllerVenusText.text =
@@ -1159,9 +1159,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             setState(() {
                               _dropdownMars = _dropdownMarsChange!;
                               fontMapMars =
-                                  fontHexbyWheel.indexOf(_dropdownMars);
+                                  fontHexNumbersList.indexOf(_dropdownMars);
                               fontMapFinalMars =
-                                  orderiChingFontHexagrams[fontMapMars];
+                                  fontHexOrderList[fontMapMars];
                               _controllerMars.text = fontMapFinalMars;
 
                               _controllerMarsText.text =
@@ -1232,9 +1232,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             setState(() {
                               _dropdownJupiter = _dropdownJupiterChange!;
                               fontMapJupiter =
-                                  fontHexbyWheel.indexOf(_dropdownJupiter);
+                                  fontHexNumbersList.indexOf(_dropdownJupiter);
                               fontMapFinalJupiter =
-                                  orderiChingFontHexagrams[fontMapJupiter];
+                                  fontHexOrderList[fontMapJupiter];
                               _controllerJupiter.text = fontMapFinalJupiter;
 
                               _controllerJupiterText.text =
@@ -1298,9 +1298,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             setState(() {
                               _dropdownSaturn = _dropdownSaturnChange!;
                               fontMapSaturn =
-                                  fontHexbyWheel.indexOf(_dropdownSaturn);
+                                  fontHexNumbersList.indexOf(_dropdownSaturn);
                               fontMapFinalSaturn =
-                                  orderiChingFontHexagrams[fontMapSaturn];
+                                  fontHexOrderList[fontMapSaturn];
                               _controllerSaturn.text = fontMapFinalSaturn;
 
                               _controllerSaturnText.text =
@@ -1371,9 +1371,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             setState(() {
                               _dropdownUranus = _dropdownUranusChange!;
                               fontMapUranus =
-                                  fontHexbyWheel.indexOf(_dropdownUranus);
+                                  fontHexNumbersList.indexOf(_dropdownUranus);
                               fontMapFinalUranus =
-                                  orderiChingFontHexagrams[fontMapUranus];
+                                  fontHexOrderList[fontMapUranus];
                               _controllerUranus.text = fontMapFinalUranus;
                               _controllerUranusText.text =
                                   hexagramSubjectList[_dropdownUranus];
@@ -1436,9 +1436,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             setState(() {
                               _dropdownNeptune = _dropdownNeptuneChange!;
                               fontMapNeptune =
-                                  fontHexbyWheel.indexOf(_dropdownNeptune);
+                                  fontHexNumbersList.indexOf(_dropdownNeptune);
                               fontMapFinalNeptune =
-                                  orderiChingFontHexagrams[fontMapNeptune];
+                                  fontHexOrderList[fontMapNeptune];
                               _controllerNeptune.text = fontMapFinalNeptune;
                               _controllerNeptuneText.text =
                                   hexagramSubjectList[_dropdownNeptune];
@@ -1501,9 +1501,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             setState(() {
                               _dropdownPluto = _dropdownPlutoChange!;
                               fontMapPluto =
-                                  fontHexbyWheel.indexOf(_dropdownPluto);
+                                  fontHexNumbersList.indexOf(_dropdownPluto);
                               fontMapFinalPluto =
-                                  orderiChingFontHexagrams[fontMapPluto];
+                                  fontHexOrderList[fontMapPluto];
                               _controllerPluto.text = fontMapFinalPluto;
                               _controllerPlutoText.text =
                                   hexagramSubjectList[_dropdownPluto];
@@ -1573,9 +1573,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             setState(() {
                               _dropdownEarth = _dropdownEarthChange!;
                               fontMapEarth =
-                                  fontHexbyWheel.indexOf(_dropdownEarth);
+                                  fontHexNumbersList.indexOf(_dropdownEarth);
                               fontMapFinalEarth =
-                                  orderiChingFontHexagrams[fontMapEarth];
+                                  fontHexOrderList[fontMapEarth];
                               _controllerEarth.text = fontMapFinalEarth;
                               _controllerEarthText.text =
                                   hexagramSubjectList[_dropdownEarth];
@@ -1639,9 +1639,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             setState(() {
                               _dropdownSouthNode = _dropdownSouthNodeChange!;
                               fontMapSouthNode =
-                                  fontHexbyWheel.indexOf(_dropdownSouthNode);
+                                  fontHexNumbersList.indexOf(_dropdownSouthNode);
                               fontMapFinalSouthNode =
-                                  orderiChingFontHexagrams[fontMapSouthNode];
+                                  fontHexOrderList[fontMapSouthNode];
                               _controllerSouthNode.text = fontMapFinalSouthNode;
                               _controllerSouthNodeText.text =
                                   hexagramSubjectList[_dropdownSouthNode];

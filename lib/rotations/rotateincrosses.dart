@@ -72,7 +72,7 @@ class _RotateInCrossesState extends State<RotateInCrosses> {
       _controllerfourthbottxt = TextEditingController();
 
   var _dropdownfirstvalue = hexagramslist[1],
-      _dropdownfirstichingvalue = orderiChingFontHexagrams[0];
+      _dropdownfirstichingvalue = fontHexOrderList[0];
 
   @override
   Widget build(BuildContext context) {
@@ -1246,11 +1246,11 @@ class _RotateInCrossesState extends State<RotateInCrosses> {
                     setState(() {
                       _dropdownfirstichingvalue = _dropdownfirstichingvalueChange!;
 
-                      _fonthexindex = orderiChingFontHexagrams.indexWhere(
+                      _fonthexindex = fontHexOrderList.indexWhere(
                             (element) => element == _dropdownfirstichingvalue,
                       );
 
-                      fonthexconverted = fontHexbyWheel[_fonthexindex];
+                      fonthexconverted = fontHexNumbersList[_fonthexindex];
 
                       switch (fonthexconverted) {
                       //Quarter of Mutation

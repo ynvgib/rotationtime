@@ -33,7 +33,7 @@ final List<String> hexList = [
 
 
 
-final List<String> orderiChingFontHexagrams = [
+final List<String> fontHexOrderList = [
   'a',
   'b',
   'c',
@@ -100,7 +100,7 @@ final List<String> orderiChingFontHexagrams = [
   'Z'
 ];
 
-final List<int> fontHexbyWheel = [
+final List<int> fontHexNumbersList = [
   1, 44, 13, 10,
   9, 14, 43, 33,
   25, 61, 26, 34,
@@ -120,32 +120,6 @@ final List<int> fontHexbyWheel = [
   63, 64, 20, 27,
   19, 4, 36, 52,
   51, 35, 3, 46
-];
-
-final List<String> fontHexbyWheelSTRING = [
-  //qurater mutation complex
-  '1', '44', '13', '10',
-  '9', '14', '43', '33',
-  '25', '61', '26', '34',
-  '6', '37', '38', '5',
-
-  //quarter initation simple
-  '57', '30', '58', '50',
-  '49', '28', '12', '42',
-  '41', '11', '62', '45',
-  '29', '39', '40', '24',
-
-  //quarter civilization silence
-  '7', '15', '16', '8',
-  '23', '2', '59', '22',
-  '54', '53', '21', '60',
-  '18', '55', '56', '17',
-
-  //quarter duality breath
-  '32', '31', '47', '48',
-  '63', '64', '20', '27',
-  '19', '4', '36', '52',
-  '51', '35', '3', '46',
 ];
 
 
@@ -979,60 +953,6 @@ final List<String> hexCarouselValueList = [
 
 ];
 
-class HexCross {
-  String? angle;
-  int? gatepersonsun;
-  int? gatepersonearth;
-  int? gatebodysun;
-  int? gatebodynearth;
-  String? crosshdname;
-  String? crossname;
-  String? language;
-
-  HexCross({
-    required this.angle,
-    required this.gatepersonsun,
-    this.gatepersonearth,
-    this.gatebodysun,
-    this.gatebodynearth,
-    this.crosshdname,
-    this.crossname,
-    this.language
-  });
-}
-
-final List<HexCross> hexcrosses = [
-  HexCross(
-    gatepersonsun: 1,
-    gatepersonearth: 2,
-    gatebodysun: 13,
-    gatebodynearth: 7,
-    crosshdname: 'sphinx',
-    angle: 'right',
-    language: 'complex'
-  ),
-  HexCross(
-    gatepersonsun: 1,
-    gatepersonearth: 2,
-    gatebodysun: 13,
-    gatebodynearth: 7,
-    crosshdname: 'sphinx',
-    crossname: 'complex ',
-    angle: 'jux',
-    language: 'complex'
-  ),
-];
-
-final List<String> hexCrossesList = [
-  '1R','1','Right','Complex Personal Creative',
-  '1X','1','Jux','Complex Fixed Creative',
-  '1L','1','Left','Complex Interactive Creative',
-  '2R','2','Right','Silent Sphinx',
-  '2X','2','Jux','Silent Fixed Driver',
-  '2L','2','Left','Silent Interactive Driver',
-
-
-];
 
 /// FULL SENTENCE
 
@@ -1092,6 +1012,13 @@ final List<String> hexFullList = [
   'assets/silencein.png',
   'assets/silenceout.png',
   'assets/silencedown.png',
+];
+
+final List<String> hexNamesList = [
+  'COMPLEX',
+  'SIMPLE',
+  'breath',
+  'silence',
 ];
 
 // variables
@@ -1181,7 +1108,7 @@ final List<DropdownMenuItem<int>> hexDropDownNumbersList =
 }).toList();
 
 final List<DropdownMenuItem<String>> fontHexList =
-    orderiChingFontHexagrams.map((String chosenHexagrams) {
+    fontHexOrderList.map((String chosenHexagrams) {
   return DropdownMenuItem(
     value: chosenHexagrams,
     child: Text(chosenHexagrams,
@@ -1204,7 +1131,7 @@ final List<DropdownMenuItem<int>> orderHexagramsWheelList =
 }).toList();
 
 final List<DropdownMenuItem<String>> iChingFontList =
-    orderiChingFontHexagrams.map((String fontHexagrams) {
+    fontHexOrderList.map((String fontHexagrams) {
   return DropdownMenuItem(
     value: fontHexagrams,
     child: Text(fontHexagrams,
@@ -1218,5 +1145,5 @@ final List<DropdownMenuItem<String>> iChingFontList =
 
 // map
 
-final fontHexagramsMap = orderiChingFontHexagrams.asMap();
-final fontHexagramsWheelMap = fontHexbyWheel.asMap();
+final fontHexagramsMap = fontHexOrderList.asMap();
+final fontHexagramsWheelMap = fontHexNumbersList.asMap();

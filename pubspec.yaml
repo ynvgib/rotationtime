@@ -41,6 +41,9 @@ dependencies:
   screenshot: ^1.2.3
   dropdown_search: ^2.0.1
   flutter_font_picker: ^0.3.3
+  http: ^0.13.4
+  deep_pick: ^0.10.0
+  intl: ^0.17.0
 
 
 dev_dependencies:

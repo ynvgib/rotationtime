@@ -31,14 +31,10 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
       _controllerbot = CarouselController();
 
   final TextEditingController _controllerhextext = TextEditingController(),
-      _controllertopfirsttext = TextEditingController(),
-      _controllertopsecondtext = TextEditingController(),
-      _controllertopthirdtext = TextEditingController(),
-      _controllertopfourthtext = TextEditingController(),
-      _controllerbottomfirsttext = TextEditingController(),
-      _controllerbottomsecondtext = TextEditingController(),
-      _controllerbottomthirdtext = TextEditingController();
-
+      _controllerhexadjtext = TextEditingController(),
+      _controllerhexsubtext = TextEditingController(),
+      _controllerhexverbtext = TextEditingController(),
+      _controllerhexadverbtext = TextEditingController();
 
   var _dropdownvalue = hexagramslist[1],
       _dropdowichingvalue = fontHexOrderList[0],
@@ -57,6 +53,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const Divider(),
             Expanded(
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -71,15 +68,15 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                       onChanged: (int? _dropdowichingordervalueChange) {
                         setState(() {
                           _dropdowichingordervalue =
-                              _dropdowichingordervalueChange!;
-                          _controllertopfirsttext.text = hexagramAdjectiveList[
-                              _dropdowichingordervalue];
-                          _controllertopsecondtext.text = hexagramSubjectList[
-                              _dropdowichingordervalue];
-                          _controllertopthirdtext.text = hexagramVerbList[
-                              _dropdowichingordervalue];
-                          _controllertopfourthtext.text = hexagramAdverbList[
-                              _dropdowichingordervalue];
+                          _dropdowichingordervalueChange!;
+                          _controllerhexadjtext.text = hexagramAdjectiveList[
+                          _dropdowichingordervalue];
+                          _controllerhexsubtext.text = hexagramSubjectList[
+                          _dropdowichingordervalue];
+                          _controllerhexverbtext.text = hexagramVerbList[
+                          _dropdowichingordervalue];
+                          _controllerhexadverbtext.text = hexagramAdverbList[
+                          _dropdowichingordervalue];
 
                           _chosenhex = _dropdowichingordervalue;
                           _hexalignedList = hexagramAlignment(_chosenhex);
@@ -101,17 +98,17 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                         setState(() {
                           _dropdowichingvalue = _dropdowichingvalueChange!;
                           _fontindex = fontHexOrderList.indexWhere(
-                              (element) => element == _dropdowichingvalue);
+                                  (element) => element == _dropdowichingvalue);
                           _fonthexconverted = fontHexNumbersList[_fontindex];
 
-                          _controllertopfirsttext.text = hexagramAdjectiveList[
-                              fontHexNumbersList[_fontindex]];
-                          _controllertopsecondtext.text = hexagramSubjectList[
-                              fontHexNumbersList[_fontindex]];
-                          _controllertopthirdtext.text = hexagramVerbList[
-                              fontHexNumbersList[_fontindex]];
-                          _controllertopfourthtext.text = hexagramAdverbList[
-                              fontHexNumbersList[_fontindex]];
+                          _controllerhexadjtext.text = hexagramAdjectiveList[
+                          fontHexNumbersList[_fontindex]];
+                          _controllerhexsubtext.text = hexagramSubjectList[
+                          fontHexNumbersList[_fontindex]];
+                          _controllerhexverbtext.text = hexagramVerbList[
+                          fontHexNumbersList[_fontindex]];
+                          _controllerhexadverbtext.text = hexagramAdverbList[
+                          fontHexNumbersList[_fontindex]];
 
                           _chosenhex = _fonthexconverted;
                           _hexalignedList = hexagramAlignment(_chosenhex);
@@ -131,15 +128,15 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                       onChanged: (int? _dropdownvalueChange) {
                         setState(() {
                           _dropdownvalue = _dropdownvalueChange!;
-                          _controllertopfirsttext.text =
-                              hexagramAdjectiveList[_dropdownvalue];
-                          _controllertopsecondtext.text =
-                              hexagramSubjectList[_dropdownvalue];
-                          _controllertopthirdtext.text =
-                              hexagramVerbList[_dropdownvalue];
-                          _controllertopfourthtext.text =
-                              hexagramAdverbList[_dropdownvalue];
-                          
+                          _controllerhexadjtext.text =
+                          hexagramAdjectiveList[_dropdownvalue];
+                          _controllerhexsubtext.text =
+                          hexagramSubjectList[_dropdownvalue];
+                          _controllerhexverbtext.text =
+                          hexagramVerbList[_dropdownvalue];
+                          _controllerhexadverbtext.text =
+                          hexagramAdverbList[_dropdownvalue];
+
                           _chosenhex = _dropdownvalue;
                           _hexalignedList = hexagramAlignment(_chosenhex);
                           _controllertop.jumpToPage(_hexalignedList[0]);
@@ -159,14 +156,14 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                         onChanged: (String? textHexValueChange) {
                           setState(() {
                             _textHexValueChange = int.parse(textHexValueChange!);
-                            _controllertopfirsttext.text = hexagramAdjectiveList[
-                                _textHexValueChange];
-                            _controllertopsecondtext.text = hexagramSubjectList[
-                                _textHexValueChange];
-                            _controllertopthirdtext.text = hexagramVerbList[
-                                _textHexValueChange];
-                            _controllertopfourthtext.text = hexagramAdverbList[
-                                _textHexValueChange];
+                            _controllerhexadjtext.text = hexagramAdjectiveList[
+                            _textHexValueChange];
+                            _controllerhexsubtext.text = hexagramSubjectList[
+                            _textHexValueChange];
+                            _controllerhexverbtext.text = hexagramVerbList[
+                            _textHexValueChange];
+                            _controllerhexadverbtext.text = hexagramAdverbList[
+                            _textHexValueChange];
 
                             _chosenhex = _textHexValueChange;
                             _hexalignedList = hexagramAlignment(_chosenhex);
@@ -181,66 +178,66 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
             ),
             SizedBox(
                 child: TextField(
-              decoration: const InputDecoration.collapsed(
-                  hintText: '1', hintStyle: TextStyle(color: Colors.grey)),
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 35.0,
-                fontWeight: FontWeight.bold,
-              ),
-              controller: _controllerhextext,
-              readOnly: true,
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],
-            )),
+                  decoration: const InputDecoration.collapsed(
+                      hintText: '1', hintStyle: TextStyle(color: Colors.grey)),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 35.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  controller: _controllerhextext,
+                  readOnly: true,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
+                )),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
                     child: TextField(
-                  decoration: InputDecoration.collapsed(
-                      hintText: hexagramAdjectiveList[1],
-                      hintStyle: const TextStyle(color: Colors.grey)),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  controller: _controllertopfirsttext,
-                  readOnly: true,
-                )),
+                      decoration: InputDecoration.collapsed(
+                          hintText: hexagramAdjectiveList[1],
+                          hintStyle: const TextStyle(color: Colors.grey)),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllerhexadjtext,
+                      readOnly: true,
+                    )),
                 Expanded(
                     child: TextField(
-                  decoration: InputDecoration.collapsed(
-                      hintText: hexagramSubjectList[1],
-                      hintStyle: const TextStyle(color: Colors.grey)),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  controller: _controllertopsecondtext,
-                  readOnly: true,
-                )),
+                      decoration: InputDecoration.collapsed(
+                          hintText: hexagramSubjectList[1],
+                          hintStyle: const TextStyle(color: Colors.grey)),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllerhexsubtext,
+                      readOnly: true,
+                    )),
                 Expanded(
                     child: TextField(
-                  decoration: InputDecoration.collapsed(
-                      hintText: hexagramVerbList[1],
-                      hintStyle: const TextStyle(color: Colors.grey)),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  controller: _controllertopthirdtext,
-                  readOnly: true,
-                )),
+                      decoration: InputDecoration.collapsed(
+                          hintText: hexagramVerbList[1],
+                          hintStyle: const TextStyle(color: Colors.grey)),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllerhexverbtext,
+                      readOnly: true,
+                    )),
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration.collapsed(
@@ -252,7 +249,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                     ),
-                    controller: _controllertopfourthtext,
+                    controller: _controllerhexadverbtext,
                     readOnly: true,
                   ),
                 ),
@@ -273,25 +270,23 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                             (_currentmid + 1) * 10 +
                             (_currentbot + 1));
                         _carouselvalueindex = hexCarouselValueList.indexWhere(
-                            (element) => element == _hexagramVal.toString());
+                                (element) => element == _hexagramVal.toString());
                         _carouselvalueindex++;
                         _controllerhextext.text =
-                            hexCarouselValueList[_carouselvalueindex];
+                        hexCarouselValueList[_carouselvalueindex];
 
-                        _controllertopfirsttext.text = hexagramAdjectiveList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopsecondtext.text = hexagramSubjectList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopthirdtext.text = hexagramVerbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopfourthtext.text = hexagramAdverbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-
-                         _controllerbottomfirsttext.text = hexNamesList[_currenttop];
+                        _controllerhexadjtext.text = hexagramAdjectiveList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
+                        _controllerhexsubtext.text = hexagramSubjectList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
+                        _controllerhexverbtext.text = hexagramVerbList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
+                        _controllerhexadverbtext.text = hexagramAdverbList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
                       });
                     }),
               ),
@@ -309,8 +304,8 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: (Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black)
+                            ? Colors.white
+                            : Colors.black)
                             .withOpacity(_currenttop == entry.key ? 0.9 : 0.4)),
                   ),
                 );
@@ -333,25 +328,23 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                             (_currentbot + 1));
 
                         _carouselvalueindex = hexCarouselValueList.indexWhere(
-                            (element) => element == _hexagramVal.toString());
+                                (element) => element == _hexagramVal.toString());
                         _carouselvalueindex++;
                         _controllerhextext.text =
-                            hexCarouselValueList[_carouselvalueindex];
+                        hexCarouselValueList[_carouselvalueindex];
 
-                        _controllertopfirsttext.text = hexagramAdjectiveList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopsecondtext.text = hexagramSubjectList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopthirdtext.text = hexagramVerbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopfourthtext.text = hexagramAdverbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-
-                        _controllerbottomsecondtext.text = hexNamesList[_currentmid];
+                        _controllerhexadjtext.text = hexagramAdjectiveList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
+                        _controllerhexsubtext.text = hexagramSubjectList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
+                        _controllerhexverbtext.text = hexagramVerbList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
+                        _controllerhexadverbtext.text = hexagramAdverbList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
                       });
                     }),
               ),
@@ -369,8 +362,8 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: (Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black)
+                            ? Colors.white
+                            : Colors.black)
                             .withOpacity(_currentmid == entry.key ? 0.9 : 0.4)),
                   ),
                 );
@@ -391,25 +384,23 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                             (_currentmid + 1) * 10 +
                             (_currentbot + 1));
                         _carouselvalueindex = hexCarouselValueList.indexWhere(
-                            (element) => element == _hexagramVal.toString());
+                                (element) => element == _hexagramVal.toString());
                         _carouselvalueindex++;
                         _controllerhextext.text =
-                            hexCarouselValueList[_carouselvalueindex];
+                        hexCarouselValueList[_carouselvalueindex];
 
-                        _controllertopfirsttext.text = hexagramAdjectiveList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopsecondtext.text = hexagramSubjectList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopthirdtext.text = hexagramVerbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopfourthtext.text = hexagramAdverbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-
-                        _controllerbottomthirdtext.text = hexNamesList[_currentbot];
+                        _controllerhexadjtext.text = hexagramAdjectiveList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
+                        _controllerhexsubtext.text = hexagramSubjectList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
+                        _controllerhexverbtext.text = hexagramVerbList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
+                        _controllerhexadverbtext.text = hexagramAdverbList[
+                        int.parse(
+                            hexCarouselValueList[_carouselvalueindex])];
                       });
                     }),
               ),
@@ -427,73 +418,26 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: (Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black)
+                            ? Colors.white
+                            : Colors.black)
                             .withOpacity(_currentbot == entry.key ? 0.9 : 0.4)),
                   ),
                 );
               }).toList(),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Expanded(
-                    child: TextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: hexNamesList[0],
-                          hintStyle: const TextStyle(color: Colors.grey)),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllerbottomfirsttext,
-                      readOnly: true,
-                    )),
-                Expanded(
-                    child: TextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: hexNamesList[0],
-                          hintStyle: const TextStyle(color: Colors.grey)),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllerbottomsecondtext,
-                      readOnly: true,
-                    )),
-                Expanded(
-                    child: TextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: hexNamesList[0],
-                          hintStyle: const TextStyle(color: Colors.grey)),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllerbottomthirdtext,
-                      readOnly: true,
-                    )),
-              ],
-            ),
             Expanded(
                 child: Container(
-              child: const Text(
-                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 10,
-                  fontFamily: 'iChing',
-                ),
-              ),
-              alignment: Alignment.center,
-            )),
+                  child: const Text(
+                    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 10,
+                      fontFamily: 'iChing',
+                    ),
+                  ),
+                  alignment: Alignment.center,
+                ))
           ]),
     );
   }

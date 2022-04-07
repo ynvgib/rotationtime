@@ -1,17 +1,10 @@
 // used for LIST mixHexagramSlidersNew
+import 'package:finallyicanlearn/lists.dart';
+
 List<int> hexagramAlignment(int _mainhexagram) {
   int _maintop = 0,
       _mainmid = 0,
-      _mainbot = 0,
-      _oppositemaintop = 0,
-      _oppositemainmid = 0,
-      _oppositemainbot = 0,
-      _previousmaintop = 0,
-      _previousmainmid = 0,
-      _previousmainbot = 0,
-      _oppositepreviousmaintop = 0,
-      _oppositepreviousmainmid = 0,
-      _oppositepreviousmainbot = 0;
+      _mainbot = 0;
 
   switch (_mainhexagram) {
     //Quarter of Mutation
@@ -348,62 +341,44 @@ List<int> hexagramAlignment(int _mainhexagram) {
       break;
   }
 
-  switch (_maintop){
+
+  return [_maintop, _mainmid, _mainbot];
+}
+
+List<int> hexagramCrossAlignment(int _hexagramcross) {
+  int _oppositehex = 0,
+      _previoushex = 0,
+      _oppositeprevioushex = 0,
+      _hexagramindex = 0,
+      _hexagramquarter = 0;
+
+  _hexagramindex = orderHexagramsWheel.indexOf(_hexagramcross);
+  _hexagramquarter = (_hexagramindex / 16).floor();
+
+  switch (_hexagramquarter){
     case 0:
-      _oppositemaintop = 3;
+      _oppositehex = orderHexagramsWheel[_hexagramindex + 32];
+      _previoushex = orderHexagramsWheel[_hexagramindex + 48];
+      _oppositeprevioushex = orderHexagramsWheel[_hexagramindex + 16];
       break;
     case 1:
-      _oppositemaintop = 2;
+      _oppositehex = orderHexagramsWheel[_hexagramindex + 32];
+      _previoushex = orderHexagramsWheel[_hexagramindex - 16];
+      _oppositeprevioushex = orderHexagramsWheel[_hexagramindex + 16];
       break;
     case 2:
-      _oppositemaintop = 1;
+      _oppositehex = orderHexagramsWheel[_hexagramindex - 32];
+      _previoushex = orderHexagramsWheel[_hexagramindex - 16];
+      _oppositeprevioushex = orderHexagramsWheel[_hexagramindex + 16];
       break;
     case 3:
-      _oppositemaintop = 0;
+      _oppositehex = orderHexagramsWheel[_hexagramindex - 32];
+      _previoushex = orderHexagramsWheel[_hexagramindex - 16];
+      _oppositeprevioushex = orderHexagramsWheel[_hexagramindex - 48];
       break;
     default:
-      _oppositemaintop = 3;
       break;
   }
 
-  switch (_mainmid){
-    case 0:
-      _oppositemainmid = 3;
-      break;
-    case 1:
-      _oppositemainmid = 2;
-      break;
-    case 2:
-      _oppositemainmid = 1;
-      break;
-    case 3:
-      _oppositemainmid = 0;
-      break;
-    default:
-      _oppositemaintop = 3;
-      break;
-  }
-
-  switch (_mainbot){
-    case 0:
-      _oppositemainbot = 3;
-      break;
-    case 1:
-      _oppositemainbot = 2;
-      break;
-    case 2:
-      _oppositemainbot = 1;
-      break;
-    case 3:
-      _oppositemainbot = 0;
-      break;
-    default:
-      _oppositemaintop = 3;
-      break;
-  }
-
-  return [_maintop, _mainmid, _mainbot,
-    _oppositemaintop, _oppositemainmid, _oppositemainbot,
-    _previousmaintop, _previousmainmid, _previousmainbot,
-    _oppositepreviousmaintop, _oppositepreviousmainmid, _oppositepreviousmainbot];
+  return [_hexagramcross, _oppositehex, _previoushex, _oppositeprevioushex];
 }

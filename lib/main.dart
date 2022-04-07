@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'rotations/rotatechart.dart';
 import 'rotations/rotatehexagrams.dart';
 import 'rotations/rotatehexlanguage.dart';
-import 'rotations/rotateincrosses.dart';
+//import 'rotations/rotateincrosses.dart';
 //import 'rotations/rotatemultiple.dart';
+import 'rotations/rotatejson.dart';
 import 'rotations/rotateone.dart';
 import 'rotations/rotateplanets.dart';
 
@@ -21,8 +22,9 @@ class MainPage extends StatelessWidget {
           routes: {
             '/': (ctx) => const HomePage(),
             //'/multiplehexagrams': (ctx) => const RotateMultipleHexagrams(),
+            '/rotatejson': (ctx) => const RotateJson(),
             '/rotateone': (ctx) => const RotateOneHexagram(),
-            '/rotateincrosses': (ctx) => const RotateInCrosses(),
+            //'/rotateincrosses': (ctx) => const RotateInCrosses(),
             '/hexlanguage': (ctx) => const RotateHexLanguage(),
             '/rotateplanets': (ctx) => const RotatePlanets(),
             '/rotatechart': (ctx) => const RotateChart(),
@@ -91,10 +93,11 @@ class HomePage extends StatelessWidget {
             child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           children: const <Widget>[
+            MappingItem('PLANETS PARSING (under development)', '/rotatejson'),
             MappingItem('ONE HEXAGRAM', '/rotateone'),
             MappingItem('HEXAGRAM LANGUAGE', '/hexlanguage'),
             //MappingItem('MULTIPLE HEXAGRAMS', '/multiplehexagrams'),
-            MappingItem('CROSSES HEXAGRAMS', '/rotateincrosses'),
+            //MappingItem('CROSSES HEXAGRAMS', '/rotateincrosses'),
             MappingItem('ASTRO PLANETS', '/rotateplanets'),
             MappingItem('HD CHART', '/rotatechart'),
             MappingItem('HEXGRAM TABLE', '/rotatehexagramtable'),

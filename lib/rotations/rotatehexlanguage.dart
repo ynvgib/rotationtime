@@ -28,31 +28,40 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
       _currentfourthmid = 0,
       _currentfourthbot = 0,
       _chosenhex = 1,
-      hexagramVal = 0,
-      fonthexindex = 0,
-      dropdownfirstleftvalue = 1,
-      dropdownfirstrightvalue = 1,
-      firstcolumnfifthdropdowhex = 1,
-      firstcolumnsixthdropdowhex = 1,
-      dropdownsecondleftvalue = 1,
-      dropdownsecondrightvalue = 1,
-      secondcolumnfifthdropdowhex = 1,
-      secondcolumnsixthdropdowhex = 1,
-      dropdownthirdleftvalue = 1,
-      dropdownthirdrightvalue = 1,
-      thirdcolumnfifthdropdowhex = 1,
-      thirdcolumnsixthdropdowhex = 1,
-      dropdownfourthleftvalue = 1,
-      dropdownfourthrightvalue = 1,
-      fourthcolumnfifthdropdowhex = 1,
-      fourthcolumnsixthdropdowhex = 1,
-      dropdownactionfirsthex = 1,
-      dropdownactionthirdhex = 1,
-      dropdownactionfourthhex = 1,
-      dropdownactionsixthhex = 1,
-      fonthexconverted = 0;
+      _hexagramvalue = 0,
+      _fonthexindex = 0,
+      _firstcolumnfirstdropdowhex = 1,
+      _firstcolumnthirddropdowhex = 1,
+      _firstcolumnfourthdropdowhex = 1,
+      _firstcolumnfifthdropdowhex = 1,
+      _secondcolumnfirstdropdowhex = 1,
+      _secondcolumnthirddropdowhex = 1,
+      _secondcolumnfourthdropdowhex = 1,
+      _secondcolumnfifthdropdowhex = 1,
+      _thirdcolumnfirstdropdowhex = 1,
+      _thirddcolumnthirddropdowhex = 1,
+      _thirdcolumnfourthdropdowhex = 1,
+      _thirdcolumnfifthdropdowhex = 1,
+      _fourthcolumnfirstdropdowhex = 1,
+      _fourthdcolumnthirddropdowhex = 1,
+      _fourthcolumnfourthdropdowhex = 1,
+      _fourthcolumnfifthdropdowhex = 1,
+      _actionfirstdropdownhex = 1,
+      _actionthirddropdownhex = 1,
+      _actionfourthdropdownhex = 1,
+      _actionsixthdropdownhex = 1,
+      _fonthexconverted = 0;
 
-  final CarouselController _controllerfirsttop = CarouselController(),
+  String _firstcolumnseconddropdowhex = 'a',
+      _secondcolumnseconddropdowhex = 'a',
+      _thirdcolumnseconddropdowhex = 'a',
+      _fourthcolumnseconddropdowhex = 'a',
+      _actionseconddropdownhex = 'a',
+      _actionfifthdropdownhex = 'a',
+      _fonthex = 'a';
+
+  final CarouselController
+      _controllerfirsttop = CarouselController(),
       _controllerfirstmid = CarouselController(),
       _controllerfirstbot = CarouselController(),
       _controllersecondtop = CarouselController(),
@@ -69,7 +78,8 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
       _controllerthirdplanet = CarouselController(),
       _controllerfourthplanet = CarouselController();
 
-  final TextEditingController _controllerfirsttoptxt = TextEditingController(),
+  final TextEditingController
+      _controllerfirsttoptxt = TextEditingController(),
       _controllerfirstbottxt = TextEditingController(),
       _controllersecondtoptxt = TextEditingController(),
       _controllersecondbottxt = TextEditingController(),
@@ -78,14 +88,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
       _controllerfourthtoptxt = TextEditingController(),
       _controllerfourthbottxt = TextEditingController();
 
-  var dropdownfirstichingvalue = 'a',
-      dropdownsecondichingvalue = 'a',
-      dropdownthirdichingvalue = 'a',
-      dropdownfourthichingvalue = 'a',
-      dropdownactionsecondhex = 'a',
-      dropdownactionfifthhex = 'a';
+
 
   List<int> _hexalignedList = [0, 0, 0];
+  List<int> _hexalignedCrossList = [1, 2, 7, 13];
 
   @override
   Widget build(BuildContext context) {
@@ -106,15 +112,45 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                 const SizedBox(width: 40),
                 DropdownButton(
                   underline: DropdownButtonHideUnderline(child: Container()),
-                  value: dropdownactionfirsthex,
+                  value: _actionfirstdropdownhex,
                   icon: const Icon(Icons.keyboard_arrow_down,
                       color: Colors.black),
                   items: orderHexagramsWheelList,
-                  onChanged: (int? dropdownactionfirsthexChange) {
+                  onChanged: (int? _actionfirstdropdownhexChange) {
                     setState(() {
-                      dropdownactionfirsthex = dropdownactionfirsthexChange!;
-                      _chosenhex = dropdownactionfirsthex;
+                      _actionfirstdropdownhex = _actionfirstdropdownhexChange!;
+                      _chosenhex = _actionfirstdropdownhex;
+
+                      _firstcolumnfirstdropdowhex = _chosenhex;
+                      _firstcolumnthirddropdowhex = _chosenhex;
+                      _firstcolumnfourthdropdowhex = _chosenhex;
+                      _firstcolumnfifthdropdowhex = _chosenhex;
+                      _secondcolumnfirstdropdowhex = _chosenhex;
+                      _secondcolumnthirddropdowhex = _chosenhex;
+                      _secondcolumnfourthdropdowhex = _chosenhex;
+                      _secondcolumnfifthdropdowhex = _chosenhex;
+                      _thirdcolumnfirstdropdowhex = _chosenhex;
+                      _thirddcolumnthirddropdowhex = _chosenhex;
+                      _thirdcolumnfourthdropdowhex = _chosenhex;
+                      _thirdcolumnfifthdropdowhex = _chosenhex;
+                      _fourthcolumnfirstdropdowhex = _chosenhex;
+                      _fourthdcolumnthirddropdowhex = _chosenhex;
+                      _fourthcolumnfourthdropdowhex = _chosenhex;
+                      _fourthcolumnfifthdropdowhex = _chosenhex;
+                      _actionthirddropdownhex = _chosenhex;
+                      _actionfourthdropdownhex = _chosenhex;
+                      _actionsixthdropdownhex = _chosenhex;
+
+
                       _hexalignedList = hexagramAlignment(_chosenhex);
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_chosenhex);
+                      _actionseconddropdownhex = fontHexOrderList[_fonthexindex];
+                      _actionfifthdropdownhex = _actionseconddropdownhex;
+                      _firstcolumnseconddropdowhex = _actionseconddropdownhex;
+                      _secondcolumnseconddropdowhex = _actionseconddropdownhex;
+                      _thirdcolumnseconddropdowhex = _actionseconddropdownhex;
+                      _fourthcolumnseconddropdowhex = _actionseconddropdownhex;
 
                       _controllerfirsttop.jumpToPage(_hexalignedList[0]);
                       _controllerfirstmid.jumpToPage(_hexalignedList[1]);
@@ -131,28 +167,88 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                       _controllerfourthtop.jumpToPage(_hexalignedList[0]);
                       _controllerfourthmid.jumpToPage(_hexalignedList[1]);
                       _controllerfourthbot.jumpToPage(_hexalignedList[2]);
+
+                      if (_controllerfirsttoptxt.text.isEmpty)
+                      {
+                        _controllerfirsttop.jumpToPage(1);
+                        _controllerfirstmid.jumpToPage(1);
+                        _controllerfirstbot.jumpToPage(1);
+                        _controllerfirsttop.jumpToPage(0);
+                        _controllerfirstmid.jumpToPage(0);
+                        _controllerfirstbot.jumpToPage(0);
+                      }
+                      if (_controllersecondtoptxt.text.isEmpty)
+                      {
+                        _controllersecondtop.jumpToPage(1);
+                        _controllersecondmid.jumpToPage(1);
+                        _controllersecondbot.jumpToPage(1);
+                        _controllersecondtop.jumpToPage(0);
+                        _controllersecondmid.jumpToPage(0);
+                        _controllersecondbot.jumpToPage(0);
+                      }
+                      if (_controllerthirdtoptxt.text.isEmpty)
+                      {
+                        _controllerthirdtop.jumpToPage(1);
+                        _controllerthirdmid.jumpToPage(1);
+                        _controllerthirdbot.jumpToPage(1);
+                        _controllerthirdtop.jumpToPage(0);
+                        _controllerthirdmid.jumpToPage(0);
+                        _controllerthirdbot.jumpToPage(0);
+                      }
+                      if (_controllerfourthtoptxt.text.isEmpty)
+                      {
+                        _controllerfourthtop.jumpToPage(1);
+                        _controllerfourthmid.jumpToPage(1);
+                        _controllerfourthbot.jumpToPage(1);
+                        _controllerfourthtop.jumpToPage(0);
+                        _controllerfourthmid.jumpToPage(0);
+                        _controllerfourthbot.jumpToPage(0);
+                      }
                     });
                   },
                 ),
                 const SizedBox(width: 40),
                 DropdownButton(
                   underline: DropdownButtonHideUnderline(child: Container()),
-                  value: dropdownactionsecondhex,
+                  value: _actionseconddropdownhex,
                   icon: const Icon(Icons.keyboard_arrow_down,
                       color: Colors.black),
                   items: fontHexList,
-                  onChanged: (String? dropdownactionsecondhexChange) {
+                  onChanged: (String? _actionseconddropdownhexChange) {
                     setState(() {
-                      dropdownactionsecondhex = dropdownactionsecondhexChange!;
+                      _actionseconddropdownhex = _actionseconddropdownhexChange!;
+                      _fonthexindex = fontHexOrderList.indexOf(_actionseconddropdownhex);
 
-                      fonthexindex = orderiChingFontHexagrams.indexWhere(
-                        (element) => element == dropdownactionsecondhex,
-                      );
-
-                      fonthexconverted = fontHexbyWheel[fonthexindex];
-
-                      _chosenhex = fonthexconverted;
+                      _chosenhex = fontHexNumbersList[_fonthexindex];
                       _hexalignedList = hexagramAlignment(_chosenhex);
+
+                      _firstcolumnfirstdropdowhex = _chosenhex;
+                      _firstcolumnthirddropdowhex = _chosenhex;
+                      _firstcolumnfourthdropdowhex = _chosenhex;
+                      _firstcolumnfifthdropdowhex = _chosenhex;
+                      _secondcolumnfirstdropdowhex = _chosenhex;
+                      _secondcolumnthirddropdowhex = _chosenhex;
+                      _secondcolumnfourthdropdowhex = _chosenhex;
+                      _secondcolumnfifthdropdowhex = _chosenhex;
+                      _thirdcolumnfirstdropdowhex = _chosenhex;
+                      _thirddcolumnthirddropdowhex = _chosenhex;
+                      _thirdcolumnfourthdropdowhex = _chosenhex;
+                      _thirdcolumnfifthdropdowhex = _chosenhex;
+                      _fourthcolumnfirstdropdowhex = _chosenhex;
+                      _fourthdcolumnthirddropdowhex = _chosenhex;
+                      _fourthcolumnfourthdropdowhex = _chosenhex;
+                      _fourthcolumnfifthdropdowhex = _chosenhex;
+                      _actionfirstdropdownhex = _chosenhex;
+                      _actionthirddropdownhex = _chosenhex;
+                      _actionfourthdropdownhex = _chosenhex;
+                      _actionsixthdropdownhex = _chosenhex;
+
+
+                      _actionfifthdropdownhex = _actionseconddropdownhex;
+                      _firstcolumnseconddropdowhex = _actionseconddropdownhex;
+                      _secondcolumnseconddropdowhex = _actionseconddropdownhex;
+                      _thirdcolumnseconddropdowhex = _actionseconddropdownhex;
+                      _fourthcolumnseconddropdowhex = _actionseconddropdownhex;
 
                       _controllerfirsttop.jumpToPage(_hexalignedList[0]);
                       _controllerfirstmid.jumpToPage(_hexalignedList[1]);
@@ -169,21 +265,90 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                       _controllerfourthtop.jumpToPage(_hexalignedList[0]);
                       _controllerfourthmid.jumpToPage(_hexalignedList[1]);
                       _controllerfourthbot.jumpToPage(_hexalignedList[2]);
+
+                      if (_controllerfirsttoptxt.text.isEmpty)
+                      {
+                        _controllerfirsttop.jumpToPage(1);
+                        _controllerfirstmid.jumpToPage(1);
+                        _controllerfirstbot.jumpToPage(1);
+                        _controllerfirsttop.jumpToPage(0);
+                        _controllerfirstmid.jumpToPage(0);
+                        _controllerfirstbot.jumpToPage(0);
+                      }
+                      if (_controllersecondtoptxt.text.isEmpty)
+                      {
+                        _controllersecondtop.jumpToPage(1);
+                        _controllersecondmid.jumpToPage(1);
+                        _controllersecondbot.jumpToPage(1);
+                        _controllersecondtop.jumpToPage(0);
+                        _controllersecondmid.jumpToPage(0);
+                        _controllersecondbot.jumpToPage(0);
+                      }
+                      if (_controllerthirdtoptxt.text.isEmpty)
+                      {
+                        _controllerthirdtop.jumpToPage(1);
+                        _controllerthirdmid.jumpToPage(1);
+                        _controllerthirdbot.jumpToPage(1);
+                        _controllerthirdtop.jumpToPage(0);
+                        _controllerthirdmid.jumpToPage(0);
+                        _controllerthirdbot.jumpToPage(0);
+                      }
+                      if (_controllerfourthtoptxt.text.isEmpty)
+                      {
+                        _controllerfourthtop.jumpToPage(1);
+                        _controllerfourthmid.jumpToPage(1);
+                        _controllerfourthbot.jumpToPage(1);
+                        _controllerfourthtop.jumpToPage(0);
+                        _controllerfourthmid.jumpToPage(0);
+                        _controllerfourthbot.jumpToPage(0);
+                      }
+
+
                     });
                   },
                 ),
                 const SizedBox(width: 40),
                 DropdownButton(
                   underline: DropdownButtonHideUnderline(child: Container()),
-                  value: dropdownactionthirdhex,
+                  value: _actionthirddropdownhex,
                   icon: const Icon(Icons.keyboard_arrow_down,
                       color: Colors.black),
                   items: hexDropDownNumbersList,
-                  onChanged: (int? dropdownactionthirdhexChange) {
+                  onChanged: (int? _actionthirddropdownhexChange) {
                     setState(() {
-                      dropdownactionthirdhex = dropdownactionthirdhexChange!;
-                      _chosenhex = dropdownactionthirdhex;
+                      _actionthirddropdownhex = _actionthirddropdownhexChange!;
+                      _chosenhex = _actionthirddropdownhex;
+
+                      _firstcolumnfirstdropdowhex = _chosenhex;
+                      _firstcolumnthirddropdowhex = _chosenhex;
+                      _firstcolumnfourthdropdowhex = _chosenhex;
+                      _firstcolumnfifthdropdowhex = _chosenhex;
+                      _secondcolumnfirstdropdowhex = _chosenhex;
+                      _secondcolumnthirddropdowhex = _chosenhex;
+                      _secondcolumnfourthdropdowhex = _chosenhex;
+                      _secondcolumnfifthdropdowhex = _chosenhex;
+                      _thirdcolumnfirstdropdowhex = _chosenhex;
+                      _thirddcolumnthirddropdowhex = _chosenhex;
+                      _thirdcolumnfourthdropdowhex = _chosenhex;
+                      _thirdcolumnfifthdropdowhex = _chosenhex;
+                      _fourthcolumnfirstdropdowhex = _chosenhex;
+                      _fourthdcolumnthirddropdowhex = _chosenhex;
+                      _fourthcolumnfourthdropdowhex = _chosenhex;
+                      _fourthcolumnfifthdropdowhex = _chosenhex;
+                      _actionfirstdropdownhex = _chosenhex;
+                      _actionfourthdropdownhex = _chosenhex;
+                      _actionsixthdropdownhex = _chosenhex;
+
+
                       _hexalignedList = hexagramAlignment(_chosenhex);
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_chosenhex);
+                      _actionseconddropdownhex = fontHexOrderList[_fonthexindex];
+                      _actionfifthdropdownhex = _actionseconddropdownhex;
+                      _firstcolumnseconddropdowhex = _actionseconddropdownhex;
+                      _secondcolumnseconddropdowhex = _actionseconddropdownhex;
+                      _thirdcolumnseconddropdowhex = _actionseconddropdownhex;
+                      _fourthcolumnseconddropdowhex = _actionseconddropdownhex;
 
                       _controllerfirsttop.jumpToPage(_hexalignedList[0]);
                       _controllerfirstmid.jumpToPage(_hexalignedList[1]);
@@ -200,6 +365,43 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                       _controllerfourthtop.jumpToPage(_hexalignedList[0]);
                       _controllerfourthmid.jumpToPage(_hexalignedList[1]);
                       _controllerfourthbot.jumpToPage(_hexalignedList[2]);
+
+                      if (_controllerfirsttoptxt.text.isEmpty)
+                      {
+                        _controllerfirsttop.jumpToPage(1);
+                        _controllerfirstmid.jumpToPage(1);
+                        _controllerfirstbot.jumpToPage(1);
+                        _controllerfirsttop.jumpToPage(0);
+                        _controllerfirstmid.jumpToPage(0);
+                        _controllerfirstbot.jumpToPage(0);
+                      }
+                      if (_controllersecondtoptxt.text.isEmpty)
+                      {
+                        _controllersecondtop.jumpToPage(1);
+                        _controllersecondmid.jumpToPage(1);
+                        _controllersecondbot.jumpToPage(1);
+                        _controllersecondtop.jumpToPage(0);
+                        _controllersecondmid.jumpToPage(0);
+                        _controllersecondbot.jumpToPage(0);
+                      }
+                      if (_controllerthirdtoptxt.text.isEmpty)
+                      {
+                        _controllerthirdtop.jumpToPage(1);
+                        _controllerthirdmid.jumpToPage(1);
+                        _controllerthirdbot.jumpToPage(1);
+                        _controllerthirdtop.jumpToPage(0);
+                        _controllerthirdmid.jumpToPage(0);
+                        _controllerthirdbot.jumpToPage(0);
+                      }
+                      if (_controllerfourthtoptxt.text.isEmpty)
+                      {
+                        _controllerfourthtop.jumpToPage(1);
+                        _controllerfourthmid.jumpToPage(1);
+                        _controllerfourthbot.jumpToPage(1);
+                        _controllerfourthtop.jumpToPage(0);
+                        _controllerfourthmid.jumpToPage(0);
+                        _controllerfourthbot.jumpToPage(0);
+                      }
                     });
                   },
                 ),
@@ -220,3435 +422,347 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                 const SizedBox(width: 40),
                 DropdownButton(
                   underline: DropdownButtonHideUnderline(child: Container()),
-                  value: dropdownactionfourthhex,
+                  value: _actionfourthdropdownhex,
                   icon: const Icon(Icons.keyboard_arrow_down,
                       color: Colors.black),
                   items: orderHexagramsWheelList,
-                  onChanged: (int? dropdownactionfourthhexChange) {
+                  onChanged: (int? _actionfourthdropdownhexChange) {
                     setState(() {
-                      dropdownactionfourthhex = dropdownactionfourthhexChange!;
-                      switch (dropdownactionfourthhex) {
-                        //Quarter of Mutation
-                        case 1:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-
-                        // 43 23 4 49
-                        case 43:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        // 14 8 29 30
-                        case 14:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 34:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 9:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-
-                        case 5:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 26:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-
-                        case 11:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 10:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 58:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 38:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 54:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 61:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 60:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 41:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 19:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-
-                        //Quarter of Initiation
-                        case 13:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 49:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 30:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-
-                          break;
-                        case 55:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-
-                          break;
-                        case 37:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 63:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 22:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 36:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 25:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 17:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 21:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 51:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 42:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 3:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 27:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 24:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-
-                        //Quarter of Duality
-                        case 44:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 28:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 50:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 32:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 57:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 48:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 18:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 46:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 6:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 47:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 64:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 40:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 59:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 29:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 4:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 7:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-
-                        //Quarter of Civilization
-                        case 33:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 31:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 56:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 62:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 53:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 39:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 52:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 15:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 12:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 45:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 35:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 16:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 20:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 8:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-
-                          break;
-                        case 23:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-
-                        case 2:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-
-                          break;
-                        default:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
+                      _actionfourthdropdownhex = _actionfourthdropdownhexChange!;
+
+                      _controllerfirstplanet.jumpToPage(11);
+                      _controllersecondplanet.jumpToPage(1);
+                      _controllerthirdplanet.jumpToPage(1);
+                      _controllerfourthplanet.jumpToPage(11);
+
+                      _chosenhex = _actionfourthdropdownhex;
+
+                      _actionfirstdropdownhex = _chosenhex;
+                      _actionthirddropdownhex = _chosenhex;
+                      _actionsixthdropdownhex = _chosenhex;
+
+                      _hexalignedCrossList = hexagramCrossAlignment(_chosenhex);
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[1]);
+                      _controllerfirsttop.jumpToPage(_hexalignedList[0]);
+                      _controllerfirstmid.jumpToPage(_hexalignedList[1]);
+                      _controllerfirstbot.jumpToPage(_hexalignedList[2]);
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[0]);
+                      _controllersecondtop.jumpToPage(_hexalignedList[0]);
+                      _controllersecondmid.jumpToPage(_hexalignedList[1]);
+                      _controllersecondbot.jumpToPage(_hexalignedList[2]);
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[2]);
+                      _controllerthirdtop.jumpToPage(_hexalignedList[0]);
+                      _controllerthirdmid.jumpToPage(_hexalignedList[1]);
+                      _controllerthirdbot.jumpToPage(_hexalignedList[2]);
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[3]);
+                      _controllerfourthtop.jumpToPage(_hexalignedList[0]);
+                      _controllerfourthmid.jumpToPage(_hexalignedList[1]);
+                      _controllerfourthbot.jumpToPage(_hexalignedList[2]);
+
+                      _firstcolumnfirstdropdowhex = _hexalignedCrossList[1];
+                      _firstcolumnthirddropdowhex = _hexalignedCrossList[1];
+                      _firstcolumnfourthdropdowhex = _hexalignedCrossList[1];
+                      _firstcolumnfifthdropdowhex = _hexalignedCrossList[1];
+                      _secondcolumnfirstdropdowhex = _hexalignedCrossList[0];
+                      _secondcolumnthirddropdowhex = _hexalignedCrossList[0];
+                      _secondcolumnfourthdropdowhex = _hexalignedCrossList[0];
+                      _secondcolumnfifthdropdowhex = _hexalignedCrossList[0];
+                      _thirdcolumnfirstdropdowhex = _hexalignedCrossList[2];
+                      _thirddcolumnthirddropdowhex = _hexalignedCrossList[2];
+                      _thirdcolumnfourthdropdowhex = _hexalignedCrossList[2];
+                      _thirdcolumnfifthdropdowhex = _hexalignedCrossList[2];
+                      _fourthcolumnfirstdropdowhex = _hexalignedCrossList[3];
+                      _fourthdcolumnthirddropdowhex = _hexalignedCrossList[3];
+                      _fourthcolumnfourthdropdowhex = _hexalignedCrossList[3];
+                      _fourthcolumnfifthdropdowhex = _hexalignedCrossList[3];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[1]);
+                      _firstcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[0]);
+                      _secondcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+                      _actionseconddropdownhex = fontHexOrderList[_fonthexindex];
+                      _actionfifthdropdownhex = fontHexOrderList[_fonthexindex];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[2]);
+                      _thirdcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[3]);
+                      _fourthcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+
+                      if (_controllerfirsttoptxt.text.isEmpty)
+                      {
+                        _controllerfirsttop.jumpToPage(1);
+                        _controllerfirstmid.jumpToPage(1);
+                        _controllerfirstbot.jumpToPage(1);
+                        _controllerfirsttop.jumpToPage(0);
+                        _controllerfirstmid.jumpToPage(0);
+                        _controllerfirstbot.jumpToPage(0);
                       }
+                      if (_controllersecondtoptxt.text.isEmpty)
+                      {
+                        _controllersecondtop.jumpToPage(1);
+                        _controllersecondmid.jumpToPage(1);
+                        _controllersecondbot.jumpToPage(1);
+                        _controllersecondtop.jumpToPage(0);
+                        _controllersecondmid.jumpToPage(0);
+                        _controllersecondbot.jumpToPage(0);
+                      }
+                      if (_controllerthirdtoptxt.text.isEmpty)
+                      {
+                        _controllerthirdtop.jumpToPage(1);
+                        _controllerthirdmid.jumpToPage(1);
+                        _controllerthirdbot.jumpToPage(1);
+                        _controllerthirdtop.jumpToPage(0);
+                        _controllerthirdmid.jumpToPage(0);
+                        _controllerthirdbot.jumpToPage(0);
+                      }
+                      if (_controllerfourthtoptxt.text.isEmpty)
+                      {
+                        _controllerfourthtop.jumpToPage(1);
+                        _controllerfourthmid.jumpToPage(1);
+                        _controllerfourthbot.jumpToPage(1);
+                        _controllerfourthtop.jumpToPage(0);
+                        _controllerfourthmid.jumpToPage(0);
+                        _controllerfourthbot.jumpToPage(0);
+                      }
+
                     });
                   },
                 ),
                 const SizedBox(width: 40),
                 DropdownButton(
                   underline: DropdownButtonHideUnderline(child: Container()),
-                  value: dropdownactionfifthhex,
+                  value: _actionfifthdropdownhex,
                   icon: const Icon(Icons.keyboard_arrow_down,
                       color: Colors.black),
                   items: fontHexList,
-                  onChanged: (String? dropdownactionfifthhexChange) {
+                  onChanged: (String? _actionfifthdropdownhexChange) {
                     setState(() {
-                      dropdownactionfifthhex = dropdownactionfifthhexChange!;
-
-                      fonthexindex = orderiChingFontHexagrams.indexWhere(
-                        (element) => element == dropdownactionfifthhex,
-                      );
-
-                      fonthexconverted = fontHexbyWheel[fonthexindex];
-
-                      switch (fonthexconverted) {
-                        //Quarter of Mutation
-                        case 1:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-
-                        // 43 23 4 49
-                        case 43:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        // 14 8 29 30
-                        case 14:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 34:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 9:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-
-                        case 5:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 26:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-
-                        case 11:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 10:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 58:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 38:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 54:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 61:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 60:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 41:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 19:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-
-                        //Quarter of Initiation
-                        case 13:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 49:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 30:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-
-                          break;
-                        case 55:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-
-                          break;
-                        case 37:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 63:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 22:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 36:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 25:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 17:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 21:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 51:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 42:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 3:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 27:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 24:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-
-                        //Quarter of Duality
-                        case 44:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 28:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 50:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 32:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 57:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 48:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 18:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 46:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 6:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 47:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 64:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 40:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 59:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 29:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 4:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 7:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-
-                        //Quarter of Civilization
-                        case 33:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 31:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 56:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 62:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 53:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 39:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 52:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 15:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 12:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 45:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 35:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 16:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 20:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 8:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-
-                          break;
-                        case 23:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-
-                        case 2:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-
-                          break;
-                        default:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
+                      _actionfifthdropdownhex = _actionfifthdropdownhexChange!;
+
+                      _controllerfirstplanet.jumpToPage(11);
+                      _controllersecondplanet.jumpToPage(1);
+                      _controllerthirdplanet.jumpToPage(1);
+                      _controllerfourthplanet.jumpToPage(11);
+
+                      _fonthexindex = fontHexOrderList.indexOf(_actionfifthdropdownhex);
+                      _fonthexconverted = fontHexNumbersList[_fonthexindex];
+
+                      _chosenhex = _fonthexconverted;
+                      _hexalignedCrossList = hexagramCrossAlignment(_chosenhex);
+
+                      _actionfirstdropdownhex = _chosenhex;
+                      _actionthirddropdownhex = _chosenhex;
+                      _actionfourthdropdownhex = _chosenhex;
+                      _actionsixthdropdownhex = _chosenhex;
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[1]);
+                      _controllerfirsttop.jumpToPage(_hexalignedList[0]);
+                      _controllerfirstmid.jumpToPage(_hexalignedList[1]);
+                      _controllerfirstbot.jumpToPage(_hexalignedList[2]);
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[0]);
+                      _controllersecondtop.jumpToPage(_hexalignedList[0]);
+                      _controllersecondmid.jumpToPage(_hexalignedList[1]);
+                      _controllersecondbot.jumpToPage(_hexalignedList[2]);
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[2]);
+                      _controllerthirdtop.jumpToPage(_hexalignedList[0]);
+                      _controllerthirdmid.jumpToPage(_hexalignedList[1]);
+                      _controllerthirdbot.jumpToPage(_hexalignedList[2]);
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[3]);
+                      _controllerfourthtop.jumpToPage(_hexalignedList[0]);
+                      _controllerfourthmid.jumpToPage(_hexalignedList[1]);
+                      _controllerfourthbot.jumpToPage(_hexalignedList[2]);
+
+                      _firstcolumnfirstdropdowhex = _hexalignedCrossList[1];
+                      _firstcolumnthirddropdowhex = _hexalignedCrossList[1];
+                      _firstcolumnfourthdropdowhex = _hexalignedCrossList[1];
+                      _firstcolumnfifthdropdowhex = _hexalignedCrossList[1];
+                      _secondcolumnfirstdropdowhex = _hexalignedCrossList[0];
+                      _secondcolumnthirddropdowhex = _hexalignedCrossList[0];
+                      _secondcolumnfourthdropdowhex = _hexalignedCrossList[0];
+                      _secondcolumnfifthdropdowhex = _hexalignedCrossList[0];
+                      _thirdcolumnfirstdropdowhex = _hexalignedCrossList[2];
+                      _thirddcolumnthirddropdowhex = _hexalignedCrossList[2];
+                      _thirdcolumnfourthdropdowhex = _hexalignedCrossList[2];
+                      _thirdcolumnfifthdropdowhex = _hexalignedCrossList[2];
+                      _fourthcolumnfirstdropdowhex = _hexalignedCrossList[3];
+                      _fourthdcolumnthirddropdowhex = _hexalignedCrossList[3];
+                      _fourthcolumnfourthdropdowhex = _hexalignedCrossList[3];
+                      _fourthcolumnfifthdropdowhex = _hexalignedCrossList[3];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[1]);
+                      _firstcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[0]);
+                      _secondcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+                      _actionseconddropdownhex = fontHexOrderList[_fonthexindex];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[2]);
+                      _thirdcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[3]);
+                      _fourthcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+
+
+
+                      if (_controllerfirsttoptxt.text.isEmpty)
+                      {
+                        _controllerfirsttop.jumpToPage(1);
+                        _controllerfirstmid.jumpToPage(1);
+                        _controllerfirstbot.jumpToPage(1);
+                        _controllerfirsttop.jumpToPage(0);
+                        _controllerfirstmid.jumpToPage(0);
+                        _controllerfirstbot.jumpToPage(0);
                       }
+                      if (_controllersecondtoptxt.text.isEmpty)
+                      {
+                        _controllersecondtop.jumpToPage(1);
+                        _controllersecondmid.jumpToPage(1);
+                        _controllersecondbot.jumpToPage(1);
+                        _controllersecondtop.jumpToPage(0);
+                        _controllersecondmid.jumpToPage(0);
+                        _controllersecondbot.jumpToPage(0);
+                      }
+                      if (_controllerthirdtoptxt.text.isEmpty)
+                      {
+                        _controllerthirdtop.jumpToPage(1);
+                        _controllerthirdmid.jumpToPage(1);
+                        _controllerthirdbot.jumpToPage(1);
+                        _controllerthirdtop.jumpToPage(0);
+                        _controllerthirdmid.jumpToPage(0);
+                        _controllerthirdbot.jumpToPage(0);
+                      }
+                      if (_controllerfourthtoptxt.text.isEmpty)
+                      {
+                        _controllerfourthtop.jumpToPage(1);
+                        _controllerfourthmid.jumpToPage(1);
+                        _controllerfourthbot.jumpToPage(1);
+                        _controllerfourthtop.jumpToPage(0);
+                        _controllerfourthmid.jumpToPage(0);
+                        _controllerfourthbot.jumpToPage(0);
+                      }
+
                     });
                   },
                 ),
                 const SizedBox(width: 40),
                 DropdownButton(
                   underline: DropdownButtonHideUnderline(child: Container()),
-                  value: dropdownactionsixthhex,
+                  value: _actionsixthdropdownhex,
                   icon: const Icon(Icons.keyboard_arrow_down,
                       color: Colors.black),
                   items: hexDropDownNumbersList,
-                  onChanged: (int? dropdownactionsixthhexChange) {
+                  onChanged: (int? _actionsixthdropdownhexChange) {
                     setState(() {
-                      dropdownactionsixthhex = dropdownactionsixthhexChange!;
-                      switch (dropdownactionsixthhex) {
-                        //Quarter of Mutation
-                        case 1:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-
-                        // 43 23 4 49
-                        case 43:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        // 14 8 29 30
-                        case 14:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 34:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 9:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-
-                        case 5:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 26:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-
-                        case 11:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 10:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 58:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 38:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 54:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 61:
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 60:
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-
-                          break;
-                        case 41:
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-                        case 19:
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(3);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(0);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(2);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(1);
-                          break;
-
-                        //Quarter of Initiation
-                        case 13:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 49:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 30:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-
-                          break;
-                        case 55:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(1);
-
-                          break;
-                        case 37:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 63:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 22:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 36:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 25:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 17:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 21:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 51:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 42:
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 3:
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 27:
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-                        case 24:
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(3);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(0);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(2);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(1);
-                          break;
-
-                        //Quarter of Duality
-                        case 44:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 28:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 50:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 32:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 57:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 48:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 18:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 46:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 6:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 47:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 64:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 40:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 59:
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 29:
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 4:
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-                        case 7:
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(3);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(0);
-
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(2);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(1);
-                          break;
-
-                        //Quarter of Civilization
-                        case 33:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 31:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 56:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 62:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(0);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(3);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(0);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(3);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 53:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 39:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 52:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 15:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(1);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(2);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(1);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(2);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 12:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 45:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 35:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 16:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(2);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(1);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(2);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(1);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 20:
-                          _controllersecondtop.jumpToPage(0);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(3);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(0);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(3);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-                        case 8:
-                          _controllersecondtop.jumpToPage(1);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(2);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(1);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(2);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-
-                          break;
-                        case 23:
-                          _controllersecondtop.jumpToPage(2);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(1);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(2);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(1);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
-
-                        case 2:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-
-                          break;
-                        default:
-                          _controllersecondtop.jumpToPage(3);
-                          _controllersecondmid.jumpToPage(3);
-                          _controllersecondbot.jumpToPage(3);
-
-                          _controllerfirsttop.jumpToPage(0);
-                          _controllerfirstmid.jumpToPage(0);
-                          _controllerfirstbot.jumpToPage(0);
-
-                          _controllerfourthtop.jumpToPage(3);
-                          _controllerfourthmid.jumpToPage(3);
-                          _controllerfourthbot.jumpToPage(2);
-
-                          _controllerthirdtop.jumpToPage(0);
-                          _controllerthirdmid.jumpToPage(0);
-                          _controllerthirdbot.jumpToPage(1);
-                          break;
+                      _actionsixthdropdownhex = _actionsixthdropdownhexChange!;
+
+                      _controllerfirstplanet.jumpToPage(11);
+                      _controllersecondplanet.jumpToPage(1);
+                      _controllerthirdplanet.jumpToPage(1);
+                      _controllerfourthplanet.jumpToPage(11);
+
+                      _chosenhex = _actionsixthdropdownhex;
+
+                      _actionfirstdropdownhex = _chosenhex;
+                      _actionthirddropdownhex = _chosenhex;
+                      _actionfourthdropdownhex = _chosenhex;
+
+                      _hexalignedCrossList = hexagramCrossAlignment(_chosenhex);
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[1]);
+                      _controllerfirsttop.jumpToPage(_hexalignedList[0]);
+                      _controllerfirstmid.jumpToPage(_hexalignedList[1]);
+                      _controllerfirstbot.jumpToPage(_hexalignedList[2]);
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[0]);
+                      _controllersecondtop.jumpToPage(_hexalignedList[0]);
+                      _controllersecondmid.jumpToPage(_hexalignedList[1]);
+                      _controllersecondbot.jumpToPage(_hexalignedList[2]);
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[2]);
+                      _controllerthirdtop.jumpToPage(_hexalignedList[0]);
+                      _controllerthirdmid.jumpToPage(_hexalignedList[1]);
+                      _controllerthirdbot.jumpToPage(_hexalignedList[2]);
+
+                      _hexalignedList = hexagramAlignment(_hexalignedCrossList[3]);
+                      _controllerfourthtop.jumpToPage(_hexalignedList[0]);
+                      _controllerfourthmid.jumpToPage(_hexalignedList[1]);
+                      _controllerfourthbot.jumpToPage(_hexalignedList[2]);
+
+                      _firstcolumnfirstdropdowhex = _hexalignedCrossList[1];
+                      _firstcolumnthirddropdowhex = _hexalignedCrossList[1];
+                      _firstcolumnfourthdropdowhex = _hexalignedCrossList[1];
+                      _firstcolumnfifthdropdowhex = _hexalignedCrossList[1];
+                      _secondcolumnfirstdropdowhex = _hexalignedCrossList[0];
+                      _secondcolumnthirddropdowhex = _hexalignedCrossList[0];
+                      _secondcolumnfourthdropdowhex = _hexalignedCrossList[0];
+                      _secondcolumnfifthdropdowhex = _hexalignedCrossList[0];
+                      _thirdcolumnfirstdropdowhex = _hexalignedCrossList[2];
+                      _thirddcolumnthirddropdowhex = _hexalignedCrossList[2];
+                      _thirdcolumnfourthdropdowhex = _hexalignedCrossList[2];
+                      _thirdcolumnfifthdropdowhex = _hexalignedCrossList[2];
+                      _fourthcolumnfirstdropdowhex = _hexalignedCrossList[3];
+                      _fourthdcolumnthirddropdowhex = _hexalignedCrossList[3];
+                      _fourthcolumnfourthdropdowhex = _hexalignedCrossList[3];
+                      _fourthcolumnfifthdropdowhex = _hexalignedCrossList[3];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[1]);
+                      _firstcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[0]);
+                      _secondcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+                      _actionseconddropdownhex = fontHexOrderList[_fonthexindex];
+                      _actionfifthdropdownhex = fontHexOrderList[_fonthexindex];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[2]);
+                      _thirdcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+
+                      _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[3]);
+                      _fourthcolumnseconddropdowhex = fontHexOrderList[_fonthexindex];
+
+                      if (_controllerfirsttoptxt.text.isEmpty)
+                      {
+                        _controllerfirsttop.jumpToPage(1);
+                        _controllerfirstmid.jumpToPage(1);
+                        _controllerfirstbot.jumpToPage(1);
+                        _controllerfirsttop.jumpToPage(0);
+                        _controllerfirstmid.jumpToPage(0);
+                        _controllerfirstbot.jumpToPage(0);
+                      }
+                      if (_controllersecondtoptxt.text.isEmpty)
+                      {
+                        _controllersecondtop.jumpToPage(1);
+                        _controllersecondmid.jumpToPage(1);
+                        _controllersecondbot.jumpToPage(1);
+                        _controllersecondtop.jumpToPage(0);
+                        _controllersecondmid.jumpToPage(0);
+                        _controllersecondbot.jumpToPage(0);
+                      }
+                      if (_controllerthirdtoptxt.text.isEmpty)
+                      {
+                        _controllerthirdtop.jumpToPage(1);
+                        _controllerthirdmid.jumpToPage(1);
+                        _controllerthirdbot.jumpToPage(1);
+                        _controllerthirdtop.jumpToPage(0);
+                        _controllerthirdmid.jumpToPage(0);
+                        _controllerthirdbot.jumpToPage(0);
+                      }
+                      if (_controllerfourthtoptxt.text.isEmpty)
+                      {
+                        _controllerfourthtop.jumpToPage(1);
+                        _controllerfourthmid.jumpToPage(1);
+                        _controllerfourthbot.jumpToPage(1);
+                        _controllerfourthtop.jumpToPage(0);
+                        _controllerfourthmid.jumpToPage(0);
+                        _controllerfourthbot.jumpToPage(0);
                       }
                     });
                   },
@@ -3669,31 +783,45 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownfirstleftvalue,
+                value: _firstcolumnfirstdropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: orderHexagramsWheelList,
-                onChanged: (int? dropdownfirstleftvaluechange) {
+                onChanged: (int? _firstcolumnfirstdropdowhexchange) {
                   setState(() {
-                    dropdownfirstleftvalue = dropdownfirstleftvaluechange!;
-                    _chosenhex = dropdownfirstleftvalue;
+                    _firstcolumnfirstdropdowhex = _firstcolumnfirstdropdowhexchange!;
+
+                    _chosenhex = _firstcolumnfirstdropdowhex;
                     _hexalignedList = hexagramAlignment(_chosenhex);
                     _controllerfirsttop.jumpToPage(_hexalignedList[0]);
                     _controllerfirstmid.jumpToPage(_hexalignedList[1]);
                     _controllerfirstbot.jumpToPage(_hexalignedList[2]);
+
+                    _firstcolumnthirddropdowhex = _chosenhex;
+                    _firstcolumnfourthdropdowhex = _chosenhex;
+                    _firstcolumnfifthdropdowhex = _chosenhex;
+
+                    _fonthexindex = fontHexNumbersList.indexOf(_chosenhex);
+                    _fonthex = fontHexOrderList[_fonthexindex];
+                    _firstcolumnseconddropdowhex = _fonthex;
+
+
                   });
                 },
               ),
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownfirstichingvalue,
+                value: _firstcolumnseconddropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: fontHexList,
-                onChanged: (String? dropdownfirstichingvalueChange) {
+                onChanged: (String? _firstcolumnseconddropdowhexChange) {
                   setState(() {
-                    dropdownfirstichingvalue = dropdownfirstichingvalueChange!;
-                    switch (dropdownfirstichingvalue) {
+                    _firstcolumnseconddropdowhex = _firstcolumnseconddropdowhexChange!;
+
+
+
+                    switch (_firstcolumnseconddropdowhex) {
                       //Quarter of Mutation
                       case 'a':
                         _controllerfirsttop.jumpToPage(0);
@@ -4158,18 +1286,27 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
               ),
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownfirstrightvalue,
+                value: _firstcolumnthirddropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: hexDropDownNumbersList,
-                onChanged: (int? dropdownfirstrightvaluechange) {
+                onChanged: (int? _firstcolumnthirddropdowhexchange) {
                   setState(() {
-                    dropdownfirstrightvalue = dropdownfirstrightvaluechange!;
-                    _chosenhex = dropdownfirstrightvalue;
+                    _firstcolumnthirddropdowhex = _firstcolumnthirddropdowhexchange!;
+
+                    _chosenhex = _firstcolumnthirddropdowhex;
                     _hexalignedList = hexagramAlignment(_chosenhex);
                     _controllerfirsttop.jumpToPage(_hexalignedList[0]);
                     _controllerfirstmid.jumpToPage(_hexalignedList[1]);
                     _controllerfirstbot.jumpToPage(_hexalignedList[2]);
+
+                    _firstcolumnfirstdropdowhex = _chosenhex;
+                    _firstcolumnfourthdropdowhex = _chosenhex;
+                    _firstcolumnfifthdropdowhex = _chosenhex;
+
+                    _fonthexindex = fontHexNumbersList.indexOf(_chosenhex);
+                    _fonthex = fontHexOrderList[_fonthexindex];
+                    _firstcolumnseconddropdowhex = _fonthex;
                   });
                 },
               ),
@@ -4180,46 +1317,88 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     DropdownButton(
                       underline:
                       DropdownButtonHideUnderline(child: Container()),
-                      value: firstcolumnfifthdropdowhex,
+                      value: _firstcolumnfourthdropdowhex,
                       icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                       items: orderHexagramsWheelList,
-                      onChanged: (int? firstcolumnfifthdropdowhexChange) {
+                      onChanged: (int? _firstcolumnfourthdropdowhexChange) {
                         setState(() {
-                          firstcolumnfifthdropdowhex =
-                          firstcolumnfifthdropdowhexChange!;
+                          _firstcolumnfourthdropdowhex =
+                          _firstcolumnfourthdropdowhexChange!;
 
-                          _chosenhex = firstcolumnfifthdropdowhex;
-                          _hexalignedList = hexagramAlignment(_chosenhex);
+                          _chosenhex = _firstcolumnfourthdropdowhex;
+                          _hexalignedCrossList = hexagramCrossAlignment(_chosenhex);
+
+                          _firstcolumnfirstdropdowhex = _chosenhex;
+                          _firstcolumnthirddropdowhex = _chosenhex;
+                          _firstcolumnfifthdropdowhex = _chosenhex;
+
+
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[0]);
                           _controllerfirsttop.jumpToPage(_hexalignedList[0]);
                           _controllerfirstmid.jumpToPage(_hexalignedList[1]);
                           _controllerfirstbot.jumpToPage(_hexalignedList[2]);
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[0]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _firstcolumnseconddropdowhex = _fonthex;
 
-                          _controllersecondtop.jumpToPage(_hexalignedList[3]);
-                          _controllersecondmid.jumpToPage(_hexalignedList[4]);
-                          _controllersecondbot.jumpToPage(_hexalignedList[5]);
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[1]);
+                          _controllersecondtop.jumpToPage(_hexalignedList[0]);
+                          _controllersecondmid.jumpToPage(_hexalignedList[1]);
+                          _controllersecondbot.jumpToPage(_hexalignedList[2]);
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[1]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _secondcolumnseconddropdowhex = _fonthex;
+
+                          _secondcolumnfirstdropdowhex = _hexalignedCrossList[1];
+                          _secondcolumnthirddropdowhex = _hexalignedCrossList[1];
+                          _secondcolumnfourthdropdowhex = _hexalignedCrossList[1];
+                          _secondcolumnfifthdropdowhex = _hexalignedCrossList[1];
+
+
+
+
+
                         });
                       },
                     ),
                     DropdownButton(
                       underline:
                       DropdownButtonHideUnderline(child: Container()),
-                      value: firstcolumnsixthdropdowhex,
+                      value: _firstcolumnfifthdropdowhex,
                       icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                       items: hexDropDownNumbersList,
-                      onChanged: (int? firstcolumnsixthdropdowhexChange) {
+                      onChanged: (int? _firstcolumnfifthdropdowhexChange) {
                         setState(() {
-                          firstcolumnsixthdropdowhex =
-                          firstcolumnsixthdropdowhexChange!;
+                          _firstcolumnfifthdropdowhex =
+                          _firstcolumnfifthdropdowhexChange!;
 
-                          _chosenhex = firstcolumnsixthdropdowhex;
-                          _hexalignedList = hexagramAlignment(_chosenhex);
+                          _chosenhex = _firstcolumnfifthdropdowhex;
+                          _hexalignedCrossList = hexagramCrossAlignment(_chosenhex);
+
+                          _firstcolumnfirstdropdowhex = _chosenhex;
+                          _firstcolumnthirddropdowhex = _chosenhex;
+                          _firstcolumnfourthdropdowhex = _chosenhex;
+
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[0]);
                           _controllerfirsttop.jumpToPage(_hexalignedList[0]);
                           _controllerfirstmid.jumpToPage(_hexalignedList[1]);
                           _controllerfirstbot.jumpToPage(_hexalignedList[2]);
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[0]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _firstcolumnseconddropdowhex = _fonthex;
 
-                          _controllersecondtop.jumpToPage(_hexalignedList[3]);
-                          _controllersecondmid.jumpToPage(_hexalignedList[4]);
-                          _controllersecondbot.jumpToPage(_hexalignedList[5]);
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[1]);
+                          _controllersecondtop.jumpToPage(_hexalignedList[0]);
+                          _controllersecondmid.jumpToPage(_hexalignedList[1]);
+                          _controllersecondbot.jumpToPage(_hexalignedList[2]);
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[1]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _secondcolumnseconddropdowhex = _fonthex;
+
+                          _secondcolumnfirstdropdowhex = _hexalignedCrossList[1];
+                          _secondcolumnthirddropdowhex = _hexalignedCrossList[1];
+                          _secondcolumnfourthdropdowhex = _hexalignedCrossList[1];
+                          _secondcolumnfifthdropdowhex = _hexalignedCrossList[1];
                         });
                       },
                     ),
@@ -4304,10 +1483,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexfirsttop, reason) {
                       setState(() {
                         _currentfirsttop = indexfirsttop;
-                        hexagramVal = ((_currentfirsttop + 1) * 100 +
+                        _hexagramvalue = ((_currentfirsttop + 1) * 100 +
                             (_currentfirstmid + 1) * 10 +
                             (_currentfirstbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           //Quarter of Mutation
                           case 111:
                             _controllerfirsttoptxt.text = '1';
@@ -4670,10 +1849,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexfirstmid, reason) {
                       setState(() {
                         _currentfirstmid = indexfirstmid;
-                        hexagramVal = ((_currentfirsttop + 1) * 100 +
+                        _hexagramvalue = ((_currentfirsttop + 1) * 100 +
                             (_currentfirstmid + 1) * 10 +
                             (_currentfirstbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           //Quarter of Mutation
                           case 111:
                             _controllerfirsttoptxt.text = '1';
@@ -5036,10 +2215,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexfirstbot, reason) {
                       setState(() {
                         _currentfirstbot = indexfirstbot;
-                        hexagramVal = ((_currentfirsttop + 1) * 100 +
+                        _hexagramvalue = ((_currentfirsttop + 1) * 100 +
                             (_currentfirstmid + 1) * 10 +
                             (_currentfirstbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           //Quarter of Mutation
                           case 111:
                             _controllerfirsttoptxt.text = '1';
@@ -5398,32 +2577,41 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownsecondleftvalue,
+                value: _secondcolumnfirstdropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: orderHexagramsWheelList,
-                onChanged: (int? dropdownsecondleftvaluechange) {
+                onChanged: (int? _secondcolumnfirstdropdowhexchange) {
                   setState(() {
-                    dropdownsecondleftvalue = dropdownsecondleftvaluechange!;
-                    _chosenhex = dropdownsecondleftvalue;
+                    _secondcolumnfirstdropdowhex = _secondcolumnfirstdropdowhexchange!;
+
+                    _chosenhex = _secondcolumnfirstdropdowhex;
                     _hexalignedList = hexagramAlignment(_chosenhex);
                     _controllersecondtop.jumpToPage(_hexalignedList[0]);
                     _controllersecondmid.jumpToPage(_hexalignedList[1]);
                     _controllersecondbot.jumpToPage(_hexalignedList[2]);
+
+                    _secondcolumnthirddropdowhex = _chosenhex;
+                    _secondcolumnfourthdropdowhex = _chosenhex;
+                    _secondcolumnfifthdropdowhex = _chosenhex;
+
+                    _fonthexindex = fontHexNumbersList.indexOf(_chosenhex);
+                    _fonthex = fontHexOrderList[_fonthexindex];
+                    _secondcolumnseconddropdowhex = _fonthex;
                   });
                 },
               ),
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownsecondichingvalue,
+                value: _secondcolumnseconddropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: fontHexList,
-                onChanged: (String? dropdownsecondichingvalueChange) {
+                onChanged: (String? _secondcolumnseconddropdowhexChange) {
                   setState(() {
-                    dropdownsecondichingvalue =
-                        dropdownsecondichingvalueChange!;
-                    switch (dropdownsecondichingvalueChange) {
+                    _secondcolumnseconddropdowhex =
+                        _secondcolumnseconddropdowhexChange!;
+                    switch (_secondcolumnseconddropdowhexChange) {
                       //Quarter of Mutation
                       case 'a':
                         _controllersecondtop.jumpToPage(0);
@@ -5888,18 +3076,27 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
               ),
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownsecondrightvalue,
+                value: _secondcolumnthirddropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: hexDropDownNumbersList,
-                onChanged: (int? dropdownsecondrightvaluechange) {
+                onChanged: (int? _secondcolumnthirddropdowhexchange) {
                   setState(() {
-                    dropdownsecondrightvalue = dropdownsecondrightvaluechange!;
-                    _chosenhex = dropdownsecondrightvalue;
+                    _secondcolumnthirddropdowhex = _secondcolumnthirddropdowhexchange!;
+
+                    _chosenhex = _secondcolumnthirddropdowhex;
                     _hexalignedList = hexagramAlignment(_chosenhex);
                     _controllersecondtop.jumpToPage(_hexalignedList[0]);
                     _controllersecondmid.jumpToPage(_hexalignedList[1]);
                     _controllersecondbot.jumpToPage(_hexalignedList[2]);
+
+                    _secondcolumnfirstdropdowhex = _chosenhex;
+                    _secondcolumnfourthdropdowhex = _chosenhex;
+                    _secondcolumnfifthdropdowhex = _chosenhex;
+
+                    _fonthexindex = fontHexNumbersList.indexOf(_chosenhex);
+                    _fonthex = fontHexOrderList[_fonthexindex];
+                    _secondcolumnseconddropdowhex = _fonthex;
                   });
                 },
               ),
@@ -5910,46 +3107,80 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     DropdownButton(
                       underline:
                       DropdownButtonHideUnderline(child: Container()),
-                      value: secondcolumnfifthdropdowhex,
+                      value: _secondcolumnfourthdropdowhex,
                       icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                       items: orderHexagramsWheelList,
-                      onChanged: (int? secondcolumnfifthdropdowhexChange) {
+                      onChanged: (int? _secondcolumnfourthdropdowhexChange) {
                         setState(() {
-                          secondcolumnfifthdropdowhex =
-                          secondcolumnfifthdropdowhexChange!;
+                          _secondcolumnfourthdropdowhex =
+                          _secondcolumnfourthdropdowhexChange!;
 
-                          _chosenhex = secondcolumnfifthdropdowhex;
-                          _hexalignedList = hexagramAlignment(_chosenhex);
+                          _chosenhex = _secondcolumnfourthdropdowhex;
+                          _hexalignedCrossList = hexagramCrossAlignment(_chosenhex);
+
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[1]);
+                          _controllerfirsttop.jumpToPage(_hexalignedList[0]);
+                          _controllerfirstmid.jumpToPage(_hexalignedList[1]);
+                          _controllerfirstbot.jumpToPage(_hexalignedList[2]);
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[1]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _firstcolumnseconddropdowhex = _fonthex;
+
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[0]);
                           _controllersecondtop.jumpToPage(_hexalignedList[0]);
                           _controllersecondmid.jumpToPage(_hexalignedList[1]);
                           _controllersecondbot.jumpToPage(_hexalignedList[2]);
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[0]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _secondcolumnseconddropdowhex = _fonthex;
 
-                          _controllerfirsttop.jumpToPage(_hexalignedList[3]);
-                          _controllerfirstmid.jumpToPage(_hexalignedList[4]);
-                          _controllerfirstbot.jumpToPage(_hexalignedList[5]);
+                          _secondcolumnfirstdropdowhex = _chosenhex;
+                          _secondcolumnthirddropdowhex = _chosenhex;
+                          _secondcolumnfifthdropdowhex = _chosenhex;
+                          _firstcolumnfirstdropdowhex = _hexalignedCrossList[1];
+                          _firstcolumnthirddropdowhex = _hexalignedCrossList[1];
+                          _firstcolumnfourthdropdowhex = _hexalignedCrossList[1];
+                          _firstcolumnfifthdropdowhex = _hexalignedCrossList[1];
                         });
                       },
                     ),
                     DropdownButton(
                       underline:
                       DropdownButtonHideUnderline(child: Container()),
-                      value: secondcolumnsixthdropdowhex,
+                      value: _secondcolumnfifthdropdowhex,
                       icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                       items: hexDropDownNumbersList,
-                      onChanged: (int? secondcolumnsixthdropdowhexChange) {
+                      onChanged: (int? _secondcolumnfifthdropdowhexChange) {
                         setState(() {
-                          secondcolumnsixthdropdowhex =
-                          secondcolumnsixthdropdowhexChange!;
+                          _secondcolumnfifthdropdowhex =
+                          _secondcolumnfifthdropdowhexChange!;
 
-                          _chosenhex = secondcolumnsixthdropdowhex;
-                          _hexalignedList = hexagramAlignment(_chosenhex);
+                          _chosenhex = _secondcolumnfifthdropdowhex;
+                          _hexalignedCrossList = hexagramCrossAlignment(_chosenhex);
+
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[1]);
+                          _controllerfirsttop.jumpToPage(_hexalignedList[0]);
+                          _controllerfirstmid.jumpToPage(_hexalignedList[1]);
+                          _controllerfirstbot.jumpToPage(_hexalignedList[2]);
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[1]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _firstcolumnseconddropdowhex = _fonthex;
+
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[0]);
                           _controllersecondtop.jumpToPage(_hexalignedList[0]);
                           _controllersecondmid.jumpToPage(_hexalignedList[1]);
                           _controllersecondbot.jumpToPage(_hexalignedList[2]);
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[0]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _secondcolumnseconddropdowhex = _fonthex;
 
-                          _controllerfirsttop.jumpToPage(_hexalignedList[3]);
-                          _controllerfirstmid.jumpToPage(_hexalignedList[4]);
-                          _controllerfirstbot.jumpToPage(_hexalignedList[5]);
+                          _secondcolumnfirstdropdowhex = _chosenhex;
+                          _secondcolumnthirddropdowhex = _chosenhex;
+                          _secondcolumnfourthdropdowhex = _chosenhex;
+                          _firstcolumnfirstdropdowhex = _hexalignedCrossList[1];
+                          _firstcolumnthirddropdowhex = _hexalignedCrossList[1];
+                          _firstcolumnfourthdropdowhex = _hexalignedCrossList[1];
+                          _firstcolumnfifthdropdowhex = _hexalignedCrossList[1];
                         });
                       },
                     ),
@@ -6034,10 +3265,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexsecondtop, reason) {
                       setState(() {
                         _currentsecondtop = indexsecondtop;
-                        hexagramVal = ((_currentsecondtop + 1) * 100 +
+                        _hexagramvalue = ((_currentsecondtop + 1) * 100 +
                             (_currentsecondmid + 1) * 10 +
                             (_currentsecondbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           //Quarter of Mutation
                           //_controllersecond
                           case 111:
@@ -6401,10 +3632,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexsecondmid, reason) {
                       setState(() {
                         _currentsecondmid = indexsecondmid;
-                        hexagramVal = ((_currentsecondtop + 1) * 100 +
+                        _hexagramvalue = ((_currentsecondtop + 1) * 100 +
                             (_currentsecondmid + 1) * 10 +
                             (_currentsecondbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           //Quarter of Mutation
                           case 111:
                             _controllersecondtoptxt.text = '1';
@@ -6767,10 +3998,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexsecondbot, reason) {
                       setState(() {
                         _currentsecondbot = indexsecondbot;
-                        hexagramVal = ((_currentsecondtop + 1) * 100 +
+                        _hexagramvalue = ((_currentsecondtop + 1) * 100 +
                             (_currentsecondmid + 1) * 10 +
                             (_currentsecondbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           //Quarter of Mutation
                           case 111:
                             _controllersecondtoptxt.text = '1';
@@ -7129,14 +4360,14 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownthirdleftvalue,
+                value: _thirdcolumnfirstdropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: orderHexagramsWheelList,
-                onChanged: (int? dropdownthirdleftvalueChange) {
+                onChanged: (int? _thirdcolumnfirstdropdowhexChange) {
                   setState(() {
-                    dropdownthirdleftvalue = dropdownthirdleftvalueChange!;
-                    _chosenhex = dropdownthirdleftvalue;
+                    _thirdcolumnfirstdropdowhex = _thirdcolumnfirstdropdowhexChange!;
+                    _chosenhex = _thirdcolumnfirstdropdowhex;
                     _hexalignedList = hexagramAlignment(_chosenhex);
                     _controllerthirdtop.jumpToPage(_hexalignedList[0]);
                     _controllerthirdmid.jumpToPage(_hexalignedList[1]);
@@ -7146,14 +4377,14 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
               ),
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownthirdichingvalue,
+                value: _thirdcolumnseconddropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: fontHexList,
-                onChanged: (String? dropdownthirdichingvalueChange) {
+                onChanged: (String? _thirdcolumnseconddropdowhexChange) {
                   setState(() {
-                    dropdownthirdichingvalue = dropdownthirdichingvalueChange!;
-                    switch (dropdownthirdichingvalue) {
+                    _thirdcolumnseconddropdowhex = _thirdcolumnseconddropdowhexChange!;
+                    switch (_thirdcolumnseconddropdowhex) {
                       //Quarter of Mutation
                       case 'a':
                         _controllerthirdtop.jumpToPage(0);
@@ -7618,14 +4849,14 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
               ),
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownthirdrightvalue,
+                value: _thirddcolumnthirddropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: hexDropDownNumbersList,
-                onChanged: (int? dropdownthirdrightvalueChange) {
+                onChanged: (int? _thirddcolumnthirddropdowhexChange) {
                   setState(() {
-                    dropdownthirdrightvalue = dropdownthirdrightvalueChange!;
-                    _chosenhex = dropdownthirdrightvalue;
+                    _thirddcolumnthirddropdowhex = _thirddcolumnthirddropdowhexChange!;
+                    _chosenhex = _thirddcolumnthirddropdowhex;
                     _hexalignedList = hexagramAlignment(_chosenhex);
                     _controllerthirdtop.jumpToPage(_hexalignedList[0]);
                     _controllerthirdmid.jumpToPage(_hexalignedList[1]);
@@ -7640,46 +4871,80 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     DropdownButton(
                       underline:
                       DropdownButtonHideUnderline(child: Container()),
-                      value: thirdcolumnfifthdropdowhex,
+                      value: _thirdcolumnfourthdropdowhex,
                       icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                       items: orderHexagramsWheelList,
-                      onChanged: (int? thirdcolumnfifthdropdowhexChange) {
+                      onChanged: (int? _thirdcolumnfourthdropdowhexChange) {
                         setState(() {
-                          thirdcolumnfifthdropdowhex =
-                          thirdcolumnfifthdropdowhexChange!;
+                          _thirdcolumnfourthdropdowhex =
+                          _thirdcolumnfourthdropdowhexChange!;
 
-                          _chosenhex = thirdcolumnfifthdropdowhex;
-                          _hexalignedList = hexagramAlignment(_chosenhex);
+                          _chosenhex = _thirdcolumnfourthdropdowhex;
+
+                          _hexalignedCrossList = hexagramCrossAlignment(_chosenhex);
+
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[0]);
                           _controllerthirdtop.jumpToPage(_hexalignedList[0]);
                           _controllerthirdmid.jumpToPage(_hexalignedList[1]);
                           _controllerthirdbot.jumpToPage(_hexalignedList[2]);
+                          _thirdcolumnfirstdropdowhex = _hexalignedCrossList[0];
+                          _thirddcolumnthirddropdowhex = _hexalignedCrossList[0];
+                          _thirdcolumnfifthdropdowhex = _hexalignedCrossList[0];
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[0]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _thirdcolumnseconddropdowhex = _fonthex;
 
-                          _controllerfourthtop.jumpToPage(_hexalignedList[3]);
-                          _controllerfourthmid.jumpToPage(_hexalignedList[4]);
-                          _controllerfourthbot.jumpToPage(_hexalignedList[5]);
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[1]);
+                          _controllerfourthtop.jumpToPage(_hexalignedList[0]);
+                          _controllerfourthmid.jumpToPage(_hexalignedList[1]);
+                          _controllerfourthbot.jumpToPage(_hexalignedList[2]);
+                          _fourthcolumnfirstdropdowhex = _hexalignedCrossList[1];
+                          _fourthdcolumnthirddropdowhex = _hexalignedCrossList[1];
+                          _fourthcolumnfourthdropdowhex = _hexalignedCrossList[1];
+                          _fourthcolumnfifthdropdowhex = _hexalignedCrossList[1];
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[1]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _fourthcolumnseconddropdowhex = _fonthex;
                         });
                       },
                     ),
                     DropdownButton(
                       underline:
                       DropdownButtonHideUnderline(child: Container()),
-                      value: thirdcolumnsixthdropdowhex,
+                      value: _thirdcolumnfifthdropdowhex,
                       icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                       items: hexDropDownNumbersList,
-                      onChanged: (int? thirdcolumnsixthdropdowhexChange) {
+                      onChanged: (int? _thirdcolumnfifthdropdowhexChange) {
                         setState(() {
-                          thirdcolumnsixthdropdowhex =
-                          thirdcolumnsixthdropdowhexChange!;
+                          _thirdcolumnfifthdropdowhex =
+                          _thirdcolumnfifthdropdowhexChange!;
 
-                          _chosenhex = thirdcolumnsixthdropdowhex;
-                          _hexalignedList = hexagramAlignment(_chosenhex);
+                          _chosenhex = _thirdcolumnfifthdropdowhex;
+
+                          _hexalignedCrossList = hexagramCrossAlignment(_chosenhex);
+
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[0]);
                           _controllerthirdtop.jumpToPage(_hexalignedList[0]);
                           _controllerthirdmid.jumpToPage(_hexalignedList[1]);
                           _controllerthirdbot.jumpToPage(_hexalignedList[2]);
+                          _thirdcolumnfirstdropdowhex = _hexalignedCrossList[0];
+                          _thirddcolumnthirddropdowhex = _hexalignedCrossList[0];
+                          _thirdcolumnfifthdropdowhex = _hexalignedCrossList[0];
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[0]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _thirdcolumnseconddropdowhex = _fonthex;
 
-                          _controllerfourthtop.jumpToPage(_hexalignedList[3]);
-                          _controllerfourthmid.jumpToPage(_hexalignedList[4]);
-                          _controllerfourthbot.jumpToPage(_hexalignedList[5]);
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[1]);
+                          _controllerfourthtop.jumpToPage(_hexalignedList[0]);
+                          _controllerfourthmid.jumpToPage(_hexalignedList[1]);
+                          _controllerfourthbot.jumpToPage(_hexalignedList[2]);
+                          _fourthcolumnfirstdropdowhex = _hexalignedCrossList[1];
+                          _fourthdcolumnthirddropdowhex = _hexalignedCrossList[1];
+                          _fourthcolumnfourthdropdowhex = _hexalignedCrossList[1];
+                          _fourthcolumnfifthdropdowhex = _hexalignedCrossList[1];
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[1]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _fourthcolumnseconddropdowhex = _fonthex;
                         });
                       },
                     ),
@@ -7764,10 +5029,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexthirdtop, reason) {
                       setState(() {
                         _currentthirdtop = indexthirdtop;
-                        hexagramVal = ((_currentthirdtop + 1) * 100 +
+                        _hexagramvalue = ((_currentthirdtop + 1) * 100 +
                             (_currentthirdmid + 1) * 10 +
                             (_currentthirdbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           // controllerthirdtoptxt
                           //Quarter of Mutation
                           case 111:
@@ -8067,10 +5332,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexthirdmid, reason) {
                       setState(() {
                         _currentthirdmid = indexthirdmid;
-                        hexagramVal = ((_currentthirdtop + 1) * 100 +
+                        _hexagramvalue = ((_currentthirdtop + 1) * 100 +
                             (_currentthirdmid + 1) * 10 +
                             (_currentthirdbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           //Quarter of Mutation
                           case 111:
                             _controllerthirdtoptxt.text = '1';
@@ -8369,10 +5634,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexthirdbot, reason) {
                       setState(() {
                         _currentthirdbot = indexthirdbot;
-                        hexagramVal = ((_currentthirdtop + 1) * 100 +
+                        _hexagramvalue = ((_currentthirdtop + 1) * 100 +
                             (_currentthirdmid + 1) * 10 +
                             (_currentthirdbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           //Quarter of Mutation
                           case 111:
                             _controllerthirdtoptxt.text = '1';
@@ -8667,14 +5932,14 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownfourthleftvalue,
+                value: _fourthcolumnfirstdropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: orderHexagramsWheelList,
-                onChanged: (int? dropdownfourthleftvalueChange) {
+                onChanged: (int? _fourthcolumnfirstdropdowhexChange) {
                   setState(() {
-                    dropdownfourthleftvalue = dropdownfourthleftvalueChange!;
-                    _chosenhex = dropdownfourthleftvalue;
+                    _fourthcolumnfirstdropdowhex = _fourthcolumnfirstdropdowhexChange!;
+                    _chosenhex = _fourthcolumnfirstdropdowhex;
                     _hexalignedList = hexagramAlignment(_chosenhex);
                     _controllerfourthtop.jumpToPage(_hexalignedList[0]);
                     _controllerfourthmid.jumpToPage(_hexalignedList[1]);
@@ -8684,15 +5949,15 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
               ),
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownfourthichingvalue,
+                value: _fourthcolumnseconddropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: fontHexList,
-                onChanged: (String? dropdownfourthichingvalueChange) {
+                onChanged: (String? _fourthcolumnseconddropdowhexChange) {
                   setState(() {
-                    dropdownfourthichingvalue =
-                        dropdownfourthichingvalueChange!;
-                    switch (dropdownfourthichingvalueChange) {
+                    _fourthcolumnseconddropdowhex =
+                        _fourthcolumnseconddropdowhexChange!;
+                    switch (_fourthcolumnseconddropdowhexChange) {
                       //Quarter of Mutation
                       case 'a':
                         _controllerfourthtop.jumpToPage(0);
@@ -9157,14 +6422,14 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
               ),
               DropdownButton(
                 underline: DropdownButtonHideUnderline(child: Container()),
-                value: dropdownfourthrightvalue,
+                value: _fourthdcolumnthirddropdowhex,
                 icon:
                     const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 items: hexDropDownNumbersList,
-                onChanged: (int? dropdownfourthrightvalueChange) {
+                onChanged: (int? _fourthdcolumnthirddropdowhexChange) {
                   setState(() {
-                    dropdownfourthrightvalue = dropdownfourthrightvalueChange!;
-                    _chosenhex = dropdownfourthrightvalue;
+                    _fourthdcolumnthirddropdowhex = _fourthdcolumnthirddropdowhexChange!;
+                    _chosenhex = _fourthdcolumnthirddropdowhex;
                     _hexalignedList = hexagramAlignment(_chosenhex);
                     _controllerfourthtop.jumpToPage(_hexalignedList[0]);
                     _controllerfourthmid.jumpToPage(_hexalignedList[1]);
@@ -9179,46 +6444,80 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     DropdownButton(
                       underline:
                       DropdownButtonHideUnderline(child: Container()),
-                      value: fourthcolumnfifthdropdowhex,
+                      value: _fourthcolumnfourthdropdowhex,
                       icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                       items: orderHexagramsWheelList,
-                      onChanged: (int? fourthcolumnfifthdropdowhexChange) {
+                      onChanged: (int? _fourthcolumnfourthdropdowhexChange) {
                         setState(() {
-                          fourthcolumnfifthdropdowhex =
-                          fourthcolumnfifthdropdowhexChange!;
+                          _fourthcolumnfourthdropdowhex =
+                          _fourthcolumnfourthdropdowhexChange!;
 
-                          _chosenhex = fourthcolumnfifthdropdowhex;
-                          _hexalignedList = hexagramAlignment(_chosenhex);
+                          _chosenhex = _fourthcolumnfourthdropdowhex;
+
+                          _hexalignedCrossList = hexagramCrossAlignment(_chosenhex);
+
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[0]);
                           _controllerfourthtop.jumpToPage(_hexalignedList[0]);
                           _controllerfourthmid.jumpToPage(_hexalignedList[1]);
                           _controllerfourthbot.jumpToPage(_hexalignedList[2]);
+                          _fourthcolumnfirstdropdowhex = _hexalignedCrossList[0];
+                          _fourthdcolumnthirddropdowhex = _hexalignedCrossList[0];
+                          _fourthcolumnfifthdropdowhex = _hexalignedCrossList[0];
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[0]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _fourthcolumnseconddropdowhex = _fonthex;
 
-                          _controllerthirdtop.jumpToPage(_hexalignedList[3]);
-                          _controllerthirdmid.jumpToPage(_hexalignedList[4]);
-                          _controllerthirdbot.jumpToPage(_hexalignedList[5]);
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[1]);
+                          _controllerthirdtop.jumpToPage(_hexalignedList[0]);
+                          _controllerthirdmid.jumpToPage(_hexalignedList[1]);
+                          _controllerthirdbot.jumpToPage(_hexalignedList[2]);
+                          _thirdcolumnfirstdropdowhex = _hexalignedCrossList[1];
+                          _thirddcolumnthirddropdowhex = _hexalignedCrossList[1];
+                          _thirdcolumnfourthdropdowhex = _hexalignedCrossList[1];
+                          _thirdcolumnfifthdropdowhex = _hexalignedCrossList[1];
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[1]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _thirdcolumnseconddropdowhex = _fonthex;
                         });
                       },
                     ),
                     DropdownButton(
                       underline:
                       DropdownButtonHideUnderline(child: Container()),
-                      value: fourthcolumnsixthdropdowhex,
+                      value: _fourthcolumnfifthdropdowhex,
                       icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                       items: hexDropDownNumbersList,
-                      onChanged: (int? fourthcolumnsixthdropdowhexChange) {
+                      onChanged: (int? _fourthcolumnfifthdropdowhexChange) {
                         setState(() {
-                          fourthcolumnsixthdropdowhex =
-                          fourthcolumnsixthdropdowhexChange!;
+                          _fourthcolumnfifthdropdowhex =
+                          _fourthcolumnfifthdropdowhexChange!;
 
-                          _chosenhex = fourthcolumnsixthdropdowhex;
-                          _hexalignedList = hexagramAlignment(_chosenhex);
+                          _chosenhex = _fourthcolumnfifthdropdowhex;
+
+                          _hexalignedCrossList = hexagramCrossAlignment(_chosenhex);
+
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[0]);
                           _controllerfourthtop.jumpToPage(_hexalignedList[0]);
                           _controllerfourthmid.jumpToPage(_hexalignedList[1]);
                           _controllerfourthbot.jumpToPage(_hexalignedList[2]);
+                          _fourthcolumnfirstdropdowhex = _hexalignedCrossList[0];
+                          _fourthdcolumnthirddropdowhex = _hexalignedCrossList[0];
+                          _fourthcolumnfourthdropdowhex = _hexalignedCrossList[0];
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[0]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _fourthcolumnseconddropdowhex = _fonthex;
 
-                          _controllerthirdtop.jumpToPage(_hexalignedList[3]);
-                          _controllerthirdmid.jumpToPage(_hexalignedList[4]);
-                          _controllerthirdbot.jumpToPage(_hexalignedList[5]);
+                          _hexalignedList = hexagramAlignment(_hexalignedCrossList[1]);
+                          _controllerthirdtop.jumpToPage(_hexalignedList[0]);
+                          _controllerthirdmid.jumpToPage(_hexalignedList[1]);
+                          _controllerthirdbot.jumpToPage(_hexalignedList[2]);
+                          _thirdcolumnfirstdropdowhex = _hexalignedCrossList[1];
+                          _thirddcolumnthirddropdowhex = _hexalignedCrossList[1];
+                          _thirdcolumnfourthdropdowhex = _hexalignedCrossList[1];
+                          _thirdcolumnfifthdropdowhex = _hexalignedCrossList[1];
+                          _fonthexindex = fontHexNumbersList.indexOf(_hexalignedCrossList[1]);
+                          _fonthex = fontHexOrderList[_fonthexindex];
+                          _thirdcolumnseconddropdowhex = _fonthex;
                         });
                       },
                     ),
@@ -9303,10 +6602,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexfourthtop, reason) {
                       setState(() {
                         _currentfourthtop = indexfourthtop;
-                        hexagramVal = ((_currentfourthtop + 1) * 100 +
+                        _hexagramvalue = ((_currentfourthtop + 1) * 100 +
                             (_currentfourthmid + 1) * 10 +
                             (_currentfourthbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           //Quarter of Mutation
                           case 111:
                             _controllerfourthtoptxt.text = '1';
@@ -9669,10 +6968,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexfourthmid, reason) {
                       setState(() {
                         _currentfourthmid = indexfourthmid;
-                        hexagramVal = ((_currentfourthtop + 1) * 100 +
+                        _hexagramvalue = ((_currentfourthtop + 1) * 100 +
                             (_currentfourthmid + 1) * 10 +
                             (_currentfourthbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           //Quarter of Mutation
                           case 111:
                             _controllerfourthtoptxt.text = '1';
@@ -10035,10 +7334,10 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
                     onPageChanged: (indexfourthbot, reason) {
                       setState(() {
                         _currentfourthbot = indexfourthbot;
-                        hexagramVal = ((_currentfourthtop + 1) * 100 +
+                        _hexagramvalue = ((_currentfourthtop + 1) * 100 +
                             (_currentfourthmid + 1) * 10 +
                             (_currentfourthbot + 1));
-                        switch (hexagramVal) {
+                        switch (_hexagramvalue) {
                           //Quarter of Mutation
                           case 111:
                             _controllerfourthtoptxt.text = '1';
