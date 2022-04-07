@@ -5,7 +5,7 @@ import 'rotations/rotatehexagrams.dart';
 import 'rotations/rotatehexlanguage.dart';
 //import 'rotations/rotateincrosses.dart';
 //import 'rotations/rotatemultiple.dart';
-import 'rotations/rotatejson.dart';
+import 'rotations/rotatesubstructure.dart';
 import 'rotations/rotateone.dart';
 import 'rotations/rotateplanets.dart';
 
