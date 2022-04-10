@@ -21,5 +21,11 @@ A few resources to get you started if this is your first breath:
 App can be played in this link:
 [Play RotationTime](https://rotation-time.web.app/#/)
 
+Astrology Integration:
+integration to present Human Design (align iChing around the Zodiac).
+https://github.com/ryuphi/astrology-api
+- integrate with Astrology info follow the [Astrology API](https://github.com/ryuphi/astrology-api)
+- getting info based on localhost http requests
+
 BE.BREATH.EARN.I.Don't.Know.Meditation
 [BE: Breath.Earn.I.don't.know.Meditation](https://www.beidontknow.com)

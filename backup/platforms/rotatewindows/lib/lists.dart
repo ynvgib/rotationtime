@@ -1170,7 +1170,7 @@ final List<DropdownMenuItem<String>> fontHexList =
     child: Text(chosenHexagrams,
         style: const TextStyle(
           color: Colors.black,
-          fontSize: 20.0,
+          fontSize: 30.0,
           fontFamily: 'iChing',
         )),
   );
@@ -1193,7 +1193,7 @@ final List<DropdownMenuItem<String>> iChingFontList =
     child: Text(fontHexagrams,
         style: const TextStyle(
           color: Colors.black,
-          fontSize: 20.0,
+          fontSize: 30.0,
           fontFamily: 'iChing',
         )),
   );

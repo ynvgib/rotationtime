@@ -1,27 +1,31 @@
+import 'dart:async';
+
 import 'package:finallyicanlearn/logic/hdsubstructure.dart';
 import 'package:finallyicanlearn/models/astrologyjsonmap.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
 class AstrologyServices {
-  static Future<List> getAstrology() async {
+  static Future<List> getAstrology(DateTime _userDateTime) async {
     List _planetsSubStructureList = [];
 
-    //int _nowms = DateTime.now().millisecondsSinceEpoch;
-    //DateTime _now = DateTime(_nowms);
-    DateTime _now = DateTime.now();
-    print (_now);
+    //DateTime _now = DateTime.now();
+    //DateTime _userDateTime = DateTime.now();
+    print ('Now: $_userDateTime');
 
-    //int _designms = _nowms - 7915200000; // 88 degress in ms
-    //DateTime _designdt = DateTime(_designms);
-    //DateTime _nowdt = DateTime(_nowms);
-    //DateTime _designdt = _nowms.subtract(const Duration(milliseconds: 7915200000));
-    //print (_designdt);
+    String _formattedDate = DateFormat('yyyy-MM-dd').format(_userDateTime);
+    String _formattedTime = DateFormat.Hms().format(_userDateTime);
 
-// 12 Hour format:
 
-    String _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
-    String _formattedTime = DateFormat.Hms().format(_now);
+    //int _caculatedangle = 88;
+    //final int _sunangleinminutes = 4;
+    //int _caculatedminutes;
+    //int _caculateddays;
+    //int _calculatedesignminutes = 352;
+    //DateTime _designDateTime;
+
+    //_designDateTime = _userDateTime.subtract(Duration(minutes: _calculatedesignminutes));
+    //print ('Design: $_designDateTime');
 
     //String _designformattedDate = DateFormat('yyyy-MM-dd').format(_designdt);
     //String _designformattedTime = DateFormat('yyyy-MM-dd').format(_designdt);
@@ -74,7 +78,6 @@ class AstrologyServices {
         _latitude.toString() +
         "&longitude=" +
         _longitude.toString();
-    //print(uri_);
     final Astrology astrology;
     try {
       var response = await http.get(Uri.parse(uri_));
@@ -157,6 +160,7 @@ class AstrologyServices {
       _plutoBodySubStructure = hdSubStructure(_plutolongitude);
 
       _planetsSubStructureList = [
+        _timeDate,
         _sunSubStructure,
         _earthSubStructure,
         _moonSubStructure,
@@ -168,18 +172,6 @@ class AstrologyServices {
         _uranusSubStructure,
         _neptuneSubStructure,
         _plutoSubStructure,
-        _sunBodySubStructure,
-        _earthBodySubStructure,
-        _moonBodySubStructure,
-        _mercuryBodySubStructure,
-        _venusBodySubStructure,
-        _marsBodySubStructure,
-        _jupiterBodySubStructure,
-        _saturnBodySubStructure,
-        _uranusBodySubStructure,
-        _neptuneBodySubStructure,
-        _plutoBodySubStructure,
-        _timeDate
       ];
     } catch (err) {
       Exception(err);
