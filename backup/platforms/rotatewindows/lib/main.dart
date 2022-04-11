@@ -19,9 +19,6 @@ class MainPage extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           routes: {
             '/': (ctx) => const HomePage(),
-            //'/multiplehexagrams': (ctx) => const RotateMultipleHexagrams(),
-            //'/rotatesubnew': (ctx) => RotateSubNew(),
-            //'/rotatesubstructure': (ctx) => RotateSubStructure(),
             '/datetimepicker': (ctx) => const RotateDateTime(),
             '/rotateone': (ctx) => const RotateOneHexagram(),
             //'/rotateincrosses': (ctx) => const RotateInCrosses(),
@@ -94,12 +91,8 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           children: const <Widget>[
             //MappingItem('PICK DATE AND TIME (under development)', '/datetimepicker'),
-            //MappingItem('FUTURE TEST (under development)', '/rotatesubnew'),
-            //MappingItem('PLANETS PARSING (under development)', '/rotatesubstructure'),
             MappingItem('ONE HEXAGRAM', '/rotateone'),
             MappingItem('HEXAGRAM LANGUAGE', '/hexlanguage'),
-            //MappingItem('MULTIPLE HEXAGRAMS', '/multiplehexagrams'),
-            //MappingItem('CROSSES HEXAGRAMS', '/rotateincrosses'),
             MappingItem('ASTRO PLANETS', '/rotateplanets'),
             MappingItem('HD CHART', '/rotatechart'),
             MappingItem('HEXGRAM TABLE', '/rotatehexagramtable'),

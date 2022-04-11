@@ -64,7 +64,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
                   int _hexagramfontindex =
                       fontHexNumbersList.indexOf(_hexagramindex);
                   return Container(
-                    padding: EdgeInsets.fromLTRB(15, 15, 5, 5),
+                    padding: const EdgeInsets.fromLTRB(15, 15, 5, 5),
                     width: 70,
                     margin: const EdgeInsets.all(2.0),
                     child: FittedBox(
@@ -135,7 +135,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
                       int _hexagramfontindex =
                       fontHexNumbersList.indexOf(_hexagramindex);
                       return Container(
-                        padding: EdgeInsets.fromLTRB(15, 15, 5, 5),
+                        padding: const EdgeInsets.fromLTRB(15, 15, 5, 5),
                         width: 70,
                         margin: const EdgeInsets.all(2.0),
                         child: FittedBox(
@@ -206,7 +206,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
                       int _hexagramfontindex =
                       fontHexNumbersList.indexOf(_hexagramindex);
                       return Container(
-                        padding: EdgeInsets.fromLTRB(15, 15, 5, 5),
+                        padding: const EdgeInsets.fromLTRB(15, 15, 5, 5),
                         width: 70,
                         margin: const EdgeInsets.all(2.0),
                         child: FittedBox(
@@ -277,7 +277,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
                       int _hexagramfontindex =
                       fontHexNumbersList.indexOf(_hexagramindex);
                       return Container(
-                        padding: EdgeInsets.fromLTRB(15, 15, 5, 5),
+                        padding: const EdgeInsets.fromLTRB(15, 15, 5, 5),
                         width: 70,
                         margin: const EdgeInsets.all(2.0),
                         child: FittedBox(

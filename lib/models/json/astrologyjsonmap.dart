@@ -65,6 +65,7 @@ class Aspects {
 class Astros {
   Astros({
     required this.sun,
+    required this.northnode,
     required this.moon,
     required this.mercury,
     required this.venus,
@@ -83,6 +84,7 @@ class Astros {
   });
 
   Sun sun;
+  NorthNode northnode;
   Moon moon;
   Mercury mercury;
   Venus venus;
@@ -101,6 +103,7 @@ class Astros {
 
   factory Astros.fromJson(Map<String, dynamic> json) => Astros(
     sun: Sun.fromJson(json["sun"]),
+    northnode: NorthNode.fromJson(json["northnode"]),
     moon: Moon.fromJson(json["moon"]),
     mercury: Mercury.fromJson(json["mercury"]),
     venus: Venus.fromJson(json["venus"]),
@@ -120,6 +123,7 @@ class Astros {
 
   Map<String, dynamic> toJson() => {
     "sun": sun.toJson(),
+    "northnode": northnode.toJson(),
     "moon": moon.toJson(),
     "mercury": mercury.toJson(),
     "venus": venus.toJson(),
@@ -173,6 +177,43 @@ class Sun {
     "type": type,
   };
 }
+
+class NorthNode {
+  NorthNode({
+    required this.name,
+    required this.position,
+    required this.speed,
+    required this.retrograde,
+    required this.sign,
+    required this.type,
+  });
+
+  String name;
+  Position position;
+  double speed;
+  bool retrograde;
+  int sign;
+  String type;
+
+  factory NorthNode.fromJson(Map<String, dynamic> json) => NorthNode(
+    name: json["name"],
+    position: Position.fromJson(json["position"]),
+    speed: json["speed"].toDouble(),
+    retrograde: json["retrograde"],
+    sign: json["sign"],
+    type: json["type"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "name": name,
+    "position": position.toJson(),
+    "speed": speed,
+    "retrograde": retrograde,
+    "sign": sign,
+    "type": type,
+  };
+}
+
 class Moon {
   Moon({
     required this.name,
