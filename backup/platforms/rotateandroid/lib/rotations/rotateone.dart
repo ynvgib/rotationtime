@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:finallyicanlearn/lists.dart';
+import 'package:finallyicanlearn/models/lists.dart';
 
 // /rotatehexwithlogic
 // rotate one hexagram

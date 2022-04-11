@@ -1,8 +1,11 @@
 class Hexagram {
-  int id;
-  String name;
+  int? gate;
+  int? line;
+  int? color;
+  int? tone;
+  int? base;
 
   //List<Hexagram>;
 
-  Hexagram({required this.id, required this.name});
+  Hexagram({this.gate, this.line, this.color, this.tone, this.base});
 }

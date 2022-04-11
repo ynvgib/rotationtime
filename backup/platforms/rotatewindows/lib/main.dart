@@ -1,6 +1,11 @@
+import 'package:finallyicanlearn/models/datetimepicker.dart';
+import 'package:finallyicanlearn/rotations/rotatechart.dart';
+import 'package:finallyicanlearn/rotations/rotatehexagrams.dart';
+import 'package:finallyicanlearn/rotations/rotatehexlanguage.dart';
+import 'package:finallyicanlearn/rotations/rotateone.dart';
+import 'package:finallyicanlearn/rotations/rotateplanets.dart';
 import 'package:flutter/material.dart';
 
-// IMPORT CLASSES IN MAIN
 
 void main() => runApp(const MainPage());
 

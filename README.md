@@ -22,10 +22,11 @@ App can be played in this link:
 [Play RotationTime](https://rotation-time.web.app/#/)
 
 Astrology Integration:
-integration to present Human Design (align iChing around the Zodiac).
-https://github.com/ryuphi/astrology-api
-- integrate with Astrology info follow the [Astrology API](https://github.com/ryuphi/astrology-api)
-- getting info based on localhost http requests
+integration to present Human Design (rotate iChing around the Zodiac).
+using github.com/ryuphi/astrology-api to get the longtitude of the planets
+through HTTP request.
+- linkl to implement [Astrology API](https://github.com/ryuphi/astrology-api)
+- RotationTime getting info based on localhost http requests
 
 BE.BREATH.EARN.I.Don't.Know.Meditation
 [BE: Breath.Earn.I.don't.know.Meditation](https://www.beidontknow.com)

@@ -1,4 +1,4 @@
-import 'package:finallyicanlearn/lists.dart';
+import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/material.dart';
 //import 'package:finallyicanlearn/lists.dart';
 

@@ -1,5 +1,5 @@
 // used for LIST mixHexagramSlidersNew
-import 'package:finallyicanlearn/lists.dart';
+import 'package:finallyicanlearn/models/lists.dart';
 
 List<int> hexagramAlignment(int _mainhexagram) {
   int _maintop = 0,

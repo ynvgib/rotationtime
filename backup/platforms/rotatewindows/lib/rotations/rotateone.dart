@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
+import 'package:finallyicanlearn/models/rotateclasses.dart';
+import 'package:finallyicanlearn/services/fetchastrology.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:finallyicanlearn/lists.dart';
+import 'package:finallyicanlearn/models/lists.dart';
 
 // /rotatehexwithlogic
 // rotate one hexagram
@@ -46,10 +48,478 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
   List<int> _hexalignedList = [0, 0, 0];
 
+  DateTime _now = DateTime.now();
+  List<Hexagram> _planetsList = [];
+
+  Hexagram _sunhex = Hexagram(),
+            _earthhex = Hexagram(),
+            _moonhex = Hexagram(),
+            _mercuryhex = Hexagram(),
+            _venushex = Hexagram(),
+            _marshex = Hexagram(),
+            _jupiterhex = Hexagram(),
+            _saturnhex = Hexagram(),
+            _uranushex = Hexagram(),
+            _neptunehex = Hexagram(),
+            _plutohex = Hexagram();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _sunhex = _planetsList[0];
+
+
+            _controllerhextext.text = _sunhex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_sunhex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_sunhex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_sunhex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_sunhex.gate!];
+
+            _hexalignedList = hexagramAlignment(_sunhex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/sun.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _earthhex = _planetsList[1];
+
+
+            _controllerhextext.text = _earthhex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_earthhex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_earthhex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_earthhex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_earthhex.gate!];
+
+            _hexalignedList = hexagramAlignment(_earthhex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/earth.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _moonhex = _planetsList[2];
+
+
+            _controllerhextext.text = _moonhex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_moonhex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_moonhex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_moonhex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_moonhex.gate!];
+
+            _hexalignedList = hexagramAlignment(_moonhex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  image: const DecorationImage(
+                      image: AssetImage("assets/planets/moon.png")),
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: const Offset(4, 4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                    const BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-4, -4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                  ]),
+            ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _mercuryhex = _planetsList[3];
+
+
+            _controllerhextext.text = _mercuryhex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_mercuryhex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_mercuryhex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_mercuryhex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_mercuryhex.gate!];
+
+            _hexalignedList = hexagramAlignment(_mercuryhex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  image: const DecorationImage(
+                      image: AssetImage("assets/planets/mercury.png")),
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: const Offset(4, 4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                    const BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-4, -4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                  ]),
+            ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _venushex = _planetsList[4];
+
+
+            _controllerhextext.text = _venushex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_venushex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_venushex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_venushex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_venushex.gate!];
+
+            _hexalignedList = hexagramAlignment(_venushex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  image: const DecorationImage(
+                      image: AssetImage("assets/planets/venus.png")),
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: const Offset(4, 4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                    const BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-4, -4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                  ]),
+            ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _marshex = _planetsList[5];
+
+
+            _controllerhextext.text = _marshex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_marshex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_marshex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_marshex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_marshex.gate!];
+
+            _hexalignedList = hexagramAlignment(_marshex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  image: const DecorationImage(
+                      image: AssetImage("assets/planets/mars.png")),
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: const Offset(4, 4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                    const BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-4, -4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                  ]),
+            ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _jupiterhex = _planetsList[6];
+
+
+            _controllerhextext.text = _jupiterhex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_jupiterhex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_jupiterhex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_jupiterhex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_jupiterhex.gate!];
+
+            _hexalignedList = hexagramAlignment(_jupiterhex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  image: const DecorationImage(
+                      image: AssetImage("assets/planets/jupiter.png")),
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: const Offset(4, 4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                    const BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-4, -4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                  ]),
+            ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _saturnhex = _planetsList[7];
+
+
+            _controllerhextext.text = _saturnhex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_saturnhex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_saturnhex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_saturnhex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_saturnhex.gate!];
+
+            _hexalignedList = hexagramAlignment(_saturnhex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  image: const DecorationImage(
+                      image: AssetImage("assets/planets/saturn.png")),
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: const Offset(4, 4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                    const BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-4, -4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                  ]),
+            ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _uranushex = _planetsList[8];
+
+
+            _controllerhextext.text = _uranushex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_uranushex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_uranushex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_uranushex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_uranushex.gate!];
+
+            _hexalignedList = hexagramAlignment(_uranushex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  image: const DecorationImage(
+                      image: AssetImage("assets/planets/uranus.png")),
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: const Offset(4, 4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                    const BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-4, -4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                  ]),
+            ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _neptunehex = _planetsList[9];
+
+
+            _controllerhextext.text = _neptunehex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_neptunehex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_neptunehex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_neptunehex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_neptunehex.gate!];
+
+            _hexalignedList = hexagramAlignment(_neptunehex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  image: const DecorationImage(
+                      image: AssetImage("assets/planets/neptune.png")),
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: const Offset(4, 4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                    const BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-4, -4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                  ]),
+            ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _plutohex = _planetsList[10];
+
+
+            _controllerhextext.text = _plutohex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_plutohex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_plutohex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_plutohex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_plutohex.gate!];
+
+            _hexalignedList = hexagramAlignment(_plutohex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  image: const DecorationImage(
+                      image: AssetImage("assets/planets/pluto.png")),
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: const Offset(4, 4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                    const BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-4, -4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                  ]),
+            ),),
+        ],
           title: const Text('Rotate One Hexagram'),
           backgroundColor: Colors.blueGrey),
       backgroundColor: Colors.grey[100],
@@ -139,7 +609,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                               hexagramVerbList[_dropdownvalue];
                           _controllertopfourthtext.text =
                               hexagramAdverbList[_dropdownvalue];
-                          
+
                           _chosenhex = _dropdownvalue;
                           _hexalignedList = hexagramAlignment(_chosenhex);
                           _controllertop.jumpToPage(_hexalignedList[0]);
