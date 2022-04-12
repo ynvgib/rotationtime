@@ -11,8 +11,6 @@ class AstrologyServices {
     List<Hexagram> _planetsHexagramList = [];
 
     final _utcTime = _now.toUtc();
-    print (_now);
-    print (_utcTime);
 
     String _formattedDate = DateFormat('yyyy-MM-dd').format(_utcTime);
     String _formattedTime = DateFormat.Hms().format(_utcTime);
@@ -61,7 +59,6 @@ class AstrologyServices {
     final Astrology astrology;
     try {
       var response = await http.get(Uri.parse(_uri));
-      print (_uri);
 
       astrology = astrologyFromJson(response.body);
 

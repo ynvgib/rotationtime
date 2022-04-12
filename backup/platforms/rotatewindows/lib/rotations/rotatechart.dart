@@ -1,3 +1,6 @@
+import 'package:finallyicanlearn/models/lists.dart';
+import 'package:finallyicanlearn/models/rotateclasses.dart';
+import 'package:finallyicanlearn/services/fetchastrology.dart';
 import 'package:flutter/material.dart';
 
 class RotateChart extends StatefulWidget {
@@ -11,99 +14,75 @@ class RotateChart extends StatefulWidget {
 
 class _RotateChartState extends State<RotateChart> {
   bool isHeadVisible = true,
-   isAjnaVisible = true,
-   isThroatVisible = true,
-   isGVisible = true,
-   isSacralVisible = true,
-   isRootVisible = true,
-   isSpleenVisible = true,
-   isSolarVisible = true,
-   isHeartVisible = true,
-   isIntegrationVisible = true;
+      isAjnaVisible = true,
+      isThroatVisible = true,
+      isGVisible = true,
+      isSacralVisible = true,
+      isRootVisible = true,
+      isSpleenVisible = true,
+      isSolarVisible = true,
+      isHeartVisible = true,
+      isIntegrationVisible = true;
 
   double fontSizeGate = 18.0;
 
   final List<bool> _isHeadList = List<bool>.filled(3, false, growable: false),
-   _isAjnaTopList =
-      List<bool>.filled(3, false, growable: false),
-   _isAjnaBottomList =
-      List<bool>.filled(3, false, growable: false),
-   _isThroatFirstBottomList =
-      List<bool>.filled(2, false, growable: false),
+      _isAjnaTopList = List<bool>.filled(3, false, growable: false),
+      _isAjnaBottomList = List<bool>.filled(3, false, growable: false),
+      _isThroatFirstBottomList = List<bool>.filled(2, false, growable: false),
+      _isThroatSecondBottomList = List<bool>.filled(1, false, growable: false),
+      _isThroatThirdTopList = List<bool>.filled(3, false, growable: false),
+      _isThroatThirdBottomList = List<bool>.filled(3, false, growable: false),
+      _isThroatFourthBottomList = List<bool>.filled(1, false, growable: false),
+      _isThroatFifthBottomList = List<bool>.filled(2, false, growable: false),
+      _isGTopSelectedList = List<bool>.filled(3, false, growable: false),
+      _isGBottomSelectedList = List<bool>.filled(5, false, growable: false),
+      _isSacralTopSelectedList = List<bool>.filled(5, false, growable: false),
+      _isSacralBottomSelectedList =
+          List<bool>.filled(5, false, growable: false),
+      _isRootFirstList = List<bool>.filled(2, false, growable: false),
+      _isRootSecondList = List<bool>.filled(1, false, growable: false),
+      _isRootThirdList = List<bool>.filled(3, false, growable: false),
+      _isRootFourthList = List<bool>.filled(1, false, growable: false),
+      _isRootFifthList = List<bool>.filled(2, false, growable: false),
+      _isHeartFirstTopList = List<bool>.filled(1, false, growable: false),
+      _isHeartFirstBottomList = List<bool>.filled(1, false, growable: false),
+      _isHeartSecondBottomList = List<bool>.filled(1, false, growable: false),
+      _isHeartThirdTopList = List<bool>.filled(1, false, growable: false),
+      _isHeartThirdBottomList = List<bool>.filled(1, false, growable: false),
+      _isSolarFirstBottomList = List<bool>.filled(1, false, growable: false),
+      _isSolarSecondTopList = List<bool>.filled(1, false, growable: false),
+      _isSolarSecondBottomList = List<bool>.filled(1, false, growable: false),
+      _isSolarThirdTopList = List<bool>.filled(2, false, growable: false),
+      _isSolarThirdBottomList = List<bool>.filled(2, false, growable: false),
+      _isSpleenFirstTopList = List<bool>.filled(2, false, growable: false),
+      _isSpleenFirstBottomList = List<bool>.filled(2, false, growable: false),
+      _isSpleenSecondTopList = List<bool>.filled(1, false, growable: false),
+      _isSpleenSecondBottomList = List<bool>.filled(1, false, growable: false),
+      _isSpleenThirdTopList = List<bool>.filled(1, false, growable: false),
+      _isSpleenThirdBottomList = List<bool>.filled(1, false, growable: false),
+      _isIntegrationBottomSelectedList =
+          List<bool>.filled(1, false, growable: false),
+      _isCenterList = List<bool>.filled(9, true, growable: false);
 
-   _isThroatSecondBottomList =
-      List<bool>.filled(1, false, growable: false),
-   _isThroatThirdTopList =
-      List<bool>.filled(3, false, growable: false),
-   _isThroatThirdBottomList =
-      List<bool>.filled(3, false, growable: false),
+  DateTime _now = DateTime.now();
+  List<Hexagram> _planetsList = [];
+  Hexagram _sunhex = Hexagram(),
+      _earthhex = Hexagram(),
+      _northnodehex = Hexagram(),
+      _southnodehex = Hexagram(),
+      _moonhex = Hexagram(),
+      _mercuryhex = Hexagram(),
+      _venushex = Hexagram(),
+      _marshex = Hexagram(),
+      _jupiterhex = Hexagram(),
+      _saturnhex = Hexagram(),
+      _uranushex = Hexagram(),
+      _neptunehex = Hexagram(),
+      _plutohex = Hexagram();
 
-   _isThroatFourthBottomList =
-      List<bool>.filled(1, false, growable: false),
-
-   _isThroatFifthBottomList =
-      List<bool>.filled(2, false, growable: false),
-
-   _isGTopSelectedList =
-      List<bool>.filled(3, false, growable: false),
-   _isGBottomSelectedList =
-      List<bool>.filled(5, false, growable: false),
-   _isSacralTopSelectedList =
-      List<bool>.filled(5, false, growable: false),
-   _isSacralBottomSelectedList =
-      List<bool>.filled(5, false, growable: false),
-
-   _isRootFirstList =
-      List<bool>.filled(2, false, growable: false),
-   _isRootSecondList =
-      List<bool>.filled(1, false, growable: false),
-   _isRootThirdList =
-      List<bool>.filled(3, false, growable: false),
-   _isRootFourthList =
-      List<bool>.filled(1, false, growable: false),
-   _isRootFifthList =
-      List<bool>.filled(2, false, growable: false),
-
-   _isHeartFirstTopList =
-      List<bool>.filled(1, false, growable: false),
-   _isHeartFirstBottomList =
-      List<bool>.filled(1, false, growable: false),
-
-   _isHeartSecondBottomList =
-      List<bool>.filled(1, false, growable: false),
-   _isHeartThirdTopList =
-      List<bool>.filled(1, false, growable: false),
-   _isHeartThirdBottomList =
-      List<bool>.filled(1, false, growable: false),
-
-   _isSolarFirstBottomList =
-      List<bool>.filled(1, false, growable: false),
-   _isSolarSecondTopList =
-      List<bool>.filled(1, false, growable: false),
-   _isSolarSecondBottomList =
-      List<bool>.filled(1, false, growable: false),
-   _isSolarThirdTopList =
-      List<bool>.filled(2, false, growable: false),
-   _isSolarThirdBottomList =
-      List<bool>.filled(2, false, growable: false),
-
-   _isSpleenFirstTopList =
-      List<bool>.filled(2, false, growable: false),
-   _isSpleenFirstBottomList =
-      List<bool>.filled(2, false, growable: false),
-   _isSpleenSecondTopList =
-      List<bool>.filled(1, false, growable: false),
-   _isSpleenSecondBottomList =
-      List<bool>.filled(1, false, growable: false),
-   _isSpleenThirdTopList =
-      List<bool>.filled(1, false, growable: false),
-   _isSpleenThirdBottomList =
-      List<bool>.filled(1, false, growable: false),
-
-   _isIntegrationBottomSelectedList =
-      List<bool>.filled(1, false, growable: false),
-
-   _isCenterList = List<bool>.filled(9, true, growable: false);
+  List<int> _gatesList = [];
+  List<int> _finalgatelist = [];
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +91,511 @@ class _RotateChartState extends State<RotateChart> {
         title: const Text('Rotate Human Design Chart'),
         backgroundColor: Colors.blueGrey,
         actions: [
+          ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  for (var i = 0; i < hexagramslist.length; i++) {
+                    switch (hexagramslist[i]) {
+                      case 64:
+                        _isHeadList[0] = !_isHeadList[0];
+                        break;
+                      case 61:
+                        _isHeadList[1] = !_isHeadList[1];
+                        break;
+                      case 63:
+                        _isHeadList[2] = !_isHeadList[2];
+                        break;
+                      case 47:
+                        _isAjnaTopList[0] = !_isAjnaTopList[0];
+                        break;
+                      case 24:
+                        _isAjnaTopList[1] = !_isAjnaTopList[1];
+                        break;
+                      case 4:
+                        _isAjnaTopList[2] = !_isAjnaTopList[2];
+                        break;
+                      case 17:
+                        _isAjnaBottomList[0] = !_isAjnaBottomList[0];
+                        break;
+                      case 43:
+                        _isAjnaBottomList[1] = !_isAjnaBottomList[1];
+                        break;
+                      case 11:
+                        _isAjnaBottomList[2] = !_isAjnaBottomList[2];
+                        break;
+                      case 62:
+                        _isThroatThirdTopList[0] = !_isThroatThirdTopList[0];
+                        break;
+                      case 23:
+                        _isThroatThirdTopList[1] = !_isThroatThirdTopList[1];
+                        break;
+                      case 56:
+                        _isThroatThirdTopList[2] = !_isThroatThirdTopList[2];
+                        break;
+                      case 31:
+                        _isThroatThirdBottomList[0] =
+                        !_isThroatThirdBottomList[0];
+                        break;
+                      case 8:
+                        _isThroatThirdBottomList[1] =
+                        !_isThroatThirdBottomList[1];
+                        break;
+                      case 33:
+                        _isThroatThirdBottomList[2] =
+                        !_isThroatThirdBottomList[2];
+                        break;
+                      case 16:
+                        _isThroatFirstBottomList[0] =
+                        !_isThroatFirstBottomList[0];
+                        break;
+                      case 20:
+                        _isThroatFirstBottomList[1] =
+                        !_isThroatFirstBottomList[1];
+                        _isIntegrationBottomSelectedList[0] =
+                        !_isIntegrationBottomSelectedList[0];
+                        break;
+                      case 45:
+                        _isThroatSecondBottomList[0] =
+                        !_isThroatSecondBottomList[0];
+                        _isThroatFourthBottomList[0] =
+                        !_isThroatFourthBottomList[0];
+                        break;
+                      case 12:
+                        _isThroatFifthBottomList[0] =
+                        !_isThroatFifthBottomList[0];
+                        break;
+                      case 35:
+                        _isThroatFifthBottomList[1] =
+                        !_isThroatFifthBottomList[1];
+                        break;
+                      case 21:
+                        _isHeartFirstTopList[0] = !_isHeartFirstTopList[0];
+                        _isHeartThirdTopList[0] = !_isHeartThirdTopList[0];
+                        break;
+                      case 26:
+                        _isHeartFirstBottomList[0] =
+                        !_isHeartFirstBottomList[0];
+                        break;
+                      case 51:
+                        _isHeartSecondBottomList[0] =
+                        !_isHeartSecondBottomList[0];
+                        break;
+                      case 40:
+                        _isHeartThirdBottomList[0] =
+                        !_isHeartThirdBottomList[0];
+                        break;
+                      case 7:
+                        _isGTopSelectedList[0] = !_isGTopSelectedList[0];
+                        break;
+                      case 1:
+                        _isGTopSelectedList[1] = !_isGTopSelectedList[1];
+                        break;
+                      case 13:
+                        _isGTopSelectedList[2] = !_isGTopSelectedList[2];
+                        break;
+                      case 10:
+                        _isGBottomSelectedList[0] = !_isGBottomSelectedList[0];
+                        break;
+                      case 15:
+                        _isGBottomSelectedList[1] = !_isGBottomSelectedList[1];
+                        break;
+                      case 2:
+                        _isGBottomSelectedList[2] = !_isGBottomSelectedList[2];
+                        break;
+                      case 46:
+                        _isGBottomSelectedList[3] = !_isGBottomSelectedList[3];
+                        break;
+                      case 25:
+                        _isGBottomSelectedList[4] = !_isGBottomSelectedList[4];
+                        break;
+                      case 48:
+                        _isSpleenFirstTopList[0] = !_isSpleenFirstTopList[0];
+                        break;
+                      case 57:
+                        _isSpleenFirstTopList[1] = !_isSpleenFirstTopList[1];
+                        _isSpleenThirdTopList[0] = !_isSpleenThirdTopList[0];
+                        break;
+                      case 18:
+                        _isSpleenFirstBottomList[0] =
+                        !_isSpleenFirstBottomList[0];
+                        break;
+                      case 28:
+                        _isSpleenFirstBottomList[1] =
+                        !_isSpleenFirstBottomList[1];
+                        break;
+                      case 44:
+                        _isSpleenSecondTopList[0] = !_isSpleenSecondTopList[0];
+                        break;
+                      case 32:
+                        _isSpleenSecondBottomList[0] =
+                        !_isSpleenSecondBottomList[0];
+                        break;
+                      case 50:
+                        _isSpleenThirdBottomList[0] =
+                        !_isSpleenThirdBottomList[0];
+                        break;
+                      case 34:
+                        _isSacralTopSelectedList[0] =
+                        !_isSacralTopSelectedList[0];
+                        break;
+                      case 5:
+                        _isSacralTopSelectedList[1] =
+                        !_isSacralTopSelectedList[1];
+                        break;
+                      case 14:
+                        _isSacralTopSelectedList[2] =
+                        !_isSacralTopSelectedList[2];
+                        break;
+                      case 29:
+                        _isSacralTopSelectedList[3] =
+                        !_isSacralTopSelectedList[3];
+                        break;
+                      case 27:
+                        _isSacralBottomSelectedList[0] =
+                        !_isSacralBottomSelectedList[0];
+                        break;
+                      case 42:
+                        _isSacralBottomSelectedList[1] =
+                        !_isSacralBottomSelectedList[1];
+                        break;
+                      case 3:
+                        _isSacralBottomSelectedList[2] =
+                        !_isSacralBottomSelectedList[2];
+                        break;
+                      case 9:
+                        _isSacralBottomSelectedList[3] =
+                        !_isSacralBottomSelectedList[3];
+                        break;
+                      case 59:
+                        _isSacralBottomSelectedList[4] =
+                        !_isSacralBottomSelectedList[4];
+                        break;
+                      case 6:
+                        _isSolarFirstBottomList[0] = !_isSolarFirstBottomList[0];
+                        break;
+                      case 37:
+                        _isSolarSecondTopList[0] = !_isSolarSecondTopList[0];
+                        break;
+                      case 49:
+                        _isSolarSecondBottomList[0] = !_isSolarSecondBottomList[0];
+                        break;
+                      case 22:
+                        _isSolarThirdTopList[0] = !_isSolarThirdTopList[0];
+                        break;
+                      case 36:
+                        _isSolarThirdTopList[1] = !_isSolarThirdTopList[1];
+                        break;
+                      case 39:
+                        _isSolarThirdBottomList[0] = !_isSolarThirdBottomList[0];
+                        break;
+                      case 30:
+                        _isSolarThirdBottomList[1] = !_isSolarThirdBottomList[1];
+                        break;
+                      case 58:
+                        _isRootFirstList[0] = !_isRootFirstList[0];
+                        break;
+                      case 38:
+                        _isRootFirstList[1] = !_isRootFirstList[1];
+                        break;
+                      case 54:
+                        _isRootSecondList[0] = !_isRootSecondList[0];
+                        break;
+                      case 53:
+                        _isRootThirdList[0] = !_isRootThirdList[0];
+                        break;
+                      case 60:
+                        _isRootThirdList[1] = !_isRootThirdList[1];
+                        break;
+                      case 52:
+                        _isRootThirdList[2] = !_isRootThirdList[2];
+                        break;
+                      case 19:
+                        _isRootFourthList[0] = !_isRootFourthList[0];
+                        break;
+                      case 55:
+                        _isRootFifthList[0] = !_isRootFifthList[0];
+                        break;
+                      case 41:
+                        _isRootFifthList[1] = !_isRootFifthList[1];
+                        break;
+                      default:
+                        Exception('Gate not in List');
+                    }
+                  }
+                });
+              },
+              child: const Text('Select All')),
+          ElevatedButton(
+              onPressed: () async {
+                _now = DateTime.now();
+                _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+                _sunhex = _planetsList[0];
+                _earthhex = _planetsList[1];
+                _northnodehex = _planetsList[2];
+                _southnodehex = _planetsList[3];
+                _moonhex = _planetsList[4];
+                _mercuryhex = _planetsList[5];
+                _venushex = _planetsList[6];
+                _marshex = _planetsList[7];
+                _jupiterhex = _planetsList[8];
+                _saturnhex = _planetsList[9];
+                _uranushex = _planetsList[10];
+                _neptunehex = _planetsList[11];
+                _plutohex = _planetsList[12];
+
+                _gatesList = [
+                  _sunhex.gate!,
+                  _earthhex.gate!,
+                  _northnodehex.gate!,
+                  _southnodehex.gate!,
+                  _moonhex.gate!,
+                  _mercuryhex.gate!,
+                  _venushex.gate!,
+                  _marshex.gate!,
+                  _jupiterhex.gate!,
+                  _saturnhex.gate!,
+                  _uranushex.gate!,
+                  _neptunehex.gate!,
+                  _plutohex.gate!,
+                ];
+
+                var seen = <int>{};
+                _finalgatelist = _gatesList
+                    .where((_gatetoadd) => seen.add(_gatetoadd))
+                    .toList();
+
+                setState(() {
+                  for (var i = 0; i < _finalgatelist.length; i++) {
+                    switch (_finalgatelist[i]) {
+                      case 64:
+                        _isHeadList[0] = !_isHeadList[0];
+                        break;
+                      case 61:
+                        _isHeadList[1] = !_isHeadList[1];
+                        break;
+                      case 63:
+                        _isHeadList[2] = !_isHeadList[2];
+                        break;
+                      case 47:
+                        _isAjnaTopList[0] = !_isAjnaTopList[0];
+                        break;
+                      case 24:
+                        _isAjnaTopList[1] = !_isAjnaTopList[1];
+                        break;
+                      case 4:
+                        _isAjnaTopList[2] = !_isAjnaTopList[2];
+                        break;
+                      case 17:
+                        _isAjnaBottomList[0] = !_isAjnaBottomList[0];
+                        break;
+                      case 43:
+                        _isAjnaBottomList[1] = !_isAjnaBottomList[1];
+                        break;
+                      case 11:
+                        _isAjnaBottomList[2] = !_isAjnaBottomList[2];
+                        break;
+                      case 62:
+                        _isThroatThirdTopList[0] = !_isThroatThirdTopList[0];
+                        break;
+                      case 23:
+                        _isThroatThirdTopList[1] = !_isThroatThirdTopList[1];
+                        break;
+                      case 56:
+                        _isThroatThirdTopList[2] = !_isThroatThirdTopList[2];
+                        break;
+                      case 31:
+                        _isThroatThirdBottomList[0] =
+                            !_isThroatThirdBottomList[0];
+                        break;
+                      case 8:
+                        _isThroatThirdBottomList[1] =
+                            !_isThroatThirdBottomList[1];
+                        break;
+                      case 33:
+                        _isThroatThirdBottomList[2] =
+                            !_isThroatThirdBottomList[2];
+                        break;
+                      case 16:
+                        _isThroatFirstBottomList[0] =
+                            !_isThroatFirstBottomList[0];
+                        break;
+                      case 20:
+                        _isThroatFirstBottomList[1] =
+                            !_isThroatFirstBottomList[1];
+                        _isIntegrationBottomSelectedList[0] =
+                            !_isIntegrationBottomSelectedList[0];
+                        break;
+                      case 45:
+                        _isThroatSecondBottomList[0] =
+                            !_isThroatSecondBottomList[0];
+                        _isThroatFourthBottomList[0] =
+                        !_isThroatFourthBottomList[0];
+                        break;
+                      case 12:
+                        _isThroatFifthBottomList[0] =
+                            !_isThroatFifthBottomList[0];
+                        break;
+                      case 35:
+                        _isThroatFifthBottomList[1] =
+                            !_isThroatFifthBottomList[1];
+                        break;
+                      case 21:
+                        _isHeartFirstTopList[0] = !_isHeartFirstTopList[0];
+                        _isHeartThirdTopList[0] = !_isHeartThirdTopList[0];
+                        break;
+                      case 26:
+                        _isHeartFirstBottomList[0] =
+                            !_isHeartFirstBottomList[0];
+                        break;
+                      case 51:
+                        _isHeartSecondBottomList[0] =
+                            !_isHeartSecondBottomList[0];
+                        break;
+                      case 40:
+                        _isHeartThirdBottomList[0] =
+                            !_isHeartThirdBottomList[0];
+                        break;
+                      case 7:
+                        _isGTopSelectedList[0] = !_isGTopSelectedList[0];
+                        break;
+                      case 1:
+                        _isGTopSelectedList[1] = !_isGTopSelectedList[1];
+                        break;
+                      case 13:
+                        _isGTopSelectedList[2] = !_isGTopSelectedList[2];
+                        break;
+                      case 10:
+                        _isGBottomSelectedList[0] = !_isGBottomSelectedList[0];
+                        break;
+                      case 15:
+                        _isGBottomSelectedList[1] = !_isGBottomSelectedList[1];
+                        break;
+                      case 2:
+                        _isGBottomSelectedList[2] = !_isGBottomSelectedList[2];
+                        break;
+                      case 46:
+                        _isGBottomSelectedList[3] = !_isGBottomSelectedList[3];
+                        break;
+                      case 25:
+                        _isGBottomSelectedList[4] = !_isGBottomSelectedList[4];
+                        break;
+                      case 48:
+                        _isSpleenFirstTopList[0] = !_isSpleenFirstTopList[0];
+                        break;
+                      case 57:
+                        _isSpleenFirstTopList[1] = !_isSpleenFirstTopList[1];
+                        _isSpleenThirdTopList[0] = !_isSpleenThirdTopList[0];
+                        break;
+                      case 18:
+                        _isSpleenFirstBottomList[0] =
+                            !_isSpleenFirstBottomList[0];
+                        break;
+                      case 28:
+                        _isSpleenFirstBottomList[1] =
+                            !_isSpleenFirstBottomList[1];
+                        break;
+                      case 44:
+                        _isSpleenSecondTopList[0] = !_isSpleenSecondTopList[0];
+                        break;
+                      case 32:
+                        _isSpleenSecondBottomList[0] =
+                            !_isSpleenSecondBottomList[0];
+                        break;
+                      case 50:
+                        _isSpleenThirdBottomList[0] =
+                            !_isSpleenThirdBottomList[0];
+                        break;
+                      case 34:
+                        _isSacralTopSelectedList[0] =
+                        !_isSacralTopSelectedList[0];
+                        break;
+                      case 5:
+                        _isSacralTopSelectedList[1] =
+                        !_isSacralTopSelectedList[1];
+                        break;
+                      case 14:
+                        _isSacralTopSelectedList[2] =
+                        !_isSacralTopSelectedList[2];
+                        break;
+                      case 29:
+                        _isSacralTopSelectedList[3] =
+                        !_isSacralTopSelectedList[3];
+                        break;
+                        case 27:
+                        _isSacralBottomSelectedList[0] =
+                            !_isSacralBottomSelectedList[0];
+                        break;
+                      case 42:
+                        _isSacralBottomSelectedList[1] =
+                        !_isSacralBottomSelectedList[1];
+                        break;
+                      case 3:
+                        _isSacralBottomSelectedList[2] =
+                        !_isSacralBottomSelectedList[2];
+                        break;
+                      case 9:
+                        _isSacralBottomSelectedList[3] =
+                        !_isSacralBottomSelectedList[3];
+                        break;
+                      case 59:
+                        _isSacralBottomSelectedList[4] =
+                        !_isSacralBottomSelectedList[4];
+                        break;
+                      case 6:
+                        _isSolarFirstBottomList[0] = !_isSolarFirstBottomList[0];
+                        break;
+                      case 37:
+                        _isSolarSecondTopList[0] = !_isSolarSecondTopList[0];
+                        break;
+                      case 49:
+                        _isSolarSecondBottomList[0] = !_isSolarSecondBottomList[0];
+                        break;
+                      case 22:
+                        _isSolarThirdTopList[0] = !_isSolarThirdTopList[0];
+                        break;
+                      case 36:
+                        _isSolarThirdTopList[1] = !_isSolarThirdTopList[1];
+                        break;
+                      case 39:
+                        _isSolarThirdBottomList[0] = !_isSolarThirdBottomList[0];
+                        break;
+                      case 30:
+                        _isSolarThirdBottomList[1] = !_isSolarThirdBottomList[1];
+                        break;
+                      case 58:
+                        _isRootFirstList[0] = !_isRootFirstList[0];
+                        break;
+                      case 38:
+                        _isRootFirstList[1] = !_isRootFirstList[1];
+                        break;
+                      case 54:
+                        _isRootSecondList[0] = !_isRootSecondList[0];
+                        break;
+                      case 53:
+                        _isRootThirdList[0] = !_isRootThirdList[0];
+                        break;
+                      case 60:
+                        _isRootThirdList[1] = !_isRootThirdList[1];
+                        break;
+                      case 52:
+                        _isRootThirdList[2] = !_isRootThirdList[2];
+                        break;
+                      case 19:
+                        _isRootFourthList[0] = !_isRootFourthList[0];
+                        break;
+                        case 55:
+                        _isRootFifthList[0] = !_isRootFifthList[0];
+                        break;
+                      case 41:
+                        _isRootFifthList[1] = !_isRootFifthList[1];
+                        break;
+                      default:
+                        Exception('Gate not in List');
+                    }
+                  }
+                });
+              },
+              child: const Text('Planets Now')),
           ToggleButtons(
             borderWidth: 10.0,
             hoverColor: Colors.blue,
@@ -1390,7 +1874,7 @@ class _RotateChartState extends State<RotateChart> {
                                   fillColor: Colors.white,
                                   children: [
                                     Text(
-                                      '39',
+                                      '55',
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontSize: fontSizeGate),
@@ -1553,7 +2037,7 @@ class _RotateChartState extends State<RotateChart> {
                                   fillColor: Colors.white,
                                   children: [
                                     Text(
-                                      '55',
+                                      '39',
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontSize: fontSizeGate),

@@ -224,19 +224,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 _controllerPlutoGate.text =
                     _plutohex.gate.toString() + "." + _plutohex.line.toString();
 
-                _dropdownSun = _sunhex.gate!;
-                _dropdownEarth = _earthhex.gate!;
-                _dropdownNorthNode = _northnodehex.gate!;
-                _dropdownSouthNode = _southnodehex.gate!;
-                _dropdownMoon = _moonhex.gate!;
-                _dropdownMercury = _mercuryhex.gate!;
-                _dropdownVenus = _venushex.gate!;
-                _dropdownMars = _marshex.gate!;
-                _dropdownJupiter = _jupiterhex.gate!;
-                _dropdownSaturn = _saturnhex.gate!;
-                _dropdownUranus = _uranushex.gate!;
-                _dropdownNeptune = _neptunehex.gate!;
-                _dropdownPluto = _plutohex.gate!;
+
+
 
                 _controllerSunHex.text = _sunhex.hex!;
                 _controllerEarthHex.text = _earthhex.hex!;
@@ -256,6 +245,22 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 _formattedTime = DateFormat.Hms().format(_now);
                 _controllerTime.text = _formattedTime;
                 _controllerDate.text = _formattedDate;
+
+                setState(() {
+                  _dropdownSun = _sunhex.gate!;
+                  _dropdownEarth = _earthhex.gate!;
+                  _dropdownNorthNode = _northnodehex.gate!;
+                  _dropdownSouthNode = _southnodehex.gate!;
+                  _dropdownMoon = _moonhex.gate!;
+                  _dropdownMercury = _mercuryhex.gate!;
+                  _dropdownVenus = _venushex.gate!;
+                  _dropdownMars = _marshex.gate!;
+                  _dropdownJupiter = _jupiterhex.gate!;
+                  _dropdownSaturn = _saturnhex.gate!;
+                  _dropdownUranus = _uranushex.gate!;
+                  _dropdownNeptune = _neptunehex.gate!;
+                  _dropdownPluto = _plutohex.gate!;
+                });
               },
               child: const Text('Planets Now')),
           ToggleButtons(

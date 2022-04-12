@@ -87,12 +87,12 @@ Hexagram getGateStructure(double _planetlongitude) {
       _color = 1,
       _tone = 1,
       _base = 1,
-      _degrees = 0,
-      _minutes = 0,
-      _seconds = 0,
+      //_degrees = 0,
+      //_minutes = 0,
+      //_seconds = 0,
   _hexfontindex = 0;
 
-  double _decimalDegrees = 0.0;
+  //double _decimalDegrees = 0.0;
 
   double _exactLine = 0.0;
   double _exactColor = 0.0;
@@ -102,8 +102,8 @@ Hexagram getGateStructure(double _planetlongitude) {
   Hexagram _gateStructure = Hexagram();
 
 
-  _decimalDegrees = _degrees + _minutes / 60 + _seconds / 3600;
-  _planetlongitude += _decimalDegrees;
+  //_decimalDegrees = _degrees + _minutes / 60 + _seconds / 3600;
+  //_planetlongitude += _decimalDegrees;
 
   _planetlongitude += 58;
 

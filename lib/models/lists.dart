@@ -1078,7 +1078,7 @@ final List<String> hexNamesList = [
 ];
 
 // variables
-var hexagramslist = List<int>.generate(65, (counter) => counter++);
+List<int> hexagramslist = List<int>.generate(65, (counter) => counter++);
 var hexagramslistfinal = hexagramslist.getRange(1, hexagramslist.length);
 
 // SLIDERS
