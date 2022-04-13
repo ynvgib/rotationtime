@@ -53,6 +53,8 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
   Hexagram _sunhex = Hexagram(),
             _earthhex = Hexagram(),
+            _northnodehex = Hexagram(),
+            _southnodehex = Hexagram(),
             _moonhex = Hexagram(),
             _mercuryhex = Hexagram(),
             _venushex = Hexagram(),
@@ -154,7 +156,89 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
             _now = DateTime.now();
             _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _moonhex = _planetsList[2];
+            _northnodehex = _planetsList[2];
+
+
+            _controllerhextext.text = _northnodehex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_northnodehex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_northnodehex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_northnodehex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_northnodehex.gate!];
+
+            _hexalignedList = hexagramAlignment(_northnodehex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/northnode.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _southnodehex = _planetsList[3];
+
+
+            _controllerhextext.text = _southnodehex.gate.toString();
+            _controllertopfirsttext.text = hexagramAdjectiveList[_southnodehex.gate!];
+            _controllertopsecondtext.text = hexagramSubjectList[_southnodehex.gate!];
+            _controllertopthirdtext.text = hexagramVerbList[_southnodehex.gate!];
+            _controllertopfourthtext.text = hexagramAdverbList[_southnodehex.gate!];
+
+            _hexalignedList = hexagramAlignment(_southnodehex.gate!);
+            _controllertop.jumpToPage(_hexalignedList[0]);
+            _controllermid.jumpToPage(_hexalignedList[1]);
+            _controllerbot.jumpToPage(_hexalignedList[2]);
+
+
+          },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/southnode.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),),
+          ElevatedButton(onPressed: () async {
+
+            _now = DateTime.now();
+            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            _moonhex = _planetsList[4];
 
 
             _controllerhextext.text = _moonhex.gate.toString();
@@ -195,7 +279,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
             _now = DateTime.now();
             _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _mercuryhex = _planetsList[3];
+            _mercuryhex = _planetsList[5];
 
 
             _controllerhextext.text = _mercuryhex.gate.toString();
@@ -236,7 +320,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
             _now = DateTime.now();
             _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _venushex = _planetsList[4];
+            _venushex = _planetsList[6];
 
 
             _controllerhextext.text = _venushex.gate.toString();
@@ -277,7 +361,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
             _now = DateTime.now();
             _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _marshex = _planetsList[5];
+            _marshex = _planetsList[7];
 
 
             _controllerhextext.text = _marshex.gate.toString();
@@ -318,7 +402,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
             _now = DateTime.now();
             _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _jupiterhex = _planetsList[6];
+            _jupiterhex = _planetsList[8];
 
 
             _controllerhextext.text = _jupiterhex.gate.toString();
@@ -359,7 +443,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
             _now = DateTime.now();
             _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _saturnhex = _planetsList[7];
+            _saturnhex = _planetsList[9];
 
 
             _controllerhextext.text = _saturnhex.gate.toString();
@@ -400,7 +484,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
             _now = DateTime.now();
             _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _uranushex = _planetsList[8];
+            _uranushex = _planetsList[10];
 
 
             _controllerhextext.text = _uranushex.gate.toString();
@@ -441,7 +525,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
             _now = DateTime.now();
             _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _neptunehex = _planetsList[9];
+            _neptunehex = _planetsList[11];
 
 
             _controllerhextext.text = _neptunehex.gate.toString();
@@ -482,7 +566,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
             _now = DateTime.now();
             _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _plutohex = _planetsList[10];
+            _plutohex = _planetsList[12];
 
 
             _controllerhextext.text = _plutohex.gate.toString();

@@ -24,7 +24,7 @@ class _RotateChartState extends State<RotateChart> {
       isHeartVisible = true,
       isIntegrationVisible = true;
 
-  double fontSizeGate = 18.0;
+  double fontSizeGate = 16.0;
 
   final List<bool> _isHeadList = List<bool>.filled(3, false, growable: false),
       _isAjnaTopList = List<bool>.filled(3, false, growable: false),
@@ -88,7 +88,7 @@ class _RotateChartState extends State<RotateChart> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Rotate Human Design Chart'),
+        title: const Text('Rotate HD Chart'),
         backgroundColor: Colors.blueGrey,
         actions: [
           ElevatedButton(
@@ -657,6 +657,83 @@ class _RotateChartState extends State<RotateChart> {
         //mainAxisAlignment: MainAxisAlignment.center,
         //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(width: 10,),
+                const CircleAvatar(
+              minRadius: 15.0,
+              maxRadius: 15.0,
+              backgroundColor: Colors.blue,
+              foregroundImage: AssetImage('assets/planets/sun.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/earth.png')),
+            const CircleAvatar(
+              minRadius: 15.0,
+              maxRadius: 15.0,
+              backgroundColor: Colors.blue,
+              foregroundImage: AssetImage('assets/planets/northnode.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/southnode.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/moon.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/mercury.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/venus.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/mars.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/jupiter.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/saturn.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/uranus.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/sun.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/neptune.png')),
+            const CircleAvatar(
+                minRadius: 15.0,
+                maxRadius: 15.0,
+                backgroundColor: Colors.blue,
+                foregroundImage: AssetImage('assets/planets/pluto.png')),
+                SizedBox(width: 10,),
+          ]),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1124,7 +1201,7 @@ class _RotateChartState extends State<RotateChart> {
                                 Text(
                                   '20',
                                   style: TextStyle(
-                                      color: Colors.blueGrey,
+                                      color: Colors.red,
                                       fontSize: fontSizeGate),
                                 ),
                               ],
@@ -1195,7 +1272,7 @@ class _RotateChartState extends State<RotateChart> {
                                 Text(
                                   '10',
                                   style: TextStyle(
-                                      color: Colors.blueGrey,
+                                      color: Colors.red,
                                       fontSize: fontSizeGate),
                                 ),
                                 Text(
@@ -1566,7 +1643,7 @@ class _RotateChartState extends State<RotateChart> {
                                   Text(
                                     '57',
                                     style: TextStyle(
-                                        color: Colors.blueGrey,
+                                        color: Colors.red,
                                         fontSize: fontSizeGate),
                                   ),
                                 ],
@@ -1632,8 +1709,8 @@ class _RotateChartState extends State<RotateChart> {
                                 Text(
                                   '34',
                                   style: TextStyle(
-                                      color: Colors.blueGrey,
-                                      fontSize: fontSizeGate),
+                                      color: Colors.red,
+                                      fontSize: fontSizeGate,),
                                 ),
                                 Text(
                                   '5',

@@ -597,16 +597,111 @@ class _RotatePlanetsState extends State<RotatePlanets> {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: Container(
+          Container(
               margin: const EdgeInsets.all(5.0),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     //main row
+                    SizedBox(width: 10),
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.blue,
+                        foregroundImage: AssetImage('assets/planets/sun.png')),
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.blue,
+                        foregroundImage:
+                            AssetImage('assets/planets/northnode.png')),
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.green,
+                        backgroundImage: AssetImage('assets/planets/moon.png')),
+
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.green,
+                        backgroundImage:
+                            AssetImage('assets/planets/mercury.png')),
+
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.green,
+                        backgroundImage:
+                            AssetImage('assets/planets/venus.png')),
+
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.green,
+                        backgroundImage: AssetImage('assets/planets/mars.png')),
+
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.yellow,
+                        backgroundImage:
+                            AssetImage('assets/planets/jupiter.png')),
+
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.yellow,
+                        backgroundImage:
+                            AssetImage('assets/planets/saturn.png')),
+
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.yellow,
+                        backgroundImage:
+                            AssetImage('assets/planets/uranus.png')),
+
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.yellow,
+                        backgroundImage:
+                            AssetImage('assets/planets/neptune.png')),
+
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.yellow,
+                        backgroundImage:
+                            AssetImage('assets/planets/pluto.png')),
+
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.red,
+                        backgroundImage:
+                            AssetImage('assets/planets/earth.png')),
+
+                    const CircleAvatar(
+                        minRadius: 15.0,
+                        maxRadius: 15.0,
+                        backgroundColor: Colors.red,
+                        backgroundImage:
+                            AssetImage('assets/planets/southnode.png')),
+                    SizedBox(width: 10),
+                  ]),
+            ),
+           Container(
+              //margin: const EdgeInsets.all(5.0),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //main row
+                    SizedBox(width: 10),
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownSun,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -620,18 +715,13 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _controllerSunHex.text = _fontMapFinalSun;
 
                           _controllerSunText.text =
-                              hexagramSubjectList[_dropdownSun];
+                          hexagramSubjectList[_dropdownSun];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.blue,
-                        foregroundImage: AssetImage('assets/planets/sun.png')),
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownNorthNode,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -642,22 +732,17 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _fontMapNorthNode =
                               fontHexNumbersList.indexOf(_dropdownNorthNode);
                           _fontMapFinalNorthNode =
-                              fontHexOrderList[_fontMapNorthNode];
+                          fontHexOrderList[_fontMapNorthNode];
                           _controllerNorthNodeHex.text = _fontMapFinalNorthNode;
                           _controllerNorthNodeText.text =
-                              hexagramSubjectList[_dropdownNorthNode];
+                          hexagramSubjectList[_dropdownNorthNode];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.blue,
-                        foregroundImage:
-                            AssetImage('assets/planets/northnode.png')),
+
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownMoon,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -670,18 +755,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _fontMapFinalMoon = fontHexOrderList[_fontMapMoon];
                           _controllerMoonHex.text = _fontMapFinalMoon;
                           _controllerMoonText.text =
-                              hexagramSubjectList[_dropdownMoon];
+                          hexagramSubjectList[_dropdownMoon];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.green,
-                        backgroundImage: AssetImage('assets/planets/moon.png')),
+
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownMercury,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -692,22 +773,17 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _fontMapMercury =
                               fontHexNumbersList.indexOf(_dropdownMercury);
                           _fontMapFinalMercury =
-                              fontHexOrderList[_fontMapMercury];
+                          fontHexOrderList[_fontMapMercury];
                           _controllerMercuryHex.text = _fontMapFinalMercury;
                           _controllerMercuryText.text =
-                              hexagramSubjectList[_dropdownMercury];
+                          hexagramSubjectList[_dropdownMercury];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.green,
-                        backgroundImage:
-                            AssetImage('assets/planets/mercury.png')),
+
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownVenus,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -721,19 +797,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _controllerVenusHex.text = _fontMapFinalVenus;
 
                           _controllerVenusText.text =
-                              hexagramSubjectList[_dropdownVenus];
+                          hexagramSubjectList[_dropdownVenus];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.green,
-                        backgroundImage:
-                            AssetImage('assets/planets/venus.png')),
+
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownMars,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -747,18 +818,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _controllerMarsHex.text = _fontMapFinalMars;
 
                           _controllerMarsText.text =
-                              hexagramSubjectList[_dropdownMars];
+                          hexagramSubjectList[_dropdownMars];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.green,
-                        backgroundImage: AssetImage('assets/planets/mars.png')),
+
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownJupiter,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -769,23 +836,18 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _fontMapJupiter =
                               fontHexNumbersList.indexOf(_dropdownJupiter);
                           _fontMapFinalJupiter =
-                              fontHexOrderList[_fontMapJupiter];
+                          fontHexOrderList[_fontMapJupiter];
                           _controllerJupiterHex.text = _fontMapFinalJupiter;
 
                           _controllerJupiterText.text =
-                              hexagramSubjectList[_dropdownJupiter];
+                          hexagramSubjectList[_dropdownJupiter];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.yellow,
-                        backgroundImage:
-                            AssetImage('assets/planets/jupiter.png')),
+
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownSaturn,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -796,23 +858,18 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _fontMapSaturn =
                               fontHexNumbersList.indexOf(_dropdownSaturn);
                           _fontMapFinalSaturn =
-                              fontHexOrderList[_fontMapSaturn];
+                          fontHexOrderList[_fontMapSaturn];
                           _controllerSaturnHex.text = _fontMapFinalSaturn;
 
                           _controllerSaturnText.text =
-                              hexagramSubjectList[_dropdownSaturn];
+                          hexagramSubjectList[_dropdownSaturn];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.yellow,
-                        backgroundImage:
-                            AssetImage('assets/planets/saturn.png')),
+
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownUranus,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -823,22 +880,17 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _fontMapUranus =
                               fontHexNumbersList.indexOf(_dropdownUranus);
                           _fontMapFinalUranus =
-                              fontHexOrderList[_fontMapUranus];
+                          fontHexOrderList[_fontMapUranus];
                           _controllerUranusHex.text = _fontMapFinalUranus;
                           _controllerUranusText.text =
-                              hexagramSubjectList[_dropdownUranus];
+                          hexagramSubjectList[_dropdownUranus];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.yellow,
-                        backgroundImage:
-                            AssetImage('assets/planets/uranus.png')),
+
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownNeptune,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -849,22 +901,17 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _fontMapNeptune =
                               fontHexNumbersList.indexOf(_dropdownNeptune);
                           _fontMapFinalNeptune =
-                              fontHexOrderList[_fontMapNeptune];
+                          fontHexOrderList[_fontMapNeptune];
                           _controllerNeptuneHex.text = _fontMapFinalNeptune;
                           _controllerNeptuneText.text =
-                              hexagramSubjectList[_dropdownNeptune];
+                          hexagramSubjectList[_dropdownNeptune];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.yellow,
-                        backgroundImage:
-                            AssetImage('assets/planets/neptune.png')),
+
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownPluto,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -877,19 +924,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _fontMapFinalPluto = fontHexOrderList[_fontMapPluto];
                           _controllerPlutoHex.text = _fontMapFinalPluto;
                           _controllerPlutoText.text =
-                              hexagramSubjectList[_dropdownPluto];
+                          hexagramSubjectList[_dropdownPluto];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.yellow,
-                        backgroundImage:
-                            AssetImage('assets/planets/pluto.png')),
+
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownEarth,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -902,19 +944,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _fontMapFinalEarth = fontHexOrderList[_fontMapEarth];
                           _controllerEarthHex.text = _fontMapFinalEarth;
                           _controllerEarthText.text =
-                              hexagramSubjectList[_dropdownEarth];
+                          hexagramSubjectList[_dropdownEarth];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.red,
-                        backgroundImage:
-                            AssetImage('assets/planets/earth.png')),
+
                     DropdownButton(
                       underline:
-                          DropdownButtonHideUnderline(child: Container()),
+                      DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownSouthNode,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -925,22 +962,17 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           _fontMapSouthNode =
                               fontHexNumbersList.indexOf(_dropdownSouthNode);
                           _fontMapFinalSouthNode =
-                              fontHexOrderList[_fontMapSouthNode];
+                          fontHexOrderList[_fontMapSouthNode];
                           _controllerSouthNodeHex.text = _fontMapFinalSouthNode;
                           _controllerSouthNodeText.text =
-                              hexagramSubjectList[_dropdownSouthNode];
+                          hexagramSubjectList[_dropdownSouthNode];
                         });
                       },
                     ),
-                    const CircleAvatar(
-                        minRadius: 20.0,
-                        maxRadius: 20.0,
-                        backgroundColor: Colors.red,
-                        backgroundImage:
-                            AssetImage('assets/planets/southnode.png')),
+                    SizedBox(width: 10),
                   ]),
             ),
-          ),
+
           // 1st row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -958,8 +990,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       const CircleAvatar(
-                          minRadius: 20.0,
-                          maxRadius: 20.0,
+                          minRadius: 15.0,
+                          maxRadius: 15.0,
                           backgroundColor: Colors.blue,
                           foregroundImage:
                               AssetImage('assets/planets/sun.png')),
@@ -1017,8 +1049,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         const CircleAvatar(
-                            minRadius: 20.0,
-                            maxRadius: 20.0,
+                            minRadius: 15.0,
+                            maxRadius: 15.0,
                             backgroundColor: Colors.blue,
                             foregroundImage:
                             AssetImage('assets/planets/northnode.png')),
@@ -1125,8 +1157,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           const CircleAvatar(
-                              minRadius: 20.0,
-                              maxRadius: 20.0,
+                              minRadius: 15.0,
+                              maxRadius: 15.0,
                               backgroundColor: Colors.green,
                               backgroundImage:
                                   AssetImage('assets/planets/moon.png')),
@@ -1203,8 +1235,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const CircleAvatar(
-                                minRadius: 20.0,
-                                maxRadius: 20.0,
+                                minRadius: 15.0,
+                                maxRadius: 15.0,
                                 backgroundColor: Colors.green,
                                 backgroundImage:
                                     AssetImage('assets/planets/mercury.png')),
@@ -1259,8 +1291,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const CircleAvatar(
-                                minRadius: 20.0,
-                                maxRadius: 20.0,
+                                minRadius: 15.0,
+                                maxRadius: 15.0,
                                 backgroundColor: Colors.green,
                                 backgroundImage:
                                     AssetImage('assets/planets/venus.png')),
@@ -1317,8 +1349,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const CircleAvatar(
-                                minRadius: 20.0,
-                                maxRadius: 20.0,
+                                minRadius: 15.0,
+                                maxRadius: 15.0,
                                 backgroundColor: Colors.green,
                                 backgroundImage:
                                     AssetImage('assets/planets/mars.png')),
@@ -1380,8 +1412,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const CircleAvatar(
-                                minRadius: 20.0,
-                                maxRadius: 20.0,
+                                minRadius: 15.0,
+                                maxRadius: 15.0,
                                 backgroundColor: Colors.yellow,
                                 backgroundImage:
                                     AssetImage('assets/planets/jupiter.png')),
@@ -1436,8 +1468,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const CircleAvatar(
-                                minRadius: 20.0,
-                                maxRadius: 20.0,
+                                minRadius: 15.0,
+                                maxRadius: 15.0,
                                 backgroundColor: Colors.yellow,
                                 backgroundImage:
                                     AssetImage('assets/planets/saturn.png')),
@@ -1513,8 +1545,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const CircleAvatar(
-                                minRadius: 20.0,
-                                maxRadius: 20.0,
+                                minRadius: 15.0,
+                                maxRadius: 15.0,
                                 backgroundColor: Colors.yellow,
                                 backgroundImage:
                                     AssetImage('assets/planets/uranus.png')),
@@ -1569,8 +1601,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const CircleAvatar(
-                                minRadius: 20.0,
-                                maxRadius: 20.0,
+                                minRadius: 15.0,
+                                maxRadius: 15.0,
                                 backgroundColor: Colors.yellow,
                                 backgroundImage:
                                     AssetImage('assets/planets/neptune.png')),
@@ -1625,8 +1657,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const CircleAvatar(
-                                minRadius: 20.0,
-                                maxRadius: 20.0,
+                                minRadius: 15.0,
+                                maxRadius: 15.0,
                                 backgroundColor: Colors.yellow,
                                 backgroundImage:
                                     AssetImage('assets/planets/pluto.png')),
@@ -1689,8 +1721,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const CircleAvatar(
-                                minRadius: 20.0,
-                                maxRadius: 20.0,
+                                minRadius: 15.0,
+                                maxRadius: 15.0,
                                 backgroundColor: Colors.red,
                                 backgroundImage:
                                     AssetImage('assets/planets/earth.png')),
@@ -1746,8 +1778,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const CircleAvatar(
-                                minRadius: 20.0,
-                                maxRadius: 20.0,
+                                minRadius: 15.0,
+                                maxRadius: 15.0,
                                 backgroundColor: Colors.red,
                                 backgroundImage:
                                 AssetImage('assets/planets/southnode.png')),
