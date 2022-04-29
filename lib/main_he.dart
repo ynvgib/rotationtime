@@ -1,6 +1,8 @@
 import 'package:finallyicanlearn/models/datetimepicker.dart';
 import 'package:finallyicanlearn/models/lists.dart';
-import 'package:finallyicanlearn/main_he.dart';
+import 'package:finallyicanlearn/models/lists_he.dart';
+import 'package:finallyicanlearn/main.dart';
+import 'package:finallyicanlearn/rotations/hebrew/rotateone_he.dart';
 import 'package:finallyicanlearn/rotations/rotatechart.dart';
 import 'package:finallyicanlearn/rotations/rotatehexagrams.dart';
 import 'package:finallyicanlearn/rotations/rotatehexlanguage.dart';
@@ -8,32 +10,30 @@ import 'package:finallyicanlearn/rotations/rotateone.dart';
 import 'package:finallyicanlearn/rotations/rotateplanets.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp( const RotateEnglish());
-
-class RotateEnglish extends StatelessWidget {
-   const RotateEnglish({Key? key}) : super(key: key);
+class RotateHebrew extends StatelessWidget {
+  const RotateHebrew({Key? key}) : super(key: key);
 
 
   @override
   Widget build(BuildContext context) {
-        return MaterialApp(
-          initialRoute: '/',
-          debugShowCheckedModeBanner: false,
-          routes: {
-            '/': (ctx) =>  HomePageEN(),
-            '/rotateone': (ctx) => const RotateOneHexagram(),
-            '/hexlanguage': (ctx) => const RotateHexLanguage(),
-            '/rotatehexagramtable': (ctx) => const RotateHexagramTable(),
-            '/rotateplanets': (ctx) => const RotatePlanets(),
-            '/rotatechart': (ctx) => const RotateChart(),
+    return MaterialApp(
+      initialRoute: '/',
+      debugShowCheckedModeBanner: false,
+      routes: {
+        '/': (ctx) =>  HomePageHE(),
+        '/rotateoneHE': (ctx) => const RotateOneHexagramHE(),
+        //'/hexlanguage': (ctx) => const RotateHexLanguage(),
+        //'/rotatehexagramtable': (ctx) => const RotateHexagramTable(),
+        //'/rotateplanets': (ctx) => const RotatePlanets(),
+        //'/rotatechart': (ctx) => const RotateChart(),
 
-          },
-        );
+      },
+    );
   }
 }
 
-class HomePageEN extends StatelessWidget {
-  HomePageEN({Key? key}) : super(key: key);
+class HomePageHE extends StatelessWidget {
+  HomePageHE({Key? key}) : super(key: key);
 
   //String _rotateoneitem = 'ONE HEXAGRAM';
   final String _rotateoneitem = 'הקסגרמה אחת';
@@ -41,9 +41,8 @@ class HomePageEN extends StatelessWidget {
 
   //_title = 'R O T A T I O N   T I M E';
 
-  final String _lang = 'ENGLISH';
-  final String _title = maintitleEN;
-  final List<String> _titles = titlesEN;
+  final String _title = maintitleHE;
+  final List<String> _titles = titlesHE;
 
 
   @override
@@ -100,16 +99,17 @@ class HomePageEN extends StatelessWidget {
         ),
         Expanded(
             child: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 20.0),
-          children: <Widget>[
-            //MappingItem('PICK DATE AND TIME (under development)', '/datetimepicker'),
-            MappingItemEN(_titles[0], '/rotateone'),
-            MappingItemEN(_titles[1], '/hexlanguage'),
-            MappingItemEN(_titles[2], '/rotatehexagramtable'),
-            MappingItemEN(_titles[3], '/rotateplanets'),
-            MappingItemEN(_titles[4], '/rotatechart'),
-          ],
-        )),
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              children: <Widget>[
+                //MappingItem('PICK DATE AND TIME (under development)', '/datetimepicker'),
+                MappingItemEN('English', '/homeEN'),
+                MappingItemEN(_titles[0], '/rotateoneHE'),
+                //MappingItemEN(_titles[1], '/hexlanguage'),
+                //MappingItemEN(_titles[2], '/rotatehexagramtable'),
+                //MappingItemEN(_titles[3], '/rotateplanets'),
+                //MappingItemEN(_titles[4], '/rotatechart'),
+              ],
+            )),
         Row(children: [
           Expanded(
             child:
@@ -217,10 +217,10 @@ class HomePageEN extends StatelessWidget {
   }
 }
 
-class MappingItemEN extends StatelessWidget {
+class MappingItemHE extends StatelessWidget {
   final String title;
   final String route;
-  const MappingItemEN(this.title, this.route, {Key? key}) : super(key: key);
+  const MappingItemHE(this.title, this.route, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

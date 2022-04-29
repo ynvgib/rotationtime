@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:finallyicanlearn/logic/hdsubstructure.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
+import 'package:finallyicanlearn/models/lists_he.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/services/fetchastrology.dart';
 import 'package:flutter/material.dart';
@@ -9,16 +11,16 @@ import 'package:intl/intl.dart';
 
 // /rotatehexwithlogic
 // rotate one hexagram
-class RotateOneHexagram extends StatefulWidget {
-  const RotateOneHexagram({Key? key}) : super(key: key);
+class RotateOneHexagramHE extends StatefulWidget {
+  const RotateOneHexagramHE({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _RotateOneHexagramState();
+    return _RotateOneHexagramHEState();
   }
 }
 
-class _RotateOneHexagramState extends State<RotateOneHexagram> {
+class _RotateOneHexagramHEState extends State<RotateOneHexagramHE> {
   int _currenttop = 0,
       _currentmid = 0,
       _currentbot = 0,
@@ -63,6 +65,17 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
 
   String _formattedDate = '',
       _formattedTime = '';
+
+      final String _chosenlanguage = 'HE',
+      _title = "לסובב הקסגרמה אחת",
+      _timehint = 'זמן',
+      _datehint = 'תאריך';
+
+  HexagramSentence _hexsentence = getGateSentence(1, 'HE');
+
+  final List<String> finalhexNamesList = hexNamesHEBList;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -350,10 +363,13 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
               ),
             ],
             isSelected: _isPlanetSelectedList,
-            onPressed: (int index)  {
-              setState(() async {
-                _now = DateTime.now();
-                _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+            onPressed: (int index)  async{
+              _now = DateTime.now();
+              //_planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+              _planetsList = await AstrologyServices.getCurrentData(_now);
+              setState(() {
+
+
 
                 _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
                 _formattedTime = DateFormat.Hms().format(_now);
@@ -371,12 +387,13 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 }
 
                 _planethex = _planetsList[index];
+                _hexsentence =  getGateSentence(_planethex.gate!, _chosenlanguage);
 
-                _controllerhextext.text = _planethex.gate.toString();
-                _controllertopfirsttext.text = hexagramAdjectiveList[_planethex.gate!];
-                _controllertopsecondtext.text = hexagramSubjectList[_planethex.gate!];
-                _controllertopthirdtext.text = hexagramVerbList[_planethex.gate!];
-                _controllertopfourthtext.text = hexagramAdverbList[_planethex.gate!];
+                //_controllerhextext.text = _planethex.gate.toString();
+                //_controllertopfirsttext.text = _hexsentence.adjective!;
+                //_controllertopsecondtext.text = _hexsentence.subject!;
+                //_controllertopthirdtext.text = _hexsentence.verb!;
+                //_controllertopfourthtext.text = _hexsentence.adverb!;
 
                 _hexalignedList = hexagramAlignment(_planethex.gate!);
                 _controllertop.jumpToPage(_hexalignedList[0]);
@@ -389,7 +406,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
           ),
 
         ],
-          title: const Text('Rotate One Hexagram'),
+          title: Text(_title),
           backgroundColor: Colors.blueGrey),
       backgroundColor: Colors.grey[100],
       body: Column(
@@ -470,8 +487,8 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                                 width: 100,
                                 child: TextField(
                                     readOnly: true,
-                                    decoration: const InputDecoration.collapsed(
-                                        hintText: 'Time'),
+                                    decoration: InputDecoration.collapsed(
+                                        hintText: _timehint),
                                     controller: _controllerTime,
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -483,8 +500,8 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                                 child: TextField(
                                     textAlign: TextAlign.right,
                                     readOnly: true,
-                                    decoration: const InputDecoration.collapsed(
-                                        hintText: 'Date'),
+                                    decoration:  InputDecoration.collapsed(
+                                        hintText: _datehint),
                                     controller: _controllerDate,
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -573,7 +590,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                   decoration: InputDecoration.collapsed(
-                      hintText: hexagramAdjectiveList[1],
+                      hintText: _hexsentence.adjective,
                       hintStyle: const TextStyle(color: Colors.grey)),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
@@ -587,7 +604,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                   decoration: InputDecoration.collapsed(
-                      hintText: hexagramSubjectList[1],
+                      hintText: _hexsentence.subject,
                       hintStyle: const TextStyle(color: Colors.grey)),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
@@ -601,7 +618,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                   decoration: InputDecoration.collapsed(
-                      hintText: hexagramVerbList[1],
+                      hintText: _hexsentence.verb,
                       hintStyle: const TextStyle(color: Colors.grey)),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
@@ -615,7 +632,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration.collapsed(
-                        hintText: hexagramAdverbList[1],
+                        hintText: _hexsentence.adverb,
                         hintStyle: const TextStyle(color: Colors.grey)),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
@@ -644,26 +661,35 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                         _hexagramVal = ((_currenttop + 1) * 100 +
                             (_currentmid + 1) * 10 +
                             (_currentbot + 1));
-                        _carouselvalueindex = hexCarouselValueList.indexWhere(
-                            (element) => element == _hexagramVal.toString());
-                        _carouselvalueindex++;
-                        _controllerhextext.text =
-                            hexCarouselValueList[_carouselvalueindex];
 
-                        _controllertopfirsttext.text = hexagramAdjectiveList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopsecondtext.text = hexagramSubjectList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopthirdtext.text = hexagramVerbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopfourthtext.text = hexagramAdverbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
+                        _carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
-                         _controllerbottomfirsttext.text = hexNamesList[_currenttop];
+                        _chosenhex =  orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllerhextext.text = _chosenhex.toString();
+
+                        _hexsentence =  getGateSentence(_chosenhex, _chosenlanguage);
+
+                        _controllertopfirsttext.text = _hexsentence.adjective!;
+                        _controllertopsecondtext.text = _hexsentence.subject!;
+                        _controllertopthirdtext.text = _hexsentence.verb!;
+                        _controllertopfourthtext.text = _hexsentence.adverb!;
+
+                        switch (_chosenlanguage)
+                        {
+                          case 'EN':
+                            _controllerbottomfirsttext.text = finalhexNamesList[_currenttop];
+                            break;
+                          case 'HE':
+                            _controllerbottomthirdtext.text = finalhexNamesList[_currenttop];
+                            break;
+                          default:
+                            _controllerbottomfirsttext.text = finalhexNamesList[_currenttop];
+                            break;
+                        }
+
+
+
                       });
                     }),
               ),
@@ -704,26 +730,23 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                             (_currentmid + 1) * 10 +
                             (_currentbot + 1));
 
-                        _carouselvalueindex = hexCarouselValueList.indexWhere(
-                            (element) => element == _hexagramVal.toString());
-                        _carouselvalueindex++;
-                        _controllerhextext.text =
-                            hexCarouselValueList[_carouselvalueindex];
 
-                        _controllertopfirsttext.text = hexagramAdjectiveList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopsecondtext.text = hexagramSubjectList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopthirdtext.text = hexagramVerbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopfourthtext.text = hexagramAdverbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
+                        _carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
-                        _controllerbottomsecondtext.text = hexNamesList[_currentmid];
+                        _chosenhex =  orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllerhextext.text = _chosenhex.toString();
+
+                        _hexsentence =  getGateSentence(_chosenhex, _chosenlanguage);
+
+                        _controllertopfirsttext.text = _hexsentence.adjective!;
+                        _controllertopsecondtext.text = _hexsentence.subject!;
+                        _controllertopthirdtext.text = _hexsentence.verb!;
+                        _controllertopfourthtext.text = _hexsentence.adverb!;
+
+
+                        _controllerbottomsecondtext.text = finalhexNamesList[_currentmid];
+
                       });
                     }),
               ),
@@ -762,26 +785,34 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                         _hexagramVal = ((_currenttop + 1) * 100 +
                             (_currentmid + 1) * 10 +
                             (_currentbot + 1));
-                        _carouselvalueindex = hexCarouselValueList.indexWhere(
-                            (element) => element == _hexagramVal.toString());
-                        _carouselvalueindex++;
-                        _controllerhextext.text =
-                            hexCarouselValueList[_carouselvalueindex];
 
-                        _controllertopfirsttext.text = hexagramAdjectiveList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopsecondtext.text = hexagramSubjectList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopthirdtext.text = hexagramVerbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopfourthtext.text = hexagramAdverbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
+                        _carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
-                        _controllerbottomthirdtext.text = hexNamesList[_currentbot];
+                        _chosenhex =  orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllerhextext.text = _chosenhex.toString();
+
+                        _hexsentence =  getGateSentence(_chosenhex, _chosenlanguage);
+
+                        _controllertopfirsttext.text = _hexsentence.adjective!;
+                        _controllertopsecondtext.text = _hexsentence.subject!;
+                        _controllertopthirdtext.text = _hexsentence.verb!;
+                        _controllertopfourthtext.text = _hexsentence.adverb!;
+
+                        switch (_chosenlanguage)
+                        {
+                          case 'EN':
+                            _controllerbottomthirdtext.text = finalhexNamesList[_currentbot];
+                            break;
+                          case 'HE':
+                            _controllerbottomfirsttext.text = finalhexNamesList[_currentbot];
+                            break;
+                          default:
+                            _controllerbottomthirdtext.text = finalhexNamesList[_currentbot];
+                            break;
+                        }
+
+
                       });
                     }),
               ),
@@ -812,7 +843,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                       decoration: InputDecoration.collapsed(
-                          hintText: hexNamesList[0],
+                          hintText: finalhexNamesList[0],
                           hintStyle: const TextStyle(color: Colors.grey)),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
@@ -826,7 +857,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                       decoration: InputDecoration.collapsed(
-                          hintText: hexNamesList[0],
+                          hintText: finalhexNamesList[0],
                           hintStyle: const TextStyle(color: Colors.grey)),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
@@ -840,7 +871,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                       decoration: InputDecoration.collapsed(
-                          hintText: hexNamesList[0],
+                          hintText: finalhexNamesList[0],
                           hintStyle: const TextStyle(color: Colors.grey)),
                       textAlign: TextAlign.center,
                       style: const TextStyle(

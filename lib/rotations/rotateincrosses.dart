@@ -3592,7 +3592,7 @@ class _RotateInCrossesState extends State<RotateInCrosses> {
                 ),
                 TextField(
               decoration: InputDecoration(
-                  hintText: hexagramSentenceList[0],
+                  hintText: hexSentenceList[0],
                   hintStyle: const TextStyle(color: Colors.grey)),
               textAlign: TextAlign.center,
               style: const TextStyle(
@@ -3609,7 +3609,7 @@ class _RotateInCrossesState extends State<RotateInCrosses> {
             ),
             TextField(
               decoration: InputDecoration(
-                  hintText: hexagramSentenceList[1],
+                  hintText: hexSentenceList[1],
                   hintStyle: const TextStyle(color: Colors.grey)),
               textAlign: TextAlign.center,
               style: const TextStyle(
@@ -4807,7 +4807,7 @@ class _RotateInCrossesState extends State<RotateInCrosses> {
 
                 TextField(
               decoration: InputDecoration(
-                  hintText: hexagramSentenceList[0],
+                  hintText: hexSentenceList[0],
                   hintStyle: const TextStyle(color: Colors.grey)),
               textAlign: TextAlign.center,
               style: const TextStyle(
@@ -4824,7 +4824,7 @@ class _RotateInCrossesState extends State<RotateInCrosses> {
             ),
             TextField(
               decoration: InputDecoration(
-                  hintText: hexagramSentenceList[2],
+                  hintText: hexSentenceList[2],
                   hintStyle: const TextStyle(color: Colors.grey)),
               textAlign: TextAlign.center,
               style: const TextStyle(
@@ -6658,7 +6658,7 @@ class _RotateInCrossesState extends State<RotateInCrosses> {
                 ),
                 TextField(
               decoration: InputDecoration(
-                  hintText: hexagramSentenceList[0],
+                  hintText: hexSentenceList[0],
                   hintStyle: const TextStyle(color: Colors.grey)),
               textAlign: TextAlign.center,
               style: const TextStyle(
@@ -6675,7 +6675,7 @@ class _RotateInCrossesState extends State<RotateInCrosses> {
             ),
             TextField(
               decoration: InputDecoration(
-                  hintText: hexagramSentenceList[3],
+                  hintText: hexSentenceList[3],
                   hintStyle: const TextStyle(color: Colors.grey)),
               textAlign: TextAlign.center,
               style: const TextStyle(
@@ -7680,7 +7680,7 @@ class _RotateInCrossesState extends State<RotateInCrosses> {
                 ),
                 TextField(
               decoration: InputDecoration(
-                  hintText: hexagramSentenceList[0],
+                  hintText: hexSentenceList[0],
                   hintStyle: const TextStyle(color: Colors.grey)),
               textAlign: TextAlign.center,
               style: const TextStyle(
@@ -7697,7 +7697,7 @@ class _RotateInCrossesState extends State<RotateInCrosses> {
             ),
             TextField(
               decoration: InputDecoration(
-                  hintText: hexagramSentenceList[4],
+                  hintText: hexSentenceList[4],
                   hintStyle: const TextStyle(color: Colors.grey)),
               textAlign: TextAlign.center,
               style: const TextStyle(

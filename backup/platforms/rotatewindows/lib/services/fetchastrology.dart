@@ -56,6 +56,11 @@ class AstrologyServices {
         _latitude.toString() +
         "&longitude=" +
         _longitude.toString();
+
+
+
+
+
     final Astrology astrology;
     try {
       var response = await http.get(Uri.parse(_uri));

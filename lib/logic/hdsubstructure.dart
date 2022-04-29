@@ -1,4 +1,5 @@
 import 'package:finallyicanlearn/models/lists.dart';
+import 'package:finallyicanlearn/models/lists_he.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 
 String getSubStructure(double _planetlongitude) {
@@ -73,8 +74,15 @@ String getSubStructure(double _planetlongitude) {
   _base = ((_exactBase % 5) + 1).floor();
 //_base = (_exactBase % 5).floor();
 
-  _finalSubStructure = _gate.toString() +'.' + _line.toString() + '.' + _color.toString()
-  + '.' + _tone.toString() + '.' + _base.toString();
+  _finalSubStructure = _gate.toString() +
+      '.' +
+      _line.toString() +
+      '.' +
+      _color.toString() +
+      '.' +
+      _tone.toString() +
+      '.' +
+      _base.toString();
 
   return _finalSubStructure;
 }
@@ -90,7 +98,7 @@ Hexagram getGateStructure(double _planetlongitude) {
       //_degrees = 0,
       //_minutes = 0,
       //_seconds = 0,
-  _hexfontindex = 0;
+      _hexfontindex = 0;
 
   //double _decimalDegrees = 0.0;
 
@@ -101,7 +109,6 @@ Hexagram getGateStructure(double _planetlongitude) {
 
   Hexagram _gateStructure = Hexagram();
 
-
   //_decimalDegrees = _degrees + _minutes / 60 + _seconds / 3600;
   //_planetlongitude += _decimalDegrees;
 
@@ -111,10 +118,7 @@ Hexagram getGateStructure(double _planetlongitude) {
     _planetlongitude -= 360;
   }
 
-  double _percentageThroughWheel =
-      _planetlongitude / 360;
-
-
+  double _percentageThroughWheel = _planetlongitude / 360;
 
   _gate = orderHexagramsToCalulateWheel[(_percentageThroughWheel * 64).floor()];
 
@@ -145,7 +149,7 @@ Hexagram getGateStructure(double _planetlongitude) {
   _gateStructure.name = _name;
   _gateStructure.hex = _hex;
   _gateStructure.gate = _gate;
-  _gateStructure.line= _line;
+  _gateStructure.line = _line;
   _gateStructure.color = _color;
   _gateStructure.tone = _tone;
   _gateStructure.base = _base;
@@ -155,3 +159,54 @@ Hexagram getGateStructure(double _planetlongitude) {
   return _gateStructure;
 }
 
+HexagramSentence getGateSentence(int _gate, String _language) {
+  String? _adjective, _subject, _verb, _adverb;
+  int _gateindex;
+  HexagramSentence _hexSentence = HexagramSentence();
+  List _hexchosensentenceList = [];
+
+  switch (_language) {
+    case 'EN':
+      _hexchosensentenceList = hexSentenceList;
+      break;
+    case 'HE':
+      _hexchosensentenceList = hexSentenceHEBList;
+      break;
+    default:
+      _hexchosensentenceList = hexSentenceList;
+      break;
+  }
+
+  _gateindex = _hexchosensentenceList.indexOf(_gate);
+  for (var i = 0; i < 4; i++) {
+    _adjective = _hexchosensentenceList[_gateindex + 1];
+    _subject = _hexchosensentenceList[_gateindex + 2];
+    _verb = _hexchosensentenceList[_gateindex + 3];
+    _adverb = _hexchosensentenceList[_gateindex + 4];
+  }
+
+  //switch (_language){
+  // case 'EN':
+  //   _hexSentence.adjective = _adjective;
+  //  _hexSentence.subject = _subject;
+  //  _hexSentence.verb = _verb;
+  //  _hexSentence.adverb = _adverb;
+  //  break;
+  // case 'HE':
+  //   _hexSentence.adjective = _adverb;
+  //   _hexSentence.subject = _verb;
+  //   _hexSentence.verb = _subject;
+  //   _hexSentence.adverb = _adjective;
+  //   break;
+  // default:
+  //  _hexchosensentenceList = hexSentenceList;
+  //  break;
+  // }
+
+  _hexSentence.adjective = _adjective;
+  _hexSentence.subject = _subject;
+  _hexSentence.verb = _verb;
+  _hexSentence.adverb = _adverb;
+
+  return _hexSentence;
+}

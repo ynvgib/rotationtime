@@ -1,0 +1,141 @@
+{
+  "hexagram": {
+    "one": {
+      "name": "Creative",
+      "gate": "The Creation of the Self",
+      "number": 1,
+      "quarter": "complex",
+      "trigrams": {
+        "father": "heaven",
+        "son": "heaven",
+        "daughter": "heaven",
+        "mother": "heaven"
+      },
+      "classes": {
+        "upper": "complex",
+        "middle": "complex",
+        "lower": "complex"
+      },
+      "sentence": {
+        "adjective": "Creative",
+        "subject": "Creativity",
+        "verb": "Creates",
+        "adverb": "Creatively"
+      }
+    },
+    "fiftyeight": {
+      "name": "Joyous",
+      "gate": "Aliveness",
+      "number": 1,
+      "quarter": "complex",
+      "trigrams": {
+        "father": "lake",
+        "son": "wind",
+        "daughter": "fire",
+        "mother": "lake"
+      },
+      "classes": {
+        "upper": "simple",
+        "middle": "breath",
+        "lower": "complex"
+      },
+      "sentence": {
+        "adjective": "Joyful",
+        "subject": "Joy",
+        "verb": "Enjoys",
+        "adverb": "Joyfully"
+      }
+    },
+    "thirteen": {
+      "name": "The Listener",
+      "gate": "The Fellowship of Men",
+      "number": 1,
+      "quarter": "simple",
+      "trigrams": {
+        "father": "heaven",
+        "son": "heaven",
+        "daughter": "wind",
+        "mother": "fire"
+      },
+      "classes": {
+        "upper": "complex",
+        "middle": "complex",
+        "lower": "simple"
+      },
+      "sentence": {
+        "adjective": "Secret",
+        "subject": "Listener",
+        "verb": "Listens",
+        "adverb": "Secretly"
+      }
+    },
+
+    "two": {
+      "name": "The Responsive",
+      "gate": "The Direction of the Self",
+      "number": 2,
+      "trigrams": {
+        "father": "earth",
+        "son": "earth",
+        "daughter": "earth",
+        "mother": "earth"
+      },
+      "classes": {
+        "upper": "silence",
+        "middle": "silence",
+        "lower": "silence"
+      },
+      "sentence": {
+        "adjective": "Responsive",
+        "subject": "Response",
+        "verb": "Responds",
+        "adverb": "Responsively"
+      }
+    },
+    "fiftytwo": {
+      "name": "Keeping Still Mountain",
+      "gate": "Stillness",
+      "number": 52,
+      "quarter": "silence",
+      "trigrams": {
+        "father": "mountain",
+        "son": "thunder",
+        "daughter": "water",
+        "mother": "mountain"
+      },
+      "classes": {
+        "upper": "breath",
+        "middle": "simple",
+        "lower": "silence"
+      },
+      "sentence": {
+        "adjective": "Still",
+        "subject": "Stillness",
+        "verb": "Still",
+        "adverb": "Stillfuly"
+      }
+    },
+    "seven": {
+      "name": "The Multitude",
+      "gate": "The Interaction of the Self",
+      "number": 7,
+      "trigrams": {
+        "father": "earth",
+        "son": "earth",
+        "daughter": "thunder",
+        "mother": "water"
+      },
+      "classes": {
+        "upper": "silence",
+        "middle": "silence",
+        "lower": "breath"
+      },
+      "sentence": {
+        "adjective": "Interactive",
+        "subject": "Interaction",
+        "verb": "Interacts",
+        "adverb": "Interactively"
+      }
+    }
+  }
+}

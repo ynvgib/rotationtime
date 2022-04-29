@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:finallyicanlearn/logic/hdsubstructure.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/services/fetchastrology.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:finallyicanlearn/models/lists.dart';
+import 'package:intl/intl.dart';
 
 // /rotatehexwithlogic
 // rotate one hexagram
@@ -39,7 +41,9 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
       _controllertopfourthtext = TextEditingController(),
       _controllerbottomfirsttext = TextEditingController(),
       _controllerbottomsecondtext = TextEditingController(),
-      _controllerbottomthirdtext = TextEditingController();
+      _controllerbottomthirdtext = TextEditingController(),
+      _controllerTime = TextEditingController(),
+      _controllerDate = TextEditingController();
 
 
   var _dropdownvalue = hexagramslist[1],
@@ -51,53 +55,46 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
   DateTime _now = DateTime.now();
   List<Hexagram> _planetsList = [];
 
-  Hexagram _sunhex = Hexagram(),
-            _earthhex = Hexagram(),
-            _northnodehex = Hexagram(),
-            _southnodehex = Hexagram(),
-            _moonhex = Hexagram(),
-            _mercuryhex = Hexagram(),
-            _venushex = Hexagram(),
-            _marshex = Hexagram(),
-            _jupiterhex = Hexagram(),
-            _saturnhex = Hexagram(),
-            _uranushex = Hexagram(),
-            _neptunehex = Hexagram(),
-            _plutohex = Hexagram();
+  final List<bool> _isPlanetSelectedList =
+  List<bool>.filled(13, false, growable: false);
+
+  int _previousPlanetIndex = -1;
+
+  Hexagram _planethex = Hexagram();
+
+  String _formattedDate = '',
+      _formattedTime = '';
+
+      final String _chosenlanguage = 'EN',
+      _title = titlesEN[0],
+      _timehint = 'time',
+      _datehint = 'date';
+
+  HexagramSentence _hexsentence = getGateSentence(1, 'EN');
+
+  final List<String> finalhexNamesList = hexNamesList;
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _sunhex = _planetsList[0];
-
-
-            _controllerhextext.text = _sunhex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_sunhex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_sunhex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_sunhex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_sunhex.gate!];
-
-            _hexalignedList = hexagramAlignment(_sunhex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-              child: Container(
-                height: 40,
-                width: 40,
+          ToggleButtons(
+            borderWidth: 10.0,
+            hoverColor: Colors.black,
+            //borderRadius: BorderRadius.circular(20),
+            fillColor: Colors.white,
+            children: [
+              Container(
+                height: 30,
+                width: 30,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
                     image: const DecorationImage(
                         image: AssetImage("assets/planets/sun.png")),
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
                           color: Colors.grey[500]!,
@@ -110,30 +107,10 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                           blurRadius: 15,
                           spreadRadius: 1),
                     ]),
-              ),),
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _earthhex = _planetsList[1];
-
-
-            _controllerhextext.text = _earthhex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_earthhex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_earthhex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_earthhex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_earthhex.gate!];
-
-            _hexalignedList = hexagramAlignment(_earthhex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-              child: Container(
-                height: 40,
-                width: 40,
+              ),
+              Container(
+                height: 30,
+                width: 30,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
                     image: const DecorationImage(
@@ -151,30 +128,10 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                           blurRadius: 15,
                           spreadRadius: 1),
                     ]),
-              ),),
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _northnodehex = _planetsList[2];
-
-
-            _controllerhextext.text = _northnodehex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_northnodehex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_northnodehex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_northnodehex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_northnodehex.gate!];
-
-            _hexalignedList = hexagramAlignment(_northnodehex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-              child: Container(
-                height: 40,
-                width: 40,
+              ),
+              Container(
+                height: 30,
+                width: 30,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
                     image: const DecorationImage(
@@ -192,30 +149,10 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                           blurRadius: 15,
                           spreadRadius: 1),
                     ]),
-              ),),
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _southnodehex = _planetsList[3];
-
-
-            _controllerhextext.text = _southnodehex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_southnodehex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_southnodehex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_southnodehex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_southnodehex.gate!];
-
-            _hexalignedList = hexagramAlignment(_southnodehex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-              child: Container(
-                height: 40,
-                width: 40,
+              ),
+              Container(
+                height: 30,
+                width: 30,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
                     image: const DecorationImage(
@@ -233,378 +170,242 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                           blurRadius: 15,
                           spreadRadius: 1),
                     ]),
-              ),),
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _moonhex = _planetsList[4];
-
-
-            _controllerhextext.text = _moonhex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_moonhex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_moonhex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_moonhex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_moonhex.gate!];
-
-            _hexalignedList = hexagramAlignment(_moonhex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/moon.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),),
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _mercuryhex = _planetsList[5];
-
-
-            _controllerhextext.text = _mercuryhex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_mercuryhex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_mercuryhex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_mercuryhex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_mercuryhex.gate!];
-
-            _hexalignedList = hexagramAlignment(_mercuryhex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/mercury.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),),
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _venushex = _planetsList[6];
-
-
-            _controllerhextext.text = _venushex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_venushex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_venushex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_venushex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_venushex.gate!];
-
-            _hexalignedList = hexagramAlignment(_venushex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/venus.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),),
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _marshex = _planetsList[7];
-
-
-            _controllerhextext.text = _marshex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_marshex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_marshex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_marshex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_marshex.gate!];
-
-            _hexalignedList = hexagramAlignment(_marshex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/mars.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),),
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _jupiterhex = _planetsList[8];
-
-
-            _controllerhextext.text = _jupiterhex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_jupiterhex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_jupiterhex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_jupiterhex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_jupiterhex.gate!];
-
-            _hexalignedList = hexagramAlignment(_jupiterhex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/jupiter.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),),
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _saturnhex = _planetsList[9];
+              ),
+              Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/moon.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),
+              Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/mercury.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),
+              Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/venus.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),
+              Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/mars.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),
+              Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/jupiter.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),
+              Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/saturn.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),
+              Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/uranus.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),
+              Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/neptune.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),
+              Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/pluto.png")),
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500]!,
+                          offset: const Offset(4, 4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                      const BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+              ),
+            ],
+            isSelected: _isPlanetSelectedList,
+            onPressed: (int index)  async{
+              _now = DateTime.now();
+              //_planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+              _planetsList = await AstrologyServices.getCurrentData(_now);
+              setState(() {
 
 
-            _controllerhextext.text = _saturnhex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_saturnhex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_saturnhex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_saturnhex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_saturnhex.gate!];
 
-            _hexalignedList = hexagramAlignment(_saturnhex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
+                _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+                _formattedTime = DateFormat.Hms().format(_now);
+                _controllerTime.text = _formattedTime;
+                _controllerDate.text = _formattedDate;
+                switch (_previousPlanetIndex){
+                  case -1:
+                    _previousPlanetIndex = index;
+                    _isPlanetSelectedList[index] = !_isPlanetSelectedList[index];
+                    break;
+                  default:
+                    _isPlanetSelectedList[_previousPlanetIndex] = !_isPlanetSelectedList[_previousPlanetIndex];
+                    _isPlanetSelectedList[index] = !_isPlanetSelectedList[index];
+                    _previousPlanetIndex = index;
+                }
 
+                _planethex = _planetsList[index];
+                _hexsentence =  getGateSentence(_planethex.gate!, _chosenlanguage);
 
-          },
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/saturn.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),),
-          ElevatedButton(onPressed: () async {
+                //_controllerhextext.text = _planethex.gate.toString();
+                //_controllertopfirsttext.text = _hexsentence.adjective!;
+                //_controllertopsecondtext.text = _hexsentence.subject!;
+                //_controllertopthirdtext.text = _hexsentence.verb!;
+                //_controllertopfourthtext.text = _hexsentence.adverb!;
 
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _uranushex = _planetsList[10];
+                _hexalignedList = hexagramAlignment(_planethex.gate!);
+                _controllertop.jumpToPage(_hexalignedList[0]);
+                _controllermid.jumpToPage(_hexalignedList[1]);
+                _controllerbot.jumpToPage(_hexalignedList[2]);
 
 
-            _controllerhextext.text = _uranushex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_uranushex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_uranushex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_uranushex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_uranushex.gate!];
+              });
+            },
+          ),
 
-            _hexalignedList = hexagramAlignment(_uranushex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/uranus.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),),
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _neptunehex = _planetsList[11];
-
-
-            _controllerhextext.text = _neptunehex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_neptunehex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_neptunehex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_neptunehex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_neptunehex.gate!];
-
-            _hexalignedList = hexagramAlignment(_neptunehex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/neptune.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),),
-          ElevatedButton(onPressed: () async {
-
-            _now = DateTime.now();
-            _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _plutohex = _planetsList[12];
-
-
-            _controllerhextext.text = _plutohex.gate.toString();
-            _controllertopfirsttext.text = hexagramAdjectiveList[_plutohex.gate!];
-            _controllertopsecondtext.text = hexagramSubjectList[_plutohex.gate!];
-            _controllertopthirdtext.text = hexagramVerbList[_plutohex.gate!];
-            _controllertopfourthtext.text = hexagramAdverbList[_plutohex.gate!];
-
-            _hexalignedList = hexagramAlignment(_plutohex.gate!);
-            _controllertop.jumpToPage(_hexalignedList[0]);
-            _controllermid.jumpToPage(_hexalignedList[1]);
-            _controllerbot.jumpToPage(_hexalignedList[2]);
-
-
-          },
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/pluto.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),),
         ],
-          title: const Text('Rotate One Hexagram'),
+          title: Text(_title),
           backgroundColor: Colors.blueGrey),
       backgroundColor: Colors.grey[100],
       body: Column(
@@ -675,6 +476,38 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                         });
                       },
                     ),
+                    Container(
+                        margin: const EdgeInsets.all(5.0),
+                        padding: const EdgeInsets.all(3.0),
+                        child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(
+                                width: 100,
+                                child: TextField(
+                                    readOnly: true,
+                                    decoration: InputDecoration.collapsed(
+                                        hintText: _timehint),
+                                    controller: _controllerTime,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                        color: Colors.black)),
+                              ),
+                              SizedBox(
+                                width: 150,
+                                child: TextField(
+                                    textAlign: TextAlign.right,
+                                    readOnly: true,
+                                    decoration:  InputDecoration.collapsed(
+                                        hintText: _datehint),
+                                    controller: _controllerDate,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                        color: Colors.black)),
+                              ),
+                            ])),
                     DropdownButton(
                       underline:
                       DropdownButtonHideUnderline(child: Container()),
@@ -756,7 +589,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                   decoration: InputDecoration.collapsed(
-                      hintText: hexagramAdjectiveList[1],
+                      hintText: _hexsentence.adjective,
                       hintStyle: const TextStyle(color: Colors.grey)),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
@@ -770,7 +603,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                   decoration: InputDecoration.collapsed(
-                      hintText: hexagramSubjectList[1],
+                      hintText: _hexsentence.subject,
                       hintStyle: const TextStyle(color: Colors.grey)),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
@@ -784,7 +617,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                   decoration: InputDecoration.collapsed(
-                      hintText: hexagramVerbList[1],
+                      hintText: _hexsentence.verb,
                       hintStyle: const TextStyle(color: Colors.grey)),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
@@ -798,7 +631,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration.collapsed(
-                        hintText: hexagramAdverbList[1],
+                        hintText: _hexsentence.adverb,
                         hintStyle: const TextStyle(color: Colors.grey)),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
@@ -812,6 +645,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 ),
               ],
             ),
+
             Expanded(
               child: CarouselSlider(
                 items: mixHexagramSlidersNew,
@@ -826,26 +660,35 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                         _hexagramVal = ((_currenttop + 1) * 100 +
                             (_currentmid + 1) * 10 +
                             (_currentbot + 1));
-                        _carouselvalueindex = hexCarouselValueList.indexWhere(
-                            (element) => element == _hexagramVal.toString());
-                        _carouselvalueindex++;
-                        _controllerhextext.text =
-                            hexCarouselValueList[_carouselvalueindex];
 
-                        _controllertopfirsttext.text = hexagramAdjectiveList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopsecondtext.text = hexagramSubjectList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopthirdtext.text = hexagramVerbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopfourthtext.text = hexagramAdverbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
+                        _carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
-                         _controllerbottomfirsttext.text = hexNamesList[_currenttop];
+                        _chosenhex =  orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllerhextext.text = _chosenhex.toString();
+
+                        _hexsentence =  getGateSentence(_chosenhex, _chosenlanguage);
+
+                        _controllertopfirsttext.text = _hexsentence.adjective!;
+                        _controllertopsecondtext.text = _hexsentence.subject!;
+                        _controllertopthirdtext.text = _hexsentence.verb!;
+                        _controllertopfourthtext.text = _hexsentence.adverb!;
+
+                        switch (_chosenlanguage)
+                        {
+                          case 'EN':
+                            _controllerbottomfirsttext.text = finalhexNamesList[_currenttop];
+                            break;
+                          case 'HE':
+                            _controllerbottomthirdtext.text = finalhexNamesList[_currenttop];
+                            break;
+                          default:
+                            _controllerbottomfirsttext.text = finalhexNamesList[_currenttop];
+                            break;
+                        }
+
+
+
                       });
                     }),
               ),
@@ -886,26 +729,23 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                             (_currentmid + 1) * 10 +
                             (_currentbot + 1));
 
-                        _carouselvalueindex = hexCarouselValueList.indexWhere(
-                            (element) => element == _hexagramVal.toString());
-                        _carouselvalueindex++;
-                        _controllerhextext.text =
-                            hexCarouselValueList[_carouselvalueindex];
 
-                        _controllertopfirsttext.text = hexagramAdjectiveList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopsecondtext.text = hexagramSubjectList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopthirdtext.text = hexagramVerbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopfourthtext.text = hexagramAdverbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
+                        _carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
-                        _controllerbottomsecondtext.text = hexNamesList[_currentmid];
+                        _chosenhex =  orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllerhextext.text = _chosenhex.toString();
+
+                        _hexsentence =  getGateSentence(_chosenhex, _chosenlanguage);
+
+                        _controllertopfirsttext.text = _hexsentence.adjective!;
+                        _controllertopsecondtext.text = _hexsentence.subject!;
+                        _controllertopthirdtext.text = _hexsentence.verb!;
+                        _controllertopfourthtext.text = _hexsentence.adverb!;
+
+
+                        _controllerbottomsecondtext.text = finalhexNamesList[_currentmid];
+
                       });
                     }),
               ),
@@ -944,26 +784,34 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                         _hexagramVal = ((_currenttop + 1) * 100 +
                             (_currentmid + 1) * 10 +
                             (_currentbot + 1));
-                        _carouselvalueindex = hexCarouselValueList.indexWhere(
-                            (element) => element == _hexagramVal.toString());
-                        _carouselvalueindex++;
-                        _controllerhextext.text =
-                            hexCarouselValueList[_carouselvalueindex];
 
-                        _controllertopfirsttext.text = hexagramAdjectiveList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopsecondtext.text = hexagramSubjectList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopthirdtext.text = hexagramVerbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
-                        _controllertopfourthtext.text = hexagramAdverbList[
-                            int.parse(
-                                hexCarouselValueList[_carouselvalueindex])];
+                        _carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
-                        _controllerbottomthirdtext.text = hexNamesList[_currentbot];
+                        _chosenhex =  orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllerhextext.text = _chosenhex.toString();
+
+                        _hexsentence =  getGateSentence(_chosenhex, _chosenlanguage);
+
+                        _controllertopfirsttext.text = _hexsentence.adjective!;
+                        _controllertopsecondtext.text = _hexsentence.subject!;
+                        _controllertopthirdtext.text = _hexsentence.verb!;
+                        _controllertopfourthtext.text = _hexsentence.adverb!;
+
+                        switch (_chosenlanguage)
+                        {
+                          case 'EN':
+                            _controllerbottomthirdtext.text = finalhexNamesList[_currentbot];
+                            break;
+                          case 'HE':
+                            _controllerbottomfirsttext.text = finalhexNamesList[_currentbot];
+                            break;
+                          default:
+                            _controllerbottomthirdtext.text = finalhexNamesList[_currentbot];
+                            break;
+                        }
+
+
                       });
                     }),
               ),
@@ -994,7 +842,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                       decoration: InputDecoration.collapsed(
-                          hintText: hexNamesList[0],
+                          hintText: finalhexNamesList[0],
                           hintStyle: const TextStyle(color: Colors.grey)),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
@@ -1008,7 +856,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                       decoration: InputDecoration.collapsed(
-                          hintText: hexNamesList[0],
+                          hintText: finalhexNamesList[0],
                           hintStyle: const TextStyle(color: Colors.grey)),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
@@ -1022,7 +870,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                 Expanded(
                     child: TextField(
                       decoration: InputDecoration.collapsed(
-                          hintText: hexNamesList[0],
+                          hintText: finalhexNamesList[0],
                           hintStyle: const TextStyle(color: Colors.grey)),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
@@ -1035,6 +883,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
                     )),
               ],
             ),
+
             Expanded(
                 child: Container(
               child: const Text(

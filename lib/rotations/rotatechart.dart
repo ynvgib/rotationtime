@@ -328,7 +328,8 @@ class _RotateChartState extends State<RotateChart> {
           ElevatedButton(
               onPressed: () async {
                 _now = DateTime.now();
-                _planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+                //_planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+                _planetsList = await AstrologyServices.getCurrentData(_now);
                 _sunhex = _planetsList[0];
                 _earthhex = _planetsList[1];
                 _northnodehex = _planetsList[2];
