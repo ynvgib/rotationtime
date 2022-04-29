@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:finallyicanlearn/logic/hdsubstructure.dart';
 import 'package:finallyicanlearn/models/json/astrologyjsonmap.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
@@ -17,12 +18,6 @@ class AstrologyServices {
 
     String _formattedDate = DateFormat('yyyy-MM-dd').format(_utcTime);
     String _formattedTime = DateFormat.Hms().format(_utcTime);
-
-    //print (_utcTime);
-
-    // 86 days to begin calculation
-    //DateTime _initialDesignDays = _utcTime.subtract(const Duration(days: 88));
-
     
     final String _uri = "http://localhost:3000/horoscope?time=" +
         _formattedDate +
@@ -34,7 +29,6 @@ class AstrologyServices {
         _longitude.toString();
 
 
-    print (_uri);
 
 
       var response = await http.get(Uri.parse(_uri));
@@ -162,7 +156,6 @@ class AstrologyServices {
 
     _personalitydata = await AstrologyServices.getPlanetsGatesNow(_nowdesign);
     _personsunlongitude = _personalitydata.data.astros.sun.position.longitude;
-    print (_personsunlongitude);
 
 
     // required 88 degress
@@ -178,10 +171,6 @@ class AstrologyServices {
 
     _gaplongitude = _requiredlongitude - _calculatedlongitude;
     //_designsunlongitude = _gaplongitude;
-
-      //print (_requiredlongitude);
-      //print (_calculatedlongitude);
-      //print (_gaplongitude);
 
     if (_gaplongitude > 1){
       _designTime = _designTime.add(const Duration(days: 1));
@@ -350,21 +339,8 @@ class AstrologyServices {
       _gaplongitude = _requiredlongitude - _calculatedlongitude;
       //_designsunlongitude = _gaplongitude;
 
-      //print (_requiredlongitude);
-      //print (_calculatedlongitude);
-      //print (_gaplongitude);
-      //print (_gaplongitude);
 
     }while (_gaplongitude > 0.000007 || _gaplongitude < -0.000007);
-
-    print ('final gap long: $_gaplongitude');
-    print (_requiredlongitude);
-    print (_calculatedlongitude);
-
-    print ('Design Time: $_designTime');
-
-    //print ('interpolations: $_interpolationtimes');
-    //_planetsList = await AstrologyServices.mapPlanets(_designdata);
 
     return _designTime;
   }

@@ -1,3 +1,4 @@
+import 'package:finallyicanlearn/models/datetime.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/services/fetchastrology.dart';
 import 'package:flutter/material.dart';
@@ -56,49 +57,13 @@ class _RotatePlanetsState extends State<RotatePlanets> {
       _controllerSouthNodeText = TextEditingController(),
       _controllerSouthNodeGate = TextEditingController(),
       _controllerTime = TextEditingController(),
-      _controllerDate = TextEditingController();
+      _controllerDate = TextEditingController(),
+      _controllerTimePick = TextEditingController(),
+      _controllerDatePick = TextEditingController();
 
-  int _dropdownNorthNode = hexagramslist[1],
-      _dropdownSun = hexagramslist[1],
-      _dropdownMoon = hexagramslist[1],
-      _dropdownMars = hexagramslist[1],
-      _dropdownVenus = hexagramslist[1],
-      _dropdownMercury = hexagramslist[1],
-      _dropdownJupiter = hexagramslist[1],
-      _dropdownSaturn = hexagramslist[1],
-      _dropdownUranus = hexagramslist[1],
-      _dropdownNeptune = hexagramslist[1],
-      _dropdownPluto = hexagramslist[1],
-      _dropdownEarth = hexagramslist[1],
-      _dropdownSouthNode = hexagramslist[1],
-      _fontMapSun = 1,
-      _fontMapNorthNode = 1,
-      _fontMapMoon = 1,
-      _fontMapMercury = 1,
-      _fontMapVenus = 1,
-      _fontMapMars = 1,
-      _fontMapSaturn = 1,
-      _fontMapJupiter = 1,
-      _fontMapUranus = 1,
-      _fontMapNeptune = 1,
-      _fontMapPluto = 1,
-      _fontMapEarth = 1,
-      _fontMapSouthNode = 1;
 
-  String _fontMapFinalSun = 'a',
-      _fontMapFinalNorthNode = 'a',
-      _fontMapFinalMoon = 'a',
-      _fontMapFinalMercury = 'a',
-      _fontMapFinalVenus = 'a',
-      _fontMapFinalMars = 'a',
-      _fontMapFinalJupiter = 'a',
-      _fontMapFinalSaturn = 'a',
-      _fontMapFinalUranus = 'a',
-      _fontMapFinalNeptune = 'a',
-      _fontMapFinalPluto = 'a',
-      _fontMapFinalEarth = 'a',
-      _fontMapFinalSouthNode = 'a',
-      _formattedDate = '',
+
+  String _formattedDate = '',
       _formattedTime = '';
 
   // visibility of planets init
@@ -120,9 +85,15 @@ class _RotatePlanetsState extends State<RotatePlanets> {
       List<bool>.filled(13, true, growable: false);
 
   DateTime _now = DateTime.now(),
-  _designTime = DateTime.now();
+  _designTime = DateTime.now(),
+      _selectedDate = DateTime.now();
 
-  List<Hexagram> _planetsList = [];
+  TimeOfDay _selectedtime = const TimeOfDay(hour: 0, minute: 0);
+
+  List<Hexagram> _planetsList = [],
+      _planetsdesignList = [],
+      _planetsnowList = [];
+
   Hexagram _sunhex = Hexagram(),
       _earthhex = Hexagram(),
       _northnodehex = Hexagram(),
@@ -146,15 +117,28 @@ class _RotatePlanetsState extends State<RotatePlanets> {
         backgroundColor: Colors.blueGrey,
         actions: [
           ElevatedButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => _buildPopupDialog(context),
+              );},
+            child: const Text('Fetch Time'),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  textStyle: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold))
+          ),
+          ElevatedButton(
               onPressed: () async {
-                _designTime = DateTime.now();
-
-                //DateTime _utcTime = _now.toUtc();
-                //DateTime _initialDesignDays = _utcTime.subtract(const Duration(days: 88));
+                //_designTime = DateTime.now();
 
                 //_planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-                _designTime = await AstrologyServices.getDesignTime(_designTime);
-                _planetsList = await AstrologyServices.getCurrentData(_designTime);
+                //_designTime = await AstrologyServices.getDesignTime(_designTime);
+                //_planetsList = await AstrologyServices.getCurrentData(_designTime);
+
+                _planetsList = _planetsdesignList;
+
                 _sunhex = _planetsList[0];
                 _earthhex = _planetsList[1];
                 _northnodehex = _planetsList[2];
@@ -198,15 +182,15 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 //_controllerPlutoText.text = hexagramVerbList[_plutohex.gate!];
 
                 _controllerSunGate.text =
-                    _sunhex.gate.toString() + "." + _sunhex.line.toString();
+                    _sunhex.gate.toString() + "\n." + _sunhex.line.toString()
+                + "." + _sunhex.color.toString() + "." + _sunhex.tone.toString();
                 _controllerEarthGate.text =
-                    _earthhex.gate.toString() + "." + _earthhex.line.toString();
-                _controllerNorthNodeGate.text = _northnodehex.gate.toString() +
-                    "." +
-                    _northnodehex.line.toString();
-                _controllerSouthNodeGate.text = _southnodehex.gate.toString() +
-                    "." +
-                    _southnodehex.line.toString();
+                    _earthhex.gate.toString() + "\n." + _earthhex.line.toString()
+                        + "." + _earthhex.color.toString() + "." + _earthhex.tone.toString();
+                _controllerNorthNodeGate.text = _northnodehex.gate.toString() + "\n." + _northnodehex.line.toString()
+                    + "." + _northnodehex.color.toString() + "." + _northnodehex.tone.toString();
+                _controllerSouthNodeGate.text = _southnodehex.gate.toString() + "\n." + _southnodehex.line.toString()
+                    + "." + _southnodehex.color.toString() + "." + _southnodehex.tone.toString();
                 _controllerMoonGate.text =
                     _moonhex.gate.toString() + "." + _moonhex.line.toString();
                 _controllerMercuryGate.text = _mercuryhex.gate.toString() +
@@ -254,28 +238,20 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 _formattedTime = DateFormat.Hms().format(_designTime);
                 _controllerTime.text = _formattedTime;
                 _controllerDate.text = _formattedDate;
-
-                setState(() {
-                  _dropdownSun = _sunhex.gate!;
-                  _dropdownEarth = _earthhex.gate!;
-                  _dropdownNorthNode = _northnodehex.gate!;
-                  _dropdownSouthNode = _southnodehex.gate!;
-                  _dropdownMoon = _moonhex.gate!;
-                  _dropdownMercury = _mercuryhex.gate!;
-                  _dropdownVenus = _venushex.gate!;
-                  _dropdownMars = _marshex.gate!;
-                  _dropdownJupiter = _jupiterhex.gate!;
-                  _dropdownSaturn = _saturnhex.gate!;
-                  _dropdownUranus = _uranushex.gate!;
-                  _dropdownNeptune = _neptunehex.gate!;
-                  _dropdownPluto = _plutohex.gate!;
-                });
               },
-              child: const Text('Design Planets')),
+              child: const Text('Before'),
+            style: ElevatedButton.styleFrom(
+                primary: Colors.red,
+                textStyle: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold)),),
           ElevatedButton(
               onPressed: () async {
-                _now = DateTime.now();
-                _planetsList = await AstrologyServices.getCurrentData(_now);
+                //_now = DateTime.now();
+                //_planetsList = await AstrologyServices.getCurrentData(_now);
+
+                _planetsList = _planetsnowList;
+
                 _sunhex = _planetsList[0];
                 _earthhex = _planetsList[1];
                 _northnodehex = _planetsList[2];
@@ -319,15 +295,15 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 //_controllerPlutoText.text = hexagramVerbList[_plutohex.gate!];
 
                 _controllerSunGate.text =
-                    _sunhex.gate.toString() + "." + _sunhex.line.toString();
+                    _sunhex.gate.toString() + "\n." + _sunhex.line.toString()
+                        + "." + _sunhex.color.toString() + "." + _sunhex.tone.toString();
                 _controllerEarthGate.text =
-                    _earthhex.gate.toString() + "." + _earthhex.line.toString();
-                _controllerNorthNodeGate.text = _northnodehex.gate.toString() +
-                    "." +
-                    _northnodehex.line.toString();
-                _controllerSouthNodeGate.text = _southnodehex.gate.toString() +
-                    "." +
-                    _southnodehex.line.toString();
+                    _earthhex.gate.toString() + "\n." + _earthhex.line.toString()
+                        + "." + _earthhex.color.toString() + "." + _earthhex.tone.toString();
+                _controllerNorthNodeGate.text = _northnodehex.gate.toString() + "\n." + _northnodehex.line.toString()
+                    + "." + _northnodehex.color.toString() + "." + _northnodehex.tone.toString();
+                _controllerSouthNodeGate.text = _southnodehex.gate.toString() + "\n." + _southnodehex.line.toString()
+                    + "." + _southnodehex.color.toString() + "." + _southnodehex.tone.toString();
                 _controllerMoonGate.text =
                     _moonhex.gate.toString() + "." + _moonhex.line.toString();
                 _controllerMercuryGate.text = _mercuryhex.gate.toString() +
@@ -376,23 +352,13 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 _controllerTime.text = _formattedTime;
                 _controllerDate.text = _formattedDate;
 
-                setState(() {
-                  _dropdownSun = _sunhex.gate!;
-                  _dropdownEarth = _earthhex.gate!;
-                  _dropdownNorthNode = _northnodehex.gate!;
-                  _dropdownSouthNode = _southnodehex.gate!;
-                  _dropdownMoon = _moonhex.gate!;
-                  _dropdownMercury = _mercuryhex.gate!;
-                  _dropdownVenus = _venushex.gate!;
-                  _dropdownMars = _marshex.gate!;
-                  _dropdownJupiter = _jupiterhex.gate!;
-                  _dropdownSaturn = _saturnhex.gate!;
-                  _dropdownUranus = _uranushex.gate!;
-                  _dropdownNeptune = _neptunehex.gate!;
-                  _dropdownPluto = _plutohex.gate!;
-                });
               },
-              child: const Text('Now Planets')),
+              child: const Text('After'),
+            style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                textStyle: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold)),),
           ToggleButtons(
             borderWidth: 10.0,
             hoverColor: Colors.blue,
@@ -757,7 +723,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 const InputDecoration.collapsed(hintText: 'a'),
                             controller: _controllerSunHex,
                             style: const TextStyle(
-                                fontSize: 40,
+                                fontSize: 35,
                                 fontFamily: 'iChing',
                                 color: Colors.blue)),
                       ),
@@ -768,9 +734,11 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             decoration:
                                 const InputDecoration.collapsed(hintText: '1'),
                             textAlign: TextAlign.center,
+                            minLines: 1,
+                            maxLines: 2,
                             controller: _controllerSunGate,
                             style: const TextStyle(
-                                fontSize: 15,
+                                fontSize: 12,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold)),
                       ),
@@ -816,7 +784,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                     hintText: 'a'),
                                 controller: _controllerNorthNodeHex,
                                 style: const TextStyle(
-                                    fontSize: 40,
+                                    fontSize: 35,
                                     fontFamily: 'iChing',
                                     color: Colors.blue))),
                         SizedBox(
@@ -826,9 +794,11 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               decoration: const InputDecoration.collapsed(
                                   hintText: '1'),
                               textAlign: TextAlign.center,
+                              minLines: 1,
+                              maxLines: 2,
                               controller: _controllerNorthNodeGate,
                               style: const TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 12,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold)),
                         ),
@@ -924,7 +894,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       hintText: 'a'),
                                   controller: _controllerMoonHex,
                                   style: const TextStyle(
-                                      fontSize: 40,
+                                      fontSize: 35,
                                       fontFamily: 'iChing',
                                       color: Colors.green))),
                           SizedBox(
@@ -936,7 +906,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 textAlign: TextAlign.center,
                                 controller: _controllerMoonGate,
                                 style: const TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 12,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold)),
                           ),
@@ -1002,7 +972,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         hintText: 'a'),
                                     controller: _controllerMercuryHex,
                                     style: const TextStyle(
-                                        fontSize: 40,
+                                        fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.green))),
                             SizedBox(
@@ -1014,7 +984,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.center,
                                   controller: _controllerMercuryGate,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 12,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
@@ -1058,7 +1028,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         hintText: 'a'),
                                     controller: _controllerVenusHex,
                                     style: const TextStyle(
-                                        fontSize: 40,
+                                        fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.green))),
                             SizedBox(
@@ -1070,7 +1040,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.center,
                                   controller: _controllerVenusGate,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 12,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
@@ -1116,7 +1086,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         hintText: 'a'),
                                     controller: _controllerMarsHex,
                                     style: const TextStyle(
-                                        fontSize: 40,
+                                        fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.green))),
                             SizedBox(
@@ -1128,7 +1098,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.center,
                                   controller: _controllerMarsGate,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 12,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
@@ -1179,7 +1149,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         hintText: 'a'),
                                     controller: _controllerJupiterHex,
                                     style: const TextStyle(
-                                        fontSize: 40,
+                                        fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.yellow))),
                             SizedBox(
@@ -1191,7 +1161,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.center,
                                   controller: _controllerJupiterGate,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 12,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
@@ -1235,7 +1205,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         hintText: 'a'),
                                     controller: _controllerSaturnHex,
                                     style: const TextStyle(
-                                        fontSize: 40,
+                                        fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.yellow))),
                             SizedBox(
@@ -1247,7 +1217,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.center,
                                   controller: _controllerSaturnGate,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 12,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
@@ -1312,7 +1282,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         hintText: 'a'),
                                     controller: _controllerUranusHex,
                                     style: const TextStyle(
-                                        fontSize: 40,
+                                        fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.yellow))),
                             SizedBox(
@@ -1324,7 +1294,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.center,
                                   controller: _controllerUranusGate,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 12,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
@@ -1368,7 +1338,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         hintText: 'a'),
                                     controller: _controllerNeptuneHex,
                                     style: const TextStyle(
-                                        fontSize: 40,
+                                        fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.yellow))),
                             SizedBox(
@@ -1380,7 +1350,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.center,
                                   controller: _controllerNeptuneGate,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 12,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
@@ -1424,7 +1394,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         hintText: 'a'),
                                     controller: _controllerPlutoHex,
                                     style: const TextStyle(
-                                        fontSize: 40,
+                                        fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.yellow))),
                             SizedBox(
@@ -1436,7 +1406,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.center,
                                   controller: _controllerPlutoGate,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 12,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
@@ -1488,7 +1458,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       hintText: 'a'),
                                   controller: _controllerEarthHex,
                                   style: const TextStyle(
-                                      fontSize: 40,
+                                      fontSize: 35,
                                       fontFamily: 'iChing',
                                       color: Colors.red)),
                             ),
@@ -1499,9 +1469,11 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   decoration: const InputDecoration.collapsed(
                                       hintText: '1'),
                                   textAlign: TextAlign.center,
+                                  minLines: 1,
+                                  maxLines: 2,
                                   controller: _controllerEarthGate,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 12,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
@@ -1545,7 +1517,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         hintText: 'a'),
                                     controller: _controllerSouthNodeHex,
                                     style: const TextStyle(
-                                        fontSize: 40,
+                                        fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.red))),
                             SizedBox(
@@ -1555,9 +1527,11 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   decoration: const InputDecoration.collapsed(
                                       hintText: '1'),
                                   textAlign: TextAlign.center,
+                                  minLines: 1,
+                                  maxLines: 2,
                                   controller: _controllerSouthNodeGate,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 12,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
@@ -1593,4 +1567,332 @@ class _RotatePlanetsState extends State<RotatePlanets> {
       ),
     );
   }
+
+  Widget _buildPopupDialog(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Fetch Time'),
+      content: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ElevatedButton(
+              onPressed: () async {
+                //_now = DateTime.now();
+                _now = _selectedDate.applied(_selectedtime);
+                //print ('final $_now');
+                _planetsnowList = await AstrologyServices.getCurrentData(_now);
+
+                _designTime = await AstrologyServices.getDesignTime(_now);
+                _planetsdesignList = await AstrologyServices.getCurrentData(_designTime);
+
+                _planetsList = _planetsnowList;
+                _sunhex = _planetsList[0];
+                _earthhex = _planetsList[1];
+                _northnodehex = _planetsList[2];
+                _southnodehex = _planetsList[3];
+                _moonhex = _planetsList[4];
+                _mercuryhex = _planetsList[5];
+                _venushex = _planetsList[6];
+                _marshex = _planetsList[7];
+                _jupiterhex = _planetsList[8];
+                _saturnhex = _planetsList[9];
+                _uranushex = _planetsList[10];
+                _neptunehex = _planetsList[11];
+                _plutohex = _planetsList[12];
+
+                _controllerSunText.text = _sunhex.name!;
+                _controllerEarthText.text = _earthhex.name!;
+                //_controllerNorthNodeText.text = _northnodehex.name!;
+                //_controllerSouthNodeText.text = _southnodehex.name!;
+                //_controllerMoonText.text = _moonhex.name!;
+                //_controllerMercuryText.text = _mercuryhex.name!;
+                //_controllerVenusText.text = _venushex.name!;
+                //_controllerMarsText.text = _marshex.name!;
+                //_controllerJupiterText.text = _jupiterhex.name!;
+                //_controllerSaturnText.text = _saturnhex.name!;
+                //_controllerUranusText.text = _uranushex.name!;
+                //_controllerNeptuneText.text = _neptunehex.name!;
+                _controllerPlutoText.text = _plutohex.name!;
+
+                _controllerNorthNodeText.text =
+                hexagramVerbList[_northnodehex.gate!];
+                _controllerSouthNodeText.text =
+                hexagramVerbList[_southnodehex.gate!];
+                _controllerMoonText.text = hexagramAdjectiveList[_moonhex.gate!];
+                _controllerMercuryText.text = hexagramSubjectList[_mercuryhex.gate!];
+                _controllerVenusText.text = hexagramVerbList[_venushex.gate!];
+                _controllerMarsText.text = hexagramAdverbList[_marshex.gate!];
+                _controllerJupiterText.text = hexagramAdjectiveList[_jupiterhex.gate!];
+                _controllerSaturnText.text = hexagramSubjectList[_saturnhex.gate!];
+                _controllerUranusText.text = hexagramVerbList[_uranushex.gate!];
+                _controllerNeptuneText.text = hexagramAdverbList[_neptunehex.gate!];
+                //_controllerPlutoText.text = hexagramVerbList[_plutohex.gate!];
+
+                _controllerSunGate.text =
+                    _sunhex.gate.toString() + "\n." + _sunhex.line.toString()
+                        + "." + _sunhex.color.toString() + "." + _sunhex.tone.toString();
+                _controllerEarthGate.text =
+                    _earthhex.gate.toString() + "\n." + _earthhex.line.toString()
+                        + "." + _earthhex.color.toString() + "." + _earthhex.tone.toString();
+                _controllerNorthNodeGate.text = _northnodehex.gate.toString() + "\n." + _northnodehex.line.toString()
+                    + "." + _northnodehex.color.toString() + "." + _northnodehex.tone.toString();
+                _controllerSouthNodeGate.text = _southnodehex.gate.toString() + "\n." + _southnodehex.line.toString()
+                    + "." + _southnodehex.color.toString() + "." + _southnodehex.tone.toString();
+
+                _controllerMoonGate.text =
+                    _moonhex.gate.toString() + "." + _moonhex.line.toString();
+                _controllerMercuryGate.text = _mercuryhex.gate.toString() +
+                    "." +
+                    _mercuryhex.line.toString();
+                _controllerVenusGate.text =
+                    _venushex.gate.toString() + "." + _venushex.line.toString();
+                _controllerMarsGate.text =
+                    _marshex.gate.toString() + "." + _marshex.line.toString();
+                _controllerJupiterGate.text = _jupiterhex.gate.toString() +
+                    "." +
+                    _jupiterhex.line.toString();
+                _controllerSaturnGate.text = _saturnhex.gate.toString() +
+                    "." +
+                    _saturnhex.line.toString();
+                _controllerUranusGate.text = _uranushex.gate.toString() +
+                    "." +
+                    _uranushex.line.toString();
+                _controllerNeptuneGate.text = _neptunehex.gate.toString() +
+                    "." +
+                    _neptunehex.line.toString();
+                _controllerPlutoGate.text =
+                    _plutohex.gate.toString() + "." + _plutohex.line.toString();
+
+
+
+
+                _controllerSunHex.text = _sunhex.hex!;
+                _controllerEarthHex.text = _earthhex.hex!;
+                _controllerNorthNodeHex.text = _northnodehex.hex!;
+                _controllerSouthNodeHex.text = _southnodehex.hex!;
+                _controllerMoonHex.text = _moonhex.hex!;
+                _controllerMercuryHex.text = _mercuryhex.hex!;
+                _controllerVenusHex.text = _venushex.hex!;
+                _controllerMarsHex.text = _marshex.hex!;
+                _controllerJupiterHex.text = _jupiterhex.hex!;
+                _controllerSaturnHex.text = _saturnhex.hex!;
+                _controllerUranusHex.text = _uranushex.hex!;
+                _controllerNeptuneHex.text = _neptunehex.hex!;
+                _controllerPlutoHex.text = _plutohex.hex!;
+
+                _now = _now.toUtc();
+
+                _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+                _formattedTime = DateFormat.Hms().format(_now);
+                _controllerTime.text = _formattedTime;
+                _controllerDate.text = _formattedDate;
+
+                setState(() {
+
+                  Navigator.of(context).pop();
+                });
+              },
+              child: const Text('1) Fetch Date'),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.green,
+                  textStyle: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold)),),
+            Container(
+                margin: const EdgeInsets.all(5.0),
+                padding: const EdgeInsets.all(3.0),
+                color: Colors.black),
+            SizedBox(
+              width: 150,
+              child: TextField(
+                  readOnly: false,
+                  decoration: const InputDecoration.collapsed(
+                      hintText: '07:30'),
+                  textAlign: TextAlign.center,
+                  controller: _controllerTimePick,
+                  style: const TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold)),
+            ),
+            const SizedBox(height: 10.0,),
+            ElevatedButton(
+              onPressed: () async {
+                _selectedtime = await TimeServices.selectTime(context);
+                setState(() {
+                  _controllerTimePick.text =  _selectedtime.format(context);
+                });
+
+              },
+              child: const Text('Select Time'),
+            ),
+            const SizedBox(height: 10.0,),
+            SizedBox(
+              width: 150,
+              child: TextField(
+                  readOnly: false,
+                  decoration: const InputDecoration.collapsed(
+                      hintText: '2022-02-19'),
+                  textAlign: TextAlign.center,
+                  controller: _controllerDatePick,
+                  style: const TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold)),
+            ),
+            const SizedBox(height: 10.0,),
+            ElevatedButton(
+              onPressed: () async {
+                _selectedDate = await TimeServices.selectDate(context);
+                setState(() {
+                  _controllerDatePick.text =  "${_selectedDate.toLocal()}".split(' ')[0];
+                });
+
+              } ,
+              child: const Text('Select date'),
+            ),
+            Container(
+                margin: const EdgeInsets.all(5.0),
+                padding: const EdgeInsets.all(3.0),
+                color: Colors.black),
+            ElevatedButton(
+                onPressed: () async {
+                  _now = DateTime.now();
+
+                  _planetsnowList = await AstrologyServices.getCurrentData(_now);
+
+                  _designTime = await AstrologyServices.getDesignTime(_now);
+                  _planetsdesignList = await AstrologyServices.getCurrentData(_designTime);
+
+                  _planetsList = _planetsnowList;
+
+                  _sunhex = _planetsList[0];
+                  _earthhex = _planetsList[1];
+                  _northnodehex = _planetsList[2];
+                  _southnodehex = _planetsList[3];
+                  _moonhex = _planetsList[4];
+                  _mercuryhex = _planetsList[5];
+                  _venushex = _planetsList[6];
+                  _marshex = _planetsList[7];
+                  _jupiterhex = _planetsList[8];
+                  _saturnhex = _planetsList[9];
+                  _uranushex = _planetsList[10];
+                  _neptunehex = _planetsList[11];
+                  _plutohex = _planetsList[12];
+
+                  _controllerSunText.text = _sunhex.name!;
+                  _controllerEarthText.text = _earthhex.name!;
+                  //_controllerNorthNodeText.text = _northnodehex.name!;
+                  //_controllerSouthNodeText.text = _southnodehex.name!;
+                  //_controllerMoonText.text = _moonhex.name!;
+                  //_controllerMercuryText.text = _mercuryhex.name!;
+                  //_controllerVenusText.text = _venushex.name!;
+                  //_controllerMarsText.text = _marshex.name!;
+                  //_controllerJupiterText.text = _jupiterhex.name!;
+                  //_controllerSaturnText.text = _saturnhex.name!;
+                  //_controllerUranusText.text = _uranushex.name!;
+                  //_controllerNeptuneText.text = _neptunehex.name!;
+                  _controllerPlutoText.text = _plutohex.name!;
+
+                  _controllerNorthNodeText.text =
+                  hexagramVerbList[_northnodehex.gate!];
+                  _controllerSouthNodeText.text =
+                  hexagramVerbList[_southnodehex.gate!];
+                  _controllerMoonText.text = hexagramAdjectiveList[_moonhex.gate!];
+                  _controllerMercuryText.text = hexagramSubjectList[_mercuryhex.gate!];
+                  _controllerVenusText.text = hexagramVerbList[_venushex.gate!];
+                  _controllerMarsText.text = hexagramAdverbList[_marshex.gate!];
+                  _controllerJupiterText.text = hexagramAdjectiveList[_jupiterhex.gate!];
+                  _controllerSaturnText.text = hexagramSubjectList[_saturnhex.gate!];
+                  _controllerUranusText.text = hexagramVerbList[_uranushex.gate!];
+                  _controllerNeptuneText.text = hexagramAdverbList[_neptunehex.gate!];
+                  //_controllerPlutoText.text = hexagramVerbList[_plutohex.gate!];
+
+                  _controllerSunGate.text =
+                      _sunhex.gate.toString() + "\n." + _sunhex.line.toString()
+                          + "." + _sunhex.color.toString() + "." + _sunhex.tone.toString();
+                  _controllerEarthGate.text =
+                      _earthhex.gate.toString() + "\n." + _earthhex.line.toString()
+                          + "." + _earthhex.color.toString() + "." + _earthhex.tone.toString();
+                  _controllerNorthNodeGate.text = 
+                      _northnodehex.gate.toString() + "\n." + _northnodehex.line.toString()
+                      + "." + _northnodehex.color.toString() + "." + _northnodehex.tone.toString();
+                  _controllerSouthNodeGate.text = _southnodehex.gate.toString() + "\n." + _southnodehex.line.toString()
+                      + "." + _southnodehex.color.toString() + "." + _southnodehex.tone.toString();
+
+                  _controllerMoonGate.text =
+                      _moonhex.gate.toString() + "." + _moonhex.line.toString();
+                  _controllerMercuryGate.text = _mercuryhex.gate.toString() +
+                      "." +
+                      _mercuryhex.line.toString();
+                  _controllerVenusGate.text =
+                      _venushex.gate.toString() + "." + _venushex.line.toString();
+                  _controllerMarsGate.text =
+                      _marshex.gate.toString() + "." + _marshex.line.toString();
+                  _controllerJupiterGate.text = _jupiterhex.gate.toString() +
+                      "." +
+                      _jupiterhex.line.toString();
+                  _controllerSaturnGate.text = _saturnhex.gate.toString() +
+                      "." +
+                      _saturnhex.line.toString();
+                  _controllerUranusGate.text = _uranushex.gate.toString() +
+                      "." +
+                      _uranushex.line.toString();
+                  _controllerNeptuneGate.text = _neptunehex.gate.toString() +
+                      "." +
+                      _neptunehex.line.toString();
+                  _controllerPlutoGate.text =
+                      _plutohex.gate.toString() + "." + _plutohex.line.toString();
+
+
+
+
+                  _controllerSunHex.text = _sunhex.hex!;
+                  _controllerEarthHex.text = _earthhex.hex!;
+                  _controllerNorthNodeHex.text = _northnodehex.hex!;
+                  _controllerSouthNodeHex.text = _southnodehex.hex!;
+                  _controllerMoonHex.text = _moonhex.hex!;
+                  _controllerMercuryHex.text = _mercuryhex.hex!;
+                  _controllerVenusHex.text = _venushex.hex!;
+                  _controllerMarsHex.text = _marshex.hex!;
+                  _controllerJupiterHex.text = _jupiterhex.hex!;
+                  _controllerSaturnHex.text = _saturnhex.hex!;
+                  _controllerUranusHex.text = _uranushex.hex!;
+                  _controllerNeptuneHex.text = _neptunehex.hex!;
+                  _controllerPlutoHex.text = _plutohex.hex!;
+
+                  _now = _now.toUtc();
+
+                  _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+                  _formattedTime = DateFormat.Hms().format(_now);
+                  _controllerTime.text = _formattedTime;
+                  _controllerDate.text = _formattedDate;
+
+                  setState(() {
+
+                    Navigator.of(context).pop();
+                  });
+                },
+                child: const Text('2) Get Now Instead'),
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                    textStyle: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold))),
+
+          ],
+        ),
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text('Close', style: TextStyle(color: Colors.black),),
+        ),
+      ],
+    );
+  }
 }
+
+

@@ -81,6 +81,29 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Hexagram $_chosenhex'),
+                        content: _setupAlertDialoadContainer(),
+                        actions: [TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text('Close', style: TextStyle(color: Colors.black),),
+                        )],
+                      );
+                    });},
+              child: const Text('Fetch Lines'),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  textStyle: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold))
+          ),
           ToggleButtons(
             borderWidth: 10.0,
             hoverColor: Colors.black,
@@ -898,6 +921,27 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
               alignment: Alignment.center,
             )),
           ]),
+    );
+  }
+
+  Widget _setupAlertDialoadContainer() {
+    return Container(
+      width: 500.0,
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: 6,
+        itemBuilder: (context, index) {
+          //print ('Chosen hex is: $_chosenhex');
+          //hexlinesList.indexOf(_chosenhex);
+          //final int _chosenhexindex = hexlinesList.indexOf(_chosenhex);
+          //_chosenhexindex++;
+          index = hexlinesList.indexOf(_chosenhex) + 6 - index;
+          //print ('index is: $index');
+          return ListTile(
+            title: Text(hexlinesList[index]),
+          );
+        },
+      ),
     );
   }
 }
