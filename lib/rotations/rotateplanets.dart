@@ -119,7 +119,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
   final List<bool> _isPlanetSelectedList =
       List<bool>.filled(13, true, growable: false);
 
-  DateTime _now = DateTime.now();
+  DateTime _now = DateTime.now(),
+  _designTime = DateTime.now();
 
   List<Hexagram> _planetsList = [];
   Hexagram _sunhex = Hexagram(),
@@ -146,13 +147,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
         actions: [
           ElevatedButton(
               onPressed: () async {
-                _now = DateTime.now();
+                _designTime = DateTime.now();
 
-                DateTime _utcTime = _now.toUtc();
-                DateTime _initialDesignDays = _utcTime.subtract(const Duration(days: 88));
+                //DateTime _utcTime = _now.toUtc();
+                //DateTime _initialDesignDays = _utcTime.subtract(const Duration(days: 88));
 
                 //_planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-                _planetsList = await AstrologyServices.getDesignData(_now);
+                _designTime = await AstrologyServices.getDesignTime(_designTime);
+                _planetsList = await AstrologyServices.getCurrentData(_designTime);
                 _sunhex = _planetsList[0];
                 _earthhex = _planetsList[1];
                 _northnodehex = _planetsList[2];
@@ -246,10 +248,10 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 _controllerNeptuneHex.text = _neptunehex.hex!;
                 _controllerPlutoHex.text = _plutohex.hex!;
 
-                _now = _initialDesignDays;
+                //_now = _initialDesignDays;
 
-                _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
-                _formattedTime = DateFormat.Hms().format(_now);
+                _formattedDate = DateFormat('yyyy-MM-dd').format(_designTime);
+                _formattedTime = DateFormat.Hms().format(_designTime);
                 _controllerTime.text = _formattedTime;
                 _controllerDate.text = _formattedDate;
 
@@ -269,7 +271,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   _dropdownPluto = _plutohex.gate!;
                 });
               },
-              child: const Text('Planets 88')),
+              child: const Text('Design Planets')),
           ElevatedButton(
               onPressed: () async {
                 _now = DateTime.now();
@@ -367,6 +369,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 _controllerNeptuneHex.text = _neptunehex.hex!;
                 _controllerPlutoHex.text = _plutohex.hex!;
 
+                _now = _now.toUtc();
+
                 _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
                 _formattedTime = DateFormat.Hms().format(_now);
                 _controllerTime.text = _formattedTime;
@@ -388,7 +392,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   _dropdownPluto = _plutohex.gate!;
                 });
               },
-              child: const Text('Planets Now')),
+              child: const Text('Now Planets')),
           ToggleButtons(
             borderWidth: 10.0,
             hoverColor: Colors.blue,

@@ -34,7 +34,7 @@ class AstrologyServices {
         _longitude.toString();
 
 
-    //print (_uri);
+    print (_uri);
 
 
       var response = await http.get(Uri.parse(_uri));
@@ -141,12 +141,12 @@ class AstrologyServices {
 
   }
 
-  static Future<List<Hexagram>> getDesignData(DateTime _now) async{
+  static Future<DateTime> getDesignTime(DateTime _nowdesign) async{
 
     List<Hexagram> _planetsList = [];
-    DateTime _designTime = _now;
-    DateTime _utcTime = _now.toUtc();
-    DateTime _initialDesignDays = _utcTime.subtract(const Duration(days: 88));
+    DateTime _designTime = _nowdesign;
+    //DateTime _utcTime = _now.toUtc();
+    DateTime _initialDesignDays = _nowdesign.subtract(const Duration(days: 88));
     Astrology _designdata;
     Astrology _personalitydata;
     double _personsunlongitude,
@@ -160,9 +160,9 @@ class AstrologyServices {
     // initialize design time
     _designTime = _initialDesignDays;
 
-    _personalitydata = await AstrologyServices.getPlanetsGatesNow(_utcTime);
+    _personalitydata = await AstrologyServices.getPlanetsGatesNow(_nowdesign);
     _personsunlongitude = _personalitydata.data.astros.sun.position.longitude;
-    //print (_personsunlongitude);
+    print (_personsunlongitude);
 
 
     // required 88 degress
@@ -353,28 +353,32 @@ class AstrologyServices {
       //print (_requiredlongitude);
       //print (_calculatedlongitude);
       //print (_gaplongitude);
+      //print (_gaplongitude);
 
-    }while (_gaplongitude > 0.000005 || _gaplongitude < -0.000005);
+    }while (_gaplongitude > 0.000007 || _gaplongitude < -0.000007);
+
+    print ('final gap long: $_gaplongitude');
+    print (_requiredlongitude);
+    print (_calculatedlongitude);
+
+    print ('Design Time: $_designTime');
 
     //print ('interpolations: $_interpolationtimes');
-    _planetsList = await AstrologyServices.mapPlanets(_designdata);
+    //_planetsList = await AstrologyServices.mapPlanets(_designdata);
 
-    return _planetsList;
+    return _designTime;
   }
 
-  static Future<List<Hexagram>> getCurrentData(DateTime _now) async{
+  static Future<List<Hexagram>> getCurrentData(DateTime _nowdata) async{
 
     List<Hexagram> _planetsList = [];
-    DateTime _designTime = _now;
-    DateTime _utcTime = _now.toUtc();
-    //DateTime _initialDesignDays = _utcTime.subtract(const Duration(days: 88));
-    //_designTime = _initialDesignDays;
-    Astrology _designplanets;
+    //DateTime _designTime = _now;
+    //DateTime _utcTime = _now.toUtc();
+    Astrology _planets;
 
 
-
-    _designplanets = await AstrologyServices.getPlanetsGatesNow(_utcTime);
-    _planetsList = await AstrologyServices.mapPlanets(_designplanets);
+    _planets = await AstrologyServices.getPlanetsGatesNow(_nowdata);
+    _planetsList = await AstrologyServices.mapPlanets(_planets);
 
 
     return _planetsList;
