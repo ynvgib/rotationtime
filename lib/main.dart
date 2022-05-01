@@ -1,11 +1,12 @@
 
 import 'package:finallyicanlearn/models/lists.dart';
-import 'package:finallyicanlearn/main_he.dart';
 import 'package:finallyicanlearn/rotations/rotatechart.dart';
 import 'package:finallyicanlearn/rotations/rotatehexagrams.dart';
 import 'package:finallyicanlearn/rotations/rotatehexlanguage.dart';
 import 'package:finallyicanlearn/rotations/rotateone.dart';
 import 'package:finallyicanlearn/rotations/rotateplanets.dart';
+import 'package:finallyicanlearn/rotations/rotatesilence.dart';
+import 'package:finallyicanlearn/rotations/rotationsimpleone.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp( const RotateEnglish());
@@ -21,9 +22,11 @@ class RotateEnglish extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           routes: {
             '/': (ctx) =>  HomePageEN(),
-            '/rotateone': (ctx) => const RotateOneHexagram(),
-            '/hexlanguage': (ctx) => const RotateHexLanguage(),
+            '/rotatesilence': (ctx) => const RotateSilence(),
+            '/rotatesimpleone': (ctx) => const RotateSimpleOne(),
             '/rotatehexagramtable': (ctx) => const RotateHexagramTable(),
+            '/rotatecomplexone': (ctx) => const RotateOneHexagram(),
+            '/hexlanguage': (ctx) => const RotateHexLanguage(),
             '/rotateplanets': (ctx) => const RotatePlanets(),
             '/rotatechart': (ctx) => const RotateChart(),
 
@@ -35,13 +38,6 @@ class RotateEnglish extends StatelessWidget {
 class HomePageEN extends StatelessWidget {
   HomePageEN({Key? key}) : super(key: key);
 
-  //String _rotateoneitem = 'ONE HEXAGRAM';
-  final String _rotateoneitem = 'הקסגרמה אחת';
-  //final _title = ' ז מ ן    ל ה ת ג ל ג ל ';
-
-  //_title = 'R O T A T I O N   T I M E';
-
-  final String _lang = 'ENGLISH';
   final String _title = maintitleEN;
   final List<String> _titles = titlesEN;
 
@@ -103,11 +99,13 @@ class HomePageEN extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           children: <Widget>[
             //MappingItem('PICK DATE AND TIME (under development)', '/datetimepicker'),
-            MappingItemEN(_titles[0], '/rotateone'),
-            MappingItemEN(_titles[1], '/hexlanguage'),
-            MappingItemEN(_titles[2], '/rotatehexagramtable'),
-            MappingItemEN(_titles[3], '/rotateplanets'),
-            MappingItemEN(_titles[4], '/rotatechart'),
+            MappingItemEN(_titles[0], '/rotatesimpleone'),
+            MappingItemEN(_titles[3], '/rotatehexagramtable'),
+            MappingItemEN(_titles[1], '/rotatecomplexone'),
+            MappingItemEN(_titles[2], '/hexlanguage'),
+            MappingItemEN(_titles[4], '/rotateplanets'),
+            MappingItemEN(_titles[5], '/rotatechart'),
+            const MappingItemEN('= =', '/rotatesilence'),
           ],
         )),
         Row(children: [

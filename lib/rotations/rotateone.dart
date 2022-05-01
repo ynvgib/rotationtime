@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:finallyicanlearn/logic/hdsubstructure.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
+import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/services/fetchastrology.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
       _formattedTime = '';
 
       final String _chosenlanguage = 'EN',
-      _title = titlesEN[0],
+      _title = titlesEN[1],
       _timehint = 'time',
       _datehint = 'date';
 
