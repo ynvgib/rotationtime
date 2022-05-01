@@ -931,12 +931,7 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
         shrinkWrap: true,
         itemCount: 6,
         itemBuilder: (context, index) {
-          //print ('Chosen hex is: $_chosenhex');
-          //hexlinesList.indexOf(_chosenhex);
-          //final int _chosenhexindex = hexlinesList.indexOf(_chosenhex);
-          //_chosenhexindex++;
           index = hexlinesList.indexOf(_chosenhex) + 6 - index;
-          //print ('index is: $index');
           return ListTile(
             title: Text(hexlinesList[index]),
           );

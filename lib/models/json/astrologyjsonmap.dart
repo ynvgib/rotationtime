@@ -27,38 +27,16 @@ class Astrology {
 class Data {
   Data({
     required this.astros,
-    required this.axes,
-    required this.houses,
-    required this.aspects,
   });
 
   Astros astros;
-  Aspects axes;
-  List<dynamic> houses;
-  Aspects aspects;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
     astros: Astros.fromJson(json["astros"]),
-    axes: Aspects.fromJson(json["axes"]),
-    houses: List<dynamic>.from(json["houses"].map((x) => x)),
-    aspects: Aspects.fromJson(json["aspects"]),
   );
 
   Map<String, dynamic> toJson() => {
     "astros": astros.toJson(),
-    "axes": axes.toJson(),
-    "houses": List<dynamic>.from(houses.map((x) => x)),
-    "aspects": aspects.toJson(),
-  };
-}
-
-class Aspects {
-  Aspects();
-
-  factory Aspects.fromJson(Map<String, dynamic> json) => Aspects(
-  );
-
-  Map<String, dynamic> toJson() => {
   };
 }
 

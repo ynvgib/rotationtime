@@ -1,5 +1,7 @@
 class Hexagram {
-  String? name, hex;
+  String? name, hex, gatename,
+      linename, colorname, tonename, basename,
+  gatelinecolor, gatelinecolortone,gatelinecolortonebase;
   int? gate, line, color, tone, base;
 
   Hexagram({
@@ -10,6 +12,11 @@ class Hexagram {
     this.color,
     this.tone,
     this.base,
+    this.gatename,
+    this.linename,
+    this.gatelinecolor,
+    this.gatelinecolortone,
+    this.gatelinecolortonebase
   });
 }
 

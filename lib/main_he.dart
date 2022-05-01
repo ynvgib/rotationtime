@@ -1,6 +1,6 @@
 
 import 'package:finallyicanlearn/models/lists.dart';
-import 'package:finallyicanlearn/models/lists_he.dart';
+import 'package:finallyicanlearn/models/hebrew/lists_he.dart';
 import 'package:finallyicanlearn/main.dart';
 import 'package:finallyicanlearn/rotations/hebrew/rotateone_he.dart';
 import 'package:finallyicanlearn/rotations/rotatechart.dart';
