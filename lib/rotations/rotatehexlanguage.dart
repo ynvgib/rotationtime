@@ -52,6 +52,8 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
       _actionsixthdropdownhex = 1,
       _fonthexconverted = 0;
 
+  final String _title = subtitlesEN[5];
+
   String _firstcolumnseconddropdowhex = 'a',
       _secondcolumnseconddropdowhex = 'a',
       _thirdcolumnseconddropdowhex = 'a',
@@ -97,7 +99,7 @@ class _RotateHexLanguageState extends State<RotateHexLanguage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hexagram Language'),
+        title: Text(_title),
         actions: [
           Container(
             alignment: Alignment.center,

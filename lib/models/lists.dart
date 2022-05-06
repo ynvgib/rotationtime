@@ -15,24 +15,36 @@ final List<String> languagesCodeList = [
 ];
 
 final List<String> titlesEN = [
-  'Ido Not Know Lines',
-  'Table Hexagram',
-  'Simple One Hexagram',
-  'Complex One Hexagram',
-  'Complex Leave IT',
-  'Simple Live IT ',
-  'HD Chart',
+  'Complex 1',
+  'Complex 2',
+  'Complex 3',
+  'Simple 1',
+  'Simple 2',
+  'Simply Breathe',
+  'Breathe Simply',
+  '=='
+];
+
+final List<String> subtitlesEN = [
+  'itching Planets',
+  'itching Sentence',
+  'itching Lines',
+  'itching hd',
+  'itching table',
+  'itching',
+  'Ido Not Know',
   '=='
 ];
 
 final List<String> mainroutes = [
+  '/rotateplanets',
+  '/rotatecomplexone',
   '/rotateidklines',
+  '/rotatesimplehd',
   '/rotatehexagramtable',
   '/rotatesimpleone',
-  '/rotatecomplexone',
-  '/rotateplanets',
-  '/rotatesimplehd',
-  '/rotatechart',  '/rotatesilence'
+  '/rotatesimplebreath',
+  '/rotatesilence'
 ];
 
 final List<String> planetsfullList = [

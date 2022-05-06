@@ -25,7 +25,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
       _controllerDatePick = TextEditingController();
 
   String _formattedDate = '', _formattedTime = '';
-  final String _title = titlesEN[6];
+  final String _title = subtitlesEN[3];
 
 
   DateTime _now = DateTime.now(),

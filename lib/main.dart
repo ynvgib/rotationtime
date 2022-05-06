@@ -1,18 +1,20 @@
 import 'package:finallyicanlearn/models/lists.dart';
-import 'package:finallyicanlearn/rotations/rotatechart.dart';
-import 'package:finallyicanlearn/rotations/rotatehexagrams.dart';
+import 'package:finallyicanlearn/rotations/rotatehextable.dart';
 import 'package:finallyicanlearn/rotations/rotateidontknowlines.dart';
-import 'package:finallyicanlearn/rotations/rotateone.dart';
+import 'package:finallyicanlearn/rotations/rotatecomplexone.dart';
 import 'package:finallyicanlearn/rotations/rotateplanets.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
+import 'package:finallyicanlearn/rotations/rotatesimplebreath.dart';
 import 'package:finallyicanlearn/rotations/rotatesimplehd.dart';
 import 'package:finallyicanlearn/rotations/rotationsimpleone.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const RotateEnglish());
+void main() => runApp(RotateEnglish());
 
 class RotateEnglish extends StatelessWidget {
-  const RotateEnglish({Key? key}) : super(key: key);
+  RotateEnglish({Key? key}) : super(key: key);
+
+  final List<String> _mainroutes = mainroutes;
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +23,14 @@ class RotateEnglish extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (ctx) => HomePageEN(),
-        '/rotatesilence': (ctx) => const RotateSilence(),
-        '/rotatesimpleone': (ctx) => const RotateSimpleOne(),
-        '/rotateidklines': (ctx) => const RotateIDKlines(),
-        '/rotatehexagramtable': (ctx) => const RotateHexagramTable(),
-        '/rotatecomplexone': (ctx) => const RotateOneHexagram(),
-        '/rotateplanets': (ctx) => const RotatePlanets(),
-        '/rotatechart': (ctx) => const RotateChart(),
-        '/rotatesimplehd': (ctx) => const RotateSimpleHD(),
+        _mainroutes.first: (ctx) => const RotatePlanets(),
+        _mainroutes[1]: (ctx) => const RotateComplexOne(),
+        _mainroutes[2]: (ctx) => const RotateIDKlines(),
+        _mainroutes[3]: (ctx) => const RotateSimpleHD(),
+        _mainroutes[4]: (ctx) => const RotateHexagramTable(),
+        _mainroutes[5]: (ctx) => const RotateSimpleOne(),
+        _mainroutes[6]: (ctx) => const RotateSimpleBreath(),
+        _mainroutes.last: (ctx) => const RotateSilence(),
       },
     );
   }
@@ -38,7 +40,7 @@ class HomePageEN extends StatelessWidget {
   HomePageEN({Key? key}) : super(key: key);
 
   final String _title = maintitleEN;
-  final List<String> _titles = titlesEN,
+  final List<String> _titles = subtitlesEN,
       _mainroutes = mainroutes;
 
   @override
@@ -96,15 +98,14 @@ class HomePageEN extends StatelessWidget {
             child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 10.0),
           children: <Widget>[
-            MappingItemEN(_titles.last, _mainroutes.last),
+            MappingItemEN(_titles.first, _mainroutes.first),
             MappingItemEN(_titles[1], _mainroutes[1]),
             MappingItemEN(_titles[2], _mainroutes[2]),
-            MappingItemEN(_titles[5], _mainroutes[5]),
             MappingItemEN(_titles[3], _mainroutes[3]),
             MappingItemEN(_titles[4], _mainroutes[4]),
-
-            //MappingItemEN(_titles[6], _mainroutes[6]),
-            MappingItemEN(_titles.first, _mainroutes.first),
+            MappingItemEN(_titles[5], _mainroutes[5]),
+            MappingItemEN(_titles[6], _mainroutes[6]),
+            MappingItemEN(_titles.last, _mainroutes.last),
 
           ],
         )),

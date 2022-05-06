@@ -60,7 +60,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
       _controllerDatePick = TextEditingController();
 
   String _formattedDate = '', _formattedTime = '';
-      final String _title = titlesEN[4];
+      final String _title = subtitlesEN[0];
 
   // visibility of planets init
   bool _isSunVisible = true,

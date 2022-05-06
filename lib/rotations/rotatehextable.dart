@@ -14,11 +14,14 @@ class RotateHexagramTable extends StatefulWidget {
 }
 
 class _RotateHexagramTableState extends State<RotateHexagramTable> {
+
+  final String _title = subtitlesEN[4];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Rotate Hexagram Table'),
+        title: Text(_title),
         backgroundColor: Colors.blueGrey,
       ),
       body: Row(

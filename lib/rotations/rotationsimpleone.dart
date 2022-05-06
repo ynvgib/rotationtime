@@ -23,7 +23,7 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
       _controllermid = CarouselController(),
       _controllerbot = CarouselController();
 
-  final String _title = titlesEN[0];
+  final String _title = subtitlesEN[5];
 
   final List<String> finalhexNamesList = hexNamesList;
 
