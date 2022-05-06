@@ -15,12 +15,24 @@ final List<String> languagesCodeList = [
 ];
 
 final List<String> titlesEN = [
+  'Ido Not Know Lines',
+  'Table Hexagram',
   'Simple One Hexagram',
   'Complex One Hexagram',
-  'Complex Four Hexagrams',
-  'Table Hexagram',
-  'Atro Planets',
+  'Complex Leave IT',
+  'Simple Live IT ',
   'HD Chart',
+  '=='
+];
+
+final List<String> mainroutes = [
+  '/rotateidklines',
+  '/rotatehexagramtable',
+  '/rotatesimpleone',
+  '/rotatecomplexone',
+  '/rotateplanets',
+  '/rotatesimplehd',
+  '/rotatechart',  '/rotatesilence'
 ];
 
 final List<String> planetsfullList = [
@@ -1323,6 +1335,9 @@ final List<String> hexagramAdverbList = [
   'Doubtfully',
   'Confusingly',
 ];
+
+
+
 
 final List<int> hexCarouselValueList = [
 //'1','43'...,

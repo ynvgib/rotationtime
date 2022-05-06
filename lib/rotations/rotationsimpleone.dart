@@ -1,12 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:finallyicanlearn/logic/hdsubstructure.dart';
-import 'package:finallyicanlearn/logic/hexagramaligment.dart';
-import 'package:finallyicanlearn/models/rotateclasses.dart';
-import 'package:finallyicanlearn/services/fetchastrology.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:finallyicanlearn/models/lists.dart';
-import 'package:intl/intl.dart';
 
 // /rotatehexwithlogic
 // rotate one hexagram
@@ -22,10 +16,8 @@ class RotateSimpleOne extends StatefulWidget {
 class _RotateSimpleOneState extends State<RotateSimpleOne> {
   int _currenttop = 0,
       _currentmid = 0,
-      _currentbot = 0,
-      _hexagramVal = 0,
-      _carouselvalueindex = 0,
-      _chosenhex = 1;
+      _currentbot = 0;
+      //_hexagramVal = 0;
 
   final CarouselController _controllertop = CarouselController(),
       _controllermid = CarouselController(),
@@ -72,13 +64,13 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                     onPageChanged: (indextop, reason) {
                       setState(() {
                         _currenttop = indextop;
-                        _hexagramVal = ((_currenttop + 1) * 100 +
-                            (_currentmid + 1) * 10 +
-                            (_currentbot + 1));
+                        //_hexagramVal = ((_currenttop + 1) * 100 +
+                           // (_currentmid + 1) * 10 +
+                          //  (_currentbot + 1));
 
-                        _carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
+                        //_carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
-                        _chosenhex =  orderHexagramsWheel[_carouselvalueindex];
+                        //_chosenhex =  orderHexagramsWheel[_carouselvalueindex];
 
                       });
                     }),
@@ -116,14 +108,14 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                       setState(() {
                         _currentmid = indexmid;
 
-                        _hexagramVal = ((_currenttop + 1) * 100 +
-                            (_currentmid + 1) * 10 +
-                            (_currentbot + 1));
+                        //_hexagramVal = ((_currenttop + 1) * 100 +
+                           // (_currentmid + 1) * 10 +
+                           // (_currentbot + 1));
 
 
-                        _carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
+                        //_carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
-                        _chosenhex =  orderHexagramsWheel[_carouselvalueindex];
+                        //_chosenhex =  orderHexagramsWheel[_carouselvalueindex];
 
                       });
                     }),
@@ -160,13 +152,13 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                     onPageChanged: (indexbot, reason) {
                       setState(() {
                         _currentbot = indexbot;
-                        _hexagramVal = ((_currenttop + 1) * 100 +
-                            (_currentmid + 1) * 10 +
-                            (_currentbot + 1));
+                        //_hexagramVal = ((_currenttop + 1) * 100 +
+                          //  (_currentmid + 1) * 10 +
+                          //  (_currentbot + 1));
 
-                        _carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
+                        //_carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
-                        _chosenhex =  orderHexagramsWheel[_carouselvalueindex];
+                        //_chosenhex =  orderHexagramsWheel[_carouselvalueindex];
 
                       });
                     }),

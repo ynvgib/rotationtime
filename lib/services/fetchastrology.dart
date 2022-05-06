@@ -10,12 +10,13 @@ class AstrologyServices {
   static Future<Astrology> getPlanetsGatesNow(DateTime _now) async {
 
     final Astrology astrology;
-    final _utcTime = _now.toUtc();
+    //final _utcTime = _now.toUtc();
+    //final _utcTime = _now;
     double _latitude = 0.0,
         _longitude = 0.0;
 
-    String _formattedDate = DateFormat('yyyy-MM-dd').format(_utcTime);
-    String _formattedTime = DateFormat.Hms().format(_utcTime);
+    String _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+    String _formattedTime = DateFormat.Hms().format(_now);
     
     final String _uri = "http://localhost:3000/horoscope?time=" +
         _formattedDate +
@@ -26,8 +27,7 @@ class AstrologyServices {
         "&longitude=" +
         _longitude.toString();
 
-
-
+   //print (_uri);
 
       var response = await http.get(Uri.parse(_uri));
 
@@ -40,9 +40,9 @@ class AstrologyServices {
 
     List<Hexagram> _planetsHexagramList = [];
 
-    double _latitude = 0.0,
-        _longitude = 0.0,
-        _sunlongitude = 0.0,
+    //double _latitude = 0.0,
+     //   _longitude = 0.0,
+        double _sunlongitude = 0.0,
         _earthlongitude = 0.0,
         _northnodelongitude = 0.0,
         _southnodelongitude = 0.0,
@@ -140,7 +140,6 @@ class AstrologyServices {
     Astrology _designdata;
     Astrology _personalitydata;
     double _personsunlongitude,
-        _designsunlongitude,
         _requiredlongitude,
         _calculatedlongitude,
         _gaplongitude;
@@ -160,6 +159,7 @@ class AstrologyServices {
     _requiredlongitude = _personsunlongitude - 88;
     if (_requiredlongitude < 0){
       _requiredlongitude += 360;
+      //print ('req: $_requiredlongitude');
     }
 
     // align in days
@@ -168,14 +168,17 @@ class AstrologyServices {
     _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
 
     _gaplongitude = _requiredlongitude - _calculatedlongitude;
-    //_designsunlongitude = _gaplongitude;
+    //print ('gap: $_gaplongitude');
+    //print ('calc: $_calculatedlongitude');
 
-    if (_gaplongitude > 1){
+
+
+    if (_gaplongitude > 0){
       _designTime = _designTime.add(const Duration(days: 1));
       //print ('1 day subtracted');
       // _interpolationtimes++;
     }
-    else if (_gaplongitude < -1){
+    else if (_gaplongitude < 0){
       _designTime = _designTime.subtract(const Duration(days: 1));
       //print ('1 day added');
       // _interpolationtimes++;
@@ -353,6 +356,8 @@ class AstrologyServices {
 
 
     }while (_gaplongitude > 0.000007 || _gaplongitude < -0.000007);
+
+
 
     return _designTime;
   }

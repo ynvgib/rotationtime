@@ -1,4 +1,5 @@
-import 'package:finallyicanlearn/models/datetime.dart';
+import 'package:finallyicanlearn/models/lists.dart';
+import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/services/fetchastrology.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +60,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
       _controllerDatePick = TextEditingController();
 
   String _formattedDate = '', _formattedTime = '';
+      final String _title = titlesEN[4];
 
   // visibility of planets init
   bool _isSunVisible = true,
@@ -107,7 +109,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text('Rotate Astro Planets'),
+        title: Text(_title),
         backgroundColor: Colors.blueGrey,
         actions: [
           ElevatedButton(
@@ -119,9 +121,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
               },
               child: const Text('Fetch Time'),
               style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.normal))),
+                  primary: Colors.black)),
           ElevatedButton(
             onPressed: () {
               _planetsList = _planetsdesignList;
@@ -133,7 +133,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
               _controllerTime.text = _formattedTime;
               _controllerDate.text = _formattedDate;
             },
-            child: const Text('Before'),
+            child: const Text('Live Before'),
             style: ElevatedButton.styleFrom(
                 primary: Colors.red,
                 textStyle:
@@ -145,14 +145,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
 
               _controlPlanetHexagramData(_planetsList);
 
-              _now = _now.toUtc();
+              //_now = _now.toUtc();
 
               _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
               _formattedTime = DateFormat.Hms().format(_now);
               _controllerTime.text = _formattedTime;
               _controllerDate.text = _formattedDate;
             },
-            child: const Text('After'),
+            child: const Text('Think After'),
             style: ElevatedButton.styleFrom(
                 primary: Colors.blue,
                 textStyle:
@@ -1425,14 +1425,115 @@ class _RotatePlanetsState extends State<RotatePlanets> {
   Widget _buildPopupDialog(BuildContext context) {
     return AlertDialog(
       title: const Text('Fetch Time'),
-      content: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            ElevatedButton(
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          SizedBox(
+            width: 150,
+            child: TextField(
+                readOnly: true,
+                decoration:
+                    const InputDecoration.collapsed(hintText: '07:30'),
+                textAlign: TextAlign.center,
+                controller: _controllerTimePick,
+                style: const TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal)),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              _selectedtime = await TimeServices.selectTime(context);
+              setState(() {
+                _controllerTimePick.text = _selectedtime.format(context);
+              });
+            },
+            child: const Text('Set Time'),
+            style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                textStyle: const TextStyle(
+                    fontSize: 15, fontWeight: FontWeight.normal)),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          SizedBox(
+            width: 150,
+            child: TextField(
+                readOnly: true,
+                decoration:
+                    const InputDecoration.collapsed(hintText: '2022-02-19'),
+                textAlign: TextAlign.center,
+                controller: _controllerDatePick,
+                style: const TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal)),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              _selectedDate = await TimeServices.selectDate(context);
+              setState(() {
+                _controllerDatePick.text =
+                    "${_selectedDate.toLocal()}".split(' ')[0];
+              });
+            },
+            child: const Text('Set Date'),
+            style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                textStyle: const TextStyle(
+                    fontSize: 15, fontWeight: FontWeight.normal)),
+          ),
+          Container(
+              margin: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(3.0),
+              color: Colors.black),
+          ElevatedButton(
+            onPressed: () async {
+              _now = _selectedDate.applied(_selectedtime);
+              _planetsnowList = await AstrologyServices.getCurrentData(_now);
+
+              _designTime = await AstrologyServices.getDesignTime(_now);
+              _planetsdesignList =
+              await AstrologyServices.getCurrentData(_designTime);
+
+              _planetsList = _planetsnowList;
+
+              _controlPlanetHexagramData(_planetsList);
+
+              //_now = _now.toUtc();
+
+              _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+              _formattedTime = DateFormat.Hms().format(_now);
+              _controllerTime.text = _formattedTime;
+              _controllerDate.text = _formattedDate;
+
+              setState(() {
+                Navigator.of(context).pop();
+              });
+            },
+            child: const Text('1) Fetch Your Time',
+                style: TextStyle(color: Colors.black,
+                    fontSize: 15, fontWeight: FontWeight.normal)),
+            style: ElevatedButton.styleFrom(
+                primary: Colors.yellow),
+          ),
+          Container(
+              margin: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(3.0),
+              color: Colors.black),
+          ElevatedButton(
               onPressed: () async {
-                _now = _selectedDate.applied(_selectedtime);
-                _planetsnowList = await AstrologyServices.getCurrentData(_now);
+                _now = DateTime.now();
+
+                _planetsnowList =
+                    await AstrologyServices.getCurrentData(_now);
 
                 _designTime = await AstrologyServices.getDesignTime(_now);
                 _planetsdesignList =
@@ -1442,7 +1543,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
 
                 _controlPlanetHexagramData(_planetsList);
 
-                _now = _now.toUtc();
+                //_now = _now.toUtc();
 
                 _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
                 _formattedTime = DateFormat.Hms().format(_now);
@@ -1453,107 +1554,12 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   Navigator.of(context).pop();
                 });
               },
-              child: const Text('1) Fetch Date'),
+              child: const Text('2) Get Now Instead'),
               style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
+                  primary: Colors.red,
                   textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.normal)),
-            ),
-            Container(
-                margin: const EdgeInsets.all(5.0),
-                padding: const EdgeInsets.all(3.0),
-                color: Colors.black),
-            SizedBox(
-              width: 150,
-              child: TextField(
-                  readOnly: false,
-                  decoration:
-                      const InputDecoration.collapsed(hintText: '07:30'),
-                  textAlign: TextAlign.center,
-                  controller: _controllerTimePick,
-                  style: const TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                      fontWeight: FontWeight.normal)),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                _selectedtime = await TimeServices.selectTime(context);
-                setState(() {
-                  _controllerTimePick.text = _selectedtime.format(context);
-                });
-              },
-              child: const Text('Select Time'),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            SizedBox(
-              width: 150,
-              child: TextField(
-                  readOnly: false,
-                  decoration:
-                      const InputDecoration.collapsed(hintText: '2022-02-19'),
-                  textAlign: TextAlign.center,
-                  controller: _controllerDatePick,
-                  style: const TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                      fontWeight: FontWeight.normal)),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                _selectedDate = await TimeServices.selectDate(context);
-                setState(() {
-                  _controllerDatePick.text =
-                      "${_selectedDate.toLocal()}".split(' ')[0];
-                });
-              },
-              child: const Text('Select date'),
-            ),
-            Container(
-                margin: const EdgeInsets.all(5.0),
-                padding: const EdgeInsets.all(3.0),
-                color: Colors.black),
-            ElevatedButton(
-                onPressed: () async {
-                  _now = DateTime.now();
-
-                  _planetsnowList =
-                      await AstrologyServices.getCurrentData(_now);
-
-                  _designTime = await AstrologyServices.getDesignTime(_now);
-                  _planetsdesignList =
-                      await AstrologyServices.getCurrentData(_designTime);
-
-                  _planetsList = _planetsnowList;
-
-                  _controlPlanetHexagramData(_planetsList);
-
-                  _now = _now.toUtc();
-
-                  _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
-                  _formattedTime = DateFormat.Hms().format(_now);
-                  _controllerTime.text = _formattedTime;
-                  _controllerDate.text = _formattedDate;
-
-                  setState(() {
-                    Navigator.of(context).pop();
-                  });
-                },
-                child: const Text('2) Get Now Instead'),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
-                    textStyle: const TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.normal))),
-          ],
-        ),
+                      fontSize: 15, fontWeight: FontWeight.normal))),
+        ],
       ),
       actions: <Widget>[
         TextButton(

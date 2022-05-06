@@ -1,3 +1,4 @@
+
 class Hexagram {
   String? name, hex, gatename,
       linename, colorname, tonename, basename,
@@ -56,3 +57,11 @@ class HexLine {
 
   HexLine({this.line, this.linename, this.hexcolor});
 }
+
+class HDChannel {
+  String? id,firstcenter, secondcenter, name, description, circuitry, circuit, stream;
+
+  HDChannel({this.id, this.firstcenter, this.secondcenter, this.name, this.description,
+      this.circuitry, this.circuit, this.stream});
+}
+

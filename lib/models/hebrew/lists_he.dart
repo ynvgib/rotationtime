@@ -1,5 +1,3 @@
-import 'package:finallyicanlearn/models/rotateclasses.dart';
-import 'package:flutter/material.dart';
 
 const String maintitleHE = 'להתגלגל בזמן',
     languages = 'עברית';

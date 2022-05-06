@@ -926,15 +926,15 @@ class _RotateOneHexagramState extends State<RotateOneHexagram> {
   }
 
   Widget _setupAlertDialoadContainer() {
-    return Container(
+    return SizedBox(
       width: 500.0,
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: 6,
         itemBuilder: (context, index) {
-          index = hexlinesList.indexOf(_chosenhex) + 6 - index;
+          index = idonotknowlinesList.indexOf(_chosenhex) + 6 - index;
           return ListTile(
-            title: Text(hexlinesList[index]),
+            title: Text(idonotknowlinesList[index]),
           );
         },
       ),

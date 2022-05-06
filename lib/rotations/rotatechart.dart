@@ -658,77 +658,77 @@ class _RotateChartState extends State<RotateChart> {
         //mainAxisAlignment: MainAxisAlignment.center,
         //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+              children: const [
                 SizedBox(width: 10,),
-                const CircleAvatar(
+                CircleAvatar(
               minRadius: 15.0,
               maxRadius: 15.0,
               backgroundColor: Colors.blue,
               foregroundImage: AssetImage('assets/planets/sun.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,
                 foregroundImage: AssetImage('assets/planets/earth.png')),
-            const CircleAvatar(
+            CircleAvatar(
               minRadius: 15.0,
               maxRadius: 15.0,
               backgroundColor: Colors.blue,
               foregroundImage: AssetImage('assets/planets/northnode.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,
                 foregroundImage: AssetImage('assets/planets/southnode.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,
                 foregroundImage: AssetImage('assets/planets/moon.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,
                 foregroundImage: AssetImage('assets/planets/mercury.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,
                 foregroundImage: AssetImage('assets/planets/venus.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,
                 foregroundImage: AssetImage('assets/planets/mars.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,
                 foregroundImage: AssetImage('assets/planets/jupiter.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,
                 foregroundImage: AssetImage('assets/planets/saturn.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,
                 foregroundImage: AssetImage('assets/planets/uranus.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,
                 foregroundImage: AssetImage('assets/planets/sun.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,
                 foregroundImage: AssetImage('assets/planets/neptune.png')),
-            const CircleAvatar(
+            CircleAvatar(
                 minRadius: 15.0,
                 maxRadius: 15.0,
                 backgroundColor: Colors.blue,

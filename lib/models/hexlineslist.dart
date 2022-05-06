@@ -1,4 +1,5 @@
-final List hexlinesList = [
+// iching wilhelm
+final List iChinglinesList = [
   0,
   'six :: meaning.',
   'six :: meaning',
@@ -456,7 +457,7 @@ final List hexlinesList = [
   'grandfather exhales heaven before all is completed',
 ];
 
-// Human Design
+// Human Design Ra Uru Hu
 final List hdlinesList = [
   0,
   '+1 :: planet :: sentence.',
@@ -1305,9 +1306,9 @@ final List hdlinesList = [
   '-6 :: pluto :: sentence.',
 ];
 
-// iChing
-// wilhelm
-final List ichinglinesList = [
+//idonotknow
+
+final List idonotknowlinesList = [
   0,
   'grandmother',
   'mother',
@@ -1316,19 +1317,19 @@ final List ichinglinesList = [
   'father',
   'grandfather',
   1,
-  'grandmother stuck in hell',
-  'mother life is hell',
-  'daughter complicated life',
-  'son complicated life',
-  'father is one foot from heaven',
-  'grandfather died and is up in heaven',
+  'grandmother complex heavenly life reach nowhere',
+  'mother complex self expression inspire only herself',
+  'daughter complex creativity pushes her brother',
+  'son complex creativity inspires the family',
+  'father complex self expression creates the world',
+  'grandfather complex self expression creates heaven',
   2,
-  'grandmother remains silent',
-  'mother tries to remain silent',
-  'daughter suffers from silence',
-  'son suffers from silence',
-  'father is tortured from silence',
-  'grandfather is silently falling from the top',
+  'grandmother silent life is received in earth',
+  'mother silent life is received by her',
+  'daughter silent life is received by her mother',
+  'son silent life is heavy on his sister',
+  'father silent life is not welcome in the world',
+  'grandfather silent life is hell',
   3,
   'grandmother simple life is too easy to be expressed',
   'mother simple life is grounded and well lived',
@@ -1764,3 +1765,5 @@ final List ichinglinesList = [
   'father inhales a confused world too seriously',
   'grandfather exhales heaven before all is completed',
 ];
+
+List reversedidklinesList = idonotknowlinesList.reversed.toList();
