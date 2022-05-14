@@ -26,14 +26,15 @@ final List<String> titlesEN = [
 ];
 
 final List<String> subtitlesEN = [
-  'itching Planets',
-  'itching Sentence',
-  'itching Lines',
-  'itching hd',
-  'itching table',
-  'itching',
-  'Ido Not Know',
-  '=='
+  'Planets Ultimate Complex',
+  'Sentence Complicates IT',
+  '384 Lines Stories',
+  'XIO I don\'t know',
+  'Table Speaks for itSelf',
+  'Three Simple Floors',
+  'Simple One Complex',
+  'I don\'t know Breath',
+  '= silence ='
 ];
 
 final List<String> mainroutes = [
@@ -43,6 +44,7 @@ final List<String> mainroutes = [
   '/rotatesimplehd',
   '/rotatehexagramtable',
   '/rotatesimpleone',
+  '/rotatesimpleidk',
   '/rotatesimplebreath',
   '/rotatesilence'
 ];

@@ -6,6 +6,7 @@ import 'package:finallyicanlearn/rotations/rotateplanets.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
 import 'package:finallyicanlearn/rotations/rotatesimplebreath.dart';
 import 'package:finallyicanlearn/rotations/rotatesimplehd.dart';
+import 'package:finallyicanlearn/rotations/rotatesimpleidk.dart';
 import 'package:finallyicanlearn/rotations/rotationsimpleone.dart';
 import 'package:flutter/material.dart';
 
@@ -29,8 +30,10 @@ class RotateEnglish extends StatelessWidget {
         _mainroutes[3]: (ctx) => const RotateSimpleHD(),
         _mainroutes[4]: (ctx) => const RotateHexagramTable(),
         _mainroutes[5]: (ctx) => const RotateSimpleOne(),
-        _mainroutes[6]: (ctx) => const RotateSimpleBreath(),
+        _mainroutes[6]: (ctx) => const RotateSimpleIDK(),
+        _mainroutes[7]: (ctx) => const RotateSimpleBreath(),
         _mainroutes.last: (ctx) => const RotateSilence(),
+
       },
     );
   }
@@ -105,6 +108,7 @@ class HomePageEN extends StatelessWidget {
             MappingItemEN(_titles[4], _mainroutes[4]),
             MappingItemEN(_titles[5], _mainroutes[5]),
             MappingItemEN(_titles[6], _mainroutes[6]),
+            MappingItemEN(_titles[7], _mainroutes[7]),
             MappingItemEN(_titles.last, _mainroutes.last),
 
           ],
