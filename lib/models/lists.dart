@@ -28,8 +28,8 @@ final List<String> titlesEN = [
 final List<String> subtitlesEN = [
   'Planets Ultimate Complex',
   'Sentence Complicates IT',
-  '384 Lines Stories',
   'XIO I don\'t know',
+  '384 Lines Stories',
   'Table Speaks for itSelf',
   'Three Simple Floors',
   'Simple One Complex',
@@ -40,8 +40,8 @@ final List<String> subtitlesEN = [
 final List<String> mainroutes = [
   '/rotateplanets',
   '/rotatecomplexone',
-  '/rotateidklines',
   '/rotatesimplehd',
+  '/rotateidklines',
   '/rotatehexagramtable',
   '/rotatesimpleone',
   '/rotatesimpleidk',

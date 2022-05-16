@@ -16,7 +16,7 @@ class RotateIDKlines extends StatefulWidget {
 
 class _RotateIDKlinesState extends State<RotateIDKlines> {
 
-  final String _title = subtitlesEN[2];
+  final String _title = subtitlesEN[3];
 
   final List<String> finalhexNamesList = hexNamesList;
 

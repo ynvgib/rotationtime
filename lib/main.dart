@@ -26,8 +26,8 @@ class RotateEnglish extends StatelessWidget {
         '/': (ctx) => HomePageEN(),
         _mainroutes.first: (ctx) => const RotatePlanets(),
         _mainroutes[1]: (ctx) => const RotateComplexOne(),
-        _mainroutes[2]: (ctx) => const RotateIDKlines(),
-        _mainroutes[3]: (ctx) => const RotateSimpleHD(),
+        _mainroutes[2]: (ctx) => const RotateSimpleHD(),
+        _mainroutes[3]: (ctx) => const RotateIDKlines(),
         _mainroutes[4]: (ctx) => const RotateHexagramTable(),
         _mainroutes[5]: (ctx) => const RotateSimpleOne(),
         _mainroutes[6]: (ctx) => const RotateSimpleIDK(),
@@ -82,7 +82,7 @@ class HomePageEN extends StatelessWidget {
             ),
           ),
           decoration: BoxDecoration(
-              color: Colors.grey[100],
+              color: Colors.white,
               borderRadius: BorderRadius.circular(25),
               boxShadow: const [
                 BoxShadow(
@@ -101,15 +101,15 @@ class HomePageEN extends StatelessWidget {
             child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 10.0),
           children: <Widget>[
-            MappingItemEN(_titles.first, _mainroutes.first),
-            MappingItemEN(_titles[1], _mainroutes[1]),
-            MappingItemEN(_titles[2], _mainroutes[2]),
-            MappingItemEN(_titles[3], _mainroutes[3]),
-            MappingItemEN(_titles[4], _mainroutes[4]),
-            MappingItemEN(_titles[5], _mainroutes[5]),
-            MappingItemEN(_titles[6], _mainroutes[6]),
-            MappingItemEN(_titles[7], _mainroutes[7]),
-            MappingItemEN(_titles.last, _mainroutes.last),
+            MappingItemEN(_titles.first, _mainroutes.first, Colors.blue[900]!),
+            MappingItemEN(_titles[1], _mainroutes[1], Colors.blue[800]!),
+            MappingItemEN(_titles[2], _mainroutes[2], Colors.blue[700]!),
+            MappingItemEN(_titles[3], _mainroutes[3], Colors.green[800]!),
+            MappingItemEN(_titles[4], _mainroutes[4], Colors.green[700]!),
+            MappingItemEN(_titles[5], _mainroutes[5], Colors.green[600]!),
+            MappingItemEN(_titles[6], _mainroutes[6], Colors.green[500]!),
+            MappingItemEN(_titles[7], _mainroutes[7], Colors.yellow[800]!),
+            MappingItemEN(_titles.last, _mainroutes.last, Colors.red[800]!),
 
           ],
         )),
@@ -222,14 +222,15 @@ class HomePageEN extends StatelessWidget {
 class MappingItemEN extends StatelessWidget {
   final String title;
   final String route;
-  const MappingItemEN(this.title, this.route, {Key? key}) : super(key: key);
+  final Color _color;
+  const MappingItemEN(this.title, this.route, this._color, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Container(
-        height: 40,
-        margin: const EdgeInsets.all(5.0),
+        height: 35,
+        margin: const EdgeInsets.all(3.0),
         child: FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
@@ -240,7 +241,7 @@ class MappingItemEN extends StatelessWidget {
           ),
         ),
         decoration: BoxDecoration(
-            color: Colors.blueGrey,
+            color: _color,
             borderRadius: BorderRadius.circular(50),
             boxShadow: const [
               BoxShadow(

@@ -1,4 +1,4 @@
-final List idklineslist_he = [
+final List idklineslistheb = [
   0,
   'סבתא',
   'אמא',

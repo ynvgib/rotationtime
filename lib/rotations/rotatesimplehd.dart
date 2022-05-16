@@ -16,17 +16,29 @@ class RotateSimpleHD extends StatefulWidget {
 }
 
 class _RotateSimpleHDState extends State<RotateSimpleHD> {
+  List<String> _centers = [];
+
   final TextEditingController _controllerType = TextEditingController(),
       _controllerAuthority = TextEditingController(),
       _controllerStrategy = TextEditingController(),
       _controllerTime = TextEditingController(),
-      //_controllerDate = TextEditingController(),
       _controllerTimePick = TextEditingController(),
       _controllerDatePick = TextEditingController();
 
-  String _formattedDate = '', _formattedTime = '';
-  final String _title = subtitlesEN[3];
+  final List<int> _colorCodes = <int>[
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+  ];
 
+  String _formattedDate = '', _formattedTime = '';
+  final String _title = subtitlesEN[2];
 
   DateTime _now = DateTime.now(),
       _designTime = DateTime.now(),
@@ -34,8 +46,9 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
 
   TimeOfDay _selectedtime = const TimeOfDay(hour: 0, minute: 0);
 
-  List<Hexagram> _planetsdesignList = [],
-      _planetsnowList = [];
+  List<Hexagram> _planetsdesignList = [], _planetsnowList = [];
+
+  List<HDChannel> _hdchannelsList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +58,29 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
         title: Text(_title),
         backgroundColor: Colors.blueGrey,
         actions: [
+          const SizedBox(
+            width: 10,
+          ),
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      _buildCentersPopUp(context),
+                );
+              },
+              child: const Text('Centers'),
+              style: ElevatedButton.styleFrom(primary: Colors.blue)),
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      _buildChannelsPopUp(context),
+                );
+              },
+              child: const Text('Channels'),
+              style: ElevatedButton.styleFrom(primary: Colors.blue)),
           ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -130,8 +166,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
             width: 150,
             child: TextField(
                 readOnly: true,
-                decoration:
-                    const InputDecoration.collapsed(hintText: '07:30'),
+                decoration: const InputDecoration.collapsed(hintText: '07:30'),
                 textAlign: TextAlign.center,
                 controller: _controllerTimePick,
                 style: const TextStyle(
@@ -203,24 +238,18 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
               _planetsdesignList =
                   await AstrologyServices.getCurrentData(_designTime);
 
-
-
               List<String> _hdbasicdata = HDServices.getHDBasicData(
                   _planetsnowList, _planetsdesignList);
 
-              //print("HD basic data");
-              //print(_hdbasicdata);
-
-              //_planetsList = _planetsnowList;
+              _hdchannelsList =
+                  HDServices.getHDChannels(_planetsnowList, _planetsdesignList);
+              _centers = HDServices.getHDDefinedCenters(_hdchannelsList);
 
               _controlHDData(_hdbasicdata);
-
-              //_now = _now.toUtc();
 
               _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
               _formattedTime = DateFormat.Hms().format(_now);
               _controllerTime.text = _formattedTime + ' ' + _formattedDate;
-              //_controllerDate.text = _formattedDate;
 
               setState(() {
                 Navigator.of(context).pop();
@@ -241,8 +270,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
               onPressed: () async {
                 _now = DateTime.now();
 
-                _planetsnowList =
-                    await AstrologyServices.getCurrentData(_now);
+                _planetsnowList = await AstrologyServices.getCurrentData(_now);
 
                 _designTime = await AstrologyServices.getDesignTime(_now);
                 _planetsdesignList =
@@ -251,19 +279,15 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                 List<String> _hdbasicdata = HDServices.getHDBasicData(
                     _planetsnowList, _planetsdesignList);
 
-                //print("HD basic data");
-                //print(_hdbasicdata);
-
-                //_planetsList = _planetsnowList;
-
                 _controlHDData(_hdbasicdata);
 
-                //_now = _now.toUtc();
+                _hdchannelsList = HDServices.getHDChannels(
+                    _planetsnowList, _planetsdesignList);
+                _centers = HDServices.getHDDefinedCenters(_hdchannelsList);
 
                 _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
                 _formattedTime = DateFormat.Hms().format(_now);
                 _controllerTime.text = _formattedTime + ' ' + _formattedDate;
-                //_controllerDate.text = _formattedDate;
 
                 setState(() {
                   Navigator.of(context).pop();
@@ -274,6 +298,82 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   primary: Colors.red,
                   textStyle: const TextStyle(
                       fontSize: 15, fontWeight: FontWeight.normal))),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCentersPopUp(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Centers'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          SizedBox(
+              height: 300,
+              width: 300,
+              child: ListView.builder(
+                  padding: const EdgeInsets.all(8),
+                  itemCount: _centers.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      width: 50,
+                      color: Colors.blue[_colorCodes[index]],
+                      child: Text(
+                        _centers[index],
+                        style: const TextStyle(fontSize: 30),
+                      ),
+                    );
+                  })),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildChannelsPopUp(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Channels'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          SizedBox(
+              height: 300,
+              width: 300,
+              child: ListView.builder(
+                  padding: const EdgeInsets.all(8),
+                  itemCount: _hdchannelsList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      color: Colors.blue[_colorCodes[index]],
+                      child: Text(
+                        _hdchannelsList[index].name!,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                    );
+                  })),
         ],
       ),
       actions: <Widget>[

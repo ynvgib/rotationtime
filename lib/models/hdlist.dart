@@ -14,7 +14,7 @@ final List<String> hdchannelsList = [
   '12.22','throat','solar','openness','social being','individual','knowing','emoting',
   '13.33','self','throat','prodigal','being a witness','collective','abstract','none',
   '16.48','throat','spleen','wavelength','talent','collective','logic','taste',
-  '17.62','ajna','throat','acceptnace','organizational being','collective','logic','understanding',
+  '17.62','ajna','throat','acceptance','organizational being','collective','logic','understanding',
   '18.58','spleen','root','judgement','instability','collective','logic','taste',
   '19.49','solar','root','synthesis','being sensitive','tribal','ego','needs',
   '20.34','throat','sacral','charisma','move to do','individual','integration','none',

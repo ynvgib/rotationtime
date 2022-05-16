@@ -13,7 +13,7 @@ class RotateSimpleBreath extends StatefulWidget {
 class _RotateSimpleBreathState extends State<RotateSimpleBreath> {
   final TextEditingController _controllerSimpleText = TextEditingController(),
       _controllerComplexText = TextEditingController();
-  final String _title = subtitlesEN[6];
+  final String _title = subtitlesEN[7];
 
   @override
   Widget build(BuildContext context) {
