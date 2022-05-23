@@ -16,6 +16,16 @@ class _RotateSilenceState extends State<RotateSilence> {
     return Scaffold(
       appBar: AppBar(
           title: const Text(''),
+          leading: TextButton(
+            child: const Text(
+              '<<',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold),
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
           backgroundColor: Colors.blueGrey),
       backgroundColor: Colors.grey[100],
       body: const SizedBox ()

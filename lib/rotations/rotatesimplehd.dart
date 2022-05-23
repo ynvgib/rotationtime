@@ -56,6 +56,14 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text(_title),
+        leading: TextButton(
+          child: const Text(
+            '<<',
+            style: TextStyle(
+                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: Colors.blueGrey,
         actions: [
           const SizedBox(
@@ -65,31 +73,17 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (BuildContext context) =>
-                      _buildCentersPopUp(context),
-                );
-              },
-              child: const Text('Centers'),
-              style: ElevatedButton.styleFrom(primary: Colors.blue)),
-          ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      _buildChannelsPopUp(context),
-                );
-              },
-              child: const Text('Channels'),
-              style: ElevatedButton.styleFrom(primary: Colors.blue)),
-          ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
                   builder: (BuildContext context) => _buildPopupDialog(context),
                 );
               },
-              child: const Text('Fetch Time'),
-              style: ElevatedButton.styleFrom(primary: Colors.black)),
+              child: const Text(
+                'Time',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)))),
         ],
       ),
       body: Column(
@@ -151,6 +145,35 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                     fontSize: 50,
                     color: Colors.red)),
           ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildCentersPopUp(context),
+                    );
+                  },
+                  child: const Text('Centers'),
+                  style: ElevatedButton.styleFrom(primary: Colors.blue)),
+              SizedBox(
+                width: 10,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildChannelsPopUp(context),
+                    );
+                  },
+                  child: const Text('Channels'),
+                  style: ElevatedButton.styleFrom(primary: Colors.blue)),
+            ],
+          )
         ],
       ),
     );
@@ -158,7 +181,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
 
   Widget _buildPopupDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text('Fetch Time'),
+      title: const Text('Time'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[

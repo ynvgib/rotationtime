@@ -18,44 +18,54 @@ class _RotateSimpleBreathState extends State<RotateSimpleBreath> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_title), backgroundColor: Colors.blueGrey),
+      appBar: AppBar(
+          title: Text(_title),
+          leading: TextButton(
+            child: const Text(
+              '<<',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold),
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          backgroundColor: Colors.blueGrey),
       backgroundColor: Colors.grey[100],
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: 30.0,
-            ),
-            Expanded(
-              child: TextField(
-                  readOnly: false,
-                  decoration:
-                      const InputDecoration.collapsed(hintText: ''),
-                  textAlign: TextAlign.center,
-                  controller: _controllerComplexText,
-                  style: const TextStyle(
-                      fontSize: 50,
-                      color: Colors.blueGrey,
-                      fontWeight: FontWeight.normal)),
-            ),
-            const SizedBox(
-              height: 30.0,
-            ),
-            Expanded(
-              child: TextField(
-                  readOnly: false,
-                  decoration:
-                      const InputDecoration.collapsed(hintText: ''),
-                  textAlign: TextAlign.center,
-                  controller: _controllerSimpleText,
-                  style: const TextStyle(
-                      fontFamily: 'iChing',
-                      fontSize: 40,
-                      color: Colors.green,
-                      fontWeight: FontWeight.normal)),
-            ),
-          ],
-        ),
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(
+            height: 30.0,
+          ),
+          Expanded(
+            child: TextField(
+                readOnly: false,
+                decoration: const InputDecoration.collapsed(hintText: ''),
+                textAlign: TextAlign.center,
+                controller: _controllerComplexText,
+                style: const TextStyle(
+                    fontSize: 50,
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.normal)),
+          ),
+          const SizedBox(
+            height: 30.0,
+          ),
+          Expanded(
+            child: TextField(
+                readOnly: false,
+                decoration: const InputDecoration.collapsed(hintText: ''),
+                textAlign: TextAlign.center,
+                controller: _controllerSimpleText,
+                style: const TextStyle(
+                    fontFamily: 'iChing',
+                    fontSize: 40,
+                    color: Colors.green,
+                    fontWeight: FontWeight.normal)),
+          ),
+        ],
+      ),
     );
   }
 }

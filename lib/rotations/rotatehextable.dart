@@ -22,6 +22,16 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_title),
+        leading: TextButton(
+          child: const Text(
+            '<<',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+                fontWeight: FontWeight.bold),
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: Colors.blueGrey,
       ),
       body: Row(

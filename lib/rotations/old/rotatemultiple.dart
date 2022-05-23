@@ -48,6 +48,16 @@ class _RotateMultipleHexagramsState extends State<RotateMultipleHexagrams> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Rotate Multiple Hexagrams'),
+        leading: TextButton(
+          child: const Text(
+            '<<',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+                fontWeight: FontWeight.bold),
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: Colors.blueGrey,
         actions: [
           IconButton(

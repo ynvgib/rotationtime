@@ -26,14 +26,14 @@ final List<String> titlesEN = [
 ];
 
 final List<String> subtitlesEN = [
-  'Planets Ultimate Complex',
-  'Sentence Complicates IT',
+  'Planets Complex',
+  'Complicated Sentence',
   'XIO I don\'t know',
-  '384 Lines Stories',
+  '384 Lines + 6 Stories = 390',
   'Table Speaks for itSelf',
   'Three Simple Floors',
-  'Simple One Complex',
-  'I don\'t know Breath',
+  'Simple Language',
+  'BE.Breathe.Earn',
   '= silence ='
 ];
 

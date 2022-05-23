@@ -60,7 +60,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
       _controllerDatePick = TextEditingController();
 
   String _formattedDate = '', _formattedTime = '';
-      final String _title = subtitlesEN[0];
+  final String _title = subtitlesEN[0];
 
   // visibility of planets init
   bool _isSunVisible = true,
@@ -110,6 +110,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text(_title),
+        leading: TextButton(
+          child: const Text(
+            '<<',
+            style: TextStyle(
+                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: Colors.blueGrey,
         actions: [
           ElevatedButton(
@@ -119,456 +127,413 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   builder: (BuildContext context) => _buildPopupDialog(context),
                 );
               },
-              child: const Text('Fetch Time'),
+              child: const Text(
+                'TIME',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               style: ElevatedButton.styleFrom(
-                  primary: Colors.black)),
-          ElevatedButton(
-            onPressed: () {
-              _planetsList = _planetsdesignList;
-
-              _controlPlanetHexagramData(_planetsList);
-
-              _formattedDate = DateFormat('yyyy-MM-dd').format(_designTime);
-              _formattedTime = DateFormat.Hms().format(_designTime);
-              _controllerTime.text = _formattedTime;
-              _controllerDate.text = _formattedDate;
-            },
-            child: const Text('Live Before'),
-            style: ElevatedButton.styleFrom(
-                primary: Colors.red,
-                textStyle:
-                    const TextStyle(fontSize: 15, fontWeight: FontWeight.normal)),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              _planetsList = _planetsnowList;
-
-              _controlPlanetHexagramData(_planetsList);
-
-              //_now = _now.toUtc();
-
-              _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
-              _formattedTime = DateFormat.Hms().format(_now);
-              _controllerTime.text = _formattedTime;
-              _controllerDate.text = _formattedDate;
-            },
-            child: const Text('Think After'),
-            style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
-                textStyle:
-                    const TextStyle(fontSize: 15, fontWeight: FontWeight.normal)),
-          ),
-          ToggleButtons(
-            borderWidth: 10.0,
-            hoverColor: Colors.blue,
-            //borderRadius: BorderRadius.circular(20),
-            fillColor: Colors.white,
-            children: [
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/northnode.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/sun.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/moon.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/mercury.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/venus.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/mars.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/jupiter.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/saturn.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/uranus.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/neptune.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/pluto.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/earth.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-              Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: const DecorationImage(
-                        image: AssetImage("assets/planets/southnode.png")),
-                    borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.white,
-                          offset: Offset(-4, -4),
-                          blurRadius: 15,
-                          spreadRadius: 1),
-                    ]),
-              ),
-            ],
-            isSelected: _isPlanetSelectedList,
-            onPressed: (int index) {
-              setState(() {
-                _isPlanetSelectedList[index] = !_isPlanetSelectedList[index];
-                switch (index) {
-                  case 0:
-                    _isNorthNodeVisible = !_isNorthNodeVisible;
-                    break;
-                  case 1:
-                    _isSunVisible = !_isSunVisible;
-                    break;
-                  case 2:
-                    _isMoonVisible = !_isMoonVisible;
-                    break;
-                  case 3:
-                    _isMercuryVisible = !_isMercuryVisible;
-                    break;
-                  case 4:
-                    _isVenusVisible = !_isVenusVisible;
-                    break;
-                  case 5:
-                    _isMarsVisible = !_isMarsVisible;
-                    break;
-                  case 6:
-                    _isJupiterVisible = !_isJupiterVisible;
-                    break;
-                  case 7:
-                    _isSaturnVisible = !_isSaturnVisible;
-                    break;
-                  case 8:
-                    _isUranusVisible = !_isUranusVisible;
-                    break;
-                  case 9:
-                    _isNeptuneVisible = !_isNeptuneVisible;
-                    break;
-                  case 10:
-                    _isPlutoVisible = !_isPlutoVisible;
-                    break;
-                  case 11:
-                    _isEarthVisible = !_isEarthVisible;
-                    break;
-                  case 12:
-                    _isSouthNodeVisible = !_isSouthNodeVisible;
-                    break;
-                  default:
-                    _isSunVisible = !_isSunVisible;
-                }
-              });
-            },
-          )
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)))),
         ],
       ),
       body: Column(
         children: [
           // 1st row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Visibility(
-                visible: _isSunVisible,
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  margin: const EdgeInsets.all(5.0),
-                  padding: const EdgeInsets.all(3.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent)),
-                  child: Row(
-                    //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const CircleAvatar(
-                          minRadius: 15.0,
-                          maxRadius: 15.0,
-                          backgroundColor: Colors.blue,
-                          foregroundImage:
-                              AssetImage('assets/planets/sun.png')),
-                      const SizedBox(width: 10),
-                      SizedBox(
-                        width: 40,
-                        child: TextField(
-                            readOnly: true,
-                            decoration:
-                                const InputDecoration.collapsed(hintText: 'a'),
-                            controller: _controllerSunHex,
-                            style: const TextStyle(
-                                fontSize: 35,
-                                fontFamily: 'iChing',
-                                color: Colors.blue)),
-                      ),
-                      const SizedBox(width: 10),
-                      SizedBox(
-                        width: 50,
-                        child: TextField(
-                            readOnly: true,
-                            decoration:
-                                const InputDecoration.collapsed(hintText: '1'),
-                            textAlign: TextAlign.left,
-                            controller: _controllerSunGate,
-                            style: const TextStyle(
-                                fontSize: 12,
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal)),
-                      ),
-                      const SizedBox(width: 10),
-                      SizedBox(
-                        width: 250,
-                        child: TextField(
-                            readOnly: false,
-                            decoration: const InputDecoration.collapsed(
-                                hintText: 'Creative'),
-                            textAlign: TextAlign.left,
-                            minLines: 2,
-                            maxLines: 2,
-                            controller: _controllerSunText,
-                            style: const TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal)),
-                      ),
-                    ],
-                  ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    _planetsList = _planetsdesignList;
+
+                    _controlPlanetHexagramData(_planetsList);
+
+                    _formattedDate =
+                        DateFormat('yyyy-MM-dd').format(_designTime);
+                    _formattedTime = DateFormat.Hms().format(_designTime);
+                    _controllerTime.text = _formattedTime;
+                    _controllerDate.text = _formattedDate;
+                  },
+                  child: const Text('LIFE'),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.red,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50)),
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.bold)),
                 ),
-              ),
-              Visibility(
-                visible: _isNorthNodeVisible,
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  margin: const EdgeInsets.all(5.0),
-                  padding: const EdgeInsets.all(3.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent)),
-                  child: Row(
+                ToggleButtons(
+                  borderWidth: 10.0,
+                  hoverColor: Colors.blue,
+                  //borderRadius: BorderRadius.circular(20),
+                  fillColor: Colors.blueGrey,
+                  children: [
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image:
+                                  AssetImage("assets/planets/northnode.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image: AssetImage("assets/planets/sun.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image: AssetImage("assets/planets/moon.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image: AssetImage("assets/planets/mercury.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image: AssetImage("assets/planets/venus.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image: AssetImage("assets/planets/mars.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image: AssetImage("assets/planets/jupiter.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image: AssetImage("assets/planets/saturn.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image: AssetImage("assets/planets/uranus.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image: AssetImage("assets/planets/neptune.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image: AssetImage("assets/planets/pluto.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image: AssetImage("assets/planets/earth.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          image: const DecorationImage(
+                              image:
+                                  AssetImage("assets/planets/southnode.png")),
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[500]!,
+                                offset: const Offset(4, 4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                            const BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 15,
+                                spreadRadius: 1),
+                          ]),
+                    ),
+                  ],
+                  isSelected: _isPlanetSelectedList,
+                  onPressed: (int index) {
+                    setState(() {
+                      _isPlanetSelectedList[index] =
+                          !_isPlanetSelectedList[index];
+                      switch (index) {
+                        case 0:
+                          _isNorthNodeVisible = !_isNorthNodeVisible;
+                          break;
+                        case 1:
+                          _isSunVisible = !_isSunVisible;
+                          break;
+                        case 2:
+                          _isMoonVisible = !_isMoonVisible;
+                          break;
+                        case 3:
+                          _isMercuryVisible = !_isMercuryVisible;
+                          break;
+                        case 4:
+                          _isVenusVisible = !_isVenusVisible;
+                          break;
+                        case 5:
+                          _isMarsVisible = !_isMarsVisible;
+                          break;
+                        case 6:
+                          _isJupiterVisible = !_isJupiterVisible;
+                          break;
+                        case 7:
+                          _isSaturnVisible = !_isSaturnVisible;
+                          break;
+                        case 8:
+                          _isUranusVisible = !_isUranusVisible;
+                          break;
+                        case 9:
+                          _isNeptuneVisible = !_isNeptuneVisible;
+                          break;
+                        case 10:
+                          _isPlutoVisible = !_isPlutoVisible;
+                          break;
+                        case 11:
+                          _isEarthVisible = !_isEarthVisible;
+                          break;
+                        case 12:
+                          _isSouthNodeVisible = !_isSouthNodeVisible;
+                          break;
+                        default:
+                          _isSunVisible = !_isSunVisible;
+                      }
+                    });
+                  },
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    _planetsList = _planetsnowList;
+
+                    _controlPlanetHexagramData(_planetsList);
+
+                    //_now = _now.toUtc();
+
+                    _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+                    _formattedTime = DateFormat.Hms().format(_now);
+                    _controllerTime.text = _formattedTime;
+                    _controllerDate.text = _formattedDate;
+                  },
+                  child: const Text('THOUGHT'),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50)),
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Visibility(
+                  visible: _isSunVisible,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.3,
+                    margin: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(3.0),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.blueAccent)),
+                    child: Row(
                       //mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         const CircleAvatar(
@@ -576,19 +541,20 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             maxRadius: 15.0,
                             backgroundColor: Colors.blue,
                             foregroundImage:
-                                AssetImage('assets/planets/northnode.png')),
+                                AssetImage('assets/planets/sun.png')),
                         const SizedBox(width: 10),
                         SizedBox(
-                            width: 40,
-                            child: TextField(
-                                readOnly: true,
-                                decoration: const InputDecoration.collapsed(
-                                    hintText: 'a'),
-                                controller: _controllerNorthNodeHex,
-                                style: const TextStyle(
-                                    fontSize: 35,
-                                    fontFamily: 'iChing',
-                                    color: Colors.blue))),
+                          width: 40,
+                          child: TextField(
+                              readOnly: true,
+                              decoration: const InputDecoration.collapsed(
+                                  hintText: 'a'),
+                              controller: _controllerSunHex,
+                              style: const TextStyle(
+                                  fontSize: 35,
+                                  fontFamily: 'iChing',
+                                  color: Colors.blue)),
+                        ),
                         const SizedBox(width: 10),
                         SizedBox(
                           width: 50,
@@ -597,9 +563,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               decoration: const InputDecoration.collapsed(
                                   hintText: '1'),
                               textAlign: TextAlign.left,
-                              controller: _controllerNorthNodeGate,
+                              controller: _controllerSunGate,
                               style: const TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 13,
                                   color: Colors.black,
                                   fontWeight: FontWeight.normal)),
                         ),
@@ -613,60 +579,124 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               textAlign: TextAlign.left,
                               minLines: 2,
                               maxLines: 2,
-                              controller: _controllerNorthNodeText,
+                              controller: _controllerSunText,
                               style: const TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 17,
                                   color: Colors.black,
                                   fontWeight: FontWeight.normal)),
                         ),
-                      ]),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-              Container(
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  margin: const EdgeInsets.all(5.0),
-                  padding: const EdgeInsets.all(3.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 5.0, color: Colors.white)),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SizedBox(
-                          width: 100,
-                          child: TextField(
-                              readOnly: true,
-                              decoration: const InputDecoration.collapsed(
-                                  hintText: 'Time'),
-                              controller: _controllerTime,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 20,
-                                  color: Colors.blue)),
-                        ),
-                        const SizedBox(
-                          width: 100,
-                          child: Text('COMPLEX',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 20,
-                                  color: Colors.blue)),
-                        ),
-                        SizedBox(
-                          width: 150,
-                          child: TextField(
-                              textAlign: TextAlign.right,
-                              readOnly: true,
-                              decoration: const InputDecoration.collapsed(
-                                  hintText: 'Date'),
-                              controller: _controllerDate,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 20,
-                                  color: Colors.blue)),
-                        ),
-                      ])),
-            ],
+                Visibility(
+                  visible: _isNorthNodeVisible,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.3,
+                    margin: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(3.0),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.blueAccent)),
+                    child: Row(
+                        //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          const CircleAvatar(
+                              minRadius: 15.0,
+                              maxRadius: 15.0,
+                              backgroundColor: Colors.blue,
+                              foregroundImage:
+                                  AssetImage('assets/planets/northnode.png')),
+                          const SizedBox(width: 10),
+                          SizedBox(
+                              width: 40,
+                              child: TextField(
+                                  readOnly: true,
+                                  decoration: const InputDecoration.collapsed(
+                                      hintText: 'a'),
+                                  controller: _controllerNorthNodeHex,
+                                  style: const TextStyle(
+                                      fontSize: 35,
+                                      fontFamily: 'iChing',
+                                      color: Colors.blue))),
+                          const SizedBox(width: 10),
+                          SizedBox(
+                            width: 50,
+                            child: TextField(
+                                readOnly: true,
+                                decoration: const InputDecoration.collapsed(
+                                    hintText: '1'),
+                                textAlign: TextAlign.left,
+                                controller: _controllerNorthNodeGate,
+                                style: const TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal)),
+                          ),
+                          const SizedBox(width: 10),
+                          SizedBox(
+                            width: 250,
+                            child: TextField(
+                                readOnly: false,
+                                decoration: const InputDecoration.collapsed(
+                                    hintText: 'Creative'),
+                                textAlign: TextAlign.left,
+                                minLines: 2,
+                                maxLines: 2,
+                                controller: _controllerNorthNodeText,
+                                style: const TextStyle(
+                                    fontSize: 17,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal)),
+                          ),
+                        ]),
+                  ),
+                ),
+                Container(
+                    width: MediaQuery.of(context).size.width * 0.3,
+                    margin: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(3.0),
+                    decoration: BoxDecoration(
+                        border: Border.all(width: 5.0, color: Colors.white)),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SizedBox(
+                            width: 100,
+                            child: TextField(
+                                readOnly: true,
+                                decoration: const InputDecoration.collapsed(
+                                    hintText: 'Time'),
+                                controller: _controllerTime,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 20,
+                                    color: Colors.blue)),
+                          ),
+                          const SizedBox(
+                            width: 100,
+                            child: Text('COMPLEX',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 20,
+                                    color: Colors.blue)),
+                          ),
+                          SizedBox(
+                            width: 150,
+                            child: TextField(
+                                textAlign: TextAlign.right,
+                                readOnly: true,
+                                decoration: const InputDecoration.collapsed(
+                                    hintText: 'Date'),
+                                controller: _controllerDate,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 20,
+                                    color: Colors.blue)),
+                          ),
+                        ])),
+              ],
+            ),
           ),
           Expanded(
             child: Row(
@@ -712,7 +742,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 textAlign: TextAlign.left,
                                 controller: _controllerMoonGate,
                                 style: const TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 13,
                                     color: Colors.black,
                                     fontWeight: FontWeight.normal)),
                           ),
@@ -728,7 +758,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 minLines: 2,
                                 maxLines: 2,
                                 style: const TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 17,
                                     color: Colors.black,
                                     fontWeight: FontWeight.normal)),
                           ),
@@ -744,7 +774,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       border: Border.all(color: Colors.black)),
                   child: const SizedBox(
                     width: 100,
-                    child: Text('SIMPLE MIND',
+                    child: Text('SIMPLE',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 20, color: Colors.green)),
                   ),
@@ -795,7 +825,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.left,
                                   controller: _controllerMercuryGate,
                                   style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -811,7 +841,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -856,7 +886,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.left,
                                   controller: _controllerVenusGate,
                                   style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -872,7 +902,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -919,7 +949,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.left,
                                   controller: _controllerMarsGate,
                                   style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -935,7 +965,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -987,7 +1017,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.left,
                                   controller: _controllerJupiterGate,
                                   style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1003,7 +1033,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1048,7 +1078,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.left,
                                   controller: _controllerSaturnGate,
                                   style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1064,7 +1094,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1079,7 +1109,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       border: Border.all(color: Colors.black)),
                   child: const SizedBox(
                     width: 100,
-                    child: Text('breathing body',
+                    child: Text('breath',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 20, color: Colors.yellow)),
                   ),
@@ -1130,7 +1160,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.left,
                                   controller: _controllerUranusGate,
                                   style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1146,7 +1176,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1191,7 +1221,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.left,
                                   controller: _controllerNeptuneGate,
                                   style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1207,7 +1237,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1252,7 +1282,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.left,
                                   controller: _controllerPlutoGate,
                                   style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1268,7 +1298,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1321,7 +1351,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.left,
                                   controller: _controllerEarthGate,
                                   style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1337,7 +1367,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1382,7 +1412,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   textAlign: TextAlign.left,
                                   controller: _controllerSouthNodeGate,
                                   style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1398,7 +1428,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1410,7 +1440,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   padding: const EdgeInsets.all(3.0),
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.black)),
-                  child: const Text('silent space',
+                  child: const Text('silence',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20, color: Colors.red)),
                 ),
@@ -1424,7 +1454,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
 
   Widget _buildPopupDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text('Fetch Time'),
+      title: const Text('Time'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -1432,12 +1462,11 @@ class _RotatePlanetsState extends State<RotatePlanets> {
             width: 150,
             child: TextField(
                 readOnly: true,
-                decoration:
-                    const InputDecoration.collapsed(hintText: '07:30'),
+                decoration: const InputDecoration.collapsed(hintText: '07:30'),
                 textAlign: TextAlign.center,
                 controller: _controllerTimePick,
                 style: const TextStyle(
-                    fontSize: 15,
+                    fontSize: 17,
                     color: Colors.black,
                     fontWeight: FontWeight.normal)),
           ),
@@ -1455,7 +1484,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
             style: ElevatedButton.styleFrom(
                 primary: Colors.blue,
                 textStyle: const TextStyle(
-                    fontSize: 15, fontWeight: FontWeight.normal)),
+                    fontSize: 17, fontWeight: FontWeight.normal)),
           ),
           const SizedBox(
             height: 10.0,
@@ -1469,7 +1498,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 textAlign: TextAlign.center,
                 controller: _controllerDatePick,
                 style: const TextStyle(
-                    fontSize: 15,
+                    fontSize: 17,
                     color: Colors.black,
                     fontWeight: FontWeight.normal)),
           ),
@@ -1488,7 +1517,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
             style: ElevatedButton.styleFrom(
                 primary: Colors.green,
                 textStyle: const TextStyle(
-                    fontSize: 15, fontWeight: FontWeight.normal)),
+                    fontSize: 17, fontWeight: FontWeight.normal)),
           ),
           Container(
               margin: const EdgeInsets.all(5.0),
@@ -1501,7 +1530,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
 
               _designTime = await AstrologyServices.getDesignTime(_now);
               _planetsdesignList =
-              await AstrologyServices.getCurrentData(_designTime);
+                  await AstrologyServices.getCurrentData(_designTime);
 
               _planetsList = _planetsnowList;
 
@@ -1519,10 +1548,11 @@ class _RotatePlanetsState extends State<RotatePlanets> {
               });
             },
             child: const Text('1) Fetch Your Time',
-                style: TextStyle(color: Colors.black,
-                    fontSize: 15, fontWeight: FontWeight.normal)),
-            style: ElevatedButton.styleFrom(
-                primary: Colors.yellow),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.normal)),
+            style: ElevatedButton.styleFrom(primary: Colors.yellow),
           ),
           Container(
               margin: const EdgeInsets.all(5.0),
@@ -1532,8 +1562,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
               onPressed: () async {
                 _now = DateTime.now();
 
-                _planetsnowList =
-                    await AstrologyServices.getCurrentData(_now);
+                _planetsnowList = await AstrologyServices.getCurrentData(_now);
 
                 _designTime = await AstrologyServices.getDesignTime(_now);
                 _planetsdesignList =
@@ -1558,7 +1587,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
               style: ElevatedButton.styleFrom(
                   primary: Colors.red,
                   textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.normal))),
+                      fontSize: 17, fontWeight: FontWeight.normal))),
         ],
       ),
       actions: <Widget>[
@@ -1575,8 +1604,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
     );
   }
 
-  void _controlPlanetHexagramData(List<Hexagram> _planetList){
-
+  void _controlPlanetHexagramData(List<Hexagram> _planetList) {
     _sunhex = _planetsList[0];
     _earthhex = _planetsList[1];
     _northnodehex = _planetsList[2];

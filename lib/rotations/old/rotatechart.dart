@@ -89,6 +89,16 @@ class _RotateChartState extends State<RotateChart> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Rotate HD Chart'),
+        leading: TextButton(
+          child: const Text(
+            '<<',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+                fontWeight: FontWeight.bold),
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: Colors.blueGrey,
         actions: [
           ElevatedButton(

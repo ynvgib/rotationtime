@@ -64,7 +64,9 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
 
   String _formattedDate = '', _formattedTime = '';
 
-  final String _chosenlanguage = 'EN', _timehint = 'time', _datehint = 'date',
+  final String _chosenlanguage = 'EN',
+      _timehint = 'time',
+      _datehint = 'date',
       _title = subtitlesEN[1];
 
   HexagramSentence _hexsentence = getGateSentence(1, 'EN');
@@ -74,358 +76,387 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(actions: [
-        ElevatedButton(
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Hexagram $_chosenhex'),
-                      content: _setupAlertDialoadContainer(),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: const Text(
-                            'Close',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        )
-                      ],
-                    );
-                  });
-            },
-            child: const Text('Fetch Lines'),
-            style: ElevatedButton.styleFrom(
-                primary: Colors.black,
-                textStyle: const TextStyle(
-                    fontSize: 15, fontWeight: FontWeight.bold))),
-        ToggleButtons(
-          borderWidth: 10.0,
-          hoverColor: Colors.black,
-          //borderRadius: BorderRadius.circular(20),
-          fillColor: Colors.white,
-          children: [
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/sun.png")),
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
+      appBar: AppBar(
+          leading: TextButton(
+            child: const Text(
+              '<<',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold),
             ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/earth.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/northnode.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/southnode.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/moon.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/mercury.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/venus.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/mars.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/jupiter.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/saturn.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/uranus.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/neptune.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  image: const DecorationImage(
-                      image: AssetImage("assets/planets/pluto.png")),
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: const Offset(4, 4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                    const BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
-            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          actions: [
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Hexagram $_chosenhex'),
+                          content: _setupAlertDialoadContainer(),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text(
+                                'Close',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            )
+                          ],
+                        );
+                      });
+                },
+                child: const Text('Stories'),
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.black,shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50)),
+                    textStyle: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold))),
           ],
-          isSelected: _isPlanetSelectedList,
-          onPressed: (int index) async {
-            _now = DateTime.now();
-            //_planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-            _planetsList = await AstrologyServices.getCurrentData(_now);
-            setState(() {
-              _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
-              _formattedTime = DateFormat.Hms().format(_now);
-              _controllerTime.text = _formattedTime;
-              _controllerDate.text = _formattedDate;
-              switch (_previousPlanetIndex) {
-                case -1:
-                  _previousPlanetIndex = index;
-                  _isPlanetSelectedList[index] = !_isPlanetSelectedList[index];
-                  break;
-                default:
-                  _isPlanetSelectedList[_previousPlanetIndex] =
-                      !_isPlanetSelectedList[_previousPlanetIndex];
-                  _isPlanetSelectedList[index] = !_isPlanetSelectedList[index];
-                  _previousPlanetIndex = index;
-              }
-
-              _planethex = _planetsList[index];
-              _hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
-
-              //_controllerhextext.text = _planethex.gate.toString();
-              //_controllertopfirsttext.text = _hexsentence.adjective!;
-              //_controllertopsecondtext.text = _hexsentence.subject!;
-              //_controllertopthirdtext.text = _hexsentence.verb!;
-              //_controllertopfourthtext.text = _hexsentence.adverb!;
-
-              _hexalignedList = hexagramAlignment(_planethex.gate!);
-              _controllertop.jumpToPage(_hexalignedList[0]);
-              _controllermid.jumpToPage(_hexalignedList[1]);
-              _controllerbot.jumpToPage(_hexalignedList[2]);
-            });
-          },
-        ),
-      ], title: Text(_title), backgroundColor: Colors.blueGrey),
+          title: Text(_title),
+          backgroundColor: Colors.blueGrey),
       backgroundColor: Colors.grey[100],
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Expanded(
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ToggleButtons(
+                      borderWidth: 10.0,
+                      hoverColor: Colors.black,
+                      //borderRadius: BorderRadius.circular(20),
+                      fillColor: Colors.blue,
+                      children: [
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image: AssetImage("assets/planets/sun.png")),
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image:
+                                      AssetImage("assets/planets/earth.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image: AssetImage(
+                                      "assets/planets/northnode.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image: AssetImage(
+                                      "assets/planets/southnode.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image: AssetImage("assets/planets/moon.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image:
+                                      AssetImage("assets/planets/mercury.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image:
+                                      AssetImage("assets/planets/venus.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image: AssetImage("assets/planets/mars.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image:
+                                      AssetImage("assets/planets/jupiter.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image:
+                                      AssetImage("assets/planets/saturn.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image:
+                                      AssetImage("assets/planets/uranus.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image:
+                                      AssetImage("assets/planets/neptune.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              image: const DecorationImage(
+                                  image:
+                                      AssetImage("assets/planets/pluto.png")),
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                      ],
+                      isSelected: _isPlanetSelectedList,
+                      onPressed: (int index) async {
+                        _now = DateTime.now();
+                        //_planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
+                        _planetsList =
+                            await AstrologyServices.getCurrentData(_now);
+                        setState(() {
+                          _formattedDate =
+                              DateFormat('yyyy-MM-dd').format(_now);
+                          _formattedTime = DateFormat.Hms().format(_now);
+                          _controllerTime.text = _formattedTime;
+                          _controllerDate.text = _formattedDate;
+                          switch (_previousPlanetIndex) {
+                            case -1:
+                              _previousPlanetIndex = index;
+                              _isPlanetSelectedList[index] =
+                                  !_isPlanetSelectedList[index];
+                              break;
+                            default:
+                              _isPlanetSelectedList[_previousPlanetIndex] =
+                                  !_isPlanetSelectedList[_previousPlanetIndex];
+                              _isPlanetSelectedList[index] =
+                                  !_isPlanetSelectedList[index];
+                              _previousPlanetIndex = index;
+                          }
+
+                          _planethex = _planetsList[index];
+                          _hexsentence = getGateSentence(
+                              _planethex.gate!, _chosenlanguage);
+
+                          _hexalignedList = hexagramAlignment(_planethex.gate!);
+                          _controllertop.jumpToPage(_hexalignedList[0]);
+                          _controllermid.jumpToPage(_hexalignedList[1]);
+                          _controllerbot.jumpToPage(_hexalignedList[2]);
+                        });
+                      },
+                    ),
+                  ]),
+            ),
             Expanded(
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -2,22 +2,22 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 
-class RotateSimpleIDK extends StatefulWidget {
-  const RotateSimpleIDK({Key? key}) : super(key: key);
+class RotateSimpleLanguage extends StatefulWidget {
+  const RotateSimpleLanguage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _RotateSimpleIDKState();
+    return _RotateSimpleLanguageState();
   }
 }
 
-class _RotateSimpleIDKState extends State<RotateSimpleIDK> {
+class _RotateSimpleLanguageState extends State<RotateSimpleLanguage> {
   int _currenttop = 0;
 
   final CarouselController _controllertop = CarouselController();
 
-  final TextEditingController _controllerbottomfirsttext = TextEditingController();
-
+  final TextEditingController _controllerbottomfirsttext =
+      TextEditingController();
 
   final String _title = subtitlesEN[6];
 
@@ -26,7 +26,19 @@ class _RotateSimpleIDKState extends State<RotateSimpleIDK> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_title), backgroundColor: Colors.blueGrey),
+      appBar: AppBar(
+          title: Text(_title),
+          leading: TextButton(
+            child: const Text(
+              '<<',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold),
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          backgroundColor: Colors.blueGrey),
       backgroundColor: Colors.grey[100],
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +55,8 @@ class _RotateSimpleIDKState extends State<RotateSimpleIDK> {
                     onPageChanged: (indextop, reason) {
                       setState(() {
                         _currenttop = indextop;
-                        _controllerbottomfirsttext.text = hexNamesList[indextop];
+                        _controllerbottomfirsttext.text =
+                            hexNamesList[indextop];
                       });
                     }),
               ),
@@ -61,8 +74,8 @@ class _RotateSimpleIDKState extends State<RotateSimpleIDK> {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: (Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black)
+                                ? Colors.white
+                                : Colors.black)
                             .withOpacity(_currenttop == entry.key ? 0.9 : 0.4)),
                   ),
                 );
@@ -73,33 +86,33 @@ class _RotateSimpleIDKState extends State<RotateSimpleIDK> {
               children: [
                 Expanded(
                     child: TextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: finalhexNamesList[0],
-                          hintStyle: const TextStyle(color: Colors.grey)),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 60.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllerbottomfirsttext,
-                      readOnly: true,
-                    )),
+                  decoration: InputDecoration.collapsed(
+                      hintText: finalhexNamesList[0],
+                      hintStyle: const TextStyle(color: Colors.grey)),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 60.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  controller: _controllerbottomfirsttext,
+                  readOnly: true,
+                )),
               ],
             ),
             Expanded(
                 child: Container(
-                  child: const Text(
-                    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 10,
-                      fontFamily: 'iChing',
-                    ),
-                  ),
-                  alignment: Alignment.center,
-                )),
+              child: const Text(
+                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 10,
+                  fontFamily: 'iChing',
+                ),
+              ),
+              alignment: Alignment.center,
+            )),
           ]),
     );
   }
