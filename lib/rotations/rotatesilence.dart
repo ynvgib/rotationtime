@@ -18,7 +18,7 @@ class _RotateSilenceState extends State<RotateSilence> {
           title: const Text(''),
           leading: TextButton(
             child: const Text(
-              '<<',
+              'X',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,

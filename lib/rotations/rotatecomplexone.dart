@@ -79,7 +79,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
       appBar: AppBar(
           leading: TextButton(
             child: const Text(
-              '<<',
+              'X',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
@@ -129,14 +129,14 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ToggleButtons(
-                      borderWidth: 10.0,
+                      borderWidth: 5.0,
                       hoverColor: Colors.black,
                       //borderRadius: BorderRadius.circular(20),
                       fillColor: Colors.blue,
                       children: [
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -156,8 +156,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -178,8 +178,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -200,8 +200,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -222,8 +222,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -243,8 +243,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -265,8 +265,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -287,8 +287,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -308,8 +308,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -330,8 +330,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -352,8 +352,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -374,8 +374,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(
@@ -396,8 +396,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                               ]),
                         ),
                         Container(
-                          height: 30,
-                          width: 30,
+                          height: 20,
+                          width: 20,
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               image: const DecorationImage(

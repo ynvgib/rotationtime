@@ -22,7 +22,7 @@ class _RotateSimpleBreathState extends State<RotateSimpleBreath> {
           title: Text(_title),
           leading: TextButton(
             child: const Text(
-              '<<',
+              'X',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,

@@ -30,7 +30,7 @@ class _RotateSimpleLanguageState extends State<RotateSimpleLanguage> {
           title: Text(_title),
           leading: TextButton(
             child: const Text(
-              '<<',
+              'X',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,

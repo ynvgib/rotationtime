@@ -35,7 +35,7 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
           title: Text(_title),
           leading: TextButton(
             child: const Text(
-              '<<',
+              'X',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
