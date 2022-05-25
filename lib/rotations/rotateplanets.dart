@@ -59,7 +59,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
       _controllerTimePick = TextEditingController(),
       _controllerDatePick = TextEditingController();
 
-  String _formattedDate = '', _formattedTime = '';
+  String _formattedDate = '', _formattedTime = '',
+      _textlevel = '';
   final String _title = subtitlesEN[0];
 
   // visibility of planets init
@@ -548,7 +549,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           child: TextField(
                               readOnly: true,
                               decoration: const InputDecoration.collapsed(
-                                  hintText: 'a'),
+                                  hintText: ''),
                               controller: _controllerSunHex,
                               style: const TextStyle(
                                   fontSize: 35,
@@ -561,7 +562,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           child: TextField(
                               readOnly: true,
                               decoration: const InputDecoration.collapsed(
-                                  hintText: '1'),
+                                  hintText: ''),
                               textAlign: TextAlign.left,
                               controller: _controllerSunGate,
                               style: const TextStyle(
@@ -575,7 +576,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           child: TextField(
                               readOnly: false,
                               decoration: const InputDecoration.collapsed(
-                                  hintText: 'Creative'),
+                                  hintText: ''),
                               textAlign: TextAlign.left,
                               minLines: 2,
                               maxLines: 2,
@@ -612,7 +613,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'a'),
+                                      hintText: ''),
                                   controller: _controllerNorthNodeHex,
                                   style: const TextStyle(
                                       fontSize: 35,
@@ -624,7 +625,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             child: TextField(
                                 readOnly: true,
                                 decoration: const InputDecoration.collapsed(
-                                    hintText: '1'),
+                                    hintText: ''),
                                 textAlign: TextAlign.left,
                                 controller: _controllerNorthNodeGate,
                                 style: const TextStyle(
@@ -638,7 +639,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             child: TextField(
                                 readOnly: false,
                                 decoration: const InputDecoration.collapsed(
-                                    hintText: 'Creative'),
+                                    hintText: ''),
                                 textAlign: TextAlign.left,
                                 minLines: 2,
                                 maxLines: 2,
@@ -672,14 +673,22 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                     fontSize: 20,
                                     color: Colors.blue)),
                           ),
-                          const SizedBox(
-                            width: 100,
-                            child: Text('COMPLEX',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 20,
-                                    color: Colors.blue)),
+                          SizedBox(
+                            width: 120,
+                            child: TextButton(
+                              child: const Text('COMPLEX',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 20,
+                                      color: Colors.blue)),
+                              onPressed: () {
+                                setState(() {
+                                  _textlevel = 'complex';
+                                  _changeTextLevels(_textlevel);
+                                });
+                              },
+                            ),
                           ),
                           SizedBox(
                             width: 150,
@@ -726,7 +735,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'a'),
+                                      hintText: ''),
                                   controller: _controllerMoonHex,
                                   style: const TextStyle(
                                       fontSize: 35,
@@ -738,7 +747,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             child: TextField(
                                 readOnly: true,
                                 decoration: const InputDecoration.collapsed(
-                                    hintText: '1'),
+                                    hintText: ''),
                                 textAlign: TextAlign.left,
                                 controller: _controllerMoonGate,
                                 style: const TextStyle(
@@ -752,7 +761,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             child: TextField(
                                 readOnly: false,
                                 decoration: const InputDecoration.collapsed(
-                                    hintText: 'Creative'),
+                                    hintText: ''),
                                 textAlign: TextAlign.left,
                                 controller: _controllerMoonText,
                                 minLines: 2,
@@ -772,11 +781,21 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.black)),
-                  child: const SizedBox(
+                  child: SizedBox(
                     width: 100,
-                    child: Text('SIMPLE',
+                    child: TextButton(
+                      child: const Text(
+                        'SIMPLE',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.green)),
+                        style: TextStyle(fontSize: 20, color: Colors.green),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _textlevel = 'simple';
+                          _changeTextLevels(_textlevel);
+                        });
+                      },
+                    ),
                   ),
                 ),
               ],
@@ -809,7 +828,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 child: TextField(
                                     readOnly: true,
                                     decoration: const InputDecoration.collapsed(
-                                        hintText: 'a'),
+                                        hintText: ''),
                                     controller: _controllerMercuryHex,
                                     style: const TextStyle(
                                         fontSize: 35,
@@ -821,7 +840,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: '1'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerMercuryGate,
                                   style: const TextStyle(
@@ -835,7 +854,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'Creative'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerMercuryText,
                                   minLines: 2,
@@ -870,7 +889,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 child: TextField(
                                     readOnly: true,
                                     decoration: const InputDecoration.collapsed(
-                                        hintText: 'a'),
+                                        hintText: ''),
                                     controller: _controllerVenusHex,
                                     style: const TextStyle(
                                         fontSize: 35,
@@ -882,7 +901,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: '1'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerVenusGate,
                                   style: const TextStyle(
@@ -896,7 +915,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'Creative'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerVenusText,
                                   minLines: 2,
@@ -933,7 +952,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 child: TextField(
                                     readOnly: true,
                                     decoration: const InputDecoration.collapsed(
-                                        hintText: 'a'),
+                                        hintText: ''),
                                     controller: _controllerMarsHex,
                                     style: const TextStyle(
                                         fontSize: 35,
@@ -945,7 +964,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: '1'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerMarsGate,
                                   style: const TextStyle(
@@ -959,7 +978,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'Creative'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerMarsText,
                                   minLines: 2,
@@ -1001,7 +1020,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 child: TextField(
                                     readOnly: true,
                                     decoration: const InputDecoration.collapsed(
-                                        hintText: 'a'),
+                                        hintText: ''),
                                     controller: _controllerJupiterHex,
                                     style: const TextStyle(
                                         fontSize: 35,
@@ -1013,7 +1032,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: '1'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerJupiterGate,
                                   style: const TextStyle(
@@ -1027,7 +1046,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'Creative'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerJupiterText,
                                   minLines: 2,
@@ -1062,7 +1081,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 child: TextField(
                                     readOnly: true,
                                     decoration: const InputDecoration.collapsed(
-                                        hintText: 'a'),
+                                        hintText: ''),
                                     controller: _controllerSaturnHex,
                                     style: const TextStyle(
                                         fontSize: 35,
@@ -1074,7 +1093,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: '1'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerSaturnGate,
                                   style: const TextStyle(
@@ -1088,7 +1107,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'Creative'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerSaturnText,
                                   minLines: 2,
@@ -1107,11 +1126,19 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   decoration: BoxDecoration(
                       color: Colors.black,
                       border: Border.all(color: Colors.black)),
-                  child: const SizedBox(
+                  child: SizedBox(
                     width: 100,
-                    child: Text('breath',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.yellow)),
+                    child: TextButton(
+                      child: const Text('breath',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 20, color: Colors.yellow)),
+                      onPressed: () {
+                        setState(() {
+                          _textlevel = 'breath';
+                          _changeTextLevels(_textlevel);
+                        });
+                      },
+                    ),
                   ),
                 ),
               ],
@@ -1144,7 +1171,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 child: TextField(
                                     readOnly: true,
                                     decoration: const InputDecoration.collapsed(
-                                        hintText: 'a'),
+                                        hintText: ''),
                                     controller: _controllerUranusHex,
                                     style: const TextStyle(
                                         fontSize: 35,
@@ -1156,7 +1183,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: '1'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerUranusGate,
                                   style: const TextStyle(
@@ -1170,7 +1197,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'Creative'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerUranusText,
                                   minLines: 2,
@@ -1205,7 +1232,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 child: TextField(
                                     readOnly: true,
                                     decoration: const InputDecoration.collapsed(
-                                        hintText: 'a'),
+                                        hintText: ''),
                                     controller: _controllerNeptuneHex,
                                     style: const TextStyle(
                                         fontSize: 35,
@@ -1217,7 +1244,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: '1'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerNeptuneGate,
                                   style: const TextStyle(
@@ -1231,7 +1258,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'Creative'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerNeptuneText,
                                   minLines: 2,
@@ -1266,7 +1293,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 child: TextField(
                                     readOnly: true,
                                     decoration: const InputDecoration.collapsed(
-                                        hintText: 'a'),
+                                        hintText: ''),
                                     controller: _controllerPlutoHex,
                                     style: const TextStyle(
                                         fontSize: 35,
@@ -1278,7 +1305,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: '1'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerPlutoGate,
                                   style: const TextStyle(
@@ -1292,7 +1319,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'Creative'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerPlutoText,
                                   minLines: 2,
@@ -1334,7 +1361,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'a'),
+                                      hintText: ''),
                                   controller: _controllerEarthHex,
                                   style: const TextStyle(
                                       fontSize: 35,
@@ -1347,7 +1374,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: '1'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerEarthGate,
                                   style: const TextStyle(
@@ -1361,7 +1388,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'Creative'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerEarthText,
                                   minLines: 2,
@@ -1396,7 +1423,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 child: TextField(
                                     readOnly: true,
                                     decoration: const InputDecoration.collapsed(
-                                        hintText: 'a'),
+                                        hintText: ''),
                                     controller: _controllerSouthNodeHex,
                                     style: const TextStyle(
                                         fontSize: 35,
@@ -1408,7 +1435,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: true,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: '1'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerSouthNodeGate,
                                   style: const TextStyle(
@@ -1422,7 +1449,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
-                                      hintText: 'Creative'),
+                                      hintText: ''),
                                   textAlign: TextAlign.left,
                                   controller: _controllerSouthNodeText,
                                   minLines: 2,
@@ -1440,9 +1467,17 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   padding: const EdgeInsets.all(3.0),
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.black)),
-                  child: const Text('silence',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.red)),
+                  child: TextButton(
+                    child: const Text('silence',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20, color: Colors.red)),
+                    onPressed: () {
+                      setState(() {
+                        _textlevel = 'silence';
+                        _changeTextLevels(_textlevel);
+                      });
+                    },
+                  ),
                 ),
               ],
             ),
@@ -1660,5 +1695,265 @@ class _RotatePlanetsState extends State<RotatePlanets> {
     _controllerUranusHex.text = _uranushex.hex!;
     _controllerNeptuneHex.text = _neptunehex.hex!;
     _controllerPlutoHex.text = _plutohex.hex!;
+  }
+
+  void _changeTextLevels(String _textlevel) {
+    int _index = 0;
+
+    switch (_textlevel) {
+      case 'complex':
+
+        _controllerSunGate.text = _sunhex.gatelinecolortone!;
+        _controllerEarthGate.text = _earthhex.gatelinecolortone!;
+        _controllerNorthNodeGate.text = _northnodehex.gatelinecolortone!;
+        _controllerSouthNodeGate.text = _southnodehex.gatelinecolortone!;
+        _controllerMoonGate.text = _moonhex.gatelinecolor!;
+        _controllerMercuryGate.text = _mercuryhex.gatelinecolor!;
+        _controllerVenusGate.text = _venushex.gatelinecolor!;
+        _controllerMarsGate.text = _marshex.gatelinecolor!;
+        _controllerJupiterGate.text = _jupiterhex.gatelinecolor!;
+        _controllerSaturnGate.text = _saturnhex.gatelinecolor!;
+        _controllerUranusGate.text = _uranushex.gatelinecolor!;
+        _controllerNeptuneGate.text = _neptunehex.gatelinecolor!;
+        _controllerPlutoGate.text = _plutohex.gatelinecolor!;
+
+        _controllerSunText.text = _sunhex.linename!;
+        _controllerEarthText.text = _earthhex.linename!;
+        _controllerNorthNodeText.text = _northnodehex.linename!;
+        _controllerSouthNodeText.text = _southnodehex.linename!;
+        _controllerMoonText.text = _moonhex.linename!;
+        _controllerMercuryText.text = _mercuryhex.linename!;
+        _controllerVenusText.text = _venushex.linename!;
+        _controllerMarsText.text = _marshex.linename!;
+        _controllerJupiterText.text = _jupiterhex.linename!;
+        _controllerSaturnText.text = _saturnhex.linename!;
+        _controllerUranusText.text = _uranushex.linename!;
+        _controllerNeptuneText.text = _neptunehex.linename!;
+        _controllerPlutoText.text = _plutohex.linename!;
+        break;
+      case 'simple':
+
+        _controllerSunGate.text = _sunhex.gate.toString();
+        _controllerEarthGate.text = _earthhex.gate.toString();
+        _controllerNorthNodeGate.text = _northnodehex.gate.toString();
+        _controllerSouthNodeGate.text = _southnodehex.gate.toString();
+        _controllerMoonGate.text = _moonhex.gate.toString();
+        _controllerMercuryGate.text = _mercuryhex.gate.toString();
+        _controllerVenusGate.text = _venushex.gate.toString();
+        _controllerMarsGate.text = _marshex.gate.toString();
+        _controllerJupiterGate.text = _jupiterhex.gate.toString();
+        _controllerSaturnGate.text = _saturnhex.gate.toString();
+        _controllerUranusGate.text = _uranushex.gate.toString();
+        _controllerNeptuneGate.text = _neptunehex.gate.toString();
+        _controllerPlutoGate.text = _plutohex.gate.toString();
+
+        _index = hexSentenceList.indexOf(_sunhex.gate!);
+        _controllerSunText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_earthhex.gate!);
+        _controllerEarthText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_northnodehex.gate!);
+        _controllerNorthNodeText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_southnodehex.gate!);
+        _controllerSouthNodeText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_moonhex.gate!);
+        _controllerMoonText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_mercuryhex.gate!);
+        _controllerMercuryText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_venushex.gate!);
+        _controllerVenusText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_marshex.gate!);
+        _controllerMarsText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_jupiterhex.gate!);
+        _controllerJupiterText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_saturnhex.gate!);
+        _controllerSaturnText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_uranushex.gate!);
+        _controllerUranusText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_neptunehex.gate!);
+        _controllerNeptuneText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+
+        _index = hexSentenceList.indexOf(_plutohex.gate!);
+        _controllerPlutoText.text = hexSentenceList[_index + 1] +
+            " " +
+            hexSentenceList[_index + 2] +
+            " " +
+            hexSentenceList[_index + 3] +
+            " " +
+            hexSentenceList[_index + 4];
+        break;
+      case 'breath':
+        _controllerSunText.text = 'Exhale';
+        _controllerEarthText.text = 'Inhale';
+        _controllerNorthNodeText.text = 'BREATHE';
+        _controllerSouthNodeText.text = 'BREATH';
+        _controllerMoonText.text = 'Exhale';
+        _controllerMercuryText.text = 'Exhale';
+        _controllerVenusText.text = 'Exhale';
+        _controllerMarsText.text = 'Exhale';
+        _controllerJupiterText.text = 'Inhale';
+        _controllerSaturnText.text = 'Inhale';
+        _controllerUranusText.text = 'Inhale';
+        _controllerNeptuneText.text = 'Inhale';
+        _controllerPlutoText.text = 'Inhale';
+
+        _controllerSunGate.text = '';
+        _controllerEarthGate.text = '';
+        _controllerNorthNodeGate.text = '';
+        _controllerSouthNodeGate.text = '';
+        _controllerMoonGate.text = '';
+        _controllerMercuryGate.text = '';
+        _controllerVenusGate.text = '';
+        _controllerMarsGate.text = '';
+        _controllerJupiterGate.text = '';
+        _controllerSaturnGate.text = '';
+        _controllerUranusGate.text = '';
+        _controllerNeptuneGate.text = '';
+        _controllerPlutoGate.text = '';
+
+        _controllerSunHex.text = '';
+        _controllerEarthHex.text = '';
+        _controllerNorthNodeHex.text = '';
+        _controllerSouthNodeHex.text = '';
+        _controllerMoonHex.text = '';
+        _controllerMercuryHex.text = '';
+        _controllerVenusHex.text = '';
+        _controllerMarsHex.text = '';
+        _controllerJupiterHex.text = '';
+        _controllerSaturnHex.text = '';
+        _controllerUranusHex.text = '';
+        _controllerNeptuneHex.text = '';
+        _controllerPlutoHex.text = '';
+
+        break;
+      case 'silence':
+        _controllerSunText.text = '';
+        _controllerEarthText.text = '';
+        _controllerNorthNodeText.text = '';
+        _controllerSouthNodeText.text = '';
+        _controllerMoonText.text = '';
+        _controllerMercuryText.text = '';
+        _controllerVenusText.text = '';
+        _controllerMarsText.text = '';
+        _controllerJupiterText.text = '';
+        _controllerSaturnText.text = '';
+        _controllerUranusText.text = '';
+        _controllerNeptuneText.text = '';
+        _controllerPlutoText.text = '';
+
+        _controllerSunGate.text = '';
+        _controllerEarthGate.text = '';
+        _controllerNorthNodeGate.text = '';
+        _controllerSouthNodeGate.text = '';
+        _controllerMoonGate.text = '';
+        _controllerMercuryGate.text = '';
+        _controllerVenusGate.text = '';
+        _controllerMarsGate.text = '';
+        _controllerJupiterGate.text = '';
+        _controllerSaturnGate.text = '';
+        _controllerUranusGate.text = '';
+        _controllerNeptuneGate.text = '';
+        _controllerPlutoGate.text = '';
+
+        _controllerSunHex.text = '';
+        _controllerEarthHex.text = '';
+        _controllerNorthNodeHex.text = '';
+        _controllerSouthNodeHex.text = '';
+        _controllerMoonHex.text = '';
+        _controllerMercuryHex.text = '';
+        _controllerVenusHex.text = '';
+        _controllerMarsHex.text = '';
+        _controllerJupiterHex.text = '';
+        _controllerSaturnHex.text = '';
+        _controllerUranusHex.text = '';
+        _controllerNeptuneHex.text = '';
+        _controllerPlutoHex.text = '';
+
+        break;
+      default:
+        break;
+    }
   }
 }
