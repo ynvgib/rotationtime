@@ -1404,7 +1404,7 @@ final List idonotknowlinesList = [
   'grampa complex standstill open the gate to heaven',
   13,
   'granny simple secret fires too easily',
-  'mama simple secret is properly keeps the fire',
+  'mama simple secret maintains her fire',
   'daughter complex secret burns her brother',
   'son complex secret shines through the family',
   'papa complex secret shines to the world',
