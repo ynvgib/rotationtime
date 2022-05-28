@@ -3,6 +3,7 @@ import 'package:finallyicanlearn/logic/hdsubstructure.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
+import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:finallyicanlearn/services/fetchastrology.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -44,7 +45,11 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
       _controllerbottomsecondtext = TextEditingController(),
       _controllerbottomthirdtext = TextEditingController(),
       _controllerTime = TextEditingController(),
-      _controllerDate = TextEditingController();
+      _controllerDate = TextEditingController(),
+      _controllerTimePick = TextEditingController(),
+      _controllerDatePick = TextEditingController();
+
+  TimeOfDay _selectedtime = const TimeOfDay(hour: 0, minute: 0);
 
   var _dropdownvalue = hexagramslist[1],
       _dropdowichingvalue = fontHexOrderList[0],
@@ -52,13 +57,19 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
 
   List<int> _hexalignedList = [0, 0, 0];
 
-  DateTime _now = DateTime.now();
-  List<Hexagram> _planetsList = [];
+  DateTime _now = DateTime.now(),
+      _designTime = DateTime.now(),
+      _selectedDate = DateTime.now();
+
+  List<Hexagram> _planetsList = [],
+      _planetsdesignList = [],
+      _planetsnowList = [];
 
   final List<bool> _isPlanetSelectedList =
-      List<bool>.filled(13, false, growable: false);
+          List<bool>.filled(13, false, growable: false),
+      _isLifeTime = List<bool>.filled(2, false, growable: false);
 
-  int _previousPlanetIndex = -1;
+  int _previousPlanetIndex = -1, _previousLifeTimeIndex = -1;
 
   Hexagram _planethex = Hexagram();
 
@@ -91,6 +102,22 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
             ElevatedButton(
                 onPressed: () {
                   showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildPopupDialog(context),
+                  );
+                },
+                child: const Text(
+                  'TIME',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)))),
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
@@ -112,8 +139,9 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                 },
                 child: const Text('Stories'),
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.black,shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50)),
+                    primary: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
                     textStyle: const TextStyle(
                         fontSize: 15, fontWeight: FontWeight.bold))),
           ],
@@ -128,6 +156,91 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    ToggleButtons(
+                      borderWidth: 5.0,
+                      hoverColor: Colors.black,
+                      //borderRadius: BorderRadius.circular(20),
+                      fillColor: Colors.black,
+                      selectedColor: Colors.black,
+                      children: [
+                        Container(
+                            height: 30,
+                            width: 100,
+                            decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey[500]!,
+                                      offset: const Offset(4, 4),
+                                      blurRadius: 15,
+                                      spreadRadius: 1),
+                                  const BoxShadow(
+                                      color: Colors.red,
+                                      offset: Offset(-4, -4),
+                                      blurRadius: 15,
+                                      spreadRadius: 1),
+                                ]),
+                            child: const Text('Life', textAlign: TextAlign.center, style: TextStyle(fontSize: 20))),
+                        Container(
+                          height: 30,
+                          width: 100,
+                          child:
+                              const Text('Thought', textAlign: TextAlign.center, style: TextStyle(fontSize: 20)),
+                          decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.blue,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1),
+                              ]),
+                        ),
+                      ],
+                      isSelected: _isLifeTime,
+                      onPressed: (int index) {
+                        switch (index) {
+                          case 0:
+                            _planetsList = _planetsdesignList;
+                            _formattedDate = DateFormat('yyyy-MM-dd').format(_designTime);
+                            _formattedTime = DateFormat.Hms().format(_designTime);
+                            _controllerTime.text = _formattedTime;
+                            _controllerDate.text = _formattedDate;
+                            break;
+                          case 1:
+                            _planetsList = _planetsnowList;
+                            _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+                            _formattedTime = DateFormat.Hms().format(_now);
+                            _controllerTime.text = _formattedTime;
+                            _controllerDate.text = _formattedDate;
+                            break;
+                          default:
+                            break;
+                        }
+
+                        setState(() {
+                          switch (_previousLifeTimeIndex) {
+                            case -1:
+                              _previousLifeTimeIndex = index;
+                              _isLifeTime[index] = !_isLifeTime[index];
+                              break;
+                            default:
+                              _isLifeTime[_previousLifeTimeIndex] =
+                                  !_isLifeTime[_previousLifeTimeIndex];
+                              _isLifeTime[index] = !_isLifeTime[index];
+                              _previousLifeTimeIndex = index;
+                              break;
+                          }
+                        });
+                      },
+                    ),
                     ToggleButtons(
                       borderWidth: 5.0,
                       hoverColor: Colors.black,
@@ -420,16 +533,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                       ],
                       isSelected: _isPlanetSelectedList,
                       onPressed: (int index) async {
-                        _now = DateTime.now();
-                        //_planetsList = await AstrologyServices.getPlanetsGatesNow(_now);
-                        _planetsList =
-                            await AstrologyServices.getCurrentData(_now);
                         setState(() {
-                          _formattedDate =
-                              DateFormat('yyyy-MM-dd').format(_now);
-                          _formattedTime = DateFormat.Hms().format(_now);
-                          _controllerTime.text = _formattedTime;
-                          _controllerDate.text = _formattedDate;
                           switch (_previousPlanetIndex) {
                             case -1:
                               _previousPlanetIndex = index;
@@ -942,6 +1046,228 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
               alignment: Alignment.center,
             )),
           ]),
+    );
+  }
+
+  Widget _buildPopupDialog(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Time'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          SizedBox(
+            width: 150,
+            child: TextField(
+                readOnly: true,
+                decoration: const InputDecoration.collapsed(hintText: '07:30'),
+                textAlign: TextAlign.center,
+                controller: _controllerTimePick,
+                style: const TextStyle(
+                    fontSize: 17,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal)),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              _selectedtime = await TimeServices.selectTime(context);
+              setState(() {
+                _controllerTimePick.text = _selectedtime.format(context);
+              });
+            },
+            child: const Text('Set Time'),
+            style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                textStyle: const TextStyle(
+                    fontSize: 17, fontWeight: FontWeight.normal)),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          SizedBox(
+            width: 150,
+            child: TextField(
+                readOnly: true,
+                decoration:
+                    const InputDecoration.collapsed(hintText: '2022-02-19'),
+                textAlign: TextAlign.center,
+                controller: _controllerDatePick,
+                style: const TextStyle(
+                    fontSize: 17,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal)),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              _selectedDate = await TimeServices.selectDate(context);
+              setState(() {
+                _controllerDatePick.text =
+                    "${_selectedDate.toLocal()}".split(' ')[0];
+              });
+            },
+            child: const Text('Set Date'),
+            style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                textStyle: const TextStyle(
+                    fontSize: 17, fontWeight: FontWeight.normal)),
+          ),
+          Container(
+              margin: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(3.0),
+              color: Colors.black),
+          ElevatedButton(
+            onPressed: () async {
+              _now = _selectedDate.applied(_selectedtime);
+              _planetsnowList = await AstrologyServices.getCurrentData(_now);
+
+              _designTime = await AstrologyServices.getDesignTime(_now);
+              _planetsdesignList =
+                  await AstrologyServices.getCurrentData(_designTime);
+
+              _planetsList = _planetsnowList;
+
+              //_now = _now.toUtc();
+
+              _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+              _formattedTime = DateFormat.Hms().format(_now);
+              _controllerTime.text = _formattedTime;
+              _controllerDate.text = _formattedDate;
+              //_controllerType.text = 'Thought Later';
+              //_controllerSubType.text = 'COMPLEX';
+
+              //_isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+              _planethex = _planetsList[0];
+              _hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
+
+              _hexalignedList = hexagramAlignment(_planethex.gate!);
+              _controllertop.jumpToPage(_hexalignedList[0]);
+              _controllermid.jumpToPage(_hexalignedList[1]);
+              _controllerbot.jumpToPage(_hexalignedList[2]);
+
+              switch (_previousPlanetIndex) {
+                case -1:
+                  _previousPlanetIndex = 0;
+                  _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                  break;
+                default:
+                  _isPlanetSelectedList[_previousPlanetIndex] =
+                      !_isPlanetSelectedList[_previousPlanetIndex];
+                  _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                  _previousPlanetIndex = 0;
+              }
+
+              switch (_previousLifeTimeIndex) {
+                case -1:
+                  _previousLifeTimeIndex = 1;
+                  _isLifeTime[1] = !_isLifeTime[1];
+                  break;
+                default:
+                  _isLifeTime[_previousLifeTimeIndex] =
+                  !_isLifeTime[_previousLifeTimeIndex];
+                  _isLifeTime[1] = !_isLifeTime[1];
+                  _previousLifeTimeIndex = 1;
+                  break;
+              }
+
+              setState(() {
+                Navigator.of(context).pop();
+              });
+            },
+            child: const Text('1) Fetch Your Time',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.normal)),
+            style: ElevatedButton.styleFrom(primary: Colors.yellow),
+          ),
+          Container(
+              margin: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(3.0),
+              color: Colors.black),
+          ElevatedButton(
+              onPressed: () async {
+                _now = DateTime.now();
+
+                _planetsnowList = await AstrologyServices.getCurrentData(_now);
+
+                _designTime = await AstrologyServices.getDesignTime(_now);
+                _planetsdesignList =
+                    await AstrologyServices.getCurrentData(_designTime);
+
+                _planetsList = _planetsnowList;
+
+                //_now = _now.toUtc();
+
+                _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+                _formattedTime = DateFormat.Hms().format(_now);
+                _controllerTime.text = _formattedTime;
+                _controllerDate.text = _formattedDate;
+
+                //_controllerType.text = 'THINK AFTER';
+                //_controllerSubType.text = 'COMPLEX';
+
+                //_isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                _planethex = _planetsList[0];
+                _hexsentence =
+                    getGateSentence(_planethex.gate!, _chosenlanguage);
+
+                _hexalignedList = hexagramAlignment(_planethex.gate!);
+                _controllertop.jumpToPage(_hexalignedList[0]);
+                _controllermid.jumpToPage(_hexalignedList[1]);
+                _controllerbot.jumpToPage(_hexalignedList[2]);
+
+                switch (_previousPlanetIndex) {
+                  case -1:
+                    _previousPlanetIndex = 0;
+                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                    break;
+                  default:
+                    _isPlanetSelectedList[_previousPlanetIndex] =
+                        !_isPlanetSelectedList[_previousPlanetIndex];
+                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                    _previousPlanetIndex = 0;
+                }
+
+                switch (_previousLifeTimeIndex) {
+                  case -1:
+                    _previousLifeTimeIndex = 1;
+                    _isLifeTime[1] = !_isLifeTime[1];
+                    break;
+                  default:
+                    _isLifeTime[_previousLifeTimeIndex] =
+                    !_isLifeTime[_previousLifeTimeIndex];
+                    _isLifeTime[1] = !_isLifeTime[1];
+                    _previousLifeTimeIndex = 1;
+                    break;
+                }
+
+                setState(() {
+                  Navigator.of(context).pop();
+                });
+              },
+              child: const Text('2) Get Now Instead'),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.red,
+                  textStyle: const TextStyle(
+                      fontSize: 17, fontWeight: FontWeight.normal))),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
     );
   }
 

@@ -159,7 +159,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   },
                   child: const Text('Centers'),
                   style: ElevatedButton.styleFrom(primary: Colors.blue)),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               ElevatedButton(

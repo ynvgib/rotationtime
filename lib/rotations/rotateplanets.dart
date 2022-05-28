@@ -57,7 +57,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
       _controllerTime = TextEditingController(),
       _controllerDate = TextEditingController(),
       _controllerTimePick = TextEditingController(),
-      _controllerDatePick = TextEditingController();
+      _controllerDatePick = TextEditingController(),
+      _controllerType = TextEditingController(),
+      _controllerSubType = TextEditingController();
 
   String _formattedDate = '', _formattedTime = '',
       _textlevel = '';
@@ -140,7 +142,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
       ),
       body: Column(
         children: [
-          // 1st row
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -151,11 +152,15 @@ class _RotatePlanetsState extends State<RotatePlanets> {
 
                     _controlPlanetHexagramData(_planetsList);
 
+                    _textlevel = 'silence';
+                    _changeTextLevels(_textlevel);
+
                     _formattedDate =
                         DateFormat('yyyy-MM-dd').format(_designTime);
                     _formattedTime = DateFormat.Hms().format(_designTime);
                     _controllerTime.text = _formattedTime;
                     _controllerDate.text = _formattedDate;
+                    _controllerType.text = 'Life First';
                   },
                   child: const Text('LIFE'),
                   style: ElevatedButton.styleFrom(
@@ -510,6 +515,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                     _formattedTime = DateFormat.Hms().format(_now);
                     _controllerTime.text = _formattedTime;
                     _controllerDate.text = _formattedDate;
+
+                    _controllerType.text = 'Thought Later';
+                    _controllerSubType.text = 'COMPLEX';
                   },
                   child: const Text('THOUGHT'),
                   style: ElevatedButton.styleFrom(
@@ -519,6 +527,37 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       textStyle: const TextStyle(
                           fontSize: 17, fontWeight: FontWeight.bold)),
                 ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 200,
+                  child: TextField(
+                      readOnly: true,
+                      decoration: const InputDecoration.collapsed(
+                          hintText: ''),
+                      controller: _controllerSubType,
+                      style: const TextStyle(
+                          fontSize: 25,
+                          color: Colors.black)),
+                ),
+                const SizedBox(width: 10),
+                SizedBox(
+                  width: 200,
+                  child: TextField(
+                      readOnly: true,
+                      decoration: const InputDecoration.collapsed(
+                          hintText: ''),
+                      controller: _controllerType,
+                      style: const TextStyle(
+                          fontSize: 25,
+                          color: Colors.black)),
+                ),
+
               ],
             ),
           ),
@@ -1577,6 +1616,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
               _formattedTime = DateFormat.Hms().format(_now);
               _controllerTime.text = _formattedTime;
               _controllerDate.text = _formattedDate;
+              _controllerType.text = 'Thought Later';
+              _controllerSubType.text = 'COMPLEX';
+
 
               setState(() {
                 Navigator.of(context).pop();
@@ -1613,6 +1655,10 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 _formattedTime = DateFormat.Hms().format(_now);
                 _controllerTime.text = _formattedTime;
                 _controllerDate.text = _formattedDate;
+
+                _controllerType.text = 'THINK AFTER';
+                _controllerSubType.text = 'COMPLEX';
+
 
                 setState(() {
                   Navigator.of(context).pop();
@@ -1703,6 +1749,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
     switch (_textlevel) {
       case 'complex':
 
+        _controllerSubType.text = 'COMPLEX';
+
         _controllerSunGate.text = _sunhex.gatelinecolortone!;
         _controllerEarthGate.text = _earthhex.gatelinecolortone!;
         _controllerNorthNodeGate.text = _northnodehex.gatelinecolortone!;
@@ -1732,6 +1780,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
         _controllerPlutoText.text = _plutohex.linename!;
         break;
       case 'simple':
+
+        _controllerSubType.text = 'Simple';
 
         _controllerSunGate.text = _sunhex.gate.toString();
         _controllerEarthGate.text = _earthhex.gate.toString();
@@ -1865,6 +1915,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
             hexSentenceList[_index + 4];
         break;
       case 'breath':
+
+        _controllerSubType.text = 'Breathe';
+
         _controllerSunText.text = 'Exhale';
         _controllerEarthText.text = 'Inhale';
         _controllerNorthNodeText.text = 'BREATHE';
@@ -1909,6 +1962,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
 
         break;
       case 'silence':
+
+        _controllerSubType.text = 'silent';
+
         _controllerSunText.text = '';
         _controllerEarthText.text = '';
         _controllerNorthNodeText.text = '';
