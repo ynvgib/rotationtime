@@ -1,4 +1,5 @@
 import 'package:finallyicanlearn/logic/calculatehdchart.dart';
+import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
@@ -46,7 +47,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
 
   TimeOfDay _selectedtime = const TimeOfDay(hour: 0, minute: 0);
 
-  List<Hexagram> _planetsdesignList = [], _planetsnowList = [];
+  List<Hexagram> _planetsdesignList = [Hexagram(line: 1)], _planetsnowList = [Hexagram(line: 1)];
 
   List<HDChannel> _hdchannelsList = [];
 
@@ -137,9 +138,11 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                     fontSize: 60,
                     color: Colors.yellow)),
           ),
-          const SizedBox(
-            height: 100,
+          const FittedBox(
+            fit: BoxFit.scaleDown,
             child: Text('X I O :: I don\'t know',
+                maxLines: 2,
+                overflow: TextOverflow.clip,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 50,
@@ -149,6 +152,19 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildProfilePopUp(context),
+                    );
+                  },
+                  child: const Text('Profile'),
+                  style: ElevatedButton.styleFrom(primary: Colors.blue)),
+              const SizedBox(
+                width: 10,
+              ),
               ElevatedButton(
                   onPressed: () {
                     showDialog(
@@ -350,12 +366,13 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   padding: const EdgeInsets.all(8),
                   itemCount: _centers.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      width: 50,
-                      color: Colors.blue[_colorCodes[index]],
-                      child: Text(
-                        _centers[index],
-                        style: const TextStyle(fontSize: 30),
+                    return FittedBox(fit: BoxFit.scaleDown,
+                      child: Container(
+                        color: Colors.blue[_colorCodes[index]],
+                        child: Text(
+                          _centers[index],
+                          style: const TextStyle(fontSize: 30),
+                        ),
                       ),
                     );
                   })),
@@ -388,16 +405,203 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   padding: const EdgeInsets.all(8),
                   itemCount: _hdchannelsList.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      color: Colors.blue[_colorCodes[index]],
-                      child: Text(
-                        _hdchannelsList[index].name!,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 20),
+                      return FittedBox(fit: BoxFit.scaleDown,
+                      child: Container(
+                        color: Colors.blue[_colorCodes[index]],
+                        child: Text(
+                          _hdchannelsList[index].name!,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontSize: 20),
+                        ),
                       ),
                     );
                   })),
         ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProfilePopUp(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Profile'),
+      content: SizedBox(
+        height: 200,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FittedBox(
+                  fit: BoxFit.fill,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey[500]!,
+                              offset: const Offset(4, 4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                          const BoxShadow(
+                              color: Colors.blueGrey,
+                              offset: Offset(-4, -4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                        ]),
+                    child: Text(
+                            _planetsnowList[0].line.toString(),
+                        textAlign: TextAlign.center,
+                        style:
+                        const TextStyle(color: Colors.black, fontSize: 25)),
+                  ),
+                ),
+                const SizedBox(width: 10,),
+                FittedBox(
+                  fit: BoxFit.fill,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey[500]!,
+                              offset: const Offset(4, 4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                          const BoxShadow(
+                              color: Colors.blueGrey,
+                              offset: Offset(-4, -4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                        ]),
+                    child: const Text(
+                        '::',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.grey, fontSize: 25)),
+                  ),
+                ),
+                const SizedBox(width: 10,),
+                FittedBox(
+                  fit: BoxFit.fill,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey[500]!,
+                              offset: const Offset(4, 4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                          const BoxShadow(
+                              color: Colors.blueGrey,
+                              offset: Offset(-4, -4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                        ]),
+                    child: Text(
+                            _planetsdesignList[0].line.toString(),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(color: Colors.red, fontSize: 25)),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FittedBox(
+                  fit: BoxFit.fill,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey[500]!,
+                              offset: const Offset(4, 4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                          const BoxShadow(
+                              color: Colors.blueGrey,
+                              offset: Offset(-4, -4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                        ]),
+                    child: Text(
+                        idonotknowlinesList[_planetsnowList[0].line!].toString(),
+                        textAlign: TextAlign.center,
+                        style:
+                        const TextStyle(color: Colors.black, fontSize: 20)),
+                  ),
+                ),
+                const SizedBox(width: 10,),
+                FittedBox(
+                  fit: BoxFit.fill,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey[500]!,
+                              offset: const Offset(4, 4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                          const BoxShadow(
+                              color: Colors.blueGrey,
+                              offset: Offset(-4, -4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                        ]),
+                    child: const Text(
+                        '::',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.grey, fontSize: 20)),
+                  ),
+                ),
+                const SizedBox(width: 10,),
+                FittedBox(
+                  fit: BoxFit.fill,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey[500]!,
+                              offset: const Offset(4, 4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                          const BoxShadow(
+                              color: Colors.blueGrey,
+                              offset: Offset(-4, -4),
+                              blurRadius: 5,
+                              spreadRadius: 1),
+                        ]),
+                    child: Text(
+                        idonotknowlinesList[_planetsdesignList[0].line!].toString(),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(color: Colors.red, fontSize: 20)),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       actions: <Widget>[
         TextButton(

@@ -1,3 +1,4 @@
+import 'package:finallyicanlearn/logic/hdsubstructure.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
@@ -63,7 +64,9 @@ class _RotatePlanetsState extends State<RotatePlanets> {
 
   String _formattedDate = '', _formattedTime = '',
       _textlevel = '';
-  final String _title = subtitlesEN[0];
+  final String _title = subtitlesEN[0], _chosenlanguage = 'EN';
+
+  HexagramSentence _hexsentence = getGateSentence(1, 'EN');
 
   // visibility of planets init
   bool _isSunVisible = true,
@@ -1744,7 +1747,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
   }
 
   void _changeTextLevels(String _textlevel) {
-    int _index = 0;
 
     switch (_textlevel) {
       case 'complex':
@@ -1798,136 +1800,47 @@ class _RotatePlanetsState extends State<RotatePlanets> {
 
         _controllerSubType.text = 'Simple';
 
-        _controllerSunGate.text = _sunhex.gate.toString();
-        _controllerEarthGate.text = _earthhex.gate.toString();
-        _controllerNorthNodeGate.text = _northnodehex.gate.toString();
-        _controllerSouthNodeGate.text = _southnodehex.gate.toString();
-        _controllerMoonGate.text = _moonhex.gate.toString();
-        _controllerMercuryGate.text = _mercuryhex.gate.toString();
-        _controllerVenusGate.text = _venushex.gate.toString();
-        _controllerMarsGate.text = _marshex.gate.toString();
-        _controllerJupiterGate.text = _jupiterhex.gate.toString();
-        _controllerSaturnGate.text = _saturnhex.gate.toString();
-        _controllerUranusGate.text = _uranushex.gate.toString();
-        _controllerNeptuneGate.text = _neptunehex.gate.toString();
-        _controllerPlutoGate.text = _plutohex.gate.toString();
+        _controllerSunGate.text = _sunhex.gateline!;
+        _controllerEarthGate.text = _earthhex.gateline!;
+        _controllerNorthNodeGate.text = _northnodehex.gateline!;
+        _controllerSouthNodeGate.text = _southnodehex.gateline!;
+        _controllerMoonGate.text = _moonhex.gateline!;
+        _controllerMercuryGate.text = _mercuryhex.gateline!;
+        _controllerVenusGate.text = _venushex.gateline!;
+        _controllerMarsGate.text = _marshex.gateline!;
+        _controllerJupiterGate.text = _jupiterhex.gateline!;
+        _controllerSaturnGate.text = _saturnhex.gateline!;
+        _controllerUranusGate.text = _uranushex.gateline!;
+        _controllerNeptuneGate.text = _neptunehex.gateline!;
+        _controllerPlutoGate.text = _plutohex.gateline!;
 
-        _index = hexSentenceList.indexOf(_sunhex.gate!);
-        _controllerSunText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
+        _hexsentence = getGateSentence(_sunhex.gate!, _chosenlanguage);
+        _controllerSunText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_earthhex.gate!, _chosenlanguage);
+        _controllerEarthText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_northnodehex.gate!, _chosenlanguage);
+        _controllerNorthNodeText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_southnodehex.gate!, _chosenlanguage);
+        _controllerSouthNodeText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_moonhex.gate!, _chosenlanguage);
+        _controllerMoonText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_mercuryhex.gate!, _chosenlanguage);
+        _controllerMercuryText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_venushex.gate!, _chosenlanguage);
+        _controllerVenusText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_marshex.gate!, _chosenlanguage);
+        _controllerMarsText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_jupiterhex.gate!, _chosenlanguage);
+        _controllerJupiterText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_saturnhex.gate!, _chosenlanguage);
+        _controllerSaturnText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_uranushex.gate!, _chosenlanguage);
+        _controllerUranusText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_neptunehex.gate!, _chosenlanguage);
+        _controllerNeptuneText.text = _hexsentence.sentence!;
+        _hexsentence = getGateSentence(_plutohex.gate!, _chosenlanguage);
+        _controllerPlutoText.text = _hexsentence.sentence!;
 
-        _index = hexSentenceList.indexOf(_earthhex.gate!);
-        _controllerEarthText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
-
-        _index = hexSentenceList.indexOf(_northnodehex.gate!);
-        _controllerNorthNodeText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
-
-        _index = hexSentenceList.indexOf(_southnodehex.gate!);
-        _controllerSouthNodeText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
-
-        _index = hexSentenceList.indexOf(_moonhex.gate!);
-        _controllerMoonText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
-
-        _index = hexSentenceList.indexOf(_mercuryhex.gate!);
-        _controllerMercuryText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
-
-        _index = hexSentenceList.indexOf(_venushex.gate!);
-        _controllerVenusText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
-
-        _index = hexSentenceList.indexOf(_marshex.gate!);
-        _controllerMarsText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
-
-        _index = hexSentenceList.indexOf(_jupiterhex.gate!);
-        _controllerJupiterText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
-
-        _index = hexSentenceList.indexOf(_saturnhex.gate!);
-        _controllerSaturnText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
-
-        _index = hexSentenceList.indexOf(_uranushex.gate!);
-        _controllerUranusText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
-
-        _index = hexSentenceList.indexOf(_neptunehex.gate!);
-        _controllerNeptuneText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
-
-        _index = hexSentenceList.indexOf(_plutohex.gate!);
-        _controllerPlutoText.text = hexSentenceList[_index + 1] +
-            " " +
-            hexSentenceList[_index + 2] +
-            " " +
-            hexSentenceList[_index + 3] +
-            " " +
-            hexSentenceList[_index + 4];
 
         _controllerSunHex.text = _sunhex.hex!;
         _controllerEarthHex.text = _earthhex.hex!;

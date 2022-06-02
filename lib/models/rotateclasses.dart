@@ -1,7 +1,7 @@
 
 class Hexagram {
   String? name, hex, gatename,
-      linename, colorname, tonename, basename,
+      linename, colorname, tonename, basename, gateline,
   gatelinecolor, gatelinecolortone,gatelinecolortonebase;
   int? gate, line, color, tone, base;
 
@@ -15,6 +15,7 @@ class Hexagram {
     this.base,
     this.gatename,
     this.linename,
+    this.gateline,
     this.gatelinecolor,
     this.gatelinecolortone,
     this.gatelinecolortonebase
@@ -22,9 +23,9 @@ class Hexagram {
 }
 
 class HexagramSentence {
-  String? adjective, subject, verb, adverb;
+  String? adjective, subject, verb, adverb, sentence;
 
-  HexagramSentence({this.adjective, this.subject, this.verb, this.adverb});
+  HexagramSentence({this.adjective, this.subject, this.verb, this.adverb, this.sentence});
 }
 
 class HexBase {
