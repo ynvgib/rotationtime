@@ -1778,6 +1778,21 @@ class _RotatePlanetsState extends State<RotatePlanets> {
         _controllerUranusText.text = _uranushex.linename!;
         _controllerNeptuneText.text = _neptunehex.linename!;
         _controllerPlutoText.text = _plutohex.linename!;
+
+        _controllerSunHex.text = _sunhex.hex!;
+        _controllerEarthHex.text = _earthhex.hex!;
+        _controllerNorthNodeHex.text = _northnodehex.hex!;
+        _controllerSouthNodeHex.text = _southnodehex.hex!;
+        _controllerMoonHex.text = _moonhex.hex!;
+        _controllerMercuryHex.text = _mercuryhex.hex!;
+        _controllerVenusHex.text = _venushex.hex!;
+        _controllerMarsHex.text = _marshex.hex!;
+        _controllerJupiterHex.text = _jupiterhex.hex!;
+        _controllerSaturnHex.text = _saturnhex.hex!;
+        _controllerUranusHex.text = _uranushex.hex!;
+        _controllerNeptuneHex.text = _neptunehex.hex!;
+        _controllerPlutoHex.text = _plutohex.hex!;
+
         break;
       case 'simple':
 
@@ -1913,6 +1928,21 @@ class _RotatePlanetsState extends State<RotatePlanets> {
             hexSentenceList[_index + 3] +
             " " +
             hexSentenceList[_index + 4];
+
+        _controllerSunHex.text = _sunhex.hex!;
+        _controllerEarthHex.text = _earthhex.hex!;
+        _controllerNorthNodeHex.text = _northnodehex.hex!;
+        _controllerSouthNodeHex.text = _southnodehex.hex!;
+        _controllerMoonHex.text = _moonhex.hex!;
+        _controllerMercuryHex.text = _mercuryhex.hex!;
+        _controllerVenusHex.text = _venushex.hex!;
+        _controllerMarsHex.text = _marshex.hex!;
+        _controllerJupiterHex.text = _jupiterhex.hex!;
+        _controllerSaturnHex.text = _saturnhex.hex!;
+        _controllerUranusHex.text = _uranushex.hex!;
+        _controllerNeptuneHex.text = _neptunehex.hex!;
+        _controllerPlutoHex.text = _plutohex.hex!;
+
         break;
       case 'breath':
 

@@ -36,7 +36,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
       _controllermid = CarouselController(),
       _controllerbot = CarouselController();
 
-  final TextEditingController _controllerhextext = TextEditingController(),
+  final TextEditingController _controllergatetext = TextEditingController(),
+      _controllerlinetext = TextEditingController(),
       _controllertopfirsttext = TextEditingController(),
       _controllertopsecondtext = TextEditingController(),
       _controllertopthirdtext = TextEditingController(),
@@ -121,8 +122,12 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Hexagram $_chosenhex'),
-                          content: _setupAlertDialoadContainer(),
+                          title: Text('Hexagram $_chosenhex: '
+                              +  _controllertopfirsttext.text
+                              + ' ' + _controllertopsecondtext.text
+                              + ' ' + _controllertopthirdtext.text
+                              + ' ' + _controllertopfourthtext.text),
+                          content: _showLinesDialog(),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -181,12 +186,15 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                                       blurRadius: 15,
                                       spreadRadius: 1),
                                 ]),
-                            child: const Text('Life', textAlign: TextAlign.center, style: TextStyle(fontSize: 20))),
+                            child: const Text('Life',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 20))),
                         Container(
                           height: 30,
                           width: 100,
-                          child:
-                              const Text('Thought', textAlign: TextAlign.center, style: TextStyle(fontSize: 20)),
+                          child: const Text('Thought',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 20)),
                           decoration: BoxDecoration(
                               color: Colors.grey[300],
                               borderRadius: BorderRadius.circular(50),
@@ -209,14 +217,17 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                         switch (index) {
                           case 0:
                             _planetsList = _planetsdesignList;
-                            _formattedDate = DateFormat('yyyy-MM-dd').format(_designTime);
-                            _formattedTime = DateFormat.Hms().format(_designTime);
+                            _formattedDate =
+                                DateFormat('yyyy-MM-dd').format(_designTime);
+                            _formattedTime =
+                                DateFormat.Hms().format(_designTime);
                             _controllerTime.text = _formattedTime;
                             _controllerDate.text = _formattedDate;
                             break;
                           case 1:
                             _planetsList = _planetsnowList;
-                            _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+                            _formattedDate =
+                                DateFormat('yyyy-MM-dd').format(_now);
                             _formattedTime = DateFormat.Hms().format(_now);
                             _controllerTime.text = _formattedTime;
                             _controllerDate.text = _formattedDate;
@@ -556,6 +567,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                           _controllertop.jumpToPage(_hexalignedList[0]);
                           _controllermid.jumpToPage(_hexalignedList[1]);
                           _controllerbot.jumpToPage(_hexalignedList[2]);
+
+                          _controllerlinetext.text = _planethex.line!.toString();
                         });
                       },
                     ),
@@ -713,23 +726,46 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                     )
                   ]),
             ),
-            SizedBox(
-                child: TextField(
-              decoration: const InputDecoration.collapsed(
-                  hintText: '1', hintStyle: TextStyle(color: Colors.grey)),
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 35.0,
-                fontWeight: FontWeight.bold,
-              ),
-              controller: _controllerhextext,
-              readOnly: true,
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
+            Row( mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                width: 40,
+                    child: TextField(
+                  decoration: const InputDecoration.collapsed(
+                      hintText: '1', hintStyle: TextStyle(color: Colors.grey)),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 35.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  controller: _controllergatetext,
+                  readOnly: true,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
+                )),
+                SizedBox(
+                  width: 40,
+                    child: TextField(
+                      decoration: const InputDecoration.collapsed(
+                          hintText: '1', hintStyle: TextStyle(color: Colors.grey)),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllerlinetext,
+                      readOnly: true,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                    )),
               ],
-            )),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -812,7 +848,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
 
                         _chosenhex = orderHexagramsWheel[_carouselvalueindex];
 
-                        _controllerhextext.text = _chosenhex.toString();
+                        _controllergatetext.text = _chosenhex.toString();
 
                         _hexsentence =
                             getGateSentence(_chosenhex, _chosenlanguage);
@@ -881,7 +917,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
 
                         _chosenhex = orderHexagramsWheel[_carouselvalueindex];
 
-                        _controllerhextext.text = _chosenhex.toString();
+                        _controllergatetext.text = _chosenhex.toString();
 
                         _hexsentence =
                             getGateSentence(_chosenhex, _chosenlanguage);
@@ -937,7 +973,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
 
                         _chosenhex = orderHexagramsWheel[_carouselvalueindex];
 
-                        _controllerhextext.text = _chosenhex.toString();
+                        _controllergatetext.text = _chosenhex.toString();
 
                         _hexsentence =
                             getGateSentence(_chosenhex, _chosenlanguage);
@@ -1149,6 +1185,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
               _controllermid.jumpToPage(_hexalignedList[1]);
               _controllerbot.jumpToPage(_hexalignedList[2]);
 
+              _controllerlinetext.text = _planethex.line!.toString();
+
               switch (_previousPlanetIndex) {
                 case -1:
                   _previousPlanetIndex = 0;
@@ -1168,7 +1206,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                   break;
                 default:
                   _isLifeTime[_previousLifeTimeIndex] =
-                  !_isLifeTime[_previousLifeTimeIndex];
+                      !_isLifeTime[_previousLifeTimeIndex];
                   _isLifeTime[1] = !_isLifeTime[1];
                   _previousLifeTimeIndex = 1;
                   break;
@@ -1221,6 +1259,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                 _controllermid.jumpToPage(_hexalignedList[1]);
                 _controllerbot.jumpToPage(_hexalignedList[2]);
 
+                _controllerlinetext.text = _planethex.line!.toString();
+
                 switch (_previousPlanetIndex) {
                   case -1:
                     _previousPlanetIndex = 0;
@@ -1240,7 +1280,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                     break;
                   default:
                     _isLifeTime[_previousLifeTimeIndex] =
-                    !_isLifeTime[_previousLifeTimeIndex];
+                        !_isLifeTime[_previousLifeTimeIndex];
                     _isLifeTime[1] = !_isLifeTime[1];
                     _previousLifeTimeIndex = 1;
                     break;
@@ -1271,16 +1311,37 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
     );
   }
 
-  Widget _setupAlertDialoadContainer() {
+  Widget _showLinesDialog() {
     return SizedBox(
-      width: 500.0,
+      width: 600.0,
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: 6,
-        itemBuilder: (context, index) {
-          index = idonotknowlinesList.indexOf(_chosenhex) + 6 - index;
+        itemBuilder: (context, _index) {
+          int _newindex = idonotknowlinesList.indexOf(_chosenhex) + 6 - _index;
           return ListTile(
-            title: Text(idonotknowlinesList[index]),
+            title: Container(
+              height: 40 - (_index * 1.2),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: const Offset(4, 4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                    const BoxShadow(
+                        color: Colors.blueGrey,
+                        offset: Offset(-4, -4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                  ]),
+              child: Text(idonotknowlinesList[_newindex],
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 25 - (_index * 1.2))),
+            ),
+            leading: Text(((_index - 6) * -1).toString()),
           );
         },
       ),
