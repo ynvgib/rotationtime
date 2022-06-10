@@ -45,6 +45,8 @@ dependencies:
   deep_pick: ^0.10.0
   intl: ^0.17.0
   flutter_native_timezone: ^2.0.0
+  auto_size_text: ^3.0.0
+  auto_size_text_field: ^1.0.1
 
 
 dev_dependencies:

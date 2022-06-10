@@ -15,11 +15,9 @@ class RotateIDKlines extends StatefulWidget {
 }
 
 class _RotateIDKlinesState extends State<RotateIDKlines> {
-
   final String _title = subtitlesEN[3];
 
   final List<String> finalhexNamesList = hexNamesList;
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,17 +38,28 @@ class _RotateIDKlinesState extends State<RotateIDKlines> {
       backgroundColor: Colors.grey[100],
       body: SafeArea(
           child: ListView.builder(
-            itemCount: reversedidklinesList.length,
-            itemBuilder: (context, index) => Card(
-              elevation: 6,
-              margin: const EdgeInsets.all(10),
-              child: ListTile(
-                title: Text(reversedidklinesList[index].toString(),
-                textAlign: TextAlign.center,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
-              ),
-            ),
-          )),
+        reverse: true,
+        padding: EdgeInsets.all(5.0),
+        itemCount: idonotknowOnlylinesList.length,
+        itemBuilder: (context, index) => ListTile(
+          title: Text(
+            idonotknowOnlylinesList[index],
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+          leading: Text(
+            (index / 6).floor().toString() + '.'
+            + (((index-5))-(((index / 6).floor()-1)*6)).toString(),
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+          trailing: Text(
+              (index-5).toString(),
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+        ),
+      )),
     );
   }
 }
