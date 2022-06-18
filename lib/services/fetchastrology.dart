@@ -32,33 +32,31 @@ class AstrologyServices {
         _uri = "http://" + _host + ":" + _port;
         _checkResponse = await http.get(Uri.parse(_uri));
         if (_checkResponse.statusCode != 200) {
-          throw('no host found');
+          throw ('no host found');
         }
       }
     }
 
-    if (_checkResponse.statusCode == 200)
-      {
-    _uri = "http://" +
-        _host +
-        ":" +
-        _port +
-        "/horoscope?time=" +
-        _formattedDate +
-        "T" +
-        _formattedTime +
-        "Z&latitude=" +
-        _latitude.toString() +
-        "&longitude=" +
-        _longitude.toString();
+    if (_checkResponse.statusCode == 200) {
+      _uri = "http://" +
+          _host +
+          ":" +
+          _port +
+          "/horoscope?time=" +
+          _formattedDate +
+          "T" +
+          _formattedTime +
+          "Z&latitude=" +
+          _latitude.toString() +
+          "&longitude=" +
+          _longitude.toString();
 
-    //print (_uri);
+      //print (_uri);
 
-    _response = await http.get(Uri.parse(_uri));
+      _response = await http.get(Uri.parse(_uri));
 
-    astrology = astrologyFromJson(_response.body); }
-
-    else {
+      astrology = astrologyFromJson(_response.body);
+    } else {
       _response = await http.get(Uri.parse(_uri));
       astrology = astrologyFromJson(_response.statusCode.toString());
       throw ('server problem');
@@ -185,7 +183,6 @@ class AstrologyServices {
     _requiredlongitude = _personsunlongitude - 88;
     if (_requiredlongitude < 0) {
       _requiredlongitude += 360;
-      //print ('req: $_requiredlongitude');
     }
 
     // align in days
@@ -194,19 +191,19 @@ class AstrologyServices {
       _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
 
       _gaplongitude = _requiredlongitude - _calculatedlongitude;
-      //print ('gap: $_gaplongitude');
-      //print ('calc: $_calculatedlongitude');
+      if (_requiredlongitude - _calculatedlongitude > 90)
+        {
+          _gaplongitude -= 360;
+        }
+
 
       if (_gaplongitude > 0) {
         _designTime = _designTime.add(const Duration(days: 1));
-        //print ('1 day subtracted');
-        // _interpolationtimes++;
       } else if (_gaplongitude < 0) {
         _designTime = _designTime.subtract(const Duration(days: 1));
-        //print ('1 day added');
-        // _interpolationtimes++;
       }
 
+      // avoid loop
       _listgaplongitude.add(_gaplongitude);
       if (_listgaplongitude.length > 3 &&
           _listgaplongitude.last ==

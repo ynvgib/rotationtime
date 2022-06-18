@@ -33,6 +33,23 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.blueGrey,
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      _buildEmptyChartPopUp(context),
+                );
+              },
+              child: const Text('Chart'),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                  textStyle: const TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.bold))),
+        ],
       ),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -354,6 +371,39 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildEmptyChartPopUp(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Chart'),
+      content: Row(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              color: Colors.grey[900],
+              child: Image.asset('assets/emptybodygraph.png'),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.grey[100],
+              child: Image.asset('assets/emptymandala.png'),
+            ),
+          )
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
     );
   }
 }

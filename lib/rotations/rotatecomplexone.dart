@@ -56,11 +56,11 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
       _dropdowichingvalue = fontHexOrderList[0],
       _dropdowichingordervalue = orderHexagramsWheel[0];
 
-  List<int> _hexalignedList = [0, 0, 0];
-
   DateTime _now = DateTime.now(),
       _designTime = DateTime.now(),
       _selectedDate = DateTime.now();
+
+  List<int> _hexalignedList = [0, 0, 0];
 
   List<Hexagram> _planetsList = [Hexagram(line: 1)],
       _planetsdesignList = [Hexagram(line: 1)],
@@ -100,6 +100,21 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
             onPressed: () => Navigator.of(context).pop(),
           ),
           actions: [
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildEmptyChartPopUp(context),
+                  );
+                },
+                child: const Text('Chart'),
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                    textStyle: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold))),
             ElevatedButton(
                 onPressed: () {
                   showDialog(
@@ -1546,6 +1561,39 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
           );
         },
       ),
+    );
+  }
+
+  Widget _buildEmptyChartPopUp(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Chart'),
+      content: Row(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              color: Colors.grey[900],
+              child: Image.asset('assets/emptybodygraph.png'),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.grey[100],
+              child: Image.asset('assets/emptymandala.png'),
+            ),
+          )
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
     );
   }
 }

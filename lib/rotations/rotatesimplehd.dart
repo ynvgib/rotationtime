@@ -188,6 +188,19 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   },
                   child: const Text('Channels'),
                   style: ElevatedButton.styleFrom(primary: Colors.blue)),
+              const SizedBox(
+                width: 10,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildEmptyChartPopUp(context),
+                    );
+                  },
+                  child: const Text('Chart'),
+                  style: ElevatedButton.styleFrom(primary: Colors.black)),
             ],
           )
         ],
@@ -416,6 +429,39 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                       ),
                     );
                   })),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildEmptyChartPopUp(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Chart'),
+      content: Row(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              color: Colors.grey[900],
+              child: Image.asset('assets/emptybodygraph.png'),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.grey[100],
+              child: Image.asset('assets/emptymandala.png'),
+            ),
+          )
         ],
       ),
       actions: <Widget>[
