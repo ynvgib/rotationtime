@@ -190,10 +190,15 @@ class AstrologyServices {
       _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
       _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
 
+
       _gaplongitude = _requiredlongitude - _calculatedlongitude;
-      if (_requiredlongitude - _calculatedlongitude > 90)
+
+      if (_gaplongitude > 270) {
+        _gaplongitude -= 360;
+      }
+      else if (_gaplongitude < -270)
         {
-          _gaplongitude -= 360;
+          _gaplongitude += 360;
         }
 
 
@@ -217,19 +222,24 @@ class AstrologyServices {
     do {
       if (_gaplongitude > 0.35) {
         _designTime = _designTime.add(const Duration(hours: 1));
-        //print ('1 hour subtracted');
-        // _interpolationtimes++;
 
       } else if (_gaplongitude < -0.35) {
         _designTime = _designTime.subtract(const Duration(hours: 1));
-        //print ('1 hour added');
-        // _interpolationtimes++;
       }
 
       _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
       _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
 
       _gaplongitude = _requiredlongitude - _calculatedlongitude;
+
+      if (_gaplongitude > 270) {
+        _gaplongitude -= 360;
+      }
+      else if (_gaplongitude < -270)
+      {
+        _gaplongitude += 360;
+      }
+
 
       _listgaplongitude.add(_gaplongitude);
       if (_listgaplongitude.length > 3 &&
@@ -238,25 +248,31 @@ class AstrologyServices {
         _gaplongitude = 0.35;
         _listgaplongitude = [0.0];
       }
+
     } while (_gaplongitude > 0.35 || _gaplongitude < -0.35);
 
     // align in 10 minutes
     do {
       if (_gaplongitude > 0.01) {
         _designTime = _designTime.add(const Duration(minutes: 10));
-        //print ('10 minutes subtracted');
-        // _interpolationtimes++;
 
       } else if (_gaplongitude < -0.01) {
         _designTime = _designTime.subtract(const Duration(minutes: 10));
-        //print ('10 minutes added');
-        // _interpolationtimes++;
       }
 
       _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
       _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
 
       _gaplongitude = _requiredlongitude - _calculatedlongitude;
+
+      if (_gaplongitude > 270) {
+        _gaplongitude -= 360;
+      }
+      else if (_gaplongitude < -270)
+      {
+        _gaplongitude += 360;
+      }
+
 
       _listgaplongitude.add(_gaplongitude);
       if (_listgaplongitude.length > 3 &&
@@ -265,24 +281,30 @@ class AstrologyServices {
         _gaplongitude = 0.01;
         _listgaplongitude = [0.0];
       }
+
     } while (_gaplongitude > 0.01 || _gaplongitude < -0.01);
 
     // align in 1 minute
     do {
       if (_gaplongitude > 0.001) {
         _designTime = _designTime.add(const Duration(minutes: 1));
-        //print ('1 minutes subtracted');
-        // _interpolationtimes++;
       } else if (_gaplongitude < -0.001) {
         _designTime = _designTime.subtract(const Duration(minutes: 1));
-        //print ('1 minutes added');
-        // _interpolationtimes++;
       }
 
       _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
       _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
 
       _gaplongitude = _requiredlongitude - _calculatedlongitude;
+
+      if (_gaplongitude > 270) {
+        _gaplongitude -= 360;
+      }
+      else if (_gaplongitude < -270)
+      {
+        _gaplongitude += 360;
+      }
+
 
       _listgaplongitude.add(_gaplongitude);
       if (_listgaplongitude.length > 3 &&
@@ -297,18 +319,24 @@ class AstrologyServices {
     do {
       if (_gaplongitude > 0.0001) {
         _designTime = _designTime.add(const Duration(seconds: 10));
-        //print ('10 seconds subtracted');
-        // _interpolationtimes++;
+
       } else if (_gaplongitude < -0.0001) {
         _designTime = _designTime.subtract(const Duration(seconds: 10));
-        //print ('10 seconds added');
-        // _interpolationtimes++;
       }
 
       _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
       _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
 
       _gaplongitude = _requiredlongitude - _calculatedlongitude;
+
+      if (_gaplongitude > 270) {
+        _gaplongitude -= 360;
+      }
+      else if (_gaplongitude < -270)
+      {
+        _gaplongitude += 360;
+      }
+
 
       _listgaplongitude.add(_gaplongitude);
       if (_listgaplongitude.length > 3 &&
@@ -323,18 +351,23 @@ class AstrologyServices {
     do {
       if (_gaplongitude > 0.00001) {
         _designTime = _designTime.add(const Duration(seconds: 1));
-        //print ('1 seconds subtracted');
-        // _interpolationtimes++;
       } else if (_gaplongitude < -0.00001) {
         _designTime = _designTime.subtract(const Duration(seconds: 1));
-        //print ('1 seconds added');
-        // _interpolationtimes++;
       }
 
       _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
       _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
 
       _gaplongitude = _requiredlongitude - _calculatedlongitude;
+
+      if (_gaplongitude > 270) {
+        _gaplongitude -= 360;
+      }
+      else if (_gaplongitude < -270)
+      {
+        _gaplongitude += 360;
+      }
+
 
       _listgaplongitude.add(_gaplongitude);
       if (_listgaplongitude.length > 3 &&
@@ -349,18 +382,23 @@ class AstrologyServices {
     do {
       if (_gaplongitude > 0.000005) {
         _designTime = _designTime.add(const Duration(milliseconds: 100));
-        //print ('100 milliseconds subtracted');
-        // _interpolationtimes++;
       } else if (_gaplongitude < -0.000005) {
         _designTime = _designTime.subtract(const Duration(milliseconds: 100));
-        //print ('100 milliseconds added');
-        // _interpolationtimes++;
       }
 
       _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
       _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
 
       _gaplongitude = _requiredlongitude - _calculatedlongitude;
+
+      if (_gaplongitude > 270) {
+        _gaplongitude -= 360;
+      }
+      else if (_gaplongitude < -270)
+      {
+        _gaplongitude += 360;
+      }
+
 
       _listgaplongitude.add(_gaplongitude);
       if (_listgaplongitude.length > 3 &&
