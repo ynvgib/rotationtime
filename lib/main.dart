@@ -47,21 +47,21 @@ class HomePageEN extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.pinkAccent[100],
       appBar: AppBar(
         title: Container(
           child: const Text(
             'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontSize: 10,
               fontFamily: 'iChing',
             ),
           ),
           alignment: Alignment.center,
         ),
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.pink,
       ),
       body: Column(children: [
         Container(

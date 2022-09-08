@@ -61,7 +61,11 @@ class HDServices {
     List<String> _hdbasicdata = [], _centers = [], _channelsList = [];
 
     List<HDChannel> _hdchannelsList = [];
-    String _channelid = '', _type = '', _authority = '', _strategy = '';
+    String _channelid = '',
+        _type = '',
+        _authority = '',
+        _strategy = '',
+        _sentence = '';
 
     _hdchannelsList = getHDChannels(_personalityplanets, _designplanets);
     _centers = getHDDefinedCenters(_hdchannelsList);
@@ -196,13 +200,33 @@ class HDServices {
       } else if (_authority == 'self') {
         _strategy = 'recognize invitation to express who you are';
       } else {
-        _strategy = 'recognize invitation to speak your mind';
+        _strategy = 'recognize invitation to conceptualize';
       }
     } else {
       _strategy = 'watch the moon cycle';
     }
 
-    _hdbasicdata = [_type, _authority, _strategy];
+    switch (_type) {
+      case 'manifestor':
+        _sentence = 'Impact Positively with Peace';
+        break;
+      case 'generator':
+        _sentence = 'Filter Negativity with Satisfaction';
+        break;
+        case 'manifesting generator':
+        _sentence = 'Filter Negativity with Satisfaction';
+        break;
+      case 'reflector':
+        _sentence = 'Balance Oppositions with Surprise';
+        break;
+      case 'projector':
+        _sentence = 'Align Balance with Success';
+        break;
+      default:
+        _sentence = 'I don\'t know';
+    }
+
+    _hdbasicdata = [_type, _authority, _strategy, _sentence];
     //print(_hdbasicdata);
 
     return _hdbasicdata;

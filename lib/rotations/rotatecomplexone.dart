@@ -108,7 +108,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                         _buildEmptyChartPopUp(context),
                   );
                 },
-                child: const Text('Chart'),
+                child: const Text('HD'),
                 style: ElevatedButton.styleFrom(
                     primary: Colors.black,
                     shape: RoundedRectangleBorder(
@@ -165,9 +165,9 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                     textStyle: const TextStyle(
                         fontSize: 15, fontWeight: FontWeight.bold))),
           ],
-          title: Text(_title),
-          backgroundColor: Colors.blueGrey),
-      backgroundColor: Colors.grey[100],
+          title: Text(_title, style: TextStyle(color: Colors.white)),
+          backgroundColor: Colors.blue),
+      backgroundColor: Colors.white,
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -200,7 +200,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                             height: 30,
                             width: 100,
                             decoration: BoxDecoration(
-                                color: Colors.grey[300],
+                                color: Colors.redAccent,
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
                                   BoxShadow(
@@ -216,15 +216,15 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                                 ]),
                             child: const Text('Life',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 20))),
+                                style: TextStyle(fontSize: 20, color: Colors.white))),
                         Container(
                           height: 30,
                           width: 100,
                           child: const Text('Thought',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 20)),
+                              style: TextStyle(fontSize: 20, color: Colors.white)),
                           decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: Colors.blue,
                               borderRadius: BorderRadius.circular(50),
                               boxShadow: [
                                 BoxShadow(
@@ -1566,7 +1566,8 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
 
   Widget _buildEmptyChartPopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('Chart'),
+      title: const Text('Human Design', style: TextStyle (color: Colors.white)),
+      backgroundColor: Colors.blue,
       content: Row(
         children: <Widget>[
           Expanded(
@@ -1590,7 +1591,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
           },
           child: const Text(
             'Close',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ],

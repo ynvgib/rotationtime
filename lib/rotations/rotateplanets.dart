@@ -124,7 +124,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.blue,
         actions: [
           ElevatedButton(
               onPressed: () {
@@ -134,7 +134,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       _buildEmptyChartPopUp(context),
                 );
               },
-              child: const Text('Chart'),
+              child: const Text('HD'),
               style: ElevatedButton.styleFrom(
                   primary: Colors.black,
                   shape: RoundedRectangleBorder(
@@ -1705,7 +1705,8 @@ class _RotatePlanetsState extends State<RotatePlanets> {
 
   Widget _buildEmptyChartPopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('Chart'),
+      title: const Text('Human Design', style: TextStyle(color: Colors.white)),
+      backgroundColor: Colors.blue,
       content: Row(
         children: <Widget>[
           Expanded(
@@ -1729,7 +1730,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
           },
           child: const Text(
             'Close',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ],

@@ -23,7 +23,8 @@ class _RotateIDKlinesState extends State<RotateIDKlines> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_title),
+        title: Text(_title, style: TextStyle(
+            color: Colors.white ,fontSize: 20, fontWeight: FontWeight.normal),),
         leading: TextButton(
           child: const Text(
             'X',
@@ -32,7 +33,7 @@ class _RotateIDKlinesState extends State<RotateIDKlines> {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.green,
         actions: [
           ElevatedButton(
               onPressed: () {
@@ -42,7 +43,7 @@ class _RotateIDKlinesState extends State<RotateIDKlines> {
                       _buildEmptyChartPopUp(context),
                 );
               },
-              child: const Text('Chart'),
+              child: const Text('XIO'),
               style: ElevatedButton.styleFrom(
                   primary: Colors.black,
                   shape: RoundedRectangleBorder(
@@ -51,7 +52,7 @@ class _RotateIDKlinesState extends State<RotateIDKlines> {
                       fontSize: 15, fontWeight: FontWeight.bold))),
         ],
       ),
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.white,
       body: SafeArea(
           child: ListView.builder(
         reverse: true,
@@ -82,7 +83,7 @@ class _RotateIDKlinesState extends State<RotateIDKlines> {
 
   Widget _buildEmptyChartPopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('Chart'),
+      title: const Text('Human Design'),
       content: Row(
         children: <Widget>[
           Expanded(

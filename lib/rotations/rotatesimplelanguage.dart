@@ -27,7 +27,10 @@ class _RotateSimpleLanguageState extends State<RotateSimpleLanguage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(_title),
+          title: Text(
+            _title,
+            style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.normal),
+          ),
           leading: TextButton(
             child: const Text(
               'X',
@@ -38,18 +41,21 @@ class _RotateSimpleLanguageState extends State<RotateSimpleLanguage> {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.blueGrey),
-      backgroundColor: Colors.grey[100],
+          backgroundColor: Colors.green),
+      backgroundColor: Colors.white,
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(
+            SizedBox(height: 20),
+            CircleAvatar( backgroundColor: Colors.white,
+              radius: 100.0,
               child: CarouselSlider(
                 items: mixHexagramSlidersNew,
                 carouselController: _controllertop,
                 options: CarouselOptions(
-                    autoPlay: false,
+                    autoPlay: true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.scale,
                     enlargeCenterPage: true,
                     aspectRatio: 1.3,
                     onPageChanged: (indextop, reason) {

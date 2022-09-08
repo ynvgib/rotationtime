@@ -14,10 +14,8 @@ class RotateSimpleOne extends StatefulWidget {
 }
 
 class _RotateSimpleOneState extends State<RotateSimpleOne> {
-  int _currenttop = 0,
-      _currentmid = 0,
-      _currentbot = 0;
-      //_hexagramVal = 0;
+  int _currenttop = 0, _currentmid = 0, _currentbot = 0;
+  //_hexagramVal = 0;
 
   final CarouselController _controllertop = CarouselController(),
       _controllermid = CarouselController(),
@@ -27,12 +25,15 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
 
   final List<String> finalhexNamesList = hexNamesList;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(_title),
+          title: Text(
+            _title,
+            style: TextStyle(
+                color: Colors.white ,fontSize: 20, fontWeight: FontWeight.normal),
+          ),
           leading: TextButton(
             child: const Text(
               'X',
@@ -43,26 +44,25 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.blueGrey),
-      backgroundColor: Colors.grey[100],
+          backgroundColor: Colors.green),
+      backgroundColor: Colors.white,
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
                 child: Container(
-                  child: const Text(
-                    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 10,
-                      fontFamily: 'iChing',
-                    ),
-                  ),
-                  alignment: Alignment.center,
-                )),
-
+              child: const Text(
+                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 10,
+                  fontFamily: 'iChing',
+                ),
+              ),
+              alignment: Alignment.center,
+            )),
             Expanded(
               child: CarouselSlider(
                 items: mixHexagramSlidersNew,
@@ -75,13 +75,12 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                       setState(() {
                         _currenttop = indextop;
                         //_hexagramVal = ((_currenttop + 1) * 100 +
-                           // (_currentmid + 1) * 10 +
-                          //  (_currentbot + 1));
+                        // (_currentmid + 1) * 10 +
+                        //  (_currentbot + 1));
 
                         //_carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
                         //_chosenhex =  orderHexagramsWheel[_carouselvalueindex];
-
                       });
                     }),
               ),
@@ -99,8 +98,8 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: (Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black)
+                                ? Colors.white
+                                : Colors.black)
                             .withOpacity(_currenttop == entry.key ? 0.9 : 0.4)),
                   ),
                 );
@@ -119,14 +118,12 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                         _currentmid = indexmid;
 
                         //_hexagramVal = ((_currenttop + 1) * 100 +
-                           // (_currentmid + 1) * 10 +
-                           // (_currentbot + 1));
-
+                        // (_currentmid + 1) * 10 +
+                        // (_currentbot + 1));
 
                         //_carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
                         //_chosenhex =  orderHexagramsWheel[_carouselvalueindex];
-
                       });
                     }),
               ),
@@ -144,8 +141,8 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: (Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black)
+                                ? Colors.white
+                                : Colors.black)
                             .withOpacity(_currentmid == entry.key ? 0.9 : 0.4)),
                   ),
                 );
@@ -163,13 +160,12 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                       setState(() {
                         _currentbot = indexbot;
                         //_hexagramVal = ((_currenttop + 1) * 100 +
-                          //  (_currentmid + 1) * 10 +
-                          //  (_currentbot + 1));
+                        //  (_currentmid + 1) * 10 +
+                        //  (_currentbot + 1));
 
                         //_carouselvalueindex = hexCarouselWheelOrderList.indexOf(_hexagramVal);
 
                         //_chosenhex =  orderHexagramsWheel[_carouselvalueindex];
-
                       });
                     }),
               ),
@@ -187,27 +183,26 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: (Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black)
+                                ? Colors.white
+                                : Colors.black)
                             .withOpacity(_currentbot == entry.key ? 0.9 : 0.4)),
                   ),
                 );
               }).toList(),
             ),
-
             Expanded(
                 child: Container(
-                  child: const Text(
-                    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 10,
-                      fontFamily: 'iChing',
-                    ),
-                  ),
-                  alignment: Alignment.center,
-                )),
+              child: const Text(
+                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 10,
+                  fontFamily: 'iChing',
+                ),
+              ),
+              alignment: Alignment.center,
+            )),
           ]),
     );
   }

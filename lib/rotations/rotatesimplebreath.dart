@@ -30,8 +30,8 @@ class _RotateSimpleBreathState extends State<RotateSimpleBreath> {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.blueGrey),
-      backgroundColor: Colors.grey[100],
+          backgroundColor: Colors.black87),
+      backgroundColor: Colors.yellow,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -46,7 +46,7 @@ class _RotateSimpleBreathState extends State<RotateSimpleBreath> {
                 controller: _controllerComplexText,
                 style: const TextStyle(
                     fontSize: 50,
-                    color: Colors.blueGrey,
+                    color: Colors.black87,
                     fontWeight: FontWeight.normal)),
           ),
           const SizedBox(
@@ -60,8 +60,8 @@ class _RotateSimpleBreathState extends State<RotateSimpleBreath> {
                 controller: _controllerSimpleText,
                 style: const TextStyle(
                     fontFamily: 'iChing',
-                    fontSize: 40,
-                    color: Colors.green,
+                    fontSize: 80,
+                    color: Colors.black87,
                     fontWeight: FontWeight.normal)),
           ),
         ],

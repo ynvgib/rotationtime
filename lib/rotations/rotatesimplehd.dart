@@ -22,6 +22,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
   final TextEditingController _controllerType = TextEditingController(),
       _controllerAuthority = TextEditingController(),
       _controllerStrategy = TextEditingController(),
+      _controllerSentence = TextEditingController(),
+      _controllerFinalLine = TextEditingController(),
       _controllerTime = TextEditingController(),
       _controllerTimePick = TextEditingController(),
       _controllerDatePick = TextEditingController();
@@ -47,16 +49,21 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
 
   TimeOfDay _selectedtime = const TimeOfDay(hour: 0, minute: 0);
 
-  List<Hexagram> _planetsdesignList = [Hexagram(line: 1)], _planetsnowList = [Hexagram(line: 1)];
+  List<Hexagram> _planetsdesignList = [Hexagram(line: 1)],
+      _planetsnowList = [Hexagram(line: 1)];
 
   List<HDChannel> _hdchannelsList = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(_title),
+        title: Text(
+          _title,
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.normal),
+        ),
         leading: TextButton(
           child: const Text(
             'X',
@@ -65,7 +72,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.blue,
         actions: [
           const SizedBox(
             width: 10,
@@ -91,7 +98,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
         children: [
           const SizedBox(height: 20),
           SizedBox(
-            height: 100,
+            height: 50,
             child: TextField(
                 textAlign: TextAlign.center,
                 readOnly: true,
@@ -100,6 +107,18 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
+                    color: Colors.black)),
+          ),
+          SizedBox(
+            height: 100,
+            child: TextField(
+                textAlign: TextAlign.center,
+                readOnly: true,
+                decoration: const InputDecoration.collapsed(hintText: 'XIO'),
+                controller: _controllerSentence,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 60,
                     color: Colors.black)),
           ),
           SizedBox(
@@ -138,14 +157,16 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                     fontSize: 60,
                     color: Colors.yellow)),
           ),
-          const FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text('X I O :: I don\'t know',
-                maxLines: 2,
-                overflow: TextOverflow.clip,
-                style: TextStyle(
+          SizedBox(
+            height: 100,
+            child: TextField(
+                textAlign: TextAlign.center,
+                readOnly: true,
+                decoration: const InputDecoration.collapsed(hintText: 'I don\'t know'),
+                controller: _controllerFinalLine,
+                style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 50,
+                    fontSize: 60,
                     color: Colors.red)),
           ),
           Row(
@@ -199,7 +220,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                           _buildEmptyChartPopUp(context),
                     );
                   },
-                  child: const Text('Chart'),
+                  child: const Text('Human Design'),
                   style: ElevatedButton.styleFrom(primary: Colors.black)),
             ],
           )
@@ -379,7 +400,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   padding: const EdgeInsets.all(8),
                   itemCount: _centers.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return FittedBox(fit: BoxFit.scaleDown,
+                    return FittedBox(
+                      fit: BoxFit.scaleDown,
                       child: Container(
                         color: Colors.blue[_colorCodes[index]],
                         child: Text(
@@ -418,7 +440,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   padding: const EdgeInsets.all(8),
                   itemCount: _hdchannelsList.length,
                   itemBuilder: (BuildContext context, int index) {
-                      return FittedBox(fit: BoxFit.scaleDown,
+                    return FittedBox(
+                      fit: BoxFit.scaleDown,
                       child: Container(
                         color: Colors.blue[_colorCodes[index]],
                         child: Text(
@@ -447,7 +470,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
 
   Widget _buildEmptyChartPopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('Chart'),
+      title: const Text('Human Design', style: TextStyle(color: Colors.white)),
+      backgroundColor: Colors.blue,
       content: Row(
         children: <Widget>[
           Expanded(
@@ -471,7 +495,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
           },
           child: const Text(
             'Close',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ],
@@ -506,14 +530,15 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: Text(
-                            _planetsnowList[0].line.toString(),
+                    child: Text(_planetsnowList[0].line.toString(),
                         textAlign: TextAlign.center,
                         style:
-                        const TextStyle(color: Colors.black, fontSize: 25)),
+                            const TextStyle(color: Colors.black, fontSize: 25)),
                   ),
                 ),
-                const SizedBox(width: 10,),
+                const SizedBox(
+                  width: 10,
+                ),
                 FittedBox(
                   fit: BoxFit.fill,
                   child: Container(
@@ -532,13 +557,14 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: const Text(
-                        '::',
+                    child: const Text('.',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.grey, fontSize: 25)),
                   ),
                 ),
-                const SizedBox(width: 10,),
+                const SizedBox(
+                  width: 10,
+                ),
                 FittedBox(
                   fit: BoxFit.fill,
                   child: Container(
@@ -557,15 +583,17 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: Text(
-                            _planetsdesignList[0].line.toString(),
+                    child: Text(_planetsdesignList[0].line.toString(),
                         textAlign: TextAlign.center,
-                        style: const TextStyle(color: Colors.red, fontSize: 25)),
+                        style:
+                            const TextStyle(color: Colors.red, fontSize: 25)),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -588,13 +616,16 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               spreadRadius: 1),
                         ]),
                     child: Text(
-                        idonotknowlinesList[_planetsnowList[0].line!].toString(),
+                        idonotknowlinesList[_planetsnowList[0].line!]
+                            .toString(),
                         textAlign: TextAlign.center,
                         style:
-                        const TextStyle(color: Colors.black, fontSize: 20)),
+                            const TextStyle(color: Colors.black, fontSize: 20)),
                   ),
                 ),
-                const SizedBox(width: 10,),
+                const SizedBox(
+                  width: 10,
+                ),
                 FittedBox(
                   fit: BoxFit.fill,
                   child: Container(
@@ -613,13 +644,14 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: const Text(
-                        '::',
+                    child: const Text('.',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.grey, fontSize: 20)),
                   ),
                 ),
-                const SizedBox(width: 10,),
+                const SizedBox(
+                  width: 10,
+                ),
                 FittedBox(
                   fit: BoxFit.fill,
                   child: Container(
@@ -639,9 +671,11 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               spreadRadius: 1),
                         ]),
                     child: Text(
-                        idonotknowlinesList[_planetsdesignList[0].line!].toString(),
+                        idonotknowlinesList[_planetsdesignList[0].line!]
+                            .toString(),
                         textAlign: TextAlign.center,
-                        style: const TextStyle(color: Colors.red, fontSize: 20)),
+                        style:
+                            const TextStyle(color: Colors.red, fontSize: 20)),
                   ),
                 ),
               ],
@@ -664,8 +698,10 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
   }
 
   void _controlHDData(List<String> _hdbasicdata) {
-    _controllerType.text = _hdbasicdata[0];
+    _controllerType.text = _hdbasicdata[2];
     _controllerAuthority.text = _hdbasicdata[1];
-    _controllerStrategy.text = _hdbasicdata[2];
+    _controllerStrategy.text = _hdbasicdata[0];
+    _controllerSentence.text = _hdbasicdata[3];
+    _controllerFinalLine.text = 'XIO I don\'t know';
   }
 }

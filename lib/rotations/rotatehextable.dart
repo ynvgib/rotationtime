@@ -1,4 +1,5 @@
 import 'package:finallyicanlearn/models/lists.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:finallyicanlearn/lists.dart';
 
@@ -21,7 +22,8 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_title),
+        title: Text(_title, style: TextStyle(
+            color: Colors.white ,fontSize: 20, fontWeight: FontWeight.normal),),
         leading: TextButton(
           child: const Text(
             'X',
@@ -32,7 +34,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.green,
         actions: [
           ElevatedButton(
               onPressed: () {
@@ -42,7 +44,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
                       _buildEmptyChartPopUp(context),
                 );
               },
-              child: const Text('Chart'),
+              child: const Text('XIO'),
               style: ElevatedButton.styleFrom(
                   primary: Colors.black,
                   shape: RoundedRectangleBorder(
@@ -51,6 +53,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
                       fontSize: 15, fontWeight: FontWeight.bold))),
         ],
       ),
+      backgroundColor: Colors.white,
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -376,7 +379,8 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
 
   Widget _buildEmptyChartPopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('Chart'),
+      title: const Text('Human Design', style: TextStyle(color: Colors.white)),
+      backgroundColor: Colors.green,
       content: Row(
         children: <Widget>[
           Expanded(
@@ -400,7 +404,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
           },
           child: const Text(
             'Close',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ],

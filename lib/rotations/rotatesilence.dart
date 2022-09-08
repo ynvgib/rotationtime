@@ -18,16 +18,16 @@ class _RotateSilenceState extends State<RotateSilence> {
           title: const Text(''),
           leading: TextButton(
             child: const Text(
-              'X',
+              'Out!',
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 15,
+                  fontSize: 8,
                   fontWeight: FontWeight.bold),
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.blueGrey),
-      backgroundColor: Colors.grey[100],
+          backgroundColor: Colors.redAccent),
+      backgroundColor: Colors.black,
       body: const SizedBox ()
     );
   }
