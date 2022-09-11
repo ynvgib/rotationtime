@@ -186,7 +186,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)),
                       textStyle: const TextStyle(
-                          fontSize: 17, fontWeight: FontWeight.bold)),
+                          fontSize: 15, fontWeight: FontWeight.bold)),
                 ),
                 ToggleButtons(
                   borderWidth: 10.0,
@@ -543,7 +543,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)),
                       textStyle: const TextStyle(
-                          fontSize: 17, fontWeight: FontWeight.bold)),
+                          fontSize: 15, fontWeight: FontWeight.bold)),
                 ),
               ],
             ),
@@ -589,8 +589,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                     width: MediaQuery.of(context).size.width * 0.3,
                     margin: const EdgeInsets.all(5.0),
                     padding: const EdgeInsets.all(3.0),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blueAccent)),
+
                     child: Row(
                       //mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -629,7 +628,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                         ),
                         const SizedBox(width: 10),
                         SizedBox(
-                          width: 250,
+                          width: 230,
                           child: TextField(
                               readOnly: false,
                               decoration: const InputDecoration.collapsed(
@@ -639,7 +638,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               maxLines: 2,
                               controller: _controllerSunText,
                               style: const TextStyle(
-                                  fontSize: 17,
+                                  fontSize: 15,
                                   color: Colors.black,
                                   fontWeight: FontWeight.normal)),
                         ),
@@ -653,8 +652,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                     width: MediaQuery.of(context).size.width * 0.3,
                     margin: const EdgeInsets.all(5.0),
                     padding: const EdgeInsets.all(3.0),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blueAccent)),
                     child: Row(
                         //mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -692,7 +689,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           ),
                           const SizedBox(width: 10),
                           SizedBox(
-                            width: 250,
+                            width: 230,
                             child: TextField(
                                 readOnly: false,
                                 decoration: const InputDecoration.collapsed(
@@ -702,7 +699,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 maxLines: 2,
                                 controller: _controllerNorthNodeText,
                                 style: const TextStyle(
-                                    fontSize: 17,
+                                    fontSize: 15,
                                     color: Colors.black,
                                     fontWeight: FontWeight.normal)),
                           ),
@@ -713,8 +710,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                     width: MediaQuery.of(context).size.width * 0.3,
                     margin: const EdgeInsets.all(5.0),
                     padding: const EdgeInsets.all(3.0),
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 5.0, color: Colors.white)),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -775,8 +770,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                     width: MediaQuery.of(context).size.width * 0.3,
                     margin: const EdgeInsets.all(5.0),
                     padding: const EdgeInsets.all(3.0),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.greenAccent)),
                     child: Row(
                         //mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -814,7 +807,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           ),
                           const SizedBox(width: 10),
                           SizedBox(
-                            width: 250,
+                            width: 230,
                             child: TextField(
                                 readOnly: false,
                                 decoration: const InputDecoration.collapsed(
@@ -824,7 +817,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 minLines: 2,
                                 maxLines: 2,
                                 style: const TextStyle(
-                                    fontSize: 17,
+                                    fontSize: 15,
                                     color: Colors.black,
                                     fontWeight: FontWeight.normal)),
                           ),
@@ -835,9 +828,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   width: MediaQuery.of(context).size.width * 0.3,
                   margin: const EdgeInsets.all(5.0),
                   padding: const EdgeInsets.all(3.0),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.black)),
                   child: SizedBox(
                     width: 100,
                     child: TextButton(
@@ -868,8 +858,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       margin: const EdgeInsets.all(5.0),
                       padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.greenAccent)),
                       child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -907,7 +895,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             ),
                             const SizedBox(width: 10),
                             SizedBox(
-                              width: 250,
+                              width: 230,
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
@@ -917,7 +905,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -929,8 +917,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       margin: const EdgeInsets.all(5.0),
                       padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.greenAccent)),
                       child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -968,7 +954,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             ),
                             const SizedBox(width: 10),
                             SizedBox(
-                              width: 250,
+                              width: 230,
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
@@ -978,7 +964,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -992,8 +978,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       margin: const EdgeInsets.all(5.0),
                       padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.greenAccent)),
                       child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -1031,7 +1015,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             ),
                             const SizedBox(width: 10),
                             SizedBox(
-                              width: 250,
+                              width: 230,
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
@@ -1041,7 +1025,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1060,8 +1044,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       margin: const EdgeInsets.all(5.0),
                       padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.yellowAccent)),
                       child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -1099,7 +1081,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             ),
                             const SizedBox(width: 10),
                             SizedBox(
-                              width: 250,
+                              width: 230,
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
@@ -1109,7 +1091,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1121,8 +1103,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       margin: const EdgeInsets.all(5.0),
                       padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.yellowAccent)),
                       child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -1160,7 +1140,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             ),
                             const SizedBox(width: 10),
                             SizedBox(
-                              width: 250,
+                              width: 230,
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
@@ -1170,7 +1150,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1180,9 +1160,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   width: MediaQuery.of(context).size.width * 0.3,
                   margin: const EdgeInsets.all(5.0),
                   padding: const EdgeInsets.all(3.0),
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      border: Border.all(color: Colors.black)),
                   child: SizedBox(
                     width: 100,
                     child: TextButton(
@@ -1211,8 +1188,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       margin: const EdgeInsets.all(5.0),
                       padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.yellowAccent)),
                       child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -1250,7 +1225,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             ),
                             const SizedBox(width: 10),
                             SizedBox(
-                              width: 250,
+                              width: 230,
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
@@ -1260,7 +1235,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1272,8 +1247,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       margin: const EdgeInsets.all(5.0),
                       padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.yellowAccent)),
                       child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -1311,7 +1284,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             ),
                             const SizedBox(width: 10),
                             SizedBox(
-                              width: 250,
+                              width: 230,
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
@@ -1321,7 +1294,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1333,8 +1306,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       margin: const EdgeInsets.all(5.0),
                       padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.yellowAccent)),
                       child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -1372,7 +1343,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             ),
                             const SizedBox(width: 10),
                             SizedBox(
-                              width: 250,
+                              width: 230,
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
@@ -1382,7 +1353,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1401,8 +1372,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       margin: const EdgeInsets.all(5.0),
                       padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.redAccent)),
                       child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -1441,7 +1410,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             ),
                             const SizedBox(width: 10),
                             SizedBox(
-                              width: 250,
+                              width: 230,
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
@@ -1451,7 +1420,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1463,8 +1432,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       margin: const EdgeInsets.all(5.0),
                       padding: const EdgeInsets.all(3.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.redAccent)),
                       child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -1502,7 +1469,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             ),
                             const SizedBox(width: 10),
                             SizedBox(
-                              width: 250,
+                              width: 230,
                               child: TextField(
                                   readOnly: false,
                                   decoration: const InputDecoration.collapsed(
@@ -1512,7 +1479,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   minLines: 2,
                                   maxLines: 2,
                                   style: const TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
@@ -1522,8 +1489,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   width: MediaQuery.of(context).size.width * 0.3,
                   margin: const EdgeInsets.all(5.0),
                   padding: const EdgeInsets.all(3.0),
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.black)),
                   child: TextButton(
                     child: const Text('silence',
                         textAlign: TextAlign.center,
@@ -1558,7 +1523,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 textAlign: TextAlign.center,
                 controller: _controllerTimePick,
                 style: const TextStyle(
-                    fontSize: 17,
+                    fontSize: 15,
                     color: Colors.black,
                     fontWeight: FontWeight.normal)),
           ),
@@ -1576,7 +1541,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
             style: ElevatedButton.styleFrom(
                 primary: Colors.blue,
                 textStyle: const TextStyle(
-                    fontSize: 17, fontWeight: FontWeight.normal)),
+                    fontSize: 15, fontWeight: FontWeight.normal)),
           ),
           const SizedBox(
             height: 10.0,
@@ -1590,7 +1555,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 textAlign: TextAlign.center,
                 controller: _controllerDatePick,
                 style: const TextStyle(
-                    fontSize: 17,
+                    fontSize: 15,
                     color: Colors.black,
                     fontWeight: FontWeight.normal)),
           ),
@@ -1609,7 +1574,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
             style: ElevatedButton.styleFrom(
                 primary: Colors.green,
                 textStyle: const TextStyle(
-                    fontSize: 17, fontWeight: FontWeight.normal)),
+                    fontSize: 15, fontWeight: FontWeight.normal)),
           ),
           Container(
               margin: const EdgeInsets.all(5.0),
@@ -1645,7 +1610,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
             child: const Text('1) Fetch Your Time',
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 17,
+                    fontSize: 15,
                     fontWeight: FontWeight.normal)),
             style: ElevatedButton.styleFrom(primary: Colors.yellow),
           ),
@@ -1686,7 +1651,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
               style: ElevatedButton.styleFrom(
                   primary: Colors.red,
                   textStyle: const TextStyle(
-                      fontSize: 17, fontWeight: FontWeight.normal))),
+                      fontSize: 15, fontWeight: FontWeight.normal))),
         ],
       ),
       actions: <Widget>[

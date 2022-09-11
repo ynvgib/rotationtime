@@ -47,7 +47,7 @@ class HomePageEN extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pinkAccent[100],
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Container(
           child: const Text(
@@ -61,13 +61,13 @@ class HomePageEN extends StatelessWidget {
           ),
           alignment: Alignment.center,
         ),
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.black,
       ),
       body: Column(children: [
         Container(
-          height: 50,
+          height: 30,
           width: MediaQuery.of(context).size.width / 1.2,
-          margin: const EdgeInsets.all(10.0),
+          margin: const EdgeInsets.all(5.0),
           child: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
@@ -75,7 +75,7 @@ class HomePageEN extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 25,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold),
             ),
           ),
@@ -96,10 +96,10 @@ class HomePageEN extends StatelessWidget {
               ]),
         ),
         SizedBox(
-            height: MediaQuery.of(context).size.height / 1.5,
+            height: MediaQuery.of(context).size.height / 1.35,
             width: MediaQuery.of(context).size.width / 1.2,
             child: ListView(
-              padding: const EdgeInsets.symmetric(vertical: 5.0),
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
               children: <Widget>[
                 MappingItemEN(
                     _titles.first, _mainroutes.first, Colors.blue[900]!),
@@ -116,7 +116,7 @@ class HomePageEN extends StatelessWidget {
         const SizedBox(height: 20 ,),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
-            height: 35,
+            height: 25,
             width: MediaQuery.of(context).size.width / 1.2,
             child: const FittedBox(
               fit: BoxFit.scaleDown,
@@ -162,12 +162,15 @@ class MappingItemEN extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Container(
-        height: 35.0,
-        child: Text(
-          title,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-              color: Colors.white, fontSize: 20, fontWeight: FontWeight.normal),
+        height: 30.0,
+        child: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: Text(
+            title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.normal),
+          ),
         ),
         decoration: BoxDecoration(
             color: _color,

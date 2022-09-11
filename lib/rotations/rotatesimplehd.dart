@@ -110,7 +110,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                     color: Colors.black)),
           ),
           SizedBox(
-            height: 100,
+            height: 80,
             child: TextField(
                 textAlign: TextAlign.center,
                 readOnly: true,
@@ -118,11 +118,11 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                 controller: _controllerSentence,
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 60,
+                    fontSize: 50,
                     color: Colors.black)),
           ),
           SizedBox(
-            height: 100,
+            height: 80,
             child: TextField(
                 textAlign: TextAlign.center,
                 readOnly: true,
@@ -130,11 +130,11 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                 controller: _controllerType,
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 60,
+                    fontSize: 50,
                     color: Colors.blue)),
           ),
           SizedBox(
-            height: 100,
+            height: 80,
             child: TextField(
                 textAlign: TextAlign.center,
                 readOnly: true,
@@ -142,11 +142,11 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                 controller: _controllerAuthority,
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 60,
+                    fontSize: 50,
                     color: Colors.green)),
           ),
           SizedBox(
-            height: 100,
+            height: 80,
             child: TextField(
                 textAlign: TextAlign.center,
                 readOnly: true,
@@ -154,11 +154,11 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                 controller: _controllerStrategy,
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 60,
+                    fontSize: 50,
                     color: Colors.yellow)),
           ),
           SizedBox(
-            height: 100,
+            height: 80,
             child: TextField(
                 textAlign: TextAlign.center,
                 readOnly: true,
@@ -166,7 +166,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                 controller: _controllerFinalLine,
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 60,
+                    fontSize: 50,
                     color: Colors.red)),
           ),
           Row(
@@ -507,6 +507,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
       title: const Text('Profile'),
       content: SizedBox(
         height: 200,
+        width: 400,
         child: Column(
           children: [
             Row(
@@ -517,7 +518,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(15),
                         boxShadow: [
                           BoxShadow(
                               color: Colors.grey[500]!,
@@ -530,10 +531,13 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: Text(_planetsnowList[0].line.toString(),
-                        textAlign: TextAlign.center,
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 25)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(_planetsnowList[0].line.toString(),
+                          textAlign: TextAlign.center,
+                          style:
+                          const TextStyle(color: Colors.black, fontSize: 25)),
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -544,7 +548,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(15),
                         boxShadow: [
                           BoxShadow(
                               color: Colors.grey[500]!,
@@ -557,9 +561,13 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: const Text('.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.grey, fontSize: 25)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Conscious ',
+                          textAlign: TextAlign.center,
+                          style:
+                              const TextStyle(color: Colors.black, fontSize: 20)),
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -570,7 +578,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(15),
                         boxShadow: [
                           BoxShadow(
                               color: Colors.grey[500]!,
@@ -583,10 +591,15 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: Text(_planetsdesignList[0].line.toString(),
-                        textAlign: TextAlign.center,
-                        style:
-                            const TextStyle(color: Colors.red, fontSize: 25)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                          idonotknowlinesList[_planetsnowList[0].line!]
+                              .toString(),
+                          textAlign: TextAlign.center,
+                          style:
+                          const TextStyle(color: Colors.black, fontSize: 20)),
+                    ),
                   ),
                 ),
               ],
@@ -602,7 +615,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(15),
                         boxShadow: [
                           BoxShadow(
                               color: Colors.grey[500]!,
@@ -615,12 +628,13 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: Text(
-                        idonotknowlinesList[_planetsnowList[0].line!]
-                            .toString(),
-                        textAlign: TextAlign.center,
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 20)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(_planetsdesignList[0].line.toString(),
+                          textAlign: TextAlign.center,
+                          style:
+                          const TextStyle(color: Colors.red, fontSize: 25)),
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -631,7 +645,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(15),
                         boxShadow: [
                           BoxShadow(
                               color: Colors.grey[500]!,
@@ -644,9 +658,13 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: const Text('.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.grey, fontSize: 20)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Living ',
+                          textAlign: TextAlign.center,
+                          style:
+                          const TextStyle(color: Colors.red, fontSize: 20)),
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -657,7 +675,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(15),
                         boxShadow: [
                           BoxShadow(
                               color: Colors.grey[500]!,
@@ -670,12 +688,15 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: Text(
-                        idonotknowlinesList[_planetsdesignList[0].line!]
-                            .toString(),
-                        textAlign: TextAlign.center,
-                        style:
-                            const TextStyle(color: Colors.red, fontSize: 20)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                          idonotknowlinesList[_planetsdesignList[0].line!]
+                              .toString(),
+                          textAlign: TextAlign.center,
+                          style:
+                              const TextStyle(color: Colors.red, fontSize: 20)),
+                    ),
                   ),
                 ),
               ],

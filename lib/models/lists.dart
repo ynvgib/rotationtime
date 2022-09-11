@@ -26,15 +26,15 @@ final List<String> titlesEN = [
 ];
 
 final List<String> subtitlesEN = [
-  'Planets Complex',
-  'Complicate the Sentence',
-  'XIO I don\'t know',
-  '384 + 6 = 390 Story Lines',
-  'IT @ the Table',
-  '3 Coins',
+  'Complex Planets',
+  'Complex Sentence',
+  'Complex XIO',
+  'Simple 384 + 6 = 390 Story Lines',
+  'Simple IT @ the Table',
+  'Simple 3 Coins',
   'Simple',
-  '.B.E.',
-  '- -'
+  'breath',
+  'silence'
 ];
 
 final List<String> mainroutes = [
