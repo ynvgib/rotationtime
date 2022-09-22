@@ -165,7 +165,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                     textStyle: const TextStyle(
                         fontSize: 15, fontWeight: FontWeight.bold))),
           ],
-          title: Text(_title, style: TextStyle(color: Colors.white)),
+          title: Text(_title, style: const TextStyle(color: Colors.white)),
           backgroundColor: Colors.blue),
       backgroundColor: Colors.white,
       body: Column(

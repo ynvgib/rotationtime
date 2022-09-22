@@ -493,7 +493,7 @@ final List idonotknowOnlylinesList = [
   'grampa exhalation will answer the mountain call to heaven',
   'granny complex waiting will push heaven away from the ground',
   'mama complex waiting will push heaven away from her',
-  'daughter simple waiting will her brother to heaven',
+  'daughter simple waiting will push her brother to heaven',
   'son simple waiting will pour burden on his sister',
   'papa simple patience will water the world',
   'grampa simple patience will rain rejection from heaven',

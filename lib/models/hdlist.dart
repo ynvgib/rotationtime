@@ -31,7 +31,7 @@ final List<String> hdchannelsList = [
   '32.54','spleen','root','transformation','being driven','tribal','ego','intuition',
   '34.57','sacral','spleen','power','archetype','individual','integration','none',
   '35.36','throat','solar','transitoriness','a jack of all trades','collective','abstract','feelings',
-  '37.40','solar','ego','community','a part that needs the whole','tribal','ego','needs',
+  '37.40','solar','heart','community','a part that needs the whole','tribal','ego','needs',
   '39.55','solar','root','emoting','moodiness','individual','knowing','emoting',
   '42.53','sacral','root','maturation','balanced development','collective','abstract','none',
   '47.64','ajna','head','abstract','mental activity mixed with clarity','collective','abstract','sensing',
@@ -82,4 +82,10 @@ final List<String> hdcenters = [
   'throat',
   'ajna',
   'head'
+];
+
+final List<String> fears = [
+  'fear',
+  'anxiety',
+  'nervousness',
 ];

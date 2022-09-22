@@ -29,7 +29,7 @@ class _RotateSimpleLanguageState extends State<RotateSimpleLanguage> {
       appBar: AppBar(
           title: Text(
             _title,
-            style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.normal),
+            style: const TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.normal),
           ),
           leading: TextButton(
             child: const Text(
@@ -47,7 +47,7 @@ class _RotateSimpleLanguageState extends State<RotateSimpleLanguage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             CircleAvatar( backgroundColor: Colors.white,
               radius: 100.0,
               child: CarouselSlider(

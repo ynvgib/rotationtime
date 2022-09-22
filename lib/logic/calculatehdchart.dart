@@ -56,6 +56,48 @@ class HDServices {
     return _centers;
   }
 
+  static List<String> getHDDefinedFears(_centers) {
+    List<String> _fears = [];
+   List<String> _fearsSentence = List<String>.filled(3, 'FEAR', growable: false);
+
+    if (_centers.contains('spleen')) {
+      _fears.add('FEAR');
+      _fearsSentence[0] = 'Fear turns Physical Awareness';
+    } else {
+      _fearsSentence[0] = 'No Fear turns Physical Awareness';
+    }
+
+    if (_centers.contains('ajna')) {
+      _fears.add('ANXIETY');
+      _fearsSentence[1] = 'Anxiety turns Mental Awareness';
+    } else {
+      _fearsSentence[1] = 'No Anxiety turns Mental';
+    }
+
+    if (_centers.contains('solar')) {
+      _fears.add('NERVOUSNESS');
+      _fearsSentence[2] = 'Nervousness turns Emotional Awareness';
+    } else {
+      _fearsSentence[2] = 'No Nervousness turns Emotional Awareness';
+    }
+
+    return _fearsSentence;
+  }
+
+  static List<String> getSelfReminder() {
+   List<String> _reminderSentence = List<String>.filled(7, '', growable: false);
+
+   _reminderSentence[0] = '++++++';
+   _reminderSentence[1] = 'The limitation is that what is written is';
+   _reminderSentence[2] = 'MENTAL';
+   _reminderSentence[3] = 'Keep That in MIND';
+   _reminderSentence[4] = 'while BODY is Alive';
+   _reminderSentence[5] = 'as FEARS turn AWARENESS';
+   _reminderSentence[6] = '------';
+
+    return _reminderSentence;
+  }
+
   static List<String> getHDBasicData(
       List<Hexagram> _personalityplanets, _designplanets) {
     List<String> _hdbasicdata = [], _centers = [], _channelsList = [];
@@ -213,7 +255,7 @@ class HDServices {
       case 'generator':
         _sentence = 'Filter Negativity with Satisfaction';
         break;
-        case 'manifesting generator':
+      case 'manifesting generator':
         _sentence = 'Filter Negativity with Satisfaction';
         break;
       case 'reflector':

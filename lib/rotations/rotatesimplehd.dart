@@ -18,6 +18,8 @@ class RotateSimpleHD extends StatefulWidget {
 
 class _RotateSimpleHDState extends State<RotateSimpleHD> {
   List<String> _centers = [];
+  List<String> _fearSentence = [];
+  List<String> _selfreminderSentence = ['First Choose Time','Then Return Here','For the Reminder'];
 
   final TextEditingController _controllerType = TextEditingController(),
       _controllerAuthority = TextEditingController(),
@@ -29,6 +31,15 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
       _controllerDatePick = TextEditingController();
 
   final List<int> _colorCodes = <int>[
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
     100,
     200,
     300,
@@ -61,7 +72,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
       appBar: AppBar(
         title: Text(
           _title,
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white, fontSize: 20, fontWeight: FontWeight.normal),
         ),
         leading: TextButton(
@@ -81,11 +92,26 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (BuildContext context) => _buildPopupDialog(context),
+                  builder: (BuildContext context) => _buildTimePopupDialog(context),
                 );
               },
               child: const Text(
                 'Time',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)))),
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => _buildSelfReminderPopUp(context),
+                );
+              },
+              child: const Text(
+                'Reminder',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
@@ -178,6 +204,19 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) =>
+                          _buildFearsPopUp(context),
+                    );
+                  },
+                  child: const Text('Fears', style: TextStyle (color: Colors.black)),
+                  style: ElevatedButton.styleFrom(primary: Colors.white)),
+              const SizedBox(
+                width: 10,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
                           _buildProfilePopUp(context),
                     );
                   },
@@ -229,7 +268,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
     );
   }
 
-  Widget _buildPopupDialog(BuildContext context) {
+  Widget _buildTimePopupDialog(BuildContext context) {
     return AlertDialog(
       title: const Text('Time'),
       content: Column(
@@ -317,6 +356,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
               _hdchannelsList =
                   HDServices.getHDChannels(_planetsnowList, _planetsdesignList);
               _centers = HDServices.getHDDefinedCenters(_hdchannelsList);
+              _fearSentence = HDServices.getHDDefinedFears(_centers);
+              _selfreminderSentence = HDServices.getSelfReminder();
 
               _controlHDData(_hdbasicdata);
 
@@ -357,6 +398,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                 _hdchannelsList = HDServices.getHDChannels(
                     _planetsnowList, _planetsdesignList);
                 _centers = HDServices.getHDDefinedCenters(_hdchannelsList);
+                _fearSentence = HDServices.getHDDefinedFears(_centers);
+                _selfreminderSentence = HDServices.getSelfReminder();
 
                 _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
                 _formattedTime = DateFormat.Hms().format(_now);
@@ -394,7 +437,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           SizedBox(
-              height: 300,
+              height: 400,
               width: 300,
               child: ListView.builder(
                   padding: const EdgeInsets.all(8),
@@ -403,10 +446,27 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                     return FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Container(
-                        color: Colors.blue[_colorCodes[index]],
-                        child: Text(
-                          _centers[index],
-                          style: const TextStyle(fontSize: 30),
+                        decoration: BoxDecoration(
+                            color: Colors.blue[_colorCodes[index]],
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey[500]!,
+                                  offset: const Offset(4, 4),
+                                  blurRadius: 5,
+                                  spreadRadius: 1),
+                              const BoxShadow(
+                                  color: Colors.blueGrey,
+                                  offset: Offset(-4, -4),
+                                  blurRadius: 5,
+                                  spreadRadius: 1),
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            _centers[index],
+                            style: const TextStyle(fontSize: 20,color: Colors.black),
+                          ),
                         ),
                       ),
                     );
@@ -434,7 +494,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           SizedBox(
-              height: 300,
+              height: 400,
               width: 300,
               child: ListView.builder(
                   padding: const EdgeInsets.all(8),
@@ -443,11 +503,28 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                     return FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Container(
-                        color: Colors.blue[_colorCodes[index]],
-                        child: Text(
-                          _hdchannelsList[index].name!,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(fontSize: 20),
+                          decoration: BoxDecoration(
+                              color: Colors.blue[_colorCodes[index]],
+                              borderRadius: BorderRadius.circular(15),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey[500]!,
+                                    offset: const Offset(4, 4),
+                                    blurRadius: 5,
+                                    spreadRadius: 1),
+                                const BoxShadow(
+                                    color: Colors.blueGrey,
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 5,
+                                    spreadRadius: 1),
+                              ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            _hdchannelsList[index].name!,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 20),
+                          ),
                         ),
                       ),
                     );
@@ -501,6 +578,123 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
       ],
     );
   }
+
+  Widget _buildFearsPopUp(BuildContext context) {
+    return AlertDialog(
+      title: const Text('FEARS - False Evidence Appearing Real'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          SizedBox(
+              height: 300,
+              width: 400,
+              child: ListView.builder(
+                  padding: const EdgeInsets.all(8),
+                  itemCount: _fearSentence.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.blue[_colorCodes[index]],
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey[500]!,
+                                  offset: const Offset(4, 4),
+                                  blurRadius: 5,
+                                  spreadRadius: 1),
+                              const BoxShadow(
+                                  color: Colors.blueGrey,
+                                  offset: Offset(-4, -4),
+                                  blurRadius: 5,
+                                  spreadRadius: 1),
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            _fearSentence[index],
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                        ),
+                      ),
+                    );
+                  })),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSelfReminderPopUp(BuildContext context) {
+    return AlertDialog(
+      title: const Text('RE-MIND HER'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          SizedBox(
+              height: 400,
+              width: 600,
+              child: ListView.builder(
+                  padding: const EdgeInsets.all(8),
+                  itemCount: _selfreminderSentence.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.blue[_colorCodes[index]],
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey[500]!,
+                                  offset: const Offset(4, 4),
+                                  blurRadius: 5,
+                                  spreadRadius: 1),
+                              const BoxShadow(
+                                  color: Colors.blueGrey,
+                                  offset: Offset(-4, -4),
+                                  blurRadius: 5,
+                                  spreadRadius: 1),
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            _selfreminderSentence[index],
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                        ),
+                      ),
+                    );
+                  })),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+
 
   Widget _buildProfilePopUp(BuildContext context) {
     return AlertDialog(
@@ -561,12 +755,12 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text('Conscious ',
                           textAlign: TextAlign.center,
                           style:
-                              const TextStyle(color: Colors.black, fontSize: 20)),
+                              TextStyle(color: Colors.black, fontSize: 20)),
                     ),
                   ),
                 ),
@@ -658,12 +852,12 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                               blurRadius: 5,
                               spreadRadius: 1),
                         ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text('Living ',
                           textAlign: TextAlign.center,
                           style:
-                          const TextStyle(color: Colors.red, fontSize: 20)),
+                          TextStyle(color: Colors.red, fontSize: 20)),
                     ),
                   ),
                 ),

@@ -23,7 +23,7 @@ class _RotateIDKlinesState extends State<RotateIDKlines> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_title, style: TextStyle(
+        title: Text(_title, style: const TextStyle(
             color: Colors.white ,fontSize: 20, fontWeight: FontWeight.normal),),
         leading: TextButton(
           child: const Text(

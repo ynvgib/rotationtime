@@ -164,12 +164,12 @@ class MappingItemEN extends StatelessWidget {
       title: Container(
         height: 30.0,
         child: Padding(
-          padding: const EdgeInsets.all(3.0),
+          padding: const EdgeInsets.all(1.0),
           child: Text(
             title,
             textAlign: TextAlign.center,
             style: const TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.normal),
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.normal),
           ),
         ),
         decoration: BoxDecoration(

@@ -31,7 +31,7 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
       appBar: AppBar(
           title: Text(
             _title,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white ,fontSize: 20, fontWeight: FontWeight.normal),
           ),
           leading: TextButton(

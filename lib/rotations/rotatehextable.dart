@@ -1,5 +1,4 @@
 import 'package:finallyicanlearn/models/lists.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:finallyicanlearn/lists.dart';
 
@@ -22,7 +21,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_title, style: TextStyle(
+        title: Text(_title, style: const TextStyle(
             color: Colors.white ,fontSize: 20, fontWeight: FontWeight.normal),),
         leading: TextButton(
           child: const Text(
