@@ -71,7 +71,7 @@ class HDServices {
       _fears.add('ANXIETY');
       _fearsSentence[1] = 'Anxiety turns Mental Awareness';
     } else {
-      _fearsSentence[1] = 'No Anxiety turns Mental';
+      _fearsSentence[1] = 'No Anxiety turns Mental Awareness';
     }
 
     if (_centers.contains('solar')) {

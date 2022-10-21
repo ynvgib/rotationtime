@@ -19,7 +19,7 @@ class _RotateSimpleLanguageState extends State<RotateSimpleLanguage> {
   final TextEditingController _controllerbottomfirsttext =
       TextEditingController();
 
-  final String _title = subtitlesEN[6];
+  final String _title = subtitlesEN[5];
 
   final List<String> finalhexNamesList = hexNamesList;
 

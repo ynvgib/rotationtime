@@ -1,5 +1,7 @@
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/material.dart';
+
+import '../models/hexlineslist.dart';
 //import 'package:finallyicanlearn/lists.dart';
 
 // /about
@@ -15,7 +17,7 @@ class RotateHexagramTable extends StatefulWidget {
 
 class _RotateHexagramTableState extends State<RotateHexagramTable> {
 
-  final String _title = subtitlesEN[4];
+  final String _title = subtitlesEN[3];
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,36 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
         ),
         backgroundColor: Colors.green,
         actions: [
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      _build64PopUp(context),
+                );
+              },
+              child: const Text('64'),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                  textStyle: const TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.bold))),
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      _build384PopUp(context),
+                );
+              },
+              child: const Text('384'),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                  textStyle: const TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.bold))),
           ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -404,6 +436,85 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
           child: const Text(
             'Close',
             style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _build384PopUp(BuildContext context) {
+    return AlertDialog(
+      title: const Text('384'),
+      content: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.6,
+          child: ListView.builder(
+            reverse: true,
+            padding: const EdgeInsets.all(5.0),
+            itemCount: idonotknowOnlylinesList.length,
+            itemBuilder: (context, index) => ListTile(
+              title: Text(
+                idonotknowOnlylinesList[index],
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              leading: Text(
+                (index / 6).floor().toString() +
+                    '.' +
+                    (((index - 5)) - (((index / 6).floor() - 1) * 6)).toString(),
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              trailing: Text(
+                (index - 5).toString(),
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+            ),
+          )),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'X',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _build64PopUp(BuildContext context) {
+    return AlertDialog(
+      title: const Text('64'),
+      content: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.6,
+          child:  ListView.builder(
+            reverse: true,
+            padding: const EdgeInsets.all(5.0),
+            itemCount: idkHexList.length,
+            itemBuilder: (context, index) => ListTile(
+              title: Text(
+                idkHexList[index],
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              ),
+              leading: Text(
+                index.toString(),
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              ),
+            ),
+          )),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'X',
+            style: TextStyle(color: Colors.black),
           ),
         ),
       ],

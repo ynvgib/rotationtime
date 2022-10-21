@@ -18,7 +18,7 @@ class _RotateSilenceState extends State<RotateSilence> {
           title: const Text(''),
           leading: TextButton(
             child: const Text(
-              'Out!',
+              'X',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 8,
@@ -26,8 +26,8 @@ class _RotateSilenceState extends State<RotateSilence> {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.redAccent),
-      backgroundColor: Colors.black,
+          backgroundColor: Colors.black),
+      backgroundColor: Colors.redAccent,
       body: const SizedBox ()
     );
   }

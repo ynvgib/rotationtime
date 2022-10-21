@@ -1,16 +1,16 @@
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/material.dart';
 
-class RotateSimpleBreath extends StatefulWidget {
-  const RotateSimpleBreath({Key? key}) : super(key: key);
+class RotateBreath extends StatefulWidget {
+  const RotateBreath({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _RotateSimpleBreathState();
+    return _RotateBreathState();
   }
 }
 
-class _RotateSimpleBreathState extends State<RotateSimpleBreath> {
+class _RotateBreathState extends State<RotateBreath> {
   final TextEditingController _controllerSimpleText = TextEditingController(),
       _controllerComplexText = TextEditingController();
   final String _title = subtitlesEN[7];

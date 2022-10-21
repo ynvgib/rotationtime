@@ -778,7 +778,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                   width: 40,
                     child: TextField(
                       decoration: const InputDecoration.collapsed(
-                          hintText: '1', hintStyle: TextStyle(color: Colors.grey)),
+                          hintText: '', hintStyle: TextStyle(color: Colors.grey)),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Colors.black,
@@ -899,6 +899,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
                             _controllerbottomfirsttext.text =
                                 finalhexNamesList[_currenttop];
                             break;
+
                         }
                       });
                     }),
@@ -1123,7 +1124,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
             width: 150,
             child: TextField(
                 readOnly: true,
-                decoration: const InputDecoration.collapsed(hintText: '07:30'),
+                decoration: const InputDecoration.collapsed(hintText: '16:58'),
                 textAlign: TextAlign.center,
                 controller: _controllerTimePick,
                 style: const TextStyle(
@@ -1155,7 +1156,7 @@ class _RotateComplexOneState extends State<RotateComplexOne> {
             child: TextField(
                 readOnly: true,
                 decoration:
-                    const InputDecoration.collapsed(hintText: '2022-02-19'),
+                    const InputDecoration.collapsed(hintText: '02/19/1984'),
                 textAlign: TextAlign.center,
                 controller: _controllerDatePick,
                 style: const TextStyle(

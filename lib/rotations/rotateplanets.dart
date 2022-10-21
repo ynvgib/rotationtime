@@ -1,4 +1,5 @@
 import 'package:finallyicanlearn/logic/hdsubstructure.dart';
+import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
@@ -145,11 +146,26 @@ class _RotatePlanetsState extends State<RotatePlanets> {
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (BuildContext context) => _buildPopupDialog(context),
+                  builder: (BuildContext context) => _buildTimeDialog(context),
                 );
               },
               child: const Text(
                 'TIME',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)))),
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => _buildStoriesDialog(context),
+                );
+              },
+              child: const Text(
+                'Stories',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
@@ -1509,7 +1525,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
     );
   }
 
-  Widget _buildPopupDialog(BuildContext context) {
+  Widget _buildTimeDialog(BuildContext context) {
     return AlertDialog(
       title: const Text('Time'),
       content: Column(
@@ -1661,6 +1677,127 @@ class _RotatePlanetsState extends State<RotatePlanets> {
           },
           child: const Text(
             'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStoriesDialog(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Stories'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => _buildGatesDialog(context),
+                );
+              },
+              child: const Text(
+                'Gates',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)))),
+          const SizedBox(
+            height: 10.0,
+          ),
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => _buildLinesDialog(context),
+                );
+              },
+              child: const Text(
+                'Lines',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)))),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGatesDialog(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Gates'),
+      content: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.3,
+          child:  ListView.builder(
+            reverse: false,
+            padding: const EdgeInsets.all(2.0),
+            itemCount: _planetsList.length,
+            itemBuilder: (context, index) => ListTile(
+              visualDensity: const VisualDensity(horizontal: -3, vertical: -3),
+              dense: true,
+              leading: Text(
+                idkHexList[_planetsList[index].gate!],
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+            ),
+          )),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'X',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLinesDialog(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Lines'),
+      content: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.5,
+          child:  ListView.builder(
+            reverse: false,
+            padding: const EdgeInsets.all(2.0),
+            itemCount: _planetsList.length,
+            itemBuilder: (context, index) => ListTile(
+              visualDensity: const VisualDensity(horizontal: -3, vertical: -3),
+              dense: true,
+              leading: Text(
+                idonotknowOnlylinesList[(_planetsList[index].gate! * 6) +  _planetsList[index].line! - 1],
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+            ),
+          )),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'X',
             style: TextStyle(color: Colors.black),
           ),
         ),

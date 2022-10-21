@@ -1,14 +1,17 @@
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/rotations/rotatehextable.dart';
-import 'package:finallyicanlearn/rotations/rotateidontknowlines.dart';
+import 'package:finallyicanlearn/rotations/rotateidk.dart';
 import 'package:finallyicanlearn/rotations/rotatecomplexone.dart';
 import 'package:finallyicanlearn/rotations/rotateplanets.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
-import 'package:finallyicanlearn/rotations/rotatesimplebreath.dart';
+import 'package:finallyicanlearn/rotations/rotatebreath.dart';
 import 'package:finallyicanlearn/rotations/rotatesimplehd.dart';
 import 'package:finallyicanlearn/rotations/rotatesimplelanguage.dart';
 import 'package:finallyicanlearn/rotations/rotationsimpleone.dart';
 import 'package:flutter/material.dart';
+
+// run canvaskit
+// flutter build web --web-renderer canvaskit
 
 void main() => runApp(RotateEnglish());
 
@@ -27,11 +30,11 @@ class RotateEnglish extends StatelessWidget {
         _mainroutes.first: (ctx) => const RotatePlanets(),
         _mainroutes[1]: (ctx) => const RotateComplexOne(),
         _mainroutes[2]: (ctx) => const RotateSimpleHD(),
-        _mainroutes[3]: (ctx) => const RotateIDKlines(),
-        _mainroutes[4]: (ctx) => const RotateHexagramTable(),
-        _mainroutes[5]: (ctx) => const RotateSimpleOne(),
-        _mainroutes[6]: (ctx) => const RotateSimpleLanguage(),
-        _mainroutes[7]: (ctx) => const RotateSimpleBreath(),
+        _mainroutes[3]: (ctx) => const RotateHexagramTable(),
+        _mainroutes[4]: (ctx) => const RotateSimpleOne(),
+        _mainroutes[5]: (ctx) => const RotateSimpleLanguage(),
+        _mainroutes[6]: (ctx) => const RotateIDK(),
+        _mainroutes[7]: (ctx) => const RotateBreath(),
         _mainroutes.last: (ctx) => const RotateSilence(),
       },
     );
@@ -108,7 +111,7 @@ class HomePageEN extends StatelessWidget {
                 MappingItemEN(_titles[3], _mainroutes[3], Colors.green[800]!),
                 MappingItemEN(_titles[4], _mainroutes[4], Colors.green[700]!),
                 MappingItemEN(_titles[5], _mainroutes[5], Colors.green[600]!),
-                MappingItemEN(_titles[6], _mainroutes[6], Colors.green[500]!),
+                MappingItemEN(_titles[6], _mainroutes[6], Colors.black),
                 MappingItemEN(_titles[7], _mainroutes[7], Colors.yellow[800]!),
                 MappingItemEN(_titles.last, _mainroutes.last, Colors.red[800]!),
               ],
