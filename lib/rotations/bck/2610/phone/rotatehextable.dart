@@ -1,7 +1,7 @@
+import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/material.dart';
 
-import 'package:finallyicanlearn/models/hexlineslist.dart';
 //import 'package:finallyicanlearn/lists.dart';
 
 // /about
@@ -24,7 +24,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_title, style: const TextStyle(
-            color: Colors.white ,fontSize: 20, fontWeight: FontWeight.normal),),
+            color: Colors.white ,fontSize: 15, fontWeight: FontWeight.normal),),
         leading: TextButton(
           child: const Text(
             'X',
@@ -67,28 +67,12 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
                       borderRadius: BorderRadius.circular(50)),
                   textStyle: const TextStyle(
                       fontSize: 15, fontWeight: FontWeight.bold))),
-          ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      _buildEmptyChartPopUp(context),
-                );
-              },
-              child: const Text('XIO'),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)),
-                  textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.bold))),
         ],
       ),
       backgroundColor: Colors.white,
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+      body:
           Column(
+      mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 height: 40, width: 100,
@@ -107,7 +91,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: const [
                       BoxShadow(
-                          color: Colors.blue,
+                          color: Colors.green,
                           offset: Offset(4, 4),
                           blurRadius: 20,
                           spreadRadius: 1),
@@ -166,7 +150,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
                 child: const FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    'SIMPLE',
+                    'Simple',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
@@ -308,7 +292,7 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
                 child: const FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    'breath',
+                    'Breath',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
@@ -403,44 +387,9 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
               ),
             ],
           ),
-        ],
-      ),
     );
   }
 
-  Widget _buildEmptyChartPopUp(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Human Design', style: TextStyle(color: Colors.white)),
-      backgroundColor: Colors.green,
-      content: Row(
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              color: Colors.grey[900],
-              child: Image.asset('assets/emptybodygraph.png'),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              color: Colors.grey[100],
-              child: Image.asset('assets/emptymandala.png'),
-            ),
-          )
-        ],
-      ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text(
-            'Close',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-      ],
-    );
-  }
 
   Widget _build384PopUp(BuildContext context) {
     return AlertDialog(
@@ -449,25 +398,27 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
           width: MediaQuery.of(context).size.width * 0.6,
           child: ListView.builder(
             reverse: true,
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.all(2.0),
             itemCount: idonotknowOnlylinesList.length,
             itemBuilder: (context, index) => ListTile(
+              dense: true,
+              visualDensity: VisualDensity.adaptivePlatformDensity,
               title: Text(
                 idonotknowOnlylinesList[index],
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 14),
               ),
               leading: Text(
                 (index / 6).floor().toString() +
                     '.' +
                     (((index - 5)) - (((index / 6).floor() - 1) * 6)).toString(),
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 12),
               ),
               trailing: Text(
                 (index - 5).toString(),
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 12),
               ),
             ),
           )),
@@ -498,12 +449,12 @@ class _RotateHexagramTableState extends State<RotateHexagramTable> {
               title: Text(
                 idkHexList[index],
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
               leading: Text(
                 index.toString(),
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
             ),
           )),

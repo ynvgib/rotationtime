@@ -1,19 +1,19 @@
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/material.dart';
 
-class RotateIDK extends StatefulWidget {
-  const RotateIDK({Key? key}) : super(key: key);
+class RotateBreath extends StatefulWidget {
+  const RotateBreath({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _RotateIDKState();
+    return _RotateBreathState();
   }
 }
 
-class _RotateIDKState extends State<RotateIDK> {
+class _RotateBreathState extends State<RotateBreath> {
   final TextEditingController _controllerSimpleText = TextEditingController(),
       _controllerComplexText = TextEditingController();
-  final String _title = subtitlesEN[6];
+  final String _title = subtitlesEN[7];
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,8 @@ class _RotateIDKState extends State<RotateIDK> {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.grey),
-      backgroundColor: Colors.grey,
+          backgroundColor: Colors.black87),
+      backgroundColor: Colors.yellow,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -41,12 +41,12 @@ class _RotateIDKState extends State<RotateIDK> {
           Expanded(
             child: TextField(
                 readOnly: false,
-                decoration: const InputDecoration.collapsed(hintText: '?'),
+                decoration: const InputDecoration.collapsed(hintText: ''),
                 textAlign: TextAlign.center,
                 controller: _controllerComplexText,
                 style: const TextStyle(
                     fontSize: 50,
-                    color: Colors.white,
+                    color: Colors.black87,
                     fontWeight: FontWeight.normal)),
           ),
           const SizedBox(
@@ -55,28 +55,14 @@ class _RotateIDKState extends State<RotateIDK> {
           Expanded(
             child: TextField(
                 readOnly: false,
-                decoration: const InputDecoration.collapsed(hintText: '!'),
+                decoration: const InputDecoration.collapsed(hintText: ''),
                 textAlign: TextAlign.center,
                 controller: _controllerSimpleText,
                 style: const TextStyle(
-                    fontSize: 50,
-                    color: Colors.white,
-                    fontWeight: FontWeight.normal)),
-          ),
-          const SizedBox(
-            height: 30.0,
-          ),
-          Expanded(
-            child: TextField(
-                readOnly: false,
-                decoration: const InputDecoration.collapsed(hintText: '.'),
-                textAlign: TextAlign.center,
-                controller: _controllerSimpleText,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 30.0,
                     fontFamily: 'iChing',
-                    fontWeight: FontWeight.bold)),
+                    fontSize: 80,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.normal)),
           ),
         ],
       ),

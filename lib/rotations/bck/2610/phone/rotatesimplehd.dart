@@ -19,7 +19,16 @@ class RotateSimpleHD extends StatefulWidget {
 class _RotateSimpleHDState extends State<RotateSimpleHD> {
   List<String> _centers = [];
   List<String> _fearSentence = [];
-  List<String> _selfreminderSentence = ['First Choose Time','Then Return Here','For the Reminder'];
+  //List<String> _selfreminderSentence = ['First Choose Time','Then Return Here','For the Reminder'];
+  List<String> _selfreminderSentence = [
+    '++++++',
+    'The limitation is that what is written is',
+    'MENTAL',
+    'Keep That in MIND',
+    'while BODY is Alive',
+    'as FEARS turn AWARENESS',
+    '- - - - - -'
+  ];
 
   final TextEditingController _controllerType = TextEditingController(),
       _controllerAuthority = TextEditingController(),
@@ -85,29 +94,12 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
         ),
         backgroundColor: Colors.blue,
         actions: [
-          const SizedBox(
-            width: 10,
-          ),
           ElevatedButton(
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (BuildContext context) => _buildTimePopupDialog(context),
-                );
-              },
-              child: const Text(
-                'Time',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)))),
-          ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) => _buildSelfReminderPopUp(context),
+                  builder: (BuildContext context) =>
+                      _buildSelfReminderPopUp(context),
                 );
               },
               child: const Text(
@@ -188,7 +180,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
             child: TextField(
                 textAlign: TextAlign.center,
                 readOnly: true,
-                decoration: const InputDecoration.collapsed(hintText: 'I don\'t know'),
+                decoration:
+                    const InputDecoration.collapsed(hintText: 'I don\'t know'),
                 controller: _controllerFinalLine,
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
@@ -207,50 +200,9 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                           _buildFearsPopUp(context),
                     );
                   },
-                  child: const Text('Fear', style: TextStyle (color: Colors.black)),
+                  child: const Text('Fear',
+                      style: TextStyle(color: Colors.black)),
                   style: ElevatedButton.styleFrom(primary: Colors.white)),
-              const SizedBox(
-                width: 10,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) =>
-                          _buildProfilePopUp(context),
-                    );
-                  },
-                  child: const Text('Profile'),
-                  style: ElevatedButton.styleFrom(primary: Colors.blue)),
-              const SizedBox(
-                width: 10,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) =>
-                          _buildCentersPopUp(context),
-                    );
-                  },
-                  child: const Text('Centers'),
-                  style: ElevatedButton.styleFrom(primary: Colors.blue)),
-              const SizedBox(
-                width: 10,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) =>
-                          _buildChannelsPopUp(context),
-                    );
-                  },
-                  child: const Text('Channels'),
-                  style: ElevatedButton.styleFrom(primary: Colors.blue)),
-              const SizedBox(
-                width: 10,
-              ),
               ElevatedButton(
                   onPressed: () {
                     showDialog(
@@ -359,8 +311,6 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
               _fearSentence = HDServices.getHDDefinedFears(_centers);
               _selfreminderSentence = HDServices.getSelfReminder();
 
-              _controlHDData(_hdbasicdata);
-
               _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
               _formattedTime = DateFormat.Hms().format(_now);
               _controllerTime.text = _formattedTime + ' ' + _formattedDate;
@@ -393,8 +343,6 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                 List<String> _hdbasicdata = HDServices.getHDBasicData(
                     _planetsnowList, _planetsdesignList);
 
-                _controlHDData(_hdbasicdata);
-
                 _hdchannelsList = HDServices.getHDChannels(
                     _planetsnowList, _planetsdesignList);
                 _centers = HDServices.getHDDefinedCenters(_hdchannelsList);
@@ -414,121 +362,6 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   primary: Colors.red,
                   textStyle: const TextStyle(
                       fontSize: 15, fontWeight: FontWeight.normal))),
-        ],
-      ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text(
-            'Close',
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCentersPopUp(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Centers'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          SizedBox(
-              height: 400,
-              width: 300,
-              child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  itemCount: _centers.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.blue[_colorCodes[index]],
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey[500]!,
-                                  offset: const Offset(4, 4),
-                                  blurRadius: 5,
-                                  spreadRadius: 1),
-                              const BoxShadow(
-                                  color: Colors.blueGrey,
-                                  offset: Offset(-4, -4),
-                                  blurRadius: 5,
-                                  spreadRadius: 1),
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            _centers[index],
-                            style: const TextStyle(fontSize: 20,color: Colors.black),
-                          ),
-                        ),
-                      ),
-                    );
-                  })),
-        ],
-      ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text(
-            'Close',
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildChannelsPopUp(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Channels'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          SizedBox(
-              height: 400,
-              width: 300,
-              child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  itemCount: _hdchannelsList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.blue[_colorCodes[index]],
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey[500]!,
-                                    offset: const Offset(4, 4),
-                                    blurRadius: 5,
-                                    spreadRadius: 1),
-                                const BoxShadow(
-                                    color: Colors.blueGrey,
-                                    offset: Offset(-4, -4),
-                                    blurRadius: 5,
-                                    spreadRadius: 1),
-                              ]),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            _hdchannelsList[index].name!,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(fontSize: 20),
-                          ),
-                        ),
-                      ),
-                    );
-                  })),
         ],
       ),
       actions: <Widget>[
@@ -693,230 +526,5 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
         ),
       ],
     );
-  }
-
-
-  Widget _buildProfilePopUp(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Profile'),
-      content: SizedBox(
-        height: 200,
-        width: 400,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FittedBox(
-                  fit: BoxFit.fill,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey[500]!,
-                              offset: const Offset(4, 4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                          const BoxShadow(
-                              color: Colors.blueGrey,
-                              offset: Offset(-4, -4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(_planetsnowList[0].line.toString(),
-                          textAlign: TextAlign.center,
-                          style:
-                          const TextStyle(color: Colors.black, fontSize: 25)),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                FittedBox(
-                  fit: BoxFit.fill,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey[500]!,
-                              offset: const Offset(4, 4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                          const BoxShadow(
-                              color: Colors.blueGrey,
-                              offset: Offset(-4, -4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                        ]),
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text('Conscious ',
-                          textAlign: TextAlign.center,
-                          style:
-                              TextStyle(color: Colors.black, fontSize: 20)),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                FittedBox(
-                  fit: BoxFit.fill,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey[500]!,
-                              offset: const Offset(4, 4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                          const BoxShadow(
-                              color: Colors.blueGrey,
-                              offset: Offset(-4, -4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                          idonotknowlinesList[_planetsnowList[0].line!]
-                              .toString(),
-                          textAlign: TextAlign.center,
-                          style:
-                          const TextStyle(color: Colors.black, fontSize: 20)),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FittedBox(
-                  fit: BoxFit.fill,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey[500]!,
-                              offset: const Offset(4, 4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                          const BoxShadow(
-                              color: Colors.blueGrey,
-                              offset: Offset(-4, -4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(_planetsdesignList[0].line.toString(),
-                          textAlign: TextAlign.center,
-                          style:
-                          const TextStyle(color: Colors.red, fontSize: 25)),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                FittedBox(
-                  fit: BoxFit.fill,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey[500]!,
-                              offset: const Offset(4, 4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                          const BoxShadow(
-                              color: Colors.blueGrey,
-                              offset: Offset(-4, -4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                        ]),
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text('Living ',
-                          textAlign: TextAlign.center,
-                          style:
-                          TextStyle(color: Colors.red, fontSize: 20)),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                FittedBox(
-                  fit: BoxFit.fill,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey[500]!,
-                              offset: const Offset(4, 4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                          const BoxShadow(
-                              color: Colors.blueGrey,
-                              offset: Offset(-4, -4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                          idonotknowlinesList[_planetsdesignList[0].line!]
-                              .toString(),
-                          textAlign: TextAlign.center,
-                          style:
-                              const TextStyle(color: Colors.red, fontSize: 20)),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text(
-            'Close',
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
-      ],
-    );
-  }
-
-  void _controlHDData(List<String> _hdbasicdata) {
-    _controllerType.text = _hdbasicdata[2];
-    _controllerAuthority.text = _hdbasicdata[1];
-    _controllerStrategy.text = _hdbasicdata[0];
-    _controllerSentence.text = _hdbasicdata[3];
-    _controllerFinalLine.text = 'XIO I don\'t know';
   }
 }

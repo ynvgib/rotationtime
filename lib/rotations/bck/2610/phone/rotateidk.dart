@@ -72,11 +72,11 @@ class _RotateIDKState extends State<RotateIDK> {
                 decoration: const InputDecoration.collapsed(hintText: '.'),
                 textAlign: TextAlign.center,
                 controller: _controllerSimpleText,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 30.0,
-                    fontFamily: 'iChing',
-                    fontWeight: FontWeight.bold)),
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 30.0,
+                  fontFamily: 'iChing',
+                  fontWeight: FontWeight.bold)),
           ),
         ],
       ),

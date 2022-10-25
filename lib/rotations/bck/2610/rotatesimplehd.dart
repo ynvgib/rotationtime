@@ -207,7 +207,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                           _buildFearsPopUp(context),
                     );
                   },
-                  child: const Text('Fear', style: TextStyle (color: Colors.black)),
+                  child: const Text('Fears', style: TextStyle (color: Colors.black)),
                   style: ElevatedButton.styleFrom(primary: Colors.white)),
               const SizedBox(
                 width: 10,
@@ -581,7 +581,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
 
   Widget _buildFearsPopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('FEAR - False Evidence Appearing Real'),
+      title: const Text('FEARS - False Evidence Appearing Real'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[

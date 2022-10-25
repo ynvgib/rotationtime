@@ -10,9 +10,8 @@ import 'package:finallyicanlearn/rotations/rotatesimplelanguage.dart';
 import 'package:finallyicanlearn/rotations/rotationsimpleone.dart';
 import 'package:flutter/material.dart';
 
-// flutter build windows
+// run canvaskit
 // flutter build web --web-renderer canvaskit
-// firebase deploy
 
 void main() => runApp(RotateEnglish());
 
@@ -103,6 +102,7 @@ class HomePageEN extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 1.35,
             width: MediaQuery.of(context).size.width / 1.2,
             child: ListView(
+              itemExtent: 50,
               padding: const EdgeInsets.symmetric(vertical: 2.0),
               children: <Widget>[
                 MappingItemEN(
@@ -117,7 +117,7 @@ class HomePageEN extends StatelessWidget {
                 MappingItemEN(_titles.last, _mainroutes.last, Colors.red[800]!),
               ],
             )),
-        const SizedBox(height: 20 ,),
+        const SizedBox(height: 20),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
             height: 25,
@@ -173,7 +173,9 @@ class MappingItemEN extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: const TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.normal),
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.normal),
           ),
         ),
         decoration: BoxDecoration(

@@ -10,9 +10,8 @@ import 'package:finallyicanlearn/rotations/rotatesimplelanguage.dart';
 import 'package:finallyicanlearn/rotations/rotationsimpleone.dart';
 import 'package:flutter/material.dart';
 
-// flutter build windows
+// run canvaskit
 // flutter build web --web-renderer canvaskit
-// firebase deploy
 
 void main() => runApp(RotateEnglish());
 
