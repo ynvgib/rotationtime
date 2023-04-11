@@ -10,8 +10,8 @@ Hexagram getGateStructure(double _planetlongitude) {
       _linename = '',
   _gateline = '',
   _gatelinecolor = '',
-  _gatelinecolortone = '';
-  //_gatelinecolortonebase = '';
+  _gatelinecolortone = '',
+  _gatelinecolortonebase = '';
 
   int _gate = 1,
       _line = 1,
@@ -84,6 +84,10 @@ Hexagram getGateStructure(double _planetlongitude) {
   // string gate line color tone
   _gatelinecolortone = _gate.toString() + "." + _line.toString() + "." + _color.toString() + "." + _tone.toString();
 
+  // string gate line color tone base
+  _gatelinecolortonebase = _gate.toString() + "." + _line.toString() + "." + _color.toString() + "." + _tone.toString() + "." + _base.toString();
+
+
   _gateStructure.name = _name;
   _gateStructure.hex = _hex;
   _gateStructure.gate = _gate;
@@ -96,6 +100,7 @@ Hexagram getGateStructure(double _planetlongitude) {
   _gateStructure.gateline = _gateline;
   _gateStructure.gatelinecolor = _gatelinecolor;
   _gateStructure.gatelinecolortone = _gatelinecolortone;
+  _gateStructure.gatelinecolortonebase = _gatelinecolortonebase;
 
 
   return _gateStructure;

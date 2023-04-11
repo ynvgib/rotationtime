@@ -65,6 +65,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
 
   List<HDChannel> _hdchannelsList = [];
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,14 +96,14 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   builder: (BuildContext context) => _buildTimePopupDialog(context),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50))),
               child: const Text(
                 'Time',
                 style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)))),
+              )),
           ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -110,14 +111,14 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                   builder: (BuildContext context) => _buildSelfReminderPopUp(context),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50))),
               child: const Text(
                 'Reminder',
                 style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)))),
+              )),
         ],
       ),
       body: Column(
@@ -207,8 +208,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                           _buildFearsPopUp(context),
                     );
                   },
-                  child: const Text('Fear', style: TextStyle (color: Colors.black)),
-                  style: ElevatedButton.styleFrom(primary: Colors.white)),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                  child: const Text('Fear', style: TextStyle (color: Colors.black))),
               const SizedBox(
                 width: 10,
               ),
@@ -220,8 +221,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                           _buildProfilePopUp(context),
                     );
                   },
-                  child: const Text('Profile'),
-                  style: ElevatedButton.styleFrom(primary: Colors.blue)),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                  child: const Text('Profile')),
               const SizedBox(
                 width: 10,
               ),
@@ -233,8 +234,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                           _buildCentersPopUp(context),
                     );
                   },
-                  child: const Text('Centers'),
-                  style: ElevatedButton.styleFrom(primary: Colors.blue)),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                  child: const Text('Centers')),
               const SizedBox(
                 width: 10,
               ),
@@ -246,8 +247,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                           _buildChannelsPopUp(context),
                     );
                   },
-                  child: const Text('Channels'),
-                  style: ElevatedButton.styleFrom(primary: Colors.blue)),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                  child: const Text('Channels')),
               const SizedBox(
                 width: 10,
               ),
@@ -259,8 +260,8 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                           _buildEmptyChartPopUp(context),
                     );
                   },
-                  child: const Text('Human Design'),
-                  style: ElevatedButton.styleFrom(primary: Colors.black)),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                  child: const Text('Human Design')),
             ],
           )
         ],
@@ -296,11 +297,11 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                 _controllerTimePick.text = _selectedtime.format(context);
               });
             },
-            child: const Text('Set Time'),
             style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
+                backgroundColor: Colors.blue,
                 textStyle: const TextStyle(
                     fontSize: 15, fontWeight: FontWeight.normal)),
+            child: const Text('Set Time'),
           ),
           const SizedBox(
             height: 10.0,
@@ -329,11 +330,11 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                     "${_selectedDate.toLocal()}".split(' ')[0];
               });
             },
-            child: const Text('Set Date'),
             style: ElevatedButton.styleFrom(
-                primary: Colors.green,
+                backgroundColor: Colors.green,
                 textStyle: const TextStyle(
                     fontSize: 15, fontWeight: FontWeight.normal)),
+            child: const Text('Set Date'),
           ),
           Container(
               margin: const EdgeInsets.all(5.0),
@@ -350,7 +351,7 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
               _planetsdesignList =
                   await AstrologyServices.getCurrentData(_designTime);
 
-              List<String> _hdbasicdata = HDServices.getHDBasicData(
+              List<String> hdbasicdata = HDServices.getHDBasicData(
                   _planetsnowList, _planetsdesignList);
 
               _hdchannelsList =
@@ -359,22 +360,22 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
               _fearSentence = HDServices.getHDDefinedFears(_centers);
               _selfreminderSentence = HDServices.getSelfReminder();
 
-              _controlHDData(_hdbasicdata);
+              _controlHDData(hdbasicdata);
 
               _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
               _formattedTime = DateFormat.Hms().format(_now);
-              _controllerTime.text = _formattedTime + ' ' + _formattedDate;
+              _controllerTime.text = '$_formattedTime $_formattedDate';
 
               setState(() {
                 Navigator.of(context).pop();
               });
             },
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
             child: const Text('1) Fetch Your Time',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.normal)),
-            style: ElevatedButton.styleFrom(primary: Colors.yellow),
           ),
           Container(
               margin: const EdgeInsets.all(5.0),
@@ -390,10 +391,10 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
                 _planetsdesignList =
                     await AstrologyServices.getCurrentData(_designTime);
 
-                List<String> _hdbasicdata = HDServices.getHDBasicData(
+                List<String> hdbasicdata = HDServices.getHDBasicData(
                     _planetsnowList, _planetsdesignList);
 
-                _controlHDData(_hdbasicdata);
+                _controlHDData(hdbasicdata);
 
                 _hdchannelsList = HDServices.getHDChannels(
                     _planetsnowList, _planetsdesignList);
@@ -403,17 +404,17 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
 
                 _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
                 _formattedTime = DateFormat.Hms().format(_now);
-                _controllerTime.text = _formattedTime + ' ' + _formattedDate;
+                _controllerTime.text = '$_formattedTime $_formattedDate';
 
                 setState(() {
                   Navigator.of(context).pop();
                 });
               },
-              child: const Text('2) Get Now Instead'),
               style: ElevatedButton.styleFrom(
-                  primary: Colors.red,
+                  backgroundColor: Colors.red,
                   textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.normal))),
+                      fontSize: 15, fontWeight: FontWeight.normal)),
+              child: const Text('2) Get Now Instead')),
         ],
       ),
       actions: <Widget>[
@@ -912,11 +913,11 @@ class _RotateSimpleHDState extends State<RotateSimpleHD> {
     );
   }
 
-  void _controlHDData(List<String> _hdbasicdata) {
-    _controllerType.text = _hdbasicdata[2];
-    _controllerAuthority.text = _hdbasicdata[1];
-    _controllerStrategy.text = _hdbasicdata[0];
-    _controllerSentence.text = _hdbasicdata[3];
+  void _controlHDData(List<String> hdbasicdata) {
+    _controllerType.text = hdbasicdata[2];
+    _controllerAuthority.text = hdbasicdata[1];
+    _controllerStrategy.text = hdbasicdata[0];
+    _controllerSentence.text = hdbasicdata[3];
     _controllerFinalLine.text = 'XIO I don\'t know';
   }
 }

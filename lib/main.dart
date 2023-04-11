@@ -2,6 +2,7 @@ import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/rotations/rotatehextable.dart';
 import 'package:finallyicanlearn/rotations/rotateidk.dart';
 import 'package:finallyicanlearn/rotations/rotatecomplexone.dart';
+import 'package:finallyicanlearn/rotations/rotatepenta.dart';
 import 'package:finallyicanlearn/rotations/rotateplanets.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
 import 'package:finallyicanlearn/rotations/rotatebreath.dart';
@@ -9,17 +10,32 @@ import 'package:finallyicanlearn/rotations/rotatesimplehd.dart';
 import 'package:finallyicanlearn/rotations/rotatesimplelanguage.dart';
 import 'package:finallyicanlearn/rotations/rotationsimpleone.dart';
 import 'package:flutter/material.dart';
+import 'package:sweph/sweph.dart';
 
 // flutter build windows
 // flutter build web --web-renderer canvaskit
 // firebase deploy
 
-void main() => runApp(RotateEnglish());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //final stopwatch = Stopwatch()..start();
+  // Only load the assets you need. By default will load none
+  // Bundled assets are available in Sweph.bundledEpheAssets
+  await Sweph.init(epheAssets: [
+    "packages/sweph/assets/ephe/seas_18.se1", // For house calc
+    "packages/sweph/assets/ephe/semo_18.se1", // For house calc
+  ]);
+
+  //Sweph.swe_set_ephe_path('packages/sweph/assets/ephe');
+
+  runApp(RotateEnglish());}
 
 class RotateEnglish extends StatelessWidget {
   RotateEnglish({Key? key}) : super(key: key);
 
   final List<String> _mainroutes = mainroutes;
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +70,7 @@ class HomePageEN extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Container(
+          alignment: Alignment.center,
           child: const Text(
             'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@',
             textAlign: TextAlign.center,
@@ -63,7 +80,6 @@ class HomePageEN extends StatelessWidget {
               fontFamily: 'iChing',
             ),
           ),
-          alignment: Alignment.center,
         ),
         backgroundColor: Colors.black,
       ),
@@ -72,17 +88,6 @@ class HomePageEN extends StatelessWidget {
           height: 30,
           width: MediaQuery.of(context).size.width / 1.2,
           margin: const EdgeInsets.all(5.0),
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
-              _title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(25),
@@ -98,6 +103,17 @@ class HomePageEN extends StatelessWidget {
                     blurRadius: 15,
                     spreadRadius: 1),
               ]),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              _title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
         ),
         SizedBox(
             height: MediaQuery.of(context).size.height / 1.35,
@@ -122,17 +138,6 @@ class HomePageEN extends StatelessWidget {
           Container(
             height: 25,
             width: MediaQuery.of(context).size.width / 1.2,
-            child: const FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                'www.beidontknow.com',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
             decoration: BoxDecoration(
                 color: Colors.black,
                 borderRadius: BorderRadius.circular(25),
@@ -148,6 +153,17 @@ class HomePageEN extends StatelessWidget {
                       blurRadius: 15,
                       spreadRadius: 1),
                 ]),
+            child: const FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                'www.beidontknow.com',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
         ]),
       ]),
@@ -167,15 +183,6 @@ class MappingItemEN extends StatelessWidget {
     return ListTile(
       title: Container(
         height: 30.0,
-        child: Padding(
-          padding: const EdgeInsets.all(1.0),
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.normal),
-          ),
-        ),
         decoration: BoxDecoration(
             color: _color,
             borderRadius: BorderRadius.circular(50),
@@ -191,6 +198,15 @@ class MappingItemEN extends StatelessWidget {
                   blurRadius: 15,
                   spreadRadius: 1),
             ]),
+        child: Padding(
+          padding: const EdgeInsets.all(1.0),
+          child: Text(
+            title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.normal),
+          ),
+        ),
       ),
       onTap: () {
         Navigator.pushNamed(context, route);

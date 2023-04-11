@@ -135,13 +135,13 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                       _buildEmptyChartPopUp(context),
                 );
               },
-              child: const Text('HD'),
               style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
+                  backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50)),
                   textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.bold))),
+                      fontSize: 15, fontWeight: FontWeight.bold)),
+              child: const Text('HD')),
           ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -149,14 +149,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   builder: (BuildContext context) => _buildTimeDialog(context),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50))),
               child: const Text(
                 'TIME',
                 style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)))),
+              )),
           ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -164,14 +164,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   builder: (BuildContext context) => _buildStoriesDialog(context),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50))),
               child: const Text(
                 'Stories',
                 style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)))),
+              )),
         ],
       ),
       body: Column(
@@ -192,23 +192,74 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                     _formattedDate =
                         DateFormat('yyyy-MM-dd').format(_designTime);
                     _formattedTime = DateFormat.Hms().format(_designTime);
+
                     _controllerTime.text = _formattedTime;
                     _controllerDate.text = _formattedDate;
                     _controllerType.text = 'Life First';
                   },
-                  child: const Text('LIFE'),
                   style: ElevatedButton.styleFrom(
-                      primary: Colors.red,
+                      backgroundColor: Colors.red,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)),
                       textStyle: const TextStyle(
                           fontSize: 15, fontWeight: FontWeight.bold)),
+                  child: const Text('LIFE'),
                 ),
                 ToggleButtons(
                   borderWidth: 10.0,
                   hoverColor: Colors.blue,
                   //borderRadius: BorderRadius.circular(20),
                   fillColor: Colors.blueGrey,
+                  isSelected: _isPlanetSelectedList,
+                  onPressed: (int index) {
+                    setState(() {
+                      _isPlanetSelectedList[index] =
+                          !_isPlanetSelectedList[index];
+                      switch (index) {
+                        case 0:
+                          _isNorthNodeVisible = !_isNorthNodeVisible;
+                          break;
+                        case 1:
+                          _isSunVisible = !_isSunVisible;
+                          break;
+                        case 2:
+                          _isMoonVisible = !_isMoonVisible;
+                          break;
+                        case 3:
+                          _isMercuryVisible = !_isMercuryVisible;
+                          break;
+                        case 4:
+                          _isVenusVisible = !_isVenusVisible;
+                          break;
+                        case 5:
+                          _isMarsVisible = !_isMarsVisible;
+                          break;
+                        case 6:
+                          _isJupiterVisible = !_isJupiterVisible;
+                          break;
+                        case 7:
+                          _isSaturnVisible = !_isSaturnVisible;
+                          break;
+                        case 8:
+                          _isUranusVisible = !_isUranusVisible;
+                          break;
+                        case 9:
+                          _isNeptuneVisible = !_isNeptuneVisible;
+                          break;
+                        case 10:
+                          _isPlutoVisible = !_isPlutoVisible;
+                          break;
+                        case 11:
+                          _isEarthVisible = !_isEarthVisible;
+                          break;
+                        case 12:
+                          _isSouthNodeVisible = !_isSouthNodeVisible;
+                          break;
+                        default:
+                          _isSunVisible = !_isSunVisible;
+                      }
+                    });
+                  },
                   children: [
                     Container(
                       height: 20,
@@ -486,56 +537,6 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           ]),
                     ),
                   ],
-                  isSelected: _isPlanetSelectedList,
-                  onPressed: (int index) {
-                    setState(() {
-                      _isPlanetSelectedList[index] =
-                          !_isPlanetSelectedList[index];
-                      switch (index) {
-                        case 0:
-                          _isNorthNodeVisible = !_isNorthNodeVisible;
-                          break;
-                        case 1:
-                          _isSunVisible = !_isSunVisible;
-                          break;
-                        case 2:
-                          _isMoonVisible = !_isMoonVisible;
-                          break;
-                        case 3:
-                          _isMercuryVisible = !_isMercuryVisible;
-                          break;
-                        case 4:
-                          _isVenusVisible = !_isVenusVisible;
-                          break;
-                        case 5:
-                          _isMarsVisible = !_isMarsVisible;
-                          break;
-                        case 6:
-                          _isJupiterVisible = !_isJupiterVisible;
-                          break;
-                        case 7:
-                          _isSaturnVisible = !_isSaturnVisible;
-                          break;
-                        case 8:
-                          _isUranusVisible = !_isUranusVisible;
-                          break;
-                        case 9:
-                          _isNeptuneVisible = !_isNeptuneVisible;
-                          break;
-                        case 10:
-                          _isPlutoVisible = !_isPlutoVisible;
-                          break;
-                        case 11:
-                          _isEarthVisible = !_isEarthVisible;
-                          break;
-                        case 12:
-                          _isSouthNodeVisible = !_isSouthNodeVisible;
-                          break;
-                        default:
-                          _isSunVisible = !_isSunVisible;
-                      }
-                    });
-                  },
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -553,13 +554,13 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                     _controllerType.text = 'Thought Later';
                     _controllerSubType.text = 'COMPLEX';
                   },
-                  child: const Text('THOUGHT'),
                   style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
+                      backgroundColor: Colors.blue,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)),
                       textStyle: const TextStyle(
                           fontSize: 15, fontWeight: FontWeight.bold)),
+                  child: const Text('THOUGHT'),
                 ),
               ],
             ),
@@ -579,7 +580,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                           fontSize: 25,
                           color: Colors.black)),
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 5),
                 SizedBox(
                   width: 200,
                   child: TextField(
@@ -615,7 +616,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                             backgroundColor: Colors.blue,
                             foregroundImage:
                                 AssetImage('assets/planets/sun.png')),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 5),
                         SizedBox(
                           width: 40,
                           child: TextField(
@@ -628,7 +629,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   fontFamily: 'iChing',
                                   color: Colors.blue)),
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 5),
                         SizedBox(
                           width: 50,
                           child: TextField(
@@ -642,7 +643,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.normal)),
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 5),
                         SizedBox(
                           width: 230,
                           child: TextField(
@@ -677,7 +678,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               backgroundColor: Colors.blue,
                               foregroundImage:
                                   AssetImage('assets/planets/northnode.png')),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 5),
                           SizedBox(
                               width: 40,
                               child: TextField(
@@ -689,7 +690,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       fontSize: 35,
                                       fontFamily: 'iChing',
                                       color: Colors.blue))),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 5),
                           SizedBox(
                             width: 50,
                             child: TextField(
@@ -703,7 +704,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.normal)),
                           ),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 5),
                           SizedBox(
                             width: 230,
                             child: TextField(
@@ -795,7 +796,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                               backgroundColor: Colors.green,
                               backgroundImage:
                                   AssetImage('assets/planets/moon.png')),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 5),
                           SizedBox(
                               width: 40,
                               child: TextField(
@@ -807,7 +808,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       fontSize: 35,
                                       fontFamily: 'iChing',
                                       color: Colors.green))),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 5),
                           SizedBox(
                             width: 50,
                             child: TextField(
@@ -821,7 +822,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.normal)),
                           ),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 5),
                           SizedBox(
                             width: 230,
                             child: TextField(
@@ -883,7 +884,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 backgroundColor: Colors.green,
                                 backgroundImage:
                                     AssetImage('assets/planets/mercury.png')),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                                 width: 40,
                                 child: TextField(
@@ -895,7 +896,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.green))),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 50,
                               child: TextField(
@@ -909,7 +910,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 230,
                               child: TextField(
@@ -942,7 +943,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 backgroundColor: Colors.green,
                                 backgroundImage:
                                     AssetImage('assets/planets/venus.png')),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                                 width: 40,
                                 child: TextField(
@@ -954,7 +955,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.green))),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 50,
                               child: TextField(
@@ -968,7 +969,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 230,
                               child: TextField(
@@ -1003,7 +1004,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 backgroundColor: Colors.green,
                                 backgroundImage:
                                     AssetImage('assets/planets/mars.png')),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                                 width: 40,
                                 child: TextField(
@@ -1015,7 +1016,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.green))),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 50,
                               child: TextField(
@@ -1029,7 +1030,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 230,
                               child: TextField(
@@ -1069,7 +1070,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 backgroundColor: Colors.yellow,
                                 backgroundImage:
                                     AssetImage('assets/planets/jupiter.png')),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                                 width: 40,
                                 child: TextField(
@@ -1081,7 +1082,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.yellow))),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 50,
                               child: TextField(
@@ -1095,7 +1096,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 230,
                               child: TextField(
@@ -1128,7 +1129,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 backgroundColor: Colors.yellow,
                                 backgroundImage:
                                     AssetImage('assets/planets/saturn.png')),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                                 width: 40,
                                 child: TextField(
@@ -1140,7 +1141,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.yellow))),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 50,
                               child: TextField(
@@ -1154,7 +1155,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 230,
                               child: TextField(
@@ -1213,7 +1214,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 backgroundColor: Colors.yellow,
                                 backgroundImage:
                                     AssetImage('assets/planets/uranus.png')),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                                 width: 40,
                                 child: TextField(
@@ -1225,7 +1226,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.yellow))),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 50,
                               child: TextField(
@@ -1239,7 +1240,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 230,
                               child: TextField(
@@ -1272,7 +1273,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 backgroundColor: Colors.yellow,
                                 backgroundImage:
                                     AssetImage('assets/planets/neptune.png')),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                                 width: 40,
                                 child: TextField(
@@ -1284,7 +1285,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.yellow))),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 50,
                               child: TextField(
@@ -1298,7 +1299,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 230,
                               child: TextField(
@@ -1331,7 +1332,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 backgroundColor: Colors.yellow,
                                 backgroundImage:
                                     AssetImage('assets/planets/pluto.png')),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                                 width: 40,
                                 child: TextField(
@@ -1343,7 +1344,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.yellow))),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 50,
                               child: TextField(
@@ -1357,7 +1358,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 230,
                               child: TextField(
@@ -1397,7 +1398,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 backgroundColor: Colors.red,
                                 backgroundImage:
                                     AssetImage('assets/planets/earth.png')),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 40,
                               child: TextField(
@@ -1410,7 +1411,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       fontFamily: 'iChing',
                                       color: Colors.red)),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 50,
                               child: TextField(
@@ -1424,7 +1425,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 230,
                               child: TextField(
@@ -1457,7 +1458,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                 backgroundColor: Colors.red,
                                 backgroundImage:
                                     AssetImage('assets/planets/southnode.png')),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                                 width: 40,
                                 child: TextField(
@@ -1469,7 +1470,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                         fontSize: 35,
                                         fontFamily: 'iChing',
                                         color: Colors.red))),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 50,
                               child: TextField(
@@ -1483,7 +1484,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal)),
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 5),
                             SizedBox(
                               width: 230,
                               child: TextField(
@@ -1553,11 +1554,11 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 _controllerTimePick.text = _selectedtime.format(context);
               });
             },
-            child: const Text('Set Time'),
             style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
+                backgroundColor: Colors.blue,
                 textStyle: const TextStyle(
                     fontSize: 15, fontWeight: FontWeight.normal)),
+            child: const Text('Set Time'),
           ),
           const SizedBox(
             height: 10.0,
@@ -1586,11 +1587,11 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                     "${_selectedDate.toLocal()}".split(' ')[0];
               });
             },
-            child: const Text('Set Date'),
             style: ElevatedButton.styleFrom(
-                primary: Colors.green,
+                backgroundColor: Colors.green,
                 textStyle: const TextStyle(
                     fontSize: 15, fontWeight: FontWeight.normal)),
+            child: const Text('Set Date'),
           ),
           Container(
               margin: const EdgeInsets.all(5.0),
@@ -1602,6 +1603,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
               _planetsnowList = await AstrologyServices.getCurrentData(_now);
 
               _designTime = await AstrologyServices.getDesignTime(_now);
+              print (_designTime);
               _planetsdesignList =
                   await AstrologyServices.getCurrentData(_designTime);
 
@@ -1623,12 +1625,12 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 Navigator.of(context).pop();
               });
             },
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
             child: const Text('1) Fetch Your Time',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.normal)),
-            style: ElevatedButton.styleFrom(primary: Colors.yellow),
           ),
           Container(
               margin: const EdgeInsets.all(5.0),
@@ -1641,6 +1643,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                 _planetsnowList = await AstrologyServices.getCurrentData(_now);
 
                 _designTime = await AstrologyServices.getDesignTime(_now);
+                print (_designTime);
                 _planetsdesignList =
                     await AstrologyServices.getCurrentData(_designTime);
 
@@ -1663,11 +1666,11 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   Navigator.of(context).pop();
                 });
               },
-              child: const Text('2) Get Now Instead'),
               style: ElevatedButton.styleFrom(
-                  primary: Colors.red,
+                  backgroundColor: Colors.red,
                   textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.normal))),
+                      fontSize: 15, fontWeight: FontWeight.normal)),
+              child: const Text('2) Get Now Instead')),
         ],
       ),
       actions: <Widget>[
@@ -1697,14 +1700,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   builder: (BuildContext context) => _buildGatesDialog(context),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50))),
               child: const Text(
                 'Gates',
                 style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)))),
+              )),
           const SizedBox(
             height: 10.0,
           ),
@@ -1715,14 +1718,14 @@ class _RotatePlanetsState extends State<RotatePlanets> {
                   builder: (BuildContext context) => _buildLinesDialog(context),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50))),
               child: const Text(
                 'Lines',
                 style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)))),
+              )),
         ],
       ),
       actions: <Widget>[
@@ -1839,7 +1842,7 @@ class _RotatePlanetsState extends State<RotatePlanets> {
     );
   }
 
-  void _controlPlanetHexagramData(List<Hexagram> _planetList) {
+  void _controlPlanetHexagramData(List<Hexagram> planetList) {
     _sunhex = _planetsList[0];
     _earthhex = _planetsList[1];
     _northnodehex = _planetsList[2];
@@ -1869,9 +1872,13 @@ class _RotatePlanetsState extends State<RotatePlanets> {
     _controllerPlutoText.text = _plutohex.linename!;
 
     _controllerSunGate.text = _sunhex.gatelinecolortone!;
+    //_controllerSunGate.text = _sunhex.gatelinecolortonebase!;
     _controllerEarthGate.text = _earthhex.gatelinecolortone!;
+    //_controllerEarthGate.text = _earthhex.gatelinecolortonebase!;
     _controllerNorthNodeGate.text = _northnodehex.gatelinecolortone!;
+    //_controllerNorthNodeGate.text = _northnodehex.gatelinecolortonebase!;
     _controllerSouthNodeGate.text = _southnodehex.gatelinecolortone!;
+    //_controllerSouthNodeGate.text = _southnodehex.gatelinecolortonebase!;
     _controllerMoonGate.text = _moonhex.gatelinecolor!;
     _controllerMercuryGate.text = _mercuryhex.gatelinecolor!;
     _controllerVenusGate.text = _venushex.gatelinecolor!;
@@ -1897,17 +1904,21 @@ class _RotatePlanetsState extends State<RotatePlanets> {
     _controllerPlutoHex.text = _plutohex.hex!;
   }
 
-  void _changeTextLevels(String _textlevel) {
+  void _changeTextLevels(String textlevel) {
 
-    switch (_textlevel) {
+    switch (textlevel) {
       case 'complex':
 
         _controllerSubType.text = 'COMPLEX';
 
         _controllerSunGate.text = _sunhex.gatelinecolortone!;
+        //_controllerSunGate.text = _sunhex.gatelinecolortonebase!;
         _controllerEarthGate.text = _earthhex.gatelinecolortone!;
+        //_controllerEarthGate.text = _earthhex.gatelinecolortonebase!;
         _controllerNorthNodeGate.text = _northnodehex.gatelinecolortone!;
+        //_controllerNorthNodeGate.text = _northnodehex.gatelinecolortonebase!;
         _controllerSouthNodeGate.text = _southnodehex.gatelinecolortone!;
+        //_controllerSouthNodeGate.text = _southnodehex.gatelinecolortonebase!;
         _controllerMoonGate.text = _moonhex.gatelinecolor!;
         _controllerMercuryGate.text = _mercuryhex.gatelinecolor!;
         _controllerVenusGate.text = _venushex.gatelinecolor!;

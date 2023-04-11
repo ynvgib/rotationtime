@@ -5,420 +5,507 @@ import 'package:finallyicanlearn/models/json/astrologyjsonmap.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:sweph/sweph.dart';
 
 class AstrologyServices {
-  static Future<Astrology> getPlanetsGatesNow(DateTime _now) async {
-    final Astrology astrology;
+  static Future<List<CoordinatesWithSpeed>> getPlanetsGatesNow(DateTime now) async {
+    final List<CoordinatesWithSpeed> cswPlanets;
     //final _utcTime = _now.toUtc();
     //final _utcTime = _now;
-    double _latitude = 0.0, _longitude = 0.0;
+    double latitude = 0.0, longitude = 0.0;
 
-    String _formattedDate = DateFormat('yyyy-MM-dd').format(_now),
-        _formattedTime = DateFormat.Hms().format(_now),
-        _uri = '',
-        _host = 'localhost',
-        _port = '3000';
+    //String formattedDate = DateFormat('yyyy-MM-dd').format(now),
+      //  formattedTime = DateFormat.Hms().format(now);
 
-    http.Response _checkResponse, _response;
+    final secondsInMinutes = now.second / 60;
+    final minutesInHours  = (now.minute + secondsInMinutes) / 60;
+    final hours  = now.hour + minutesInHours;
 
-    _uri = "http://" + _host + ":" + _port;
-    _checkResponse = await http.get(Uri.parse(_uri));
-    if (_checkResponse.statusCode != 200) {
-      _host = '192.168.1.194';
-      _uri = "http://" + _host + ":" + _port;
-      _checkResponse = await http.get(Uri.parse(_uri));
-      if (_checkResponse.statusCode != 200) {
-        _host = 'LAPTOP-UKC0EKF9';
-        _uri = "http://" + _host + ":" + _port;
-        _checkResponse = await http.get(Uri.parse(_uri));
-        if (_checkResponse.statusCode != 200) {
-          throw ('no host found');
-        }
-      }
-    }
 
-    if (_checkResponse.statusCode == 200) {
-      _uri = "http://" +
-          _host +
-          ":" +
-          _port +
-          "/horoscope?time=" +
-          _formattedDate +
-          "T" +
-          _formattedTime +
-          "Z&latitude=" +
-          _latitude.toString() +
-          "&longitude=" +
-          _longitude.toString();
+    final jd = Sweph.swe_julday(now.year, now.month, now.day, hours, CalendarType.SE_GREG_CAL);
 
-      //print (_uri);
 
-      _response = await http.get(Uri.parse(_uri));
+    final CoordinatesWithSpeed posSun, posEarth, posNorthnode, posSouthnode,
+          posMoon, posMercury, posVenus, posMars, posJupiter,
+          posSaturn, posUranus, posNeptune, posPluto, posChiron;
 
-      astrology = astrologyFromJson(_response.body);
-    } else {
-      _response = await http.get(Uri.parse(_uri));
-      astrology = astrologyFromJson(_response.statusCode.toString());
-      throw ('server problem');
-    }
 
-    return astrology;
+    posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_SWIEPH);
+    //pos_earth = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_EARTH, SwephFlag.SEFLG_SWIEPH);
+    posNorthnode = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_TRUE_NODE, SwephFlag.SEFLG_SWIEPH);
+    //pos_southnode = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_TRUE_NODE, SwephFlag.SEFLG_SWIEPH);
+    posMoon = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_MOON, SwephFlag.SEFLG_SWIEPH);
+    posMercury = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_MERCURY, SwephFlag.SEFLG_SWIEPH);
+    posVenus = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_VENUS, SwephFlag.SEFLG_SWIEPH);
+    posMars = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_MARS, SwephFlag.SEFLG_SWIEPH);
+    posJupiter = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_JUPITER, SwephFlag.SEFLG_SWIEPH);
+    posSaturn = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SATURN, SwephFlag.SEFLG_SWIEPH);
+    posUranus = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_URANUS, SwephFlag.SEFLG_SWIEPH);
+    posNeptune = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_NEPTUNE, SwephFlag.SEFLG_SWIEPH);
+    posPluto = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_PLUTO, SwephFlag.SEFLG_SWIEPH);
+    posChiron = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_CHIRON, SwephFlag.SEFLG_SWIEPH);
+
+    cswPlanets = [posSun, posNorthnode, posMoon,
+                    posMercury, posVenus, posMercury,
+                    posMars, posJupiter, posSaturn,
+                    posUranus, posNeptune, posPluto, posChiron];
+
+    return cswPlanets;
   }
 
-  static Future<List<Hexagram>> mapPlanets(Astrology _mappedplanets) async {
-    List<Hexagram> _planetsHexagramList = [];
+  static Future<List<Hexagram>> mapPlanets(List<CoordinatesWithSpeed> mappedplanets) async {
+    // based Swiss ephemeris new method
+
+    List<Hexagram> planetsHexagramList = [];
+
+    CoordinatesWithSpeed cwsSun = mappedplanets [0],
+        cwsNorthnode = mappedplanets [1],
+        cwsMoon = mappedplanets [2],
+        cwsMercury = mappedplanets [3],
+        cwsVenus = mappedplanets [4],
+        cwsMars = mappedplanets [5],
+        cwsJupiter = mappedplanets [6],
+        cwsSaturn = mappedplanets [7],
+        cwsUranus = mappedplanets [8],
+        cwsNeptune = mappedplanets [9],
+        cwsPluto = mappedplanets [10],
+        cwsChiron = mappedplanets [11];
 
     //double _latitude = 0.0,
     //   _longitude = 0.0,
-    double _sunlongitude = 0.0,
-        _earthlongitude = 0.0,
-        _northnodelongitude = 0.0,
-        _southnodelongitude = 0.0,
-        _moonlongitude = 0.0,
-        _mercurylongitude = 0.0,
-        _venuslongitude = 0.0,
-        _marslongitude = 0.0,
-        _jupiterlongitude = 0.0,
-        _saturnlongitude = 0.0,
-        _uranuslongitude = 0.0,
-        _neptunelongitude = 0.0,
-        _plutolongitude = 0.0;
+    double
+        earthlongitude = 0.0,
+        southnodelongitude = 0.0;
 
-    Hexagram _sunSubStructure,
-        _earthSubStructure,
-        _northnodeSubStructure,
-        _southnodeSubStructure,
-        _moonSubStructure,
-        _mercurySubStructure,
-        _venusSubStructure,
-        _marsSubStructure,
-        _jupiterSubStructure,
-        _saturnSubStructure,
-        _uranusSubStructure,
-        _neptuneSubStructure,
-        _plutoSubStructure;
+    Hexagram sunSubStructure,
+        earthSubStructure,
+        northnodeSubStructure,
+        southnodeSubStructure,
+        moonSubStructure,
+        mercurySubStructure,
+        venusSubStructure,
+        marsSubStructure,
+        jupiterSubStructure,
+        saturnSubStructure,
+        uranusSubStructure,
+        neptuneSubStructure,
+        plutoSubStructure,
+        chironSubStructure;
 
     try {
-      _sunlongitude = _mappedplanets.data.astros.sun.position.longitude;
-      _sunSubStructure = getGateStructure(_sunlongitude);
 
-      _sunlongitude < 180
-          ? _earthlongitude = _sunlongitude + 180
-          : _earthlongitude = _sunlongitude - 180;
-      _earthSubStructure = getGateStructure(_earthlongitude);
+      sunSubStructure = getGateStructure(cwsSun.longitude);
 
-      _northnodelongitude =
-          _mappedplanets.data.astros.northnode.position.longitude;
-      _northnodeSubStructure = getGateStructure(_northnodelongitude);
+      cwsSun.longitude < 180
+          ? earthlongitude = cwsSun.longitude + 180
+          : earthlongitude = cwsSun.longitude - 180;
+      earthSubStructure = getGateStructure(earthlongitude);
 
-      _northnodelongitude < 180
-          ? _southnodelongitude = _northnodelongitude + 180
-          : _southnodelongitude = _northnodelongitude - 180;
-      _southnodeSubStructure = getGateStructure(_southnodelongitude);
+      northnodeSubStructure = getGateStructure(cwsNorthnode.longitude);
 
-      _moonlongitude = _mappedplanets.data.astros.moon.position.longitude;
-      _mercurylongitude = _mappedplanets.data.astros.mercury.position.longitude;
-      _venuslongitude = _mappedplanets.data.astros.venus.position.longitude;
-      _marslongitude = _mappedplanets.data.astros.mars.position.longitude;
-      _jupiterlongitude = _mappedplanets.data.astros.jupiter.position.longitude;
-      _saturnlongitude = _mappedplanets.data.astros.saturn.position.longitude;
-      _uranuslongitude = _mappedplanets.data.astros.uranus.position.longitude;
-      _neptunelongitude = _mappedplanets.data.astros.neptune.position.longitude;
-      _plutolongitude = _mappedplanets.data.astros.pluto.position.longitude;
+      cwsNorthnode.longitude < 180
+          ? southnodelongitude = cwsNorthnode.longitude + 180
+          : southnodelongitude = cwsNorthnode.longitude - 180;
+      southnodeSubStructure = getGateStructure(southnodelongitude);
 
-      _moonSubStructure = getGateStructure(_moonlongitude);
-      _mercurySubStructure = getGateStructure(_mercurylongitude);
-      _venusSubStructure = getGateStructure(_venuslongitude);
-      _marsSubStructure = getGateStructure(_marslongitude);
-      _jupiterSubStructure = getGateStructure(_jupiterlongitude);
-      _saturnSubStructure = getGateStructure(_saturnlongitude);
-      _uranusSubStructure = getGateStructure(_uranuslongitude);
-      _neptuneSubStructure = getGateStructure(_neptunelongitude);
-      _plutoSubStructure = getGateStructure(_plutolongitude);
 
-      _planetsHexagramList = [
-        _sunSubStructure,
-        _earthSubStructure,
-        _northnodeSubStructure,
-        _southnodeSubStructure,
-        _moonSubStructure,
-        _mercurySubStructure,
-        _venusSubStructure,
-        _marsSubStructure,
-        _jupiterSubStructure,
-        _saturnSubStructure,
-        _uranusSubStructure,
-        _neptuneSubStructure,
-        _plutoSubStructure,
+      moonSubStructure = getGateStructure(cwsMoon.longitude);
+      mercurySubStructure = getGateStructure(cwsMercury.longitude);
+      venusSubStructure = getGateStructure(cwsVenus.longitude);
+      marsSubStructure = getGateStructure(cwsMars.longitude);
+      jupiterSubStructure = getGateStructure(cwsJupiter.longitude);
+      saturnSubStructure = getGateStructure(cwsSaturn.longitude);
+      uranusSubStructure = getGateStructure(cwsUranus.longitude);
+      neptuneSubStructure = getGateStructure(cwsNeptune.longitude);
+      plutoSubStructure = getGateStructure(cwsPluto.longitude);
+      chironSubStructure = getGateStructure(cwsChiron.longitude);
+
+      planetsHexagramList = [
+        sunSubStructure,
+        earthSubStructure,
+        northnodeSubStructure,
+        southnodeSubStructure,
+        moonSubStructure,
+        mercurySubStructure,
+        venusSubStructure,
+        marsSubStructure,
+        jupiterSubStructure,
+        saturnSubStructure,
+        uranusSubStructure,
+        neptuneSubStructure,
+        plutoSubStructure,
+        chironSubStructure
       ];
     } catch (err) {
       Exception(err);
     }
 
-    return _planetsHexagramList;
+    return planetsHexagramList;
   }
 
-  static Future<DateTime> getDesignTime(DateTime _nowdesign) async {
-    DateTime _designTime = _nowdesign;
-    //DateTime _utcTime = _now.toUtc();
-    DateTime _initialDesignDays = _nowdesign.subtract(const Duration(days: 88));
-    Astrology _designdata;
-    Astrology _personalitydata;
-    double _personsunlongitude,
-        _requiredlongitude,
-        _calculatedlongitude,
-        _gaplongitude;
+  static Future<List<Hexagram>> mapPlanets_http_base_old(Astrology mappedplanets) async {
+    List<Hexagram> planetsHexagramList = [];
 
-    List<double> _listgaplongitude = [0.0];
+    //double _latitude = 0.0,
+    //   _longitude = 0.0,
+    double sunlongitude = 0.0,
+        earthlongitude = 0.0,
+        northnodelongitude = 0.0,
+        southnodelongitude = 0.0,
+        moonlongitude = 0.0,
+        mercurylongitude = 0.0,
+        venuslongitude = 0.0,
+        marslongitude = 0.0,
+        jupiterlongitude = 0.0,
+        saturnlongitude = 0.0,
+        uranuslongitude = 0.0,
+        neptunelongitude = 0.0,
+        plutolongitude = 0.0;
+
+    Hexagram sunSubStructure,
+        earthSubStructure,
+        northnodeSubStructure,
+        southnodeSubStructure,
+        moonSubStructure,
+        mercurySubStructure,
+        venusSubStructure,
+        marsSubStructure,
+        jupiterSubStructure,
+        saturnSubStructure,
+        uranusSubStructure,
+        neptuneSubStructure,
+        plutoSubStructure;
+
+    try {
+      sunlongitude = mappedplanets.data.astros.sun.position.longitude;
+      sunSubStructure = getGateStructure(sunlongitude);
+
+      sunlongitude < 180
+          ? earthlongitude = sunlongitude + 180
+          : earthlongitude = sunlongitude - 180;
+      earthSubStructure = getGateStructure(earthlongitude);
+
+      northnodelongitude =
+          mappedplanets.data.astros.northnode.position.longitude;
+      northnodeSubStructure = getGateStructure(northnodelongitude);
+
+      northnodelongitude < 180
+          ? southnodelongitude = northnodelongitude + 180
+          : southnodelongitude = northnodelongitude - 180;
+      southnodeSubStructure = getGateStructure(southnodelongitude);
+
+      moonlongitude = mappedplanets.data.astros.moon.position.longitude;
+      mercurylongitude = mappedplanets.data.astros.mercury.position.longitude;
+      venuslongitude = mappedplanets.data.astros.venus.position.longitude;
+      marslongitude = mappedplanets.data.astros.mars.position.longitude;
+      jupiterlongitude = mappedplanets.data.astros.jupiter.position.longitude;
+      saturnlongitude = mappedplanets.data.astros.saturn.position.longitude;
+      uranuslongitude = mappedplanets.data.astros.uranus.position.longitude;
+      neptunelongitude = mappedplanets.data.astros.neptune.position.longitude;
+      plutolongitude = mappedplanets.data.astros.pluto.position.longitude;
+
+      moonSubStructure = getGateStructure(moonlongitude);
+      mercurySubStructure = getGateStructure(mercurylongitude);
+      venusSubStructure = getGateStructure(venuslongitude);
+      marsSubStructure = getGateStructure(marslongitude);
+      jupiterSubStructure = getGateStructure(jupiterlongitude);
+      saturnSubStructure = getGateStructure(saturnlongitude);
+      uranusSubStructure = getGateStructure(uranuslongitude);
+      neptuneSubStructure = getGateStructure(neptunelongitude);
+      plutoSubStructure = getGateStructure(plutolongitude);
+
+      planetsHexagramList = [
+        sunSubStructure,
+        earthSubStructure,
+        northnodeSubStructure,
+        southnodeSubStructure,
+        moonSubStructure,
+        mercurySubStructure,
+        venusSubStructure,
+        marsSubStructure,
+        jupiterSubStructure,
+        saturnSubStructure,
+        uranusSubStructure,
+        neptuneSubStructure,
+        plutoSubStructure,
+      ];
+    } catch (err) {
+      Exception(err);
+    }
+
+    return planetsHexagramList;
+  }
+
+  static Future<DateTime> getDesignTime(DateTime nowdesign) async {
+    DateTime designTime = nowdesign;
+    //DateTime _utcTime = _now.toUtc();
+    DateTime initialDesignDays = nowdesign.subtract(const Duration(days: 88));
+    List<CoordinatesWithSpeed> cwsDesigndata;
+    List<CoordinatesWithSpeed> cwsPersonalitydata;
+    double personsunlongitude,
+        requiredlongitude,
+        calculatedlongitude,
+        gaplongitude;
+
+    List<double> listgaplongitude = [0.0];
+
+    CoordinatesWithSpeed cswSun, cswSunDesign;
 
     //int _interpolationtimes = 0;
 
     // initialize design time
-    _designTime = _initialDesignDays;
+    designTime = initialDesignDays;
 
-    _personalitydata = await AstrologyServices.getPlanetsGatesNow(_nowdesign);
-    _personsunlongitude = _personalitydata.data.astros.sun.position.longitude;
+    cwsPersonalitydata = await AstrologyServices.getPlanetsGatesNow(nowdesign);
+
+    cswSun = cwsPersonalitydata [0];
+
+    personsunlongitude = cswSun.longitude;
 
     // required 88 degress
-    _requiredlongitude = _personsunlongitude - 88;
-    if (_requiredlongitude < 0) {
-      _requiredlongitude += 360;
+    requiredlongitude = personsunlongitude - 88;
+    if (requiredlongitude < 0) {
+      requiredlongitude += 360;
     }
 
     // align in days
     do {
-      _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
-      _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
+      cwsDesigndata = await AstrologyServices.getPlanetsGatesNow(designTime);
+      cswSunDesign = cwsDesigndata[0];
+      calculatedlongitude = cswSunDesign.longitude;
+      gaplongitude = requiredlongitude - calculatedlongitude;
 
+      //print ('1: $calculatedlongitude');
 
-      _gaplongitude = _requiredlongitude - _calculatedlongitude;
-
-      if (_gaplongitude > 270) {
-        _gaplongitude -= 360;
+      if (gaplongitude > 270) {
+        gaplongitude -= 360;
       }
-      else if (_gaplongitude < -270)
+      else if (gaplongitude < -270)
         {
-          _gaplongitude += 360;
+          gaplongitude += 360;
         }
 
 
-      if (_gaplongitude > 0) {
-        _designTime = _designTime.add(const Duration(days: 1));
-      } else if (_gaplongitude < 0) {
-        _designTime = _designTime.subtract(const Duration(days: 1));
+      if (gaplongitude > 0) {
+        designTime = designTime.add(const Duration(days: 1));
+      } else if (gaplongitude < 0) {
+        designTime = designTime.subtract(const Duration(days: 1));
       }
 
       // avoid loop
-      _listgaplongitude.add(_gaplongitude);
-      if (_listgaplongitude.length > 3 &&
-          _listgaplongitude.last ==
-              _listgaplongitude[_listgaplongitude.length - 2]) {
-        _gaplongitude = 1;
-        _listgaplongitude = [0.0];
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 2]) {
+        gaplongitude = 1;
+        listgaplongitude = [0.0];
       }
-    } while (_gaplongitude > 1 || _gaplongitude < -1);
+    } while (gaplongitude > 1 || gaplongitude < -1);
 
     // align in hours
     do {
-      if (_gaplongitude > 0.35) {
-        _designTime = _designTime.add(const Duration(hours: 1));
+      if (gaplongitude > 0.35) {
+        designTime = designTime.add(const Duration(hours: 1));
 
-      } else if (_gaplongitude < -0.35) {
-        _designTime = _designTime.subtract(const Duration(hours: 1));
+      } else if (gaplongitude < -0.35) {
+        designTime = designTime.subtract(const Duration(hours: 1));
       }
 
-      _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
-      _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
 
-      _gaplongitude = _requiredlongitude - _calculatedlongitude;
+      cwsDesigndata = await AstrologyServices.getPlanetsGatesNow(designTime);
+      cswSunDesign = cwsDesigndata[0];
+      calculatedlongitude = cswSunDesign.longitude;
+      gaplongitude = requiredlongitude - calculatedlongitude;
 
-      if (_gaplongitude > 270) {
-        _gaplongitude -= 360;
+      //print ('2: $calculatedlongitude');
+
+      if (gaplongitude > 270) {
+        gaplongitude -= 360;
       }
-      else if (_gaplongitude < -270)
+      else if (gaplongitude < -270)
       {
-        _gaplongitude += 360;
+        gaplongitude += 360;
       }
 
 
-      _listgaplongitude.add(_gaplongitude);
-      if (_listgaplongitude.length > 3 &&
-          _listgaplongitude.last ==
-              _listgaplongitude[_listgaplongitude.length - 2]) {
-        _gaplongitude = 0.35;
-        _listgaplongitude = [0.0];
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 2]) {
+        gaplongitude = 0.35;
+        listgaplongitude = [0.0];
       }
 
-    } while (_gaplongitude > 0.35 || _gaplongitude < -0.35);
+    } while (gaplongitude > 0.35 || gaplongitude < -0.35);
 
     // align in 10 minutes
     do {
-      if (_gaplongitude > 0.01) {
-        _designTime = _designTime.add(const Duration(minutes: 10));
+      if (gaplongitude > 0.01) {
+        designTime = designTime.add(const Duration(minutes: 10));
 
-      } else if (_gaplongitude < -0.01) {
-        _designTime = _designTime.subtract(const Duration(minutes: 10));
+      } else if (gaplongitude < -0.01) {
+        designTime = designTime.subtract(const Duration(minutes: 10));
       }
 
-      _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
-      _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
+      cwsDesigndata = await AstrologyServices.getPlanetsGatesNow(designTime);
+      cswSunDesign = cwsDesigndata[0];
+      calculatedlongitude = cswSunDesign.longitude;
+      gaplongitude = requiredlongitude - calculatedlongitude;
 
-      _gaplongitude = _requiredlongitude - _calculatedlongitude;
-
-      if (_gaplongitude > 270) {
-        _gaplongitude -= 360;
+      if (gaplongitude > 270) {
+        gaplongitude -= 360;
       }
-      else if (_gaplongitude < -270)
+      else if (gaplongitude < -270)
       {
-        _gaplongitude += 360;
+        gaplongitude += 360;
       }
 
 
-      _listgaplongitude.add(_gaplongitude);
-      if (_listgaplongitude.length > 3 &&
-          _listgaplongitude.last ==
-              _listgaplongitude[_listgaplongitude.length - 3]) {
-        _gaplongitude = 0.01;
-        _listgaplongitude = [0.0];
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 3]) {
+        gaplongitude = 0.01;
+        listgaplongitude = [0.0];
       }
 
-    } while (_gaplongitude > 0.01 || _gaplongitude < -0.01);
+    } while (gaplongitude > 0.01 || gaplongitude < -0.01);
 
     // align in 1 minute
     do {
-      if (_gaplongitude > 0.001) {
-        _designTime = _designTime.add(const Duration(minutes: 1));
-      } else if (_gaplongitude < -0.001) {
-        _designTime = _designTime.subtract(const Duration(minutes: 1));
+      if (gaplongitude > 0.001) {
+        designTime = designTime.add(const Duration(minutes: 1));
+      } else if (gaplongitude < -0.001) {
+        designTime = designTime.subtract(const Duration(minutes: 1));
       }
 
-      _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
-      _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
+      cwsDesigndata = await AstrologyServices.getPlanetsGatesNow(designTime);
+      cswSunDesign = cwsDesigndata[0];
+      calculatedlongitude = cswSunDesign.longitude;
+      gaplongitude = requiredlongitude - calculatedlongitude;
 
-      _gaplongitude = _requiredlongitude - _calculatedlongitude;
-
-      if (_gaplongitude > 270) {
-        _gaplongitude -= 360;
+      if (gaplongitude > 270) {
+        gaplongitude -= 360;
       }
-      else if (_gaplongitude < -270)
+      else if (gaplongitude < -270)
       {
-        _gaplongitude += 360;
+        gaplongitude += 360;
       }
 
 
-      _listgaplongitude.add(_gaplongitude);
-      if (_listgaplongitude.length > 3 &&
-          _listgaplongitude.last ==
-              _listgaplongitude[_listgaplongitude.length - 3]) {
-        _gaplongitude = 0.001;
-        _listgaplongitude = [0.0];
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 3]) {
+        gaplongitude = 0.001;
+        listgaplongitude = [0.0];
       }
-    } while (_gaplongitude > 0.001 || _gaplongitude < -0.001);
+    } while (gaplongitude > 0.001 || gaplongitude < -0.001);
 
     // align in 10 seconds
     do {
-      if (_gaplongitude > 0.0001) {
-        _designTime = _designTime.add(const Duration(seconds: 10));
+      if (gaplongitude > 0.0001) {
+        designTime = designTime.add(const Duration(seconds: 10));
 
-      } else if (_gaplongitude < -0.0001) {
-        _designTime = _designTime.subtract(const Duration(seconds: 10));
+      } else if (gaplongitude < -0.0001) {
+        designTime = designTime.subtract(const Duration(seconds: 10));
       }
 
-      _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
-      _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
+      cwsDesigndata = await AstrologyServices.getPlanetsGatesNow(designTime);
+      cswSunDesign = cwsDesigndata[0];
+      calculatedlongitude = cswSunDesign.longitude;
+      gaplongitude = requiredlongitude - calculatedlongitude;
 
-      _gaplongitude = _requiredlongitude - _calculatedlongitude;
-
-      if (_gaplongitude > 270) {
-        _gaplongitude -= 360;
+      if (gaplongitude > 270) {
+        gaplongitude -= 360;
       }
-      else if (_gaplongitude < -270)
+      else if (gaplongitude < -270)
       {
-        _gaplongitude += 360;
+        gaplongitude += 360;
       }
 
 
-      _listgaplongitude.add(_gaplongitude);
-      if (_listgaplongitude.length > 3 &&
-          _listgaplongitude.last ==
-              _listgaplongitude[_listgaplongitude.length - 3]) {
-        _gaplongitude = 0.0001;
-        _listgaplongitude = [0.0];
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 3]) {
+        gaplongitude = 0.0001;
+        listgaplongitude = [0.0];
       }
-    } while (_gaplongitude > 0.0001 || _gaplongitude < -0.0001);
+    } while (gaplongitude > 0.0001 || gaplongitude < -0.0001);
 
     // align in 1 seconds
     do {
-      if (_gaplongitude > 0.00001) {
-        _designTime = _designTime.add(const Duration(seconds: 1));
-      } else if (_gaplongitude < -0.00001) {
-        _designTime = _designTime.subtract(const Duration(seconds: 1));
+      if (gaplongitude > 0.00001) {
+        designTime = designTime.add(const Duration(seconds: 1));
+      } else if (gaplongitude < -0.00001) {
+        designTime = designTime.subtract(const Duration(seconds: 1));
       }
 
-      _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
-      _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
+      cwsDesigndata = await AstrologyServices.getPlanetsGatesNow(designTime);
+      cswSunDesign = cwsDesigndata[0];
+      calculatedlongitude = cswSunDesign.longitude;
+      gaplongitude = requiredlongitude - calculatedlongitude;
 
-      _gaplongitude = _requiredlongitude - _calculatedlongitude;
-
-      if (_gaplongitude > 270) {
-        _gaplongitude -= 360;
+      if (gaplongitude > 270) {
+        gaplongitude -= 360;
       }
-      else if (_gaplongitude < -270)
+      else if (gaplongitude < -270)
       {
-        _gaplongitude += 360;
+        gaplongitude += 360;
       }
 
 
-      _listgaplongitude.add(_gaplongitude);
-      if (_listgaplongitude.length > 3 &&
-          _listgaplongitude.last ==
-              _listgaplongitude[_listgaplongitude.length - 3]) {
-        _gaplongitude = 0.00001;
-        _listgaplongitude = [0.0];
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 3]) {
+        gaplongitude = 0.00001;
+        listgaplongitude = [0.0];
       }
-    } while (_gaplongitude > 0.00001 || _gaplongitude < -0.00001);
+    } while (gaplongitude > 0.00001 || gaplongitude < -0.00001);
 
     // align in 100 milliseconds
     do {
-      if (_gaplongitude > 0.000005) {
-        _designTime = _designTime.add(const Duration(milliseconds: 100));
-      } else if (_gaplongitude < -0.000005) {
-        _designTime = _designTime.subtract(const Duration(milliseconds: 100));
+      if (gaplongitude > 0.000005) {
+        designTime = designTime.add(const Duration(milliseconds: 100));
+      } else if (gaplongitude < -0.000005) {
+        designTime = designTime.subtract(const Duration(milliseconds: 100));
       }
 
-      _designdata = await AstrologyServices.getPlanetsGatesNow(_designTime);
-      _calculatedlongitude = _designdata.data.astros.sun.position.longitude;
+      cwsDesigndata = await AstrologyServices.getPlanetsGatesNow(designTime);
+      cswSunDesign = cwsDesigndata[0];
+      calculatedlongitude = cswSunDesign.longitude;
+      gaplongitude = requiredlongitude - calculatedlongitude;
 
-      _gaplongitude = _requiredlongitude - _calculatedlongitude;
-
-      if (_gaplongitude > 270) {
-        _gaplongitude -= 360;
+      if (gaplongitude > 270) {
+        gaplongitude -= 360;
       }
-      else if (_gaplongitude < -270)
+      else if (gaplongitude < -270)
       {
-        _gaplongitude += 360;
+        gaplongitude += 360;
       }
 
 
-      _listgaplongitude.add(_gaplongitude);
-      if (_listgaplongitude.length > 3 &&
-          _listgaplongitude.last ==
-              _listgaplongitude[_listgaplongitude.length - 3]) {
-        _gaplongitude = 0.000007;
-        _listgaplongitude = [0.0];
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 3]) {
+        gaplongitude = 0.000007;
+        listgaplongitude = [0.0];
       }
-    } while (_gaplongitude > 0.000007 || _gaplongitude < -0.000007);
+    } while (gaplongitude > 0.000007 || gaplongitude < -0.000007);
 
-    return _designTime;
+    return designTime;
   }
 
-  static Future<List<Hexagram>> getCurrentData(DateTime _nowdata) async {
-    List<Hexagram> _planetsList = [];
-    Astrology _planets;
+  static Future<List<Hexagram>> getCurrentData(DateTime nowdata) async {
+    List<Hexagram> planetsList = [];
+    List<CoordinatesWithSpeed> planets = [];
 
-    _planets = await AstrologyServices.getPlanetsGatesNow(_nowdata);
-    _planetsList = await AstrologyServices.mapPlanets(_planets);
+    planets = await AstrologyServices.getPlanetsGatesNow(nowdata);
+    planetsList = await AstrologyServices.mapPlanets(planets);
 
-    return _planetsList;
+    return planetsList;
   }
 }
