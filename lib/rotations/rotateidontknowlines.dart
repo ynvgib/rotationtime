@@ -43,13 +43,13 @@ class _RotateIDKlinesState extends State<RotateIDKlines> {
                       _build384PopUp(context),
                 );
               },
-              child: const Text('384'),
               style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
+                  backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50)),
                   textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.bold))),
+                      fontSize: 15, fontWeight: FontWeight.bold)),
+              child: const Text('384')),
           ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -58,13 +58,13 @@ class _RotateIDKlinesState extends State<RotateIDKlines> {
                       _buildEmptyChartPopUp(context),
                 );
               },
-              child: const Text('XIO'),
               style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
+                  backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50)),
                   textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.bold))),
+                      fontSize: 15, fontWeight: FontWeight.bold)),
+              child: const Text('XIO')),
         ],
       ),
       backgroundColor: Colors.white,
@@ -106,9 +106,7 @@ class _RotateIDKlinesState extends State<RotateIDKlines> {
                 style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               leading: Text(
-                (index / 6).floor().toString() +
-                    '.' +
-                    (((index - 5)) - (((index / 6).floor() - 1) * 6)).toString(),
+                '${(index / 6).floor()}.${((index - 5)) - (((index / 6).floor() - 1) * 6)}',
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),

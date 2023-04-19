@@ -1,21 +1,14 @@
 import 'dart:async';
 
 import 'package:finallyicanlearn/logic/hdsubstructure.dart';
-import 'package:finallyicanlearn/models/json/astrologyjsonmap.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
-import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 import 'package:sweph/sweph.dart';
 
 class AstrologyServices {
   static Future<List<CoordinatesWithSpeed>> getPlanetsGatesNow(DateTime now) async {
     final List<CoordinatesWithSpeed> cswPlanets;
-    //final _utcTime = _now.toUtc();
-    //final _utcTime = _now;
-    double latitude = 0.0, longitude = 0.0;
 
-    //String formattedDate = DateFormat('yyyy-MM-dd').format(now),
-      //  formattedTime = DateFormat.Hms().format(now);
+    double latitude = 0.0, longitude = 0.0;
 
     final secondsInMinutes = now.second / 60;
     final minutesInHours  = (now.minute + secondsInMinutes) / 60;
@@ -27,7 +20,9 @@ class AstrologyServices {
 
     final CoordinatesWithSpeed posSun, posEarth, posNorthnode, posSouthnode,
           posMoon, posMercury, posVenus, posMars, posJupiter,
-          posSaturn, posUranus, posNeptune, posPluto, posChiron;
+          posSaturn, posUranus, posNeptune, posPluto;
+
+        //posChiron - not added for now - 16042023
 
 
     posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_SWIEPH);
@@ -43,12 +38,12 @@ class AstrologyServices {
     posUranus = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_URANUS, SwephFlag.SEFLG_SWIEPH);
     posNeptune = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_NEPTUNE, SwephFlag.SEFLG_SWIEPH);
     posPluto = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_PLUTO, SwephFlag.SEFLG_SWIEPH);
-    posChiron = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_CHIRON, SwephFlag.SEFLG_SWIEPH);
+    //posChiron = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_CHIRON, SwephFlag.SEFLG_SWIEPH);
 
     cswPlanets = [posSun, posNorthnode, posMoon,
-                    posMercury, posVenus, posMercury,
+                    posMercury, posVenus,
                     posMars, posJupiter, posSaturn,
-                    posUranus, posNeptune, posPluto, posChiron];
+                    posUranus, posNeptune, posPluto];
 
     return cswPlanets;
   }
@@ -68,8 +63,8 @@ class AstrologyServices {
         cwsSaturn = mappedplanets [7],
         cwsUranus = mappedplanets [8],
         cwsNeptune = mappedplanets [9],
-        cwsPluto = mappedplanets [10],
-        cwsChiron = mappedplanets [11];
+        cwsPluto = mappedplanets [10];
+        //cwsChiron = mappedplanets [11];
 
     //double _latitude = 0.0,
     //   _longitude = 0.0,
@@ -89,8 +84,8 @@ class AstrologyServices {
         saturnSubStructure,
         uranusSubStructure,
         neptuneSubStructure,
-        plutoSubStructure,
-        chironSubStructure;
+        plutoSubStructure;
+        //chironSubStructure;
 
     try {
 
@@ -118,7 +113,7 @@ class AstrologyServices {
       uranusSubStructure = getGateStructure(cwsUranus.longitude);
       neptuneSubStructure = getGateStructure(cwsNeptune.longitude);
       plutoSubStructure = getGateStructure(cwsPluto.longitude);
-      chironSubStructure = getGateStructure(cwsChiron.longitude);
+      //chironSubStructure = getGateStructure(cwsChiron.longitude);
 
       planetsHexagramList = [
         sunSubStructure,
@@ -133,101 +128,7 @@ class AstrologyServices {
         saturnSubStructure,
         uranusSubStructure,
         neptuneSubStructure,
-        plutoSubStructure,
-        chironSubStructure
-      ];
-    } catch (err) {
-      Exception(err);
-    }
-
-    return planetsHexagramList;
-  }
-
-  static Future<List<Hexagram>> mapPlanets_http_base_old(Astrology mappedplanets) async {
-    List<Hexagram> planetsHexagramList = [];
-
-    //double _latitude = 0.0,
-    //   _longitude = 0.0,
-    double sunlongitude = 0.0,
-        earthlongitude = 0.0,
-        northnodelongitude = 0.0,
-        southnodelongitude = 0.0,
-        moonlongitude = 0.0,
-        mercurylongitude = 0.0,
-        venuslongitude = 0.0,
-        marslongitude = 0.0,
-        jupiterlongitude = 0.0,
-        saturnlongitude = 0.0,
-        uranuslongitude = 0.0,
-        neptunelongitude = 0.0,
-        plutolongitude = 0.0;
-
-    Hexagram sunSubStructure,
-        earthSubStructure,
-        northnodeSubStructure,
-        southnodeSubStructure,
-        moonSubStructure,
-        mercurySubStructure,
-        venusSubStructure,
-        marsSubStructure,
-        jupiterSubStructure,
-        saturnSubStructure,
-        uranusSubStructure,
-        neptuneSubStructure,
-        plutoSubStructure;
-
-    try {
-      sunlongitude = mappedplanets.data.astros.sun.position.longitude;
-      sunSubStructure = getGateStructure(sunlongitude);
-
-      sunlongitude < 180
-          ? earthlongitude = sunlongitude + 180
-          : earthlongitude = sunlongitude - 180;
-      earthSubStructure = getGateStructure(earthlongitude);
-
-      northnodelongitude =
-          mappedplanets.data.astros.northnode.position.longitude;
-      northnodeSubStructure = getGateStructure(northnodelongitude);
-
-      northnodelongitude < 180
-          ? southnodelongitude = northnodelongitude + 180
-          : southnodelongitude = northnodelongitude - 180;
-      southnodeSubStructure = getGateStructure(southnodelongitude);
-
-      moonlongitude = mappedplanets.data.astros.moon.position.longitude;
-      mercurylongitude = mappedplanets.data.astros.mercury.position.longitude;
-      venuslongitude = mappedplanets.data.astros.venus.position.longitude;
-      marslongitude = mappedplanets.data.astros.mars.position.longitude;
-      jupiterlongitude = mappedplanets.data.astros.jupiter.position.longitude;
-      saturnlongitude = mappedplanets.data.astros.saturn.position.longitude;
-      uranuslongitude = mappedplanets.data.astros.uranus.position.longitude;
-      neptunelongitude = mappedplanets.data.astros.neptune.position.longitude;
-      plutolongitude = mappedplanets.data.astros.pluto.position.longitude;
-
-      moonSubStructure = getGateStructure(moonlongitude);
-      mercurySubStructure = getGateStructure(mercurylongitude);
-      venusSubStructure = getGateStructure(venuslongitude);
-      marsSubStructure = getGateStructure(marslongitude);
-      jupiterSubStructure = getGateStructure(jupiterlongitude);
-      saturnSubStructure = getGateStructure(saturnlongitude);
-      uranusSubStructure = getGateStructure(uranuslongitude);
-      neptuneSubStructure = getGateStructure(neptunelongitude);
-      plutoSubStructure = getGateStructure(plutolongitude);
-
-      planetsHexagramList = [
-        sunSubStructure,
-        earthSubStructure,
-        northnodeSubStructure,
-        southnodeSubStructure,
-        moonSubStructure,
-        mercurySubStructure,
-        venusSubStructure,
-        marsSubStructure,
-        jupiterSubStructure,
-        saturnSubStructure,
-        uranusSubStructure,
-        neptuneSubStructure,
-        plutoSubStructure,
+        plutoSubStructure
       ];
     } catch (err) {
       Exception(err);
@@ -238,7 +139,6 @@ class AstrologyServices {
 
   static Future<DateTime> getDesignTime(DateTime nowdesign) async {
     DateTime designTime = nowdesign;
-    //DateTime _utcTime = _now.toUtc();
     DateTime initialDesignDays = nowdesign.subtract(const Duration(days: 88));
     List<CoordinatesWithSpeed> cwsDesigndata;
     List<CoordinatesWithSpeed> cwsPersonalitydata;
@@ -251,7 +151,6 @@ class AstrologyServices {
 
     CoordinatesWithSpeed cswSun, cswSunDesign;
 
-    //int _interpolationtimes = 0;
 
     // initialize design time
     designTime = initialDesignDays;

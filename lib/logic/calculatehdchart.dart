@@ -1,295 +1,304 @@
 import 'package:finallyicanlearn/models/hdlist.dart';
+import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 
 class HDServices {
   static List<HDChannel> getHDChannels(
-      List<Hexagram> _personalityplanets, _designplanets) {
-    List<String> _channelidList = [];
-    List<int> _uniquegatesList = [];
-    Set<int> _setgates;
-    String _channelid = '';
-    List<HDChannel> _hdchannelsList = [];
+      List<Hexagram> personalityplanets, designplanets) {
+    List<String> channelidList = [];
+    List<int> uniquegatesList = [];
+    Set<int> setgates;
+    String channelid = '';
+    List<HDChannel> hdchannels = [];
 
-    for (int i = 0; _personalityplanets.length > i; i++) {
-      _uniquegatesList.add(_personalityplanets[i].gate!);
-      _uniquegatesList.add(_designplanets[i].gate!);
+
+    for (int i = 0; personalityplanets.length > i; i++) {
+      uniquegatesList.add(personalityplanets[i].gate!);
+      uniquegatesList.add(designplanets[i].gate!);
+
     }
-    _setgates = _uniquegatesList.toSet();
-    _uniquegatesList = _setgates.toList();
-    _uniquegatesList.sort();
-    //print (_uniquegatesList);
+    setgates = uniquegatesList.toSet();
+    uniquegatesList = setgates.toList();
+    uniquegatesList.sort();
 
-    if (_uniquegatesList.isNotEmpty) {
-      for (int i = 0; _uniquegatesList.length - 1 > i; i++) {
-        for (int y = 1; _uniquegatesList.length - i > y; y++) {
-          _channelid = _uniquegatesList[i].toString() +
-              '.' +
-              _uniquegatesList[y + i].toString();
-          if (hdchannelsList.contains(_channelid)) {
-            _channelidList.add(_channelid);
+    if (uniquegatesList.isNotEmpty) {
+      for (int i = 0; uniquegatesList.length - 1 > i; i++) {
+        for (int y = 1; uniquegatesList.length - i > y; y++) {
+          channelid = '${uniquegatesList[i]}.${uniquegatesList[y + i]}';
+          if (hdchannelsList.contains(channelid)) {
+            channelidList.add(channelid);
           }
         }
       }
-      //print (_channelidList);
 
-      for (int i = 0; _channelidList.length > i; i++) {
-        _hdchannelsList.add(mapHDChannel(_channelidList[i]));
+      for (int i = 0; channelidList.length > i; i++) {
+        hdchannels.add(mapHDChannel(channelidList[i]));
       }
     }
-    return _hdchannelsList;
+    return hdchannels;
   }
 
-  static List<String> getHDDefinedCenters(List<HDChannel> _channelids) {
-    List<String> _centers = [];
+  static List<String> getHDDefinedCenters(List<HDChannel> channelids) {
+    List<String> centers = [];
     //int _channelidx;
-    Set<String> _centersset;
+    Set<String> centersset;
 
-    if (_channelids.isNotEmpty) {
-      for (int i = 0; _channelids.length > i; i++) {
-        _centers.add(_channelids[i].firstcenter!);
-        _centers.add(_channelids[i].secondcenter!);
+    if (channelids.isNotEmpty) {
+      for (int i = 0; channelids.length > i; i++) {
+        centers.add(channelids[i].firstcenter!);
+        centers.add(channelids[i].secondcenter!);
       }
-      _centersset = _centers.toSet();
-      _centers = _centersset.toList();
+      centersset = centers.toSet();
+      centers = centersset.toList();
       //print(_centers);
     }
-    return _centers;
+    return centers;
   }
 
-  static List<String> getHDDefinedFears(_centers) {
-    List<String> _fears = [];
-   List<String> _fearsSentence = List<String>.filled(3, 'FEAR', growable: false);
+  static List<String> getHDDefinedFears(centers) {
+    List<String> fears = [];
+    List<String> fearsSentence =
+        List<String>.filled(3, 'FEAR', growable: false);
 
-    if (_centers.contains('spleen')) {
-      _fears.add('FEAR');
-      _fearsSentence[0] = 'Fear turns Physical Awareness';
+    if (centers.contains('spleen')) {
+      fears.add('FEAR');
+      fearsSentence[0] = 'Fear turns Physical Awareness';
     } else {
-      _fearsSentence[0] = 'No Fear turns Physical Awareness';
+      fearsSentence[0] = 'No Fear turns Physical Awareness';
     }
 
-    if (_centers.contains('ajna')) {
-      _fears.add('ANXIETY');
-      _fearsSentence[1] = 'Anxiety turns Mental Awareness';
+    if (centers.contains('ajna')) {
+      fears.add('ANXIETY');
+      fearsSentence[1] = 'Anxiety turns Mental Awareness';
     } else {
-      _fearsSentence[1] = 'No Anxiety turns Mental Awareness';
+      fearsSentence[1] = 'No Anxiety turns Mental Awareness';
     }
 
-    if (_centers.contains('solar')) {
-      _fears.add('NERVOUSNESS');
-      _fearsSentence[2] = 'Nervousness turns Emotional Awareness';
+    if (centers.contains('solar')) {
+      fears.add('NERVOUSNESS');
+      fearsSentence[2] = 'Nervousness turns Emotional Awareness';
     } else {
-      _fearsSentence[2] = 'No Nervousness turns Emotional Awareness';
+      fearsSentence[2] = 'No Nervousness turns Emotional Awareness';
     }
 
-    return _fearsSentence;
+    return fearsSentence;
   }
 
   static List<String> getSelfReminder() {
-   List<String> _reminderSentence = List<String>.filled(7, '', growable: false);
+    List<String> reminderSentence = List<String>.filled(7, '', growable: false);
 
-   _reminderSentence[0] = '++++++';
-   _reminderSentence[1] = 'The limitation is that what is written is';
-   _reminderSentence[2] = 'MENTAL';
-   _reminderSentence[3] = 'Keep That in MIND';
-   _reminderSentence[4] = 'while BODY is Alive';
-   _reminderSentence[5] = 'as FEARS turn AWARENESS';
-   _reminderSentence[6] = '------';
+    reminderSentence[0] = '++++++';
+    reminderSentence[1] = 'The limitation is that what is written is';
+    reminderSentence[2] = 'MENTAL';
+    reminderSentence[3] = 'Keep That in MIND';
+    reminderSentence[4] = 'while BODY is Alive';
+    reminderSentence[5] = 'as FEARS turn AWARENESS';
+    reminderSentence[6] = '------';
 
-    return _reminderSentence;
+    return reminderSentence;
   }
 
   static List<String> getHDBasicData(
-      List<Hexagram> _personalityplanets, _designplanets) {
-    List<String> _hdbasicdata = [], _centers = [], _channelsList = [];
+      List<Hexagram> personalityplanets, designplanets) {
+    List<String> hdbasicdata = [], centers = [], channelsList = [];
 
-    List<HDChannel> _hdchannelsList = [];
-    String _channelid = '',
-        _type = '',
-        _authority = '',
-        _strategy = '',
-        _sentence = '';
+    List<HDChannel> hdchannelsList = [];
+    String channelid = '',
+        type = '',
+        authority = '',
+        strategy = '',
+        sentence = '',
+        coin = '',
+        coinname = '';
 
-    _hdchannelsList = getHDChannels(_personalityplanets, _designplanets);
-    _centers = getHDDefinedCenters(_hdchannelsList);
+    hdchannelsList = getHDChannels(personalityplanets, designplanets);
+    centers = getHDDefinedCenters(hdchannelsList);
 
-    for (int i = 0; _hdchannelsList.length > i; i++) {
-      _channelid = _hdchannelsList[i].id!;
-      _channelsList.add(_channelid);
+    for (int i = 0; hdchannelsList.length > i; i++) {
+      channelid = hdchannelsList[i].id!;
+      channelsList.add(channelid);
     }
 
     //print(_channelsList);
     // first set reflector
     // no channels
-    if (_centers.isEmpty) {
-      _type = hdtypesList.last;
-      _authority = hdauthority.last;
-    } else if (_centers.contains('solar')) {
-      _authority = 'emotional';
-      if (_centers.contains('sacral')) {
-        _type = 'generator';
+    if (centers.isEmpty) {
+      type = hdtypesList.last;
+      authority = hdauthority.last;
+    } else if (centers.contains('solar')) {
+      authority = 'emotional';
+      if (centers.contains('sacral')) {
+        type = 'generator';
       }
-    } else if (_centers.contains('sacral')) {
-      _authority = 'sacral';
-      _type = 'generator';
-    } else if (_centers.contains('spleen')) {
-      _authority = 'splenic';
-    } else if (_centers.contains('heart')) {
-      _authority = 'ego';
-    } else if (_centers.contains('self')) {
-      _authority = 'self';
-      _type = 'projector';
+    } else if (centers.contains('sacral')) {
+      authority = 'sacral';
+      type = 'generator';
+    } else if (centers.contains('spleen')) {
+      authority = 'splenic';
+    } else if (centers.contains('heart')) {
+      authority = 'ego';
+    } else if (centers.contains('self')) {
+      authority = 'self';
+      type = 'projector';
     } else {
-      _authority = 'sound board';
-      _type = 'projector';
+      authority = 'sound board';
+      type = 'projector';
     }
 
-    if (_centers.isEmpty) {
-      _type = 'reflector';
+    if (centers.isEmpty) {
+      type = 'reflector';
     } else {
-      if (!_centers.contains('throat')) {
-        if (!_centers.contains('sacral')) {
-          _type = 'projector';
+      if (!centers.contains('throat')) {
+        if (!centers.contains('sacral')) {
+          type = 'projector';
         } else {
-          _type = 'generator';
+          type = 'generator';
         }
       }
 
-      if (_channelsList.contains('12.22') ||
-          _channelsList.contains('35.36') ||
-          _channelsList.contains('21.45')) {
-        _type = 'manifestor';
-      } else if (_channelsList.contains('16.48') ||
-          _channelsList.contains('20.57')) {
-        if (_channelsList.contains('26.44') ||
-            _channelsList.contains('32.54') ||
-            _channelsList.contains('28.38') ||
-            _channelsList.contains('18.58')) {
-          _type = 'manifestor';
+      if (channelsList.contains('12.22') ||
+          channelsList.contains('35.36') ||
+          channelsList.contains('21.45')) {
+        type = 'manifestor';
+      } else if (channelsList.contains('16.48') ||
+          channelsList.contains('20.57')) {
+        if (channelsList.contains('26.44') ||
+            channelsList.contains('32.54') ||
+            channelsList.contains('28.38') ||
+            channelsList.contains('18.58')) {
+          type = 'manifestor';
         }
       }
 
-      if (_type != 'manifestor') {
-        if (_channelsList.contains('10.20') ||
-            _channelsList.contains('7.31') ||
-            _channelsList.contains('1.8') ||
-            _channelsList.contains('13.33')) {
-          if (_channelsList.contains('25.51')) {
-            _type = 'manifestor';
+      if (type != 'manifestor') {
+        if (channelsList.contains('10.20') ||
+            channelsList.contains('7.31') ||
+            channelsList.contains('1.8') ||
+            channelsList.contains('13.33')) {
+          if (channelsList.contains('25.51')) {
+            type = 'manifestor';
           }
         }
       }
 
-      if (_centers.contains('sacral')) {
-        if (_type == 'manifestor') {
-          _type = 'manifesting generator';
-        } else if (_channelsList.contains('20.34')) {
-          _type = 'manifesting generator';
-        } else if (_channelsList.contains('27.50')) {
-          if (_channelsList.contains('16.48') ||
-              _channelsList.contains('20.57')) {
-            _type = 'manifesting generator';
-          } else if (_channelsList.contains('10.57')) {
-            if (_channelsList.contains('7.31') ||
-                _channelsList.contains('1.8') ||
-                _channelsList.contains('13.33')) {
-              _type = 'manifesting generator';
+      if (centers.contains('sacral')) {
+        if (type == 'manifestor') {
+          type = 'manifesting generator';
+        } else if (channelsList.contains('20.34')) {
+          type = 'manifesting generator';
+        } else if (channelsList.contains('27.50')) {
+          if (channelsList.contains('16.48') ||
+              channelsList.contains('20.57')) {
+            type = 'manifesting generator';
+          } else if (channelsList.contains('10.57')) {
+            if (channelsList.contains('7.31') ||
+                channelsList.contains('1.8') ||
+                channelsList.contains('13.33')) {
+              type = 'manifesting generator';
             }
           }
-        } else if (_channelsList.contains('10.34') ||
-            _channelsList.contains('5.15') ||
-            _channelsList.contains('2.14') ||
-            _channelsList.contains('29.46')) {
-          if (_channelsList.contains('10.20') ||
-              _channelsList.contains('7.31') ||
-              _channelsList.contains('1.8') ||
-              _channelsList.contains('13.33')) {
-            _type = 'manifesting generator';
+        } else if (channelsList.contains('10.34') ||
+            channelsList.contains('5.15') ||
+            channelsList.contains('2.14') ||
+            channelsList.contains('29.46')) {
+          if (channelsList.contains('10.20') ||
+              channelsList.contains('7.31') ||
+              channelsList.contains('1.8') ||
+              channelsList.contains('13.33')) {
+            type = 'manifesting generator';
           }
         }
       }
 
-      if (_centers.contains('sacral')) {
-        if (_type != 'manifesting generator') {
-          _type = 'generator';
+      if (centers.contains('sacral')) {
+        if (type != 'manifesting generator') {
+          type = 'generator';
         }
-      } else if (_type != 'manifestor') {
-        _type = 'projector';
+      } else if (type != 'manifestor') {
+        type = 'projector';
       }
     }
-    _strategy = 'NOT READY YET';
+    strategy = 'NOT READY YET';
 
-    if (_type == 'manifestor') {
-      if (_authority == 'emotional') {
-        _strategy = 'inform with emotional clarity';
-      } else if (_authority == 'splenic') {
-        _strategy = 'inform spontaneously';
+    if (type == 'manifestor') {
+      if (authority == 'emotional') {
+        strategy = 'inform with emotional clarity';
+      } else if (authority == 'splenic') {
+        strategy = 'inform spontaneously';
       } else {
-        _strategy = 'inform at will';
+        strategy = 'inform at will';
       }
-    } else if (_centers.contains('sacral')) {
-      if (_authority == 'emotional') {
-        _strategy = 'respond with emotional clarity';
+    } else if (centers.contains('sacral')) {
+      if (authority == 'emotional') {
+        strategy = 'respond with emotional clarity';
       } else {
-        _strategy = 'respond in the moment';
+        strategy = 'respond in the moment';
       }
-    } else if (_type == 'projector') {
-      if (_authority == 'emotional') {
-        _strategy = 'recognize invitation with emotional clarity';
-      } else if (_authority == 'splenic') {
-        _strategy = 'recognize spontaneous invitation';
-      } else if (_authority == 'ego') {
-        _strategy = 'recognize invitation to prove yourself';
-      } else if (_authority == 'self') {
-        _strategy = 'recognize invitation to express who you are';
+    } else if (type == 'projector') {
+      if (authority == 'emotional') {
+        strategy = 'recognize invitation with emotional clarity';
+      } else if (authority == 'splenic') {
+        strategy = 'recognize spontaneous invitation';
+      } else if (authority == 'ego') {
+        strategy = 'recognize invitation to prove yourself';
+      } else if (authority == 'self') {
+        strategy = 'recognize invitation to express who you are';
       } else {
-        _strategy = 'recognize invitation to conceptualize';
+        strategy = 'recognize invitation to conceptualize';
       }
     } else {
-      _strategy = 'watch the moon cycle';
+      strategy = 'watch the moon cycle';
     }
-
-    switch (_type) {
+    //print (type);
+    switch (type) {
       case 'manifestor':
-        _sentence = 'Impact Positively with Peace';
-        break;
-      case 'generator':
-        _sentence = 'Filter Negativity with Satisfaction';
-        break;
-      case 'manifesting generator':
-        _sentence = 'Filter Negativity with Satisfaction';
+        coin = hexBasicMixList[0];
+        coinname = hexNamesList[0];
+        sentence = 'Impact Positively with Peace';
         break;
       case 'reflector':
-        _sentence = 'Balance Oppositions with Surprise';
+        coinname = hexNamesList[1];
+        sentence = 'Balance Oppositions with Surprise';
         break;
       case 'projector':
-        _sentence = 'Align Balance with Success';
+        coin = hexBasicMixList[2];
+        coinname = hexNamesList[2];
+        sentence = 'Align Balance with Success';
+        break;
+      case 'generator':
+        coin = hexBasicMixList[3];
+        coinname = hexNamesList[3];
+        sentence = 'Filter Negativity with Satisfaction';
+        break;
+      case 'manifesting generator':
+        coin = hexBasicMixList[3];
+        coinname = hexNamesList[3];
+        sentence = 'Filter Negativity with Satisfaction';
         break;
       default:
-        _sentence = 'I don\'t know';
+        sentence = 'I don\'t know';
     }
 
-    _hdbasicdata = [_type, _authority, _strategy, _sentence];
+    hdbasicdata = [type, authority, strategy, sentence, coinname];
     //print(_hdbasicdata);
 
-    return _hdbasicdata;
+    return hdbasicdata;
   }
 
-  static HDChannel mapHDChannel(String _channelid) {
-    //List<HDChannel> _hdchannelsdata = [];
-    HDChannel _hdchannel = HDChannel();
-    //String? _id,_firstcenter, _secondcenter, _name, _description, _circuitry, _circuit, _stream;
-    int _hdchannelidx;
+  static HDChannel mapHDChannel(String channelid) {
+    HDChannel hdchannel = HDChannel();
+    int hdchannelidx;
 
-    _hdchannelidx = hdchannelsList.indexOf(_channelid);
-    _hdchannel.id = hdchannelsList[_hdchannelidx];
-    _hdchannel.firstcenter = hdchannelsList[_hdchannelidx + 1];
-    _hdchannel.secondcenter = hdchannelsList[_hdchannelidx + 2];
-    _hdchannel.name = hdchannelsList[_hdchannelidx + 3];
-    _hdchannel.description = hdchannelsList[_hdchannelidx + 4];
-    _hdchannel.circuitry = hdchannelsList[_hdchannelidx + 5];
-    _hdchannel.circuit = hdchannelsList[_hdchannelidx + 6];
-    _hdchannel.stream = hdchannelsList[_hdchannelidx + 7];
+    hdchannelidx = hdchannelsList.indexOf(channelid);
+    hdchannel.id = hdchannelsList[hdchannelidx];
+    hdchannel.firstcenter = hdchannelsList[hdchannelidx + 1];
+    hdchannel.secondcenter = hdchannelsList[hdchannelidx + 2];
+    hdchannel.name = hdchannelsList[hdchannelidx + 3];
+    hdchannel.description = hdchannelsList[hdchannelidx + 4];
+    hdchannel.circuitry = hdchannelsList[hdchannelidx + 5];
+    hdchannel.circuit = hdchannelsList[hdchannelidx + 6];
+    hdchannel.stream = hdchannelsList[hdchannelidx + 7];
 
-    return _hdchannel;
+    return hdchannel;
   }
 }

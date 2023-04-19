@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,8 @@ class _RotateIDKState extends State<RotateIDK> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(_title),
+          toolbarHeight: 40,
+          title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
           leading: TextButton(
             child: const Text(
               'X',

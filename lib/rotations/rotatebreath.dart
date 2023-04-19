@@ -1,3 +1,5 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/material.dart';
 
@@ -19,9 +21,10 @@ class _RotateBreathState extends State<RotateBreath> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(_title),
+        toolbarHeight: 40,
+        title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
           leading: TextButton(
-            child: const Text(
+            child: const AutoSizeText(
               'X',
               style: TextStyle(
                   color: Colors.white,
@@ -39,29 +42,32 @@ class _RotateBreathState extends State<RotateBreath> {
             height: 30.0,
           ),
           Expanded(
-            child: TextField(
+            child: AutoSizeTextField(
+                minFontSize: 10,
                 readOnly: false,
-                decoration: const InputDecoration.collapsed(hintText: ''),
+                decoration: const InputDecoration.collapsed(hintText: 'inhale & exhale'),
                 textAlign: TextAlign.center,
                 controller: _controllerComplexText,
                 style: const TextStyle(
-                    fontSize: 50,
-                    color: Colors.black87,
+                    fontSize: 30,
+                    color: Colors.yellow,
                     fontWeight: FontWeight.normal)),
           ),
           const SizedBox(
             height: 30.0,
           ),
           Expanded(
-            child: TextField(
+            child: AutoSizeTextField(
+                minFontSize: 10,
+                maxLines: 1,
                 readOnly: false,
-                decoration: const InputDecoration.collapsed(hintText: ''),
+                decoration: const InputDecoration.collapsed(hintText: 'P'),
                 textAlign: TextAlign.center,
                 controller: _controllerSimpleText,
                 style: const TextStyle(
                     fontFamily: 'iChing',
-                    fontSize: 80,
-                    color: Colors.black87,
+                    fontSize: 30,
+                    color: Colors.yellow,
                     fontWeight: FontWeight.normal)),
           ),
         ],

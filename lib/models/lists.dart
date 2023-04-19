@@ -28,7 +28,7 @@ final List<String> titlesEN = [
 final List<String> subtitlesEN = [
   'Complex Planets',
   'Complex Sentence',
-  'Complex HD XIO',
+  'Complex Coin',
   'Simple IT @ Table',
   'Simple 3 Coins',
   'Simple',
@@ -40,10 +40,10 @@ final List<String> subtitlesEN = [
 // 'Simple 64 + 384 = 448',
 
 final List<String> mainroutes = [
-  '/rotateplanets',
+  '/rotatecomplexplanets',
   '/rotatecomplexone',
   '/rotatesimplehd',
-  '/rotatehexagramtable',
+  '/rotatesimpletable',
   '/rotatesimpleone',
   '/rotatesimplelanguage',
   '/rotatesidk',
@@ -65,6 +65,22 @@ final List<String> planetsfullList = [
   'assets/planets/pluto.png',
   'assets/planets/earth.png',
   'assets/planets/southnode.png',
+];
+
+final List<String> planetsimagelist = [
+  'assets/planets/sun.png',
+  'assets/planets/earth.png',
+  'assets/planets/northnode.png',
+  'assets/planets/southnode.png',
+  'assets/planets/moon.png',
+  'assets/planets/mercury.png',
+  'assets/planets/venus.png',
+  'assets/planets/mars.png',
+  'assets/planets/jupiter.png',
+  'assets/planets/saturn.png',
+  'assets/planets/uranus.png',
+  'assets/planets/neptune.png',
+  'assets/planets/pluto.png',
 ];
 
 final List<String> planetspartialList = [
@@ -109,7 +125,146 @@ final List<String> hexList = [
   'assets/silencedown.png',
 ];
 
+final List<String> rtimageBolList = [
+  'assets/complexup.png',
+  'assets/silencedown.png',
+];
+
 final List<String> fontHexOrderList = [
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+  'y',
+  'z',
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '0',
+  '!',
+  '@'
+];
+
+final List<String> fontHexOrderList_old = [
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+  'y',
+  'z',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '0',
+  '!',
+  '@',
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z'
+];
+
+final List<String> fontHexNewOrderList = [
   'a',
   'b',
   'c',
@@ -242,6 +397,8 @@ final List<int> fontHexNumbersList = [
   3,
   46
 ];
+
+
 
 final List<int> orderHexagramsWheel = [
   //qurater mutation complex
@@ -2307,6 +2464,13 @@ final List<Widget> mixHexagramSlidersNew = hexBasicMixList
         backgroundImage: AssetImage(hexagrambasicmix)))
     .toList();
 
+final List<Widget> mixHexagramSlidersBol = [hexBasicMixList.first,hexBasicMixList.last]
+    .map((hexagrambasicmix) => CircleAvatar(
+    minRadius: 100.0,
+    maxRadius: 100.0,
+    backgroundImage: AssetImage(hexagrambasicmix)))
+    .toList();
+
 // DROPDOWN
 
 final List<DropdownMenuItem<int>> hexDropDownNumbersList =
@@ -2316,7 +2480,8 @@ final List<DropdownMenuItem<int>> hexDropDownNumbersList =
     child: Text(
       hexagramsnew.toString(),
       style: const TextStyle(
-        color: Colors.grey,
+        fontSize: 15,
+        color: Colors.black,
       ),
     ),
   );
@@ -2329,7 +2494,7 @@ final List<DropdownMenuItem<String>> fontHexList =
     child: Text(chosenHexagrams,
         style: const TextStyle(
           color: Colors.black,
-          fontSize: 30.0,
+          fontSize: 20.0,
           fontFamily: 'iChing',
         )),
   );
@@ -2340,8 +2505,8 @@ final List<DropdownMenuItem<int>> orderHexagramsWheelList =
   return DropdownMenuItem(
       value: orderWheelHexagrams,
       child: Text(orderWheelHexagrams.toString(),
-          style: const TextStyle(
-            color: Colors.grey,
+          style: const TextStyle(fontSize: 15,
+            color: Colors.black,
           )));
 }).toList();
 

@@ -1,0 +1,15 @@
+{
+  "home" : {
+    "title" : "בית",
+    "btn" : "ללחוץ כאן"
+  },
+  "dialog" : {
+    "title" : "לשנות שפה",
+    "btn_negative" : "לבטל"
+  },
+  "config" : {
+    "iso_code" : "IL",
+    "prefix" : "he_IL",
+    "title" : "עברית"
+  }
+}

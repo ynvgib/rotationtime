@@ -1,15 +1,16 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/models/lists.dart';
-import 'package:finallyicanlearn/rotations/rotatehextable.dart';
+import 'package:finallyicanlearn/rotations/rotatesimpletable.dart';
 import 'package:finallyicanlearn/rotations/rotateidk.dart';
 import 'package:finallyicanlearn/rotations/rotatecomplexone.dart';
-import 'package:finallyicanlearn/rotations/rotatepenta.dart';
-import 'package:finallyicanlearn/rotations/rotateplanets.dart';
+import 'package:finallyicanlearn/rotations/rotatecomplexplanets.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
 import 'package:finallyicanlearn/rotations/rotatebreath.dart';
-import 'package:finallyicanlearn/rotations/rotatesimplehd.dart';
+import 'package:finallyicanlearn/rotations/rotatecomplexio.dart';
 import 'package:finallyicanlearn/rotations/rotatesimplelanguage.dart';
 import 'package:finallyicanlearn/rotations/rotationsimpleone.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:sweph/sweph.dart';
 
 // flutter build windows
@@ -17,7 +18,7 @@ import 'package:sweph/sweph.dart';
 // firebase deploy
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   //final stopwatch = Stopwatch()..start();
   // Only load the assets you need. By default will load none
@@ -27,15 +28,12 @@ Future<void> main() async {
     "packages/sweph/assets/ephe/semo_18.se1", // For house calc
   ]);
 
-  //Sweph.swe_set_ephe_path('packages/sweph/assets/ephe');
-
   runApp(RotateEnglish());}
 
 class RotateEnglish extends StatelessWidget {
   RotateEnglish({Key? key}) : super(key: key);
 
   final List<String> _mainroutes = mainroutes;
-
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +42,10 @@ class RotateEnglish extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (ctx) => HomePageEN(),
-        _mainroutes.first: (ctx) => const RotatePlanets(),
+        _mainroutes.first: (ctx) => const RotateComplexPlanets(),
         _mainroutes[1]: (ctx) => const RotateComplexOne(),
-        _mainroutes[2]: (ctx) => const RotateSimpleHD(),
-        _mainroutes[3]: (ctx) => const RotateHexagramTable(),
+        _mainroutes[2]: (ctx) => const RotateCompleXIO(),
+        _mainroutes[3]: (ctx) => const RotateSimpleTable(),
         _mainroutes[4]: (ctx) => const RotateSimpleOne(),
         _mainroutes[5]: (ctx) => const RotateSimpleLanguage(),
         _mainroutes[6]: (ctx) => const RotateIDK(),
@@ -72,7 +70,7 @@ class HomePageEN extends StatelessWidget {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@',
+            'aO#P@',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
@@ -86,7 +84,7 @@ class HomePageEN extends StatelessWidget {
       body: Column(children: [
         Container(
           height: 30,
-          width: MediaQuery.of(context).size.width / 1.2,
+          width: MediaQuery.of(context).size.width,
           margin: const EdgeInsets.all(5.0),
           decoration: BoxDecoration(
               color: Colors.white,
@@ -104,8 +102,8 @@ class HomePageEN extends StatelessWidget {
                     spreadRadius: 1),
               ]),
           child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
+            fit: BoxFit.fitHeight,
+            child: AutoSizeText(
               _title,
               textAlign: TextAlign.center,
               style: const TextStyle(
@@ -115,57 +113,58 @@ class HomePageEN extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
-            height: MediaQuery.of(context).size.height / 1.35,
-            width: MediaQuery.of(context).size.width / 1.2,
-            child: ListView(
-              padding: const EdgeInsets.symmetric(vertical: 2.0),
-              children: <Widget>[
-                MappingItemEN(
-                    _titles.first, _mainroutes.first, Colors.blue[900]!),
-                MappingItemEN(_titles[1], _mainroutes[1], Colors.blue[800]!),
-                MappingItemEN(_titles[2], _mainroutes[2], Colors.blue[700]!),
-                MappingItemEN(_titles[3], _mainroutes[3], Colors.green[800]!),
-                MappingItemEN(_titles[4], _mainroutes[4], Colors.green[700]!),
-                MappingItemEN(_titles[5], _mainroutes[5], Colors.green[600]!),
-                MappingItemEN(_titles[6], _mainroutes[6], Colors.black),
-                MappingItemEN(_titles[7], _mainroutes[7], Colors.yellow[800]!),
-                MappingItemEN(_titles.last, _mainroutes.last, Colors.red[800]!),
-              ],
-            )),
-        const SizedBox(height: 20 ,),
+        Expanded(
+          child: ListView(
+            itemExtent: MediaQuery.of(context).size.height / 13,
+                children: [
+                  MappingItemEN(
+                      _titles.first, _mainroutes.first, Colors.blue[900]!),
+                  MappingItemEN(_titles[1], _mainroutes[1], Colors.blue[800]!),
+                  MappingItemEN(_titles[2], _mainroutes[2], Colors.blue[700]!),
+                  MappingItemEN(_titles[3], _mainroutes[3], Colors.green[800]!),
+                  MappingItemEN(_titles[4], _mainroutes[4], Colors.green[700]!),
+                  MappingItemEN(_titles[5], _mainroutes[5], Colors.green[600]!),
+                  MappingItemEN(_titles[7], _mainroutes[7], Colors.yellow[800]!),
+                  MappingItemEN(_titles.last, _mainroutes.last, Colors.red[800]!),
+                  MappingItemEN(_titles[6], _mainroutes[6], Colors.black),
+                ],
+              ),
+        ),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Container(
-            height: 25,
-            width: MediaQuery.of(context).size.width / 1.2,
-            decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(25),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.blueGrey,
-                      offset: Offset(4, 4),
-                      blurRadius: 20,
-                      spreadRadius: 1),
-                  BoxShadow(
+          Expanded(
+            child: Container(
+              height: 25,
+              width: MediaQuery.of(context).size.width / 1.2,
+              decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(25),
+                  boxShadow: const [
+                    BoxShadow(
+                        color: Colors.blueGrey,
+                        offset: Offset(4, 4),
+                        blurRadius: 20,
+                        spreadRadius: 1),
+                    BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-4, -4),
+                        blurRadius: 15,
+                        spreadRadius: 1),
+                  ]),
+              child: const FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  'www.beidontknow.com',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
                       color: Colors.white,
-                      offset: Offset(-4, -4),
-                      blurRadius: 15,
-                      spreadRadius: 1),
-                ]),
-            child: const FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                'www.beidontknow.com',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),
         ]),
+        const SizedBox(height: 10)
       ]),
     );
   }
@@ -182,7 +181,7 @@ class MappingItemEN extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Container(
-        height: 30.0,
+        height: 25.0,
         decoration: BoxDecoration(
             color: _color,
             borderRadius: BorderRadius.circular(50),
@@ -200,11 +199,13 @@ class MappingItemEN extends StatelessWidget {
             ]),
         child: Padding(
           padding: const EdgeInsets.all(1.0),
-          child: Text(
+          child: AutoSizeText(
             title,
+            minFontSize: 15,
+            maxLines: 1,
             textAlign: TextAlign.center,
             style: const TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.normal),
+                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
           ),
         ),
       ),
