@@ -23,14 +23,10 @@ class _RotateBreathState extends State<RotateBreath> {
       appBar: AppBar(
         toolbarHeight: 40,
         title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
-          leading: TextButton(
-            child: const AutoSizeText(
-              'X',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold),
-            ),
+          leading: IconButton(
+            iconSize: 20,
+            icon: const Icon(
+                Icons.close),
             onPressed: () => Navigator.of(context).pop(),
           ),
           backgroundColor: Colors.black87),

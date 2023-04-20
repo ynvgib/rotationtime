@@ -294,10 +294,12 @@ class HDServices {
     hdchannel.firstcenter = hdchannelsList[hdchannelidx + 1];
     hdchannel.secondcenter = hdchannelsList[hdchannelidx + 2];
     hdchannel.name = hdchannelsList[hdchannelidx + 3];
-    hdchannel.description = hdchannelsList[hdchannelidx + 4];
-    hdchannel.circuitry = hdchannelsList[hdchannelidx + 5];
-    hdchannel.circuit = hdchannelsList[hdchannelidx + 6];
-    hdchannel.stream = hdchannelsList[hdchannelidx + 7];
+    hdchannel.adaptname = hdchannelsList[hdchannelidx + 4];
+    hdchannel.coin = hdchannelsList[hdchannelidx + 5];
+    hdchannel.description = hdchannelsList[hdchannelidx + 6];
+    hdchannel.circuitry = hdchannelsList[hdchannelidx + 7];
+    hdchannel.circuit = hdchannelsList[hdchannelidx + 8];
+    hdchannel.stream = hdchannelsList[hdchannelidx + 9];
 
     return hdchannel;
   }

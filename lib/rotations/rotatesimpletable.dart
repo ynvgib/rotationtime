@@ -26,10 +26,11 @@ class _RotateSimpleTableState extends State<RotateSimpleTable> {
         toolbarHeight: 40,
         title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
         leading: TextButton(
-          child: const Text(
-            'X',
-            style: TextStyle(
-                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+          child: IconButton(
+            iconSize: 20,
+            icon: const Icon(
+                Icons.close),
+            onPressed: () => Navigator.of(context).pop(),
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),

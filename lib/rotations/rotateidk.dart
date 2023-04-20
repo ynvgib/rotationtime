@@ -23,17 +23,16 @@ class _RotateIDKState extends State<RotateIDK> {
           toolbarHeight: 40,
           title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
           leading: TextButton(
-            child: const Text(
-              'X',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold),
+            child: IconButton(
+              iconSize: 20,
+              color: Colors.white,
+              icon: const Icon(
+                  Icons.close),
+              onPressed: () => Navigator.of(context).pop(),
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
           backgroundColor: Colors.grey),
-      backgroundColor: Colors.grey,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -48,7 +47,7 @@ class _RotateIDKState extends State<RotateIDK> {
                 controller: _controllerComplexText,
                 style: const TextStyle(
                     fontSize: 50,
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.normal)),
           ),
           const SizedBox(
@@ -62,7 +61,7 @@ class _RotateIDKState extends State<RotateIDK> {
                 controller: _controllerSimpleText,
                 style: const TextStyle(
                     fontSize: 50,
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.normal)),
           ),
           const SizedBox(

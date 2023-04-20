@@ -110,12 +110,10 @@ class _RotateComplexPlanetsState extends State<RotateComplexPlanets> {
       appBar: AppBar(
         toolbarHeight: 40,
         title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
-        leading: TextButton(
-          child: const Text(
-            'X',
-            style: TextStyle(
-                color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
-          ),
+        leading: IconButton(
+          iconSize: 20,
+          icon: const Icon(
+              Icons.close),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.blue,
@@ -194,7 +192,10 @@ class _RotateComplexPlanetsState extends State<RotateComplexPlanets> {
                                 _controllerDate.text = _formattedDate;
 
                                 _controllerType.text = 'Thought Later';
-                                _controllerSubType.text = 'COMPLEX';
+                                //_controllerSubType.text = 'COMPLEX';
+
+                                _controllerrotationstate.jumpToPage(0);
+
                                 break;
                               case 1:
                                 _planetsList = _planetsdesignList;
@@ -211,7 +212,11 @@ class _RotateComplexPlanetsState extends State<RotateComplexPlanets> {
 
                                 _controllerTime.text = _formattedTime;
                                 _controllerDate.text = _formattedDate;
+
                                 _controllerType.text = 'Life First';
+
+                                _controllerrotationstate.jumpToPage(3);
+
                                 break;
                               default:
                                 _planetsList = _planetsnowList;

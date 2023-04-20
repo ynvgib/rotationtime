@@ -76,16 +76,16 @@ Hexagram getGateStructure(double _planetlongitude) {
   _linename = idonotknowlinesList[_lineindex];
 
   // string gate line
-  _gateline = _gate.toString() + "." + _line.toString();
+  _gateline = "$_gate.$_line";
 
   // string gate line color
-  _gatelinecolor = _gate.toString() + "." + _line.toString() + "." + _color.toString();
+  _gatelinecolor = "$_gate.$_line.$_color";
 
   // string gate line color tone
-  _gatelinecolortone = _gate.toString() + "." + _line.toString() + "." + _color.toString() + "." + _tone.toString();
+  _gatelinecolortone = "$_gate.$_line.$_color.$_tone";
 
   // string gate line color tone base
-  _gatelinecolortonebase = _gate.toString() + "." + _line.toString() + "." + _color.toString() + "." + _tone.toString() + "." + _base.toString();
+  _gatelinecolortonebase = "$_gate.$_line.$_color.$_tone.$_base";
 
 
   _gateStructure.name = _name;
@@ -141,7 +141,7 @@ HexagramSentence getGateSentence(int _gate, String _language) {
   _hexSentence.subject = _subject;
   _hexSentence.verb = _verb;
   _hexSentence.adverb = _adverb;
-  _hexSentence.sentence = _adjective! + ' ' + _subject! + ' ' + _verb! + ' ' + _adverb!;
+  _hexSentence.sentence = '${_adjective!} ${_subject!} ${_verb!} ${_adverb!}';
 
 
   return _hexSentence;

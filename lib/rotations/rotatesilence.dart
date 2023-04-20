@@ -19,14 +19,10 @@ class _RotateSilenceState extends State<RotateSilence> {
       appBar: AppBar(
           toolbarHeight: 40,
           title: AutoSizeText(_title),
-          leading: TextButton(
-            child: const Text(
-              'X',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold),
-            ),
+          leading: IconButton(
+            iconSize: 20,
+            icon: const Icon(
+                Icons.close),
             onPressed: () => Navigator.of(context).pop(),
           ),
           backgroundColor: Colors.black),

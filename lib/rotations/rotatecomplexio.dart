@@ -88,12 +88,10 @@ class _RotateCompleXIOState extends State<RotateCompleXIO> {
       appBar: AppBar(
         toolbarHeight: 40,
         title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
-        leading: TextButton(
-          child: const Text(
-            'X',
-            style: TextStyle(
-                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
-          ),
+        leading: IconButton(
+          iconSize: 20,
+          icon: const Icon(
+              Icons.close),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.blue,
@@ -501,11 +499,23 @@ class _RotateCompleXIOState extends State<RotateCompleXIO> {
                             ]),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            _hdchannelsList[index].name!,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.normal, fontSize: 15),
+                          child: Flex(direction: Axis.horizontal,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                _hdchannelsList[index].adaptname!,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.normal, fontSize: 15),
+                              ),
+                              SizedBox(width: 5,),
+                              Text(
+                                _hdchannelsList[index].coin!,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.normal, fontSize: 15),
+                              ),
+                            ],
                           ),
                         ),
                       );
