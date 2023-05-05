@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 
 class TimeServices {
   static Future<DateTime> selectDate(BuildContext context) async {
-    DateTime _selectedDate = DateTime.now();
-    DateTime? _pickedDate = await showDatePicker(
+    DateTime selectedDate = DateTime.now();
+    DateTime? pickedDate = await showDatePicker(
         context: context,
-        initialDate: _selectedDate,
+        initialDate: selectedDate,
         firstDate: DateTime(1781),
         lastDate: DateTime(2222));
-    _selectedDate = _pickedDate!;
-    return _selectedDate;
+    selectedDate = pickedDate!;
+    return selectedDate;
   }
 
   static Future<TimeOfDay> selectTime(BuildContext context) async {
-    TimeOfDay _selectedtime = TimeOfDay.now();
-    final TimeOfDay? _newTime = await showTimePicker(
+    TimeOfDay selectedtime = TimeOfDay.now();
+    final TimeOfDay? newTime = await showTimePicker(
         context: context,
-        initialTime: _selectedtime);
-    _selectedtime = _newTime!;
-    return _selectedtime;
+        initialTime: selectedtime);
+    selectedtime = newTime!;
+    return selectedtime;
   }
 
 }

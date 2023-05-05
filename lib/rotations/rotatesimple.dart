@@ -1,22 +1,33 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
+import 'package:finallyicanlearn/services/rotatewidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/services.dart';
 
-// /rotatehexwithlogic
-// rotate one hexagram
-class RotateSimpleOne extends StatefulWidget {
-  const RotateSimpleOne({Key? key}) : super(key: key);
+class RotateSimple extends StatefulWidget {
+  const RotateSimple({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _RotateSimpleOneState();
+    return _RotateSimpleState();
   }
 }
 
-class _RotateSimpleOneState extends State<RotateSimpleOne> {
+class _RotateSimpleState extends State<RotateSimple> {
+  int _currentone = 0;
+
+  final CarouselController _controllerone = CarouselController();
+
+  final TextEditingController _controllerbottomfirsttext =
+  TextEditingController();
+
+  final String _title = subtitles[1];
+
+  final List<String> finalhexNamesList = hexNamesList;
+
   int _currenttop = 0,
       _currentmid = 0,
       _currentbot = 0,
@@ -30,10 +41,6 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
       _controllermid = CarouselController(),
       _controllerbot = CarouselController();
 
-  final String _title = subtitlesEN[4];
-
-  final List<String> finalhexNamesList = hexNamesList;
-
   var _dropdownvalue = hexagramslist[1],
       _dropdowichingvalue = fontHexOrderList[0],
       _dropdowichingordervalue = orderHexagramsWheel[0];
@@ -45,8 +52,7 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
     return Scaffold(
       appBar: AppBar(
           toolbarHeight: 40,
-          title:
-              AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
+          title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
           leading: IconButton(
             iconSize: 20,
             icon: const Icon(
@@ -60,6 +66,51 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(height: 20),
+              CircleAvatar( backgroundColor: Colors.white,
+                maxRadius: 100.0,
+                child: CarouselSlider(
+                  items: mixHexagramSlidersNew,
+                  carouselController: _controllerone,
+                  options: CarouselOptions(
+                      initialPage: 1,
+                      autoPlay: false,
+                      enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                      enlargeCenterPage: true,
+                      aspectRatio: 1.3,
+                      onPageChanged: (indextop, reason) {
+                        setState(() {
+                          _currenttop = indextop;
+                          _controllerbottomfirsttext.text =
+                          hexNamesList[indextop];
+                        });
+                      }),
+                ),
+              ),
+              SizedBox(
+                  width: 200,
+                  child: AutoSizeTextField(
+                    minLines: 1,
+                    minFontSize: 15,
+                    fullwidth: false,
+                    decoration: InputDecoration.collapsed(
+                        hintText: hexNamesList[1],
+                        hintStyle: const TextStyle(color: Colors.grey)),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    controller: _controllerbottomfirsttext,
+                    readOnly: true,
+                  )),
+              SizedBox (height: 20),
+              const Divider(
+                color: Colors.green,
+                thickness: 5,
+              ),
+
               Flex(
                   direction: Axis.horizontal,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -73,7 +124,7 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                       onChanged: (int? dropdowichingordervalueChange) {
                         setState(() {
                           _dropdowichingordervalue =
-                              dropdowichingordervalueChange!;
+                          dropdowichingordervalueChange!;
 
                           _chosenhex = _dropdowichingordervalue;
                           _hexalignedList = hexagramAlignment(_chosenhex);
@@ -111,7 +162,7 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                         setState(() {
                           _dropdowichingvalue = dropdowichingvalueChange!;
                           _fontindex = fontHexOrderList.indexWhere(
-                              (element) => element == _dropdowichingvalue);
+                                  (element) => element == _dropdowichingvalue);
                           _fonthexconverted = fontHexNumbersList[_fontindex];
 
                           _chosenhex = _fonthexconverted;
@@ -156,6 +207,7 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                   items: mixHexagramSlidersNew,
                   carouselController: _controllertop,
                   options: CarouselOptions(
+                      initialPage: 1,
                       autoPlay: false,
                       enlargeCenterPage: true,
                       aspectRatio: 1.3,
@@ -177,6 +229,7 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                   items: mixHexagramSlidersNew,
                   carouselController: _controllermid,
                   options: CarouselOptions(
+                      initialPage: 1,
                       autoPlay: false,
                       enlargeCenterPage: true,
                       aspectRatio: 1.3,
@@ -198,6 +251,7 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                   items: mixHexagramSlidersNew,
                   carouselController: _controllerbot,
                   options: CarouselOptions(
+                      initialPage: 1,
                       autoPlay: false,
                       enlargeCenterPage: true,
                       aspectRatio: 1.3,
@@ -208,19 +262,158 @@ class _RotateSimpleOneState extends State<RotateSimpleOne> {
                       }),
                 ),
               ),
+              SizedBox(height: 20),
 
               const Divider(
                 color: Colors.green,
                 thickness: 5,
               ),
-              Container(
-                alignment: Alignment.center,
-                child: const Text(
-                  'O',
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => build64PopUp(context),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)),
+                          textStyle: const TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold)),
+                      child: const Text('64')),
+                  ElevatedButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              build384PopUp(context),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)),
+                          textStyle: const TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold)),
+                      child: const Text('384')),
+                ],
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => buildComplexPopUp(context),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                    textStyle: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold)),
+                child: const AutoSizeText(
+                  'abcdefghijklmnop',
+                  minFontSize: 10,
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 36,
+                    fontFamily: 'iChing',
+                  ),
+                ),),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => buildSimplePopUp(context),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                    textStyle: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold)),
+                child: const AutoSizeText(
+                  'qrstuvwxyzABCDEF',
+                  minFontSize: 10,
+                  maxLines: 1,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.green,
-                    fontSize: 20,
+                    fontSize: 36,
+                    fontFamily: 'iChing',
+                  ),
+                ),),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => buildBreathPopUp(context),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                    textStyle: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold)),
+                child: const AutoSizeText(
+                  'GHIJKLMNOPQRSTUV',
+                  minFontSize: 10,
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.yellow,
+                    fontSize: 36,
+                    fontFamily: 'iChing',
+                  ),
+                ),),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => buildSilencePopUp(context),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                    textStyle: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold)),
+                child: const AutoSizeText(
+                  'WXYZ1234567890!@',
+                  minFontSize: 10,
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 36,
+                    fontFamily: 'iChing',
+                  ),
+                ),),
+
+              const Divider(
+                color: Colors.green,
+                thickness: 5,
+              ),
+
+              Container(
+                alignment: Alignment.center,
+                child: const AutoSizeText(
+                  'O',
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.green,
+                    fontSize: 40,
                     fontFamily: 'iChing',
                   ),
                 ),

@@ -105,6 +105,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  country_state_city_picker:
+    dependency: "direct main"
+    description:
+      name: country_state_city_picker
+      sha256: "509c282165df329ee5a29babb28e13dce3bc32166cea21b202a49c44d20cfef3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.8"
   crypto:
     dependency: transitive
     description:
@@ -113,6 +121,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  csc_picker:
+    dependency: "direct main"
+    description:
+      name: csc_picker
+      sha256: "7e5d6023a81f53b89a7fb0369953fd4dc676f7ea20e9a0c0707973a5f0aedf14"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.7"
   csslib:
     dependency: transitive
     description:
@@ -227,6 +243,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
+  flutter_shapes:
+    dependency: "direct main"
+    description:
+      name: flutter_shapes
+      sha256: "3606e23a6fbbb81c3d0492b78558979e8e4cac249d03d43e1d7bf35f5473ac73"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -562,6 +586,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.16"
+  timezone:
+    dependency: "direct main"
+    description:
+      name: timezone
+      sha256: "1cfd8ddc2d1cfd836bc93e67b9be88c3adaeca6f40a00ca999104c30693cdca0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.2"
   typed_data:
     dependency: transitive
     description:

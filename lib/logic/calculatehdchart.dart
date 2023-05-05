@@ -9,13 +9,17 @@ class HDServices {
     List<int> uniquegatesList = [];
     Set<int> setgates;
     String channelid = '';
-    List<HDChannel> hdchannels = [];
+    List<HDChannel> hdchannels = [],
+        hdcomplexchannels = [],
+        hdsimplechannels = [],
+        hdbreathchannels = [],
+        hdsilencechannels = [];
 
+    HDChannel tempchannel;
 
     for (int i = 0; personalityplanets.length > i; i++) {
       uniquegatesList.add(personalityplanets[i].gate!);
       uniquegatesList.add(designplanets[i].gate!);
-
     }
     setgates = uniquegatesList.toSet();
     uniquegatesList = setgates.toList();
@@ -31,9 +35,96 @@ class HDServices {
         }
       }
 
+
       for (int i = 0; channelidList.length > i; i++) {
-        hdchannels.add(mapHDChannel(channelidList[i]));
+        //tempchannels.add(mapHDChannel(channelidList[i]));
+        tempchannel = mapHDChannel(channelidList[i]);
+
+        switch (tempchannel.coin) {
+          case 'silence':
+            hdsilencechannels.add(tempchannel);
+            break;
+          case 'breath':
+            hdbreathchannels.add(tempchannel);
+            break;
+          case 'simple':
+            hdsimplechannels.add(tempchannel);
+            break;
+          case 'complex':
+            hdcomplexchannels.add(tempchannel);
+            break;
+          default:
+            hdcomplexchannels.add(tempchannel);
+            break;
+        }
       }
+
+      hdchannels.addAll(hdcomplexchannels);
+      hdchannels.addAll(hdsimplechannels);
+      hdchannels.addAll(hdbreathchannels);
+      hdchannels.addAll(hdsilencechannels);
+    }
+    return hdchannels;
+  }
+
+  static List<HDChannel> getHDChannelsJustNow(
+      List<Hexagram> personalityplanets) {
+    List<String> channelidList = [];
+    List<int> uniquegatesList = [];
+    Set<int> setgates;
+    String channelid = '';
+    List<HDChannel> hdchannels = [],
+        hdcomplexchannels = [],
+        hdsimplechannels = [],
+        hdbreathchannels = [],
+        hdsilencechannels = [];
+
+    HDChannel tempchannel;
+
+    for (int i = 0; personalityplanets.length > i; i++) {
+      uniquegatesList.add(personalityplanets[i].gate!);
+    }
+    setgates = uniquegatesList.toSet();
+    uniquegatesList = setgates.toList();
+    uniquegatesList.sort();
+
+    if (uniquegatesList.isNotEmpty) {
+      for (int i = 0; uniquegatesList.length - 1 > i; i++) {
+        for (int y = 1; uniquegatesList.length - i > y; y++) {
+          channelid = '${uniquegatesList[i]}.${uniquegatesList[y + i]}';
+          if (hdchannelsList.contains(channelid)) {
+            channelidList.add(channelid);
+          }
+        }
+      }
+
+
+      for (int i = 0; channelidList.length > i; i++) {
+        tempchannel = mapHDChannel(channelidList[i]);
+
+        switch (tempchannel.coin) {
+          case 'silence':
+            hdsilencechannels.add(tempchannel);
+            break;
+          case 'breath':
+            hdbreathchannels.add(tempchannel);
+            break;
+          case 'simple':
+            hdsimplechannels.add(tempchannel);
+            break;
+          case 'complex':
+            hdcomplexchannels.add(tempchannel);
+            break;
+          default:
+            hdcomplexchannels.add(tempchannel);
+            break;
+        }
+      }
+
+      hdchannels.addAll(hdcomplexchannels);
+      hdchannels.addAll(hdsimplechannels);
+      hdchannels.addAll(hdbreathchannels);
+      hdchannels.addAll(hdsilencechannels);
     }
     return hdchannels;
   }
@@ -50,7 +141,6 @@ class HDServices {
       }
       centersset = centers.toSet();
       centers = centersset.toList();
-      //print(_centers);
     }
     return centers;
   }
@@ -99,10 +189,11 @@ class HDServices {
   }
 
   static List<String> getHDBasicData(
-      List<Hexagram> personalityplanets, designplanets) {
+      //List<Hexagram> personalityplanets, designplanets, List<HDChannel> hdchannels) {
+      List<HDChannel> hdchannels) {
     List<String> hdbasicdata = [], centers = [], channelsList = [];
 
-    List<HDChannel> hdchannelsList = [];
+    //List<HDChannel> hdchannels = [];
     String channelid = '',
         type = '',
         authority = '',
@@ -111,15 +202,14 @@ class HDServices {
         coin = '',
         coinname = '';
 
-    hdchannelsList = getHDChannels(personalityplanets, designplanets);
-    centers = getHDDefinedCenters(hdchannelsList);
+    //hdchannels = getHDChannels(personalityplanets, designplanets);
+    centers = getHDDefinedCenters(hdchannels);
 
-    for (int i = 0; hdchannelsList.length > i; i++) {
-      channelid = hdchannelsList[i].id!;
+    for (int i = 0; hdchannels.length > i; i++) {
+      channelid = hdchannels[i].id!;
       channelsList.add(channelid);
     }
 
-    //print(_channelsList);
     // first set reflector
     // no channels
     if (centers.isEmpty) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-const String maintitleEN = 'Rotation Time',
+
+const String maintitle = 'Rotation Time',
     language = 'ENGLISH';
 
 final List<String> languagesList = [
@@ -25,30 +26,31 @@ final List<String> titlesEN = [
   '=='
 ];
 
-final List<String> subtitlesEN = [
-  'Complex Planets',
-  'Complex Sentence',
-  'Complex Coin',
-  'Simple IT @ Table',
-  'Simple 3 Coins',
+final List<String> subtitles = [
+  'Complex',
   'Simple',
-  'I don\'t know meditation',
   'breath',
-  'silence'
+  'silence',
+  'I don\'t know',
 ];
+
+final List<String> tempsubtitles = [
+  'Complex HD',
+];
+
 
 // 'Simple 64 + 384 = 448',
 
 final List<String> mainroutes = [
-  '/rotatecomplexplanets',
-  '/rotatecomplexone',
-  '/rotatesimplehd',
-  '/rotatesimpletable',
-  '/rotatesimpleone',
-  '/rotatesimplelanguage',
-  '/rotatesidk',
+  '/rotatecomplex',
+  '/rotatesimple',
   '/rotatebreath',
-  '/rotatesilence'
+  '/rotatesilence',
+  '/rotatesidk',
+];
+
+final List<String> temproutes = [
+  '/rotatecomplexhd',
 ];
 
 final List<String> planetsfullList = [
@@ -510,6 +512,142 @@ final List<String> hexagramNames = [
 ];
 
 /// FULL SENTENCE
+
+final List LineSentenceList = [
+  'Time and Space were are and shall be null',
+  'Time is Creating a Self expression',
+  'Time is Receiving a Driver',
+  'Time is Mutating an Order',
+  'Time shall Answer Fools',
+  'Time shall Wait Fixed Patterns',
+  'Space - Conflict of Friction',
+  'Time shall Arm Interactions',
+  'Time is Holding Together a Contribution',
+  'Time shall Focus small powers',
+  'Time is Treading a Love',
+  'Time was Pacifying ideas',
+  'Time is Stagnating a Caution',
+  'Time was Listening to Secrets',
+  'Time is Empowering a Wealthy Wagon',
+  'Time shall Be Extermes in Modesty',
+  'Time shall Enthusiast Skills',
+  'Time shall Follow Hierarchies',
+  'Time shall Correct Spoilt Authorities',
+  'Space - Approach of Needs',
+  'Time is Contemplating an Attention',
+  'Space - Control Through Biting',
+  'Time is Openning a Grace',
+  'Time is Assimilating a Split Part',
+  'Time is Returning a Rational',
+  'Time is Being a Spirit Love',
+  'Space - Tame of Great Tricks',
+  'Space - Care to Nourish',
+  'Time is Playing a Risky Game',
+  'Time was Persevered in Abysses',
+  'Time was Clinging to Fires',
+  'Time shall Influence Leaderships',
+  'Space - Endurance of Existing Continuity',
+  'Time was Memorizing Private Retreats',
+  'Time is Empowering a Self Greatness',
+  'Time was Changing Progressions',
+  'Time was Enlignthing Dark Crises ',
+  'Space - Family of Friends',
+  'Time is Fighting an Opposition',
+  'Time is Provoking an Obstruction',
+  'Space - Work of Loyalty',
+  'Time was Decreased Fantasies',
+  'Time was Increased Ends',
+  'Time is Breaking Through an Insight',
+  'Space - Come on Alert Meeting',
+  'Space - Gatherers Together',
+  'Time was Pushing upward Self Determinations',
+  'Time was Oppressing Realizations',
+  'Time shall Deepen Solutions',
+  'Space - Revolution of Principles',
+  'Space - Value of Coins in Pots',
+  'Time is Arousing a Shock',
+  'Time shall Keep Actions Still',
+  'Time was Developed From Beginnings',
+  'Space - Drive of Ambition',
+  'Time is Freeing an Abundant Spirit',
+  'Time was Lost in Beliefs',
+  'Time is Clearing a Breath',
+  'Time shall Enjoy Lives',
+  'Space - Spread of Unity',
+  'Time is Accepting a Limitation',
+  'Time is Mystifying a Truth',
+  'Time shall Detail Advantaged Thoughts',
+  'Time shall Complete After Doubts',
+  'Time was Complete Before Confusions',
+];
+
+final List LineSentenceWBreaksList = [
+  'Time and Space \nwere are and shall be null',
+  'Time is \nCreating a Self expression',
+  'Time is \nReceiving a Driver',
+  'Time is \nMutating an Order',
+  'Time shall \nAnswer Fools',
+  'Time shall \nWait Fixed Patterns',
+  'Space - \nConflict of Friction',
+  'Time shall \nArm Interactions',
+  'Time is \nHolding Together a Contribution',
+  'Time shall \nFocus small powers',
+  'Time is \nTreading a Love',
+  'Time was \nPacifying ideas',
+  'Time is \nStagnating a Caution',
+  'Time was \nListening to Secrets',
+  'Time is \nEmpowering a Wealthy Wagon',
+  'Time shall \nBe Extermes in Modesty',
+  'Time shall \nEnthusiast Skills',
+  'Time shall \nFollow Hierarchies',
+  'Time shall \nCorrect Spoilt Authorities',
+  'Space - \nApproach of Needs',
+  'Time is \nContemplating an Attention',
+  'Space - \nControl Through Biting',
+  'Time is \nOpenning a Grace',
+  'Time is \nAssimilating a Split Part',
+  'Time is \nReturning a Rational',
+  'Time is \nBeing a Spirit Love',
+  'Space - \nTame of Great Tricks',
+  'Space - \nCare to Nourish',
+  'Time is \nPlaying a Risky Game',
+  'Time was \nPersevered in Abysses',
+  'Time was \nClinging to Fires',
+  'Time shall \nInfluence Leaderships',
+  'Space - \nEndurance of Existing Continuity',
+  'Time was \nMemorizing Private Retreats',
+  'Time is \nEmpowering a Self Greatness',
+  'Time was \nChanging Progressions',
+  'Time was \nEnlignthing Dark Crises ',
+  'Space - \nFamily of Friends',
+  'Time is \nFighting an Opposition',
+  'Time is \nProvoking an Obstruction',
+  'Space - \nWork of Loyalty',
+  'Time was \nDecreased Fantasies',
+  'Time was \nIncreased Ends',
+  'Time is \nBreaking Through an Insight',
+  'Space - \nCome on Alert Meeting',
+  'Space - \nGatherers Together',
+  'Time was \nPushing upward Self Determinations',
+  'Time was \nOppressing Realizations',
+  'Time shall \nDeepen Solutions',
+  'Space - \nRevolution of Principles',
+  'Space - \nValue of Coins in Pots',
+  'Time is \nArousing a Shock',
+  'Time shall \nKeep Actions Still',
+  'Time was \nDeveloped From Beginnings',
+  'Space - \nDrive of Ambition',
+  'Time is \nFreeing an Abundant Spirit',
+  'Time was \nLost in Beliefs',
+  'Time is \nClearing a Breath',
+  'Time shall \nEnjoy Lives',
+  'Space - \nSpread of Unity',
+  'Time is \nAccepting a Limitation',
+  'Time is \nMystifying a Truth',
+  'Time shall \nDetail Advantaged Thoughts',
+  'Time shall \nComplete After Doubts',
+  'Time was \nComplete Before Confusions',
+];
 
 final List hexSentenceList = [
   0,

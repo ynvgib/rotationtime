@@ -3,11 +3,12 @@ import 'dart:async';
 import 'package:finallyicanlearn/logic/hdsubstructure.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:sweph/sweph.dart';
-import 'package:timezone/timezone.dart';
 
 class AstrologyServices {
   static Future<List<CoordinatesWithSpeed>> getPlanetsGatesNow(DateTime now) async {
     final List<CoordinatesWithSpeed> cswPlanets;
+
+    double latitude = 0.0, longitude = 0.0;
 
     final secondsInMinutes = now.second / 60;
     final minutesInHours  = (now.minute + secondsInMinutes) / 60;
@@ -18,10 +19,10 @@ class AstrologyServices {
 
 
     final CoordinatesWithSpeed posSun, posEarth, posNorthnode, posSouthnode,
-          posMoon, posMercury, posVenus, posMars, posJupiter,
-          posSaturn, posUranus, posNeptune, posPluto;
+        posMoon, posMercury, posVenus, posMars, posJupiter,
+        posSaturn, posUranus, posNeptune, posPluto;
 
-        //posChiron - not added for now - 16042023
+    //posChiron - not added for now - 16042023
 
 
     posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_SWIEPH);
@@ -40,9 +41,9 @@ class AstrologyServices {
     //posChiron = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_CHIRON, SwephFlag.SEFLG_SWIEPH);
 
     cswPlanets = [posSun, posNorthnode, posMoon,
-                    posMercury, posVenus,
-                    posMars, posJupiter, posSaturn,
-                    posUranus, posNeptune, posPluto];
+      posMercury, posVenus,
+      posMars, posJupiter, posSaturn,
+      posUranus, posNeptune, posPluto];
 
     return cswPlanets;
   }
@@ -63,12 +64,12 @@ class AstrologyServices {
         cwsUranus = mappedplanets [8],
         cwsNeptune = mappedplanets [9],
         cwsPluto = mappedplanets [10];
-        //cwsChiron = mappedplanets [11];
+    //cwsChiron = mappedplanets [11];
 
     //double _latitude = 0.0,
     //   _longitude = 0.0,
     double
-        earthlongitude = 0.0,
+    earthlongitude = 0.0,
         southnodelongitude = 0.0;
 
     Hexagram sunSubStructure,
@@ -84,7 +85,7 @@ class AstrologyServices {
         uranusSubStructure,
         neptuneSubStructure,
         plutoSubStructure;
-        //chironSubStructure;
+    //chironSubStructure;
 
     try {
 
@@ -179,9 +180,9 @@ class AstrologyServices {
         gaplongitude -= 360;
       }
       else if (gaplongitude < -270)
-        {
-          gaplongitude += 360;
-        }
+      {
+        gaplongitude += 360;
+      }
 
 
       if (gaplongitude > 0) {
@@ -397,41 +398,9 @@ class AstrologyServices {
     return designTime;
   }
 
-  // new
-  static Future<DateTime> getUtcTime(DateTime nowdata) async {
-
-    //DateTime chosenTime = nowdata; //Emulator time is Israel time
-    print ('now time is: $nowdata');
-    final israelLocation = getLocation('Asia/Jerusalem');
-    final utcLocation = getLocation('UTC');
-
-    final DateTime israelTime = TZDateTime.from(nowdata, israelLocation);
-    final DateTime utcTime = TZDateTime.from(israelTime, utcLocation);
-    //print('Chosen Time Israel: $israelTime');
-    //print('converted TIME: $utcTime');
-
-    var _locations = timeZoneDatabase.locations;
-    _locations.values.forEach((element) {
-      print(element.name);
-      print(element.currentTimeZone.abbreviation);
-      print(element.currentTimeZone.offset);
-      print(element.currentTimeZone.isDst);
-      print(element.zones.length);
-    });
-
-    return utcTime;
-  }
-
   static Future<List<Hexagram>> getCurrentData(DateTime nowdata) async {
     List<Hexagram> planetsList = [];
     List<CoordinatesWithSpeed> planets = [];
-
-    //DateTime newtime;
-
-    // new
-    //newtime = await AstrologyServices.getUtcTime(nowdata);
-    //print ("New Time is: $newtime");
-    // end new
 
     planets = await AstrologyServices.getPlanetsGatesNow(nowdata);
     planetsList = await AstrologyServices.mapPlanets(planets);
