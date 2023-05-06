@@ -401,7 +401,7 @@ class AstrologyServices {
   static Future<DateTime> getUtcTime(DateTime nowdata) async {
 
     //DateTime chosenTime = nowdata; //Emulator time is Israel time
-    print ('now time is: $nowdata');
+    //print ('now time is: $nowdata');
     final israelLocation = getLocation('Asia/Jerusalem');
     final utcLocation = getLocation('UTC');
 
@@ -411,13 +411,13 @@ class AstrologyServices {
     //print('converted TIME: $utcTime');
 
     var _locations = timeZoneDatabase.locations;
-    _locations.values.forEach((element) {
-      print(element.name);
-      print(element.currentTimeZone.abbreviation);
-      print(element.currentTimeZone.offset);
-      print(element.currentTimeZone.isDst);
-      print(element.zones.length);
-    });
+    for (var element in _locations.values) {
+      //print(element.name);
+     // print(element.currentTimeZone.abbreviation);
+      //print(element.currentTimeZone.offset);
+      //print(element.currentTimeZone.isDst);
+     // print(element.zones.length);
+    }
 
     return utcTime;
   }
@@ -428,10 +428,7 @@ class AstrologyServices {
 
     //DateTime newtime;
 
-    // new
-    //newtime = await AstrologyServices.getUtcTime(nowdata);
-    //print ("New Time is: $newtime");
-    // end new
+    //print ('nowdata: $nowdata');
 
     planets = await AstrologyServices.getPlanetsGatesNow(nowdata);
     planetsList = await AstrologyServices.mapPlanets(planets);

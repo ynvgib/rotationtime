@@ -1,15 +1,16 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:country_state_city/utils/city_utils.dart';
+import 'package:country_state_city/utils/country_utils.dart';
+import 'package:country_state_city/utils/state_utils.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/rotations/rotatecomplex.dart';
 import 'package:finallyicanlearn/rotations/rotatesimple.dart';
 import 'package:finallyicanlearn/rotations/rotateidk.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
 import 'package:finallyicanlearn/rotations/rotatebreath.dart';
-import 'package:finallyicanlearn/services/telegram_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sweph/sweph.dart';
-
 
 // flutter build windows
 // flutter build web --web-renderer canvaskit
@@ -22,18 +23,12 @@ Future<void> main() async {
     "packages/sweph/assets/ephe/seas_18.se1",
   ]);
 
-  //const String telegrammsg = 'Ido Not Know';
-  //await telegramClient.sendMessage(telegrammsg);
-  //final telegranResponse = await telegramClient.sendMessage(telegrammsg);
-  //print(telegranResponse.statusCode);
+  //tz.initializeTimeZones();
 
-  //teledart
-  await TelegramClient.init();
+  runApp(const RotateEnglish());}
 
-  runApp(const RotateMain());}
-
-class RotateMain extends StatelessWidget {
-  const RotateMain({Key? key}) : super(key: key);
+class RotateEnglish extends StatelessWidget {
+  const RotateEnglish({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +39,7 @@ class RotateMain extends StatelessWidget {
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (ctx) => RotateHome(),
+        '/': (ctx) => HomePageEN(),
         mainroutes[0]: (ctx) => const RotateComplex(),
         mainroutes[1]: (ctx) => const RotateSimple(),
         mainroutes[2]: (ctx) => const RotateBreath(),
@@ -55,8 +50,8 @@ class RotateMain extends StatelessWidget {
   }
 }
 
-class RotateHome extends StatelessWidget {
-  RotateHome({Key? key}) : super(key: key);
+class HomePageEN extends StatelessWidget {
+  HomePageEN({Key? key}) : super(key: key);
 
   final String _title = maintitle;
   final List<String> _titles = subtitles;
@@ -116,11 +111,11 @@ class RotateHome extends StatelessWidget {
           child: ListView(
             itemExtent: MediaQuery.of(context).size.height / 13,
             children: [
-              MappingItem(_titles[0], mainroutes[0], Colors.blue),
-              MappingItem(_titles[1], mainroutes[1], Colors.green),
-              MappingItem(_titles[2], mainroutes[2], Colors.yellow),
-              MappingItem(_titles[3], mainroutes[3], Colors.red),
-              MappingItem(_titles[4], mainroutes[4], Colors.black),
+              MappingItemEN(_titles[0], mainroutes[0], Colors.blue),
+              MappingItemEN(_titles[1], mainroutes[1], Colors.green),
+              MappingItemEN(_titles[2], mainroutes[2], Colors.yellow),
+              MappingItemEN(_titles[3], mainroutes[3], Colors.red),
+              MappingItemEN(_titles[4], mainroutes[4], Colors.black),
             ],
           ),
         ),
@@ -164,11 +159,11 @@ class RotateHome extends StatelessWidget {
   }
 }
 
-class MappingItem extends StatelessWidget {
+class MappingItemEN extends StatelessWidget {
   final String title;
   final String route;
   final Color _color;
-  const MappingItem(this.title, this.route, this._color, {Key? key})
+  const MappingItemEN(this.title, this.route, this._color, {Key? key})
       : super(key: key);
 
   @override
@@ -208,6 +203,4 @@ class MappingItem extends StatelessWidget {
       },
     );
   }
-
 }
-

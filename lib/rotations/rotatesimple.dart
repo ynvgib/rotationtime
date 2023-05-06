@@ -105,7 +105,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                     controller: _controllerbottomfirsttext,
                     readOnly: true,
                   )),
-              SizedBox (height: 20),
+              const SizedBox (height: 20),
               const Divider(
                 color: Colors.green,
                 thickness: 5,
@@ -262,7 +262,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                       }),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               const Divider(
                 color: Colors.green,

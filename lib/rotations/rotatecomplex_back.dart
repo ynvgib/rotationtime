@@ -22,6 +22,7 @@ class RotateComplex extends StatefulWidget {
 }
 
 class _RotateComplexState extends State<RotateComplex> {
+
   List<String> _centers = [];
 
   String _selfreminder =
@@ -42,6 +43,8 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllergatetext = TextEditingController(),
       _controllerlinetext = TextEditingController(),
       _controllercoinsttext = TextEditingController(),
+
+
       _controllercoinfirsttext = TextEditingController(),
       _controllercoinsecondtext = TextEditingController(),
       _controllercointhirdtext = TextEditingController(),
@@ -141,7 +144,7 @@ class _RotateComplexState extends State<RotateComplex> {
   Hexagram _planethex = Hexagram();
 
   final List<bool> _isPlanetSelectedList =
-      List<bool>.filled(13, false, growable: false);
+  List<bool>.filled(13, false, growable: false);
 
   final List<String> finalhexNamesList = hexNamesList;
 
@@ -154,6 +157,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -175,7 +179,7 @@ class _RotateComplexState extends State<RotateComplex> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 20),
             Flex(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               direction: Axis.horizontal,
@@ -274,7 +278,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             setState(() {
                               _currentmain = indextop;
                               _controllermaintext.text =
-                                  hexNamesList[_currentmain];
+                              hexNamesList[_currentmain];
                             });
                           }),
                     ),
@@ -323,13 +327,13 @@ class _RotateComplexState extends State<RotateComplex> {
                     case -1:
                       _previousPlanetIndex = index;
                       _isPlanetSelectedList[index] =
-                          !_isPlanetSelectedList[index];
+                      !_isPlanetSelectedList[index];
                       break;
                     default:
                       _isPlanetSelectedList[_previousPlanetIndex] =
-                          !_isPlanetSelectedList[_previousPlanetIndex];
+                      !_isPlanetSelectedList[_previousPlanetIndex];
                       _isPlanetSelectedList[index] =
-                          !_isPlanetSelectedList[index];
+                      !_isPlanetSelectedList[index];
                       _previousPlanetIndex = index;
                   }
 
@@ -345,8 +349,8 @@ class _RotateComplexState extends State<RotateComplex> {
                   _controllerlinetext.text = _planethex.line!.toString();
 
                   _controllergatelinestory.text = idonotknowlinesList[
-                      (idonotknowlinesList.indexOf(_planethex.gate!) +
-                          _planethex.line!)];
+                  (idonotknowlinesList.indexOf(_planethex.gate!) +
+                      _planethex.line!)];
                 });
               },
               children: [
@@ -591,7 +595,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         //_controllertopfirsttext.text = _hexsentence.adjective!;
 
                         _controllercoinsttext.text =
-                            LineSentenceWBreaksList[_chosenhex];
+                        LineSentenceWBreaksList[_chosenhex];
                         //_controllertopsecondtext.text = _hexsentence.subject!;
                         //_controllertopthirdtext.text = _hexsentence.verb!;
                         //_controllertopfourthtext.text = _hexsentence.adverb!;
@@ -599,7 +603,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         firstcolor =
                             controlCollor(finalhexNamesList[_currenttop]);
                         _controllercoinfirsttext.text =
-                            finalhexNamesList[_currenttop];
+                        finalhexNamesList[_currenttop];
                       });
                     }),
               ),
@@ -636,7 +640,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
 
                         _controllercoinsttext.text =
-                            LineSentenceWBreaksList[_chosenhex];
+                        LineSentenceWBreaksList[_chosenhex];
 
                         //_controllertopfirsttext.text = _hexsentence.adjective!;
                         //_controllertopsecondtext.text = _hexsentence.subject!;
@@ -646,7 +650,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         secondcolor =
                             controlCollor(finalhexNamesList[_currentmid]);
                         _controllercoinsecondtext.text =
-                            finalhexNamesList[_currentmid];
+                        finalhexNamesList[_currentmid];
                       });
                     }),
               ),
@@ -682,7 +686,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
 
                         _controllercoinsttext.text =
-                            LineSentenceWBreaksList[_chosenhex];
+                        LineSentenceWBreaksList[_chosenhex];
                         //_controllertopfirsttext.text = _hexsentence.adjective!;
                         //_controllertopsecondtext.text = _hexsentence.subject!;
                         //_controllertopthirdtext.text = _hexsentence.verb!;
@@ -691,7 +695,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         thirdcolor =
                             controlCollor(finalhexNamesList[_currentbot]);
                         _controllercointhirdtext.text =
-                            finalhexNamesList[_currentbot];
+                        finalhexNamesList[_currentbot];
                       });
                     }),
               ),
@@ -803,7 +807,7 @@ class _RotateComplexState extends State<RotateComplex> {
                                 DateFormat('yyyy-MM-dd').format(_now);
                             _formattedTime = DateFormat.Hms().format(_now);
                             _controllerTime.text =
-                                '$_formattedTime $_formattedDate';
+                            '$_formattedTime $_formattedDate';
                             //_controllerDate.text = _formattedDate;
                             _controllerPlanetType.text = 'Thought Later';
 
@@ -819,7 +823,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             _formattedTime =
                                 DateFormat.Hms().format(_designTime);
                             _controllerTime.text =
-                                '$_formattedTime $_formattedDate';
+                            '$_formattedTime $_formattedDate';
                             //_controllerDate.text = _formattedDate;
 
                             _controllerPlanetType.text = 'Life First';
@@ -835,7 +839,7 @@ class _RotateComplexState extends State<RotateComplex> {
                                 DateFormat('yyyy-MM-dd').format(_now);
                             _formattedTime = DateFormat.Hms().format(_now);
                             _controllerTime.text =
-                                '$_formattedTime $_formattedDate';
+                            '$_formattedTime $_formattedDate';
                             //_controllerDate.text = _formattedDate;
                             break;
                         }
@@ -896,10 +900,10 @@ class _RotateComplexState extends State<RotateComplex> {
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration:
-                          const InputDecoration.collapsed(hintText: 'Sentence'),
+                      const InputDecoration.collapsed(hintText: 'Sentence'),
                       controller: _controllerPlanetSubType,
                       style:
-                          const TextStyle(fontSize: 12, color: Colors.black)),
+                      const TextStyle(fontSize: 12, color: Colors.black)),
                 ),
                 const SizedBox(width: 5),
                 SizedBox(
@@ -909,10 +913,10 @@ class _RotateComplexState extends State<RotateComplex> {
                       textAlign: TextAlign.left,
                       readOnly: true,
                       decoration:
-                          const InputDecoration.collapsed(hintText: 'Rotation'),
+                      const InputDecoration.collapsed(hintText: 'Rotation'),
                       controller: _controllerPlanetType,
                       style:
-                          const TextStyle(fontSize: 12, color: Colors.black)),
+                      const TextStyle(fontSize: 12, color: Colors.black)),
                 ),
               ],
             ),
@@ -956,7 +960,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       maxRadius: 13.0,
                       backgroundColor: Colors.blue,
                       foregroundImage:
-                          AssetImage('assets/planets/northnode.png')),
+                      AssetImage('assets/planets/northnode.png')),
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width / 4,
@@ -1078,7 +1082,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                            const InputDecoration.collapsed(hintText: ''),
+                        const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.left,
                         controller: _controllerMoonGate,
                         style: const TextStyle(
@@ -1124,14 +1128,14 @@ class _RotateComplexState extends State<RotateComplex> {
                         maxRadius: 13.0,
                         backgroundColor: Colors.green,
                         backgroundImage:
-                            AssetImage('assets/planets/mercury.png')),
+                        AssetImage('assets/planets/mercury.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                            const InputDecoration.collapsed(hintText: ''),
+                        const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.left,
                         controller: _controllerMercuryGate,
                         style: const TextStyle(
@@ -1177,14 +1181,14 @@ class _RotateComplexState extends State<RotateComplex> {
                         maxRadius: 13.0,
                         backgroundColor: Colors.green,
                         backgroundImage:
-                            AssetImage('assets/planets/venus.png')),
+                        AssetImage('assets/planets/venus.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                            const InputDecoration.collapsed(hintText: ''),
+                        const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.left,
                         controller: _controllerVenusGate,
                         style: const TextStyle(
@@ -1236,7 +1240,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                            const InputDecoration.collapsed(hintText: ''),
+                        const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.left,
                         controller: _controllerMarsGate,
                         style: const TextStyle(
@@ -1285,14 +1289,14 @@ class _RotateComplexState extends State<RotateComplex> {
                         maxRadius: 13.0,
                         backgroundColor: Colors.yellow,
                         backgroundImage:
-                            AssetImage('assets/planets/jupiter.png')),
+                        AssetImage('assets/planets/jupiter.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                            const InputDecoration.collapsed(hintText: ''),
+                        const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.left,
                         controller: _controllerJupiterGate,
                         style: const TextStyle(
@@ -1338,14 +1342,14 @@ class _RotateComplexState extends State<RotateComplex> {
                         maxRadius: 13.0,
                         backgroundColor: Colors.yellow,
                         backgroundImage:
-                            AssetImage('assets/planets/saturn.png')),
+                        AssetImage('assets/planets/saturn.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                            const InputDecoration.collapsed(hintText: ''),
+                        const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.left,
                         controller: _controllerSaturnGate,
                         style: const TextStyle(
@@ -1443,14 +1447,14 @@ class _RotateComplexState extends State<RotateComplex> {
                         maxRadius: 13.0,
                         backgroundColor: Colors.yellow,
                         backgroundImage:
-                            AssetImage('assets/planets/neptune.png')),
+                        AssetImage('assets/planets/neptune.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                            const InputDecoration.collapsed(hintText: ''),
+                        const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.left,
                         controller: _controllerNeptuneGate,
                         style: const TextStyle(
@@ -1496,14 +1500,14 @@ class _RotateComplexState extends State<RotateComplex> {
                         maxRadius: 13.0,
                         backgroundColor: Colors.yellow,
                         backgroundImage:
-                            AssetImage('assets/planets/pluto.png')),
+                        AssetImage('assets/planets/pluto.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                            const InputDecoration.collapsed(hintText: ''),
+                        const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.left,
                         controller: _controllerPlutoGate,
                         style: const TextStyle(
@@ -1552,14 +1556,14 @@ class _RotateComplexState extends State<RotateComplex> {
                         maxRadius: 13.0,
                         backgroundColor: Colors.red,
                         backgroundImage:
-                            AssetImage('assets/planets/earth.png')),
+                        AssetImage('assets/planets/earth.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                            const InputDecoration.collapsed(hintText: ''),
+                        const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.left,
                         controller: _controllerEarthGate,
                         style: const TextStyle(
@@ -1605,14 +1609,14 @@ class _RotateComplexState extends State<RotateComplex> {
                         maxRadius: 13.0,
                         backgroundColor: Colors.red,
                         backgroundImage:
-                            AssetImage('assets/planets/southnode.png')),
+                        AssetImage('assets/planets/southnode.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                            const InputDecoration.collapsed(hintText: ''),
+                        const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.left,
                         controller: _controllerSouthNodeGate,
                         style: const TextStyle(
@@ -1728,7 +1732,7 @@ class _RotateComplexState extends State<RotateComplex> {
               child: TextField(
                   readOnly: true,
                   decoration:
-                      const InputDecoration.collapsed(hintText: '2022-02-19'),
+                  const InputDecoration.collapsed(hintText: '2022-02-19'),
                   textAlign: TextAlign.center,
                   controller: _controllerDatePick,
                   style: const TextStyle(
@@ -1744,7 +1748,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 _selectedDate = await TimeServices.selectDate(context);
                 setState(() {
                   _controllerDatePick.text =
-                      "${_selectedDate.toLocal()}".split(' ')[0];
+                  "${_selectedDate.toLocal()}".split(' ')[0];
                 });
               },
               style: ElevatedButton.styleFrom(
@@ -1766,13 +1770,13 @@ class _RotateComplexState extends State<RotateComplex> {
 
                 _designTime = await AstrologyServices.getDesignTime(_now);
                 _planetsdesignList =
-                    await AstrologyServices.getCurrentData(_designTime);
+                await AstrologyServices.getCurrentData(_designTime);
 
-                _channelsList = HDServices.getHDChannels(
-                    _planetsnowList, _planetsdesignList);
+                _channelsList =
+                    HDServices.getHDChannels(_planetsnowList, _planetsdesignList);
 
                 List<String> hdbasicdata =
-                    HDServices.getHDBasicData(_channelsList);
+                HDServices.getHDBasicData(_channelsList);
 
                 _centers = HDServices.getHDDefinedCenters(_channelsList);
                 //_fearSentence = HDServices.getHDDefinedFears(_centers);
@@ -1796,8 +1800,8 @@ class _RotateComplexState extends State<RotateComplex> {
 
                 _controllerlinetext.text = _planethex.line!.toString();
                 _controllergatelinestory.text = idonotknowlinesList[
-                    (idonotknowlinesList.indexOf(_planethex.gate!) +
-                        _planethex.line!)];
+                (idonotknowlinesList.indexOf(_planethex.gate!) +
+                    _planethex.line!)];
 
                 switch (_previousPlanetIndex) {
                   case -1:
@@ -1806,7 +1810,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     break;
                   default:
                     _isPlanetSelectedList[_previousPlanetIndex] =
-                        !_isPlanetSelectedList[_previousPlanetIndex];
+                    !_isPlanetSelectedList[_previousPlanetIndex];
                     _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
                     _previousPlanetIndex = 0;
                 }
@@ -1849,14 +1853,12 @@ class _RotateComplexState extends State<RotateComplex> {
 
                 //_designTime = await AstrologyServices.getDesignTime(_now);
                 //emulate design time to now time to prevent blank
-                _planetsdesignList =
-                    await AstrologyServices.getCurrentData(_now);
+                _planetsdesignList = await AstrologyServices.getCurrentData(_now);
 
-                _channelsList =
-                    HDServices.getHDChannelsJustNow(_planetsnowList);
+                _channelsList = HDServices.getHDChannelsJustNow(_planetsnowList);
 
                 List<String> hdbasicdata =
-                    HDServices.getHDBasicData(_channelsList);
+                HDServices.getHDBasicData(_channelsList);
 
                 _controlHDData(hdbasicdata);
 
@@ -1880,8 +1882,8 @@ class _RotateComplexState extends State<RotateComplex> {
 
                 _controllerlinetext.text = _planethex.line!.toString();
                 _controllergatelinestory.text = idonotknowlinesList[
-                    (idonotknowlinesList.indexOf(_planethex.gate!) +
-                        _planethex.line!)];
+                (idonotknowlinesList.indexOf(_planethex.gate!) +
+                    _planethex.line!)];
 
                 switch (_previousPlanetIndex) {
                   case -1:
@@ -1890,7 +1892,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     break;
                   default:
                     _isPlanetSelectedList[_previousPlanetIndex] =
-                        !_isPlanetSelectedList[_previousPlanetIndex];
+                    !_isPlanetSelectedList[_previousPlanetIndex];
                     _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
                     _previousPlanetIndex = 0;
                 }
@@ -2053,7 +2055,7 @@ class _RotateComplexState extends State<RotateComplex> {
               }
               return Container(
                 decoration: BoxDecoration(
-                    //color: Colors.blue[100],
+                  //color: Colors.blue[100],
                     color: coincolor,
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
@@ -2183,7 +2185,7 @@ class _RotateComplexState extends State<RotateComplex> {
               minLines: 1,
               maxLines: 2,
               decoration:
-                  const InputDecoration.collapsed(hintText: 'I don\'t know'),
+              const InputDecoration.collapsed(hintText: 'I don\'t know'),
               controller: _controllerFinalLine,
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
@@ -2223,7 +2225,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                   child:
-                      const Text('Channels', style: TextStyle(fontSize: 13))),
+                  const Text('Channels', style: TextStyle(fontSize: 13))),
             ],
           ),
         ],
@@ -2332,7 +2334,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             .toString(),
                         textAlign: TextAlign.center,
                         style:
-                            const TextStyle(color: Colors.blue, fontSize: 15)),
+                        const TextStyle(color: Colors.blue, fontSize: 15)),
                   ),
                 ),
               ),
@@ -2368,7 +2370,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       child: Text(_planetsdesignList[0].line.toString(),
                           textAlign: TextAlign.center,
                           style:
-                              const TextStyle(color: Colors.red, fontSize: 15)),
+                          const TextStyle(color: Colors.red, fontSize: 15)),
                     ),
                   ),
                 ),
@@ -2424,7 +2426,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             .toString(),
                         textAlign: TextAlign.center,
                         style:
-                            const TextStyle(color: Colors.red, fontSize: 15)),
+                        const TextStyle(color: Colors.red, fontSize: 15)),
                   ),
                 ),
               ),

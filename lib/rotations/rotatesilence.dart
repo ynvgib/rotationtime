@@ -11,7 +11,7 @@ class RotateSilence extends StatefulWidget {
 }
 
 class _RotateSilenceState extends State<RotateSilence> {
-  String _title = '';
+  final String _title = '';
 
   @override
   Widget build(BuildContext context) {

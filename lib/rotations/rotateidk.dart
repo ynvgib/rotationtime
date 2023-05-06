@@ -78,19 +78,19 @@ class _RotateIDKState extends State<RotateIDK> {
           const SizedBox(
             height: 30.0,
           ),
-          Divider(thickness: 5, color: Colors.black),
-          AutoSizeText('I don\'t know',
-              style: const TextStyle(
+          const Divider(thickness: 5, color: Colors.black),
+          const AutoSizeText('I don\'t know',
+              style: TextStyle(
                   color: Colors.black,
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold)),
-          Divider(thickness: 5, color: Colors.black),
-          AutoSizeText('Meditation',
-              style: const TextStyle(
+          const Divider(thickness: 5, color: Colors.black),
+          const AutoSizeText('Meditation',
+              style: TextStyle(
                   color: Colors.black,
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold)),
-          Divider(thickness: 5, color: Colors.black),
+          const Divider(thickness: 5, color: Colors.black),
           const Text(
             '#',
             textAlign: TextAlign.center,
