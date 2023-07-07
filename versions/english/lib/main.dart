@@ -1,16 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:country_state_city/utils/city_utils.dart';
-import 'package:country_state_city/utils/country_utils.dart';
-import 'package:country_state_city/utils/state_utils.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/rotations/rotatecomplex.dart';
 import 'package:finallyicanlearn/rotations/rotatesimple.dart';
 import 'package:finallyicanlearn/rotations/rotateidk.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
 import 'package:finallyicanlearn/rotations/rotatebreath.dart';
+import 'package:finallyicanlearn/services/telegram_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sweph/sweph.dart';
+
 
 // flutter build windows
 // flutter build web --web-renderer canvaskit
@@ -23,12 +22,13 @@ Future<void> main() async {
     "packages/sweph/assets/ephe/seas_18.se1",
   ]);
 
-  //tz.initializeTimeZones();
+  //teledart
+  await TelegramClient.init();
 
-  runApp(const RotateEnglish());}
+  runApp(const RotateMain());}
 
-class RotateEnglish extends StatelessWidget {
-  const RotateEnglish({Key? key}) : super(key: key);
+class RotateMain extends StatelessWidget {
+  const RotateMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class RotateEnglish extends StatelessWidget {
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (ctx) => HomePageEN(),
+        '/': (ctx) => RotateHome(),
         mainroutes[0]: (ctx) => const RotateComplex(),
         mainroutes[1]: (ctx) => const RotateSimple(),
         mainroutes[2]: (ctx) => const RotateBreath(),
@@ -50,8 +50,8 @@ class RotateEnglish extends StatelessWidget {
   }
 }
 
-class HomePageEN extends StatelessWidget {
-  HomePageEN({Key? key}) : super(key: key);
+class RotateHome extends StatelessWidget {
+  RotateHome({Key? key}) : super(key: key);
 
   final String _title = maintitle;
   final List<String> _titles = subtitles;
@@ -111,11 +111,11 @@ class HomePageEN extends StatelessWidget {
           child: ListView(
             itemExtent: MediaQuery.of(context).size.height / 13,
             children: [
-              MappingItemEN(_titles[0], mainroutes[0], Colors.blue),
-              MappingItemEN(_titles[1], mainroutes[1], Colors.green),
-              MappingItemEN(_titles[2], mainroutes[2], Colors.yellow),
-              MappingItemEN(_titles[3], mainroutes[3], Colors.red),
-              MappingItemEN(_titles[4], mainroutes[4], Colors.black),
+              MappingItem(_titles[0], mainroutes[0], Colors.blue),
+              MappingItem(_titles[1], mainroutes[1], Colors.green),
+              MappingItem(_titles[2], mainroutes[2], Colors.yellow),
+              MappingItem(_titles[3], mainroutes[3], Colors.red),
+              MappingItem(_titles[4], mainroutes[4], Colors.black),
             ],
           ),
         ),
@@ -159,11 +159,11 @@ class HomePageEN extends StatelessWidget {
   }
 }
 
-class MappingItemEN extends StatelessWidget {
+class MappingItem extends StatelessWidget {
   final String title;
   final String route;
   final Color _color;
-  const MappingItemEN(this.title, this.route, this._color, {Key? key})
+  const MappingItem(this.title, this.route, this._color, {Key? key})
       : super(key: key);
 
   @override
@@ -203,4 +203,6 @@ class MappingItemEN extends StatelessWidget {
       },
     );
   }
+
 }
+

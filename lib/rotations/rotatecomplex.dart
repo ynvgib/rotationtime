@@ -24,6 +24,8 @@ class RotateComplex extends StatefulWidget {
 class _RotateComplexState extends State<RotateComplex> {
   List<String> _centers = [];
 
+  HumanDesign hdfinaldata = HumanDesign();
+
   String _selfreminder =
       'First Choose Time\nThen Return Here \nFor the Reminder';
   final String _timeselfreminder =
@@ -175,7 +177,7 @@ class _RotateComplexState extends State<RotateComplex> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Flex(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               direction: Axis.horizontal,
@@ -282,24 +284,75 @@ class _RotateComplexState extends State<RotateComplex> {
                 )
               ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) => _buildDataPopUp(context),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50))),
-                child: const Text(
-                  'Rotate Human Design',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                )),
+
             const Divider(
               color: Colors.blue,
               thickness: 5,
+            ),
+            SizedBox(
+              height: 40,
+              width: 40,
+              child: CarouselSlider(
+                items: mixHexagramSlidersBol,
+                carouselController: _controllerconstate,
+                options: CarouselOptions(
+                    scrollDirection: Axis.vertical,
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    aspectRatio: 1.3,
+                    onPageChanged: (indexconstate, reason) {
+                      setState(() {
+                        _currentconstate = indexconstate;
+
+                        switch (_currentconstate) {
+                          case 0:
+                            _planetsList = _planetsnowList;
+
+                            _controlPlanetHexagramData(_planetsList);
+
+                            _formattedDate =
+                                DateFormat('yyyy-MM-dd').format(_now);
+                            _formattedTime = DateFormat.Hms().format(_now);
+                            _controllerTime.text =
+                            '$_formattedTime $_formattedDate';
+                            //_controllerDate.text = _formattedDate;
+                            _controllerPlanetType.text = 'Thought Later';
+
+                            _controllerrotationstate.jumpToPage(0);
+                            break;
+                          case 1:
+                            _planetsList = _planetsdesignList;
+
+                            _controlPlanetHexagramData(_planetsList);
+
+                            _formattedDate =
+                                DateFormat('yyyy-MM-dd').format(_designTime);
+                            _formattedTime =
+                                DateFormat.Hms().format(_designTime);
+                            _controllerTime.text =
+                            '$_formattedTime $_formattedDate';
+                            //_controllerDate.text = _formattedDate;
+
+                            _controllerPlanetType.text = 'Life First';
+
+                            _controllerrotationstate.jumpToPage(3);
+                            break;
+                          default:
+                            _planetsList = _planetsnowList;
+
+                            _controlPlanetHexagramData(_planetsList);
+
+                            _formattedDate =
+                                DateFormat('yyyy-MM-dd').format(_now);
+                            _formattedTime = DateFormat.Hms().format(_now);
+                            _controllerTime.text =
+                            '$_formattedTime $_formattedDate';
+                            //_controllerDate.text = _formattedDate;
+                            break;
+                        }
+                      });
+                    }),
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -482,9 +535,12 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
               ],
             ),
+
             const Divider(
               color: Colors.blue,
             ),
+
+
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -596,9 +652,9 @@ class _RotateComplexState extends State<RotateComplex> {
                         //_controllertopthirdtext.text = _hexsentence.verb!;
                         //_controllertopfourthtext.text = _hexsentence.adverb!;
 
-                        firstcolor =
+                        thirdcolor =
                             controlCollor(finalhexNamesList[_currenttop]);
-                        _controllercoinfirsttext.text =
+                        _controllercointhirdtext.text =
                             finalhexNamesList[_currenttop];
                       });
                     }),
@@ -688,9 +744,9 @@ class _RotateComplexState extends State<RotateComplex> {
                         //_controllertopthirdtext.text = _hexsentence.verb!;
                         //_controllertopfourthtext.text = _hexsentence.adverb!;
 
-                        thirdcolor =
+                        firstcolor =
                             controlCollor(finalhexNamesList[_currentbot]);
-                        _controllercointhirdtext.text =
+                        _controllercoinfirsttext.text =
                             finalhexNamesList[_currentbot];
                       });
                     }),
@@ -777,71 +833,6 @@ class _RotateComplexState extends State<RotateComplex> {
             ),
             const Divider(
               color: Colors.blue,
-            ),
-            SizedBox(
-              height: 40,
-              width: 40,
-              child: CarouselSlider(
-                items: mixHexagramSlidersBol,
-                carouselController: _controllerconstate,
-                options: CarouselOptions(
-                    scrollDirection: Axis.vertical,
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    aspectRatio: 1.3,
-                    onPageChanged: (indexconstate, reason) {
-                      setState(() {
-                        _currentconstate = indexconstate;
-
-                        switch (_currentconstate) {
-                          case 0:
-                            _planetsList = _planetsnowList;
-
-                            _controlPlanetHexagramData(_planetsList);
-
-                            _formattedDate =
-                                DateFormat('yyyy-MM-dd').format(_now);
-                            _formattedTime = DateFormat.Hms().format(_now);
-                            _controllerTime.text =
-                                '$_formattedTime $_formattedDate';
-                            //_controllerDate.text = _formattedDate;
-                            _controllerPlanetType.text = 'Thought Later';
-
-                            _controllerrotationstate.jumpToPage(0);
-                            break;
-                          case 1:
-                            _planetsList = _planetsdesignList;
-
-                            _controlPlanetHexagramData(_planetsList);
-
-                            _formattedDate =
-                                DateFormat('yyyy-MM-dd').format(_designTime);
-                            _formattedTime =
-                                DateFormat.Hms().format(_designTime);
-                            _controllerTime.text =
-                                '$_formattedTime $_formattedDate';
-                            //_controllerDate.text = _formattedDate;
-
-                            _controllerPlanetType.text = 'Life First';
-
-                            _controllerrotationstate.jumpToPage(3);
-                            break;
-                          default:
-                            _planetsList = _planetsnowList;
-
-                            _controlPlanetHexagramData(_planetsList);
-
-                            _formattedDate =
-                                DateFormat('yyyy-MM-dd').format(_now);
-                            _formattedTime = DateFormat.Hms().format(_now);
-                            _controllerTime.text =
-                                '$_formattedTime $_formattedDate';
-                            //_controllerDate.text = _formattedDate;
-                            break;
-                        }
-                      });
-                    }),
-              ),
             ),
             Flex(
               direction: Axis.horizontal,
@@ -1624,6 +1615,22 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.red,
             ),
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => _buildDataPopUp(context),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50))),
+                child: const Text(
+                  'Rotate Human Design',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                )),
+            SizedBox(height: 10),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1771,15 +1778,17 @@ class _RotateComplexState extends State<RotateComplex> {
                 _channelsList = HDServices.getHDChannels(
                     _planetsnowList, _planetsdesignList);
 
-                List<String> hdbasicdata =
-                    HDServices.getHDBasicData(_channelsList);
+                //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+                hdfinaldata = HDServices.getHDBasicData(_channelsList);
 
                 _centers = HDServices.getHDDefinedCenters(_channelsList);
                 //_fearSentence = HDServices.getHDDefinedFears(_centers);
                 //_selfreminderSentence = HDServices.getSelfReminder();
                 _selfreminder = _timeselfreminder;
 
-                _controlHDData(hdbasicdata);
+                //_controlHDData(hdbasicdata);
+                _controlHDData(hdfinaldata);
+                hdfinaldata = HDServices.getHDBasicData(_channelsList);
 
                 _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
                 _formattedTime = DateFormat.Hms().format(_now);
@@ -1855,10 +1864,11 @@ class _RotateComplexState extends State<RotateComplex> {
                 _channelsList =
                     HDServices.getHDChannelsJustNow(_planetsnowList);
 
-                List<String> hdbasicdata =
-                    HDServices.getHDBasicData(_channelsList);
+                //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
 
-                _controlHDData(hdbasicdata);
+                hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                //_controlHDData(hdbasicdata);
+                _controlHDData(hdfinaldata);
 
                 _centers = HDServices.getHDDefinedCenters(_channelsList);
                 //_fearSentence = HDServices.getHDDefinedFears(_centers);
@@ -2446,16 +2456,18 @@ class _RotateComplexState extends State<RotateComplex> {
     );
   }
 
-  void _controlHDData(List<String> hdbasicdata) {
-    _controllerStrategy.text = hdbasicdata[0];
+  void _controlHDData(HumanDesign hdbasicdata) {
 
-    _controllerAuthority.text = hdbasicdata[1];
-    _controllerType.text = hdbasicdata[2];
-    _controllerSentence.text = hdbasicdata[3];
-    //_controllercoinfirsttext.text = hdbasicdata[4];
-    //_currenttop = hexNamesList.indexOf(hdbasicdata[4]);
-    _controllercoin.jumpToPage(hexNamesList.indexOf(hdbasicdata[4]));
     _controllerFinalLine.text = 'XIO I don\'t know';
+
+    _controllerStrategy.text = hdbasicdata.strategy!;
+    _controllerAuthority.text = hdbasicdata.authority!;
+    _controllerType.text = hdbasicdata.type!;
+    _controllerSentence.text = hdbasicdata.sentence!;
+    _controllercoinfirsttext.text = hdbasicdata.coinname!;
+    _controllercoin.jumpToPage(hexNamesList.indexOf(hdbasicdata.coinname!));
+    _currenttop = hexNamesList.indexOf(hdbasicdata.coinname!);
+
   }
 
   controlCollor(String colorcoin) {

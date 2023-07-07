@@ -22,13 +22,8 @@ Future<void> main() async {
     "packages/sweph/assets/ephe/seas_18.se1",
   ]);
 
-  //const String telegrammsg = 'Ido Not Know';
-  //await telegramClient.sendMessage(telegrammsg);
-  //final telegranResponse = await telegramClient.sendMessage(telegrammsg);
-  //print(telegranResponse.statusCode);
-
   //teledart
-  await TelegramClient.init();
+  //await TelegramClient.init();
 
   runApp(const RotateMain());}
 

@@ -4,7 +4,6 @@ import 'dart:ui' as ui;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:timezone/timezone.dart';
 
 class RotateComplexHD extends StatefulWidget {
@@ -32,7 +31,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
 
   List<int> gatestatelist = List.filled(65, 0, growable: false);
 
-  final String _title = subtitlesEN[8];
+  final String _title = tempsubtitles[0];
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +81,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       padding: const EdgeInsets.only(top: 35.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           Text(
                             '64',
                             style: TextStyle(fontSize: 10),
@@ -107,7 +106,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 17,
                           ),
                           CustomPaint(
@@ -146,7 +145,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(width: 17),
+                          const SizedBox(width: 17),
                           CustomPaint(
                             foregroundPainter:
                             VerticalGatePainter(gatestate: gatestatelist[47]),
@@ -199,7 +198,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(width: 17),
+                          const SizedBox(width: 17),
                           CustomPaint(
                             foregroundPainter:
                             VerticalGatePainter(gatestate: gatestatelist[17]),
@@ -235,7 +234,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(width: 17),
+                          const SizedBox(width: 17),
                           CustomPaint(
                             foregroundPainter:
                             VerticalGatePainter(gatestate: gatestatelist[62]),
@@ -288,7 +287,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(width: 17),
+                          const SizedBox(width: 17),
                           CustomPaint(
                             foregroundPainter:
                             VerticalGatePainter(gatestate: gatestatelist[31]),
@@ -325,7 +324,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(width: 17),
+                          const SizedBox(width: 17),
                           CustomPaint(
                             foregroundPainter:
                             VerticalGatePainter(gatestate: gatestatelist[7]),
@@ -390,7 +389,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(width: 17),
+                          const SizedBox(width: 17),
                           CustomPaint(
                             foregroundPainter:
                             VerticalGatePainter(gatestate: gatestatelist[15]),
@@ -426,7 +425,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(width: 17),
+                          const SizedBox(width: 17),
                           CustomPaint(
                             foregroundPainter:
                             VerticalGatePainter(gatestate: gatestatelist[5]),
@@ -476,7 +475,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(width: 17),
+                          const SizedBox(width: 17),
                           CustomPaint(
                             foregroundPainter:
                             VerticalGatePainter(gatestate: gatestatelist[42]),
@@ -512,7 +511,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(width: 17),
+                          const SizedBox(width: 17),
                           CustomPaint(
                             foregroundPainter:
                             VerticalGatePainter(gatestate: gatestatelist[53]),
@@ -562,7 +561,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
               ),
 
 
-              Divider(color: Colors.blue),
+              const Divider(color: Colors.blue),
 
               // head
               SizedBox(
@@ -585,7 +584,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                       alignment: Alignment.bottomCenter,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
+                        children: const [
                           Text(
                             '64',
                             style: TextStyle(fontSize: 10),
@@ -608,7 +607,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 17,
                   ),
                   CustomPaint(
@@ -644,7 +643,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: 17),
+                  const SizedBox(width: 17),
                   CustomPaint(
                     foregroundPainter:
                     VerticalGatePainter(gatestate: gatestatelist[47]),
@@ -688,7 +687,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: 17),
+                  const SizedBox(width: 17),
                   CustomPaint(
                     foregroundPainter:
                     VerticalGatePainter(gatestate: gatestatelist[17]),
@@ -721,7 +720,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: 17),
+                  const SizedBox(width: 17),
                   CustomPaint(
                     foregroundPainter:
                     VerticalGatePainter(gatestate: gatestatelist[62]),
@@ -764,7 +763,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: 17),
+                  const SizedBox(width: 17),
                   CustomPaint(
                     foregroundPainter:
                     VerticalGatePainter(gatestate: gatestatelist[31]),
@@ -798,7 +797,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: 17),
+                  const SizedBox(width: 17),
                   CustomPaint(
                     foregroundPainter:
                     VerticalGatePainter(gatestate: gatestatelist[7]),
@@ -855,7 +854,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(width: 17),
+                        const SizedBox(width: 17),
                         CustomPaint(
                           foregroundPainter:
                           VerticalGatePainter(gatestate: gatestatelist[15]),
@@ -893,7 +892,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: 17),
+                  const SizedBox(width: 17),
                   CustomPaint(
                     foregroundPainter:
                     VerticalGatePainter(gatestate: gatestatelist[5]),
@@ -998,7 +997,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: 17),
+                  const SizedBox(width: 17),
                   CustomPaint(
                     foregroundPainter:
                     VerticalGatePainter(gatestate: gatestatelist[42]),
@@ -1031,7 +1030,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: 17),
+                  const SizedBox(width: 17),
                   CustomPaint(
                     foregroundPainter:
                     VerticalGatePainter(gatestate: gatestatelist[53]),
@@ -1100,7 +1099,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                 ),
               ),
 
-              Divider (thickness: 5, color: Colors.green)
+              const Divider (thickness: 5, color: Colors.green)
 
             ]),
       ),
@@ -1455,7 +1454,7 @@ class VerticalGatePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final p1 = Offset(0, 0);
+    const p1 = Offset(0, 0);
     final p2 = Offset(0, size.height);
 
     Color gatecolor1 = Colors.white;
@@ -1492,8 +1491,8 @@ class VerticalGatePainter extends CustomPainter {
     Paint paint = Paint()
       ..strokeWidth = 6
       ..shader = ui.Gradient.linear(
-          Offset(0, 4), // center
-          Offset(1, 4), // radius
+          const Offset(0, 4), // center
+          const Offset(1, 4), // radius
           [gatecolor1, gatecolor2],
           [0.5, 0.5],
           TileMode.clamp);
@@ -1516,7 +1515,7 @@ class HorizontalGatePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final p1 = Offset(0, 5);
+    const p1 = Offset(0, 5);
     final p2 = Offset(size.width, 5);
 
     Color gatecolor1 = Colors.white;
@@ -1553,8 +1552,8 @@ class HorizontalGatePainter extends CustomPainter {
     Paint paint = Paint()
       ..strokeWidth = 6
       ..shader = ui.Gradient.linear(
-          Offset(0, 4), // center
-          Offset(1, 4), // radius
+          const Offset(0, 4), // center
+          const Offset(1, 4), // radius
           [gatecolor1, gatecolor2],
           [0.5, 0.5],
           TileMode.clamp);
@@ -1581,9 +1580,9 @@ class TimeHelperService {
   void convertLocalToDetroit() async {
     DateTime indiaTime = DateTime.now(); //Emulator time is India time
     final detroitTime =
-    new TZDateTime.from(indiaTime, getLocation('America/Detroit'));
-    print('Local India Time: ' + indiaTime.toString());
-    print('Detroit Time: ' + detroitTime.toString());
+    TZDateTime.from(indiaTime, getLocation('America/Detroit'));
+    print('Local India Time: $indiaTime');
+    print('Detroit Time: $detroitTime');
   }
 }
 
