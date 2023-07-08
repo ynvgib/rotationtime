@@ -389,7 +389,7 @@ class HDServices {
 
   static HDChannel mapHDChannel(String channelid) {
     HDChannel hdchannel = HDChannel();
-    int hdchannelidx;
+    int hdchannelidx, hdchannelsentenceidx;
 
     hdchannelidx = hdchannelsList.indexOf(channelid);
     hdchannel.id = hdchannelsList[hdchannelidx];
@@ -402,6 +402,9 @@ class HDServices {
     hdchannel.circuitry = hdchannelsList[hdchannelidx + 7];
     hdchannel.circuit = hdchannelsList[hdchannelidx + 8];
     hdchannel.stream = hdchannelsList[hdchannelidx + 9];
+
+    hdchannelsentenceidx = hdchannelsentenceList.indexOf(channelid);
+    hdchannel.sentence = hdchannelsentenceList[hdchannelsentenceidx + 1];
 
     return hdchannel;
   }

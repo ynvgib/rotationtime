@@ -50,42 +50,55 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllerNorthNodeHex = TextEditingController(),
       _controllerNorthNodeText = TextEditingController(),
       _controllerNorthNodeGate = TextEditingController(),
+      _controllerDesignNorthNodeGate = TextEditingController(),
       _controllerSunHex = TextEditingController(),
       _controllerSunText = TextEditingController(),
       _controllerSunGate = TextEditingController(),
+      _controllerDesignSunGate = TextEditingController(),
       _controllerMoonHex = TextEditingController(),
       _controllerMoonText = TextEditingController(),
       _controllerMoonGate = TextEditingController(),
+      _controllerDesignMoonGate = TextEditingController(),
       _controllerMarsHex = TextEditingController(),
       _controllerMarsText = TextEditingController(),
       _controllerMarsGate = TextEditingController(),
+      _controllerDesignMarsGate = TextEditingController(),
       _controllerVenusHex = TextEditingController(),
       _controllerVenusText = TextEditingController(),
       _controllerVenusGate = TextEditingController(),
+      _controllerDesignVenusGate = TextEditingController(),
       _controllerMercuryHex = TextEditingController(),
       _controllerMercuryText = TextEditingController(),
       _controllerMercuryGate = TextEditingController(),
+      _controllerDesignMercuryGate = TextEditingController(),
       _controllerJupiterHex = TextEditingController(),
       _controllerJupiterText = TextEditingController(),
       _controllerJupiterGate = TextEditingController(),
+      _controllerDesignJupiterGate = TextEditingController(),
       _controllerSaturnHex = TextEditingController(),
       _controllerSaturnText = TextEditingController(),
       _controllerSaturnGate = TextEditingController(),
+      _controllerDesignSaturnGate = TextEditingController(),
       _controllerUranusHex = TextEditingController(),
       _controllerUranusText = TextEditingController(),
       _controllerUranusGate = TextEditingController(),
+      _controllerDesignUranusGate = TextEditingController(),
       _controllerNeptuneHex = TextEditingController(),
       _controllerNeptuneText = TextEditingController(),
       _controllerNeptuneGate = TextEditingController(),
+      _controllerDesignNeptuneGate = TextEditingController(),
       _controllerPlutoHex = TextEditingController(),
       _controllerPlutoText = TextEditingController(),
       _controllerPlutoGate = TextEditingController(),
+      _controllerDesignPlutoGate = TextEditingController(),
       _controllerEarthHex = TextEditingController(),
       _controllerEarthText = TextEditingController(),
       _controllerEarthGate = TextEditingController(),
+      _controllerDesignEarthGate = TextEditingController(),
       _controllerSouthNodeHex = TextEditingController(),
       _controllerSouthNodeText = TextEditingController(),
       _controllerSouthNodeGate = TextEditingController(),
+      _controllerDesignSouthNodeGate = TextEditingController(),
       _controllerPlanetType = TextEditingController(),
       _controllerPlanetSubType = TextEditingController();
 
@@ -124,7 +137,8 @@ class _RotateComplexState extends State<RotateComplex> {
       _chosenhex = 1,
       _hexagramVal = 0,
       _carouselvalueindex = 0,
-      _previousPlanetIndex = -1;
+      _previousPlanetIndex = -1,
+      _currentline = 1;
 
   Hexagram _sunhex = Hexagram(),
       _earthhex = Hexagram(),
@@ -138,7 +152,20 @@ class _RotateComplexState extends State<RotateComplex> {
       _saturnhex = Hexagram(),
       _uranushex = Hexagram(),
       _neptunehex = Hexagram(),
-      _plutohex = Hexagram();
+      _plutohex = Hexagram(),
+      _sundesignhex = Hexagram(),
+      _earthdesignhex = Hexagram(),
+      _northnodedesignhex = Hexagram(),
+      _southnodedesignhex = Hexagram(),
+      _moondesignhex = Hexagram(),
+      _mercurydesignhex = Hexagram(),
+      _venusdesignhex = Hexagram(),
+      _marsdesignhex = Hexagram(),
+      _jupiterdesignhex = Hexagram(),
+      _saturndesignhex = Hexagram(),
+      _uranusdesignhex = Hexagram(),
+      _neptunedesignhex = Hexagram(),
+      _plutodesignhex = Hexagram();
 
   Hexagram _planethex = Hexagram();
 
@@ -284,7 +311,6 @@ class _RotateComplexState extends State<RotateComplex> {
                 )
               ],
             ),
-
             const Divider(
               color: Colors.blue,
               thickness: 5,
@@ -296,7 +322,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 items: mixHexagramSlidersBol,
                 carouselController: _controllerconstate,
                 options: CarouselOptions(
-                    scrollDirection: Axis.vertical,
+                    scrollDirection: Axis.horizontal,
                     autoPlay: false,
                     enlargeCenterPage: true,
                     aspectRatio: 1.3,
@@ -314,23 +340,23 @@ class _RotateComplexState extends State<RotateComplex> {
                                 DateFormat('yyyy-MM-dd').format(_now);
                             _formattedTime = DateFormat.Hms().format(_now);
                             _controllerTime.text =
-                            '$_formattedTime $_formattedDate';
+                                '$_formattedTime $_formattedDate';
                             //_controllerDate.text = _formattedDate;
                             _controllerPlanetType.text = 'Thought Later';
 
                             _controllerrotationstate.jumpToPage(0);
                             break;
                           case 1:
-                            _planetsList = _planetsdesignList;
+                            //_planetsList = _planetsdesignList;
 
-                            _controlPlanetHexagramData(_planetsList);
+                            _controlPlanetHexagramData(_planetsdesignList);
 
                             _formattedDate =
                                 DateFormat('yyyy-MM-dd').format(_designTime);
                             _formattedTime =
                                 DateFormat.Hms().format(_designTime);
                             _controllerTime.text =
-                            '$_formattedTime $_formattedDate';
+                                '$_formattedTime $_formattedDate';
                             //_controllerDate.text = _formattedDate;
 
                             _controllerPlanetType.text = 'Life First';
@@ -346,7 +372,7 @@ class _RotateComplexState extends State<RotateComplex> {
                                 DateFormat('yyyy-MM-dd').format(_now);
                             _formattedTime = DateFormat.Hms().format(_now);
                             _controllerTime.text =
-                            '$_formattedTime $_formattedDate';
+                                '$_formattedTime $_formattedDate';
                             //_controllerDate.text = _formattedDate;
                             break;
                         }
@@ -390,12 +416,16 @@ class _RotateComplexState extends State<RotateComplex> {
                   //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
                   //_hexsentence = LineSentenceList[_planethex.gate!];
 
-                  _hexalignedList = hexagramAlignment(_planethex.gate!);
-                  _controllertop.jumpToPage(_hexalignedList[0]);
-                  _controllermid.jumpToPage(_hexalignedList[1]);
-                  _controllerbot.jumpToPage(_hexalignedList[2]);
+                  _setCoins();
+
+                  //_hexalignedList = hexagramAlignment(_planethex.gate!);
+
+                  //_controllertop.jumpToPage(_hexalignedList[0]);
+                  //_controllermid.jumpToPage(_hexalignedList[1]);
+                  //_controllerbot.jumpToPage(_hexalignedList[2]);
 
                   _controllerlinetext.text = _planethex.line!.toString();
+                  _currentline = _planethex.line!;
 
                   _controllergatelinestory.text = idonotknowlinesList[
                       (idonotknowlinesList.indexOf(_planethex.gate!) +
@@ -535,12 +565,222 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
               ],
             ),
-
             const Divider(
               color: Colors.blue,
             ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
+                    child: AutoSizeTextField(
+                      minFontSize: 10,
+                      maxFontSize: 30,
+                      decoration: InputDecoration.collapsed(
+                          hintText: finalhexNamesList[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: firstcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinfirsttext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: finalhexNamesList[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: secondcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinsecondtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: finalhexNamesList[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: thirdcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointhirdtext,
+                      readOnly: true,
+                    )),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 10,
+                minWidth: 10,
+                maxHeight: MediaQuery.of(context).size.height * 0.1,
+                maxWidth: MediaQuery.of(context).size.width * 0.15,
+              ),
+              child: CarouselSlider(
+                items: mixHexagramSlidersNew,
+                carouselController: _controllertop,
+                options: CarouselOptions(
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    aspectRatio: 1.3,
+                    onPageChanged: (indextop, reason) {
+                      setState(() {
+                        _currenttop = indextop;
 
+                        _hexagramVal = ((_currenttop + 1) * 100 +
+                            (_currentmid + 1) * 10 +
+                            (_currentbot + 1));
 
+                        _carouselvalueindex =
+                            hexCarouselWheelOrderList.indexOf(_hexagramVal);
+
+                        _chosenhex = orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllergatetext.text = _chosenhex.toString();
+
+                        // idonotknow _currentline
+                        //_controllergatelinestory.text = 'test';
+                        _controllergatelinestory.text = idonotknowlinesList[
+                            (idonotknowlinesList.indexOf(_chosenhex) +
+                                _currentline)];
+
+                        //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
+                        //_hexsentence = LineSentenceList[_planethex.gate!];
+
+                        //_controllertopfirsttext.text = _hexsentence.adjective!;
+
+                        _controllercoinsttext.text =
+                            LineSentenceList[_chosenhex];
+                        //_controllertopsecondtext.text = _hexsentence.subject!;
+                        //_controllertopthirdtext.text = _hexsentence.verb!;
+                        //_controllertopfourthtext.text = _hexsentence.adverb!;
+
+                        thirdcolor =
+                            controlCollor(finalhexNamesList[_currenttop]);
+                        _controllercointhirdtext.text =
+                            finalhexNamesList[_currenttop];
+                      });
+                    }),
+              ),
+            ),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 10,
+                minWidth: 10,
+                maxHeight: MediaQuery.of(context).size.height * 0.1,
+                maxWidth: MediaQuery.of(context).size.width * 0.15,
+              ),
+              child: CarouselSlider(
+                items: mixHexagramSlidersNew,
+                carouselController: _controllermid,
+                options: CarouselOptions(
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    aspectRatio: 1.3,
+                    onPageChanged: (indexmid, reason) {
+                      setState(() {
+                        _currentmid = indexmid;
+
+                        _hexagramVal = ((_currenttop + 1) * 100 +
+                            (_currentmid + 1) * 10 +
+                            (_currentbot + 1));
+
+                        _carouselvalueindex =
+                            hexCarouselWheelOrderList.indexOf(_hexagramVal);
+
+                        _chosenhex = orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllergatetext.text = _chosenhex.toString();
+
+                        //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
+
+                        _controllercoinsttext.text =
+                            LineSentenceList[_chosenhex];
+
+                        //_controllertopfirsttext.text = _hexsentence.adjective!;
+                        //_controllertopsecondtext.text = _hexsentence.subject!;
+                        //_controllertopthirdtext.text = _hexsentence.verb!;
+                        //_controllertopfourthtext.text = _hexsentence.adverb!;
+
+                        _controllergatelinestory.text = idonotknowlinesList[
+                            (idonotknowlinesList.indexOf(_chosenhex) +
+                                _currentline)];
+
+                        secondcolor =
+                            controlCollor(finalhexNamesList[_currentmid]);
+                        _controllercoinsecondtext.text =
+                            finalhexNamesList[_currentmid];
+                      });
+                    }),
+              ),
+            ),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 10,
+                minWidth: 10,
+                maxHeight: MediaQuery.of(context).size.height * 0.1,
+                maxWidth: MediaQuery.of(context).size.width * 0.15,
+              ),
+              child: CarouselSlider(
+                items: mixHexagramSlidersNew,
+                carouselController: _controllerbot,
+                options: CarouselOptions(
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    aspectRatio: 1.3,
+                    onPageChanged: (indexbot, reason) {
+                      setState(() {
+                        _currentbot = indexbot;
+                        _hexagramVal = ((_currenttop + 1) * 100 +
+                            (_currentmid + 1) * 10 +
+                            (_currentbot + 1));
+
+                        _carouselvalueindex =
+                            hexCarouselWheelOrderList.indexOf(_hexagramVal);
+
+                        _chosenhex = orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllergatetext.text = _chosenhex.toString();
+
+                        //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
+
+                        _controllercoinsttext.text =
+                            LineSentenceList[_chosenhex];
+                        //_controllertopfirsttext.text = _hexsentence.adjective!;
+                        //_controllertopsecondtext.text = _hexsentence.subject!;
+                        //_controllertopthirdtext.text = _hexsentence.verb!;
+                        //_controllertopfourthtext.text = _hexsentence.adverb!;
+
+                        _controllergatelinestory.text = idonotknowlinesList[
+                            (idonotknowlinesList.indexOf(_chosenhex) +
+                                _currentline)];
+
+                        firstcolor =
+                            controlCollor(finalhexNamesList[_currentbot]);
+                        _controllercoinfirsttext.text =
+                            finalhexNamesList[_currentbot];
+                      });
+                    }),
+              ),
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -591,179 +831,16 @@ class _RotateComplexState extends State<RotateComplex> {
               color: Colors.blue,
             ),
             SizedBox(
-                width: MediaQuery.of(context).size.height / 3,
-                child: AutoSizeTextField(
-                  minLines: 1,
-                  maxLines: 4,
-                  minFontSize: 17,
-                  fullwidth: true,
-                  decoration: const InputDecoration.collapsed(
-                      hintText: 'Story',
-                      hintStyle: TextStyle(color: Colors.black)),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.normal,
-                  ),
-                  controller: _controllergatelinestory,
-                  readOnly: true,
-                )),
-            const Divider(
-              color: Colors.blue,
-            ),
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: 10,
-                minWidth: 10,
-                maxHeight: MediaQuery.of(context).size.height * 0.1,
-                maxWidth: MediaQuery.of(context).size.width * 0.15,
-              ),
-              child: CarouselSlider(
-                items: mixHexagramSlidersNew,
-                carouselController: _controllertop,
-                options: CarouselOptions(
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    aspectRatio: 1.3,
-                    onPageChanged: (indextop, reason) {
-                      setState(() {
-                        _currenttop = indextop;
-
-                        _hexagramVal = ((_currenttop + 1) * 100 +
-                            (_currentmid + 1) * 10 +
-                            (_currentbot + 1));
-
-                        _carouselvalueindex =
-                            hexCarouselWheelOrderList.indexOf(_hexagramVal);
-
-                        _chosenhex = orderHexagramsWheel[_carouselvalueindex];
-
-                        _controllergatetext.text = _chosenhex.toString();
-
-                        //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-                        //_hexsentence = LineSentenceList[_planethex.gate!];
-
-                        //_controllertopfirsttext.text = _hexsentence.adjective!;
-
-                        _controllercoinsttext.text =
-                            LineSentenceWBreaksList[_chosenhex];
-                        //_controllertopsecondtext.text = _hexsentence.subject!;
-                        //_controllertopthirdtext.text = _hexsentence.verb!;
-                        //_controllertopfourthtext.text = _hexsentence.adverb!;
-
-                        thirdcolor =
-                            controlCollor(finalhexNamesList[_currenttop]);
-                        _controllercointhirdtext.text =
-                            finalhexNamesList[_currenttop];
-                      });
-                    }),
-              ),
-            ),
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: 10,
-                minWidth: 10,
-                maxHeight: MediaQuery.of(context).size.height * 0.1,
-                maxWidth: MediaQuery.of(context).size.width * 0.15,
-              ),
-              child: CarouselSlider(
-                items: mixHexagramSlidersNew,
-                carouselController: _controllermid,
-                options: CarouselOptions(
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    aspectRatio: 1.3,
-                    onPageChanged: (indexmid, reason) {
-                      setState(() {
-                        _currentmid = indexmid;
-
-                        _hexagramVal = ((_currenttop + 1) * 100 +
-                            (_currentmid + 1) * 10 +
-                            (_currentbot + 1));
-
-                        _carouselvalueindex =
-                            hexCarouselWheelOrderList.indexOf(_hexagramVal);
-
-                        _chosenhex = orderHexagramsWheel[_carouselvalueindex];
-
-                        _controllergatetext.text = _chosenhex.toString();
-
-                        //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-
-                        _controllercoinsttext.text =
-                            LineSentenceWBreaksList[_chosenhex];
-
-                        //_controllertopfirsttext.text = _hexsentence.adjective!;
-                        //_controllertopsecondtext.text = _hexsentence.subject!;
-                        //_controllertopthirdtext.text = _hexsentence.verb!;
-                        //_controllertopfourthtext.text = _hexsentence.adverb!;
-
-                        secondcolor =
-                            controlCollor(finalhexNamesList[_currentmid]);
-                        _controllercoinsecondtext.text =
-                            finalhexNamesList[_currentmid];
-                      });
-                    }),
-              ),
-            ),
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: 10,
-                minWidth: 10,
-                maxHeight: MediaQuery.of(context).size.height * 0.1,
-                maxWidth: MediaQuery.of(context).size.width * 0.15,
-              ),
-              child: CarouselSlider(
-                items: mixHexagramSlidersNew,
-                carouselController: _controllerbot,
-                options: CarouselOptions(
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    aspectRatio: 1.3,
-                    onPageChanged: (indexbot, reason) {
-                      setState(() {
-                        _currentbot = indexbot;
-                        _hexagramVal = ((_currenttop + 1) * 100 +
-                            (_currentmid + 1) * 10 +
-                            (_currentbot + 1));
-
-                        _carouselvalueindex =
-                            hexCarouselWheelOrderList.indexOf(_hexagramVal);
-
-                        _chosenhex = orderHexagramsWheel[_carouselvalueindex];
-
-                        _controllergatetext.text = _chosenhex.toString();
-
-                        //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-
-                        _controllercoinsttext.text =
-                            LineSentenceWBreaksList[_chosenhex];
-                        //_controllertopfirsttext.text = _hexsentence.adjective!;
-                        //_controllertopsecondtext.text = _hexsentence.subject!;
-                        //_controllertopthirdtext.text = _hexsentence.verb!;
-                        //_controllertopfourthtext.text = _hexsentence.adverb!;
-
-                        firstcolor =
-                            controlCollor(finalhexNamesList[_currentbot]);
-                        _controllercoinfirsttext.text =
-                            finalhexNamesList[_currentbot];
-                      });
-                    }),
-              ),
-            ),
-            const Divider(
-              color: Colors.blue,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 1.7,
+              //width: MediaQuery.of(context).size.width / 1.7,
+              width: MediaQuery.of(context).size.width / 1.5,
               child: AutoSizeTextField(
                 minLines: 1,
-                maxLines: 3,
-                minFontSize: 16,
-                fullwidth: false,
+                maxLines: 4,
+                minFontSize: 15,
+                maxFontSize: 25,
+                fullwidth: true,
                 decoration: InputDecoration.collapsed(
-                    hintText: LineSentenceWBreaksList[0],
+                    hintText: LineSentenceList[0],
                     hintStyle: const TextStyle(color: Colors.black)),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
@@ -778,59 +855,27 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.33,
-                    child: AutoSizeTextField(
-                      minFontSize: 10,
-                      maxFontSize: 30,
-                      decoration: InputDecoration.collapsed(
-                          hintText: finalhexNamesList[0],
-                          hintStyle: const TextStyle(color: Colors.black)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: firstcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinfirsttext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: finalhexNamesList[0],
-                          hintStyle: const TextStyle(color: Colors.black)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: secondcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinsecondtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: finalhexNamesList[0],
-                          hintStyle: const TextStyle(color: Colors.black)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: thirdcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercointhirdtext,
-                      readOnly: true,
-                    )),
-              ],
-            ),
+            SizedBox(
+                //width: MediaQuery.of(context).size.height / 3,
+                width: MediaQuery.of(context).size.width / 1.5,
+                child: AutoSizeTextField(
+                  minLines: 1,
+                  maxLines: 4,
+                  minFontSize: 15,
+                  maxFontSize: 25,
+                  fullwidth: true,
+                  decoration: const InputDecoration.collapsed(
+                      hintText: 'Rotating Coins Story',
+                      hintStyle: TextStyle(color: Colors.black)),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.normal,
+                  ),
+                  controller: _controllergatelinestory,
+                  readOnly: true,
+                )),
             const Divider(
               color: Colors.blue,
             ),
@@ -845,7 +890,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     items: mixHexagramSlidersNew,
                     carouselController: _controllerrotationstate,
                     options: CarouselOptions(
-                        scrollDirection: Axis.vertical,
+                        scrollDirection: Axis.horizontal,
                         autoPlay: false,
                         enlargeCenterPage: true,
                         aspectRatio: 1.3,
@@ -910,75 +955,34 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
+
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    switch (_currentrotationstate) {
-                      case 0:
-                        _planettext = _northnodehex.linename!;
-                        break;
-                      case 1:
-                        _planettext = idkHexList[_northnodehex.gate!];
-                        break;
-                      case 2:
-                        _planettext = 'breath';
-                        break;
-                      case 3:
-                        _planettext = 'silence';
-                        break;
-                      default:
-                        break;
-                    }
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) =>
-                          _buildPlanetDialog(context, _planettext),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey[100],
-                    shape: const CircleBorder(),
-                  ),
-                  child: const CircleAvatar(
-                      minRadius: 13.0,
-                      maxRadius: 13.0,
-                      backgroundColor: Colors.blue,
-                      foregroundImage:
-                          AssetImage('assets/planets/northnode.png')),
-                ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width / 4,
                   child: AutoSizeTextField(
-                      fullwidth: false,
-                      minFontSize: 10,
-                      maxFontSize: 20,
-                      maxLines: 1,
                       readOnly: true,
-                      decoration: const InputDecoration.collapsed(hintText: ''),
-                      textAlign: TextAlign.left,
-                      controller: _controllerNorthNodeGate,
+                      decoration:
+                      const InputDecoration.collapsed(hintText: ''),
+                      textAlign: TextAlign.center,
+                      controller: _controllerDesignSunGate,
                       style: const TextStyle(
                           fontSize: 13,
                           color: Colors.black,
                           fontWeight: FontWeight.normal)),
                 ),
-              ],
-            ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
                 ElevatedButton(
                   onPressed: () {
                     switch (_currentrotationstate) {
                       case 0:
-                        _planettext = _sunhex.linename!;
+                        //_planettext = _sunhex.linename!;
+                        _planettext = '1 year of COMPLEX PersonReality and Reality shining';
                         break;
                       case 1:
-                        _planettext = idkHexList[_sunhex.gate!];
+                        //_planettext = idkHexList[_sunhex.gate!];
+                        _planettext = '1 year of COMPLEX PersonReality and Reality shining';
                         break;
                       case 2:
                         _planettext = 'breath';
@@ -1014,7 +1018,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       maxLines: 1,
                       readOnly: true,
                       decoration: const InputDecoration.collapsed(hintText: ''),
-                      textAlign: TextAlign.left,
+                      textAlign: TextAlign.center,
                       controller: _controllerSunGate,
                       style: const TextStyle(
                           fontSize: 13,
@@ -1023,21 +1027,241 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
               ],
             ),
-            const Divider(
-              color: Colors.blue,
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignEarthGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      switch (_currentrotationstate) {
+                        case 0:
+                          //_planettext = _earthhex.linename!;
+                          _planettext = '1 year of silence PersonReality and Reality grounded';
+                          break;
+                        case 1:
+                          //_planettext = idkHexList[_earthhex.gate!];
+                          _planettext = '1 year of silence PersonReality and Reality grounded';
+                          break;
+                        case 2:
+                          _planettext = 'breath';
+                          break;
+                        case 3:
+                          _planettext = 'silence';
+                          break;
+                        default:
+                          break;
+                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPlanetDialog(context, _planettext),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[100],
+                      shape: const CircleBorder(),
+                    ),
+                    child: const CircleAvatar(
+                        minRadius: 13.0,
+                        maxRadius: 13.0,
+                        backgroundColor: Colors.red,
+                        backgroundImage:
+                        AssetImage('assets/planets/earth.png')),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerEarthGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ]),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: AutoSizeTextField(
+                      readOnly: true,
+                      decoration:
+                      const InputDecoration.collapsed(hintText: ''),
+                      textAlign: TextAlign.center,
+                      controller: _controllerDesignNorthNodeGate,
+                      style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal)),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    switch (_currentrotationstate) {
+                      case 0:
+                        //_planettext = _northnodehex.linename!;
+                        _planettext = '18.6 years of COMPLEX PersonReality and Reality moving forward';
+                        break;
+                      case 1:
+                        //_planettext = idkHexList[_northnodehex.gate!];
+                        _planettext = '18.6 years of COMPLEX PersonReality and Reality moving forward';
+                        break;
+                      case 2:
+                        _planettext = 'breath';
+                        break;
+                      case 3:
+                        _planettext = 'silence';
+                        break;
+                      default:
+                        break;
+                    }
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildPlanetDialog(context, _planettext),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey[100],
+                    shape: const CircleBorder(),
+                  ),
+                  child: const CircleAvatar(
+                      minRadius: 13.0,
+                      maxRadius: 13.0,
+                      backgroundColor: Colors.blue,
+                      foregroundImage:
+                      AssetImage('assets/planets/northnode.png')),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: AutoSizeTextField(
+                      fullwidth: false,
+                      minFontSize: 10,
+                      maxFontSize: 20,
+                      maxLines: 1,
+                      readOnly: true,
+                      decoration: const InputDecoration.collapsed(hintText: ''),
+                      textAlign: TextAlign.center,
+                      controller: _controllerNorthNodeGate,
+                      style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal)),
+                ),
+              ],
             ),
             Flex(
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignSouthNodeGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          _planettext = _moonhex.linename!;
+                          //_planettext = _southnodehex.linename!;
+                          _planettext = '18.6 years of silence PersonReality and Reality leaving behind';
                           break;
                         case 1:
-                          _planettext = idkHexList[_moonhex.gate!];
+                          //_planettext = idkHexList[_southnodehex.gate!];
+                          _planettext = '18.6 years of silence PersonReality and Reality leaving behind';
+                          break;
+                        case 2:
+                          _planettext = 'breath';
+                          break;
+                        case 3:
+                          _planettext = 'silence';
+                          break;
+                        default:
+                          break;
+                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPlanetDialog(context, _planettext),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[100],
+                      shape: const CircleBorder(),
+                    ),
+                    child: const CircleAvatar(
+                        minRadius: 13.0,
+                        maxRadius: 13.0,
+                        backgroundColor: Colors.red,
+                        backgroundImage:
+                        AssetImage('assets/planets/southnode.png')),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerSouthNodeGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ]),
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignMoonGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      switch (_currentrotationstate) {
+                        case 0:
+                          //_planettext = _moonhex.linename!;
+                          _planettext = '27 days of Simple PersonReality and Reality driven to rise';
+                          break;
+                        case 1:
+                          //_planettext = idkHexList[_moonhex.gate!];
+                          _planettext = '27 days of Simple PersonReality and Reality driven to rise';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1070,7 +1294,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         readOnly: true,
                         decoration:
                             const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
                         controller: _controllerMoonGate,
                         style: const TextStyle(
                             fontSize: 13,
@@ -1082,14 +1306,29 @@ class _RotateComplexState extends State<RotateComplex> {
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignMercuryGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          _planettext = _mercuryhex.linename!;
+                          //_planettext = _mercuryhex.linename!;
+                          _planettext = '88 days of Simple PersonReality and Reality communicating';
                           break;
                         case 1:
-                          _planettext = idkHexList[_mercuryhex.gate!];
+                          //_planettext = idkHexList[_mercuryhex.gate!];
+                          _planettext = '88 days of Simple PersonReality and Reality communicating';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1123,7 +1362,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         readOnly: true,
                         decoration:
                             const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
                         controller: _controllerMercuryGate,
                         style: const TextStyle(
                             fontSize: 13,
@@ -1135,14 +1374,29 @@ class _RotateComplexState extends State<RotateComplex> {
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignVenusGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          _planettext = _venushex.linename!;
+                          //_planettext = _venushex.linename!;                          break;
+                          _planettext = '225 days of Simple PersonReality and Reality values';
                           break;
                         case 1:
-                          _planettext = idkHexList[_venushex.gate!];
+                          //_planettext = idkHexList[_venushex.gate!];
+                          _planettext = '225 days of Simple PersonReality and Reality values';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1176,7 +1430,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         readOnly: true,
                         decoration:
                             const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
                         controller: _controllerVenusGate,
                         style: const TextStyle(
                             fontSize: 13,
@@ -1188,14 +1442,29 @@ class _RotateComplexState extends State<RotateComplex> {
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignMarsGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          _planettext = _marshex.linename!;
+                          //_planettext = _marshex.linename!;
+                          _planettext = '687 days of Simple PersonReality and Reality Like Children';
                           break;
                         case 1:
-                          _planettext = idkHexList[_marshex.gate!];
+                          //_planettext = idkHexList[_marshex.gate!];
+                          _planettext = '687 days of Simple PersonReality and Reality Like Children';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1228,7 +1497,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         readOnly: true,
                         decoration:
                             const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
                         controller: _controllerMarsGate,
                         style: const TextStyle(
                             fontSize: 13,
@@ -1236,21 +1505,33 @@ class _RotateComplexState extends State<RotateComplex> {
                             fontWeight: FontWeight.normal)),
                   ),
                 ]),
-            const Divider(
-              color: Colors.green,
-            ),
             Flex(
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignJupiterGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          _planettext = _jupiterhex.linename!;
+                          //_planettext = _jupiterhex.linename!;
+                          _planettext = '12 years of Breath PersonReality and Reality Justice';
                           break;
                         case 1:
-                          _planettext = idkHexList[_jupiterhex.gate!];
+                          //_planettext = idkHexList[_jupiterhex.gate!];
+                          _planettext = '12 years of Breath PersonReality and Reality Justice';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1284,7 +1565,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         readOnly: true,
                         decoration:
                             const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
                         controller: _controllerJupiterGate,
                         style: const TextStyle(
                             fontSize: 13,
@@ -1296,14 +1577,29 @@ class _RotateComplexState extends State<RotateComplex> {
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignSaturnGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          _planettext = _saturnhex.linename!;
+                          //_planettext = _saturnhex.linename!;
+                          _planettext = '29 years of Breath PersonReality and Reality Discipline';
                           break;
                         case 1:
-                          _planettext = idkHexList[_saturnhex.gate!];
+                          //_planettext = idkHexList[_saturnhex.gate!];
+                          _planettext = '29 years of Breath PersonReality and Reality Discipline';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1337,7 +1633,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         readOnly: true,
                         decoration:
                             const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
                         controller: _controllerSaturnGate,
                         style: const TextStyle(
                             fontSize: 13,
@@ -1349,14 +1645,29 @@ class _RotateComplexState extends State<RotateComplex> {
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: AutoSizeTextField(
+                      readOnly: true,
+                      decoration:
+                      const InputDecoration.collapsed(hintText: ''),
+                      textAlign: TextAlign.center,
+                      controller: _controllerDesignUranusGate,
+                      style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal)),
+                ),
                 ElevatedButton(
                   onPressed: () {
                     switch (_currentrotationstate) {
                       case 0:
-                        _planettext = _uranushex.linename!;
+                        //_planettext = _uranushex.linename!;
+                        _planettext = '84 years of Breath PersonReality and Reality Unusual';
                         break;
                       case 1:
-                        _planettext = idkHexList[_uranushex.gate!];
+                        //_planettext = idkHexList[_uranushex.gate!];
+                        _planettext = '84 years of Breath PersonReality and Reality Unusual';
                         break;
                       case 2:
                         _planettext = 'breath';
@@ -1388,7 +1699,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   child: AutoSizeTextField(
                       readOnly: true,
                       decoration: const InputDecoration.collapsed(hintText: ''),
-                      textAlign: TextAlign.left,
+                      textAlign: TextAlign.center,
                       controller: _controllerUranusGate,
                       style: const TextStyle(
                           fontSize: 13,
@@ -1401,14 +1712,29 @@ class _RotateComplexState extends State<RotateComplex> {
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignNeptuneGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          _planettext = _neptunehex.linename!;
+                          //_planettext = _neptunehex.linename!;
+                          _planettext = '165 years of Breath PersonReality and Reality Hidden';
                           break;
                         case 1:
-                          _planettext = idkHexList[_neptunehex.gate!];
+                          //_planettext = idkHexList[_neptunehex.gate!];
+                          _planettext = '165 years of Breath PersonReality and Reality Hidden';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1442,7 +1768,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         readOnly: true,
                         decoration:
                             const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
                         controller: _controllerNeptuneGate,
                         style: const TextStyle(
                             fontSize: 13,
@@ -1454,14 +1780,29 @@ class _RotateComplexState extends State<RotateComplex> {
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignPlutoGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          _planettext = _plutohex.linename!;
+                          //_planettext = _plutohex.linename!;
+                          _planettext = '248 yeays of Breath PersonReality and Reality Truth';
                           break;
                         case 1:
-                          _planettext = idkHexList[_plutohex.gate!];
+                          //_planettext = idkHexList[_plutohex.gate!];
+                          _planettext = '248 yeays of Breath PersonReality and Reality Truth';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1495,7 +1836,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         readOnly: true,
                         decoration:
                             const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
                         controller: _controllerPlutoGate,
                         style: const TextStyle(
                             fontSize: 13,
@@ -1504,117 +1845,10 @@ class _RotateComplexState extends State<RotateComplex> {
                   ),
                 ]),
             const Divider(
-              color: Colors.yellow,
+              color: Colors.blue,
             ),
-            Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      switch (_currentrotationstate) {
-                        case 0:
-                          _planettext = _earthhex.linename!;
-                          break;
-                        case 1:
-                          _planettext = idkHexList[_earthhex.gate!];
-                          break;
-                        case 2:
-                          _planettext = 'breath';
-                          break;
-                        case 3:
-                          _planettext = 'silence';
-                          break;
-                        default:
-                          break;
-                      }
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) =>
-                            _buildPlanetDialog(context, _planettext),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[100],
-                      shape: const CircleBorder(),
-                    ),
-                    child: const CircleAvatar(
-                        minRadius: 13.0,
-                        maxRadius: 13.0,
-                        backgroundColor: Colors.red,
-                        backgroundImage:
-                            AssetImage('assets/planets/earth.png')),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 4,
-                    child: AutoSizeTextField(
-                        readOnly: true,
-                        decoration:
-                            const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.left,
-                        controller: _controllerEarthGate,
-                        style: const TextStyle(
-                            fontSize: 13,
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                ]),
-            Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      switch (_currentrotationstate) {
-                        case 0:
-                          _planettext = _southnodehex.linename!;
-                          break;
-                        case 1:
-                          _planettext = idkHexList[_southnodehex.gate!];
-                          break;
-                        case 2:
-                          _planettext = 'breath';
-                          break;
-                        case 3:
-                          _planettext = 'silence';
-                          break;
-                        default:
-                          break;
-                      }
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) =>
-                            _buildPlanetDialog(context, _planettext),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[100],
-                      shape: const CircleBorder(),
-                    ),
-                    child: const CircleAvatar(
-                        minRadius: 13.0,
-                        maxRadius: 13.0,
-                        backgroundColor: Colors.red,
-                        backgroundImage:
-                            AssetImage('assets/planets/southnode.png')),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 4,
-                    child: AutoSizeTextField(
-                        readOnly: true,
-                        decoration:
-                            const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.left,
-                        controller: _controllerSouthNodeGate,
-                        style: const TextStyle(
-                            fontSize: 13,
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                ]),
-            const Divider(
-              color: Colors.red,
-            ),
+
+
             ElevatedButton(
                 onPressed: () {
                   showDialog(
@@ -1630,7 +1864,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   'Rotate Human Design',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 )),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1788,20 +2022,25 @@ class _RotateComplexState extends State<RotateComplex> {
 
                 //_controlHDData(hdbasicdata);
                 _controlHDData(hdfinaldata);
-                hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                //hdfinaldata = HDServices.getHDBasicData(_channelsList);
 
-                _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
-                _formattedTime = DateFormat.Hms().format(_now);
-                _controllerTime.text = 'text $_formattedTime $_formattedDate';
+                _setDateTime();
+
+                //_formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+                //_formattedTime = DateFormat.Hms().format(_now);
+                //_controllerTime.text = 'text $_formattedTime $_formattedDate';
 
                 _planetsList = _planetsnowList;
                 _planethex = _planetsList[0];
                 //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
 
-                _hexalignedList = hexagramAlignment(_planethex.gate!);
-                _controllertop.jumpToPage(_hexalignedList[0]);
-                _controllermid.jumpToPage(_hexalignedList[1]);
-                _controllerbot.jumpToPage(_hexalignedList[2]);
+                _setCoins();
+
+                //_hexalignedList = hexagramAlignment(_planethex.gate!);
+
+                //_controllertop.jumpToPage(_hexalignedList[0]);
+                //_controllermid.jumpToPage(_hexalignedList[1]);
+                //_controllerbot.jumpToPage(_hexalignedList[2]);
 
                 _controllerlinetext.text = _planethex.line!.toString();
                 _controllergatelinestory.text = idonotknowlinesList[
@@ -1875,18 +2114,22 @@ class _RotateComplexState extends State<RotateComplex> {
                 //_selfreminderSentence = HDServices.getSelfReminder();
                 _selfreminder = _timeselfreminder;
 
-                _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
-                _formattedTime = DateFormat.Hms().format(_now);
-                _controllerTime.text = '$_formattedTime $_formattedDate';
+                _setDateTime();
+
+                //_formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+                //_formattedTime = DateFormat.Hms().format(_now);
+                //_controllerTime.text = '$_formattedTime $_formattedDate';
 
                 _planetsList = _planetsnowList;
                 _planethex = _planetsList[0];
                 //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
 
-                _hexalignedList = hexagramAlignment(_planethex.gate!);
-                _controllertop.jumpToPage(_hexalignedList[0]);
-                _controllermid.jumpToPage(_hexalignedList[1]);
-                _controllerbot.jumpToPage(_hexalignedList[2]);
+                _setCoins();
+                //_hexalignedList = hexagramAlignment(_planethex.gate!);
+
+                //_controllertop.jumpToPage(_hexalignedList[0]);
+                //_controllermid.jumpToPage(_hexalignedList[1]);
+                //_controllerbot.jumpToPage(_hexalignedList[2]);
 
                 _controllerlinetext.text = _planethex.line!.toString();
                 _controllergatelinestory.text = idonotknowlinesList[
@@ -2085,19 +2328,10 @@ class _RotateComplexState extends State<RotateComplex> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        _channelsList[index].adaptname!,
+                        _channelsList[index].sentence!,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                            fontWeight: FontWeight.normal, fontSize: 15),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        _channelsList[index].coin!,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.normal, fontSize: 15),
+                            fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     ],
                   ),
@@ -2457,7 +2691,6 @@ class _RotateComplexState extends State<RotateComplex> {
   }
 
   void _controlHDData(HumanDesign hdbasicdata) {
-
     _controllerFinalLine.text = 'XIO I don\'t know';
 
     _controllerStrategy.text = hdbasicdata.strategy!;
@@ -2466,8 +2699,7 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerSentence.text = hdbasicdata.sentence!;
     _controllercoinfirsttext.text = hdbasicdata.coinname!;
     _controllercoin.jumpToPage(hexNamesList.indexOf(hdbasicdata.coinname!));
-    _currenttop = hexNamesList.indexOf(hdbasicdata.coinname!);
-
+    //_currenttop = hexNamesList.indexOf(hdbasicdata.coinname!);
   }
 
   controlCollor(String colorcoin) {
@@ -2633,6 +2865,21 @@ class _RotateComplexState extends State<RotateComplex> {
     _neptunehex = _planetsList[11];
     _plutohex = _planetsList[12];
 
+    _sundesignhex = _planetsdesignList[0];
+    _earthdesignhex = _planetsdesignList[1];
+    _northnodedesignhex = _planetsdesignList[2];
+    _southnodedesignhex = _planetsdesignList[3];
+    _moondesignhex = _planetsdesignList[4];
+    _mercurydesignhex = _planetsdesignList[5];
+    _venusdesignhex = _planetsdesignList[6];
+    _marsdesignhex = _planetsdesignList[7];
+    _jupiterdesignhex = _planetsdesignList[8];
+    _saturndesignhex = _planetsdesignList[9];
+    _uranusdesignhex = _planetsdesignList[10];
+    _neptunedesignhex = _planetsdesignList[11];
+    _plutodesignhex = _planetsdesignList[12];
+
+
     _controllerSunText.text = _sunhex.linename!;
     _controllerEarthText.text = _earthhex.linename!;
     _controllerNorthNodeText.text = _northnodehex.linename!;
@@ -2648,13 +2895,9 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerPlutoText.text = _plutohex.linename!;
 
     _controllerSunGate.text = _sunhex.gatelinecolortone!;
-    //_controllerSunGate.text = _sunhex.gatelinecolortonebase!;
     _controllerEarthGate.text = _earthhex.gatelinecolortone!;
-    //_controllerEarthGate.text = _earthhex.gatelinecolortonebase!;
     _controllerNorthNodeGate.text = _northnodehex.gatelinecolortone!;
-    //_controllerNorthNodeGate.text = _northnodehex.gatelinecolortonebase!;
     _controllerSouthNodeGate.text = _southnodehex.gatelinecolortone!;
-    //_controllerSouthNodeGate.text = _southnodehex.gatelinecolortonebase!;
     _controllerMoonGate.text = _moonhex.gatelinecolor!;
     _controllerMercuryGate.text = _mercuryhex.gatelinecolor!;
     _controllerVenusGate.text = _venushex.gatelinecolor!;
@@ -2665,19 +2908,71 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerNeptuneGate.text = _neptunehex.gatelinecolor!;
     _controllerPlutoGate.text = _plutohex.gatelinecolor!;
 
-    _controllerSunHex.text = _sunhex.hex!;
-    _controllerEarthHex.text = _earthhex.hex!;
-    _controllerNorthNodeHex.text = _northnodehex.hex!;
-    _controllerSouthNodeHex.text = _southnodehex.hex!;
-    _controllerMoonHex.text = _moonhex.hex!;
-    _controllerMercuryHex.text = _mercuryhex.hex!;
-    _controllerVenusHex.text = _venushex.hex!;
-    _controllerMarsHex.text = _marshex.hex!;
-    _controllerJupiterHex.text = _jupiterhex.hex!;
-    _controllerSaturnHex.text = _saturnhex.hex!;
-    _controllerUranusHex.text = _uranushex.hex!;
-    _controllerNeptuneHex.text = _neptunehex.hex!;
-    _controllerPlutoHex.text = _plutohex.hex!;
+    _controllerDesignSunGate.text = _sundesignhex.gatelinecolortone!;
+    _controllerDesignEarthGate.text = _earthdesignhex.gatelinecolortone!;
+    _controllerDesignNorthNodeGate.text = _northnodedesignhex.gatelinecolortone!;
+    _controllerDesignSouthNodeGate.text = _southnodedesignhex.gatelinecolortone!;
+    _controllerDesignMoonGate.text = _moondesignhex.gatelinecolor!;
+    _controllerDesignMercuryGate.text = _mercurydesignhex.gatelinecolor!;
+    _controllerDesignVenusGate.text = _venusdesignhex.gatelinecolor!;
+    _controllerDesignMarsGate.text = _marsdesignhex.gatelinecolor!;
+    _controllerDesignJupiterGate.text = _jupiterdesignhex.gatelinecolor!;
+    _controllerDesignSaturnGate.text = _saturndesignhex.gatelinecolor!;
+    _controllerDesignUranusGate.text = _uranusdesignhex.gatelinecolor!;
+    _controllerDesignNeptuneGate.text = _neptunedesignhex.gatelinecolor!;
+    _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor!;
+
+    //_controllerSunHex.text = _sunhex.hex!;
+    //_controllerEarthHex.text = _earthhex.hex!;
+    //_controllerNorthNodeHex.text = _northnodehex.hex!;
+    //_controllerSouthNodeHex.text = _southnodehex.hex!;
+    //_controllerMoonHex.text = _moonhex.hex!;
+    //_controllerMercuryHex.text = _mercuryhex.hex!;
+    //_controllerVenusHex.text = _venushex.hex!;
+    //_controllerMarsHex.text = _marshex.hex!;
+    //_controllerJupiterHex.text = _jupiterhex.hex!;
+    //_controllerSaturnHex.text = _saturnhex.hex!;
+    //_controllerUranusHex.text = _uranushex.hex!;
+    //_controllerNeptuneHex.text = _neptunehex.hex!;
+    //_controllerPlutoHex.text = _plutohex.hex!;
+  }
+
+  void _setDateTime() {
+    _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+    _formattedTime = DateFormat.Hms().format(_now);
+    _controllerTime.text = '$_formattedTime $_formattedDate';
+  }
+
+  void _setCoins() {
+    _hexalignedList = hexagramAlignment(_planethex.gate!);
+
+    //if (_currenttop == _hexalignedList[0]) {
+     // _controllertop.jumpToPage(_hexalignedList[0] + 1);
+     // _controllertop.jumpToPage(_hexalignedList[0]);
+    //}
+    //else {
+     // _controllertop.jumpToPage(_hexalignedList[0]);
+    //}
+
+    //if (_controllermid == _hexalignedList[1]) {
+     // _controllermid.jumpToPage(_hexalignedList[1] + 1);
+    //  _controllermid.jumpToPage(_hexalignedList[1]);
+    //}
+    //else {
+    //  _controllermid.jumpToPage(_hexalignedList[1]);
+    //}
+
+    //if (_controllerbot == _hexalignedList[2]) {
+     // _controllerbot.jumpToPage(_hexalignedList[2] + 1);
+    //  _controllerbot.jumpToPage(_hexalignedList[2]);
+    //}
+    //else {
+     // _controllerbot.jumpToPage(_hexalignedList[2]);
+    //}
+
+    _controllertop.jumpToPage(_hexalignedList[0]);
+    _controllermid.jumpToPage(_hexalignedList[1]);
+    _controllerbot.jumpToPage(_hexalignedList[2]);
   }
 
   void _changeTextLevels(String textlevel) {
@@ -2686,13 +2981,9 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerPlanetSubType.text = 'COMPLEX';
 
         _controllerSunGate.text = _sunhex.gatelinecolortone!;
-        //_controllerSunGate.text = _sunhex.gatelinecolortonebase!;
         _controllerEarthGate.text = _earthhex.gatelinecolortone!;
-        //_controllerEarthGate.text = _earthhex.gatelinecolortonebase!;
         _controllerNorthNodeGate.text = _northnodehex.gatelinecolortone!;
-        //_controllerNorthNodeGate.text = _northnodehex.gatelinecolortonebase!;
         _controllerSouthNodeGate.text = _southnodehex.gatelinecolortone!;
-        //_controllerSouthNodeGate.text = _southnodehex.gatelinecolortonebase!;
         _controllerMoonGate.text = _moonhex.gatelinecolor!;
         _controllerMercuryGate.text = _mercuryhex.gatelinecolor!;
         _controllerVenusGate.text = _venushex.gatelinecolor!;
@@ -2702,6 +2993,21 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerUranusGate.text = _uranushex.gatelinecolor!;
         _controllerNeptuneGate.text = _neptunehex.gatelinecolor!;
         _controllerPlutoGate.text = _plutohex.gatelinecolor!;
+
+        //idk
+        _controllerDesignSunGate.text = _sundesignhex.gatelinecolortone!;
+        _controllerDesignEarthGate.text = _earthdesignhex.gatelinecolortone!;
+        _controllerDesignNorthNodeGate.text = _northnodedesignhex.gatelinecolortone!;
+        _controllerDesignSouthNodeGate.text = _southnodedesignhex.gatelinecolortone!;
+        _controllerDesignMoonGate.text = _moondesignhex.gatelinecolor!;
+        _controllerDesignMercuryGate.text = _mercurydesignhex.gatelinecolor!;
+        _controllerDesignVenusGate.text = _venusdesignhex.gatelinecolor!;
+        _controllerDesignMarsGate.text = _marsdesignhex.gatelinecolor!;
+        _controllerDesignJupiterGate.text = _jupiterdesignhex.gatelinecolor!;
+        _controllerDesignSaturnGate.text = _saturndesignhex.gatelinecolor!;
+        _controllerDesignUranusGate.text = _uranusdesignhex.gatelinecolor!;
+        _controllerDesignNeptuneGate.text = _neptunedesignhex.gatelinecolor!;
+        _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor!;
 
         break;
       case 'simple':
@@ -2721,6 +3027,21 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerNeptuneGate.text = _neptunehex.gateline!;
         _controllerPlutoGate.text = _plutohex.gateline!;
 
+        //idk
+        _controllerDesignSunGate.text = _sundesignhex.gateline!;
+        _controllerDesignEarthGate.text = _earthdesignhex.gateline!;
+        _controllerDesignNorthNodeGate.text = _northnodedesignhex.gateline!;
+        _controllerDesignSouthNodeGate.text = _southnodedesignhex.gateline!;
+        _controllerDesignMoonGate.text = _moondesignhex.gateline!;
+        _controllerDesignMercuryGate.text = _mercurydesignhex.gateline!;
+        _controllerDesignVenusGate.text = _venusdesignhex.gateline!;
+        _controllerDesignMarsGate.text = _marsdesignhex.gateline!;
+        _controllerDesignJupiterGate.text = _jupiterdesignhex.gateline!;
+        _controllerDesignSaturnGate.text = _saturndesignhex.gateline!;
+        _controllerDesignUranusGate.text = _uranusdesignhex.gateline!;
+        _controllerDesignNeptuneGate.text = _neptunedesignhex.gateline!;
+        _controllerDesignPlutoGate.text = _plutodesignhex.gateline!;
+
         break;
       case 'breath':
         _controllerPlanetSubType.text = 'Breathe';
@@ -2739,6 +3060,20 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerNeptuneGate.text = 'Inhale';
         _controllerPlutoGate.text = 'Inhale';
 
+        _controllerDesignSunGate.text = 'Exhale';
+        _controllerDesignEarthGate.text = 'Inhale';
+        _controllerDesignNorthNodeGate.text = 'BREATHE';
+        _controllerDesignSouthNodeGate.text = 'BREATH';
+        _controllerDesignMoonGate.text = 'Exhale';
+        _controllerDesignMercuryGate.text = 'Exhale';
+        _controllerDesignVenusGate.text = 'Exhale';
+        _controllerDesignMarsGate.text = 'Exhale';
+        _controllerDesignJupiterGate.text = 'Inhale';
+        _controllerDesignSaturnGate.text = 'Inhale';
+        _controllerDesignUranusGate.text = 'Inhale';
+        _controllerDesignNeptuneGate.text = 'Inhale';
+        _controllerDesignPlutoGate.text = 'Inhale';
+
         break;
       case 'silence':
         _controllerPlanetSubType.text = 'silent';
@@ -2756,6 +3091,20 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerUranusGate.text = '';
         _controllerNeptuneGate.text = '';
         _controllerPlutoGate.text = '';
+
+        _controllerDesignSunGate.text = '';
+        _controllerDesignEarthGate.text = '';
+        _controllerDesignNorthNodeGate.text = '';
+        _controllerDesignSouthNodeGate.text = '';
+        _controllerDesignMoonGate.text = '';
+        _controllerDesignMercuryGate.text = '';
+        _controllerDesignVenusGate.text = '';
+        _controllerDesignMarsGate.text = '';
+        _controllerDesignJupiterGate.text = '';
+        _controllerDesignSaturnGate.text = '';
+        _controllerDesignUranusGate.text = '';
+        _controllerDesignNeptuneGate.text = '';
+        _controllerDesignPlutoGate.text = '';
 
         break;
       default:

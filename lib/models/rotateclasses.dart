@@ -77,9 +77,10 @@ class HexLine {
 }
 
 class HDChannel {
-  String? id,firstcenter, secondcenter, name, adaptname, coin,description, circuitry, circuit, stream;
+  String? id,firstcenter, secondcenter, name, adaptname,
+      coin,description, circuitry, circuit, stream, sentence;
 
   HDChannel({this.id, this.firstcenter, this.secondcenter, this.name, this.adaptname, this.coin,
-    this.description, this.circuitry, this.circuit, this.stream});
+    this.description, this.circuitry, this.circuit, this.stream, this.sentence});
 }
 
