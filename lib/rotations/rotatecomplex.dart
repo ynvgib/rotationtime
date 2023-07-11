@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:csc_picker/csc_picker.dart';
 import 'package:finallyicanlearn/logic/calculatehdchart.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
@@ -30,6 +31,9 @@ class _RotateComplexState extends State<RotateComplex> {
       'First Choose Time\nThen Return Here \nFor the Reminder';
   final String _timeselfreminder =
       'Time is a\nComplex\nof the MIND\nwhich most people\nsimply do not fetch';
+
+  //idk
+  String countryValue = "", stateValue = "", cityValue = "", address = "";
 
   final TextEditingController _controllerType = TextEditingController(),
       _controllerAuthority = TextEditingController(),
@@ -100,7 +104,11 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllerSouthNodeGate = TextEditingController(),
       _controllerDesignSouthNodeGate = TextEditingController(),
       _controllerPlanetType = TextEditingController(),
-      _controllerPlanetSubType = TextEditingController();
+      _controllerPlanetSubType = TextEditingController(),
+      //idk
+      _controllerCountryPick = TextEditingController(),
+      _controllerStatePick = TextEditingController(),
+      _controllerCityPick = TextEditingController();
 
   final CarouselController _controllercoin = CarouselController(),
       _controllerconstate = CarouselController(),
@@ -347,7 +355,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             _controllerrotationstate.jumpToPage(0);
                             break;
                           case 1:
-                            //_planetsList = _planetsdesignList;
+                            _planetsList = _planetsdesignList;
 
                             _controlPlanetHexagramData(_planetsdesignList);
 
@@ -2851,19 +2859,33 @@ class _RotateComplexState extends State<RotateComplex> {
   }
 
   void _controlPlanetHexagramData(List<Hexagram> planetList) {
-    _sunhex = _planetsList[0];
-    _earthhex = _planetsList[1];
-    _northnodehex = _planetsList[2];
-    _southnodehex = _planetsList[3];
-    _moonhex = _planetsList[4];
-    _mercuryhex = _planetsList[5];
-    _venushex = _planetsList[6];
-    _marshex = _planetsList[7];
-    _jupiterhex = _planetsList[8];
-    _saturnhex = _planetsList[9];
-    _uranushex = _planetsList[10];
-    _neptunehex = _planetsList[11];
-    _plutohex = _planetsList[12];
+    //_sunhex = _planetsList[0];
+    //_earthhex = _planetsList[1];
+    //_northnodehex = _planetsList[2];
+    //_southnodehex = _planetsList[3];
+    //_moonhex = _planetsList[4];
+    //_mercuryhex = _planetsList[5];
+    //_venushex = _planetsList[6];
+    //_marshex = _planetsList[7];
+    //_jupiterhex = _planetsList[8];
+    //_saturnhex = _planetsList[9];
+    //_uranushex = _planetsList[10];
+    //_neptunehex = _planetsList[11];
+    //_plutohex = _planetsList[12];
+
+    _sunhex = _planetsnowList[0];
+    _earthhex = _planetsnowList[1];
+    _northnodehex = _planetsnowList[2];
+    _southnodehex = _planetsnowList[3];
+    _moonhex = _planetsnowList[4];
+    _mercuryhex = _planetsnowList[5];
+    _venushex = _planetsnowList[6];
+    _marshex = _planetsnowList[7];
+    _jupiterhex = _planetsnowList[8];
+    _saturnhex = _planetsnowList[9];
+    _uranushex = _planetsnowList[10];
+    _neptunehex = _planetsnowList[11];
+    _plutohex = _planetsnowList[12];
 
     _sundesignhex = _planetsdesignList[0];
     _earthdesignhex = _planetsdesignList[1];
@@ -2994,7 +3016,6 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerNeptuneGate.text = _neptunehex.gatelinecolor!;
         _controllerPlutoGate.text = _plutohex.gatelinecolor!;
 
-        //idk
         _controllerDesignSunGate.text = _sundesignhex.gatelinecolortone!;
         _controllerDesignEarthGate.text = _earthdesignhex.gatelinecolortone!;
         _controllerDesignNorthNodeGate.text = _northnodedesignhex.gatelinecolortone!;
@@ -3027,7 +3048,6 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerNeptuneGate.text = _neptunehex.gateline!;
         _controllerPlutoGate.text = _plutohex.gateline!;
 
-        //idk
         _controllerDesignSunGate.text = _sundesignhex.gateline!;
         _controllerDesignEarthGate.text = _earthdesignhex.gateline!;
         _controllerDesignNorthNodeGate.text = _northnodedesignhex.gateline!;
@@ -3111,4 +3131,7 @@ class _RotateComplexState extends State<RotateComplex> {
         break;
     }
   }
+
+
+
 }
