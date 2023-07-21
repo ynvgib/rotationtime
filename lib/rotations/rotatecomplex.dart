@@ -356,7 +356,6 @@ class _RotateComplexState extends State<RotateComplex> {
                             break;
                           case 1:
                             _planetsList = _planetsdesignList;
-
                             _controlPlanetHexagramData(_planetsdesignList);
 
                             _formattedDate =

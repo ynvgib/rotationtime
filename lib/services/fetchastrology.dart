@@ -20,8 +20,7 @@ class AstrologyServices {
     final CoordinatesWithSpeed posSun, posEarth, posNorthnode, posSouthnode,
           posMoon, posMercury, posVenus, posMars, posJupiter,
           posSaturn, posUranus, posNeptune, posPluto;
-
-        //posChiron - not added for now - 16042023
+        //posChiron;
 
 
     posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_SWIEPH);
@@ -43,6 +42,7 @@ class AstrologyServices {
                     posMercury, posVenus,
                     posMars, posJupiter, posSaturn,
                     posUranus, posNeptune, posPluto];
+      //posChiron];
 
     return cswPlanets;
   }
@@ -128,6 +128,7 @@ class AstrologyServices {
         uranusSubStructure,
         neptuneSubStructure,
         plutoSubStructure
+        //chironSubStructure
       ];
     } catch (err) {
       Exception(err);
@@ -139,8 +140,8 @@ class AstrologyServices {
   static Future<DateTime> getDesignTime(DateTime nowdesign) async {
     DateTime designTime = nowdesign;
     DateTime initialDesignDays = nowdesign.subtract(const Duration(days: 88));
-    List<CoordinatesWithSpeed> cwsDesigndata;
-    List<CoordinatesWithSpeed> cwsPersonalitydata;
+
+    List<CoordinatesWithSpeed> cwsPersonalitydata, cwsDesigndata;
     double personsunlongitude,
         requiredlongitude,
         calculatedlongitude,
@@ -410,8 +411,8 @@ class AstrologyServices {
     //print('Chosen Time Israel: $israelTime');
     //print('converted TIME: $utcTime');
 
-    var _locations = timeZoneDatabase.locations;
-    for (var element in _locations.values) {
+    var locations = timeZoneDatabase.locations;
+    for (var element in locations.values) {
       //print(element.name);
      // print(element.currentTimeZone.abbreviation);
       //print(element.currentTimeZone.offset);

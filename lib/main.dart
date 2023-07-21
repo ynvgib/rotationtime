@@ -14,6 +14,7 @@ import 'package:sweph/sweph.dart';
 // flutter build windows
 // flutter build web --web-renderer canvaskit
 // firebase deploy
+// flutter build apk --no-tree-shake-icons
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

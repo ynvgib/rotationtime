@@ -83,6 +83,7 @@ final List<String> planetsimagelist = [
   'assets/planets/uranus.png',
   'assets/planets/neptune.png',
   'assets/planets/pluto.png',
+  //'assets/planets/chiron.png',
 ];
 
 final List<String> planetspartialList = [
