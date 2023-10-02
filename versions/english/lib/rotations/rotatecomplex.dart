@@ -7,7 +7,7 @@ import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
-import 'package:finallyicanlearn/services/fetchastrology.dart';
+import 'package:finallyicanlearn/services/fetchplanets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -1764,11 +1764,11 @@ class _RotateComplexState extends State<RotateComplex> {
                 // _selectedDate by user pick
                 _now = _selectedDate.applied(_selectedtime);
 
-                _planetsnowList = await AstrologyServices.getCurrentData(_now);
+                _planetsnowList = await PlanetsServices.getCurrentData(_now);
 
-                _designTime = await AstrologyServices.getDesignTime(_now);
+                _designTime = await PlanetsServices.getDesignTime(_now);
                 _planetsdesignList =
-                    await AstrologyServices.getCurrentData(_designTime);
+                    await PlanetsServices.getCurrentData(_designTime);
 
                 _channelsList = HDServices.getHDChannels(
                     _planetsnowList, _planetsdesignList);
@@ -1849,12 +1849,12 @@ class _RotateComplexState extends State<RotateComplex> {
               onPressed: () async {
                 _now = DateTime.now();
 
-                _planetsnowList = await AstrologyServices.getCurrentData(_now);
+                _planetsnowList = await PlanetsServices.getCurrentData(_now);
 
                 //_designTime = await AstrologyServices.getDesignTime(_now);
                 //emulate design time to now time to prevent blank
                 _planetsdesignList =
-                    await AstrologyServices.getCurrentData(_now);
+                    await PlanetsServices.getCurrentData(_now);
 
                 _channelsList =
                     HDServices.getHDChannelsJustNow(_planetsnowList);

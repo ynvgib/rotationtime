@@ -4,7 +4,6 @@ import 'dart:ui' as ui;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/material.dart';
-import 'package:timezone/timezone.dart';
 
 class RotateComplexHD extends StatefulWidget {
   const RotateComplexHD({Key? key}) : super(key: key);
@@ -1566,24 +1565,6 @@ class HorizontalGatePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
-}
-
-class TimeHelperService {
-  //TimeHelperService() {
-  //  setup();
-  //}
-  //void setup() async {
-   // var byteData = await rootBundle.load('packages/timezone/data/latest.tzf');
-   // initializeDatabase(byteData.buffer.asUint8List());
-  //}
-
-  void convertLocalToDetroit() async {
-    DateTime indiaTime = DateTime.now(); //Emulator time is India time
-    final detroitTime =
-    TZDateTime.from(indiaTime, getLocation('America/Detroit'));
-    print('Local India Time: $indiaTime');
-    print('Detroit Time: $detroitTime');
-  }
 }
 
 

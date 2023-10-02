@@ -276,6 +276,20 @@ class _RotateSimpleState extends State<RotateSimple> {
                       onPressed: () {
                         showDialog(
                           context: context,
+                          builder: (BuildContext context) => build36PopUp(context),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)),
+                          textStyle: const TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold)),
+                      child: const Text('36')),
+                  ElevatedButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
                           builder: (BuildContext context) => build64PopUp(context),
                         );
                       },
@@ -302,6 +316,10 @@ class _RotateSimpleState extends State<RotateSimple> {
                               fontSize: 15, fontWeight: FontWeight.bold)),
                       child: const Text('384')),
                 ],
+              ),
+              const Divider(
+                color: Colors.green,
+                thickness: 5,
               ),
               ElevatedButton(
                 onPressed: () {

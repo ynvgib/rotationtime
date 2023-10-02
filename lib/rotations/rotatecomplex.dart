@@ -1,14 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:csc_picker/csc_picker.dart';
 import 'package:finallyicanlearn/logic/calculatehdchart.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
-import 'package:finallyicanlearn/services/fetchastrology.dart';
+import 'package:finallyicanlearn/services/fetchplanets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -31,9 +30,6 @@ class _RotateComplexState extends State<RotateComplex> {
       'First Choose Time\nThen Return Here \nFor the Reminder';
   final String _timeselfreminder =
       'Time is a\nComplex\nof the MIND\nwhich most people\nsimply do not fetch';
-
-  //idk
-  String countryValue = "", stateValue = "", cityValue = "", address = "";
 
   final TextEditingController _controllerType = TextEditingController(),
       _controllerAuthority = TextEditingController(),
@@ -104,11 +100,8 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllerSouthNodeGate = TextEditingController(),
       _controllerDesignSouthNodeGate = TextEditingController(),
       _controllerPlanetType = TextEditingController(),
-      _controllerPlanetSubType = TextEditingController(),
-      //idk
-      _controllerCountryPick = TextEditingController(),
-      _controllerStatePick = TextEditingController(),
-      _controllerCityPick = TextEditingController();
+      _controllerPlanetSubType = TextEditingController();
+
 
   final CarouselController _controllercoin = CarouselController(),
       _controllerconstate = CarouselController(),
@@ -122,11 +115,17 @@ class _RotateComplexState extends State<RotateComplex> {
   String _textlevel = '',
       _planettext = '',
       _formattedDate = '',
-      _formattedTime = '';
+      _formattedTime = '',
+      _formatsaturnreturnDate = '',
+      _formatsaturnreturnTime = '',
+      _formatsUranusOppDate = '',
+      _formatsUranusOppTime = '';
 
   DateTime _now = DateTime.now(),
       _designTime = DateTime.now(),
-      _selectedDate = DateTime.now();
+      _selectedDate = DateTime.now(),
+      _saturnreturntime = DateTime.now(),
+      _uranusoppostiontime = DateTime.now();
 
   TimeOfDay _selectedtime = const TimeOfDay(hour: 0, minute: 0);
 
@@ -188,6 +187,7 @@ class _RotateComplexState extends State<RotateComplex> {
       firstcolor = Colors.blue,
       secondcolor = Colors.blue,
       thirdcolor = Colors.blue;
+
 
   @override
   Widget build(BuildContext context) {
@@ -256,7 +256,7 @@ class _RotateComplexState extends State<RotateComplex> {
               thickness: 5,
             ),
             SizedBox(
-              height: 50,
+              height: 40,
               child: TextField(
                   textAlign: TextAlign.center,
                   readOnly: true,
@@ -272,10 +272,10 @@ class _RotateComplexState extends State<RotateComplex> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.5,
+                  width: MediaQuery.of(context).size.width / 1.2,
                   child: AutoSizeTextField(
                     maxLines: 1,
-                    minFontSize: 15,
+                    minFontSize: 25,
                     fullwidth: false,
                     decoration: InputDecoration.collapsed(
                         hintText: hexNamesList[0],
@@ -311,7 +311,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             setState(() {
                               _currentmain = indextop;
                               _controllermaintext.text =
-                                  hexNamesList[_currentmain];
+                                  '${newCoinNames[_currentmain]} ${hexNamesList[_currentmain]}';
                             });
                           }),
                     ),
@@ -1868,7 +1868,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50))),
                 child: const Text(
-                  'Rotate Human Design',
+                  'Rotate Design',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 )),
             const SizedBox(height: 10),
@@ -1889,7 +1889,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
                     child: const Text(
-                      'Gates',
+                      'Wallets',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )),
                 const SizedBox(
@@ -1908,7 +1908,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
                     child: const Text(
-                      'Lines',
+                      'Coins',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )),
               ],
@@ -1935,7 +1935,55 @@ class _RotateComplexState extends State<RotateComplex> {
     );
   }
 
+  // idk
+  Widget _buildCyclesPopupDialog(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Cycles'),
+      content: SingleChildScrollView(
+        child: Flex(
+          direction: Axis.vertical,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Saturn Return',
+                style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal)),
+            Text('$_formatsaturnreturnTime   $_formatsaturnreturnDate',
+                style: const TextStyle(
+                    fontSize: 17,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal)),
+            const Divider(thickness: 5,),
+            const Text('Uranus Opposition',
+                style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal)),
+            Text('$_formatsUranusOppTime   $_formatsUranusOppDate',
+                style: const TextStyle(
+                    fontSize: 17,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal)),
+          ],
+        ),
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Close',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildTimePopupDialog(BuildContext context) {
+
     return AlertDialog(
       title: const Text('Time'),
       content: SingleChildScrollView(
@@ -2010,11 +2058,11 @@ class _RotateComplexState extends State<RotateComplex> {
                 // _selectedDate by user pick
                 _now = _selectedDate.applied(_selectedtime);
 
-                _planetsnowList = await AstrologyServices.getCurrentData(_now);
+                _planetsnowList = await PlanetsServices.getCurrentData(_now);
 
-                _designTime = await AstrologyServices.getDesignTime(_now);
+                _designTime = await PlanetsServices.getDesignTime(_now);
                 _planetsdesignList =
-                    await AstrologyServices.getCurrentData(_designTime);
+                    await PlanetsServices.getCurrentData(_designTime);
 
                 _channelsList = HDServices.getHDChannels(
                     _planetsnowList, _planetsdesignList);
@@ -2031,7 +2079,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 _controlHDData(hdfinaldata);
                 //hdfinaldata = HDServices.getHDBasicData(_channelsList);
 
-                _setDateTime();
+                _setDateTime(_now);
 
                 //_formattedDate = DateFormat('yyyy-MM-dd').format(_now);
                 //_formattedTime = DateFormat.Hms().format(_now);
@@ -2080,6 +2128,15 @@ class _RotateComplexState extends State<RotateComplex> {
                     break;
                 }
 
+                // idk
+                // calc cycles
+                //_saturnreturntime = await PlanetsServices.getSaturnReturn(_now);
+                //_formatsaturnreturnDate = DateFormat('yyyy-MM-dd').format(_saturnreturntime);
+                //_formatsaturnreturnTime = DateFormat.Hms().format(_saturnreturntime);
+
+                //_uranusoppostiontime = await PlanetsServices.getUranusOpposition(_now);
+                //_formatsUranusOppDate = DateFormat('yyyy-MM-dd').format(_uranusoppostiontime);
+                //_formatsUranusOppTime = DateFormat.Hms().format(_uranusoppostiontime);
                 setState(() {
                   Navigator.of(context).pop();
                 });
@@ -2100,12 +2157,12 @@ class _RotateComplexState extends State<RotateComplex> {
               onPressed: () async {
                 _now = DateTime.now();
 
-                _planetsnowList = await AstrologyServices.getCurrentData(_now);
+                _planetsnowList = await PlanetsServices.getCurrentData(_now);
 
                 //_designTime = await AstrologyServices.getDesignTime(_now);
                 //emulate design time to now time to prevent blank
                 _planetsdesignList =
-                    await AstrologyServices.getCurrentData(_now);
+                    await PlanetsServices.getCurrentData(_now);
 
                 _channelsList =
                     HDServices.getHDChannelsJustNow(_planetsnowList);
@@ -2121,22 +2178,12 @@ class _RotateComplexState extends State<RotateComplex> {
                 //_selfreminderSentence = HDServices.getSelfReminder();
                 _selfreminder = _timeselfreminder;
 
-                _setDateTime();
-
-                //_formattedDate = DateFormat('yyyy-MM-dd').format(_now);
-                //_formattedTime = DateFormat.Hms().format(_now);
-                //_controllerTime.text = '$_formattedTime $_formattedDate';
+                _setDateTime(_now);
 
                 _planetsList = _planetsnowList;
                 _planethex = _planetsList[0];
-                //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
 
                 _setCoins();
-                //_hexalignedList = hexagramAlignment(_planethex.gate!);
-
-                //_controllertop.jumpToPage(_hexalignedList[0]);
-                //_controllermid.jumpToPage(_hexalignedList[1]);
-                //_controllerbot.jumpToPage(_hexalignedList[2]);
 
                 _controllerlinetext.text = _planethex.line!.toString();
                 _controllergatelinestory.text = idonotknowlinesList[
@@ -2203,7 +2250,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildCentersPopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('Centers'),
+      title: const Text('Account'),
       content: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: ListView.builder(
@@ -2286,7 +2333,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildChannelsPopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('Channels'),
+      title: const Text('Transactions'),
       content: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: ListView.builder(
@@ -2391,7 +2438,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildDataPopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('Rotate Human Design', style: TextStyle(fontSize: 15)),
+      title: const Text('Rotate Design', style: TextStyle(fontSize: 15)),
       content: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -2453,7 +2500,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     );
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: const Text('Profile', style: TextStyle(fontSize: 13))),
+                  child: const Text('Cost-Ume', style: TextStyle(fontSize: 13))),
               ElevatedButton(
                   onPressed: () {
                     showDialog(
@@ -2463,7 +2510,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     );
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: const Text('Centers', style: TextStyle(fontSize: 13))),
+                  child: const Text('Account', style: TextStyle(fontSize: 13))),
               ElevatedButton(
                   onPressed: () {
                     showDialog(
@@ -2474,7 +2521,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                   child:
-                      const Text('Channels', style: TextStyle(fontSize: 13))),
+                      const Text('Transactions', style: TextStyle(fontSize: 13))),
             ],
           ),
         ],
@@ -2495,7 +2542,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildProfilePopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('Profile'),
+      title: const Text('Cost-Ume'),
       content: Column(
         children: [
           Flex(
@@ -2733,7 +2780,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildGatesDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text('Gates'),
+      title: const Text('Wallets'),
       content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: ListView.builder(
@@ -2782,7 +2829,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildLinesDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text('Lines'),
+      title: const Text('Coins'),
       content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: ListView.builder(
@@ -2943,53 +2990,16 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerDesignNeptuneGate.text = _neptunedesignhex.gatelinecolor!;
     _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor!;
 
-    //_controllerSunHex.text = _sunhex.hex!;
-    //_controllerEarthHex.text = _earthhex.hex!;
-    //_controllerNorthNodeHex.text = _northnodehex.hex!;
-    //_controllerSouthNodeHex.text = _southnodehex.hex!;
-    //_controllerMoonHex.text = _moonhex.hex!;
-    //_controllerMercuryHex.text = _mercuryhex.hex!;
-    //_controllerVenusHex.text = _venushex.hex!;
-    //_controllerMarsHex.text = _marshex.hex!;
-    //_controllerJupiterHex.text = _jupiterhex.hex!;
-    //_controllerSaturnHex.text = _saturnhex.hex!;
-    //_controllerUranusHex.text = _uranushex.hex!;
-    //_controllerNeptuneHex.text = _neptunehex.hex!;
-    //_controllerPlutoHex.text = _plutohex.hex!;
   }
 
-  void _setDateTime() {
-    _formattedDate = DateFormat('yyyy-MM-dd').format(_now);
-    _formattedTime = DateFormat.Hms().format(_now);
+  void _setDateTime(DateTime timedata) {
+    _formattedDate = DateFormat('yyyy-MM-dd').format(timedata);
+    _formattedTime = DateFormat.Hms().format(timedata);
     _controllerTime.text = '$_formattedTime $_formattedDate';
   }
 
   void _setCoins() {
     _hexalignedList = hexagramAlignment(_planethex.gate!);
-
-    //if (_currenttop == _hexalignedList[0]) {
-     // _controllertop.jumpToPage(_hexalignedList[0] + 1);
-     // _controllertop.jumpToPage(_hexalignedList[0]);
-    //}
-    //else {
-     // _controllertop.jumpToPage(_hexalignedList[0]);
-    //}
-
-    //if (_controllermid == _hexalignedList[1]) {
-     // _controllermid.jumpToPage(_hexalignedList[1] + 1);
-    //  _controllermid.jumpToPage(_hexalignedList[1]);
-    //}
-    //else {
-    //  _controllermid.jumpToPage(_hexalignedList[1]);
-    //}
-
-    //if (_controllerbot == _hexalignedList[2]) {
-     // _controllerbot.jumpToPage(_hexalignedList[2] + 1);
-    //  _controllerbot.jumpToPage(_hexalignedList[2]);
-    //}
-    //else {
-     // _controllerbot.jumpToPage(_hexalignedList[2]);
-    //}
 
     _controllertop.jumpToPage(_hexalignedList[0]);
     _controllermid.jumpToPage(_hexalignedList[1]);

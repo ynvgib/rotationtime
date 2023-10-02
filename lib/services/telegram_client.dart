@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:finallyicanlearn/logic/calculatehdchart.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
-import 'package:finallyicanlearn/services/fetchastrology.dart';
+import 'package:finallyicanlearn/services/fetchplanets.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
@@ -84,10 +84,10 @@ class TelegramClient {
 
         txtcoin = 'no coin';
 
-        planetsnowList = await AstrologyServices.getCurrentData(now);
+        planetsnowList = await PlanetsServices.getCurrentData(now);
 
-        designTime = await AstrologyServices.getDesignTime(now);
-        planetsdesignList = await AstrologyServices.getCurrentData(designTime);
+        designTime = await PlanetsServices.getDesignTime(now);
+        planetsdesignList = await PlanetsServices.getCurrentData(designTime);
 
         channelsList =
             HDServices.getHDChannels(planetsnowList, planetsdesignList);
@@ -170,10 +170,10 @@ class TelegramClient {
 
       txtcoin = 'no coin';
 
-      planetsnowList = await AstrologyServices.getCurrentData(now);
+      planetsnowList = await PlanetsServices.getCurrentData(now);
 
-      designTime = await AstrologyServices.getDesignTime(now);
-      planetsdesignList = await AstrologyServices.getCurrentData(designTime);
+      designTime = await PlanetsServices.getDesignTime(now);
+      planetsdesignList = await PlanetsServices.getCurrentData(designTime);
 
       channelsList =
           HDServices.getHDChannels(planetsnowList, planetsdesignList);

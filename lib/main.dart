@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/rotations/rotatecomplex.dart';
+import 'package:finallyicanlearn/rotations/rotatecomplexhd.dart';
 import 'package:finallyicanlearn/rotations/rotatesimple.dart';
 import 'package:finallyicanlearn/rotations/rotateidk.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
@@ -9,7 +10,6 @@ import 'package:finallyicanlearn/services/telegram_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sweph/sweph.dart';
-
 
 // flutter build windows
 // flutter build web --web-renderer canvaskit
@@ -26,7 +26,8 @@ Future<void> main() async {
   //teledart
   //await TelegramClient.init();
 
-  runApp(const RotateMain());}
+  runApp(const RotateMain());
+}
 
 class RotateMain extends StatelessWidget {
   const RotateMain({Key? key}) : super(key: key);
@@ -77,6 +78,7 @@ class RotateHome extends StatelessWidget {
         backgroundColor: Colors.black,
       ),
       body: Column(children: [
+        const Divider(color: Colors.white),
         Container(
           height: 30,
           width: MediaQuery.of(context).size.width,
@@ -108,15 +110,21 @@ class RotateHome extends StatelessWidget {
             ),
           ),
         ),
+        const Divider(color: Colors.white),
         Expanded(
           child: ListView(
-            itemExtent: MediaQuery.of(context).size.height / 13,
+            itemExtent: MediaQuery.of(context).size.height / 7,
             children: [
-              MappingItem(_titles[0], mainroutes[0], Colors.blue),
-              MappingItem(_titles[1], mainroutes[1], Colors.green),
-              MappingItem(_titles[2], mainroutes[2], Colors.yellow),
-              MappingItem(_titles[3], mainroutes[3], Colors.red),
-              MappingItem(_titles[4], mainroutes[4], Colors.black),
+              MappingItem(
+                  _titles[0], mainroutes[0], Colors.blue, hexBasicMixList[0]),
+              MappingItem(
+                  _titles[1], mainroutes[1], Colors.green, hexBasicMixList[1]),
+              MappingItem(
+                  _titles[2], mainroutes[2], Colors.yellow, hexBasicMixList[2]),
+              MappingItem(
+                  _titles[3], mainroutes[3], Colors.red, hexBasicMixList[3]),
+              MappingItem(_titles[4], mainroutes[4], Colors.white,
+                  'assets/rotateicon.png'),
             ],
           ),
         ),
@@ -163,17 +171,19 @@ class RotateHome extends StatelessWidget {
 class MappingItem extends StatelessWidget {
   final String title;
   final String route;
-  final Color _color;
-  const MappingItem(this.title, this.route, this._color, {Key? key})
+  final Color itemcolor;
+  final String image;
+  const MappingItem(this.title, this.route, this.itemcolor, this.image,
+      {Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Container(
-        height: 25.0,
+        height: 40.0,
         decoration: BoxDecoration(
-            color: _color,
+            color: Colors.black,
             borderRadius: BorderRadius.circular(50),
             boxShadow: const [
               BoxShadow(
@@ -187,16 +197,34 @@ class MappingItem extends StatelessWidget {
                   blurRadius: 15,
                   spreadRadius: 1),
             ]),
-        child: Padding(
-          padding: const EdgeInsets.all(1.0),
-          child: AutoSizeText(
-            title,
-            minFontSize: 15,
-            maxLines: 1,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
-          ),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 10, color: Colors.black, spreadRadius: 5)
+                  ],
+                ),
+                child: CircleAvatar(backgroundImage: AssetImage(image))),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(50, 1, 1, 1),
+              child: AutoSizeText(
+                title,
+                minFontSize: 20,
+                maxLines: 1,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: itemcolor,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+              ),
+            ),
+          ],
         ),
       ),
       onTap: () {
@@ -204,6 +232,4 @@ class MappingItem extends StatelessWidget {
       },
     );
   }
-
 }
-

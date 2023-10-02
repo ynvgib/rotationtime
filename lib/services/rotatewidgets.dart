@@ -1,3 +1,4 @@
+import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/material.dart';
@@ -19,20 +20,20 @@ Widget build384PopUp(BuildContext context) {
                 Text(
                   (index - 5).toString(),
                   textAlign: TextAlign.center,
-                  style:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 14),
                 ),
                 Text(
                   idonotknowOnlylinesList[index],
                   textAlign: TextAlign.center,
-                  style:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 14),
                 ),
                 Text(
                   '${(index / 6).floor()}.${((index - 5)) - (((index / 6).floor() - 1) * 6)}',
                   textAlign: TextAlign.left,
-                  style:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 14),
                 ),
               ],
             ),
@@ -52,15 +53,254 @@ Widget build384PopUp(BuildContext context) {
   );
 }
 
+Widget build36PopUp(BuildContext context) {
+  return AlertDialog(
+    title: const Text('36 Transactions'),
+    content: SizedBox(
+      width: MediaQuery.of(context).size.width * 0.6,
+      height: 300,
+      child: Flex(
+        direction: Axis.vertical,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      _buildComplexTransactions(context),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+              child: const Text('COMPLEX', style: TextStyle(fontSize: 20))),
+          SizedBox(height: 10,),
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      _buildBreathTransactions(context),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
+              child: const Text('breath', style: TextStyle(fontSize: 20, color: Colors.black87))),
+          SizedBox(height: 10,),
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      _buildSilencetransactions(context),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              child: const Text('silence', style: TextStyle(fontSize: 20, color: Colors.black))),
+        ],
+      ),
+    ),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget _buildComplexTransactions(BuildContext context) {
+  return AlertDialog(
+    title: const Text('Complex Transactions'),
+    content: SizedBox(
+      width: MediaQuery.of(context).size.width * 0.6,
+      child: ListView.builder(
+        reverse: false,
+        padding: const EdgeInsets.all(5.0),
+        itemCount: hdchannelcomplexList.length,
+        itemBuilder: (context, index) {
+          return Container(
+            decoration: BoxDecoration(
+              //color: Colors.blue[100],
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey[500]!,
+                      offset: const Offset(4, 4),
+                      blurRadius: 5,
+                      spreadRadius: 1),
+                  const BoxShadow(
+                      color: Colors.blueGrey,
+                      offset: Offset(-4, -4),
+                      blurRadius: 5,
+                      spreadRadius: 1),
+                ]),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    hdchannelcomplexList[index],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
+                  ),
+
+                ],
+              ),
+            ),
+          );},
+      ),
+    ),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget _buildBreathTransactions(BuildContext context) {
+  return AlertDialog(
+    title: const Text('Breath Transactions'),
+    content: SizedBox(
+      width: MediaQuery.of(context).size.width * 0.6,
+      child: ListView.builder(
+        reverse: false,
+        padding: const EdgeInsets.all(5.0),
+        itemCount: hdchannelbreathList.length,
+        itemBuilder: (context, index) {
+          return Container(
+            decoration: BoxDecoration(
+              //color: Colors.blue[100],
+                color: Colors.yellow,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey[500]!,
+                      offset: const Offset(4, 4),
+                      blurRadius: 5,
+                      spreadRadius: 1),
+                  const BoxShadow(
+                      color: Colors.blueGrey,
+                      offset: Offset(-4, -4),
+                      blurRadius: 5,
+                      spreadRadius: 1),
+                ]),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    hdchannelbreathList[index],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black54),
+                  ),
+
+                ],
+              ),
+            ),
+          );},
+      ),
+    ),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget _buildSilencetransactions(BuildContext context) {
+  return AlertDialog(
+    title: const Text('silence Transactions'),
+    content: SizedBox(
+      width: MediaQuery.of(context).size.width * 0.6,
+      child: ListView.builder(
+        reverse: false,
+        padding: const EdgeInsets.all(5.0),
+        itemCount: hdchannelsilenceList.length,
+        itemBuilder: (context, index)  {
+          return Container(
+            decoration: BoxDecoration(
+              //color: Colors.blue[100],
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey[500]!,
+                      offset: const Offset(4, 4),
+                      blurRadius: 5,
+                      spreadRadius: 1),
+                  const BoxShadow(
+                      color: Colors.blueGrey,
+                      offset: Offset(-4, -4),
+                      blurRadius: 5,
+                      spreadRadius: 1),
+                ]),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    hdchannelsilenceList[index],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                  ),
+
+                ],
+              ),
+            ),
+          );},
+      ),
+    ),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
 Widget build64PopUp(BuildContext context) {
   return AlertDialog(
     title: const Text('64'),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
-        child:  ListView.builder(
+        child: ListView.builder(
           reverse: true,
           padding: const EdgeInsets.all(5.0),
-          itemCount: idkHexList.length,
+          itemCount: LineSentenceList.length,
           itemBuilder: (context, index) => ListTile(
             title: Flex(
               direction: Axis.vertical,
@@ -69,13 +309,15 @@ Widget build64PopUp(BuildContext context) {
                 Text(
                   index.toString(),
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 15),
                 ),
                 const SizedBox(width: 5),
                 Text(
-                  idkHexList[index],
+                  LineSentenceList[index],
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 15),
                 )
               ],
             ),
@@ -97,17 +339,19 @@ Widget build64PopUp(BuildContext context) {
 
 Widget buildComplexPopUp(BuildContext context) {
   return AlertDialog(
-    title: const Text('Complex',style: TextStyle(color: Colors.blue),),
+    title: const Text(
+      'Complex',
+      style: TextStyle(color: Colors.blue),
+    ),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
-        child:  ListView.builder(
+        child: ListView.builder(
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemCount: 16,
           itemBuilder: (context, index) {
             int hexagramindex = orderHexagramsWheel[index];
-            int hexagramfontindex =
-            fontHexNumbersList.indexOf(hexagramindex);
+            int hexagramfontindex = fontHexNumbersList.indexOf(hexagramindex);
             return Container(
               padding: const EdgeInsets.fromLTRB(15, 15, 5, 5),
               width: 70,
@@ -157,18 +401,20 @@ Widget buildComplexPopUp(BuildContext context) {
 
 Widget buildSimplePopUp(BuildContext context) {
   return AlertDialog(
-    title: const Text('Simple', style: TextStyle(color: Colors.green),),
+    title: const Text(
+      'Simple',
+      style: TextStyle(color: Colors.green),
+    ),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
-        child:  ListView.builder(
+        child: ListView.builder(
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemCount: 16,
           itemBuilder: (context, index) {
             index = index + 16;
             int hexagramindex = orderHexagramsWheel[index];
-            int hexagramfontindex =
-            fontHexNumbersList.indexOf(hexagramindex);
+            int hexagramfontindex = fontHexNumbersList.indexOf(hexagramindex);
             return Container(
               padding: const EdgeInsets.fromLTRB(15, 15, 5, 5),
               width: 70,
@@ -218,10 +464,13 @@ Widget buildSimplePopUp(BuildContext context) {
 
 Widget buildBreathPopUp(BuildContext context) {
   return AlertDialog(
-    title: const Text('Breath',style: TextStyle(color: Colors.yellow),),
+    title: const Text(
+      'Breath',
+      style: TextStyle(color: Colors.yellow),
+    ),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
-        child:  ListView.builder(
+        child: ListView.builder(
           scrollDirection: Axis.vertical,
           reverse: true,
           shrinkWrap: true,
@@ -229,8 +478,7 @@ Widget buildBreathPopUp(BuildContext context) {
           itemBuilder: (context, index) {
             index = index + 48;
             int hexagramindex = orderHexagramsWheel[index];
-            int hexagramfontindex =
-            fontHexNumbersList.indexOf(hexagramindex);
+            int hexagramfontindex = fontHexNumbersList.indexOf(hexagramindex);
             return Container(
               padding: const EdgeInsets.fromLTRB(15, 15, 5, 5),
               width: 70,
@@ -280,10 +528,13 @@ Widget buildBreathPopUp(BuildContext context) {
 
 Widget buildSilencePopUp(BuildContext context) {
   return AlertDialog(
-    title: const Text('Silence',style: TextStyle(color: Colors.red),),
+    title: const Text(
+      'Silence',
+      style: TextStyle(color: Colors.red),
+    ),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
-        child:  ListView.builder(
+        child: ListView.builder(
           scrollDirection: Axis.vertical,
           reverse: true,
           shrinkWrap: true,
@@ -291,8 +542,7 @@ Widget buildSilencePopUp(BuildContext context) {
           itemBuilder: (context, index) {
             index = index + 32;
             int hexagramindex = orderHexagramsWheel[index];
-            int hexagramfontindex =
-            fontHexNumbersList.indexOf(hexagramindex);
+            int hexagramfontindex = fontHexNumbersList.indexOf(hexagramindex);
             return Container(
               padding: const EdgeInsets.fromLTRB(15, 15, 5, 5),
               width: 70,
@@ -339,4 +589,3 @@ Widget buildSilencePopUp(BuildContext context) {
     ],
   );
 }
-
