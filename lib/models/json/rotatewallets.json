@@ -1,0 +1,1823 @@
+{
+  "wallet": [
+    {
+      "id": 0,
+      "wheelid": 0,
+      "topcoin":  "topcoin",
+      "middlecoin": "middlecoin",
+      "bottomcoin": "bottomcoin",
+      "phrase": "Think, Build, Use, Neglect",
+      "phrasehebrew": "לחשוב, לבנות, להשתמש, לזנוח",
+      "sentence": {
+        "adjective": "adjective",
+        "subject": "subject",
+        "verb": "Verb",
+        "adverb": "Adverb"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "hexagram",
+      "humandesign": {
+        "gate": "gate",
+        "description": "description."
+      }
+    },
+    {
+      "id": 1,
+      "wheelid": 1,
+      "topcoin":  "complex",
+      "middlecoin": "complex",
+      "bottomcoin": "complex",
+      "phrase": "Time is Neglecting Self expression",
+      "phrasehebrew": "זמן זונח ביטוי עצמי מורכב",
+
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Creating",
+        "adverb": "Self expression"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE CREATIVE",
+      "humandesign": {
+        "gate": "SELF-EXPRESSION",
+        "description": "CREATION AS A PRIMAL FORCE. THE ENERGY POTENTIAL TO MANIFEST\nINSPIRATION WITHOUT LIMITATION."
+      }
+    },
+    {
+      "id": 2,
+      "wheelid": 33,
+      "topcoin":  "silence",
+      "middlecoin": "silence",
+      "bottomcoin": "silence",
+      "phrase": "Time is Building a Driver",
+      "phrasehebrew": "זמן בונה נהגת בשתיקה",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Received",
+        "adverb": "Driver"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE RECEPTIVE",
+      "humandesign": {
+        "gate": "HIGHER KNOWING",
+        "description": "RECEPTIVITY AS THE PRIMAL BASE THROUGH WHICH ANY RESPONSE IS\nDETERMINED. THE ROOT OF ACTION."
+      }
+    },
+    {
+      "id": 3,
+      "wheelid": 30,
+      "topcoin":  "simple",
+      "middlecoin": "silence",
+      "bottomcoin": "simple",
+      "phrase": "Time is Thinking to Order Mutation",
+      "phrasehebrew": "זמן יחשוב על סדר שונה מהותית",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Mutating",
+        "adverb": "Orders"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "ORDERING",
+      "humandesign": {
+        "gate": "DIFFICULTY AT THE BEGINNING",
+        "description": "THE FUNDAMENTAL CHALLENGE OF INITIATION IS TO TRANSCEND CONFUSION\nAND ESTABLISH ORDER."
+      }
+    },
+    {
+      "id": 4,
+      "wheelid": 50,
+      "topcoin":  "breath",
+      "middlecoin": "silence",
+      "bottomcoin": "breath",
+      "phrase": "Time shall Use Foolish Answers",
+      "phrasehebrew": "זמן ישתמש בתשובות שובבות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Answer",
+        "adverb": "Foolishly"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "YOUTHFUL FOLLY",
+      "humandesign": {
+        "gate": "FORMULIZATION",
+        "description": "THE ENERGY TO BEGUILE AND SUCCEED DESPITE IGNORANCE. FREEDOM\nFROM RETRIBUTION."
+      }
+    },
+    {
+      "id": 5,
+      "wheelid": 6,
+      "topcoin":  "simple",
+      "middlecoin": "simple",
+      "bottomcoin": "complex",
+      "phrase": "Time shall Neglect to Waiting",
+      "phrasehebrew": "זמן יזנח את ההמתנה",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Wait",
+        "adverb": "Patiently"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "WAITING",
+      "humandesign": {
+        "gate": "FIXED RHYTHMS",
+        "description": "THE FUNDAMENTAL ATTUNEMENT TO NATURAL RHYTHMS. WAITING AS\nAN ACTIVE STATE OF AWARENESS."
+      }
+    },
+    {
+      "id": 6,
+      "wheelid": 56,
+      "topcoin":  "complex",
+      "middlecoin": "breath",
+      "bottomcoin": "breath",
+      "phrase": "Space - Use of Conflict",
+      "phrasehebrew": "מרחב - שימוש בעימות",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Conflicts",
+        "adverb": "Friction"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "CONFLICT",
+      "humandesign": {
+        "gate": "FRICTION",
+        "description": "THE FUNDAMENTAL DESIGN COMPONENT OF PROGRESS. THE LAW THAT\nGROWTH CANNOT EXIST WITHOUT FRICTION."
+      }
+    },
+    {
+      "id": 7,
+      "wheelid": 49,
+      "topcoin":  "silence",
+      "middlecoin": "silence",
+      "bottomcoin": "breath",
+      "phrase": "Time shall Use Armed Interactions",
+      "phrasehebrew": "זמן ישתמש בהצטלבויות חמושות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Arm",
+        "adverb": "Interactions"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE ARMY",
+      "humandesign": {
+        "gate": "THE ROLE OF THE SELF",
+        "description": "THE POINT OF CONVERGENCE. BY DESIGN, THE NEED FOR LEADERSHIP\nTO GUIDE AND ORDER SOCIETY."
+      }
+    },
+    {
+      "id": 8,
+      "wheelid": 35,
+      "topcoin":  "simple",
+      "middlecoin": "silence",
+      "bottomcoin": "silence",
+      "phrase": "Time is Building a Contribution",
+      "phrasehebrew": "זמן בונה תרומה",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Holding Together",
+        "adverb": "Contribution"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "HOLDING TOGETHER",
+      "humandesign": {
+        "gate": "CONTRIBUTION",
+        "description": "THE BASIC WORTH REALIZED IN CONTRIBUTING INDIVIDUAL EFFORTS TO\nGROUP GOALS."
+      }
+    },
+    {
+      "id": 9,
+      "wheelid": 5,
+      "topcoin":  "complex",
+      "middlecoin": "simple",
+      "bottomcoin": "complex",
+      "phrase": "Time shall Neglect to Focus",
+      "phrasehebrew": "זמן יזנח מיקודים",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Tame Focused",
+        "adverb": "small power"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE TAMING POWER OF THE SMALL",
+      "humandesign": {
+        "gate": "FOCUS",
+        "description": "POTENTIAL CAN BE FULFILLED THROUGH DETAILED ATTENTION TO ALL\nPERTINENT ASPECTS."
+      }
+    },
+    {
+      "id": 10,
+      "wheelid": 9,
+      "topcoin":  "complex",
+      "middlecoin": "breath",
+      "bottomcoin": "complex",
+      "phrase": "Time is Neglecting Self Behavior",
+      "phrasehebrew": "זמן זונח התנהגות עצמית",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Treading",
+        "adverb": "Love"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "TREADING",
+      "humandesign": {
+        "gate": "THE BEHAVIOUR OF THE SELF",
+        "description": "THE UNDERLYING CODE OF BEHAVIOUR WHICH ENSURES SUCCESSFUL\nINTERACTION DESPITE CIRCUMSTANCES."
+      }
+    },
+    {
+      "id": 11,
+      "wheelid": 8,
+      "topcoin":  "silence",
+      "middlecoin": "simple",
+      "bottomcoin": "complex",
+      "phrase": "Time was Neglecting ideas",
+      "phrasehebrew": "זמן זנח רעיונות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Peacefully",
+        "adverb": "Idealized"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "PEACE",
+      "humandesign": {
+        "gate": "IDEAS",
+        "description": "A HARMONIC CONDITION IN THE INDIVIDUAL OR SOCIETY THAT PERMITS\nASSESSMENT BEFORE RENEWED ACTION."
+      }
+    },
+    {
+      "id": 12,
+      "wheelid": 40,
+      "topcoin":  "complex",
+      "middlecoin": "breath",
+      "bottomcoin": "silence",
+      "phrase": "Time is Bulding in Caution",
+      "phrasehebrew": "זמן בונה בזהירות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Cautiously",
+        "adverb": "Stagnated"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "STANDSTILL",
+      "humandesign": {
+        "gate": "CAUTION",
+        "description": "THE QUALITY OF RESTRAINT AND THE IMPORTANCE OF MEDITATION AND\nINACTION IN CONFRONTING TEMPTATION."
+      }
+    },
+    {
+      "id": 13,
+      "wheelid": 17,
+      "topcoin":  "complex",
+      "middlecoin": "complex",
+      "bottomcoin": "simple",
+      "phrase": "Time was Thinking of Secrets",
+      "phrasehebrew": "זמן חשב על סודות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "listening",
+        "adverb": "to human secret"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE FELLOWSHIP OF MAN",
+      "humandesign": {
+        "gate": "THE LISTENER",
+        "description": "UNIVERSAL IDEAS AND VALUES IN AN ORDERED FRAMEWORK WHICH INSPIRES\nHUMANISTIC COOPERATION."
+      }
+    },
+    {
+      "id": 14,
+      "wheelid": 3,
+      "topcoin":  "breath",
+      "middlecoin": "complex",
+      "bottomcoin": "complex",
+      "phrase": "Time is Neglecting Empowered Wealth",
+      "phrasehebrew": "זמן זונח עושר מעצים",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Empowering",
+        "adverb": "Skilled Wealth"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "POSSESSION IN GREAT MEASURE",
+      "humandesign": {
+        "gate": "POWER SKILLS",
+        "description": "THE ACCUMULATION AND RETENTION OF POWER THROUGH SKILLED INTERACTION,\nCOUPLING GRACE WITH CONTROL."
+      }
+    },
+    {
+      "id": 15,
+      "wheelid": 41,
+      "topcoin":  "silence",
+      "middlecoin": "simple",
+      "bottomcoin": "silence",
+      "phrase": "Time shall Build Extermely Modest",
+      "phrasehebrew": "זמן יבנה צניעויות קיצוניות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "be Extremly",
+        "adverb": "Modest"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "MODESTY",
+      "humandesign": {
+        "gate": "EXTREMES",
+        "description": "THE QUALITY OF BEHAVIOUR WHICH EXPRESSES THE PROPER BALANCE\nBETWEEN EXTREMES."
+      }
+    },
+    {
+      "id": 16,
+      "wheelid": 37,
+      "topcoin":  "silence",
+      "middlecoin": "breath",
+      "bottomcoin": "silence",
+      "phrase": "Time shall Build Enthusiastic Skills",
+      "phrasehebrew": "זמן יבנה מיומנויות נלהבות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Skillfuly",
+        "adverb": "Enthusiast"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "ENTHUSIASM",
+      "humandesign": {
+        "gate": "SKILLS",
+        "description": "THE GREAT ART OF ENRICHING LIFE BY THE HARMONIC CHANNELLING OF\nENERGY."
+      }
+    },
+    {
+      "id": 17,
+      "wheelid": 26,
+      "topcoin":  "simple",
+      "middlecoin": "breath",
+      "bottomcoin": "simple",
+      "phrase": "Time shall Think on Following",
+      "phrasehebrew": "זמן יחשוב לעקוב",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Follow",
+        "adverb": "Hierarchy"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "FOLLOWING",
+      "humandesign": {
+        "gate": "OPINIONS",
+        "description": "THE ANCIENT LAW THAT THOSE WHO WISH TO RULE MUST KNOW HOW\nTO SERVE."
+      }
+    },
+    {
+      "id": 18,
+      "wheelid": 58,
+      "topcoin":  "breath",
+      "middlecoin": "simple",
+      "bottomcoin": "breath",
+      "phrase": "Time shall Use Corrections",
+      "phrasehebrew": "זמן ישתמש בתיקונים",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Correct",
+        "adverb": "Spoilt Authority"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "WORK ON WHAT HAS BEEN SPOILT",
+      "humandesign": {
+        "gate": "CORRECTION",
+        "description": "THE VIGILANCE AND DETERMINATION TO UPHOLD AND DEFEND BASIC\nAND FUNDAMENTAL HUMAN RIGHTS."
+      }
+    },
+    {
+      "id": 19,
+      "wheelid": 16,
+      "topcoin":  "silence",
+      "middlecoin": "silence",
+      "bottomcoin": "complex",
+      "phrase": "Space - Neglected Needs",
+      "phrasehebrew": "מרחב - הזנחת צרכים",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Approaches",
+        "adverb": "Needs"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "APPROACH",
+      "humandesign": {
+        "gate": "WANTING",
+        "description": "THAT ALL THINGS ARE INTERRELATED IS APPARENT AND MANIFESTED\nTHROUGH THE ACTION OF APPROACH."
+      }
+    },
+    {
+      "id": 20,
+      "wheelid": 36,
+      "topcoin":  "complex",
+      "middlecoin": "silence",
+      "bottomcoin": "silence",
+      "phrase": "Time is Building Now",
+      "phrasehebrew": "זמן בונה כעת",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Contemplating",
+        "adverb": "Attention"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "CONTEMPLATION",
+      "humandesign": {
+        "gate": "THE NOW",
+        "description": "RECOGNITION AND AWARENESS IN THE NOW WHICH TRANSFORMS\nUNDERSTANDING INTO RIGHT ACTION."
+      }
+    },
+    {
+      "id": 21,
+      "wheelid": 27,
+      "topcoin":  "breath",
+      "middlecoin": "breath",
+      "bottomcoin": "simple",
+      "phrase": "Space - Thoughts Control",
+      "phrasehebrew": "מרחב - שליטה במחשבות",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Controls",
+        "adverb": "Through Biting"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "BITING THROUGH",
+      "humandesign": {
+        "gate": "THE HUNTER(ESS)",
+        "description": "THE JUSTIFIED AND NECESSARY USE OF POWER IN OVERCOMING\nDELIBERATE AND PERSISTENT INTERFERENCE."
+      }
+    },
+    {
+      "id": 22,
+      "wheelid": 23,
+      "topcoin":  "breath",
+      "middlecoin": "simple",
+      "bottomcoin": "simple",
+      "phrase": "Time is Thinking to be Open",
+      "phrasehebrew": "זמן חושב להיות פתוח",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Gracefully",
+        "adverb": "Open"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "GRACE",
+      "humandesign": {
+        "gate": "OPENNESS",
+        "description": "A QUALITY OF BEHAVIOUR BEST SUITED IN HANDLING MUNDANE AND\nTRIVIAL SITUATIONS."
+      }
+    },
+    {
+      "id": 23,
+      "wheelid": 34,
+      "topcoin":  "breath",
+      "middlecoin": "silence",
+      "bottomcoin": "silence",
+      "phrase": "Time is Building a Split Part",
+      "phrasehebrew": "זמן בונה חלק מפוצל",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Assimilating",
+        "adverb": "Split Parts"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "SPLITTING APART",
+      "humandesign": {
+        "gate": "ASSIMILATION",
+        "description": "AMORALITY. THE AWARENESS AND UNDERSTANDING WHICH LEADS TO\nTHE ACCEPTANCE OF DIVERSITY. "
+      }
+    },
+    {
+      "id": 24,
+      "wheelid": 32,
+      "topcoin":  "silence",
+      "middlecoin": "silence",
+      "bottomcoin": "simple",
+      "phrase": "Time is Thinking to Return",
+      "phrasehebrew": "זמן חושב לחזור",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Returning",
+        "adverb": "Rationally"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "RETURNING",
+      "humandesign": {
+        "gate": "RATIONALIZING",
+        "description": "THE NATURAL AND SPONTANEOUS PROCESS OF TRANSFORMATION AND\nRENEWAL."
+      }
+    },
+    {
+      "id": 25,
+      "wheelid": 25,
+      "topcoin":  "complex",
+      "middlecoin": "breath",
+      "bottomcoin": "simple",
+      "phrase": "Time is Thinking on Spirit of Self",
+      "phrasehebrew": "זמן חושב על רוח עצמיות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Being",
+        "adverb": "Spirit Love"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "INNOCENCE",
+      "humandesign": {
+        "gate": "THE SPIRIT OF THE SELF",
+        "description": "THE PERFECTION OF ACTION THROUGH UNCONTRIVED AND SPONTANEOUS\nNATURE."
+      }
+    },
+    {
+      "id": 26,
+      "wheelid": 7,
+      "topcoin":  "breath",
+      "middlecoin": "simple",
+      "bottomcoin": "complex",
+      "phrase": "Space - Neglect Great Ego Tricks",
+      "phrasehebrew": "מרחב - תעלולי אגו גדול מוזנחים",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Tames",
+        "adverb": "Great Tricks"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE TAMING POWER OF THE GREAT",
+      "humandesign": {
+        "gate": "THE EGOIST",
+        "description": "THE MAXIMIZATION OF THE POWER OF MEMORY APPLIED TO THE NURTURING\nOF CONTINUITY."
+      }
+    },
+    {
+      "id": 27,
+      "wheelid": 31,
+      "topcoin":  "breath",
+      "middlecoin": "silence",
+      "bottomcoin": "simple",
+      "phrase": "Space - Thought of Caring",
+      "phrasehebrew": "מרחב - מחשבה על טיפול",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Nourishes",
+        "adverb": "Care"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "NOURISHMENT",
+      "humandesign": {
+        "gate": "CARING",
+        "description": "THE ENHANCEMENT OF THE QUALITY AND THE SUBSTANCE OF ALL ACTIVITIES\nTHROUGH CARING."
+      }
+    },
+    {
+      "id": 28,
+      "wheelid": 63,
+      "topcoin":  "simple",
+      "middlecoin": "complex",
+      "bottomcoin": "breath",
+      "phrase": "Time is Using a Risky Game",
+      "phrasehebrew": "זמן משתמש במשחק מסוכן",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Playing",
+        "adverb": "Risky Game"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "PREPONDERANCE OF THE GREAT",
+      "humandesign": {
+        "gate": "THE GAME PLAYER",
+        "description": "THE TRANSITORINESS OF POWER AND INFLUENCE."
+      }
+    },
+    {
+      "id": 29,
+      "wheelid": 51,
+      "topcoin":  "simple",
+      "middlecoin": "silence",
+      "bottomcoin": "breath",
+      "phrase": "Time was Using Perseverance",
+      "phrasehebrew": "זמן השתמש בהתמדות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Persevered",
+        "adverb": "Abysmally"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE ABYSMAL",
+      "humandesign": {
+        "gate": "SAYING YES",
+        "description": "THE DEEP WITHIN THE DEEP. PERSISTENCE DESPITE DIFFICULTIES HAS ITS INEVITABLE REWARDS."
+      }
+    },
+    {
+      "id": 30,
+      "wheelid": 19,
+      "topcoin":  "breath",
+      "middlecoin": "complex",
+      "bottomcoin": "simple",
+      "phrase": "Time was Thinking on Clinging",
+      "phrasehebrew": "זמן חשב על האחזויות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Firing",
+        "adverb": "Clinging"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE CLINGING FIRE",
+      "humandesign": {
+        "gate": "RECOGNITION OF FEELINGS",
+        "description": "FREEDOM RECOGNIZED AS AN ILLUSION AND LIMITATION ACCEPTED AS A\nFATE."
+      }
+    },
+    {
+      "id": 31,
+      "wheelid": 47,
+      "topcoin":  "simple",
+      "middlecoin": "complex",
+      "bottomcoin": "silence",
+      "phrase": "Time shall Build Influences",
+      "phrasehebrew": "זמן יבנה השפעות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Influence",
+        "adverb": "Leadership"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "Influence",
+      "humandesign": {
+        "gate": "Influence",
+        "description": "THE LAW OF FRICTION, WHETHER ACTIVE OR PASSIVE, THAT ENGENDERS\nTRANSFERENCE AND THUS INFLUENCE."
+      }
+    },
+    {
+      "id": 32,
+      "wheelid": 61,
+      "topcoin":  "silence",
+      "middlecoin": "complex",
+      "bottomcoin": "breath",
+      "phrase": "Space - Use of Continuity",
+      "phrasehebrew": "מרחב - שימוש בהמשכים",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Endures",
+        "adverb": "Existing Continuity"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "DURATION",
+      "humandesign": {
+        "gate": "CONTINUITY",
+        "description": "THE ONLY THING WHICH ENDURES IS CHANGE."
+      }
+    },
+    {
+      "id": 33,
+      "wheelid": 48,
+      "topcoin":  "complex",
+      "middlecoin": "complex",
+      "bottomcoin": "silence",
+      "phrase": "Time was Building Privacy",
+      "phrasehebrew": "זמן בנה פרטיות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Memorizing",
+        "adverb": "Private Retreat"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "RETREAT",
+      "humandesign": {
+        "gate": "PRIVACY",
+        "description": "ACTIVE WITHDRAWAL AND THE TRANSFORMATION OF A WEAK POSITION\nINTO A STRENGTH."
+      }
+    },
+    {
+      "id": 34,
+      "wheelid": 4,
+      "topcoin":  "silence",
+      "middlecoin": "complex",
+      "bottomcoin": "complex",
+      "phrase": "Time is Neglecting Great Power",
+      "phrasehebrew": "זמן זנח כוח כביר",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Empowering",
+        "adverb": "Self Greatness"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE POWER OF THE GREAT",
+      "humandesign": {
+        "gate": "POWER",
+        "description": "POWER IS ONLY GREAT WHEN ITS DISPLAY OR USE SERVES THE COMMON\nGOOD."
+      }
+    },
+    {
+      "id": 35,
+      "wheelid": 38,
+      "topcoin":  "breath",
+      "middlecoin": "breath",
+      "bottomcoin": "silence",
+      "phrase": "Time was Building Changes",
+      "phrasehebrew": "זמן בנה שינויים",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Changing",
+        "adverb": "Progressively"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "PROGRESS",
+      "humandesign": {
+        "gate": "CHANGE",
+        "description": "BY DESIGN, PROGRESS CANNOT EXIST IN A VACUUM AND IS DEPENDENT\nON INTERACTION."
+      }
+    },
+    {
+      "id": 36,
+      "topcoin":  "silence",
+      "middlecoin": "simple",
+      "bottomcoin": "simple",
+      "phrase": "Time was Thinking through Crises ",
+      "phrasehebrew": "זמן חשב דרך משברים",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Endarkened",
+        "adverb": "Light Crisis "
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE DARKENING OF THE LIGHT",
+      "humandesign": {
+        "gate": "CRISIS",
+        "description": "THE RULE OF CYCLES IN WHICH DECLINE IS A NATURAL BUT NOT ENDURING STAGE."
+      }
+    },
+    {
+      "id": 37,
+      "wheelid": 21,
+      "topcoin":  "complex",
+      "middlecoin": "simple",
+      "bottomcoin": "simple",
+      "phrase": "Space - Thought of Family",
+      "phrasehebrew": "מרחב - מחשבה על משפחה",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Befriends",
+        "adverb": "Family"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE FAMILY",
+      "humandesign": {
+        "gate": "FRIENDSHIP",
+        "description": "THE MANIFESTATION MACRO- AND MICRO-COSMICALLY OF THE ORGANIC\nNATURE OF COMMUNITIES."
+      }
+    },
+    {
+      "id": 38,
+      "wheelid": 11,
+      "middlecoin": "breath",
+      "bottomcoin": "complex",
+      "phrase": "Time is Neglecting to Fight",
+      "phrasehebrew": "זמן זונח תגרה",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Fighting",
+        "adverb": "Opposition"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "OPPOSITION",
+      "humandesign": {
+        "gate": "THE FIGHTER",
+        "description": "THE ABILITY TO PRESERVE INDIVIDUAL INTEGRITY THROUGH OPPOSITION\nTO DETRIMENTAL FORCES."
+      }
+    },
+    {
+      "id": 39,
+      "wheelid": 43,
+      "topcoin":  "simple",
+      "middlecoin": "simple",
+      "bottomcoin": "silence",
+      "phrase": "Time is Building in Provocation",
+      "phrasehebrew": "זמן בונה בהתגרות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Provoking",
+        "adverb": "Obstruction"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "OBSTRUCTION",
+      "humandesign": {
+        "gate": "THE PROVOCATEUR",
+        "description": "THE VALUE OF OBSTRUCTION IN PROVOKING ANALYSIS, ASSESSMENT\nAND REEVALUATION."
+      }
+    },
+    {
+      "id": 40,
+      "wheelid": 53,
+      "topcoin":  "silence",
+      "middlecoin": "breath",
+      "bottomcoin": "breath",
+      "phrase": "Space - Use of Deliverance Alone",
+      "phrasehebrew": "מרחב - שימוש בגאולה לבד",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Works",
+        "adverb": "Loyally"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "DELIVERANCE",
+      "humandesign": {
+        "gate": "ALONENESS",
+        "description": "THE POINT OF TRANSITION BETWEEN STRUGGLE AND LIBERATION."
+      }
+    },
+    {
+      "id": 41,
+      "wheelid": 15,
+      "topcoin":  "breath",
+      "middlecoin": "silence",
+      "bottomcoin": "complex",
+      "phrase": "Time was Neglecting Contractions",
+      "phrasehebrew": "זמן זנח התכווצויות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Decreased",
+        "adverb": "Fancifully"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "DECREASE",
+      "humandesign": {
+        "gate": "CONTRACTION",
+        "description": "THE LIMITATION OF RESOURCES WHICH MAXIMIZES DEVELOPMENT OF\nPOTENTIAL."
+      }
+    },
+    {
+      "id": 42,
+      "wheelid": 29,
+      "topcoin":  "complex",
+      "middlecoin": "silence",
+      "bottomcoin": "simple",
+      "phrase": "Time was Thinking of Growth",
+      "phrasehebrew": "זמן חשב על צמיחה",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Increased",
+        "adverb": "until its end"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "INCREASE",
+      "humandesign": {
+        "gate": "GROWTH",
+        "description": "THE EXPANSION OF THE RESOURCES WHICH MAXIMIZES THE DEVELOPMENT\nOF FULL POTENTIAL."
+      }
+    },
+    {
+      "id": 43,
+      "wheelid": 2,
+      "topcoin":  "simple",
+      "middlecoin": "complex",
+      "bottomcoin": "complex",
+      "phrase": "Time is Neglecting an Insight",
+      "phrasehebrew": "זמן זונח תובנה",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Breaking Through",
+        "adverb": "Insight"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "BREAKTHROUGH",
+      "humandesign": {
+        "gate": "INSIGHT",
+        "description": "IN ORDER FOR ACHIEVEMENT TO BE MAINTAINED A NEW ORDER MUST BE\nFAIRLY ESTABLISHED."
+      }
+    },
+    {
+      "id": 44,
+      "wheelid": 64,
+      "topcoin":  "complex",
+      "middlecoin": "complex",
+      "bottomcoin": "breath",
+      "phrase": "Space - Use of Meetings",
+      "phrasehebrew": "מרחב - שימוש בפגישות",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Comes",
+        "adverb": "to Alert Meeting"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "COMING TO MEET",
+      "humandesign": {
+        "gate": "ALERTNESS",
+        "description": "THE SUCCESS OF ANY INTERACTION IS BASED ON THE ABSENCE OF ANY\nPRECONDITIONS."
+      }
+    },
+    {
+      "id": 45,
+      "wheelid": 39,
+      "topcoin":  "simple",
+      "middlecoin": "breath",
+      "bottomcoin": "silence",
+      "phrase": "Space - Building to Gather",
+      "phrasehebrew": "מרחב - בניין לאוסף",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Gathers",
+        "adverb": "Together"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "GATHERING TOGETHER",
+      "humandesign": {
+        "gate": "THE GATHERER",
+        "description": "THE NATURAL AND GENERALLY BENEFICIAL ATTRACTION OF LIKE\nFORCES."
+      }
+    },
+    {
+      "id": 46,
+      "wheelid": 57,
+      "topcoin":  "silence",
+      "middlecoin": "simple",
+      "bottomcoin": "breath",
+      "phrase": "Time was Using Self Determinations",
+      "phrasehebrew": "זמן השתמש בנחישויות עצמיות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Pushed Upward",
+        "adverb": "Determinately"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "PUSHING UPWARD",
+      "humandesign": {
+        "gate": "THE DETERMINATION OF THE SELF",
+        "description": "GOOD FORTUNE THAT MAY BE PERCEIVED AS THE RESULT OF SERENDIPITY\nBUT DERIVES FROM EFFORT AND DEDICATION."
+      }
+    },
+    {
+      "id": 47,
+      "wheelid": 55,
+      "topcoin":  "simple",
+      "middlecoin": "breath",
+      "bottomcoin": "breath",
+      "phrase": "Time was Using Realized Oppressions",
+      "phrasehebrew": "זמן השתמש בדיכויים ממשיים",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Oppression",
+        "adverb": "Realized"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "OPPRESSION",
+      "humandesign": {
+        "gate": "REALIZING",
+        "description": "A RESTRICTIVE AND ADVERSE STATE AS A RESULT OF INTERNAL WEAKNESS\nOR EXTERNAL STRENGTH OR BOTH."
+      }
+    },
+    {
+      "id": 48,
+      "wheelid": 59,
+      "topcoin":  "simple",
+      "middlecoin": "simple",
+      "bottomcoin": "breath",
+      "phrase": "Time shall Use Depths",
+      "phrasehebrew": "זמן ישתמש בעומקים",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Deepen",
+        "adverb": "Well"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE WELL",
+      "humandesign": {
+        "gate": "DEPTH",
+        "description": "THE NECESSARY AND QUALITATIVE FOUNDATION THAT IS A PREREQUISITE\nTO ESTABLISH THE COMMON GOOD."
+      }
+    },
+    {
+      "id": 49,
+      "wheelid": 18,
+      "topcoin":  "simple",
+      "middlecoin": "complex",
+      "bottomcoin": "simple",
+      "phrase": "Space - Thought of Principles",
+      "phrasehebrew": "מרחב - מחשבה על עקרונות",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Revolutionizes",
+        "adverb": "Principles"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "REVOLUTION",
+      "humandesign": {
+        "gate": "PRINCIPLES",
+        "description": "IDEALLY THE TRANSFORMATION OF FORMS BASED ON THE HIGHEST\nPRINCIPLES AND NOT SIMPLY FOR POWER.\n"
+      }
+    },
+    {
+      "id": 50,
+      "wheelid": 62,
+      "topcoin":  "breath",
+      "middlecoin": "complex",
+      "bottomcoin": "breath",
+      "phrase": "Space - Use of Values",
+      "phrasehebrew": "מרחב - שימוש בערכים",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Values",
+        "adverb": "Pots"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE CAULDRON",
+      "humandesign": {
+        "gate": "VALUES",
+        "description": "THE VALUE OF HISTORICAL CONTINUITY WHOSE TRADITIONAL VALUES\nSERVE AND ENRICH THE PRESENT AND THE FUTURE."
+      }
+    },
+    {
+      "id": 51,
+      "wheelid": 28,
+      "topcoin":  "silence",
+      "middlecoin": "breath",
+      "bottomcoin": "simple",
+      "phrase": "Time is Thinking of Arousing",
+      "phrasehebrew": "זמן יחשוב על גירוי רוממות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Shockingly",
+        "adverb": "Arousing"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE AROUSING",
+      "humandesign": {
+        "gate": "SHOCK",
+        "description": "THE ABILITY TO RESPOND TO DISORDER AND SHOCK THROUGH RECOGNITION\nAND ADAPTATION."
+      }
+    },
+    {
+      "id": 52,
+      "wheelid": 42,
+      "topcoin":  "breath",
+      "middlecoin": "simple",
+      "bottomcoin": "silence",
+      "phrase": "Time shall Build in Stillness",
+      "phrasehebrew": "זמן יבנה מהדממה",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Keep",
+        "adverb": "Action Still"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "KEEPING STILL (MOUNTAIN)",
+      "humandesign": {
+        "gate": "INACTION",
+        "description": "TEMPORARY AND SELF-IMPOSED INACTION FOR THE BENEFIT OF ASSESSMENT."
+      }
+    },
+    {
+      "id": 53,
+      "wheelid": 44,
+      "topcoin":  "complex",
+      "middlecoin": "simple",
+      "bottomcoin": "silence",
+      "phrase": "Time was Building from the Beginnings",
+      "phrasehebrew": "זמן בנה מההתחלות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Developed",
+        "adverb": "From its Beginning"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "DEVELOPMENT",
+      "humandesign": {
+        "gate": "BEGINNINGS",
+        "description": "DEVELOPMENT AS A STRUCTURED PROGRESSION THAT IS BOTH STEADFAST\nAND ENDURING."
+      }
+    },
+    {
+      "id": 54,
+      "wheelid": 12,
+      "topcoin":  "silence",
+      "middlecoin": "breath",
+      "bottomcoin": "complex",
+      "phrase": "Space - Use of Drive",
+      "phrasehebrew": "מרחב - שימוש בדחף",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Drives",
+        "adverb": "Ambitiously"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE MARRYING MAIDEN",
+      "humandesign": {
+        "gate": "AMBITION",
+        "description": "INTERACTION IN ITS MUNDANE SOCIAL CONTEXT BUT ALSO ONE'S MYSTICAL\nAND COSMIC RELATIONSHIPS."
+      }
+    },
+    {
+      "id": 55,
+      "wheelid": 20,
+      "topcoin":  "silence",
+      "middlecoin": "complex",
+      "bottomcoin": "simple",
+      "phrase": "Time is Thinking of Abundant Spirit",
+      "phrasehebrew": "זמן חושב על שפע נפש",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Abundant",
+        "adverb": "in Spirit"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "ABUNDANCE",
+      "humandesign": {
+        "gate": "SPIRIT",
+        "description": "ABUNDANCE IS STRICTLY A QUESTION OF SPIRIT."
+      }
+    },
+    {
+      "id": 56,
+      "wheelid": 46,
+      "topcoin":  "breath",
+      "middlecoin": "complex",
+      "bottomcoin": "silence",
+      "phrase": "Time was Building Stimulations",
+      "phrasehebrew": "זמן בנה גירויים",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Believed",
+        "adverb": "to be Lost"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE WANDERER",
+      "humandesign": {
+        "gate": "STIMULATION",
+        "description": "STABILITY THROUGH MOVEMENT. THE PERPETUATION OF CONTINUITY\nTHROUGH THE LINKING OF SHORT TERM ACTIVITY."
+      }
+    },
+    {
+      "id": 57,
+      "wheelid": 60,
+      "topcoin":  "complex",
+      "middlecoin": "simple",
+      "bottomcoin": "breath",
+      "phrase": "Time is Using Intuitive Clarity",
+      "phrasehebrew": "זמן משתמש בבהירות מיידית",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Breathing",
+        "adverb": "Clearly"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE GENTLE",
+      "humandesign": {
+        "gate": "INTUITIVE INSIGHT",
+        "description": "THE EXTRAORDINARY POWER OF CLARITY."
+      }
+    },
+    {
+      "id": 58,
+      "wheelid": 10,
+      "topcoin":  "simple",
+      "middlecoin": "breath",
+      "bottomcoin": "complex",
+      "phrase": "Time shall Neglect Aliveness",
+      "phrasehebrew": "זמן יזנח חיוניות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Enjoy",
+        "adverb": "Life"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "THE JOYOUS",
+      "humandesign": {
+        "gate": "ALIVENESS",
+        "description": "STIMULATION IS THE KEY TO JOY."
+      }
+    },
+    {
+      "id": 59,
+      "wheelid": 52,
+      "topcoin":  "complex",
+      "middlecoin": "silence",
+      "bottomcoin": "breath",
+      "phrase": "Space - Use of Sexuality",
+      "phrasehebrew": "מרחב - שימוש במיניות",
+      "sentence": {
+        "adjective": "Space",
+        "subject": "-",
+        "verb": "Spreads",
+        "adverb": "Unity"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "DISPERSION",
+      "humandesign": {
+        "gate": "SEXUALITY",
+        "description": "THE ABILITY TO BREAK DOWN BARRIERS TO ACHIEVE UNION."
+      }
+    },
+    {
+      "id": 60,
+      "wheelid": 14,
+      "topcoin":  "simple",
+      "middlecoin": "silence",
+      "bottomcoin": "complex",
+      "phrase": "Time is Neglecting an Accepted Limitation",
+      "phrasehebrew": "זמן זונח מגבלה מקובלת",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Accepting",
+        "adverb": "Limitation"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "LIMITATION",
+      "humandesign": {
+        "gate": "ACCEPTANCE",
+        "description": "THE ACCEPTANCE OF LIMITATION IS THE FIRST STEP IN TRANSCENDENCE."
+      }
+    },
+    {
+      "id": 61,
+      "wheelid": 13,
+      "topcoin":  "complex",
+      "middlecoin": "silence",
+      "bottomcoin": "complex",
+      "phrase": "Time is Neglecting an Inner Mystery",
+      "phrasehebrew": "זמן זונח את התעלומה הפנימית",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "is",
+        "verb": "Mystifying",
+        "adverb": "Truth"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "INNER TRUTH",
+      "humandesign": {
+        "gate": "MYSTERY",
+        "description": "THE AWARENESS OF UNIVERSAL UNDERLYING PRINCIPLES."
+      }
+    },
+    {
+      "id": 62,
+      "wheelid": 45,
+      "topcoin":  "silence",
+      "middlecoin": "complex",
+      "bottomcoin": "silence",
+      "phrase": "Time shall Build with Details",
+      "phrasehebrew": "זמן יבנה עם פרטים",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Detail",
+        "adverb": "Advantaged Thought"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "PREPONDERANCE OF THE SMALL",
+      "humandesign": {
+        "gate": "DETAIL",
+        "description": "CAUTION, PATIENCE AND DETAIL PRODUCE EXCELLENCE OUT OF LIMITATION."
+      }
+    },
+    {
+      "id": 63,
+      "wheelid": 22,
+      "topcoin":  "simple",
+      "middlecoin": "simple",
+      "bottomcoin": "simple",
+      "phrase": "Time shall Think After Completed Doubts",
+      "phrasehebrew": "זמן יחשוב פשוט לאחר ספקות שהושלמו",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "shall",
+        "verb": "Complete",
+        "adverb": "After Doubting"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "AFTER COMPLETION",
+      "humandesign": {
+        "gate": "DOUBT",
+        "description": "IN THE SPIRAL OF LIFE, ALL ENDS ARE BEGINNINGS."
+      }
+    },
+    {
+      "id": 64,
+      "wheelid": 54,
+      "topcoin":  "breath",
+      "middlecoin": "breath",
+      "bottomcoin": "breath",
+      "phrase": "Time was Using Confusions Before Completions",
+      "phrasehebrew": "זמן השתמש בנשימה מבולבלת לפני ההשלמות",
+      "sentence": {
+        "adjective": "Time",
+        "subject": "was",
+        "verb": "Complete",
+        "adverb": "Before Confusion"
+      },
+      "coins": {
+        "1": "granny (minimother)",
+        "2": "mama (mother)",
+        "3": "daughter (sister)",
+        "4": "son (brother)",
+        "5": "papa (father)",
+        "6": "grampa (grandfather)"
+      },
+      "hexagram": "BEFORE COMPLETION",
+      "humandesign": {
+        "gate": "CONFUSION",
+        "description": "TRANSITION, LIKE BIRTH, REQUIRES A DETERMINED STRENGTH FOR THE\nPASSAGE THROUGH."
+      }
+    }
+  ]
+}

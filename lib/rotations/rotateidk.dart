@@ -23,11 +23,12 @@ class _RotateIDKState extends State<RotateIDK> {
 
       appBar: AppBar(
           toolbarHeight: 40,
-          title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
+          title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15,
+          style: TextStyle(color: Colors.white),),
           leading: IconButton(
             iconSize: 20,
             icon: const Icon(
-                Icons.close),
+                Icons.close, color: Colors.white),
             onPressed: () => Navigator.of(context).pop(),
           ),
           backgroundColor: Colors.grey),

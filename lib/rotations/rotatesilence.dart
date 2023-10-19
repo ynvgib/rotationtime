@@ -18,11 +18,11 @@ class _RotateSilenceState extends State<RotateSilence> {
     return Scaffold(
       appBar: AppBar(
           toolbarHeight: 40,
-          title: AutoSizeText(_title),
+          title: AutoSizeText(_title,style: TextStyle(color: Colors.white)),
           leading: IconButton(
             iconSize: 20,
             icon: const Icon(
-                Icons.close),
+                Icons.close, color: Colors.white),
             onPressed: () => Navigator.of(context).pop(),
           ),
           backgroundColor: Colors.black),

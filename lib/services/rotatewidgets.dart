@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
@@ -73,7 +74,7 @@ Widget build36PopUp(BuildContext context) {
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
               child: const Text('COMPLEX', style: TextStyle(fontSize: 20))),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -84,7 +85,7 @@ Widget build36PopUp(BuildContext context) {
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
               child: const Text('breath', style: TextStyle(fontSize: 20, color: Colors.black87))),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -142,10 +143,10 @@ Widget _buildComplexTransactions(BuildContext context) {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Flex(
-                direction: Axis.horizontal,
+                direction: Axis.vertical,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  AutoSizeText(
                     hdchannelcomplexList[index],
                     textAlign: TextAlign.center,
                     style: const TextStyle(
@@ -202,7 +203,7 @@ Widget _buildBreathTransactions(BuildContext context) {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Flex(
-                direction: Axis.horizontal,
+                direction: Axis.vertical,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -262,7 +263,7 @@ Widget _buildSilencetransactions(BuildContext context) {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Flex(
-                direction: Axis.horizontal,
+                direction: Axis.vertical,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(

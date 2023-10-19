@@ -21,12 +21,14 @@ class _RotateBreathState extends State<RotateBreath> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 40,
-        title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
+          toolbarHeight: 40,
+          title: AutoSizeText(_title,
+              textAlign: TextAlign.left,
+              maxFontSize: 15,
+              style: TextStyle(color: Colors.white)),
           leading: IconButton(
             iconSize: 20,
-            icon: const Icon(
-                Icons.close),
+            icon: const Icon(Icons.close, color: Colors.white),
             onPressed: () => Navigator.of(context).pop(),
           ),
           backgroundColor: Colors.black87),
@@ -41,7 +43,8 @@ class _RotateBreathState extends State<RotateBreath> {
             child: AutoSizeTextField(
                 minFontSize: 10,
                 readOnly: false,
-                decoration: const InputDecoration.collapsed(hintText: 'inhale & exhale'),
+                decoration: const InputDecoration.collapsed(
+                    hintText: 'inhale & exhale'),
                 textAlign: TextAlign.center,
                 controller: _controllerComplexText,
                 style: const TextStyle(

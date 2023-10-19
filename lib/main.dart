@@ -12,9 +12,12 @@ import 'package:flutter/services.dart';
 import 'package:sweph/sweph.dart';
 
 // flutter build windows
-// flutter build web --web-renderer canvaskit
+// flutter build web --web-renderer canvaskit --no-tree-shake-icons
 // firebase deploy
 // flutter build apk --no-tree-shake-icons
+
+// for new project
+// flutter create --platforms=windows .
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,6 +51,11 @@ class RotateMain extends StatelessWidget {
         mainroutes[3]: (ctx) => const RotateSilence(),
         mainroutes[4]: (ctx) => const RotateIDK(),
       },
+      theme: ThemeData(//primaryColor: Colors.green,
+      //primarySwatch: Colors.orange,
+      hoverColor: Colors.grey,
+      //textTheme: TextTheme(bodyLarge: TextStyle(color: Colors.black))
+      ),
     );
   }
 }

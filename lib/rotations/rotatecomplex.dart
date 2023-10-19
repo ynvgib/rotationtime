@@ -102,7 +102,6 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllerPlanetType = TextEditingController(),
       _controllerPlanetSubType = TextEditingController();
 
-
   final CarouselController _controllercoin = CarouselController(),
       _controllerconstate = CarouselController(),
       _controllerrotationstate = CarouselController(),
@@ -188,17 +187,19 @@ class _RotateComplexState extends State<RotateComplex> {
       secondcolor = Colors.blue,
       thirdcolor = Colors.blue;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 40,
-        title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
+        title: AutoSizeText(_title,
+            textAlign: TextAlign.left,
+            maxFontSize: 15,
+            style: const TextStyle(color: Colors.white)),
         leading: IconButton(
           iconSize: 20,
-          icon: const Icon(Icons.close),
+          icon: const Icon(Icons.close, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.blue,
@@ -231,7 +232,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             borderRadius: BorderRadius.circular(50))),
                     child: const Text(
                       'Time',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
                     )),
                 ElevatedButton(
                     onPressed: () {
@@ -247,7 +249,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             borderRadius: BorderRadius.circular(50))),
                     child: const Text(
                       'Reminder',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
                     )),
               ],
             ),
@@ -962,7 +965,6 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
-
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -971,8 +973,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: MediaQuery.of(context).size.width / 4,
                   child: AutoSizeTextField(
                       readOnly: true,
-                      decoration:
-                      const InputDecoration.collapsed(hintText: ''),
+                      decoration: const InputDecoration.collapsed(hintText: ''),
                       textAlign: TextAlign.center,
                       controller: _controllerDesignSunGate,
                       style: const TextStyle(
@@ -985,11 +986,13 @@ class _RotateComplexState extends State<RotateComplex> {
                     switch (_currentrotationstate) {
                       case 0:
                         //_planettext = _sunhex.linename!;
-                        _planettext = '1 year of COMPLEX PersonReality and Reality shining';
+                        _planettext =
+                            '1 year of COMPLEX PersonReality and Reality shining';
                         break;
                       case 1:
                         //_planettext = idkHexList[_sunhex.gate!];
-                        _planettext = '1 year of COMPLEX PersonReality and Reality shining';
+                        _planettext =
+                            '1 year of COMPLEX PersonReality and Reality shining';
                         break;
                       case 2:
                         _planettext = 'breath';
@@ -1043,7 +1046,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerDesignEarthGate,
                         style: const TextStyle(
@@ -1056,11 +1059,13 @@ class _RotateComplexState extends State<RotateComplex> {
                       switch (_currentrotationstate) {
                         case 0:
                           //_planettext = _earthhex.linename!;
-                          _planettext = '1 year of silence PersonReality and Reality grounded';
+                          _planettext =
+                              '1 year of silence PersonReality and Reality grounded';
                           break;
                         case 1:
                           //_planettext = idkHexList[_earthhex.gate!];
-                          _planettext = '1 year of silence PersonReality and Reality grounded';
+                          _planettext =
+                              '1 year of silence PersonReality and Reality grounded';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1086,14 +1091,14 @@ class _RotateComplexState extends State<RotateComplex> {
                         maxRadius: 13.0,
                         backgroundColor: Colors.red,
                         backgroundImage:
-                        AssetImage('assets/planets/earth.png')),
+                            AssetImage('assets/planets/earth.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerEarthGate,
                         style: const TextStyle(
@@ -1110,8 +1115,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: MediaQuery.of(context).size.width / 4,
                   child: AutoSizeTextField(
                       readOnly: true,
-                      decoration:
-                      const InputDecoration.collapsed(hintText: ''),
+                      decoration: const InputDecoration.collapsed(hintText: ''),
                       textAlign: TextAlign.center,
                       controller: _controllerDesignNorthNodeGate,
                       style: const TextStyle(
@@ -1124,11 +1128,13 @@ class _RotateComplexState extends State<RotateComplex> {
                     switch (_currentrotationstate) {
                       case 0:
                         //_planettext = _northnodehex.linename!;
-                        _planettext = '18.6 years of COMPLEX PersonReality and Reality moving forward';
+                        _planettext =
+                            '18.6 years of COMPLEX PersonReality and Reality moving forward';
                         break;
                       case 1:
                         //_planettext = idkHexList[_northnodehex.gate!];
-                        _planettext = '18.6 years of COMPLEX PersonReality and Reality moving forward';
+                        _planettext =
+                            '18.6 years of COMPLEX PersonReality and Reality moving forward';
                         break;
                       case 2:
                         _planettext = 'breath';
@@ -1154,7 +1160,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       maxRadius: 13.0,
                       backgroundColor: Colors.blue,
                       foregroundImage:
-                      AssetImage('assets/planets/northnode.png')),
+                          AssetImage('assets/planets/northnode.png')),
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width / 4,
@@ -1183,7 +1189,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerDesignSouthNodeGate,
                         style: const TextStyle(
@@ -1196,11 +1202,13 @@ class _RotateComplexState extends State<RotateComplex> {
                       switch (_currentrotationstate) {
                         case 0:
                           //_planettext = _southnodehex.linename!;
-                          _planettext = '18.6 years of silence PersonReality and Reality leaving behind';
+                          _planettext =
+                              '18.6 years of silence PersonReality and Reality leaving behind';
                           break;
                         case 1:
                           //_planettext = idkHexList[_southnodehex.gate!];
-                          _planettext = '18.6 years of silence PersonReality and Reality leaving behind';
+                          _planettext =
+                              '18.6 years of silence PersonReality and Reality leaving behind';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1226,14 +1234,14 @@ class _RotateComplexState extends State<RotateComplex> {
                         maxRadius: 13.0,
                         backgroundColor: Colors.red,
                         backgroundImage:
-                        AssetImage('assets/planets/southnode.png')),
+                            AssetImage('assets/planets/southnode.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerSouthNodeGate,
                         style: const TextStyle(
@@ -1251,7 +1259,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerDesignMoonGate,
                         style: const TextStyle(
@@ -1264,11 +1272,13 @@ class _RotateComplexState extends State<RotateComplex> {
                       switch (_currentrotationstate) {
                         case 0:
                           //_planettext = _moonhex.linename!;
-                          _planettext = '27 days of Simple PersonReality and Reality driven to rise';
+                          _planettext =
+                              '27 days of Simple PersonReality and Reality driven to rise';
                           break;
                         case 1:
                           //_planettext = idkHexList[_moonhex.gate!];
-                          _planettext = '27 days of Simple PersonReality and Reality driven to rise';
+                          _planettext =
+                              '27 days of Simple PersonReality and Reality driven to rise';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1318,7 +1328,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerDesignMercuryGate,
                         style: const TextStyle(
@@ -1331,11 +1341,13 @@ class _RotateComplexState extends State<RotateComplex> {
                       switch (_currentrotationstate) {
                         case 0:
                           //_planettext = _mercuryhex.linename!;
-                          _planettext = '88 days of Simple PersonReality and Reality communicating';
+                          _planettext =
+                              '88 days of Simple PersonReality and Reality communicating';
                           break;
                         case 1:
                           //_planettext = idkHexList[_mercuryhex.gate!];
-                          _planettext = '88 days of Simple PersonReality and Reality communicating';
+                          _planettext =
+                              '88 days of Simple PersonReality and Reality communicating';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1386,7 +1398,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerDesignVenusGate,
                         style: const TextStyle(
@@ -1399,11 +1411,13 @@ class _RotateComplexState extends State<RotateComplex> {
                       switch (_currentrotationstate) {
                         case 0:
                           //_planettext = _venushex.linename!;                          break;
-                          _planettext = '225 days of Simple PersonReality and Reality values';
+                          _planettext =
+                              '225 days of Simple PersonReality and Reality values';
                           break;
                         case 1:
                           //_planettext = idkHexList[_venushex.gate!];
-                          _planettext = '225 days of Simple PersonReality and Reality values';
+                          _planettext =
+                              '225 days of Simple PersonReality and Reality values';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1454,7 +1468,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerDesignMarsGate,
                         style: const TextStyle(
@@ -1467,11 +1481,13 @@ class _RotateComplexState extends State<RotateComplex> {
                       switch (_currentrotationstate) {
                         case 0:
                           //_planettext = _marshex.linename!;
-                          _planettext = '687 days of Simple PersonReality and Reality Like Children';
+                          _planettext =
+                              '687 days of Simple PersonReality and Reality Like Children';
                           break;
                         case 1:
                           //_planettext = idkHexList[_marshex.gate!];
-                          _planettext = '687 days of Simple PersonReality and Reality Like Children';
+                          _planettext =
+                              '687 days of Simple PersonReality and Reality Like Children';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1521,7 +1537,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerDesignJupiterGate,
                         style: const TextStyle(
@@ -1534,11 +1550,13 @@ class _RotateComplexState extends State<RotateComplex> {
                       switch (_currentrotationstate) {
                         case 0:
                           //_planettext = _jupiterhex.linename!;
-                          _planettext = '12 years of Breath PersonReality and Reality Justice';
+                          _planettext =
+                              '12 years of Breath PersonReality and Reality Justice';
                           break;
                         case 1:
                           //_planettext = idkHexList[_jupiterhex.gate!];
-                          _planettext = '12 years of Breath PersonReality and Reality Justice';
+                          _planettext =
+                              '12 years of Breath PersonReality and Reality Justice';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1589,7 +1607,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerDesignSaturnGate,
                         style: const TextStyle(
@@ -1602,11 +1620,13 @@ class _RotateComplexState extends State<RotateComplex> {
                       switch (_currentrotationstate) {
                         case 0:
                           //_planettext = _saturnhex.linename!;
-                          _planettext = '29 years of Breath PersonReality and Reality Discipline';
+                          _planettext =
+                              '29 years of Breath PersonReality and Reality Discipline';
                           break;
                         case 1:
                           //_planettext = idkHexList[_saturnhex.gate!];
-                          _planettext = '29 years of Breath PersonReality and Reality Discipline';
+                          _planettext =
+                              '29 years of Breath PersonReality and Reality Discipline';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1656,8 +1676,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: MediaQuery.of(context).size.width / 4,
                   child: AutoSizeTextField(
                       readOnly: true,
-                      decoration:
-                      const InputDecoration.collapsed(hintText: ''),
+                      decoration: const InputDecoration.collapsed(hintText: ''),
                       textAlign: TextAlign.center,
                       controller: _controllerDesignUranusGate,
                       style: const TextStyle(
@@ -1670,11 +1689,13 @@ class _RotateComplexState extends State<RotateComplex> {
                     switch (_currentrotationstate) {
                       case 0:
                         //_planettext = _uranushex.linename!;
-                        _planettext = '84 years of Breath PersonReality and Reality Unusual';
+                        _planettext =
+                            '84 years of Breath PersonReality and Reality Unusual';
                         break;
                       case 1:
                         //_planettext = idkHexList[_uranushex.gate!];
-                        _planettext = '84 years of Breath PersonReality and Reality Unusual';
+                        _planettext =
+                            '84 years of Breath PersonReality and Reality Unusual';
                         break;
                       case 2:
                         _planettext = 'breath';
@@ -1724,7 +1745,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerDesignNeptuneGate,
                         style: const TextStyle(
@@ -1737,11 +1758,13 @@ class _RotateComplexState extends State<RotateComplex> {
                       switch (_currentrotationstate) {
                         case 0:
                           //_planettext = _neptunehex.linename!;
-                          _planettext = '165 years of Breath PersonReality and Reality Hidden';
+                          _planettext =
+                              '165 years of Breath PersonReality and Reality Hidden';
                           break;
                         case 1:
                           //_planettext = idkHexList[_neptunehex.gate!];
-                          _planettext = '165 years of Breath PersonReality and Reality Hidden';
+                          _planettext =
+                              '165 years of Breath PersonReality and Reality Hidden';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1792,7 +1815,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerDesignPlutoGate,
                         style: const TextStyle(
@@ -1805,11 +1828,13 @@ class _RotateComplexState extends State<RotateComplex> {
                       switch (_currentrotationstate) {
                         case 0:
                           //_planettext = _plutohex.linename!;
-                          _planettext = '248 yeays of Breath PersonReality and Reality Truth';
+                          _planettext =
+                              '248 yeays of Breath PersonReality and Reality Truth';
                           break;
                         case 1:
                           //_planettext = idkHexList[_plutohex.gate!];
-                          _planettext = '248 yeays of Breath PersonReality and Reality Truth';
+                          _planettext =
+                              '248 yeays of Breath PersonReality and Reality Truth';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1854,8 +1879,6 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
-
-
             ElevatedButton(
                 onPressed: () {
                   showDialog(
@@ -1869,7 +1892,10 @@ class _RotateComplexState extends State<RotateComplex> {
                         borderRadius: BorderRadius.circular(50))),
                 child: const Text(
                   'Rotate Design',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 )),
             const SizedBox(height: 10),
             Flex(
@@ -1890,7 +1916,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             borderRadius: BorderRadius.circular(50))),
                     child: const Text(
                       'Wallets',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
                     )),
                 const SizedBox(
                   height: 10.0,
@@ -1909,7 +1936,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             borderRadius: BorderRadius.circular(50))),
                     child: const Text(
                       'Coins',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
                     )),
               ],
             ),
@@ -1939,6 +1967,7 @@ class _RotateComplexState extends State<RotateComplex> {
   Widget _buildCyclesPopupDialog(BuildContext context) {
     return AlertDialog(
       title: const Text('Cycles'),
+      backgroundColor: Colors.white,
       content: SingleChildScrollView(
         child: Flex(
           direction: Axis.vertical,
@@ -1954,7 +1983,9 @@ class _RotateComplexState extends State<RotateComplex> {
                     fontSize: 17,
                     color: Colors.black,
                     fontWeight: FontWeight.normal)),
-            const Divider(thickness: 5,),
+            const Divider(
+              thickness: 5,
+            ),
             const Text('Uranus Opposition',
                 style: TextStyle(
                     fontSize: 17,
@@ -1973,19 +2004,19 @@ class _RotateComplexState extends State<RotateComplex> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text(
-            'Close',
-            style: TextStyle(color: Colors.black),
-          ),
+          child: const Icon(Icons.close, color: Colors.white),
         ),
       ],
     );
   }
 
   Widget _buildTimePopupDialog(BuildContext context) {
-
     return AlertDialog(
-      title: const Text('Time'),
+      title: const Text(
+        'Time',
+        style: TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.black,
       content: SingleChildScrollView(
         child: Flex(
           direction: Axis.vertical,
@@ -1993,12 +2024,14 @@ class _RotateComplexState extends State<RotateComplex> {
           children: [
             TextField(
                 readOnly: true,
-                decoration: const InputDecoration.collapsed(hintText: '07:30'),
+                decoration: const InputDecoration.collapsed(
+                    hintText: '07:30',
+                    hintStyle: TextStyle(color: Colors.grey)),
                 textAlign: TextAlign.center,
                 controller: _controllerTimePick,
                 style: const TextStyle(
                     fontSize: 17,
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.normal)),
             const SizedBox(
               height: 10.0,
@@ -2014,7 +2047,10 @@ class _RotateComplexState extends State<RotateComplex> {
                   backgroundColor: Colors.blue,
                   textStyle: const TextStyle(
                       fontSize: 15, fontWeight: FontWeight.normal)),
-              child: const Text('Set Time'),
+              child: const Text(
+                'Set Time',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             const SizedBox(
               height: 10.0,
@@ -2023,13 +2059,14 @@ class _RotateComplexState extends State<RotateComplex> {
               width: 150,
               child: TextField(
                   readOnly: true,
-                  decoration:
-                      const InputDecoration.collapsed(hintText: '2022-02-19'),
+                  decoration: const InputDecoration.collapsed(
+                      hintText: '2022-02-19',
+                      hintStyle: TextStyle(color: Colors.grey)),
                   textAlign: TextAlign.center,
                   controller: _controllerDatePick,
                   style: const TextStyle(
                       fontSize: 17,
-                      color: Colors.black,
+                      color: Colors.white,
                       fontWeight: FontWeight.normal)),
             ),
             const SizedBox(
@@ -2047,7 +2084,8 @@ class _RotateComplexState extends State<RotateComplex> {
                   backgroundColor: Colors.green,
                   textStyle: const TextStyle(
                       fontSize: 15, fontWeight: FontWeight.normal)),
-              child: const Text('Set Date'),
+              child:
+                  const Text('Set Date', style: TextStyle(color: Colors.white)),
             ),
             const Divider(
               color: Colors.black,
@@ -2161,8 +2199,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
                 //_designTime = await AstrologyServices.getDesignTime(_now);
                 //emulate design time to now time to prevent blank
-                _planetsdesignList =
-                    await PlanetsServices.getCurrentData(_now);
+                _planetsdesignList = await PlanetsServices.getCurrentData(_now);
 
                 _channelsList =
                     HDServices.getHDChannelsJustNow(_planetsnowList);
@@ -2239,10 +2276,7 @@ class _RotateComplexState extends State<RotateComplex> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text(
-            'Close',
-            style: TextStyle(color: Colors.black),
-          ),
+          child: const Icon(Icons.close, color: Colors.white),
         ),
       ],
     );
@@ -2322,10 +2356,7 @@ class _RotateComplexState extends State<RotateComplex> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text(
-            'Close',
-            style: TextStyle(color: Colors.black),
-          ),
+          child: const Icon(Icons.close, color: Colors.black),
         ),
       ],
     );
@@ -2398,10 +2429,7 @@ class _RotateComplexState extends State<RotateComplex> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text(
-            'Close',
-            style: TextStyle(color: Colors.black),
-          ),
+          child: const Icon(Icons.close, color: Colors.black),
         ),
       ],
     );
@@ -2427,10 +2455,7 @@ class _RotateComplexState extends State<RotateComplex> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text(
-            'Close',
-            style: TextStyle(color: Colors.black),
-          ),
+          child: const Icon(Icons.close, color: Colors.black),
         ),
       ],
     );
@@ -2438,7 +2463,9 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildDataPopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('Rotate Design', style: TextStyle(fontSize: 15)),
+      title: const Text('Rotate Design',
+          style: TextStyle(fontSize: 15, color: Colors.white)),
+      backgroundColor: Colors.black,
       content: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -2500,7 +2527,8 @@ class _RotateComplexState extends State<RotateComplex> {
                     );
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: const Text('Cost-Ume', style: TextStyle(fontSize: 13))),
+                  child: const Text('Cost-Ume',
+                      style: TextStyle(fontSize: 13, color: Colors.white))),
               ElevatedButton(
                   onPressed: () {
                     showDialog(
@@ -2510,7 +2538,8 @@ class _RotateComplexState extends State<RotateComplex> {
                     );
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: const Text('Account', style: TextStyle(fontSize: 13))),
+                  child: const Text('Account',
+                      style: TextStyle(fontSize: 13, color: Colors.white))),
               ElevatedButton(
                   onPressed: () {
                     showDialog(
@@ -2520,8 +2549,8 @@ class _RotateComplexState extends State<RotateComplex> {
                     );
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child:
-                      const Text('Transactions', style: TextStyle(fontSize: 13))),
+                  child: const Text('Transactions',
+                      style: TextStyle(fontSize: 13, color: Colors.white))),
             ],
           ),
         ],
@@ -2531,10 +2560,7 @@ class _RotateComplexState extends State<RotateComplex> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text(
-            'Close',
-            style: TextStyle(color: Colors.black),
-          ),
+          child: const Icon(Icons.close, color: Colors.white),
         ),
       ],
     );
@@ -2735,10 +2761,7 @@ class _RotateComplexState extends State<RotateComplex> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text(
-            'Close',
-            style: TextStyle(color: Colors.black),
-          ),
+          child: const Icon(Icons.close, color: Colors.black),
         ),
       ],
     );
@@ -2818,10 +2841,7 @@ class _RotateComplexState extends State<RotateComplex> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text(
-            'X',
-            style: TextStyle(color: Colors.black),
-          ),
+          child: const Icon(Icons.close, color: Colors.black),
         ),
       ],
     );
@@ -2869,10 +2889,7 @@ class _RotateComplexState extends State<RotateComplex> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text(
-            'X',
-            style: TextStyle(color: Colors.black),
-          ),
+          child: const Icon(Icons.close, color: Colors.black),
         ),
       ],
     );
@@ -2895,10 +2912,7 @@ class _RotateComplexState extends State<RotateComplex> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text(
-            'X',
-            style: TextStyle(color: Colors.black),
-          ),
+          child: const Icon(Icons.close, color: Colors.black),
         ),
       ],
     );
@@ -2947,7 +2961,6 @@ class _RotateComplexState extends State<RotateComplex> {
     _neptunedesignhex = _planetsdesignList[11];
     _plutodesignhex = _planetsdesignList[12];
 
-
     _controllerSunText.text = _sunhex.linename!;
     _controllerEarthText.text = _earthhex.linename!;
     _controllerNorthNodeText.text = _northnodehex.linename!;
@@ -2978,8 +2991,10 @@ class _RotateComplexState extends State<RotateComplex> {
 
     _controllerDesignSunGate.text = _sundesignhex.gatelinecolortone!;
     _controllerDesignEarthGate.text = _earthdesignhex.gatelinecolortone!;
-    _controllerDesignNorthNodeGate.text = _northnodedesignhex.gatelinecolortone!;
-    _controllerDesignSouthNodeGate.text = _southnodedesignhex.gatelinecolortone!;
+    _controllerDesignNorthNodeGate.text =
+        _northnodedesignhex.gatelinecolortone!;
+    _controllerDesignSouthNodeGate.text =
+        _southnodedesignhex.gatelinecolortone!;
     _controllerDesignMoonGate.text = _moondesignhex.gatelinecolor!;
     _controllerDesignMercuryGate.text = _mercurydesignhex.gatelinecolor!;
     _controllerDesignVenusGate.text = _venusdesignhex.gatelinecolor!;
@@ -2989,7 +3004,6 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerDesignUranusGate.text = _uranusdesignhex.gatelinecolor!;
     _controllerDesignNeptuneGate.text = _neptunedesignhex.gatelinecolor!;
     _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor!;
-
   }
 
   void _setDateTime(DateTime timedata) {
@@ -3027,8 +3041,10 @@ class _RotateComplexState extends State<RotateComplex> {
 
         _controllerDesignSunGate.text = _sundesignhex.gatelinecolortone!;
         _controllerDesignEarthGate.text = _earthdesignhex.gatelinecolortone!;
-        _controllerDesignNorthNodeGate.text = _northnodedesignhex.gatelinecolortone!;
-        _controllerDesignSouthNodeGate.text = _southnodedesignhex.gatelinecolortone!;
+        _controllerDesignNorthNodeGate.text =
+            _northnodedesignhex.gatelinecolortone!;
+        _controllerDesignSouthNodeGate.text =
+            _southnodedesignhex.gatelinecolortone!;
         _controllerDesignMoonGate.text = _moondesignhex.gatelinecolor!;
         _controllerDesignMercuryGate.text = _mercurydesignhex.gatelinecolor!;
         _controllerDesignVenusGate.text = _venusdesignhex.gatelinecolor!;
@@ -3140,7 +3156,4 @@ class _RotateComplexState extends State<RotateComplex> {
         break;
     }
   }
-
-
-
 }

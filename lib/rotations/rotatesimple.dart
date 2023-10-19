@@ -22,7 +22,7 @@ class _RotateSimpleState extends State<RotateSimple> {
   final CarouselController _controllerone = CarouselController();
 
   final TextEditingController _controllerbottomfirsttext =
-  TextEditingController();
+      TextEditingController();
 
   final String _title = subtitles[1];
 
@@ -52,11 +52,13 @@ class _RotateSimpleState extends State<RotateSimple> {
     return Scaffold(
       appBar: AppBar(
           toolbarHeight: 40,
-          title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15),
+          title: AutoSizeText(_title,
+              textAlign: TextAlign.left,
+              maxFontSize: 15,
+              style: TextStyle(color: Colors.white)),
           leading: IconButton(
             iconSize: 20,
-            icon: const Icon(
-                Icons.close),
+            icon: const Icon(Icons.close, color: Colors.white),
             onPressed: () => Navigator.of(context).pop(),
           ),
           backgroundColor: Colors.green),
@@ -67,7 +69,8 @@ class _RotateSimpleState extends State<RotateSimple> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
-              CircleAvatar( backgroundColor: Colors.white,
+              CircleAvatar(
+                backgroundColor: Colors.white,
                 maxRadius: 100.0,
                 child: CarouselSlider(
                   items: mixHexagramSlidersNew,
@@ -82,7 +85,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                         setState(() {
                           _currenttop = indextop;
                           _controllerbottomfirsttext.text =
-                          hexNamesList[indextop];
+                              hexNamesList[indextop];
                         });
                       }),
                 ),
@@ -105,18 +108,18 @@ class _RotateSimpleState extends State<RotateSimple> {
                     controller: _controllerbottomfirsttext,
                     readOnly: true,
                   )),
-              const SizedBox (height: 20),
+              const SizedBox(height: 20),
               const Divider(
                 color: Colors.green,
                 thickness: 5,
               ),
-
               Flex(
                   direction: Axis.horizontal,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     DropdownButton(
-                      underline: DropdownButtonHideUnderline(child: Container()),
+                      underline:
+                          DropdownButtonHideUnderline(child: Container()),
                       value: _dropdowichingordervalue,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -124,7 +127,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                       onChanged: (int? dropdowichingordervalueChange) {
                         setState(() {
                           _dropdowichingordervalue =
-                          dropdowichingordervalueChange!;
+                              dropdowichingordervalueChange!;
 
                           _chosenhex = _dropdowichingordervalue;
                           _hexalignedList = hexagramAlignment(_chosenhex);
@@ -135,7 +138,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                       },
                     ),
                     DropdownButton(
-                      underline: DropdownButtonHideUnderline(child: Container()),
+                      underline:
+                          DropdownButtonHideUnderline(child: Container()),
                       value: _dropdownvalue,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -153,7 +157,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                       },
                     ),
                     DropdownButton(
-                      underline: DropdownButtonHideUnderline(child: Container()),
+                      underline:
+                          DropdownButtonHideUnderline(child: Container()),
                       value: _dropdowichingvalue,
                       icon: const Icon(Icons.keyboard_arrow_down,
                           color: Colors.black),
@@ -162,7 +167,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                         setState(() {
                           _dropdowichingvalue = dropdowichingvalueChange!;
                           _fontindex = fontHexOrderList.indexWhere(
-                                  (element) => element == _dropdowichingvalue);
+                              (element) => element == _dropdowichingvalue);
                           _fonthexconverted = fontHexNumbersList[_fontindex];
 
                           _chosenhex = _fonthexconverted;
@@ -183,7 +188,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                         ],
                         onChanged: (String? textHexValueChange) {
                           setState(() {
-                            _textHexValueChange = int.parse(textHexValueChange!);
+                            _textHexValueChange =
+                                int.parse(textHexValueChange!);
 
                             _chosenhex = _textHexValueChange;
                             _hexalignedList = hexagramAlignment(_chosenhex);
@@ -263,12 +269,10 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
               ),
               const SizedBox(height: 20),
-
               const Divider(
                 color: Colors.green,
                 thickness: 5,
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -276,7 +280,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                       onPressed: () {
                         showDialog(
                           context: context,
-                          builder: (BuildContext context) => build36PopUp(context),
+                          builder: (BuildContext context) =>
+                              build36PopUp(context),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -285,12 +290,13 @@ class _RotateSimpleState extends State<RotateSimple> {
                               borderRadius: BorderRadius.circular(50)),
                           textStyle: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold)),
-                      child: const Text('36')),
+                      child: const Text('36',style: TextStyle(color: Colors.white))),
                   ElevatedButton(
                       onPressed: () {
                         showDialog(
                           context: context,
-                          builder: (BuildContext context) => build64PopUp(context),
+                          builder: (BuildContext context) =>
+                              build64PopUp(context),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -299,7 +305,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                               borderRadius: BorderRadius.circular(50)),
                           textStyle: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold)),
-                      child: const Text('64')),
+                      child: const Text('64',style: TextStyle(color: Colors.white))),
                   ElevatedButton(
                       onPressed: () {
                         showDialog(
@@ -314,7 +320,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                               borderRadius: BorderRadius.circular(50)),
                           textStyle: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold)),
-                      child: const Text('384')),
+                      child: const Text('384',style: TextStyle(color: Colors.white))),
                 ],
               ),
               const Divider(
@@ -325,7 +331,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                 onPressed: () {
                   showDialog(
                     context: context,
-                    builder: (BuildContext context) => buildComplexPopUp(context),
+                    builder: (BuildContext context) =>
+                        buildComplexPopUp(context),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -344,12 +351,14 @@ class _RotateSimpleState extends State<RotateSimple> {
                     fontSize: 36,
                     fontFamily: 'iChing',
                   ),
-                ),),
+                ),
+              ),
               ElevatedButton(
                 onPressed: () {
                   showDialog(
                     context: context,
-                    builder: (BuildContext context) => buildSimplePopUp(context),
+                    builder: (BuildContext context) =>
+                        buildSimplePopUp(context),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -368,12 +377,14 @@ class _RotateSimpleState extends State<RotateSimple> {
                     fontSize: 36,
                     fontFamily: 'iChing',
                   ),
-                ),),
+                ),
+              ),
               ElevatedButton(
                 onPressed: () {
                   showDialog(
                     context: context,
-                    builder: (BuildContext context) => buildBreathPopUp(context),
+                    builder: (BuildContext context) =>
+                        buildBreathPopUp(context),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -392,12 +403,14 @@ class _RotateSimpleState extends State<RotateSimple> {
                     fontSize: 36,
                     fontFamily: 'iChing',
                   ),
-                ),),
+                ),
+              ),
               ElevatedButton(
                 onPressed: () {
                   showDialog(
                     context: context,
-                    builder: (BuildContext context) => buildSilencePopUp(context),
+                    builder: (BuildContext context) =>
+                        buildSilencePopUp(context),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -416,13 +429,12 @@ class _RotateSimpleState extends State<RotateSimple> {
                     fontSize: 36,
                     fontFamily: 'iChing',
                   ),
-                ),),
-
+                ),
+              ),
               const Divider(
                 color: Colors.green,
                 thickness: 5,
               ),
-
               Container(
                 alignment: Alignment.center,
                 child: const AutoSizeText(
