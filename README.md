@@ -3,15 +3,29 @@
 Rotation Tme 
 Finally I Can Learn
 
-Flutter APP by Mr. Ido Not Know.
+Flutter APP by Mr. Ido Not Know and Mr. Ota Tion Time
 BE.BREATH.EARN.I.Don't.Know.Meditation
 
 ## Getting Started
 
-This project is a point and a line and a circle and a square for LANGUAGE Rotating in Time
+This project is a point and a line and a circle and a square for Lingual Time Rotation
+- I Don't know
 - iChing 
 - Human Design 
-- I Don't know
+
+project installed on Windows, Android, Web
+
+Windwos:
+used inno Setup with to create EXE (windows) 
+iss is in: \versions\RotationTime\install\RotationTimeScript.iss
+exe is in: \versions\RotationTime\install\rotateSetupTime.exe
+note: they may note be the latest...
+
+Android: 
+Apk can be self created and installed.
+
+Web:
+using firebase
 
 A few resources to get you started if this is your first breath:
 [BE: Breath.Earn.I.don't.know.Meditation](https://www.beidontknow.com)
