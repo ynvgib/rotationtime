@@ -19,6 +19,7 @@ import 'package:url_launcher/url_launcher.dart';
 // flutter build web --web-renderer canvaskit --no-tree-shake-icons
 // firebase deploy
 // flutter build apk --no-tree-shake-icons
+// git commit -m "New Update"
 
 // for new project
 // flutter create --platforms=windows .
