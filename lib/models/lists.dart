@@ -26,14 +26,6 @@ final List<String> titlesEN = [
   '=='
 ];
 
-final List<String> subtitles = [
-  'Complex',
-  'Simple',
-  'breath',
-  'silence',
-  'I don\'t know',
-];
-
 final List<String> tempsubtitles = [
   'Complex HD',
 ];
@@ -41,7 +33,7 @@ final List<String> tempsubtitles = [
 
 // 'Simple 64 + 384 = 448',
 
-final List<String> mainroutes = [
+final List<String> mainroutes_old = [
   '/rotatecomplex',
   '/rotatesimple',
   '/rotatebreath',
@@ -56,6 +48,22 @@ final List<String> temproutes = [
 final List<String> planetsfullList = [
   'assets/planets/northnode.png',
   'assets/planets/sun.png',
+  'assets/planets/moon.png',
+  'assets/planets/mercury.png',
+  'assets/planets/venus.png',
+  'assets/planets/mars.png',
+  'assets/planets/jupiter.png',
+  'assets/planets/saturn.png',
+  'assets/planets/uranus.png',
+  'assets/planets/neptune.png',
+  'assets/planets/pluto.png',
+  'assets/planets/earth.png',
+  'assets/planets/southnode.png',
+];
+
+final List<String> planetsiconList = [
+  'assets/planets/sun.png',
+  'assets/planets/northnode.png',
   'assets/planets/moon.png',
   'assets/planets/mercury.png',
   'assets/planets/venus.png',
@@ -428,6 +436,254 @@ final List<int> orderHexagramsWheel = [
   46, 18, 48, 57,
   32, 50, 28, 44,
 ];
+
+List<int> reversedHexagramsWheel = orderHexagramsWheel.reversed.toList();
+
+
+final List<Color> botcoincolor = [
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+];
+
+final List<Color> midcoincolor = [
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+
+  //change
+
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+
+];
+
+final List<Color> topcoincolor = [
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+
+  //change
+
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+
+];
+
+List<Color> reversedbotcoincolor = botcoincolor.reversed.toList();
+List<Color> reversedmidcoincolor = midcoincolor.reversed.toList();
+List<Color> reversedtopcoincolor = topcoincolor.reversed.toList();
+
 
 final List<int> orderHexagramsToCalulateWheel = [
   //qurater mutation complex
@@ -2546,6 +2802,51 @@ final List<String> hexBasicMixList = [
   'assets/simplein.png',
   'assets/breathout.png',
   'assets/silencedown.png',
+];
+
+final List<String> titlesicon = [
+  'assets/rotateicon.png',
+  'assets/silencedown.png',
+  'assets/breathout.png',
+  'assets/simplein.png',
+  'assets/complexup.png',
+];
+
+final List<double> titlesangle = [
+  //'/rotatesidk',
+  -80,
+  //'/rotatesilence',
+  20,
+  //'/rotatebreath',
+  120,
+  //'/rotatesimple',
+  180,
+  //'/rotatecomplex',
+  220,
+];
+
+final List<String> mainroutes = [
+  '/rotatesidk',
+  '/rotatesilence',
+  '/rotatebreath',
+  '/rotatesimple',
+  '/rotatecomplex',
+];
+
+final List<String> subtitles = [
+  'I Don\'t Know',
+  'silence',
+  'breath',
+  'Simple',
+  'Complex',
+];
+
+final List<String> subtitles_old = [
+  'Complex',
+  'Simple',
+  'breath',
+  'silence',
+  'I don\'t know',
 ];
 
 final List<String> hexBasicDownList = [

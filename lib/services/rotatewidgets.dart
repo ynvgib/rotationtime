@@ -3,6 +3,7 @@ import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Widget build384PopUp(BuildContext context) {
   return AlertDialog(
@@ -279,6 +280,56 @@ Widget _buildSilencetransactions(BuildContext context) {
           );},
       ),
     ),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget buildWalletPopUp(BuildContext context, int walletindex) {
+  int wallet = reversedHexagramsWheel[walletindex];
+  //int walletlines = idonotknowlinesList.indexOf(wallet);
+  return AlertDialog(
+    title: Center(
+      child: Text('Wallet: $wallet\n'
+          '${LineSentenceList[wallet]}'),
+    ),
+    content: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.4,
+        child: ListView.builder(
+          reverse: true,
+          padding: const EdgeInsets.all(5.0),
+          itemCount: 6,
+          itemBuilder: (context, index) => ListTile(
+            title: Flex(
+              direction: Axis.vertical,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  (index + 1).toString(),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                const SizedBox(width: 5),
+                Text(
+                  idonotknowlinesList[wallet * 7 + index + 1],
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 15),
+                )
+              ],
+            ),
+          ),
+        )),
     actions: <Widget>[
       TextButton(
         onPressed: () {
@@ -589,4 +640,10 @@ Widget buildSilencePopUp(BuildContext context) {
       ),
     ],
   );
+}
+
+launchUrl(url) async {
+  if (!await launchUrl(url)) {
+    throw Exception('Could not launch $url');
+  }
 }

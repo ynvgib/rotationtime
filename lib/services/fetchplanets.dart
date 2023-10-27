@@ -412,9 +412,294 @@ class PlanetsServices {
   }
 
   //idk
+  static Future<DateTime> getSolarReturn(DateTime nowtime, int solaryear) async {
+
+    DateTime solarreturntime;
+    //List<DateTime> planetsreturns = [];
+
+    // 10220 = 365 days * 28 years
+    DateTime initialSolarReturn = DateTime (solaryear, nowtime.month, nowtime.minute, nowtime.second);;;
+
+    //int calcyear = nowtime.year - solaryear;
+    //solarreturntime = DateTime (solaryear, nowtime.month, nowtime.minute, nowtime.second);
+
+
+
+    List<CoordinatesWithSpeed> cwsPersonalitydata, cwsSaturnReturndata;
+
+    double saturnlongitude,
+        requiredsaturnreturnlongitude,
+        calcsaturnreturnlongitude,
+        gapsaturnreturnlongitude,
+        gaplongitude,
+        requiredlongitude;
+
+    List<double> listgaplongitude = [0.0];
+
+    CoordinatesWithSpeed cswSaturn, cswSaturnReturn;
+
+    //idk2
+    cwsPersonalitydata = await PlanetsServices.getPlanetsGatesNow(nowtime);
+
+    //position of Saturn in List
+    cswSaturn = cwsPersonalitydata [7];
+
+    saturnlongitude = cswSaturn.longitude;
+
+    // add 28 years to Saturn Return
+    cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(initialSolarReturn);
+    cswSaturnReturn = cwsSaturnReturndata [7];
+    calcsaturnreturnlongitude = cswSaturnReturn.longitude;
+
+    requiredlongitude = saturnlongitude;
+
+    solarreturntime = initialSolarReturn;
+
+    // align in months
+    do {
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
+      cswSaturnReturn = cwsSaturnReturndata [7];
+      calcsaturnreturnlongitude = cswSaturnReturn.longitude;
+      gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
+      gaplongitude = gapsaturnreturnlongitude;
+
+      if (gaplongitude > 0) {
+        solarreturntime = solarreturntime.add(const Duration(days: 30));
+      } else if (gaplongitude < 0) {
+        solarreturntime = solarreturntime.subtract(const Duration(days: 30));
+      }
+
+      // avoid loop
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 2]) {
+        gaplongitude = 30;
+        listgaplongitude = [0.0];
+      }
+    } while (gaplongitude > 30 || gaplongitude < -30);
+
+    // align in weeks
+    do {
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
+      cswSaturnReturn = cwsSaturnReturndata [7];
+      calcsaturnreturnlongitude = cswSaturnReturn.longitude;
+      gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
+      gaplongitude = gapsaturnreturnlongitude;
+
+      //print ('weeks: $calcsaturnreturnlongitude');
+
+      if (gaplongitude > 0) {
+        solarreturntime = solarreturntime.add(const Duration(days: 7));
+      } else if (gaplongitude < 0) {
+        solarreturntime = solarreturntime.subtract(const Duration(days: 7));
+      }
+
+      // avoid loop
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 2]) {
+        gaplongitude = 7;
+        listgaplongitude = [0.0];
+      }
+    } while (gaplongitude > 7 || gaplongitude < -7);
+
+    // align in days
+    do {
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
+      cswSaturnReturn = cwsSaturnReturndata [7];
+      calcsaturnreturnlongitude = cswSaturnReturn.longitude;
+      gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
+      gaplongitude = gapsaturnreturnlongitude;
+
+      //print ('days: $calcsaturnreturnlongitude');
+
+      if (gaplongitude > 0) {
+        solarreturntime = solarreturntime.add(const Duration(days: 1));
+      } else if (gaplongitude < 0) {
+        solarreturntime = solarreturntime.subtract(const Duration(days: 1));
+      }
+
+      // avoid loop
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 2]) {
+        gaplongitude = 1;
+        listgaplongitude = [0.0];
+      }
+    } while (gaplongitude > 1 || gaplongitude < -1);
+
+    // align in hours
+    do {
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
+      cswSaturnReturn = cwsSaturnReturndata [7];
+      calcsaturnreturnlongitude = cswSaturnReturn.longitude;
+      gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
+      gaplongitude = gapsaturnreturnlongitude;
+
+      //print ('hours: $saturnlongitude');
+
+      if (gaplongitude > 0) {
+        solarreturntime = solarreturntime.add(const Duration(hours: 1));
+      } else if (gaplongitude < 0) {
+        solarreturntime = solarreturntime.subtract(const Duration(hours: 1));
+      }
+
+      // avoid loop
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 2]) {
+        gaplongitude = 0.35;
+        listgaplongitude = [0.0];
+      }
+
+    } while (gaplongitude > 0.35 || gaplongitude < -0.35);
+
+    // align in 10 minutes
+    do {
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
+      cswSaturnReturn = cwsSaturnReturndata [7];
+      calcsaturnreturnlongitude = cswSaturnReturn.longitude;
+      gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
+      gaplongitude = gapsaturnreturnlongitude;
+
+      //print ('1: $calculatedlongitude');
+
+      if (gaplongitude > 0) {
+        solarreturntime = solarreturntime.add(const Duration(minutes: 10));
+      } else if (gaplongitude < 0) {
+        solarreturntime = solarreturntime.subtract(const Duration(minutes: 10));
+      }
+
+      // avoid loop
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 2]) {
+        gaplongitude = 0.01;
+        listgaplongitude = [0.0];
+      }
+
+    } while (gaplongitude > 0.01 || gaplongitude < -0.01);
+
+    // align in 1 minute
+    do {
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
+      cswSaturnReturn = cwsSaturnReturndata [7];
+      calcsaturnreturnlongitude = cswSaturnReturn.longitude;
+      gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
+      gaplongitude = gapsaturnreturnlongitude;
+
+      //print ('1: $calculatedlongitude');
+
+      if (gaplongitude > 0) {
+        solarreturntime = solarreturntime.add(const Duration(minutes: 1));
+      } else if (gaplongitude < 0) {
+        solarreturntime = solarreturntime.subtract(const Duration(minutes: 1));
+      }
+
+      // avoid loop
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 2]) {
+        gaplongitude = 0.001;
+        listgaplongitude = [0.0];
+      }
+
+    } while (gaplongitude > 0.001 || gaplongitude < -0.001);
+
+    // align in 10 seconds
+    do {
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
+      cswSaturnReturn = cwsSaturnReturndata [7];
+      calcsaturnreturnlongitude = cswSaturnReturn.longitude;
+      gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
+      gaplongitude = gapsaturnreturnlongitude;
+
+      //print ('1: $calculatedlongitude');
+
+      if (gaplongitude > 0) {
+        solarreturntime = solarreturntime.add(const Duration(seconds: 10));
+      } else if (gaplongitude < 0) {
+        solarreturntime = solarreturntime.subtract(const Duration(seconds: 10));
+      }
+
+      // avoid loop
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 2]) {
+        gaplongitude = 0.0001;
+        listgaplongitude = [0.0];
+      }
+    } while (gaplongitude > 0.0001 || gaplongitude < -0.0001);
+
+    // align in 1 seconds
+    do {
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
+      cswSaturnReturn = cwsSaturnReturndata [7];
+      calcsaturnreturnlongitude = cswSaturnReturn.longitude;
+      gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
+      gaplongitude = gapsaturnreturnlongitude;
+
+      //print ('1: $calculatedlongitude');
+
+      if (gaplongitude > 0) {
+        solarreturntime = solarreturntime.add(const Duration(seconds: 1));
+      } else if (gaplongitude < 0) {
+        solarreturntime = solarreturntime.subtract(const Duration(seconds: 1));
+      }
+
+      // avoid loop
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 2]) {
+        gaplongitude = 0.00001;
+        listgaplongitude = [0.0];
+      }
+    } while (gaplongitude > 0.00001 || gaplongitude < -0.00001);
+
+    // align in 100 milliseconds
+    do {
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
+      cswSaturnReturn = cwsSaturnReturndata [7];
+      calcsaturnreturnlongitude = cswSaturnReturn.longitude;
+      gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
+      gaplongitude = gapsaturnreturnlongitude;
+
+      //print ('1: $calculatedlongitude');
+
+      if (gaplongitude > 0) {
+        solarreturntime = solarreturntime.add(const Duration(milliseconds: 100));
+      } else if (gaplongitude < 0) {
+        solarreturntime = solarreturntime.subtract(const Duration(milliseconds: 10));
+      }
+
+      // avoid loop
+      listgaplongitude.add(gaplongitude);
+      if (listgaplongitude.length > 3 &&
+          listgaplongitude.last ==
+              listgaplongitude[listgaplongitude.length - 2]) {
+        gaplongitude = 0.000007;
+        listgaplongitude = [0.0];
+      }
+    } while (gaplongitude > 0.000007 || gaplongitude < -0.000007);
+
+
+    // end idk2
+
+    return solarreturntime;
+  }
+
+  //idk
   static Future<DateTime> getSaturnReturn(DateTime nowtime) async {
 
-    DateTime saturnreturntime, uranusoppositiontime, kironreturntime;
+    DateTime solarreturntime, uranusoppositiontime, kironreturntime;
     //List<DateTime> planetsreturns = [];
 
     // 10220 = 365 days * 28 years
@@ -448,20 +733,20 @@ class PlanetsServices {
 
     requiredlongitude = saturnlongitude;
 
-    saturnreturntime = initialSaturnReturn;
+    solarreturntime = initialSaturnReturn;
 
     // align in months
     do {
-      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(saturnreturntime);
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
       cswSaturnReturn = cwsSaturnReturndata [7];
       calcsaturnreturnlongitude = cswSaturnReturn.longitude;
       gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
       gaplongitude = gapsaturnreturnlongitude;
 
       if (gaplongitude > 0) {
-        saturnreturntime = saturnreturntime.add(const Duration(days: 30));
+        solarreturntime = solarreturntime.add(const Duration(days: 30));
       } else if (gaplongitude < 0) {
-        saturnreturntime = saturnreturntime.subtract(const Duration(days: 30));
+        solarreturntime = solarreturntime.subtract(const Duration(days: 30));
       }
 
       // avoid loop
@@ -476,7 +761,7 @@ class PlanetsServices {
 
     // align in weeks
     do {
-      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(saturnreturntime);
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
       cswSaturnReturn = cwsSaturnReturndata [7];
       calcsaturnreturnlongitude = cswSaturnReturn.longitude;
       gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
@@ -485,9 +770,9 @@ class PlanetsServices {
       //print ('weeks: $calcsaturnreturnlongitude');
 
       if (gaplongitude > 0) {
-        saturnreturntime = saturnreturntime.add(const Duration(days: 7));
+        solarreturntime = solarreturntime.add(const Duration(days: 7));
       } else if (gaplongitude < 0) {
-        saturnreturntime = saturnreturntime.subtract(const Duration(days: 7));
+        solarreturntime = solarreturntime.subtract(const Duration(days: 7));
       }
 
       // avoid loop
@@ -502,7 +787,7 @@ class PlanetsServices {
 
     // align in days
     do {
-      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(saturnreturntime);
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
       cswSaturnReturn = cwsSaturnReturndata [7];
       calcsaturnreturnlongitude = cswSaturnReturn.longitude;
       gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
@@ -511,9 +796,9 @@ class PlanetsServices {
       //print ('days: $calcsaturnreturnlongitude');
 
       if (gaplongitude > 0) {
-        saturnreturntime = saturnreturntime.add(const Duration(days: 1));
+        solarreturntime = solarreturntime.add(const Duration(days: 1));
       } else if (gaplongitude < 0) {
-        saturnreturntime = saturnreturntime.subtract(const Duration(days: 1));
+        solarreturntime = solarreturntime.subtract(const Duration(days: 1));
       }
 
       // avoid loop
@@ -528,7 +813,7 @@ class PlanetsServices {
 
     // align in hours
     do {
-      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(saturnreturntime);
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
       cswSaturnReturn = cwsSaturnReturndata [7];
       calcsaturnreturnlongitude = cswSaturnReturn.longitude;
       gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
@@ -537,9 +822,9 @@ class PlanetsServices {
       //print ('hours: $saturnlongitude');
 
       if (gaplongitude > 0) {
-        saturnreturntime = saturnreturntime.add(const Duration(hours: 1));
+        solarreturntime = solarreturntime.add(const Duration(hours: 1));
       } else if (gaplongitude < 0) {
-        saturnreturntime = saturnreturntime.subtract(const Duration(hours: 1));
+        solarreturntime = solarreturntime.subtract(const Duration(hours: 1));
       }
 
       // avoid loop
@@ -555,7 +840,7 @@ class PlanetsServices {
 
     // align in 10 minutes
     do {
-      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(saturnreturntime);
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
       cswSaturnReturn = cwsSaturnReturndata [7];
       calcsaturnreturnlongitude = cswSaturnReturn.longitude;
       gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
@@ -564,9 +849,9 @@ class PlanetsServices {
       //print ('1: $calculatedlongitude');
 
       if (gaplongitude > 0) {
-        saturnreturntime = saturnreturntime.add(const Duration(minutes: 10));
+        solarreturntime = solarreturntime.add(const Duration(minutes: 10));
       } else if (gaplongitude < 0) {
-        saturnreturntime = saturnreturntime.subtract(const Duration(minutes: 10));
+        solarreturntime = solarreturntime.subtract(const Duration(minutes: 10));
       }
 
       // avoid loop
@@ -582,7 +867,7 @@ class PlanetsServices {
 
     // align in 1 minute
     do {
-      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(saturnreturntime);
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
       cswSaturnReturn = cwsSaturnReturndata [7];
       calcsaturnreturnlongitude = cswSaturnReturn.longitude;
       gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
@@ -591,9 +876,9 @@ class PlanetsServices {
       //print ('1: $calculatedlongitude');
 
       if (gaplongitude > 0) {
-        saturnreturntime = saturnreturntime.add(const Duration(minutes: 1));
+        solarreturntime = solarreturntime.add(const Duration(minutes: 1));
       } else if (gaplongitude < 0) {
-        saturnreturntime = saturnreturntime.subtract(const Duration(minutes: 1));
+        solarreturntime = solarreturntime.subtract(const Duration(minutes: 1));
       }
 
       // avoid loop
@@ -609,7 +894,7 @@ class PlanetsServices {
 
     // align in 10 seconds
     do {
-      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(saturnreturntime);
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
       cswSaturnReturn = cwsSaturnReturndata [7];
       calcsaturnreturnlongitude = cswSaturnReturn.longitude;
       gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
@@ -618,9 +903,9 @@ class PlanetsServices {
       //print ('1: $calculatedlongitude');
 
       if (gaplongitude > 0) {
-        saturnreturntime = saturnreturntime.add(const Duration(seconds: 10));
+        solarreturntime = solarreturntime.add(const Duration(seconds: 10));
       } else if (gaplongitude < 0) {
-        saturnreturntime = saturnreturntime.subtract(const Duration(seconds: 10));
+        solarreturntime = solarreturntime.subtract(const Duration(seconds: 10));
       }
 
       // avoid loop
@@ -635,7 +920,7 @@ class PlanetsServices {
 
     // align in 1 seconds
     do {
-      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(saturnreturntime);
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
       cswSaturnReturn = cwsSaturnReturndata [7];
       calcsaturnreturnlongitude = cswSaturnReturn.longitude;
       gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
@@ -644,9 +929,9 @@ class PlanetsServices {
       //print ('1: $calculatedlongitude');
 
       if (gaplongitude > 0) {
-        saturnreturntime = saturnreturntime.add(const Duration(seconds: 1));
+        solarreturntime = solarreturntime.add(const Duration(seconds: 1));
       } else if (gaplongitude < 0) {
-        saturnreturntime = saturnreturntime.subtract(const Duration(seconds: 1));
+        solarreturntime = solarreturntime.subtract(const Duration(seconds: 1));
       }
 
       // avoid loop
@@ -661,7 +946,7 @@ class PlanetsServices {
 
     // align in 100 milliseconds
     do {
-      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(saturnreturntime);
+      cwsSaturnReturndata = await PlanetsServices.getPlanetsGatesNow(solarreturntime);
       cswSaturnReturn = cwsSaturnReturndata [7];
       calcsaturnreturnlongitude = cswSaturnReturn.longitude;
       gapsaturnreturnlongitude = saturnlongitude - calcsaturnreturnlongitude;
@@ -670,9 +955,9 @@ class PlanetsServices {
       //print ('1: $calculatedlongitude');
 
       if (gaplongitude > 0) {
-        saturnreturntime = saturnreturntime.add(const Duration(milliseconds: 100));
+        solarreturntime = solarreturntime.add(const Duration(milliseconds: 100));
       } else if (gaplongitude < 0) {
-        saturnreturntime = saturnreturntime.subtract(const Duration(milliseconds: 10));
+        solarreturntime = solarreturntime.subtract(const Duration(milliseconds: 10));
       }
 
       // avoid loop
@@ -688,7 +973,7 @@ class PlanetsServices {
 
     // end idk2
 
-    return saturnreturntime;
+    return solarreturntime;
   }
 
   //idk

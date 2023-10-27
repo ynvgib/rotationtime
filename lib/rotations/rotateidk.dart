@@ -15,7 +15,7 @@ class RotateIDK extends StatefulWidget {
 class _RotateIDKState extends State<RotateIDK> {
   final TextEditingController _controllerSimpleText = TextEditingController(),
       _controllerComplexText = TextEditingController();
-  final String _title = subtitles[4];
+  final String _title = subtitles[0];
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,20 @@ class _RotateIDKState extends State<RotateIDK> {
 
       appBar: AppBar(
           toolbarHeight: 40,
-          title: AutoSizeText(_title, textAlign: TextAlign.left, maxFontSize: 15,
-          style: TextStyle(color: Colors.white),),
+          title: Flex(
+            direction: Axis.horizontal,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AutoSizeText(_title, textAlign: TextAlign.left,
+                //maxFontSize: 15,
+              style: TextStyle(color: Colors.white),),
+              SizedBox(width: 10),
+              CircleAvatar(
+                radius: 15,
+                foregroundImage: AssetImage(titlesicon[0]),
+              ),
+            ],
+          ),
           leading: IconButton(
             iconSize: 20,
             icon: const Icon(

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:circle_list/circle_list.dart';
 import 'package:finallyicanlearn/logic/calculatehdchart.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
@@ -8,6 +9,7 @@ import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/services/fetchplanets.dart';
+import 'package:finallyicanlearn/services/rotatewidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -23,6 +25,9 @@ class RotateComplex extends StatefulWidget {
 
 class _RotateComplexState extends State<RotateComplex> {
   List<String> _centers = [];
+
+  List<int> listdesigngates = List.generate(13, (index) => index++),
+      listpersonalitygates = List.generate(13, (index) => index++);
 
   HumanDesign hdfinaldata = HumanDesign();
 
@@ -109,7 +114,7 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllermid = CarouselController(),
       _controllerbot = CarouselController();
 
-  final String _title = subtitles[0];
+  final String _title = subtitles[4];
 
   String _textlevel = '',
       _planettext = '',
@@ -193,16 +198,27 @@ class _RotateComplexState extends State<RotateComplex> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 40,
-        title: AutoSizeText(_title,
-            textAlign: TextAlign.left,
-            maxFontSize: 15,
-            style: const TextStyle(color: Colors.white)),
+        title: Flex(
+          direction: Axis.horizontal,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AutoSizeText(_title,
+                textAlign: TextAlign.left,
+                //maxFontSize: 15,
+                style: const TextStyle(color: Colors.white)),
+            SizedBox(width: 10),
+            CircleAvatar(
+              radius: 15,
+              foregroundImage: AssetImage(titlesicon[4]),
+            ),
+          ],
+        ),
         leading: IconButton(
           iconSize: 20,
           icon: const Icon(Icons.close, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.lightBlue,
         actions: const [
           SizedBox(
             width: 10,
@@ -281,7 +297,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     minFontSize: 25,
                     fullwidth: false,
                     decoration: InputDecoration.collapsed(
-                        hintText: hexNamesList[0],
+                        hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
                         hintStyle: const TextStyle(color: Colors.grey)),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
@@ -1944,6 +1960,74 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
+            Stack(
+              fit: StackFit.loose,
+              children: [
+                CircleList(
+                  innerRadius: 1,
+                  initialAngle: 4.2,
+                  childrenPadding: 1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(13, (index) {
+                    return Container(
+                      width: 40,
+                      margin: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 2.0, color: Colors.red)),
+                      child: AutoSizeText(listdesigngates[index].toString(),
+                          //minFontSize: 8,
+                          //maxFontSize: 12,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                    );
+                  }),
+                ),
+                CircleList(
+                  innerRadius: 50,
+                  initialAngle: 4.22,
+                  childrenPadding: 0.1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(13, (index) {
+                    return CircleAvatar(
+                      minRadius: 5,
+                      maxRadius: 13,
+                      foregroundImage: AssetImage(planetsfullList[index]),
+                    );
+                  }),
+                ),
+                CircleList(
+                  innerRadius: 100,
+                  initialAngle: 4.2,
+                  childrenPadding: 0.1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(13, (index) {
+                    return Center(
+                      child: Container(
+                        width: 45,
+                        margin: const EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(width: 2, color: Colors.blue)),
+                        child: AutoSizeText(
+                            listpersonalitygates[index].toString(),
+                            //minFontSize: 8,
+                            //maxFontSize: 85,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    );
+                  }),
+                ),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
             const SizedBox(
               width: 50,
               child: AutoSizeText(
@@ -2568,7 +2652,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildProfilePopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('Cost-Ume'),
+      title: const Text('Cost-Ume', style: TextStyle(color: Colors.black)),
       content: Column(
         children: [
           Flex(
@@ -3004,6 +3088,38 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerDesignUranusGate.text = _uranusdesignhex.gatelinecolor!;
     _controllerDesignNeptuneGate.text = _neptunedesignhex.gatelinecolor!;
     _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor!;
+
+    listpersonalitygates = [
+      _northnodehex.gate!,
+      _sunhex.gate!,
+      _moonhex.gate!,
+      _mercuryhex.gate!,
+      _venushex.gate!,
+      _marshex.gate!,
+      _jupiterhex.gate!,
+      _saturnhex.gate!,
+      _uranushex.gate!,
+      _neptunehex.gate!,
+      _plutohex.gate!,
+      _earthhex.gate!,
+      _southnodehex.gate!,
+    ];
+
+    listdesigngates = [
+      _northnodedesignhex.gate!,
+      _sundesignhex.gate!,
+      _moondesignhex.gate!,
+      _mercurydesignhex.gate!,
+      _venusdesignhex.gate!,
+      _marsdesignhex.gate!,
+      _jupiterdesignhex.gate!,
+      _saturndesignhex.gate!,
+      _uranusdesignhex.gate!,
+      _neptunedesignhex.gate!,
+      _plutodesignhex.gate!,
+      _earthdesignhex.gate!,
+      _southnodedesignhex.gate!,
+    ];
   }
 
   void _setDateTime(DateTime timedata) {

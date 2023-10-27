@@ -1,15 +1,19 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:circle_list/circle_list.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/rotations/rotatecomplex.dart';
-import 'package:finallyicanlearn/rotations/rotatecomplexhd.dart';
 import 'package:finallyicanlearn/rotations/rotatesimple.dart';
 import 'package:finallyicanlearn/rotations/rotateidk.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
 import 'package:finallyicanlearn/rotations/rotatebreath.dart';
-import 'package:finallyicanlearn/services/telegram_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_circular_text/circular_text.dart';
 import 'package:sweph/sweph.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+// github project link
+// https://www.github.com/ynvgib/rotationtime
 
 // flutter build windows
 // flutter build web --web-renderer canvaskit --no-tree-shake-icons
@@ -45,16 +49,15 @@ class RotateMain extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (ctx) => RotateHome(),
-        mainroutes[0]: (ctx) => const RotateComplex(),
-        mainroutes[1]: (ctx) => const RotateSimple(),
+        mainroutes[4]: (ctx) => const RotateComplex(),
+        mainroutes[3]: (ctx) => const RotateSimple(),
         mainroutes[2]: (ctx) => const RotateBreath(),
-        mainroutes[3]: (ctx) => const RotateSilence(),
-        mainroutes[4]: (ctx) => const RotateIDK(),
+        mainroutes[1]: (ctx) => const RotateSilence(),
+        mainroutes[0]: (ctx) => const RotateIDK(),
       },
-      theme: ThemeData(//primaryColor: Colors.green,
-      //primarySwatch: Colors.orange,
-      hoverColor: Colors.grey,
-      //textTheme: TextTheme(bodyLarge: TextStyle(color: Colors.black))
+      theme: ThemeData(
+        dialogBackgroundColor: Colors.white,
+        hoverColor: Colors.grey,
       ),
     );
   }
@@ -63,86 +66,40 @@ class RotateMain extends StatelessWidget {
 class RotateHome extends StatelessWidget {
   RotateHome({Key? key}) : super(key: key);
 
-  final String _title = maintitle;
-  final List<String> _titles = subtitles;
+  final String _title = maintitle,
+      beidontknowsite = 'www.beidontknow.com',
+      githubrotatesite = 'www.github.com/ynvgib/rotationtime',
+  githubproject = 'Github Project';
+  //final List<String> _titles = subtitles;
+
+  final Uri beidontknowurl = Uri.parse('https://www.beidontknow.com'),
+      githubrotateurl = Uri.parse('https://www.github.com/ynvgib/rotationtime');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: Container(
-          alignment: Alignment.center,
-          child: const Text(
-            'aO#P@',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 10,
-              fontFamily: 'iChing',
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //mainAxisSize: MainAxisSize.min,
+          children: [
+            const Align(
+              alignment: Alignment.bottomCenter,
+              child: CircleAvatar(
+                radius: 25,
+                foregroundImage: AssetImage('assets/fullrotateicon.png'),
+              ),
             ),
-          ),
-        ),
-        backgroundColor: Colors.black,
-      ),
-      body: Column(children: [
-        const Divider(color: Colors.white),
-        Container(
-          height: 30,
-          width: MediaQuery.of(context).size.width,
-          margin: const EdgeInsets.all(5.0),
-          decoration: BoxDecoration(
+            const Divider(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(25),
-              boxShadow: const [
-                BoxShadow(
-                    color: Colors.blueGrey,
-                    offset: Offset(4, 4),
-                    blurRadius: 20,
-                    spreadRadius: 1),
-                BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(-4, -4),
-                    blurRadius: 15,
-                    spreadRadius: 1),
-              ]),
-          child: FittedBox(
-            fit: BoxFit.fitHeight,
-            child: AutoSizeText(
-              _title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
+              thickness: 5,
             ),
-          ),
-        ),
-        const Divider(color: Colors.white),
-        Expanded(
-          child: ListView(
-            itemExtent: MediaQuery.of(context).size.height / 7,
-            children: [
-              MappingItem(
-                  _titles[0], mainroutes[0], Colors.blue, hexBasicMixList[0]),
-              MappingItem(
-                  _titles[1], mainroutes[1], Colors.green, hexBasicMixList[1]),
-              MappingItem(
-                  _titles[2], mainroutes[2], Colors.yellow, hexBasicMixList[2]),
-              MappingItem(
-                  _titles[3], mainroutes[3], Colors.red, hexBasicMixList[3]),
-              MappingItem(_titles[4], mainroutes[4], Colors.white,
-                  'assets/rotateicon.png'),
-            ],
-          ),
-        ),
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Expanded(
-            child: Container(
-              height: 25,
-              width: MediaQuery.of(context).size.width / 1.2,
+            Container(
+              height: 30,
+              width: MediaQuery.of(context).size.width,
+              margin: const EdgeInsets.all(5.0),
               decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(25),
                   boxShadow: const [
                     BoxShadow(
@@ -156,88 +113,122 @@ class RotateHome extends StatelessWidget {
                         blurRadius: 15,
                         spreadRadius: 1),
                   ]),
-              child: const FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  'www.beidontknow.com',
+              child: FittedBox(
+                fit: BoxFit.fitHeight,
+                child: AutoSizeText(
+                  _title,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-          ),
-        ]),
-        const SizedBox(height: 10)
-      ]),
-    );
-  }
-}
-
-class MappingItem extends StatelessWidget {
-  final String title;
-  final String route;
-  final Color itemcolor;
-  final String image;
-  const MappingItem(this.title, this.route, this.itemcolor, this.image,
-      {Key? key})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Container(
-        height: 40.0,
-        decoration: BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.circular(50),
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.blueGrey,
-                  offset: Offset(4, 4),
-                  blurRadius: 20,
-                  spreadRadius: 1),
-              BoxShadow(
-                  color: Colors.white,
-                  offset: Offset(-4, -4),
-                  blurRadius: 15,
-                  spreadRadius: 1),
-            ]),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 10, color: Colors.black, spreadRadius: 5)
-                  ],
-                ),
-                child: CircleAvatar(backgroundImage: AssetImage(image))),
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(50, 1, 1, 1),
-              child: AutoSizeText(
-                title,
-                minFontSize: 20,
-                maxLines: 1,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: itemcolor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+            CircleList(
+              innerRadius: 1,
+              outerRadius: MediaQuery.of(context).size.height / 4,
+              childrenPadding: 1,
+              origin: const Offset(0, 0),
+              children: List.generate(5, (index) {
+                return InkWell(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width / 3,
+                    margin: const EdgeInsets.all(1),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      fit: StackFit.loose,
+                      children: [
+                       Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(titlesicon[index]),
+                                    colorFilter: ColorFilter.mode(
+                                      Colors.white.withOpacity(1.0),
+                                      BlendMode.modulate,
+                                    ))),
+                          ),
+                        CircularText(
+                          children: [
+                            TextItem(
+                                space: 15,
+                                startAngle: titlesangle[index],
+                                text: Text(
+                                  subtitles[index],
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontSize: 50,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    shadows: [
+                                      Shadow(
+                                        color: Colors
+                                            .transparent, // Choose the color of the shadow
+                                        blurRadius:
+                                            1.0, // Adjust the blur radius for the shadow effect
+                                        offset: Offset(2.0,
+                                            2.0), // Set the horizontal and vertical offset for the shadow
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                          ],
+                          radius: 150,
+                          position: CircularTextPosition.outside,
+                        ),
+                      ],
+                    ),
                   ),
+                  onTap: () {
+                    Navigator.pushNamed(context, mainroutes[index]);
+                  },
+                );
+              }),
+            ),
+            FittedBox(
+                fit: BoxFit.scaleDown,
+                child:
+                ElevatedButton(
+                  onPressed: () => launchUrl(beidontknowurl),
+                  child: Text(beidontknowsite,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold)),
+                ),
+              ),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child:
+              ElevatedButton(
+                onPressed: () => launchUrl(githubrotateurl),
+                child: Text(githubproject,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold)),
               ),
             ),
-          ],
-        ),
-      ),
-      onTap: () {
-        Navigator.pushNamed(context, route);
-      },
+            const Divider(
+              color: Colors.white,
+              thickness: 5,
+            ),
+            const Text(
+              'aO#P@',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 10,
+                fontFamily: 'iChing',
+              ),
+            ),
+          ]),
     );
   }
 }

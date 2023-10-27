@@ -1,0 +1,145 @@
+Container(
+width: MediaQuery.of(context).size.height / 1.75,
+height: MediaQuery.of(context).size.height * 0.8,
+margin: const EdgeInsets.all(1),
+decoration: BoxDecoration(
+shape: BoxShape.rectangle,
+border: Border.all(width: 2.0, color: Colors.black)),
+child: Stack(
+children: [
+//root
+Positioned(
+child: Container(
+margin: const EdgeInsets.all(1),
+decoration: BoxDecoration(
+shape: BoxShape.circle,
+border:
+Border.all(width: 2.0, color: Colors.black))),
+width: 30,
+height: 30,
+//top: 10,
+bottom: 10,
+left: 120,
+//right: 10,
+),
+Positioned(
+child: Container(
+margin: const EdgeInsets.all(1),
+decoration: BoxDecoration(
+shape: BoxShape.circle,
+border:
+Border.all(width: 2.0, color: Colors.black))),
+width: 30,
+height: 30,
+//top: 10,
+bottom: 40,
+left: 120,
+//right: 10,
+),
+Positioned(
+child: Container(
+margin: const EdgeInsets.all(1),
+decoration: BoxDecoration(
+shape: BoxShape.circle,
+border:
+Border.all(width: 2.0, color: Colors.black))),
+width: 30,
+height: 30,
+//top: 10,
+bottom: 70,
+left: 120,
+//right: 10,
+),
+
+Positioned(
+child: Container(
+margin: const EdgeInsets.all(1),
+decoration: BoxDecoration(
+shape: BoxShape.circle,
+border:
+Border.all(width: 2.0, color: Colors.black))),
+width: 30,
+height: 30,
+//top: 10,
+bottom: 10,
+left: 200
+//right: 10,
+),
+Positioned(
+child: Container(
+margin: const EdgeInsets.all(1),
+decoration: BoxDecoration(
+shape: BoxShape.circle,
+border:
+Border.all(width: 2.0, color: Colors.black))),
+width: 30,
+height: 30,
+//top: 10,
+bottom: 40,
+left: 200,
+//right: 10,
+),
+Positioned(
+child: Container(
+margin: const EdgeInsets.all(1),
+decoration: BoxDecoration(
+shape: BoxShape.circle,
+border:
+Border.all(width: 2.0, color: Colors.black))),
+width: 30,
+height: 30,
+//top: 10,
+bottom: 70,
+left: 200,
+//right: 10,
+),
+
+Positioned(
+child: Container(
+margin: const EdgeInsets.all(1),
+decoration: BoxDecoration(
+shape: BoxShape.circle,
+border:
+Border.all(width: 2.0, color: Colors.black))),
+width: 30,
+height: 30,
+//top: 10,
+bottom: 100,
+left: 140
+//right: 10,
+),
+Positioned(
+child: Container(
+margin: const EdgeInsets.all(1),
+decoration: BoxDecoration(
+shape: BoxShape.circle,
+border:
+Border.all(width: 2.0, color: Colors.black))),
+width: 30,
+height: 30,
+//top: 10,
+bottom: 100,
+left: 200,
+//right: 10,
+),
+Positioned(
+child: Container(
+margin: const EdgeInsets.all(1),
+decoration: BoxDecoration(
+shape: BoxShape.circle,
+border:
+Border.all(width: 2.0, color: Colors.black))),
+width: 30,
+height: 30,
+//top: 10,
+bottom: 100,
+left: 170,
+//right: 10,
+),
+],
+),
+),
+const Divider(
+color: Colors.green,
+thickness: 5,
+),
