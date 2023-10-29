@@ -26,7 +26,7 @@ class TelegramClient {
     HumanDesign hdfinaldata = HumanDesign();
     String txtcoin = '';
 
-    List<Hexagram> planetsnowList, planetsdesignList;
+    List<Hexagram> allplanetsList,planetsnowList, planetsdesignList;
     List<HDChannel> channelsList;
     final timeformat = DateFormat('yyyy-MM-dd HH:mm');
 
@@ -89,8 +89,9 @@ class TelegramClient {
         designTime = await PlanetsServices.getDesignTime(now);
         planetsdesignList = await PlanetsServices.getCurrentData(designTime);
 
+        allplanetsList = planetsnowList + planetsdesignList;
         channelsList =
-            HDServices.getHDChannels(planetsnowList, planetsdesignList);
+            HDServices.getHDChannels(allplanetsList);
 
         //List<String> hdbasicdata = HDServices.getHDBasicData(channelsList);
         hdfinaldata = HDServices.getHDBasicData(channelsList);
@@ -175,8 +176,9 @@ class TelegramClient {
       designTime = await PlanetsServices.getDesignTime(now);
       planetsdesignList = await PlanetsServices.getCurrentData(designTime);
 
+      allplanetsList = planetsnowList + planetsdesignList;
       channelsList =
-          HDServices.getHDChannels(planetsnowList, planetsdesignList);
+          HDServices.getHDChannels(allplanetsList);
 
       hdfinaldata = HDServices.getHDBasicData(channelsList);
 

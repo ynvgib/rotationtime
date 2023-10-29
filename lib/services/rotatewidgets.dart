@@ -74,7 +74,7 @@ Widget build36PopUp(BuildContext context) {
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-              child: const Text('COMPLEX', style: TextStyle(fontSize: 20))),
+              child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
           const SizedBox(height: 10,),
           ElevatedButton(
               onPressed: () {
@@ -85,7 +85,7 @@ Widget build36PopUp(BuildContext context) {
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
-              child: const Text('breath', style: TextStyle(fontSize: 20, color: Colors.black87))),
+              child: const Text('breath', style: TextStyle(fontSize: 30, color: Colors.black87))),
           const SizedBox(height: 10,),
           ElevatedButton(
               onPressed: () {
@@ -128,19 +128,11 @@ Widget _buildComplexTransactions(BuildContext context) {
             decoration: BoxDecoration(
               //color: Colors.blue[100],
                 color: Colors.blue,
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey[500]!,
-                      offset: const Offset(4, 4),
-                      blurRadius: 5,
-                      spreadRadius: 1),
-                  const BoxShadow(
-                      color: Colors.blueGrey,
-                      offset: Offset(-4, -4),
-                      blurRadius: 5,
-                      spreadRadius: 1),
-                ]),
+                border: Border.all(
+                  width: 3,
+                  color: Colors.black,
+                ),
+                borderRadius: BorderRadius.circular(15)),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Flex(
@@ -186,21 +178,12 @@ Widget _buildBreathTransactions(BuildContext context) {
         itemBuilder: (context, index) {
           return Container(
             decoration: BoxDecoration(
-              //color: Colors.blue[100],
                 color: Colors.yellow,
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey[500]!,
-                      offset: const Offset(4, 4),
-                      blurRadius: 5,
-                      spreadRadius: 1),
-                  const BoxShadow(
-                      color: Colors.blueGrey,
-                      offset: Offset(-4, -4),
-                      blurRadius: 5,
-                      spreadRadius: 1),
-                ]),
+                border: Border.all(
+                  width: 3,
+                  color: Colors.black,
+                ),
+                borderRadius: BorderRadius.circular(15)),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Flex(
@@ -246,21 +229,13 @@ Widget _buildSilencetransactions(BuildContext context) {
         itemBuilder: (context, index)  {
           return Container(
             decoration: BoxDecoration(
-              //color: Colors.blue[100],
                 color: Colors.red,
+                border: Border.all(
+                  width: 3,
+                  color: Colors.black,
+                ),
                 borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey[500]!,
-                      offset: const Offset(4, 4),
-                      blurRadius: 5,
-                      spreadRadius: 1),
-                  const BoxShadow(
-                      color: Colors.blueGrey,
-                      offset: Offset(-4, -4),
-                      blurRadius: 5,
-                      spreadRadius: 1),
-                ]),
+                ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Flex(
@@ -409,20 +384,24 @@ Widget buildComplexPopUp(BuildContext context) {
               width: 70,
               margin: const EdgeInsets.all(2.0),
               decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 3,
+                    color: Colors.black,
+                  ),
                   color: Colors.blue[200],
                   borderRadius: BorderRadius.circular(5),
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.blueGrey,
-                        offset: Offset(4, 4),
-                        blurRadius: 20,
-                        spreadRadius: 1),
-                    BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 15,
-                        spreadRadius: 1),
-                  ]),
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Colors.blueGrey,
+                          offset: Offset(4, 4),
+                          blurRadius: 20,
+                          spreadRadius: 1),
+                      BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
               child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
@@ -473,6 +452,10 @@ Widget buildSimplePopUp(BuildContext context) {
               margin: const EdgeInsets.all(2.0),
               decoration: BoxDecoration(
                   color: Colors.green[200],
+                  border: Border.all(
+                    width: 3,
+                    color: Colors.black,
+                  ),
                   borderRadius: BorderRadius.circular(5),
                   boxShadow: const [
                     BoxShadow(
@@ -536,6 +519,10 @@ Widget buildBreathPopUp(BuildContext context) {
               width: 70,
               margin: const EdgeInsets.all(2.0),
               decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 3,
+                    color: Colors.black,
+                  ),
                   color: Colors.yellow[200],
                   borderRadius: BorderRadius.circular(5),
                   boxShadow: const [
@@ -600,6 +587,10 @@ Widget buildSilencePopUp(BuildContext context) {
               width: 70,
               margin: const EdgeInsets.all(2.0),
               decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 3,
+                    color: Colors.black,
+                  ),
                   color: Colors.red[200],
                   borderRadius: BorderRadius.circular(5),
                   boxShadow: const [

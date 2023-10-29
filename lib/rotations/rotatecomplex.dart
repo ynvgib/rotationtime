@@ -24,7 +24,7 @@ class RotateComplex extends StatefulWidget {
 }
 
 class _RotateComplexState extends State<RotateComplex> {
-  List<String> _centers = [];
+  List<String> _centers = [], language = ['English', 'Hebrew'];
 
   List<int> listdesigngates = List.generate(13, (index) => index++),
       listpersonalitygates = List.generate(13, (index) => index++);
@@ -135,9 +135,12 @@ class _RotateComplexState extends State<RotateComplex> {
 
   List<Hexagram> _planetsList = [Hexagram(line: 1)],
       _planetsdesignList = [Hexagram(line: 1)],
-      _planetsnowList = [Hexagram(line: 1)];
+      _planetsnowList = [Hexagram(line: 1)],
+      _allplanetsList = [Hexagram(line: 1)];
 
-  List<HDChannel> _channelsList = [];
+  List<HDChannel> _channelsList = [],
+      _personchannelsList = [],
+      _designchannelsList = [];
 
   int _currentmain = 0,
       _currenttop = 0,
@@ -364,7 +367,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             _controlPlanetHexagramData(_planetsList);
 
                             _formattedDate =
-                                DateFormat('yyyy-MM-dd').format(_now);
+                                DateFormat('MM/dd/yyyy').format(_now);
                             _formattedTime = DateFormat.Hms().format(_now);
                             _controllerTime.text =
                                 '$_formattedTime $_formattedDate';
@@ -378,7 +381,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             _controlPlanetHexagramData(_planetsdesignList);
 
                             _formattedDate =
-                                DateFormat('yyyy-MM-dd').format(_designTime);
+                                DateFormat('MM/dd/yyyy').format(_designTime);
                             _formattedTime =
                                 DateFormat.Hms().format(_designTime);
                             _controllerTime.text =
@@ -395,7 +398,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             _controlPlanetHexagramData(_planetsList);
 
                             _formattedDate =
-                                DateFormat('yyyy-MM-dd').format(_now);
+                                DateFormat('MM/dd/yyyy').format(_now);
                             _formattedTime = DateFormat.Hms().format(_now);
                             _controllerTime.text =
                                 '$_formattedTime $_formattedDate';
@@ -1006,7 +1009,6 @@ class _RotateComplexState extends State<RotateComplex> {
                             '1 year of COMPLEX PersonReality and Reality shining';
                         break;
                       case 1:
-                        //_planettext = idkHexList[_sunhex.gate!];
                         _planettext =
                             '1 year of COMPLEX PersonReality and Reality shining';
                         break;
@@ -1079,7 +1081,6 @@ class _RotateComplexState extends State<RotateComplex> {
                               '1 year of silence PersonReality and Reality grounded';
                           break;
                         case 1:
-                          //_planettext = idkHexList[_earthhex.gate!];
                           _planettext =
                               '1 year of silence PersonReality and Reality grounded';
                           break;
@@ -1148,7 +1149,6 @@ class _RotateComplexState extends State<RotateComplex> {
                             '18.6 years of COMPLEX PersonReality and Reality moving forward';
                         break;
                       case 1:
-                        //_planettext = idkHexList[_northnodehex.gate!];
                         _planettext =
                             '18.6 years of COMPLEX PersonReality and Reality moving forward';
                         break;
@@ -1222,7 +1222,6 @@ class _RotateComplexState extends State<RotateComplex> {
                               '18.6 years of silence PersonReality and Reality leaving behind';
                           break;
                         case 1:
-                          //_planettext = idkHexList[_southnodehex.gate!];
                           _planettext =
                               '18.6 years of silence PersonReality and Reality leaving behind';
                           break;
@@ -1292,7 +1291,6 @@ class _RotateComplexState extends State<RotateComplex> {
                               '27 days of Simple PersonReality and Reality driven to rise';
                           break;
                         case 1:
-                          //_planettext = idkHexList[_moonhex.gate!];
                           _planettext =
                               '27 days of Simple PersonReality and Reality driven to rise';
                           break;
@@ -1361,7 +1359,6 @@ class _RotateComplexState extends State<RotateComplex> {
                               '88 days of Simple PersonReality and Reality communicating';
                           break;
                         case 1:
-                          //_planettext = idkHexList[_mercuryhex.gate!];
                           _planettext =
                               '88 days of Simple PersonReality and Reality communicating';
                           break;
@@ -1431,7 +1428,6 @@ class _RotateComplexState extends State<RotateComplex> {
                               '225 days of Simple PersonReality and Reality values';
                           break;
                         case 1:
-                          //_planettext = idkHexList[_venushex.gate!];
                           _planettext =
                               '225 days of Simple PersonReality and Reality values';
                           break;
@@ -1501,7 +1497,6 @@ class _RotateComplexState extends State<RotateComplex> {
                               '687 days of Simple PersonReality and Reality Like Children';
                           break;
                         case 1:
-                          //_planettext = idkHexList[_marshex.gate!];
                           _planettext =
                               '687 days of Simple PersonReality and Reality Like Children';
                           break;
@@ -1570,7 +1565,6 @@ class _RotateComplexState extends State<RotateComplex> {
                               '12 years of Breath PersonReality and Reality Justice';
                           break;
                         case 1:
-                          //_planettext = idkHexList[_jupiterhex.gate!];
                           _planettext =
                               '12 years of Breath PersonReality and Reality Justice';
                           break;
@@ -1640,7 +1634,6 @@ class _RotateComplexState extends State<RotateComplex> {
                               '29 years of Breath PersonReality and Reality Discipline';
                           break;
                         case 1:
-                          //_planettext = idkHexList[_saturnhex.gate!];
                           _planettext =
                               '29 years of Breath PersonReality and Reality Discipline';
                           break;
@@ -1709,7 +1702,6 @@ class _RotateComplexState extends State<RotateComplex> {
                             '84 years of Breath PersonReality and Reality Unusual';
                         break;
                       case 1:
-                        //_planettext = idkHexList[_uranushex.gate!];
                         _planettext =
                             '84 years of Breath PersonReality and Reality Unusual';
                         break;
@@ -1778,7 +1770,6 @@ class _RotateComplexState extends State<RotateComplex> {
                               '165 years of Breath PersonReality and Reality Hidden';
                           break;
                         case 1:
-                          //_planettext = idkHexList[_neptunehex.gate!];
                           _planettext =
                               '165 years of Breath PersonReality and Reality Hidden';
                           break;
@@ -1848,7 +1839,6 @@ class _RotateComplexState extends State<RotateComplex> {
                               '248 yeays of Breath PersonReality and Reality Truth';
                           break;
                         case 1:
-                          //_planettext = idkHexList[_plutohex.gate!];
                           _planettext =
                               '248 yeays of Breath PersonReality and Reality Truth';
                           break;
@@ -2144,7 +2134,7 @@ class _RotateComplexState extends State<RotateComplex> {
               child: TextField(
                   readOnly: true,
                   decoration: const InputDecoration.collapsed(
-                      hintText: '2022-02-19',
+                      hintText: '02/19/1984',
                       hintStyle: TextStyle(color: Colors.grey)),
                   textAlign: TextAlign.center,
                   controller: _controllerDatePick,
@@ -2159,9 +2149,10 @@ class _RotateComplexState extends State<RotateComplex> {
             ElevatedButton(
               onPressed: () async {
                 _selectedDate = await TimeServices.selectDate(context);
+                _formattedDate = DateFormat('MM/dd/yyyy').format(_selectedDate);
                 setState(() {
-                  _controllerDatePick.text =
-                      "${_selectedDate.toLocal()}".split(' ')[0];
+                  //_controllerDatePick.text = "${_selectedDate.toLocal()}".split(' ')[0];
+                  _controllerDatePick.text = _formattedDate;
                 });
               },
               style: ElevatedButton.styleFrom(
@@ -2186,8 +2177,11 @@ class _RotateComplexState extends State<RotateComplex> {
                 _planetsdesignList =
                     await PlanetsServices.getCurrentData(_designTime);
 
-                _channelsList = HDServices.getHDChannels(
-                    _planetsnowList, _planetsdesignList);
+                _allplanetsList = _planetsnowList + _planetsdesignList;
+                _channelsList = HDServices.getHDChannels(_allplanetsList);
+                _personchannelsList = HDServices.getHDChannels(_planetsnowList);
+                _designchannelsList =
+                    HDServices.getHDChannels(_planetsdesignList);
 
                 //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
                 hdfinaldata = HDServices.getHDBasicData(_channelsList);
@@ -2203,7 +2197,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
                 _setDateTime(_now);
 
-                //_formattedDate = DateFormat('yyyy-MM-dd').format(_now);
+                //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
                 //_formattedTime = DateFormat.Hms().format(_now);
                 //_controllerTime.text = 'text $_formattedTime $_formattedDate';
 
@@ -2253,11 +2247,11 @@ class _RotateComplexState extends State<RotateComplex> {
                 // idk
                 // calc cycles
                 //_saturnreturntime = await PlanetsServices.getSaturnReturn(_now);
-                //_formatsaturnreturnDate = DateFormat('yyyy-MM-dd').format(_saturnreturntime);
+                //_formatsaturnreturnDate = DateFormat('MM/dd/yyyy').format(_saturnreturntime);
                 //_formatsaturnreturnTime = DateFormat.Hms().format(_saturnreturntime);
 
                 //_uranusoppostiontime = await PlanetsServices.getUranusOpposition(_now);
-                //_formatsUranusOppDate = DateFormat('yyyy-MM-dd').format(_uranusoppostiontime);
+                //_formatsUranusOppDate = DateFormat('MM/dd/yyyy').format(_uranusoppostiontime);
                 //_formatsUranusOppTime = DateFormat.Hms().format(_uranusoppostiontime);
                 setState(() {
                   Navigator.of(context).pop();
@@ -2287,6 +2281,9 @@ class _RotateComplexState extends State<RotateComplex> {
 
                 _channelsList =
                     HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                _personchannelsList = [];
+                _designchannelsList = [];
 
                 //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
 
@@ -2449,64 +2446,44 @@ class _RotateComplexState extends State<RotateComplex> {
   Widget _buildChannelsPopUp(BuildContext context) {
     return AlertDialog(
       title: const Text('Transactions'),
-      content: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: ListView.builder(
-            padding: const EdgeInsets.all(2),
-            itemCount: _channelsList.length,
-            itemBuilder: (BuildContext context, int index) {
-              Color coincolor = Colors.red;
-              switch (_channelsList[index].coin) {
-                case 'silence':
-                  coincolor = Colors.red;
-                  break;
-                case 'breath':
-                  coincolor = Colors.yellow;
-                  break;
-                case 'simple':
-                  coincolor = Colors.green;
-                  break;
-                case 'complex':
-                  coincolor = Colors.blue;
-                  break;
-                default:
-                  coincolor = Colors.red;
-                  break;
-              }
-              return Container(
-                decoration: BoxDecoration(
-                    //color: Colors.blue[100],
-                    color: coincolor,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 5,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.blueGrey,
-                          offset: Offset(-4, -4),
-                          blurRadius: 5,
-                          spreadRadius: 1),
-                    ]),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Flex(
-                    direction: Axis.horizontal,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        _channelsList[index].sentence!,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            }),
+      content: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Flex(
+            direction: Axis.vertical,
+            children: [
+              Divider(color: Colors.transparent),
+              CircleAvatar(
+                  minRadius: 5,
+                  maxRadius: 13,
+                  foregroundImage: AssetImage(hexList[0])),
+              Divider(color: Colors.transparent),
+              channeldisplay(context, _channelsList),
+              Divider(color: Colors.transparent),
+              CircleAvatar(
+                  minRadius: 5,
+                  maxRadius: 13,
+                  foregroundImage: AssetImage(hexList[1])),
+              Divider(color: Colors.transparent),
+              //channeldisplay(context, _personchannelsList),
+              Divider(color: Colors.transparent),
+              CircleAvatar(
+                  minRadius: 5,
+                  maxRadius: 13,
+                  foregroundImage: AssetImage(hexList[2])),
+              Divider(color: Colors.transparent),
+              channeldisplay(context, _personchannelsList),
+              Divider(color: Colors.transparent),
+              CircleAvatar(
+                  minRadius: 5,
+                  maxRadius: 13,
+                  foregroundImage: AssetImage(hexList[3])),
+              Divider(color: Colors.transparent),
+              channeldisplay(context, _designchannelsList),
+              Divider(color: Colors.transparent),
+            ],
+          ),
+        ),
       ),
       actions: <Widget>[
         TextButton(
@@ -2517,6 +2494,52 @@ class _RotateComplexState extends State<RotateComplex> {
         ),
       ],
     );
+  }
+
+  Widget channeldisplay(BuildContext context, List<HDChannel> displaychannels) {
+    return ListView.builder(
+        padding: const EdgeInsets.all(2),
+        shrinkWrap: true,
+        itemCount: displaychannels.length,
+        itemBuilder: (BuildContext context, int index) {
+          Color coincolor = Colors.red;
+          switch (displaychannels[index].coin) {
+            case 'silence':
+              coincolor = Colors.red;
+              break;
+            case 'breath':
+              coincolor = Colors.yellow;
+              break;
+            case 'simple':
+              coincolor = Colors.green;
+              break;
+            case 'complex':
+              coincolor = Colors.blue;
+              break;
+            default:
+              coincolor = Colors.red;
+              break;
+          }
+          return Container(
+            decoration: BoxDecoration(
+                border: Border.all(
+                  width: 3,
+                  color: Colors.black,
+                ),
+                //color: Colors.blue[100],
+                color: coincolor,
+                borderRadius: BorderRadius.circular(15)),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                displaychannels[index].sentence!,
+                textAlign: TextAlign.center,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              ),
+            ),
+          );
+        });
   }
 
   Widget _buildSelfReminderPopUp(BuildContext context) {
@@ -2885,6 +2908,100 @@ class _RotateComplexState extends State<RotateComplex> {
     return finalcolor;
   }
 
+  Widget _buildHebGatesDialog(BuildContext context) {
+    return AlertDialog(
+      title: const Text('ארנקים'),
+      content: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: ListView.builder(
+            reverse: false,
+            itemCount: _planetsList.length,
+            itemBuilder: (context, index) => ListTile(
+              title: SizedBox(
+                child: Flex(
+                  direction: Axis.vertical,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CircleAvatar(
+                        maxRadius: 20,
+                        backgroundColor: Colors.transparent,
+                        foregroundImage: AssetImage(planetsimagelist[index])),
+                    Text(
+                      _planetsList[index].gate!.toString(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 14),
+                    ),
+                    Text(
+                      idkNewHebrewList[_planetsList[index].gate!],
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 14),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Icon(Icons.close, color: Colors.black),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildHebLinesDialog(BuildContext context) {
+    return AlertDialog(
+      title: const Text('מטבעות'),
+      content: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: ListView.builder(
+            reverse: false,
+            itemCount: _planetsList.length,
+            itemBuilder: (context, index) => ListTile(
+              title: SizedBox(
+                child: Flex(
+                  direction: Axis.vertical,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CircleAvatar(
+                        maxRadius: 20,
+                        backgroundColor: Colors.transparent,
+                        foregroundImage: AssetImage(planetsimagelist[index])),
+                    Text(
+                      _planetsList[index].gateline!.toString(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 12),
+                    ),
+                    Text(
+                      idonotknowOnlylinesList[(_planetsList[index].gate! * 6) +
+                          _planetsList[index].line! -
+                          1],
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 13),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Icon(Icons.close, color: Colors.black),
+        ),
+      ],
+    );
+  }
+
   Widget _buildGatesDialog(BuildContext context) {
     return AlertDialog(
       title: const Text('Wallets'),
@@ -3123,7 +3240,7 @@ class _RotateComplexState extends State<RotateComplex> {
   }
 
   void _setDateTime(DateTime timedata) {
-    _formattedDate = DateFormat('yyyy-MM-dd').format(timedata);
+    _formattedDate = DateFormat('MM/dd/yyyy').format(timedata);
     _formattedTime = DateFormat.Hms().format(timedata);
     _controllerTime.text = '$_formattedTime $_formattedDate';
   }

@@ -4,7 +4,9 @@ import 'package:finallyicanlearn/models/rotateclasses.dart';
 
 class HDServices {
   static List<HDChannel> getHDChannels(
-      List<Hexagram> personalityplanets, designplanets) {
+      //List<Hexagram> personalityplanets, designplanets) {
+      List<Hexagram> combinedPlanetsList) {
+    //List<Hexagram> combinedPlanetsList;
     List<String> channelidList = [];
     List<int> uniquegatesList = [];
     Set<int> setgates;
@@ -17,10 +19,14 @@ class HDServices {
 
     HDChannel tempchannel;
 
-    for (int i = 0; personalityplanets.length > i; i++) {
-      uniquegatesList.add(personalityplanets[i].gate!);
-      uniquegatesList.add(designplanets[i].gate!);
+    //combinedPlanetsList = personalityplanets + designplanets;
+    for (int i = 0; combinedPlanetsList.length > i; i++) {
+      //uniquegatesList.add(personalityplanets[i].gate!);
+      //uniquegatesList.add(designplanets[i].gate!);
+      uniquegatesList.add(combinedPlanetsList[i].gate!);
     }
+
+
     setgates = uniquegatesList.toSet();
     uniquegatesList = setgates.toList();
     uniquegatesList.sort();
@@ -34,7 +40,6 @@ class HDServices {
           }
         }
       }
-
 
       for (int i = 0; channelidList.length > i; i++) {
         //tempchannels.add(mapHDChannel(channelidList[i]));
@@ -97,7 +102,6 @@ class HDServices {
           }
         }
       }
-
 
       for (int i = 0; channelidList.length > i; i++) {
         tempchannel = mapHDChannel(channelidList[i]);
@@ -188,9 +192,7 @@ class HDServices {
     return reminderSentence;
   }
 
-  static HumanDesign getHDBasicData(
-      //List<Hexagram> personalityplanets, designplanets, List<HDChannel> hdchannels) {
-      List<HDChannel> hdchannels) {
+  static HumanDesign getHDBasicData(List<HDChannel> hdchannels) {
     List<String> hdbasicdata = [], centers = [], channelsList = [];
 
     HumanDesign hddata = HumanDesign();
@@ -381,7 +383,6 @@ class HDServices {
     hddata.sentence = sentence;
     hddata.coin = '';
     hddata.coinname = coinname;
-
 
     //return hdbasicdata;
     return hddata;
