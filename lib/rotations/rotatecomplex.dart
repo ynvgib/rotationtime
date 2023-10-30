@@ -52,6 +52,9 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllercoinfirsttext = TextEditingController(),
       _controllercoinsecondtext = TextEditingController(),
       _controllercointhirdtext = TextEditingController(),
+      _controllercointopfirsttext = TextEditingController(),
+      _controllercointopsecondtext = TextEditingController(),
+      _controllercointopthirdtext = TextEditingController(),
       _controllerNorthNodeHex = TextEditingController(),
       _controllerNorthNodeText = TextEditingController(),
       _controllerNorthNodeGate = TextEditingController(),
@@ -126,6 +129,7 @@ class _RotateComplexState extends State<RotateComplex> {
       _formatsUranusOppTime = '';
 
   DateTime _now = DateTime.now(),
+      _newnow = DateTime.now(),
       _designTime = DateTime.now(),
       _selectedDate = DateTime.now(),
       _saturnreturntime = DateTime.now(),
@@ -186,7 +190,8 @@ class _RotateComplexState extends State<RotateComplex> {
   final List<bool> _isPlanetSelectedList =
       List<bool>.filled(13, false, growable: false);
 
-  final List<String> finalhexNamesList = hexNamesList;
+  final List<String> finalhexNamesList = hexNamesList,
+      finalnewcoinnamesList = newCoinNames;
 
   List<int> _hexalignedList = [0, 0, 0];
 
@@ -300,7 +305,8 @@ class _RotateComplexState extends State<RotateComplex> {
                     minFontSize: 25,
                     fullwidth: false,
                     decoration: InputDecoration.collapsed(
-                        hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
+                        //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
+                        hintText: '${hexNamesList[0]}',
                         hintStyle: const TextStyle(color: Colors.grey)),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
@@ -333,7 +339,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             setState(() {
                               _currentmain = indextop;
                               _controllermaintext.text =
-                                  '${newCoinNames[_currentmain]} ${hexNamesList[_currentmain]}';
+                                  //'${newCoinNames[_currentmain]} ${hexNamesList[_currentmain]}';
+                                  '${hexNamesList[_currentmain]}';
                             });
                           }),
                     ),
@@ -345,70 +352,77 @@ class _RotateComplexState extends State<RotateComplex> {
               color: Colors.blue,
               thickness: 5,
             ),
-            SizedBox(
-              height: 40,
-              width: 40,
-              child: CarouselSlider(
-                items: mixHexagramSlidersBol,
-                carouselController: _controllerconstate,
-                options: CarouselOptions(
-                    scrollDirection: Axis.horizontal,
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    aspectRatio: 1.3,
-                    onPageChanged: (indexconstate, reason) {
-                      setState(() {
-                        _currentconstate = indexconstate;
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: CarouselSlider(
+                    items: mixHexagramSlidersBol,
+                    carouselController: _controllerconstate,
+                    options: CarouselOptions(
+                        scrollDirection: Axis.horizontal,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 1.3,
+                        onPageChanged: (indexconstate, reason) {
+                          setState(() {
+                            _currentconstate = indexconstate;
 
-                        switch (_currentconstate) {
-                          case 0:
-                            _planetsList = _planetsnowList;
+                            switch (_currentconstate) {
+                              case 0:
+                                _planetsList = _planetsnowList;
 
-                            _controlPlanetHexagramData(_planetsList);
+                                _controlPlanetHexagramData(_planetsList);
 
-                            _formattedDate =
-                                DateFormat('MM/dd/yyyy').format(_now);
-                            _formattedTime = DateFormat.Hms().format(_now);
-                            _controllerTime.text =
+                                _formattedDate =
+                                    DateFormat('MM/dd/yyyy').format(_now);
+                                _formattedTime = DateFormat.Hms().format(_now);
+                                _controllerTime.text =
                                 '$_formattedTime $_formattedDate';
-                            //_controllerDate.text = _formattedDate;
-                            _controllerPlanetType.text = 'Thought Later';
+                                //_controllerDate.text = _formattedDate;
+                                _controllerPlanetType.text = 'Thought Later';
 
-                            _controllerrotationstate.jumpToPage(0);
-                            break;
-                          case 1:
-                            _planetsList = _planetsdesignList;
-                            _controlPlanetHexagramData(_planetsdesignList);
+                                _controllerrotationstate.jumpToPage(0);
+                                break;
+                              case 1:
+                                _planetsList = _planetsdesignList;
+                                _controlPlanetHexagramData(_planetsdesignList);
 
-                            _formattedDate =
-                                DateFormat('MM/dd/yyyy').format(_designTime);
-                            _formattedTime =
-                                DateFormat.Hms().format(_designTime);
-                            _controllerTime.text =
+                                _formattedDate =
+                                    DateFormat('MM/dd/yyyy').format(_designTime);
+                                _formattedTime =
+                                    DateFormat.Hms().format(_designTime);
+                                _controllerTime.text =
                                 '$_formattedTime $_formattedDate';
-                            //_controllerDate.text = _formattedDate;
+                                //_controllerDate.text = _formattedDate;
 
-                            _controllerPlanetType.text = 'Life First';
+                                _controllerPlanetType.text = 'Life First';
 
-                            _controllerrotationstate.jumpToPage(3);
-                            break;
-                          default:
-                            _planetsList = _planetsnowList;
+                                _controllerrotationstate.jumpToPage(3);
+                                break;
+                              default:
+                                _planetsList = _planetsnowList;
 
-                            _controlPlanetHexagramData(_planetsList);
+                                _controlPlanetHexagramData(_planetsList);
 
-                            _formattedDate =
-                                DateFormat('MM/dd/yyyy').format(_now);
-                            _formattedTime = DateFormat.Hms().format(_now);
-                            _controllerTime.text =
+                                _formattedDate =
+                                    DateFormat('MM/dd/yyyy').format(_now);
+                                _formattedTime = DateFormat.Hms().format(_now);
+                                _controllerTime.text =
                                 '$_formattedTime $_formattedDate';
-                            //_controllerDate.text = _formattedDate;
-                            break;
-                        }
-                      });
-                    }),
-              ),
+                                //_controllerDate.text = _formattedDate;
+                                break;
+                            }
+                          });
+                        }),
+                  ),
+                ),
+              ],
             ),
+
             const SizedBox(
               height: 10,
             ),
@@ -607,6 +621,60 @@ class _RotateComplexState extends State<RotateComplex> {
                       minFontSize: 10,
                       maxFontSize: 30,
                       decoration: InputDecoration.collapsed(
+                          hintText: newCoinNames[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: firstcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopfirsttext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: newCoinNames[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: secondcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopsecondtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: newCoinNames[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: thirdcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopthirdtext,
+                      readOnly: true,
+                    )),
+              ],
+            ),
+            SizedBox(height: 5),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
+                    child: AutoSizeTextField(
+                      minFontSize: 10,
+                      maxFontSize: 30,
+                      decoration: InputDecoration.collapsed(
                           hintText: finalhexNamesList[0],
                           hintStyle: const TextStyle(color: Colors.blue)),
                       textAlign: TextAlign.center,
@@ -703,6 +771,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             controlCollor(finalhexNamesList[_currenttop]);
                         _controllercointhirdtext.text =
                             finalhexNamesList[_currenttop];
+                        _controllercointopthirdtext.text =
+                            finalnewcoinnamesList[_currenttop];
                       });
                     }),
               ),
@@ -754,6 +824,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             controlCollor(finalhexNamesList[_currentmid]);
                         _controllercoinsecondtext.text =
                             finalhexNamesList[_currentmid];
+                        _controllercointopsecondtext.text =
+                        finalnewcoinnamesList[_currentmid];
                       });
                     }),
               ),
@@ -803,6 +875,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             controlCollor(finalhexNamesList[_currentbot]);
                         _controllercoinfirsttext.text =
                             finalhexNamesList[_currentbot];
+                        _controllercointopfirsttext.text =
+                        finalnewcoinnamesList[_currentbot];
                       });
                     }),
               ),
@@ -863,10 +937,10 @@ class _RotateComplexState extends State<RotateComplex> {
               //width: MediaQuery.of(context).size.width / 1.7,
               width: MediaQuery.of(context).size.width / 1.5,
               child: AutoSizeTextField(
-                minLines: 1,
+                minLines: 2,
                 maxLines: 4,
-                minFontSize: 15,
-                maxFontSize: 25,
+                minFontSize: 18,
+                maxFontSize: 18,
                 fullwidth: true,
                 decoration: InputDecoration.collapsed(
                     hintText: LineSentenceList[0],
@@ -888,10 +962,10 @@ class _RotateComplexState extends State<RotateComplex> {
                 //width: MediaQuery.of(context).size.height / 3,
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: AutoSizeTextField(
-                  minLines: 1,
+                  minLines: 3,
                   maxLines: 4,
                   minFontSize: 15,
-                  maxFontSize: 25,
+                  maxFontSize: 15,
                   fullwidth: true,
                   decoration: const InputDecoration.collapsed(
                       hintText: 'Rotating Coins Story',
@@ -905,6 +979,514 @@ class _RotateComplexState extends State<RotateComplex> {
                   controller: _controllergatelinestory,
                   readOnly: true,
                 )),
+            const Divider(
+              color: Colors.blue,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.add(const Duration(hours: 1));
+
+                    _planetsnowList = await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList = await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                    (idonotknowlinesList.indexOf(_planethex.gate!) +
+                        _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                        !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('+1',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
+                ),
+                const SizedBox(width: 5),
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.add(const Duration(hours: 10));
+
+                    _planetsnowList = await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList = await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                    (idonotknowlinesList.indexOf(_planethex.gate!) +
+                        _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                        !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('+10',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
+                ),
+                const SizedBox(width: 5),
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.add(const Duration(hours: 24));
+
+                    _planetsnowList = await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList = await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                    (idonotknowlinesList.indexOf(_planethex.gate!) +
+                        _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                        !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('+24',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
+                ),
+              ],
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.subtract(const Duration(hours: 1));
+
+                    _planetsnowList = await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList = await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                    (idonotknowlinesList.indexOf(_planethex.gate!) +
+                        _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                        !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('-1',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
+                ),
+                const SizedBox(width: 5),
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.subtract(const Duration(hours: 10));
+
+                    _planetsnowList = await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList = await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                    (idonotknowlinesList.indexOf(_planethex.gate!) +
+                        _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                        !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('-10',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
+                ),
+                const SizedBox(width: 5),
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.subtract(const Duration(hours: 24));
+
+                    _planetsnowList = await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList = await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                    (idonotknowlinesList.indexOf(_planethex.gate!) +
+                        _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                        !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('-24',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 10),
+            SizedBox(
+              height: 30,
+              child: TextField(
+                  textAlign: TextAlign.center,
+                  readOnly: true,
+                  decoration: const InputDecoration.collapsed(hintText: 'Time'),
+                  controller: _controllerTime,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.black)),
+            ),
+
             const Divider(
               color: Colors.blue,
             ),
@@ -961,10 +1543,10 @@ class _RotateComplexState extends State<RotateComplex> {
                       readOnly: true,
                       textAlign: TextAlign.right,
                       decoration:
-                          const InputDecoration.collapsed(hintText: 'Sentence'),
+                      const InputDecoration.collapsed(hintText: 'Sentence'),
                       controller: _controllerPlanetSubType,
                       style:
-                          const TextStyle(fontSize: 12, color: Colors.black)),
+                      const TextStyle(fontSize: 12, color: Colors.black)),
                 ),
                 const SizedBox(width: 5),
                 SizedBox(
@@ -974,15 +1556,12 @@ class _RotateComplexState extends State<RotateComplex> {
                       textAlign: TextAlign.left,
                       readOnly: true,
                       decoration:
-                          const InputDecoration.collapsed(hintText: 'Rotation'),
+                      const InputDecoration.collapsed(hintText: 'Rotation'),
                       controller: _controllerPlanetType,
                       style:
-                          const TextStyle(fontSize: 12, color: Colors.black)),
+                      const TextStyle(fontSize: 12, color: Colors.black)),
                 ),
               ],
-            ),
-            const Divider(
-              color: Colors.blue,
             ),
             Flex(
               direction: Axis.horizontal,
@@ -2881,7 +3460,7 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerAuthority.text = hdbasicdata.authority!;
     _controllerType.text = hdbasicdata.type!;
     _controllerSentence.text = hdbasicdata.sentence!;
-    _controllercoinfirsttext.text = hdbasicdata.coinname!;
+    //_controllercoinfirsttext.text = hdbasicdata.coinname!;
     _controllercoin.jumpToPage(hexNamesList.indexOf(hdbasicdata.coinname!));
     //_currenttop = hexNamesList.indexOf(hdbasicdata.coinname!);
   }
