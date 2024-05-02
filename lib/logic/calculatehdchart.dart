@@ -197,6 +197,7 @@ class HDServices {
 
     HumanDesign hddata = HumanDesign();
 
+    int typeidx = 0;
     //List<HDChannel> hdchannels = [];
     String channelid = '',
         type = '',
@@ -220,75 +221,87 @@ class HDServices {
       type = hdtypesList.last;
       authority = hdauthority.last;
     } else if (centers.contains('solar')) {
-      authority = 'emotional';
+      //authority = 'emotional';
+      authority = hdauthority[0];
       if (centers.contains('sacral')) {
-        type = 'generator';
+        type = hdtypesList[2];
       }
     } else if (centers.contains('sacral')) {
-      authority = 'sacral';
-      type = 'generator';
+      //authority = 'sacral';
+      authority = hdauthority[1];
+      type = hdtypesList[2];
     } else if (centers.contains('spleen')) {
-      authority = 'splenic';
+      //authority = 'splenic';
+      authority = hdauthority[2];
     } else if (centers.contains('heart')) {
-      authority = 'ego';
+      //authority = 'ego';
+      authority = hdauthority[3];
     } else if (centers.contains('self')) {
-      authority = 'self';
-      type = 'projector';
+      //authority = 'self';
+      authority = hdauthority[5];
+      type = hdtypesList[3];
     } else {
-      authority = 'sound board';
-      type = 'projector';
+      //authority = 'sound board';
+      authority = hdauthority[6];
+      type = hdtypesList[3];
     }
 
     if (centers.isEmpty) {
-      type = 'reflector';
+      type = hdtypesList[4];
     } else {
       if (!centers.contains('throat')) {
         if (!centers.contains('sacral')) {
-          type = 'projector';
+          type = hdtypesList[3];
         } else {
-          type = 'generator';
+          type = hdtypesList[2];
         }
       }
 
       if (channelsList.contains('12.22') ||
           channelsList.contains('35.36') ||
           channelsList.contains('21.45')) {
-        type = 'manifestor';
+        //type = 'manifestor';
+        type = hdtypesList[0];
       } else if (channelsList.contains('16.48') ||
           channelsList.contains('20.57')) {
         if (channelsList.contains('26.44') ||
             channelsList.contains('32.54') ||
             channelsList.contains('28.38') ||
             channelsList.contains('18.58')) {
-          type = 'manifestor';
+          //type = 'manifestor';
+          type = hdtypesList[0];
         }
       }
 
-      if (type != 'manifestor') {
+      //if (type != 'manifestor') {
+      if (type != hdtypesList[0]) {
         if (channelsList.contains('10.20') ||
             channelsList.contains('7.31') ||
             channelsList.contains('1.8') ||
             channelsList.contains('13.33')) {
           if (channelsList.contains('25.51')) {
-            type = 'manifestor';
+            //type = 'manifestor';
+            type = hdtypesList[0];
           }
         }
       }
 
       if (centers.contains('sacral')) {
-        if (type == 'manifestor') {
-          type = 'manifesting generator';
+        //if (type == 'manifestor') {
+        if (type == hdtypesList[0]) {
+          //type = 'manifesting generator';
+          type = hdtypesList[1];
         } else if (channelsList.contains('20.34')) {
-          type = 'manifesting generator';
+          type = hdtypesList[1];
         } else if (channelsList.contains('27.50')) {
           if (channelsList.contains('16.48') ||
               channelsList.contains('20.57')) {
-            type = 'manifesting generator';
+            type = hdtypesList[1];
           } else if (channelsList.contains('10.57')) {
             if (channelsList.contains('7.31') ||
                 channelsList.contains('1.8') ||
                 channelsList.contains('13.33')) {
-              type = 'manifesting generator';
+              type = hdtypesList[1];
             }
           }
         } else if (channelsList.contains('10.34') ||
@@ -299,72 +312,102 @@ class HDServices {
               channelsList.contains('7.31') ||
               channelsList.contains('1.8') ||
               channelsList.contains('13.33')) {
-            type = 'manifesting generator';
+            type = hdtypesList[1];
           }
         }
       }
 
       if (centers.contains('sacral')) {
-        if (type != 'manifesting generator') {
-          type = 'generator';
+        if (type != hdtypesList[1]) {
+          type = hdtypesList[2];
         }
-      } else if (type != 'manifestor') {
-        type = 'projector';
+      //} else if (type != 'manifestor') {
+      } else if (type != hdtypesList[0]) {
+        type = hdtypesList[3];
       }
     }
     strategy = 'NOT READY YET';
 
-    if (type == 'manifestor') {
-      if (authority == 'emotional') {
-        strategy = 'inform with emotional clarity';
-      } else if (authority == 'splenic') {
-        strategy = 'inform spontaneously';
+    //if (type == 'manifestor') {
+    if (type == hdtypesList[0]) {
+      //print (authority);
+      //if (authority == 'emotional') {
+      if (authority == hdauthority[0]) {
+        //strategy = 'inform with emotional clarity';
+        strategy = hdstrategyList[0];
+      //} else if (authority == 'splenic') {
+      } else if (authority == hdauthority[2]) {
+        //strategy = 'inform spontaneously';
+        strategy = hdstrategyList[1];
       } else {
-        strategy = 'inform at will';
+        //strategy = 'inform at will';
+        strategy = hdstrategyList[2];
       }
     } else if (centers.contains('sacral')) {
-      if (authority == 'emotional') {
-        strategy = 'respond with emotional clarity';
+      //if (authority == 'emotional') {
+      if (authority == hdauthority[0]) {
+        //strategy = 'respond with emotional clarity';
+        strategy = hdstrategyList[3];
       } else {
-        strategy = 'respond in the moment';
+        //strategy = 'respond in the moment';
+        strategy = hdstrategyList[4];
       }
-    } else if (type == 'projector') {
-      if (authority == 'emotional') {
-        strategy = 'recognize invitation with emotional clarity';
-      } else if (authority == 'splenic') {
-        strategy = 'recognize spontaneous invitation';
-      } else if (authority == 'ego') {
-        strategy = 'recognize invitation to prove yourself';
-      } else if (authority == 'self') {
-        strategy = 'recognize invitation to express who you are';
+    } else if (type == hdtypesList[3]) {
+      //if (authority == 'emotional') {
+      if (authority == hdauthority[0]) {
+        //strategy = 'recognize invitation with emotional clarity';
+        strategy = hdstrategyList[5];
+      //} else if (authority == 'splenic') {
+      } else if (authority == hdauthority[2]) {
+        //strategy = 'recognize spontaneous invitation';
+        strategy = hdstrategyList[6];
+      //} else if (authority == 'ego') {
+      } else if (authority == hdauthority[3]) {
+        print(authority);
+        //strategy = 'recognize invitation to prove yourself';
+        strategy = hdstrategyList[7];
+        authority = hdauthority[4];
+      //} else if (authority == 'self') {
+      } else if (authority == hdauthority[5]) {
+        //strategy = 'recognize invitation to express who you are';
+        strategy = hdstrategyList[8];
       } else {
-        strategy = 'recognize invitation to conceptualize';
+        //strategy = 'recognize invitation to conceptualize';
+        strategy = hdstrategyList[9];
       }
     } else {
-      strategy = 'watch the moon cycle';
+      //strategy = 'watch the moon cycle';
+      strategy = hdstrategyList[10];
     }
-    //print (type);
-    switch (type) {
-      case 'manifestor':
+
+    typeidx = hdtypesList.indexOf(type);
+
+    switch (typeidx) {
+      //case 'manifestor':
+      case 0:
         coin = hexBasicMixList[0];
         coinname = hexNamesList[0];
         sentence = 'Impact Positively with Peace';
         break;
-      case 'reflector':
+      //case 'reflector':
+      case 4:
         coinname = hexNamesList[1];
         sentence = 'Balance Oppositions with Surprise';
         break;
-      case 'projector':
+      //case 'projector':
+      case 3:
         coin = hexBasicMixList[2];
         coinname = hexNamesList[2];
         sentence = 'Align Balance with Success';
         break;
-      case 'generator':
+      //case 'generator':
+      case 2:
         coin = hexBasicMixList[3];
         coinname = hexNamesList[3];
         sentence = 'Filter Negativity with Satisfaction';
         break;
-      case 'manifesting generator':
+      //case 'manifesting generator':
+      case 1:
         coin = hexBasicMixList[3];
         coinname = hexNamesList[3];
         sentence = 'Filter Negativity with Satisfaction';
@@ -373,6 +416,8 @@ class HDServices {
         sentence = 'I don\'t know';
     }
 
+    //print (strategy);
+    //print (authority);
     //hdbasicdata = [type, authority, strategy, sentence, coinname];
     hddata.type = type;
     hddata.authority = authority;

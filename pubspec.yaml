@@ -46,13 +46,13 @@ dependencies:
   intl: ^0.18.1
   auto_size_text: ^3.0.0
   auto_size_text_field: ^2.2.1
-  sweph: ^2.10.3+11
   flutter_shapes: ^0.3.0
   teledart: ^0.5.6
   dashed_color_circle: ^0.0.2
   circle_list: ^1.0.5
   flutter_circular_text: ^0.3.1
   url_launcher: ^6.2.1
+  sweph: ^2.10.3+16
 
 dev_dependencies:
   flutter_test:
@@ -95,6 +95,8 @@ flutter:
    - assets/
    - assets/ephe/
    - assets/planets/
+   - assets/plants/
+   - assets/camog/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

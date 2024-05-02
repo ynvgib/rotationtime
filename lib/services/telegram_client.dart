@@ -7,6 +7,11 @@ import 'package:intl/intl.dart';
 
 import 'package:teledart/teledart.dart';
 
+import '../models/lists.dart';
+
+// telegram bot
+//https://t.me/idonotknowbot_bot
+
 class TelegramClient {
   final String chatId;
   final String botToken;
@@ -44,32 +49,48 @@ class TelegramClient {
     // You can listen to messages like this
     teledart.onMessage(entityType: 'bot_command', keyword: 'start').listen(
         (message) =>
-            teledart.sendMessage(message.chat.id, 'I don\'t know meditation!'));
+            teledart.sendMessage(message.chat.id, 'זמן להתארגז בים סיבוב'));
 
     // Sick of boilerplates? Reply messages like below, nice and tidy
     // Short hands also available for answer query methods
     teledart.onCommand('qa').listen((message) {
       message.reply(
-          'Ido Not Know Questions and Answers . \nPPP. Past Present Pfuture.');
+          'שאל אות הגמל');
+      message.reply(
+          '???');
       message.replyPhoto(
-          'https://w7.pngwing.com/pngs/467/800/png-transparent-chakra-meditation-spiritual-practice-mindfulness-mantra-meditative-miscellaneous-physical-fitness-leaf-thumbnail.png',
-          caption: 'I don\'t know meditation');
-      message.reply('www.beidontknow.com');
+          'https://m.media-amazon.com/images/I/713W7mczhvL._AC_UF1000,1000_QL80_.jpg',
+          caption: 'הכלב איתך וופווף גופגוף');
+      message.reply(
+          '!!!');
+      message.reply(
+          'פששש...בואנה טשמע... זה טואווובבב');
+      message.reply(
+          'ואיך שהגמל מעביר את החומר הלאה');
+      message.reply(
+          'והכלב שנבח על הדלעת שחלפה...');
+      message.reply(rturlfull[5]);
     });
 
     teledart.onCommand('bd').listen((message) {
           String lastbirthdata = timeformat.format(now);
       message.reply(
-          'Last Date: \n$lastbirthdata');
+          'מועד אחרון'
+              '\n$lastbirthdata');
+      message.reply(
+          'מטבע אחרון'
+              ' \n$txtcoin');
+          message.reply(rturlfull[0]);
     });
 
     teledart.onCommand('account').listen((message) {
       message.replyPhoto(
           'https://w7.pngwing.com/pngs/641/127/png-transparent-casino-chips-poker-cards-gambling-game-deck-yellow-blue-green-thumbnail.png',
-          caption: 'I don\'t know meditation');
+          caption: 'זמן להתארגז');
 
       message.reply(
-          'enter birth date and UTC time in this format: \n1984-02-19 16:58');
+          'ניתן להכניס מועד לידה לפי שעון אפס כמו: '
+              '\n1984-02-19 16:58');
 
       message.reply(
           'you can convert your time in this link:\n'
@@ -80,6 +101,7 @@ class TelegramClient {
           .listen((message) async {
         //print(message.text);
         //DateTime now = DateTime.parse(message.text!), designTime;
+
         now = DateTime.parse(message.text!);
 
         txtcoin = 'no coin';
@@ -98,76 +120,46 @@ class TelegramClient {
 
         txtcoin = hdfinaldata.coinname!;
 
-        message.reply('you are rich with: $txtcoin');
+        message.reply(' אוצר של $txtcoin');
 
         switch (txtcoin) {
-          case 'COMPLEX':
-          //message.replyPhoto(
-          //    'https://w7.pngwing.com/pngs/676/937/png-transparent-blue-and-white-check-logo-social-media-verified-badge-facebook-computer-icons-coin-blue-angle-text-thumbnail.png');
-          //message.replyPhoto(
-          //   'https://w7.pngwing.com/pngs/447/985/png-transparent-circle-cardioid-geometry-rotation-circle-sphere-shape-cardioid-thumbnail.png',
-          //  caption: 'Complex Coin');
+          case 'מורכב':
             message.replyPhoto(
-                'https://static.wixstatic.com/media/702c29_e2455749690045c6ae38769eed306472~mv2.png',
-                caption: 'Complex Coin');
+                'https://img.freepik.com/premium-vector/eggplant-cartoon-character_193274-108.jpg',
+                caption: 'חזי בימשו היזם');
+            message.reply(rturlcoin[0]);
             break;
-          case 'Simple':
-          //message.replyPhoto(
-          //    'https://w7.pngwing.com/pngs/531/25/png-transparent-bitcoin-cash-cryptocurrency-exchange-trade-blockchain-text-trademark-logo-thumbnail.png');
-          //message.replyPhoto(
-          //  'https://w7.pngwing.com/pngs/588/586/png-transparent-arrow-cycle-line-refresh-rotate-simple-arrow-icon-thumbnail.png',
-          // caption: 'Simple Coin');
+          case 'פשוט':
             message.replyPhoto(
-                'https://static.wixstatic.com/media/702c29_f040fe0a3fbc4098b7aca97c6234748d~mv2.png',
-                caption: 'Simple Coin');
+                'https://img.freepik.com/premium-vector/cute-avocado-sleep-well-illustration_608812-923.jpg',
+                caption: 'אבי בים טיפה בים');
+            message.reply(rturlcoin[1]);
             break;
-          case 'Breath':
-          //message.replyPhoto(
-          //  'https://w7.pngwing.com/pngs/300/538/png-transparent-yellow-and-gray-dollar-sign-illustration-dollar-sign-money-yellow-youtube-red-coin-text-number-coins-thumbnail.png');
-          //message.replyPhoto(
-          //   'https://w7.pngwing.com/pngs/456/935/png-transparent-nose-breath-breathing-smell-breathe-thumbnail.png',
-          //  caption: 'Breath Coin');
+          case 'נשימה':
             message.replyPhoto(
-                'https://static.wixstatic.com/media/702c29_707356c770c94f4abb9d21c081c4d17c~mv2.png',
-                caption: 'Breath Coin');
+                'https://img.freepik.com/premium-vector/banana-teacher-cartoon-character_193274-3355.jpg',
+                caption: 'ביני מתווכת');
+            message.reply(rturlcoin[2]);
             break;
-          case 'silence':
-          //message.replyPhoto(
-          //    'https://w7.pngwing.com/pngs/825/556/png-transparent-casino-token-poker-others-miscellaneous-dice-texas-thumbnail.png');
-          //message.replyPhoto(
-          //   'https://w7.pngwing.com/pngs/125/789/png-transparent-hotel-fevery-art-silence-quiet-thumbnail.png',
-          //  caption: 'Silence Coin');
+          case 'שתיקה':
             message.replyPhoto(
-                'https://static.wixstatic.com/media/702c29_70e29b0fadfb46e38235085116e7592a~mv2.png',
-                caption: 'Silence Coin');
+                'https://static.vecteezy.com/system/resources/thumbnails/001/949/336/small_2x/tomato-cartoon-character-with-happy-face-expression-on-white-background-free-vector.jpg',
+                caption: 'בטיבטי');
+            message.reply(rturlcoin[3]);
             break;
           default:
             message.replyPhoto(
-              //  io.File('example/dash_paper_plane.png'),
-              //'https://w7.pngwing.com/pngs/664/995/png-transparent-youtube-create-signs-symbol-signs-english-text-trademark-thumbnail.png',
-              //caption: 'Silence Coin');
                 'https://static.wixstatic.com/media/702c29_153bff0fc18844b99999271688b56bc2~mv2.png',
                 caption: 'Rotation Coin');
             break;
         }
 
-        message.reply('Type'
-            ' \n${hdfinaldata.type!}\n\n'
-            'X (strategy)'
-            ' \n${hdfinaldata.strategy!}\n\n'
-            'I (Inner Authority)'
-            ' \n${hdfinaldata.authority!}\n\n'
-            'O (Outer Authority later):'
-            ' \n${hdfinaldata.sentence!}\n\n'
-            'XIO Ido Not Know');
+        //message.reply('');
       });
 
     });
 
     teledart.onCommand('now').listen((message) async {
-
-      message.replyPhoto(
-          'https://w1.pngwing.com/pngs/945/753/png-transparent-diwali-design-kali-mahadeva-durga-puja-mahakali-kali-puja-hinduism-shakti-thumbnail.png');
 
       txtcoin = 'no coin';
 
@@ -185,54 +177,35 @@ class TelegramClient {
       txtcoin = hdfinaldata.coinname!;
 
 
-      message.reply('you are rich with: $txtcoin');
+      message.reply(' אוצר התניה כעת של $txtcoin');
 
       switch (txtcoin) {
-        case 'COMPLEX':
-        //message.replyPhoto(
-        //    'https://w7.pngwing.com/pngs/676/937/png-transparent-blue-and-white-check-logo-social-media-verified-badge-facebook-computer-icons-coin-blue-angle-text-thumbnail.png');
-        //message.replyPhoto(
-        //   'https://w7.pngwing.com/pngs/447/985/png-transparent-circle-cardioid-geometry-rotation-circle-sphere-shape-cardioid-thumbnail.png',
-        //  caption: 'Complex Coin');
+        case 'מורכב':
           message.replyPhoto(
-              'https://static.wixstatic.com/media/702c29_e2455749690045c6ae38769eed306472~mv2.png',
-              caption: 'Complex Coin');
+              'https://img.freepik.com/premium-vector/eggplant-cartoon-character_193274-108.jpg',
+              caption: 'חזי בימשו היזם');
+          message.reply(rturlcoin[0]);
           break;
-        case 'Simple':
-        //message.replyPhoto(
-        //    'https://w7.pngwing.com/pngs/531/25/png-transparent-bitcoin-cash-cryptocurrency-exchange-trade-blockchain-text-trademark-logo-thumbnail.png');
-        //message.replyPhoto(
-        //  'https://w7.pngwing.com/pngs/588/586/png-transparent-arrow-cycle-line-refresh-rotate-simple-arrow-icon-thumbnail.png',
-        // caption: 'Simple Coin');
+        case 'פשוט':
           message.replyPhoto(
-              'https://static.wixstatic.com/media/702c29_f040fe0a3fbc4098b7aca97c6234748d~mv2.png',
-              caption: 'Simple Coin');
+              'https://img.freepik.com/premium-vector/cute-avocado-sleep-well-illustration_608812-923.jpg',
+              caption: 'אבי בים טיפה בים');
+          message.reply(rturlcoin[1]);
           break;
-        case 'Breath':
-        //message.replyPhoto(
-        //  'https://w7.pngwing.com/pngs/300/538/png-transparent-yellow-and-gray-dollar-sign-illustration-dollar-sign-money-yellow-youtube-red-coin-text-number-coins-thumbnail.png');
-        //message.replyPhoto(
-        //   'https://w7.pngwing.com/pngs/456/935/png-transparent-nose-breath-breathing-smell-breathe-thumbnail.png',
-        //  caption: 'Breath Coin');
+        case 'נשימה':
           message.replyPhoto(
-              'https://static.wixstatic.com/media/702c29_707356c770c94f4abb9d21c081c4d17c~mv2.png',
-              caption: 'Breath Coin');
+              'https://img.freepik.com/premium-vector/banana-teacher-cartoon-character_193274-3355.jpg',
+              caption: 'ביני מתווכת');
+          message.reply(rturlcoin[2]);
           break;
-        case 'silence':
-        //message.replyPhoto(
-        //    'https://w7.pngwing.com/pngs/825/556/png-transparent-casino-token-poker-others-miscellaneous-dice-texas-thumbnail.png');
-        //message.replyPhoto(
-        //   'https://w7.pngwing.com/pngs/125/789/png-transparent-hotel-fevery-art-silence-quiet-thumbnail.png',
-        //  caption: 'Silence Coin');
+        case 'שתיקה':
           message.replyPhoto(
-              'https://static.wixstatic.com/media/702c29_70e29b0fadfb46e38235085116e7592a~mv2.png',
-              caption: 'Silence Coin');
+              'https://static.vecteezy.com/system/resources/thumbnails/001/949/336/small_2x/tomato-cartoon-character-with-happy-face-expression-on-white-background-free-vector.jpg',
+              caption: 'בטיבטי');
+          message.reply(rturlcoin[3]);
           break;
         default:
           message.replyPhoto(
-            //  io.File('example/dash_paper_plane.png'),
-            //'https://w7.pngwing.com/pngs/664/995/png-transparent-youtube-create-signs-symbol-signs-english-text-trademark-thumbnail.png',
-            //caption: 'Silence Coin');
               'https://static.wixstatic.com/media/702c29_153bff0fc18844b99999271688b56bc2~mv2.png',
               caption: 'Rotation Coin');
           break;
@@ -241,7 +214,7 @@ class TelegramClient {
 
     teledart
         .onMessage(keyword: RegExp(r'\?$', caseSensitive: false))
-        .listen((message) => message.reply('I don\'t know'));
+        .listen((message) => message.reply('אני לא יודעת'));
 
     // You can even filter streams with stream processing methods
     // See: https://www.dartlang.org/tutorials/language/streams#methods-that-modify-a-stream

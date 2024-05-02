@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
 
+const String maintitle = 'Rotation Time', language = 'ENGLISH';
 
-const String maintitle = 'Rotation Time',
-    language = 'ENGLISH';
+final List<String> languagesList = ["English", "עברית"];
 
-final List<String> languagesList = [
-  "English",
-  "עברית"
-];
-
-
-final List<String> languagesCodeList = [
-  "EN",
-  "HE"
-];
+final List<String> languagesCodeList = ["EN", "HE"];
 
 final List<String> titlesEN = [
   'Complex 1',
@@ -30,7 +21,6 @@ final List<String> tempsubtitles = [
   'Complex HD',
 ];
 
-
 // 'Simple 64 + 384 = 448',
 
 final List<String> mainroutes_old = [
@@ -43,6 +33,94 @@ final List<String> mainroutes_old = [
 
 final List<String> temproutes = [
   '/rotatecomplexhd',
+];
+
+final List<String> rtimages = [
+  'assets/camel.png',
+  'assets/cameldog.png',
+  'assets/dog.png',
+  'assets/camog/mcamel.png',
+  'assets/camog/mcamog.png',
+  'assets/camog/mcdog.png',
+  'assets/complex.png',
+  'assets/complexblack.png',
+  'assets/complexdown.png',
+  'assets/complexin.png',
+  'assets/complexone.png',
+  'assets/complexout.png',
+  'assets/complextwo.png',
+  'assets/complexup.png',
+  'assets/complexwhite.png',
+  'assets/simple.png',
+  'assets/simpleblack.png',
+  'assets/simpledown.png',
+  'assets/simplein.png',
+  'assets/simpleone.png',
+  'assets/simpleout.png',
+  'assets/simpletwo.png',
+  'assets/simpleup.png',
+  'assets/simplewhite.png',
+  'assets/breath.png',
+  'assets/breathblack.png',
+  'assets/breathdown.png',
+  'assets/breathin.png',
+  'assets/breathone.png',
+  'assets/breathout.png',
+  'assets/breathtwo.png',
+  'assets/breathup.png',
+  'assets/breathwhite.png',
+  'assets/fullrotateicon.png',
+  'assets/silence.png',
+  'assets/silenceblack.png',
+  'assets/silencedown.png',
+  'assets/silencein.png',
+  'assets/silenceone.png',
+  'assets/silenceout.png',
+  'assets/silencetwo.png',
+  'assets/silenceup.png',
+  'assets/silencewhite.png',
+  'assets/yangyang.png',
+  'assets/yangyin.png',
+  'assets/yinyang.png',
+  'assets/yinyin.png',
+  'assets/planets/chiron.png',
+  'assets/planets/earth.png',
+  'assets/planets/jupiter.png',
+  'assets/planets/mars.png',
+  'assets/planets/mercury.png',
+  'assets/planets/moon.png',
+  'assets/planets/neptune.png',
+  'assets/planets/northnode.png',
+  'assets/planets/pluto.png',
+  'assets/planets/saturn.png',
+  'assets/planets/southnode.png',
+  'assets/planets/sun.png',
+  'assets/planets/uranus.png',
+  'assets/planets/venus.png',
+  'assets/plants/mrbluep.png',
+  'assets/plants/mrgreavo.png',
+  'assets/plants/msredtom.png',
+  'assets/plants/msyelban.png',
+  'assets/plants/rotav.png',
+  'assets/plants/rotban.png',
+  'assets/plants/rotegi.png',
+  'assets/plants/rotom.png',
+];
+
+final List rturlfull = [
+  'https://rotation-time.web.app/',
+  'https://rotation-time.web.app/#/rotatesilence',
+  'https://rotation-time.web.app/#/rotatebreath',
+  'https://rotation-time.web.app/#/rotatesimple',
+  'https://rotation-time.web.app/#/rotatecomplex',
+  'https://rotation-time.web.app/#/rotatesidk',
+];
+
+final List<String> rturlcoin = [
+  'https://rotation-time.web.app/#/rotatecomplex',
+  'https://rotation-time.web.app/#/rotatesimple',
+  'https://rotation-time.web.app/#/rotatebreath',
+  'https://rotation-time.web.app/#/rotatesilence',
 ];
 
 final List<String> planetsfullList = [
@@ -409,8 +487,6 @@ final List<int> fontHexNumbersList = [
   46
 ];
 
-
-
 final List<int> orderHexagramsWheel = [
   //qurater mutation complex
   1, 43, 14, 34,
@@ -439,6 +515,46 @@ final List<int> orderHexagramsWheel = [
 
 List<int> reversedHexagramsWheel = orderHexagramsWheel.reversed.toList();
 
+final List<Color> botfourcoincolor = [
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+];
+
+final List<Color> topfourcoincolor = [
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+];
+
+List<Color> revfourbotcoincolor = botfourcoincolor.reversed.toList();
+List<Color> revfourtopcoincolor = topfourcoincolor.reversed.toList();
 
 final List<Color> botcoincolor = [
   Colors.blue,
@@ -457,7 +573,6 @@ final List<Color> botcoincolor = [
   Colors.blue,
   Colors.blue,
   Colors.blue,
-
   Colors.green,
   Colors.green,
   Colors.green,
@@ -474,7 +589,6 @@ final List<Color> botcoincolor = [
   Colors.green,
   Colors.green,
   Colors.green,
-
   Colors.red,
   Colors.red,
   Colors.red,
@@ -491,7 +605,6 @@ final List<Color> botcoincolor = [
   Colors.red,
   Colors.red,
   Colors.red,
-
   Colors.yellow,
   Colors.yellow,
   Colors.yellow,
@@ -592,7 +705,6 @@ final List<Color> midcoincolor = [
   Colors.blue,
   Colors.blue,
   Colors.blue,
-
 ];
 
 final List<Color> topcoincolor = [
@@ -677,13 +789,59 @@ final List<Color> topcoincolor = [
   Colors.yellow,
   Colors.green,
   Colors.blue,
-
 ];
 
 List<Color> reversedbotcoincolor = botcoincolor.reversed.toList();
 List<Color> reversedmidcoincolor = midcoincolor.reversed.toList();
 List<Color> reversedtopcoincolor = topcoincolor.reversed.toList();
 
+final List<Color> coincolors = [
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red
+];
+
+final List<Color> midyangcolor = [
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.blue,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.green,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.yellow,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+  Colors.red,
+];
+
+final List<Color> topyangcolor = [
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+  Colors.blue,
+  Colors.green,
+  Colors.yellow,
+  Colors.red,
+];
+
+List<Color> revmidyangcolor = midyangcolor.reversed.toList();
+List<Color> revtopyangcolor = topyangcolor.reversed.toList();
 
 final List<int> orderHexagramsToCalulateWheel = [
   //qurater mutation complex
@@ -1343,7 +1501,6 @@ final List hexSentenceList_heb = [
   'פעולות',
   'יגייס',
   'זמן',
-
   'Time',
   'shall',
   'Arm',
@@ -1962,8 +2119,6 @@ final List hexSentenceList_old = [
   'Confused',
   'Confusingly',
 ];
-
-
 
 final List<String> hexagramOriginSentenceList = [
   '0',
@@ -2633,9 +2788,6 @@ final List<String> hexagramAdverbList = [
   'Confusingly',
 ];
 
-
-
-
 final List<int> hexCarouselValueList = [
 //'1','43'...,
   111,
@@ -2773,19 +2925,6 @@ final List<int> hexCarouselWheelOrderList = [
   313,
   213,
   113,
-
-
-
-
-
-
-
-
-
-
-
-
-
 ];
 
 /// FULL SENTENCE
@@ -2804,12 +2943,55 @@ final List<String> hexBasicMixList = [
   'assets/silencedown.png',
 ];
 
+final List<String> basicPlantsList = [
+  'assets/plants/mrbluep.png',
+  'assets/plants/mrgreavo.png',
+  'assets/plants/rotban.png',
+  'assets/plants/rotom.png',
+];
+
 final List<String> titlesicon = [
   'assets/rotateicon.png',
   'assets/silencedown.png',
   'assets/breathout.png',
   'assets/simplein.png',
   'assets/complexup.png',
+];
+
+final List<String> mplants = [
+  'assets/plants/mrcamog.png',
+  'assets/plants/rotom.png',
+  'assets/plants/rotban.png',
+  'assets/plants/mrgreavo.png',
+  'assets/plants/mrbluep.png',
+];
+
+final List<String> mcameldog = [
+  'assets/camog/mcamog.png',
+  'assets/camog/mcamel.png',
+  'assets/camog/mcdog.png',
+];
+
+final List<String> mplantspos = [
+  'assets/plants/msredtom.png',
+  'assets/plants/msyelban.png',
+  'assets/plants/mrgreavo.png',
+  'assets/plants/mrbluep.png',
+];
+
+final List<String> mplantsneg = [
+  'assets/plants/rotom.png',
+  'assets/plants/rotban.png',
+  'assets/plants/rotav.png',
+  'assets/plants/rotegi.png',
+];
+
+final List<String> mplants_old = [
+  'assets/plants/mrcamog.png',
+  'assets/plants/msredtom.png',
+  'assets/plants/msyelban.png',
+  'assets/plants/mrgreavo.png',
+  'assets/plants/mrbluep.png',
 ];
 
 final List<double> titlesangle = [
@@ -2831,6 +3013,11 @@ final List<String> mainroutes = [
   '/rotatebreath',
   '/rotatesimple',
   '/rotatecomplex',
+  //'/rotatecomplexhd',
+];
+
+final List<String> subroutes = [
+  '/rotatecomplexhd',
 ];
 
 final List<String> subtitles = [
@@ -2839,6 +3026,30 @@ final List<String> subtitles = [
   'breath',
   'Simple',
   'Complex',
+];
+
+final List<String> subtitles_heb = [
+  'אני לא יודעת',
+  'שתיקה',
+  'נשימה',
+  'פשוט',
+  'מורכב',
+];
+
+final List<String> hebsub_rev = [
+  'בלכלמג',
+  'יטב',
+  'יניב',
+  'מהרבא',
+  'לאקזחי',
+];
+
+final List<String> hebsub_rev_old = [
+  'תעדוי אל ינא',
+  'הקיתש',
+  'המישנ',
+  'טושפ',
+  'בכרומ',
 ];
 
 final List<String> subtitles_old = [
@@ -2894,13 +3105,48 @@ final List<String> hexFullList = [
 ];
 
 final List<String> hexNamesList = [
+  'מורכב',
+  'פשוט',
+  'נשימה',
+  'שתיקה',
+];
+
+final List<String> hexNamesList_old = [
   'COMPLEX',
   'Simple',
   'Breath',
   'silence',
 ];
 
+final List<String> hexNamesEngList = [
+  'COMPLEX',
+  'Simple',
+  'Breath',
+  'silence',
+];
+
+final List<String> hexNamesHebList = [
+  'מורכב',
+  'פשוט',
+  'נשימה',
+  'שתיקה',
+];
+
+final List<String> bimboxlist = [
+  'חזי בימשו מורכב',
+  'פשוט אבי בים',
+  'ביני נושמת',
+  'בטי שותקת',
+];
+
 final List<String> newCoinNames = [
+  'לזנוח',
+  'לחשוב',
+  'להשתמש',
+  'לבנות',
+];
+
+final List<String> newCoinNames_old = [
   'NEGLECT',
   'Think',
   'Use',
@@ -2979,11 +3225,46 @@ final List<Widget> mixHexagramSlidersNew = hexBasicMixList
         backgroundImage: AssetImage(hexagrambasicmix)))
     .toList();
 
-final List<Widget> mixHexagramSlidersBol = [hexBasicMixList.first,hexBasicMixList.last]
+final List<Widget> miximageslider = rtimages
+    .map(
+      (rtimagesmix) => Container(
+        height: 200,
+        width: 200,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(rtimagesmix),
+            fit: BoxFit.scaleDown,
+          ),
+          shape: BoxShape.rectangle,
+        ),
+      ),
+    )
+    .toList();
+
+final List<Widget> mixPlantsSliders = basicPlantsList
+    .map(
+      (plantsmix) => Container(
+        height: 200,
+        width: 200,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(plantsmix),
+            fit: BoxFit.scaleDown,
+          ),
+          shape: BoxShape.rectangle,
+        ),
+      ),
+    )
+    .toList();
+
+final List<Widget> mixHexagramSlidersBol = [
+  hexBasicMixList.first,
+  hexBasicMixList.last
+]
     .map((hexagrambasicmix) => CircleAvatar(
-    minRadius: 100.0,
-    maxRadius: 100.0,
-    backgroundImage: AssetImage(hexagrambasicmix)))
+        minRadius: 100.0,
+        maxRadius: 100.0,
+        backgroundImage: AssetImage(hexagrambasicmix)))
     .toList();
 
 // DROPDOWN
@@ -3020,7 +3301,8 @@ final List<DropdownMenuItem<int>> orderHexagramsWheelList =
   return DropdownMenuItem(
       value: orderWheelHexagrams,
       child: Text(orderWheelHexagrams.toString(),
-          style: const TextStyle(fontSize: 15,
+          style: const TextStyle(
+            fontSize: 15,
             color: Colors.black,
           )));
 }).toList();

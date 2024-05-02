@@ -22,6 +22,8 @@ class PlanetsServices {
         //posChiron;
 
 
+    //print ("time is $now");
+    //print ("jd time is $jd");
     posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_SWIEPH);
     //pos_earth = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_EARTH, SwephFlag.SEFLG_SWIEPH);
     posNorthnode = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_TRUE_NODE, SwephFlag.SEFLG_SWIEPH);
@@ -36,6 +38,12 @@ class PlanetsServices {
     posNeptune = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_NEPTUNE, SwephFlag.SEFLG_SWIEPH);
     posPluto = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_PLUTO, SwephFlag.SEFLG_SWIEPH);
     //posChiron = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_CHIRON, SwephFlag.SEFLG_SWIEPH);
+
+    //idk
+    //double printNorthNode = posNorthnode.longitude;
+    //double printSun = posSun.longitude;
+    //print ("Sun: $printSun");
+    //print ("North Node is: $printNorthNode");
 
     cswPlanets = [posSun, posNorthnode, posMoon,
                     posMercury, posVenus,
@@ -411,7 +419,6 @@ class PlanetsServices {
     return planetsList;
   }
 
-  //idk
   static Future<DateTime> getSolarReturn(DateTime nowtime, int solaryear) async {
 
     DateTime solarreturntime;
@@ -438,7 +445,6 @@ class PlanetsServices {
 
     CoordinatesWithSpeed cswSaturn, cswSaturnReturn;
 
-    //idk2
     cwsPersonalitydata = await PlanetsServices.getPlanetsGatesNow(nowtime);
 
     //position of Saturn in List
@@ -690,13 +696,9 @@ class PlanetsServices {
       }
     } while (gaplongitude > 0.000007 || gaplongitude < -0.000007);
 
-
-    // end idk2
-
     return solarreturntime;
   }
 
-  //idk
   static Future<DateTime> getSaturnReturn(DateTime nowtime) async {
 
     DateTime solarreturntime, uranusoppositiontime, kironreturntime;
@@ -718,7 +720,6 @@ class PlanetsServices {
 
     CoordinatesWithSpeed cswSaturn, cswSaturnReturn;
 
-    //idk2
     cwsPersonalitydata = await PlanetsServices.getPlanetsGatesNow(nowtime);
 
     //position of Saturn in List
@@ -971,12 +972,9 @@ class PlanetsServices {
     } while (gaplongitude > 0.000007 || gaplongitude < -0.000007);
 
 
-    // end idk2
-
     return solarreturntime;
   }
 
-  //idk
   static Future<DateTime> getUranusOpposition(DateTime nowtime) async {
 
     DateTime saturnreturntime, uranusoppositiontime, kironreturntime;
@@ -999,7 +997,6 @@ class PlanetsServices {
 
     CoordinatesWithSpeed cswUranus, cswUranusOpp;
 
-    //idk2
     cwsPersonalitydata = await PlanetsServices.getPlanetsGatesNow(nowtime);
 
     //position of Uranus in List
@@ -1258,7 +1255,6 @@ class PlanetsServices {
     } while (gaplongitude > 0.000007 || gaplongitude < -0.000007);
 
 
-    // end idk2
 
     return uranusoppositiontime;
   }

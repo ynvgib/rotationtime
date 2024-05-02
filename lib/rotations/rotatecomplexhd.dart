@@ -51,517 +51,7 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
             mainAxisAlignment: MainAxisAlignment.center,
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 320,
-                height: 450,
-                clipBehavior: Clip.none,
-                decoration: BoxDecoration(
-                  color: const Color(0xff7c94b6),
-                  border: Border.all(
-                    width: 10,
-                  ),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Stack(
-                  children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: CustomPaint(
-                        foregroundPainter: HeadPainter(centerstate: headstate),
-                        willChange: true,
-                        child: const SizedBox(
-                          height: 50,
-                          width: 50,
-                        ),
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(top: 35.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            '64',
-                            style: TextStyle(fontSize: 10),
-                          ),
-                          SizedBox(width: 2,),
-                          Text(
-                            '61',
-                            style: TextStyle(fontSize: 10),
-                          ),
-                          SizedBox(width: 2,),
-                          Text(
-                            '63',
-                            style: TextStyle(fontSize: 10),
-                          )
-                        ],
-                      ),
-                    ),
-
-
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 17,
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[64]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[61]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[63]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    //ajna gates
-                    Padding(
-                      padding: const EdgeInsets.only(top: 60.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[47]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[24]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[4]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // ajna
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 70.0),
-                        child: CustomPaint(
-                          foregroundPainter: AjnaPainter(centerstate: ajnastate),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 50,
-                            width: 50,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    //ajna to ghroat gates
-                    Padding(
-                      padding: const EdgeInsets.only(top: 120.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[17]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[43]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[11]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 130.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[62]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[23]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[56]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // throat
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 140.0),
-                        child: CustomPaint(
-                          foregroundPainter: ThroatPainter(centerstate: throatstate),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 50,
-                            width: 50,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    // throat gates
-                    Padding(
-                      padding: const EdgeInsets.only(top: 190.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[31]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[8]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[33]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // g gates
-                    Padding(
-                      padding: const EdgeInsets.only(top: 200.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[7]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[1]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[13]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 210.0),
-                        child: CustomPaint(
-                          foregroundPainter: GPainter(centerstate: gstate),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 60,
-                            width: 60,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 100.0, left: 120),
-                      child: Center(
-                        child: CustomPaint(
-                          foregroundPainter: HeartPainter(centerstate: heartstate),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 30,
-                            width: 50,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 270.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[15]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[2]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[46]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 280.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[5]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[14]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[29]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 200.0),
-                      child: Center(
-                        child: CustomPaint(
-                          foregroundPainter: SacralPainter(centerstate: sacralstate),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 50,
-                            width: 50,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(top: 340.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[42]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[3]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[9]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 350.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[53]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[60]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter:
-                            VerticalGatePainter(gatestate: gatestatelist[52]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // root
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: CustomPaint(
-                        foregroundPainter: RootPainter(centerstate: rootstate),
-                        willChange: true,
-                        child: const SizedBox(
-                          height: 50,
-                          width: 50,
-                        ),
-                      ),
-                    ),
-
-
-                  ],
-                ),
-              ),
-
-
               const Divider(color: Colors.blue),
-
               // head
               SizedBox(
                 height: 50,
@@ -842,12 +332,18 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                         ),
                       ),
                     ),
-                    CustomPaint(
-                      foregroundPainter: HeartPainter(centerstate: heartstate),
-                      willChange: true,
-                      child: const SizedBox(
-                        height: 30,
-                        width: 50,
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 50.0,
+                            left: 100.0),                      child: CustomPaint(
+                          foregroundPainter: HeartPainter(centerstate: heartstate),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 30,
+                            width: 50,
+                          ),
+                        ),
                       ),
                     ),
                     Row(
@@ -1098,7 +594,468 @@ class _RotateComplexHDState extends State<RotateComplexHD> {
                 ),
               ),
 
-              const Divider (thickness: 5, color: Colors.green)
+              const Divider (thickness: 5, color: Colors.green),
+
+              // head
+              SizedBox(
+                height: 50,
+                width: 50,
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: CustomPaint(
+                        foregroundPainter: HeadPainter(centerstate: headstate),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 50,
+                          width: 50,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const [
+                          Text(
+                            '64',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                          Text(
+                            '61',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                          Text(
+                            '63',
+                            style: TextStyle(fontSize: 10),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // head gates
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    width: 17,
+                  ),
+
+                ],
+              ),
+              //ajna gates
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 17, height: 20,),
+
+                ],
+              ),
+              // ajna
+              CustomPaint(
+                foregroundPainter: AjnaPainter(centerstate: ajnastate),
+                willChange: true,
+                child: const SizedBox(
+                  height: 50,
+                  width: 50,
+                ),
+              ),
+              //throat gates
+              //ajna gates
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 17),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[17]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[43]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[11]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 17),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[62]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[23]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[56]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                ],
+              ),
+              // throat
+              CustomPaint(
+                foregroundPainter: ThroatPainter(centerstate: throatstate),
+                willChange: true,
+                child: const SizedBox(
+                  height: 50,
+                  width: 50,
+                ),
+              ),
+              // throat gates
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 17),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[31]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[8]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[33]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                ],
+              ),
+              // g gates
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 17),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[7]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[1]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[13]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                ],
+              ),
+              // g center
+              SizedBox(
+                height: 100,
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: CustomPaint(
+                        foregroundPainter: GPainter(centerstate: gstate),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 60,
+                          width: 60,
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 50.0,
+                            left: 100.0),                      child: CustomPaint(
+                        foregroundPainter: HeartPainter(centerstate: heartstate),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 30,
+                          width: 50,
+                        ),
+                      ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(width: 17),
+                        CustomPaint(
+                          foregroundPainter:
+                          VerticalGatePainter(gatestate: gatestatelist[15]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 10,
+                            width: 50 / 3,
+                          ),
+                        ),
+                        CustomPaint(
+                          foregroundPainter:
+                          VerticalGatePainter(gatestate: gatestatelist[2]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 10,
+                            width: 50 / 3,
+                          ),
+                        ),
+                        CustomPaint(
+                          foregroundPainter:
+                          VerticalGatePainter(gatestate: gatestatelist[46]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 10,
+                            width: 50 / 3,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              // g to sacral gates
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 17),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[5]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[14]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[29]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  //spleen
+                  CustomPaint(
+                    foregroundPainter: SpleenPainter(centerstate: spleenstate),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 50,
+                      width: 50,
+                    ),
+                  ),
+                  // spleen to sacral gates
+                  CustomPaint(
+                    foregroundPainter:
+                    HorizontalGatePainter(gatestate: gatestatelist[50]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 20,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    HorizontalGatePainter(gatestate: gatestatelist[27]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 20,
+                    ),
+                  ),
+                  // sacral
+                  CustomPaint(
+                    foregroundPainter: SacralPainter(centerstate: sacralstate),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 50,
+                      width: 50,
+                    ),
+                  ),
+                  // solar to sacral gates
+                  CustomPaint(
+                    foregroundPainter:
+                    HorizontalGatePainter(gatestate: gatestatelist[59]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 20,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    HorizontalGatePainter(gatestate: gatestatelist[6]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 20,
+                    ),
+                  ),
+                  // solar
+                  CustomPaint(
+                    foregroundPainter: SolarPainter(centerstate: solarstate),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 50,
+                      width: 50,
+                    ),
+                  ),
+                ],
+              ),
+              // sacral to root gates
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 17),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[42]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[3]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[9]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 17),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[53]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[60]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                  CustomPaint(
+                    foregroundPainter:
+                    VerticalGatePainter(gatestate: gatestatelist[52]),
+                    willChange: true,
+                    child: const SizedBox(
+                      height: 10,
+                      width: 50 / 3,
+                    ),
+                  ),
+                ],
+              ),
+              // root
+              CustomPaint(
+                foregroundPainter: RootPainter(centerstate: rootstate),
+                willChange: true,
+                child: const SizedBox(
+                  height: 50,
+                  width: 50,
+                ),
+              )
 
             ]),
       ),

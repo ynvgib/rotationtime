@@ -7,7 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 Widget build384PopUp(BuildContext context) {
   return AlertDialog(
-    title: const Text('384'),
+    title: const Text('384 צדדים'),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
         child: ListView.builder(
@@ -26,7 +26,8 @@ Widget build384PopUp(BuildContext context) {
                       fontWeight: FontWeight.bold, fontSize: 14),
                 ),
                 Text(
-                  idonotknowOnlylinesList[index],
+                  //idonotknowOnlylinesList[index],
+                  idkOnlylinesListHeb[index],
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 14),
@@ -57,7 +58,8 @@ Widget build384PopUp(BuildContext context) {
 
 Widget build36PopUp(BuildContext context) {
   return AlertDialog(
-    title: const Text('36 Transactions'),
+    //title: const Text('36 Transactions'),
+    title: const Text('פשוט 36 העברות'),
     content: SizedBox(
       width: MediaQuery.of(context).size.width * 0.6,
       height: 300,
@@ -74,7 +76,8 @@ Widget build36PopUp(BuildContext context) {
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-              child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+              child: Text(hexNamesHebList[0], style: const TextStyle(color: Colors.white,fontSize: 35))),
           const SizedBox(height: 10,),
           ElevatedButton(
               onPressed: () {
@@ -85,7 +88,8 @@ Widget build36PopUp(BuildContext context) {
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
-              child: const Text('breath', style: TextStyle(fontSize: 30, color: Colors.black87))),
+              //child: const Text('breath', style: TextStyle(fontSize: 30, color: Colors.black87))),
+              child: Text(hexNamesHebList[2], style: const TextStyle(color: Colors.black,fontSize: 35))),
           const SizedBox(height: 10,),
           ElevatedButton(
               onPressed: () {
@@ -96,7 +100,8 @@ Widget build36PopUp(BuildContext context) {
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              child: const Text('silence', style: TextStyle(fontSize: 20, color: Colors.black))),
+              //child: const Text('silence', style: TextStyle(fontSize: 20, color: Colors.black))),
+              child: Text(hexNamesHebList[3], style: const TextStyle(color: Colors.black,fontSize: 35))),
         ],
       ),
     ),
@@ -116,7 +121,8 @@ Widget build36PopUp(BuildContext context) {
 
 Widget _buildComplexTransactions(BuildContext context) {
   return AlertDialog(
-    title: const Text('Complex Transactions'),
+    //title: Text('Complex Transactions'),
+    title: const Text('מצ"ב העברות מורכב'),
     content: SizedBox(
       width: MediaQuery.of(context).size.width * 0.6,
       child: ListView.builder(
@@ -140,7 +146,7 @@ Widget _buildComplexTransactions(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   AutoSizeText(
-                    hdchannelcomplexList[index],
+                    hdchannelcomplexList_heb[index],
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
@@ -168,7 +174,8 @@ Widget _buildComplexTransactions(BuildContext context) {
 
 Widget _buildBreathTransactions(BuildContext context) {
   return AlertDialog(
-    title: const Text('Breath Transactions'),
+    //title: const Text('Breath Transactions'),
+    title: const Text('העברות נשימה'),
     content: SizedBox(
       width: MediaQuery.of(context).size.width * 0.6,
       child: ListView.builder(
@@ -191,7 +198,7 @@ Widget _buildBreathTransactions(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    hdchannelbreathList[index],
+                    hdchannelbreathList_heb[index],
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black54),
@@ -219,7 +226,8 @@ Widget _buildBreathTransactions(BuildContext context) {
 
 Widget _buildSilencetransactions(BuildContext context) {
   return AlertDialog(
-    title: const Text('silence Transactions'),
+    //title: const Text('silence Transactions'),
+    title: const Text('העברות שתיקה'),
     content: SizedBox(
       width: MediaQuery.of(context).size.width * 0.6,
       child: ListView.builder(
@@ -243,7 +251,7 @@ Widget _buildSilencetransactions(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    hdchannelsilenceList[index],
+                    hdchannelsilenceList_heb[index],
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
@@ -270,12 +278,12 @@ Widget _buildSilencetransactions(BuildContext context) {
 }
 
 Widget buildWalletPopUp(BuildContext context, int walletindex) {
-  int wallet = reversedHexagramsWheel[walletindex];
-  //int walletlines = idonotknowlinesList.indexOf(wallet);
   return AlertDialog(
     title: Center(
-      child: Text('Wallet: $wallet\n'
-          '${LineSentenceList[wallet]}'),
+      //child: Text('Wallet: $wallet\n'
+      child: Text(' ארנק $walletindex\n'
+          //'${LineSentenceList[wallet]}'),
+          '${idkNewHebrewList[walletindex]}'),
     ),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.4,
@@ -296,7 +304,7 @@ Widget buildWalletPopUp(BuildContext context, int walletindex) {
                 ),
                 const SizedBox(width: 5),
                 Text(
-                  idonotknowlinesList[wallet * 7 + index + 1],
+                  idonotknowlinesList[walletindex * 7 + index + 1],
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 15),
@@ -319,9 +327,33 @@ Widget buildWalletPopUp(BuildContext context, int walletindex) {
   );
 }
 
+Widget buildGodheadPopUp(BuildContext context, int ghidx) {
+  return AlertDialog(
+    title: Center(
+      //child: Text('Wallet: $wallet\n'
+      child: Text(revrtgodheads[ghidx]),
+    ),
+    content: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.4,
+        child: Text(revhebgodheads[ghidx])),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
 Widget build64PopUp(BuildContext context) {
   return AlertDialog(
-    title: const Text('64'),
+    //title: const Text('64'),
+    title: const Text('64 ארנקים'),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
         child: ListView.builder(
@@ -341,7 +373,8 @@ Widget build64PopUp(BuildContext context) {
                 ),
                 const SizedBox(width: 5),
                 Text(
-                  LineSentenceList[index],
+                  //LineSentenceList[index],
+                  idkNewHebrewList[index],
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 15),
