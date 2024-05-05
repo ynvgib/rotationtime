@@ -228,6 +228,7 @@ class _RotateComplexState extends State<RotateComplex> {
           iconSize: 20,
           icon: const Icon(Icons.close, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
+          //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
         ),
         backgroundColor: Colors.lightBlue,
         actions: const [
@@ -237,1469 +238,1618 @@ class _RotateComplexState extends State<RotateComplex> {
         ],
       ),
       body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const SizedBox(height: 10),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height / 8,
-                    width: MediaQuery.of(context).size.width / 2,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(mplantsneg[3]),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height / 8,
+                  width: MediaQuery.of(context).size.width / 2,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(mplantsneg[3]),
+                      fit: BoxFit.scaleDown,
                     ),
+                    shape: BoxShape.rectangle,
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height / 8,
-                    width: MediaQuery.of(context).size.width / 2,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(mplantspos[3]),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height / 8,
+                  width: MediaQuery.of(context).size.width / 2,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(mplantspos[3]),
+                      fit: BoxFit.scaleDown,
                     ),
+                    shape: BoxShape.rectangle,
                   ),
-                ],
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AutoSizeText('דוק התור שלך מגיע',
-                      textAlign: TextAlign.center,
-                      minFontSize: 20,
-                      maxFontSize: 40,
-                      style: TextStyle(color: Colors.deepPurple)),
-                ],
-              ),
-              const Divider(
-                color: Colors.blue,
-                thickness: 5,
-              ),
-              Flex(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                direction: Axis.horizontal,
-                children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildTimePopupDialog(context),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50))),
-                      child: const Text(
-                        'זמן',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
-                      )),
-                  ElevatedButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildSelfReminderPopUp(context),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50))),
-                      child: const Text(
-                        'תזכורת',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
-                      )),
-                ],
-              ),
-              const Divider(
-                color: Colors.blue,
-                thickness: 5,
-              ),
-              SizedBox(
-                height: 40,
-                child: TextField(
+                ),
+              ],
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AutoSizeText('דוק תור שלך מגיע',
                     textAlign: TextAlign.center,
-                    readOnly: true,
-                    decoration: const InputDecoration.collapsed(hintText: 'זמן'),
-                    controller: _controllerTime,
+                    minFontSize: 20,
+                    maxFontSize: 40,
+                    style: TextStyle(color: Colors.deepPurple)),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+              thickness: 5,
+            ),
+            Flex(
+              mainAxisAlignment: MainAxisAlignment.center,
+              direction: Axis.horizontal,
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildTimePopupDialog(context),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purple,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      'הזמן בים-יוחד',
+                      style: TextStyle(
+                        fontSize: 15,
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    )),
+                SizedBox(width: 10,),
+                ElevatedButton(
+                  onPressed: () async {
+                    _now = DateTime.now();
+
+                    _planetsnowList = await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList = await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                    (idonotknowlinesList.indexOf(_planethex.gate!) +
+                        _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                        !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+
+                    //setState(() {
+                    //  Navigator.of(context).pop();
+                    //});
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.purple,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  child: const Text('הזמן כעט',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
+
+            const Divider(
+              color: Colors.blue,
+              thickness: 5,
+            ),
+            SizedBox(
+              height: 40,
+              child: TextField(
+                  textAlign: TextAlign.center,
+                  readOnly: true,
+                  decoration: const InputDecoration.collapsed(hintText: 'זמן'),
+                  controller: _controllerTime,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.black)),
+            ),
+            Flex(
+              direction: Axis.vertical,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 1.2,
+                  child: AutoSizeTextField(
+                    maxLines: 1,
+                    minFontSize: 25,
+                    fullwidth: false,
+                    decoration: InputDecoration.collapsed(
+                        //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
+                        hintText: '${hexNamesHebList[0]}',
+                        hintStyle: const TextStyle(color: Colors.grey)),
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.black)),
-              ),
-              Flex(
-                direction: Axis.vertical,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 1.2,
+                      color: Colors.black,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    controller: _controllermaintext,
+                    readOnly: true,
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxWidth: MediaQuery.of(context).size.width / 1.5,
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 80.0,
+                    child: CarouselSlider(
+                      //items: mixHexagramSlidersNew,
+                      items: mixPlantsSliders,
+                      carouselController: _controllercoin,
+                      options: CarouselOptions(
+                          autoPlay: false,
+                          enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                          enlargeCenterPage: true,
+                          aspectRatio: 1.5,
+                          onPageChanged: (indextop, reason) {
+                            setState(() {
+                              _currentmain = indextop;
+                              _controllermaintext.text =
+                                  //'${newCoinNames[_currentmain]} ${hexNamesList[_currentmain]}';
+                                  '${hexNamesHebList[_currentmain]}';
+                            });
+                          }),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildChannelsPopUp(context),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                child: const Text('מעבר-בים',
+                    style: TextStyle(fontSize: 13, color: Colors.white))),
+            const Divider(
+              color: Colors.blue,
+              thickness: 5,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => _buildDataPopUp(context),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50))),
+                child: const Text(
+                  //'Rotate Design',
+                  'זמן עיצוב',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                )),
+            const Divider(
+              color: Colors.blue,
+              thickness: 5,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: CarouselSlider(
+                    items: mixHexagramSlidersBol,
+                    carouselController: _controllerconstate,
+                    options: CarouselOptions(
+                        scrollDirection: Axis.horizontal,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 1.3,
+                        onPageChanged: (indexconstate, reason) {
+                          setState(() {
+                            _currentconstate = indexconstate;
+
+                            switch (_currentconstate) {
+                              case 0:
+                                _planetsList = _planetsnowList;
+
+                                _controlPlanetHexagramData(_planetsList);
+
+                                _formattedDate =
+                                    DateFormat('MM/dd/yyyy').format(_now);
+                                _formattedTime = DateFormat.Hms().format(_now);
+                                _controllerTime.text =
+                                    '$_formattedTime $_formattedDate';
+                                //_controllerDate.text = _formattedDate;
+                                _controllerPlanetType.text = 'Thought Later';
+
+                                _controllerrotationstate.jumpToPage(0);
+                                break;
+                              case 1:
+                                _planetsList = _planetsdesignList;
+                                _controlPlanetHexagramData(_planetsdesignList);
+
+                                _formattedDate = DateFormat('MM/dd/yyyy')
+                                    .format(_designTime);
+                                _formattedTime =
+                                    DateFormat.Hms().format(_designTime);
+                                _controllerTime.text =
+                                    '$_formattedTime $_formattedDate';
+                                //_controllerDate.text = _formattedDate;
+
+                                _controllerPlanetType.text = 'Life First';
+
+                                _controllerrotationstate.jumpToPage(3);
+                                break;
+                              default:
+                                _planetsList = _planetsnowList;
+
+                                _controlPlanetHexagramData(_planetsList);
+
+                                _formattedDate =
+                                    DateFormat('MM/dd/yyyy').format(_now);
+                                _formattedTime = DateFormat.Hms().format(_now);
+                                _controllerTime.text =
+                                    '$_formattedTime $_formattedDate';
+                                //_controllerDate.text = _formattedDate;
+                                break;
+                            }
+                          });
+                        }),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            //channeldisplay(context, _channelsList),
+            ToggleButtons(
+              direction: Axis.horizontal,
+              constraints: BoxConstraints.expand(
+                  width: MediaQuery.of(context).size.width * 0.9 / 14,
+                  height: MediaQuery.of(context).size.height * 0.9 / 14),
+              borderWidth: 0.5,
+              hoverColor: Colors.black,
+              //borderRadius: BorderRadius.circular(20),
+              fillColor: Colors.blue,
+              isSelected: _isPlanetSelectedList,
+              onPressed: (int index) async {
+                setState(() {
+                  switch (_previousPlanetIndex) {
+                    case -1:
+                      _previousPlanetIndex = index;
+                      _isPlanetSelectedList[index] =
+                          !_isPlanetSelectedList[index];
+                      break;
+                    default:
+                      _isPlanetSelectedList[_previousPlanetIndex] =
+                          !_isPlanetSelectedList[_previousPlanetIndex];
+                      _isPlanetSelectedList[index] =
+                          !_isPlanetSelectedList[index];
+                      _previousPlanetIndex = index;
+                  }
+
+                  _planethex = _planetsList[index];
+                  //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
+                  //_hexsentence = LineSentenceList[_planethex.gate!];
+
+                  _setCoins();
+
+                  //_hexalignedList = hexagramAlignment(_planethex.gate!);
+
+                  //_controllertop.jumpToPage(_hexalignedList[0]);
+                  //_controllermid.jumpToPage(_hexalignedList[1]);
+                  //_controllerbot.jumpToPage(_hexalignedList[2]);
+
+                  _controllerlinetext.text = _planethex.line!.toString();
+                  _currentline = _planethex.line!;
+
+                  _controllergatelinestory.text = idonotknowlinesList[
+                      (idonotknowlinesList.indexOf(_planethex.gate!) +
+                          _planethex.line!)];
+
+                  _controllergatelinestory.text = idonotknowlinesList[
+                      (idonotknowlinesList.indexOf(_planethex.gate!) +
+                          _planethex.line!)];
+                });
+              },
+              children: [
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/sun.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/earth.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/northnode.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/southnode.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/moon.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/mercury.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/venus.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/mars.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/jupiter.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/saturn.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/uranus.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/neptune.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    image: const DecorationImage(
+                        image: AssetImage("assets/planets/pluto.png")),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
                     child: AutoSizeTextField(
-                      maxLines: 1,
-                      minFontSize: 25,
-                      fullwidth: false,
+                      minFontSize: 10,
+                      maxFontSize: 30,
                       decoration: InputDecoration.collapsed(
-                          //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
-                          hintText: '${hexNamesHebList[0]}',
-                          hintStyle: const TextStyle(color: Colors.grey)),
+                          hintText: newCoinNames[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: firstcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopfirsttext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: newCoinNames[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: secondcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopsecondtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: newCoinNames[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: thirdcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopthirdtext,
+                      readOnly: true,
+                    )),
+              ],
+            ),
+            SizedBox(height: 5),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
+                    child: AutoSizeTextField(
+                      minFontSize: 10,
+                      maxFontSize: 30,
+                      decoration: InputDecoration.collapsed(
+                          hintText: finalhexNamesList[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: firstcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinfirsttext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: finalhexNamesList[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: secondcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinsecondtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: finalhexNamesList[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: thirdcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointhirdtext,
+                      readOnly: true,
+                    )),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 10,
+                minWidth: 10,
+                maxHeight: MediaQuery.of(context).size.height * 0.1,
+                maxWidth: MediaQuery.of(context).size.width * 0.15,
+              ),
+              child: CarouselSlider(
+                items: mixHexagramSlidersNew,
+                carouselController: _controllertop,
+                options: CarouselOptions(
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    aspectRatio: 1.3,
+                    onPageChanged: (indextop, reason) {
+                      setState(() {
+                        _currenttop = indextop;
+
+                        _hexagramVal = ((_currenttop + 1) * 100 +
+                            (_currentmid + 1) * 10 +
+                            (_currentbot + 1));
+
+                        _carouselvalueindex =
+                            hexCarouselWheelOrderList.indexOf(_hexagramVal);
+
+                        _chosenhex = orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllergatetext.text = _chosenhex.toString();
+
+                        // idonotknow _currentline
+                        //_controllergatelinestory.text = 'test';
+                        _controllergatelinestory.text = idonotknowlinesList[
+                            (idonotknowlinesList.indexOf(_chosenhex) +
+                                _currentline)];
+
+                        //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
+                        //_hexsentence = LineSentenceList[_planethex.gate!];
+
+                        //_controllertopfirsttext.text = _hexsentence.adjective!;
+
+                        _controllercoinsttext.text =
+                            rtbimBoxList[_chosenhex];
+                        //_controllertopsecondtext.text = _hexsentence.subject!;
+                        //_controllertopthirdtext.text = _hexsentence.verb!;
+                        //_controllertopfourthtext.text = _hexsentence.adverb!;
+
+                        thirdcolor =
+                            //controlCollor(finalhexNamesList[_currenttop]);
+                            controlCollor(_currenttop);
+                        _controllercointhirdtext.text =
+                            finalhexNamesList[_currenttop];
+                        _controllercointopthirdtext.text =
+                            finalnewcoinnamesList[_currenttop];
+                      });
+                    }),
+              ),
+            ),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 10,
+                minWidth: 10,
+                maxHeight: MediaQuery.of(context).size.height * 0.1,
+                maxWidth: MediaQuery.of(context).size.width * 0.15,
+              ),
+              child: CarouselSlider(
+                items: mixHexagramSlidersNew,
+                carouselController: _controllermid,
+                options: CarouselOptions(
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    aspectRatio: 1.3,
+                    onPageChanged: (indexmid, reason) {
+                      setState(() {
+                        _currentmid = indexmid;
+
+                        _hexagramVal = ((_currenttop + 1) * 100 +
+                            (_currentmid + 1) * 10 +
+                            (_currentbot + 1));
+
+                        _carouselvalueindex =
+                            hexCarouselWheelOrderList.indexOf(_hexagramVal);
+
+                        _chosenhex = orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllergatetext.text = _chosenhex.toString();
+
+                        //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
+
+                        _controllercoinsttext.text =
+                            rtbimBoxList[_chosenhex];
+
+                        //_controllertopfirsttext.text = _hexsentence.adjective!;
+                        //_controllertopsecondtext.text = _hexsentence.subject!;
+                        //_controllertopthirdtext.text = _hexsentence.verb!;
+                        //_controllertopfourthtext.text = _hexsentence.adverb!;
+
+                        _controllergatelinestory.text = idonotknowlinesList[
+                            (idonotknowlinesList.indexOf(_chosenhex) +
+                                _currentline)];
+
+                        secondcolor =
+                            //controlCollor(finalhexNamesList[_currentmid]);
+                            controlCollor(_currentmid);
+                        _controllercoinsecondtext.text =
+                            finalhexNamesList[_currentmid];
+                        _controllercointopsecondtext.text =
+                            finalnewcoinnamesList[_currentmid];
+                      });
+                    }),
+              ),
+            ),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 10,
+                minWidth: 10,
+                maxHeight: MediaQuery.of(context).size.height * 0.1,
+                maxWidth: MediaQuery.of(context).size.width * 0.15,
+              ),
+              child: CarouselSlider(
+                items: mixHexagramSlidersNew,
+                carouselController: _controllerbot,
+                options: CarouselOptions(
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    aspectRatio: 1.3,
+                    onPageChanged: (indexbot, reason) {
+                      setState(() {
+                        _currentbot = indexbot;
+                        _hexagramVal = ((_currenttop + 1) * 100 +
+                            (_currentmid + 1) * 10 +
+                            (_currentbot + 1));
+
+                        _carouselvalueindex =
+                            hexCarouselWheelOrderList.indexOf(_hexagramVal);
+
+                        _chosenhex = orderHexagramsWheel[_carouselvalueindex];
+
+                        _controllergatetext.text = _chosenhex.toString();
+
+                        //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
+
+                        _controllercoinsttext.text =
+                            rtbimBoxList[_chosenhex];
+                        //_controllertopfirsttext.text = _hexsentence.adjective!;
+                        //_controllertopsecondtext.text = _hexsentence.subject!;
+                        //_controllertopthirdtext.text = _hexsentence.verb!;
+                        //_controllertopfourthtext.text = _hexsentence.adverb!;
+
+                        _controllergatelinestory.text = idonotknowlinesList[
+                            (idonotknowlinesList.indexOf(_chosenhex) +
+                                _currentline)];
+
+                        firstcolor =
+                            //controlCollor(finalhexNamesList[_currentbot]);
+                            controlCollor(_currentbot);
+                        _controllercoinfirsttext.text =
+                            finalhexNamesList[_currentbot];
+                        _controllercointopfirsttext.text =
+                            finalnewcoinnamesList[_currentbot];
+                      });
+                    }),
+              ),
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: 30,
+                    child: AutoSizeTextField(
+                      fullwidth: false,
+                      decoration: const InputDecoration.collapsed(
+                          hintText: '1',
+                          hintStyle: TextStyle(color: Colors.black)),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
-                      controller: _controllermaintext,
+                      controller: _controllergatetext,
                       readOnly: true,
-                    ),
-                  ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: 10,
-                      minWidth: 10,
-                      maxWidth: MediaQuery.of(context).size.width / 1.5,
-                    ),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 80.0,
-                      child: CarouselSlider(
-                        //items: mixHexagramSlidersNew,
-                        items: mixPlantsSliders,
-                        carouselController: _controllercoin,
-                        options: CarouselOptions(
-                            autoPlay: false,
-                            enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                            enlargeCenterPage: true,
-                            aspectRatio: 1.5,
-                            onPageChanged: (indextop, reason) {
-                              setState(() {
-                                _currentmain = indextop;
-                                _controllermaintext.text =
-                                    //'${newCoinNames[_currentmain]} ${hexNamesList[_currentmain]}';
-                                    '${hexNamesHebList[_currentmain]}';
-                              });
-                            }),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) => _buildDataPopUp(context),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  child: const Text(
-                    //'Rotate Design',
-                    'זמן עיצוב',
-                    style: TextStyle(
-                        fontSize: 15,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                    )),
+                SizedBox(
+                    width: 20,
+                    child: AutoSizeTextField(
+                      fullwidth: false,
+                      decoration: const InputDecoration.collapsed(
+                          hintText: '1',
+                          hintStyle: TextStyle(color: Colors.black)),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 18.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  )),
-              const Divider(
-                color: Colors.blue,
-                thickness: 5,
+                      ),
+                      controller: _controllerlinetext,
+                      readOnly: true,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                    )),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            SizedBox(
+              //width: MediaQuery.of(context).size.width / 1.7,
+              width: MediaQuery.of(context).size.width / 1.5,
+              child: AutoSizeTextField(
+                minLines: 2,
+                maxLines: 4,
+                minFontSize: 18,
+                maxFontSize: 18,
+                fullwidth: true,
+                decoration: InputDecoration.collapsed(
+                    //hintText: LineSentenceList[0],
+                    hintText: 'ארנק בים',
+                    hintStyle: const TextStyle(color: Colors.black)),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal,
+                ),
+                controller: _controllercoinsttext,
+                readOnly: true,
               ),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 40,
-                    width: 40,
-                    child: CarouselSlider(
-                      items: mixHexagramSlidersBol,
-                      carouselController: _controllerconstate,
-                      options: CarouselOptions(
-                          scrollDirection: Axis.horizontal,
-                          autoPlay: false,
-                          enlargeCenterPage: true,
-                          aspectRatio: 1.3,
-                          onPageChanged: (indexconstate, reason) {
-                            setState(() {
-                              _currentconstate = indexconstate;
-
-                              switch (_currentconstate) {
-                                case 0:
-                                  _planetsList = _planetsnowList;
-
-                                  _controlPlanetHexagramData(_planetsList);
-
-                                  _formattedDate =
-                                      DateFormat('MM/dd/yyyy').format(_now);
-                                  _formattedTime = DateFormat.Hms().format(_now);
-                                  _controllerTime.text =
-                                      '$_formattedTime $_formattedDate';
-                                  //_controllerDate.text = _formattedDate;
-                                  _controllerPlanetType.text = 'Thought Later';
-
-                                  _controllerrotationstate.jumpToPage(0);
-                                  break;
-                                case 1:
-                                  _planetsList = _planetsdesignList;
-                                  _controlPlanetHexagramData(_planetsdesignList);
-
-                                  _formattedDate = DateFormat('MM/dd/yyyy')
-                                      .format(_designTime);
-                                  _formattedTime =
-                                      DateFormat.Hms().format(_designTime);
-                                  _controllerTime.text =
-                                      '$_formattedTime $_formattedDate';
-                                  //_controllerDate.text = _formattedDate;
-
-                                  _controllerPlanetType.text = 'Life First';
-
-                                  _controllerrotationstate.jumpToPage(3);
-                                  break;
-                                default:
-                                  _planetsList = _planetsnowList;
-
-                                  _controlPlanetHexagramData(_planetsList);
-
-                                  _formattedDate =
-                                      DateFormat('MM/dd/yyyy').format(_now);
-                                  _formattedTime = DateFormat.Hms().format(_now);
-                                  _controllerTime.text =
-                                      '$_formattedTime $_formattedDate';
-                                  //_controllerDate.text = _formattedDate;
-                                  break;
-                              }
-                            });
-                          }),
-                    ),
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            SizedBox(
+                //width: MediaQuery.of(context).size.height / 3,
+                width: MediaQuery.of(context).size.width / 1.5,
+                child: AutoSizeTextField(
+                  minLines: 3,
+                  maxLines: 4,
+                  minFontSize: 15,
+                  maxFontSize: 15,
+                  fullwidth: true,
+                  decoration: const InputDecoration.collapsed(
+                      //hintText: 'Rotating Coins Story',
+                      hintText: 'סיבוב מטבעות',
+                      hintStyle: TextStyle(color: Colors.black)),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.normal,
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              //channeldisplay(context, _channelsList),
-              const SizedBox(
-                height: 10,
-              ),
-              ToggleButtons(
-                direction: Axis.horizontal,
-                constraints: BoxConstraints.expand(
-                    width: MediaQuery.of(context).size.width * 0.9 / 14,
-                    height: MediaQuery.of(context).size.height * 0.9 / 14),
-                borderWidth: 0.5,
-                hoverColor: Colors.black,
-                //borderRadius: BorderRadius.circular(20),
-                fillColor: Colors.blue,
-                isSelected: _isPlanetSelectedList,
-                onPressed: (int index) async {
-                  setState(() {
+                  controller: _controllergatelinestory,
+                  readOnly: true,
+                )),
+            const Divider(
+              color: Colors.blue,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildGatesDialog(context),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      //'Wallets',
+                      'ארנקים',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    )),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildLinesDialog(context),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      //'Coins',
+                      'מטבעות',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    )),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.add(const Duration(hours: 1));
+
+                    _planetsnowList =
+                        await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList =
+                        await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                        (idonotknowlinesList.indexOf(_planethex.gate!) +
+                            _planethex.line!)];
+
                     switch (_previousPlanetIndex) {
                       case -1:
-                        _previousPlanetIndex = index;
-                        _isPlanetSelectedList[index] =
-                            !_isPlanetSelectedList[index];
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
                         break;
                       default:
                         _isPlanetSelectedList[_previousPlanetIndex] =
                             !_isPlanetSelectedList[_previousPlanetIndex];
-                        _isPlanetSelectedList[index] =
-                            !_isPlanetSelectedList[index];
-                        _previousPlanetIndex = index;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
                     }
 
-                    _planethex = _planetsList[index];
-                    //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
-                    //_hexsentence = LineSentenceList[_planethex.gate!];
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('+1',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
+                ),
+                const SizedBox(width: 5),
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.add(const Duration(hours: 10));
+
+                    _planetsnowList =
+                        await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList =
+                        await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
 
                     _setCoins();
 
-                    //_hexalignedList = hexagramAlignment(_planethex.gate!);
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                        (idonotknowlinesList.indexOf(_planethex.gate!) +
+                            _planethex.line!)];
 
-                    //_controllertop.jumpToPage(_hexalignedList[0]);
-                    //_controllermid.jumpToPage(_hexalignedList[1]);
-                    //_controllerbot.jumpToPage(_hexalignedList[2]);
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                            !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('+10',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
+                ),
+                const SizedBox(width: 5),
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.add(const Duration(hours: 24));
+
+                    _planetsnowList =
+                        await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList =
+                        await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
 
                     _controllerlinetext.text = _planethex.line!.toString();
-                    _currentline = _planethex.line!;
-
                     _controllergatelinestory.text = idonotknowlinesList[
                         (idonotknowlinesList.indexOf(_planethex.gate!) +
                             _planethex.line!)];
 
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                            !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('+24',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
+                ),
+              ],
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.subtract(const Duration(hours: 1));
+
+                    _planetsnowList =
+                        await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList =
+                        await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
+
+                    _controllerlinetext.text = _planethex.line!.toString();
                     _controllergatelinestory.text = idonotknowlinesList[
                         (idonotknowlinesList.indexOf(_planethex.gate!) +
                             _planethex.line!)];
-                  });
-                },
-                children: [
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/sun.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/earth.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/northnode.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/southnode.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/moon.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/mercury.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/venus.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/mars.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/jupiter.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/saturn.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/uranus.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/neptune.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      image: const DecorationImage(
-                          image: AssetImage("assets/planets/pluto.png")),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ],
-              ),
-              const Divider(
-                color: Colors.blue,
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.33,
-                      child: AutoSizeTextField(
-                        minFontSize: 10,
-                        maxFontSize: 30,
-                        decoration: InputDecoration.collapsed(
-                            hintText: newCoinNames[0],
-                            hintStyle: const TextStyle(color: Colors.blue)),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: firstcolor,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        controller: _controllercointopfirsttext,
-                        readOnly: true,
-                      )),
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.33,
-                      child: AutoSizeTextField(
-                        decoration: InputDecoration.collapsed(
-                            hintText: newCoinNames[0],
-                            hintStyle: const TextStyle(color: Colors.blue)),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: secondcolor,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        controller: _controllercointopsecondtext,
-                        readOnly: true,
-                      )),
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.33,
-                      child: AutoSizeTextField(
-                        decoration: InputDecoration.collapsed(
-                            hintText: newCoinNames[0],
-                            hintStyle: const TextStyle(color: Colors.blue)),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: thirdcolor,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        controller: _controllercointopthirdtext,
-                        readOnly: true,
-                      )),
-                ],
-              ),
-              SizedBox(height: 5),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.33,
-                      child: AutoSizeTextField(
-                        minFontSize: 10,
-                        maxFontSize: 30,
-                        decoration: InputDecoration.collapsed(
-                            hintText: finalhexNamesList[0],
-                            hintStyle: const TextStyle(color: Colors.blue)),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: firstcolor,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        controller: _controllercoinfirsttext,
-                        readOnly: true,
-                      )),
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.33,
-                      child: AutoSizeTextField(
-                        decoration: InputDecoration.collapsed(
-                            hintText: finalhexNamesList[0],
-                            hintStyle: const TextStyle(color: Colors.blue)),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: secondcolor,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        controller: _controllercoinsecondtext,
-                        readOnly: true,
-                      )),
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.33,
-                      child: AutoSizeTextField(
-                        decoration: InputDecoration.collapsed(
-                            hintText: finalhexNamesList[0],
-                            hintStyle: const TextStyle(color: Colors.blue)),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: thirdcolor,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        controller: _controllercointhirdtext,
-                        readOnly: true,
-                      )),
-                ],
-              ),
-              const Divider(
-                color: Colors.blue,
-              ),
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: 10,
-                  minWidth: 10,
-                  maxHeight: MediaQuery.of(context).size.height * 0.1,
-                  maxWidth: MediaQuery.of(context).size.width * 0.15,
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                            !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('-1',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
                 ),
-                child: CarouselSlider(
-                  items: mixHexagramSlidersNew,
-                  carouselController: _controllertop,
-                  options: CarouselOptions(
-                      autoPlay: false,
-                      enlargeCenterPage: true,
-                      aspectRatio: 1.3,
-                      onPageChanged: (indextop, reason) {
-                        setState(() {
-                          _currenttop = indextop;
+                const SizedBox(width: 5),
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.subtract(const Duration(hours: 10));
 
-                          _hexagramVal = ((_currenttop + 1) * 100 +
-                              (_currentmid + 1) * 10 +
-                              (_currentbot + 1));
+                    _planetsnowList =
+                        await PlanetsServices.getCurrentData(_now);
 
-                          _carouselvalueindex =
-                              hexCarouselWheelOrderList.indexOf(_hexagramVal);
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList =
+                        await PlanetsServices.getCurrentData(_now);
 
-                          _chosenhex = orderHexagramsWheel[_carouselvalueindex];
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
 
-                          _controllergatetext.text = _chosenhex.toString();
+                    _personchannelsList = [];
+                    _designchannelsList = [];
 
-                          // idonotknow _currentline
-                          //_controllergatelinestory.text = 'test';
-                          _controllergatelinestory.text = idonotknowlinesList[
-                              (idonotknowlinesList.indexOf(_chosenhex) +
-                                  _currentline)];
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
 
-                          //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-                          //_hexsentence = LineSentenceList[_planethex.gate!];
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
 
-                          //_controllertopfirsttext.text = _hexsentence.adjective!;
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
 
-                          _controllercoinsttext.text =
-                              idkNewHebrewList[_chosenhex];
-                          //_controllertopsecondtext.text = _hexsentence.subject!;
-                          //_controllertopthirdtext.text = _hexsentence.verb!;
-                          //_controllertopfourthtext.text = _hexsentence.adverb!;
+                    _setDateTime(_now);
 
-                          thirdcolor =
-                              //controlCollor(finalhexNamesList[_currenttop]);
-                              controlCollor(_currenttop);
-                          _controllercointhirdtext.text =
-                              finalhexNamesList[_currenttop];
-                          _controllercointopthirdtext.text =
-                              finalnewcoinnamesList[_currenttop];
-                        });
-                      }),
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                        (idonotknowlinesList.indexOf(_planethex.gate!) +
+                            _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                            !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('-10',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
                 ),
-              ),
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: 10,
-                  minWidth: 10,
-                  maxHeight: MediaQuery.of(context).size.height * 0.1,
-                  maxWidth: MediaQuery.of(context).size.width * 0.15,
+                const SizedBox(width: 5),
+                ElevatedButton(
+                  onPressed: () async {
+                    //_now = DateTime.now();
+                    //_now = _newnow;
+                    //if (now !=)
+                    _now = _now.subtract(const Duration(hours: 24));
+
+                    _planetsnowList =
+                        await PlanetsServices.getCurrentData(_now);
+
+                    //_designTime = await AstrologyServices.getDesignTime(_now);
+                    //emulate design time to now time to prevent blank
+                    _planetsdesignList =
+                        await PlanetsServices.getCurrentData(_now);
+
+                    _channelsList =
+                        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+                    _personchannelsList = [];
+                    _designchannelsList = [];
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    _setDateTime(_now);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    _setCoins();
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                        (idonotknowlinesList.indexOf(_planethex.gate!) +
+                            _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                            !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      textStyle: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.normal)),
+                  child: const Text('-24',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal)),
                 ),
-                child: CarouselSlider(
-                  items: mixHexagramSlidersNew,
-                  carouselController: _controllermid,
-                  options: CarouselOptions(
-                      autoPlay: false,
-                      enlargeCenterPage: true,
-                      aspectRatio: 1.3,
-                      onPageChanged: (indexmid, reason) {
-                        setState(() {
-                          _currentmid = indexmid;
-
-                          _hexagramVal = ((_currenttop + 1) * 100 +
-                              (_currentmid + 1) * 10 +
-                              (_currentbot + 1));
-
-                          _carouselvalueindex =
-                              hexCarouselWheelOrderList.indexOf(_hexagramVal);
-
-                          _chosenhex = orderHexagramsWheel[_carouselvalueindex];
-
-                          _controllergatetext.text = _chosenhex.toString();
-
-                          //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-
-                          _controllercoinsttext.text =
-                              idkNewHebrewList[_chosenhex];
-
-                          //_controllertopfirsttext.text = _hexsentence.adjective!;
-                          //_controllertopsecondtext.text = _hexsentence.subject!;
-                          //_controllertopthirdtext.text = _hexsentence.verb!;
-                          //_controllertopfourthtext.text = _hexsentence.adverb!;
-
-                          _controllergatelinestory.text = idonotknowlinesList[
-                              (idonotknowlinesList.indexOf(_chosenhex) +
-                                  _currentline)];
-
-                          secondcolor =
-                              //controlCollor(finalhexNamesList[_currentmid]);
-                              controlCollor(_currentmid);
-                          _controllercoinsecondtext.text =
-                              finalhexNamesList[_currentmid];
-                          _controllercointopsecondtext.text =
-                              finalnewcoinnamesList[_currentmid];
-                        });
-                      }),
-                ),
-              ),
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: 10,
-                  minWidth: 10,
-                  maxHeight: MediaQuery.of(context).size.height * 0.1,
-                  maxWidth: MediaQuery.of(context).size.width * 0.15,
-                ),
-                child: CarouselSlider(
-                  items: mixHexagramSlidersNew,
-                  carouselController: _controllerbot,
-                  options: CarouselOptions(
-                      autoPlay: false,
-                      enlargeCenterPage: true,
-                      aspectRatio: 1.3,
-                      onPageChanged: (indexbot, reason) {
-                        setState(() {
-                          _currentbot = indexbot;
-                          _hexagramVal = ((_currenttop + 1) * 100 +
-                              (_currentmid + 1) * 10 +
-                              (_currentbot + 1));
-
-                          _carouselvalueindex =
-                              hexCarouselWheelOrderList.indexOf(_hexagramVal);
-
-                          _chosenhex = orderHexagramsWheel[_carouselvalueindex];
-
-                          _controllergatetext.text = _chosenhex.toString();
-
-                          //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-
-                          _controllercoinsttext.text =
-                              idkNewHebrewList[_chosenhex];
-                          //_controllertopfirsttext.text = _hexsentence.adjective!;
-                          //_controllertopsecondtext.text = _hexsentence.subject!;
-                          //_controllertopthirdtext.text = _hexsentence.verb!;
-                          //_controllertopfourthtext.text = _hexsentence.adverb!;
-
-                          _controllergatelinestory.text = idonotknowlinesList[
-                              (idonotknowlinesList.indexOf(_chosenhex) +
-                                  _currentline)];
-
-                          firstcolor =
-                              //controlCollor(finalhexNamesList[_currentbot]);
-                              controlCollor(_currentbot);
-                          _controllercoinfirsttext.text =
-                              finalhexNamesList[_currentbot];
-                          _controllercointopfirsttext.text =
-                              finalnewcoinnamesList[_currentbot];
-                        });
-                      }),
-                ),
-              ),
-              const Divider(
-                color: Colors.blue,
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                      width: 30,
-                      child: AutoSizeTextField(
-                        fullwidth: false,
-                        decoration: const InputDecoration.collapsed(
-                            hintText: '1',
-                            hintStyle: TextStyle(color: Colors.black)),
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        controller: _controllergatetext,
-                        readOnly: true,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: <TextInputFormatter>[
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                      )),
-                  SizedBox(
-                      width: 20,
-                      child: AutoSizeTextField(
-                        fullwidth: false,
-                        decoration: const InputDecoration.collapsed(
-                            hintText: '1',
-                            hintStyle: TextStyle(color: Colors.black)),
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        controller: _controllerlinetext,
-                        readOnly: true,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: <TextInputFormatter>[
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                      )),
-                ],
-              ),
-              const Divider(
-                color: Colors.blue,
-              ),
-              SizedBox(
-                //width: MediaQuery.of(context).size.width / 1.7,
-                width: MediaQuery.of(context).size.width / 1.5,
-                child: AutoSizeTextField(
-                  minLines: 2,
-                  maxLines: 4,
-                  minFontSize: 18,
-                  maxFontSize: 18,
-                  fullwidth: true,
-                  decoration: InputDecoration.collapsed(
-                      //hintText: LineSentenceList[0],
-                      hintText: idkNewHebrewList[0],
-                      hintStyle: const TextStyle(color: Colors.black)),
+              ],
+            ),
+            SizedBox(height: 10),
+            SizedBox(
+              height: 30,
+              child: TextField(
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.normal,
-                  ),
-                  controller: _controllercoinsttext,
                   readOnly: true,
+                  //decoration: const InputDecoration.collapsed(hintText: 'Time'),
+                  decoration: const InputDecoration.collapsed(hintText: 'זמן'),
+                  controller: _controllerTime,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.black)),
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 30,
+                  width: 30,
+                  child: CarouselSlider(
+                    items: mixHexagramSlidersNew,
+                    carouselController: _controllerrotationstate,
+                    options: CarouselOptions(
+                        scrollDirection: Axis.horizontal,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 1.3,
+                        onPageChanged: (indexcrotstate, reason) {
+                          setState(() {
+                            _currentrotationstate = indexcrotstate;
+
+                            switch (_currentrotationstate) {
+                              case 0:
+                                _textlevel = 'complex';
+                                _changeTextLevels(_textlevel);
+                                break;
+                              case 1:
+                                _textlevel = 'simple';
+                                _changeTextLevels(_textlevel);
+                                break;
+                              case 2:
+                                _textlevel = 'breath';
+                                _changeTextLevels(_textlevel);
+                                break;
+                              case 3:
+                                _textlevel = 'silence';
+                                _changeTextLevels(_textlevel);
+                                break;
+                              default:
+                                _textlevel = 'complex';
+                                _changeTextLevels(_textlevel);
+                                break;
+                            }
+                          });
+                        }),
+                  ),
                 ),
-              ),
-              const Divider(
-                color: Colors.blue,
-              ),
-              SizedBox(
-                  //width: MediaQuery.of(context).size.height / 3,
-                  width: MediaQuery.of(context).size.width / 1.5,
+                const SizedBox(width: 5),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 3,
                   child: AutoSizeTextField(
-                    minLines: 3,
-                    maxLines: 4,
-                    minFontSize: 15,
-                    maxFontSize: 15,
-                    fullwidth: true,
-                    decoration: const InputDecoration.collapsed(
-                        //hintText: 'Rotating Coins Story',
-                        hintText: 'סיפור סיבוב מטבעות',
-                        hintStyle: TextStyle(color: Colors.black)),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.normal,
-                    ),
-                    controller: _controllergatelinestory,
-                    readOnly: true,
-                  )),
-              const Divider(
-                color: Colors.blue,
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildGatesDialog(context),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50))),
-                      child: const Text(
-                        //'Wallets',
-                        'ארנקים',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
-                      )),
-                  const SizedBox(
-                    height: 10.0,
+                      fullwidth: false,
+                      readOnly: true,
+                      textAlign: TextAlign.right,
+                      decoration:
+                          //const InputDecoration.collapsed(hintText: 'Sentence'),
+                          const InputDecoration.collapsed(hintText: 'משפטי'),
+                      controller: _controllerPlanetSubType,
+                      style:
+                          const TextStyle(fontSize: 12, color: Colors.black)),
+                ),
+                const SizedBox(width: 5),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 3,
+                  child: AutoSizeTextField(
+                      fullwidth: false,
+                      textAlign: TextAlign.left,
+                      readOnly: true,
+                      decoration:
+                          //const InputDecoration.collapsed(hintText: 'Rotation'),
+                          const InputDecoration.collapsed(hintText: 'סיבוב'),
+                      controller: _controllerPlanetType,
+                      style:
+                          const TextStyle(fontSize: 12, color: Colors.black)),
+                ),
+              ],
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: AutoSizeTextField(
+                      readOnly: true,
+                      decoration: const InputDecoration.collapsed(hintText: ''),
+                      textAlign: TextAlign.center,
+                      controller: _controllerDesignSunGate,
+                      style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal)),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    switch (_currentrotationstate) {
+                      case 0:
+                        //_planettext = _sunhex.linename!;
+                        _planettext =
+                            '1 year of COMPLEX PersonReality and Reality shining';
+                        break;
+                      case 1:
+                        _planettext =
+                            '1 year of COMPLEX PersonReality and Reality shining';
+                        break;
+                      case 2:
+                        _planettext = 'breath';
+                        break;
+                      case 3:
+                        _planettext = 'silence';
+                        break;
+                      default:
+                        break;
+                    }
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildPlanetDialog(context, _planettext),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey[100],
+                    shape: const CircleBorder(),
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildLinesDialog(context),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50))),
-                      child: const Text(
-                        //'Coins',
-                        'מטבעות',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
-                      )),
-                ],
-              ),
-              const Divider(
-                color: Colors.blue,
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () async {
-                      //_now = DateTime.now();
-                      //_now = _newnow;
-                      //if (now !=)
-                      _now = _now.add(const Duration(hours: 1));
-
-                      _planetsnowList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      //_designTime = await AstrologyServices.getDesignTime(_now);
-                      //emulate design time to now time to prevent blank
-                      _planetsdesignList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      _channelsList =
-                          HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                      _personchannelsList = [];
-                      _designchannelsList = [];
-
-                      //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                      hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                      //_controlHDData(hdbasicdata);
-                      _controlHDData(hdfinaldata);
-
-                      _centers = HDServices.getHDDefinedCenters(_channelsList);
-                      //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                      //_selfreminderSentence = HDServices.getSelfReminder();
-                      _selfreminder = _timeselfreminder;
-
-                      _setDateTime(_now);
-
-                      _planetsList = _planetsnowList;
-                      _planethex = _planetsList[0];
-
-                      _setCoins();
-
-                      _controllerlinetext.text = _planethex.line!.toString();
-                      _controllergatelinestory.text = idonotknowlinesList[
-                          (idonotknowlinesList.indexOf(_planethex.gate!) +
-                              _planethex.line!)];
-
-                      switch (_previousPlanetIndex) {
-                        case -1:
-                          _previousPlanetIndex = 0;
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          break;
-                        default:
-                          _isPlanetSelectedList[_previousPlanetIndex] =
-                              !_isPlanetSelectedList[_previousPlanetIndex];
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          _previousPlanetIndex = 0;
-                      }
-
-                      switch (_currentconstate) {
-                        case 0:
-                          _controllerconstate.jumpToPage(1);
-                          _controllerconstate.jumpToPage(0);
-                          _controllerrotationstate.jumpToPage(0);
-                          break;
-                        case 1:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                        default:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        textStyle: const TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.normal)),
-                    child: const Text('+1',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                  const SizedBox(width: 5),
-                  ElevatedButton(
-                    onPressed: () async {
-                      //_now = DateTime.now();
-                      //_now = _newnow;
-                      //if (now !=)
-                      _now = _now.add(const Duration(hours: 10));
-
-                      _planetsnowList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      //_designTime = await AstrologyServices.getDesignTime(_now);
-                      //emulate design time to now time to prevent blank
-                      _planetsdesignList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      _channelsList =
-                          HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                      _personchannelsList = [];
-                      _designchannelsList = [];
-
-                      //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                      hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                      //_controlHDData(hdbasicdata);
-                      _controlHDData(hdfinaldata);
-
-                      _centers = HDServices.getHDDefinedCenters(_channelsList);
-                      //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                      //_selfreminderSentence = HDServices.getSelfReminder();
-                      _selfreminder = _timeselfreminder;
-
-                      _setDateTime(_now);
-
-                      _planetsList = _planetsnowList;
-                      _planethex = _planetsList[0];
-
-                      _setCoins();
-
-                      _controllerlinetext.text = _planethex.line!.toString();
-                      _controllergatelinestory.text = idonotknowlinesList[
-                          (idonotknowlinesList.indexOf(_planethex.gate!) +
-                              _planethex.line!)];
-
-                      switch (_previousPlanetIndex) {
-                        case -1:
-                          _previousPlanetIndex = 0;
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          break;
-                        default:
-                          _isPlanetSelectedList[_previousPlanetIndex] =
-                              !_isPlanetSelectedList[_previousPlanetIndex];
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          _previousPlanetIndex = 0;
-                      }
-
-                      switch (_currentconstate) {
-                        case 0:
-                          _controllerconstate.jumpToPage(1);
-                          _controllerconstate.jumpToPage(0);
-                          _controllerrotationstate.jumpToPage(0);
-                          break;
-                        case 1:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                        default:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        textStyle: const TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.normal)),
-                    child: const Text('+10',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                  const SizedBox(width: 5),
-                  ElevatedButton(
-                    onPressed: () async {
-                      //_now = DateTime.now();
-                      //_now = _newnow;
-                      //if (now !=)
-                      _now = _now.add(const Duration(hours: 24));
-
-                      _planetsnowList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      //_designTime = await AstrologyServices.getDesignTime(_now);
-                      //emulate design time to now time to prevent blank
-                      _planetsdesignList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      _channelsList =
-                          HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                      _personchannelsList = [];
-                      _designchannelsList = [];
-
-                      //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                      hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                      //_controlHDData(hdbasicdata);
-                      _controlHDData(hdfinaldata);
-
-                      _centers = HDServices.getHDDefinedCenters(_channelsList);
-                      //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                      //_selfreminderSentence = HDServices.getSelfReminder();
-                      _selfreminder = _timeselfreminder;
-
-                      _setDateTime(_now);
-
-                      _planetsList = _planetsnowList;
-                      _planethex = _planetsList[0];
-
-                      _setCoins();
-
-                      _controllerlinetext.text = _planethex.line!.toString();
-                      _controllergatelinestory.text = idonotknowlinesList[
-                          (idonotknowlinesList.indexOf(_planethex.gate!) +
-                              _planethex.line!)];
-
-                      switch (_previousPlanetIndex) {
-                        case -1:
-                          _previousPlanetIndex = 0;
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          break;
-                        default:
-                          _isPlanetSelectedList[_previousPlanetIndex] =
-                              !_isPlanetSelectedList[_previousPlanetIndex];
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          _previousPlanetIndex = 0;
-                      }
-
-                      switch (_currentconstate) {
-                        case 0:
-                          _controllerconstate.jumpToPage(1);
-                          _controllerconstate.jumpToPage(0);
-                          _controllerrotationstate.jumpToPage(0);
-                          break;
-                        case 1:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                        default:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        textStyle: const TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.normal)),
-                    child: const Text('+24',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                ],
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () async {
-                      //_now = DateTime.now();
-                      //_now = _newnow;
-                      //if (now !=)
-                      _now = _now.subtract(const Duration(hours: 1));
-
-                      _planetsnowList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      //_designTime = await AstrologyServices.getDesignTime(_now);
-                      //emulate design time to now time to prevent blank
-                      _planetsdesignList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      _channelsList =
-                          HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                      _personchannelsList = [];
-                      _designchannelsList = [];
-
-                      //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                      hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                      //_controlHDData(hdbasicdata);
-                      _controlHDData(hdfinaldata);
-
-                      _centers = HDServices.getHDDefinedCenters(_channelsList);
-                      //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                      //_selfreminderSentence = HDServices.getSelfReminder();
-                      _selfreminder = _timeselfreminder;
-
-                      _setDateTime(_now);
-
-                      _planetsList = _planetsnowList;
-                      _planethex = _planetsList[0];
-
-                      _setCoins();
-
-                      _controllerlinetext.text = _planethex.line!.toString();
-                      _controllergatelinestory.text = idonotknowlinesList[
-                          (idonotknowlinesList.indexOf(_planethex.gate!) +
-                              _planethex.line!)];
-
-                      switch (_previousPlanetIndex) {
-                        case -1:
-                          _previousPlanetIndex = 0;
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          break;
-                        default:
-                          _isPlanetSelectedList[_previousPlanetIndex] =
-                              !_isPlanetSelectedList[_previousPlanetIndex];
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          _previousPlanetIndex = 0;
-                      }
-
-                      switch (_currentconstate) {
-                        case 0:
-                          _controllerconstate.jumpToPage(1);
-                          _controllerconstate.jumpToPage(0);
-                          _controllerrotationstate.jumpToPage(0);
-                          break;
-                        case 1:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                        default:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        textStyle: const TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.normal)),
-                    child: const Text('-1',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                  const SizedBox(width: 5),
-                  ElevatedButton(
-                    onPressed: () async {
-                      //_now = DateTime.now();
-                      //_now = _newnow;
-                      //if (now !=)
-                      _now = _now.subtract(const Duration(hours: 10));
-
-                      _planetsnowList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      //_designTime = await AstrologyServices.getDesignTime(_now);
-                      //emulate design time to now time to prevent blank
-                      _planetsdesignList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      _channelsList =
-                          HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                      _personchannelsList = [];
-                      _designchannelsList = [];
-
-                      //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                      hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                      //_controlHDData(hdbasicdata);
-                      _controlHDData(hdfinaldata);
-
-                      _centers = HDServices.getHDDefinedCenters(_channelsList);
-                      //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                      //_selfreminderSentence = HDServices.getSelfReminder();
-                      _selfreminder = _timeselfreminder;
-
-                      _setDateTime(_now);
-
-                      _planetsList = _planetsnowList;
-                      _planethex = _planetsList[0];
-
-                      _setCoins();
-
-                      _controllerlinetext.text = _planethex.line!.toString();
-                      _controllergatelinestory.text = idonotknowlinesList[
-                          (idonotknowlinesList.indexOf(_planethex.gate!) +
-                              _planethex.line!)];
-
-                      switch (_previousPlanetIndex) {
-                        case -1:
-                          _previousPlanetIndex = 0;
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          break;
-                        default:
-                          _isPlanetSelectedList[_previousPlanetIndex] =
-                              !_isPlanetSelectedList[_previousPlanetIndex];
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          _previousPlanetIndex = 0;
-                      }
-
-                      switch (_currentconstate) {
-                        case 0:
-                          _controllerconstate.jumpToPage(1);
-                          _controllerconstate.jumpToPage(0);
-                          _controllerrotationstate.jumpToPage(0);
-                          break;
-                        case 1:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                        default:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        textStyle: const TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.normal)),
-                    child: const Text('-10',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                  const SizedBox(width: 5),
-                  ElevatedButton(
-                    onPressed: () async {
-                      //_now = DateTime.now();
-                      //_now = _newnow;
-                      //if (now !=)
-                      _now = _now.subtract(const Duration(hours: 24));
-
-                      _planetsnowList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      //_designTime = await AstrologyServices.getDesignTime(_now);
-                      //emulate design time to now time to prevent blank
-                      _planetsdesignList =
-                          await PlanetsServices.getCurrentData(_now);
-
-                      _channelsList =
-                          HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                      _personchannelsList = [];
-                      _designchannelsList = [];
-
-                      //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                      hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                      //_controlHDData(hdbasicdata);
-                      _controlHDData(hdfinaldata);
-
-                      _centers = HDServices.getHDDefinedCenters(_channelsList);
-                      //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                      //_selfreminderSentence = HDServices.getSelfReminder();
-                      _selfreminder = _timeselfreminder;
-
-                      _setDateTime(_now);
-
-                      _planetsList = _planetsnowList;
-                      _planethex = _planetsList[0];
-
-                      _setCoins();
-
-                      _controllerlinetext.text = _planethex.line!.toString();
-                      _controllergatelinestory.text = idonotknowlinesList[
-                          (idonotknowlinesList.indexOf(_planethex.gate!) +
-                              _planethex.line!)];
-
-                      switch (_previousPlanetIndex) {
-                        case -1:
-                          _previousPlanetIndex = 0;
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          break;
-                        default:
-                          _isPlanetSelectedList[_previousPlanetIndex] =
-                              !_isPlanetSelectedList[_previousPlanetIndex];
-                          _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                          _previousPlanetIndex = 0;
-                      }
-
-                      switch (_currentconstate) {
-                        case 0:
-                          _controllerconstate.jumpToPage(1);
-                          _controllerconstate.jumpToPage(0);
-                          _controllerrotationstate.jumpToPage(0);
-                          break;
-                        case 1:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                        default:
-                          _controllerconstate.jumpToPage(0);
-                          break;
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        textStyle: const TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.normal)),
-                    child: const Text('-24',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              SizedBox(
-                height: 30,
-                child: TextField(
-                    textAlign: TextAlign.center,
-                    readOnly: true,
-                    //decoration: const InputDecoration.collapsed(hintText: 'Time'),
-                    decoration: const InputDecoration.collapsed(hintText: 'זמן'),
-                    controller: _controllerTime,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.black)),
-              ),
-              const Divider(
-                color: Colors.blue,
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: CarouselSlider(
-                      items: mixHexagramSlidersNew,
-                      carouselController: _controllerrotationstate,
-                      options: CarouselOptions(
-                          scrollDirection: Axis.horizontal,
-                          autoPlay: false,
-                          enlargeCenterPage: true,
-                          aspectRatio: 1.3,
-                          onPageChanged: (indexcrotstate, reason) {
-                            setState(() {
-                              _currentrotationstate = indexcrotstate;
-
-                              switch (_currentrotationstate) {
-                                case 0:
-                                  _textlevel = 'complex';
-                                  _changeTextLevels(_textlevel);
-                                  break;
-                                case 1:
-                                  _textlevel = 'simple';
-                                  _changeTextLevels(_textlevel);
-                                  break;
-                                case 2:
-                                  _textlevel = 'breath';
-                                  _changeTextLevels(_textlevel);
-                                  break;
-                                case 3:
-                                  _textlevel = 'silence';
-                                  _changeTextLevels(_textlevel);
-                                  break;
-                                default:
-                                  _textlevel = 'complex';
-                                  _changeTextLevels(_textlevel);
-                                  break;
-                              }
-                            });
-                          }),
-                    ),
-                  ),
-                  const SizedBox(width: 5),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: AutoSizeTextField(
-                        fullwidth: false,
-                        readOnly: true,
-                        textAlign: TextAlign.right,
-                        decoration:
-                            //const InputDecoration.collapsed(hintText: 'Sentence'),
-                            const InputDecoration.collapsed(hintText: 'משפטי'),
-                        controller: _controllerPlanetSubType,
-                        style:
-                            const TextStyle(fontSize: 12, color: Colors.black)),
-                  ),
-                  const SizedBox(width: 5),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: AutoSizeTextField(
-                        fullwidth: false,
-                        textAlign: TextAlign.left,
-                        readOnly: true,
-                        decoration:
-                            //const InputDecoration.collapsed(hintText: 'Rotation'),
-                            const InputDecoration.collapsed(hintText: 'סיבוב'),
-                        controller: _controllerPlanetType,
-                        style:
-                            const TextStyle(fontSize: 12, color: Colors.black)),
-                  ),
-                ],
-              ),
-              Flex(
+                  child: const CircleAvatar(
+                      minRadius: 13.0,
+                      maxRadius: 13.0,
+                      backgroundColor: Colors.blue,
+                      foregroundImage: AssetImage('assets/planets/sun.png')),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: AutoSizeTextField(
+                      fullwidth: false,
+                      minFontSize: 10,
+                      maxFontSize: 20,
+                      maxLines: 1,
+                      readOnly: true,
+                      decoration: const InputDecoration.collapsed(hintText: ''),
+                      textAlign: TextAlign.center,
+                      controller: _controllerSunGate,
+                      style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal)),
+                ),
+              ],
+            ),
+            Flex(
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -1707,9 +1857,10 @@ class _RotateComplexState extends State<RotateComplex> {
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
-                        decoration: const InputDecoration.collapsed(hintText: ''),
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
-                        controller: _controllerDesignSunGate,
+                        controller: _controllerDesignEarthGate,
                         style: const TextStyle(
                             fontSize: 13,
                             color: Colors.black,
@@ -1719,13 +1870,13 @@ class _RotateComplexState extends State<RotateComplex> {
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _sunhex.linename!;
+                          //_planettext = _earthhex.linename!;
                           _planettext =
-                              '1 year of COMPLEX PersonReality and Reality shining';
+                              '1 year of silence PersonReality and Reality grounded';
                           break;
                         case 1:
                           _planettext =
-                              '1 year of COMPLEX PersonReality and Reality shining';
+                              '1 year of silence PersonReality and Reality grounded';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -1749,97 +1900,97 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: const CircleAvatar(
                         minRadius: 13.0,
                         maxRadius: 13.0,
-                        backgroundColor: Colors.blue,
-                        foregroundImage: AssetImage('assets/planets/sun.png')),
+                        backgroundColor: Colors.red,
+                        backgroundImage:
+                            AssetImage('assets/planets/earth.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
-                        fullwidth: false,
-                        minFontSize: 10,
-                        maxFontSize: 20,
-                        maxLines: 1,
                         readOnly: true,
-                        decoration: const InputDecoration.collapsed(hintText: ''),
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
-                        controller: _controllerSunGate,
+                        controller: _controllerEarthGate,
                         style: const TextStyle(
                             fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.normal)),
                   ),
-                ],
-              ),
-              Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerDesignEarthGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        switch (_currentrotationstate) {
-                          case 0:
-                            //_planettext = _earthhex.linename!;
-                            _planettext =
-                                '1 year of silence PersonReality and Reality grounded';
-                            break;
-                          case 1:
-                            _planettext =
-                                '1 year of silence PersonReality and Reality grounded';
-                            break;
-                          case 2:
-                            _planettext = 'breath';
-                            break;
-                          case 3:
-                            _planettext = 'silence';
-                            break;
-                          default:
-                            break;
-                        }
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetDialog(context, _planettext),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[100],
-                        shape: const CircleBorder(),
-                      ),
-                      child: const CircleAvatar(
-                          minRadius: 13.0,
-                          maxRadius: 13.0,
-                          backgroundColor: Colors.red,
-                          backgroundImage:
-                              AssetImage('assets/planets/earth.png')),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerEarthGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                  ]),
-              Flex(
+                ]),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: AutoSizeTextField(
+                      readOnly: true,
+                      decoration: const InputDecoration.collapsed(hintText: ''),
+                      textAlign: TextAlign.center,
+                      controller: _controllerDesignNorthNodeGate,
+                      style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal)),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    switch (_currentrotationstate) {
+                      case 0:
+                        //_planettext = _northnodehex.linename!;
+                        _planettext =
+                            '18.6 years of COMPLEX PersonReality and Reality moving forward';
+                        break;
+                      case 1:
+                        _planettext =
+                            '18.6 years of COMPLEX PersonReality and Reality moving forward';
+                        break;
+                      case 2:
+                        _planettext = 'breath';
+                        break;
+                      case 3:
+                        _planettext = 'silence';
+                        break;
+                      default:
+                        break;
+                    }
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildPlanetDialog(context, _planettext),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey[100],
+                    shape: const CircleBorder(),
+                  ),
+                  child: const CircleAvatar(
+                      minRadius: 13.0,
+                      maxRadius: 13.0,
+                      backgroundColor: Colors.green,
+                      foregroundImage:
+                          AssetImage('assets/planets/northnode.png')),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: AutoSizeTextField(
+                      fullwidth: false,
+                      minFontSize: 10,
+                      maxFontSize: 20,
+                      maxLines: 1,
+                      readOnly: true,
+                      decoration: const InputDecoration.collapsed(hintText: ''),
+                      textAlign: TextAlign.center,
+                      controller: _controllerNorthNodeGate,
+                      style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal)),
+                ),
+              ],
+            ),
+            Flex(
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -1847,9 +1998,10 @@ class _RotateComplexState extends State<RotateComplex> {
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
-                        decoration: const InputDecoration.collapsed(hintText: ''),
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
-                        controller: _controllerDesignNorthNodeGate,
+                        controller: _controllerDesignSouthNodeGate,
                         style: const TextStyle(
                             fontSize: 13,
                             color: Colors.black,
@@ -1859,566 +2011,13 @@ class _RotateComplexState extends State<RotateComplex> {
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _northnodehex.linename!;
+                          //_planettext = _southnodehex.linename!;
                           _planettext =
-                              '18.6 years of COMPLEX PersonReality and Reality moving forward';
+                              '18.6 years of silence PersonReality and Reality leaving behind';
                           break;
                         case 1:
                           _planettext =
-                              '18.6 years of COMPLEX PersonReality and Reality moving forward';
-                          break;
-                        case 2:
-                          _planettext = 'breath';
-                          break;
-                        case 3:
-                          _planettext = 'silence';
-                          break;
-                        default:
-                          break;
-                      }
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) =>
-                            _buildPlanetDialog(context, _planettext),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[100],
-                      shape: const CircleBorder(),
-                    ),
-                    child: const CircleAvatar(
-                        minRadius: 13.0,
-                        maxRadius: 13.0,
-                        backgroundColor: Colors.green,
-                        foregroundImage:
-                            AssetImage('assets/planets/northnode.png')),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 4,
-                    child: AutoSizeTextField(
-                        fullwidth: false,
-                        minFontSize: 10,
-                        maxFontSize: 20,
-                        maxLines: 1,
-                        readOnly: true,
-                        decoration: const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.center,
-                        controller: _controllerNorthNodeGate,
-                        style: const TextStyle(
-                            fontSize: 13,
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                ],
-              ),
-              Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerDesignSouthNodeGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        switch (_currentrotationstate) {
-                          case 0:
-                            //_planettext = _southnodehex.linename!;
-                            _planettext =
-                                '18.6 years of silence PersonReality and Reality leaving behind';
-                            break;
-                          case 1:
-                            _planettext =
-                                '18.6 years of silence PersonReality and Reality leaving behind';
-                            break;
-                          case 2:
-                            _planettext = 'breath';
-                            break;
-                          case 3:
-                            _planettext = 'silence';
-                            break;
-                          default:
-                            break;
-                        }
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetDialog(context, _planettext),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[100],
-                        shape: const CircleBorder(),
-                      ),
-                      child: const CircleAvatar(
-                          minRadius: 13.0,
-                          maxRadius: 13.0,
-                          backgroundColor: Colors.yellow,
-                          backgroundImage:
-                              AssetImage('assets/planets/southnode.png')),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerSouthNodeGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                  ]),
-              Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerDesignMoonGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        switch (_currentrotationstate) {
-                          case 0:
-                            //_planettext = _moonhex.linename!;
-                            _planettext =
-                                '27 days of Simple PersonReality and Reality driven to rise';
-                            break;
-                          case 1:
-                            _planettext =
-                                '27 days of Simple PersonReality and Reality driven to rise';
-                            break;
-                          case 2:
-                            _planettext = 'breath';
-                            break;
-                          case 3:
-                            _planettext = 'silence';
-                            break;
-                          default:
-                            break;
-                        }
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetDialog(context, _planettext),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[100],
-                        shape: const CircleBorder(),
-                      ),
-                      child: const CircleAvatar(
-                          minRadius: 13.0,
-                          maxRadius: 13.0,
-                          backgroundColor: Colors.blue,
-                          backgroundImage: AssetImage('assets/planets/moon.png')),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerMoonGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                  ]),
-              Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerDesignMercuryGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        switch (_currentrotationstate) {
-                          case 0:
-                            //_planettext = _mercuryhex.linename!;
-                            _planettext =
-                                '88 days of Simple PersonReality and Reality communicating';
-                            break;
-                          case 1:
-                            _planettext =
-                                '88 days of Simple PersonReality and Reality communicating';
-                            break;
-                          case 2:
-                            _planettext = 'breath';
-                            break;
-                          case 3:
-                            _planettext = 'silence';
-                            break;
-                          default:
-                            break;
-                        }
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetDialog(context, _planettext),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[100],
-                        shape: const CircleBorder(),
-                      ),
-                      child: const CircleAvatar(
-                          minRadius: 13.0,
-                          maxRadius: 13.0,
-                          backgroundColor: Colors.green,
-                          backgroundImage:
-                              AssetImage('assets/planets/mercury.png')),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerMercuryGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                  ]),
-              Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerDesignVenusGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        switch (_currentrotationstate) {
-                          case 0:
-                            //_planettext = _venushex.linename!;                          break;
-                            _planettext =
-                                '225 days of Simple PersonReality and Reality values';
-                            break;
-                          case 1:
-                            _planettext =
-                                '225 days of Simple PersonReality and Reality values';
-                            break;
-                          case 2:
-                            _planettext = 'breath';
-                            break;
-                          case 3:
-                            _planettext = 'silence';
-                            break;
-                          default:
-                            break;
-                        }
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetDialog(context, _planettext),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[100],
-                        shape: const CircleBorder(),
-                      ),
-                      child: const CircleAvatar(
-                          minRadius: 13.0,
-                          maxRadius: 13.0,
-                          backgroundColor: Colors.green,
-                          backgroundImage:
-                              AssetImage('assets/planets/venus.png')),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerVenusGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                  ]),
-              Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerDesignMarsGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        switch (_currentrotationstate) {
-                          case 0:
-                            //_planettext = _marshex.linename!;
-                            _planettext =
-                                '687 days of Simple PersonReality and Reality Like Children';
-                            break;
-                          case 1:
-                            _planettext =
-                                '687 days of Simple PersonReality and Reality Like Children';
-                            break;
-                          case 2:
-                            _planettext = 'breath';
-                            break;
-                          case 3:
-                            _planettext = 'silence';
-                            break;
-                          default:
-                            break;
-                        }
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetDialog(context, _planettext),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[100],
-                        shape: const CircleBorder(),
-                      ),
-                      child: const CircleAvatar(
-                          minRadius: 13.0,
-                          maxRadius: 13.0,
-                          backgroundColor: Colors.green,
-                          backgroundImage: AssetImage('assets/planets/mars.png')),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerMarsGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                  ]),
-              Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerDesignJupiterGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        switch (_currentrotationstate) {
-                          case 0:
-                            //_planettext = _jupiterhex.linename!;
-                            _planettext =
-                                '12 years of Breath PersonReality and Reality Justice';
-                            break;
-                          case 1:
-                            _planettext =
-                                '12 years of Breath PersonReality and Reality Justice';
-                            break;
-                          case 2:
-                            _planettext = 'breath';
-                            break;
-                          case 3:
-                            _planettext = 'silence';
-                            break;
-                          default:
-                            break;
-                        }
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetDialog(context, _planettext),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[100],
-                        shape: const CircleBorder(),
-                      ),
-                      child: const CircleAvatar(
-                          minRadius: 13.0,
-                          maxRadius: 13.0,
-                          backgroundColor: Colors.yellow,
-                          backgroundImage:
-                              AssetImage('assets/planets/jupiter.png')),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerJupiterGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                  ]),
-              Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerDesignSaturnGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        switch (_currentrotationstate) {
-                          case 0:
-                            //_planettext = _saturnhex.linename!;
-                            _planettext =
-                                '29 years of Breath PersonReality and Reality Discipline';
-                            break;
-                          case 1:
-                            _planettext =
-                                '29 years of Breath PersonReality and Reality Discipline';
-                            break;
-                          case 2:
-                            _planettext = 'breath';
-                            break;
-                          case 3:
-                            _planettext = 'silence';
-                            break;
-                          default:
-                            break;
-                        }
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetDialog(context, _planettext),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[100],
-                        shape: const CircleBorder(),
-                      ),
-                      child: const CircleAvatar(
-                          minRadius: 13.0,
-                          maxRadius: 13.0,
-                          backgroundColor: Colors.yellow,
-                          backgroundImage:
-                              AssetImage('assets/planets/saturn.png')),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerSaturnGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                  ]),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 4,
-                    child: AutoSizeTextField(
-                        readOnly: true,
-                        decoration: const InputDecoration.collapsed(hintText: ''),
-                        textAlign: TextAlign.center,
-                        controller: _controllerDesignUranusGate,
-                        style: const TextStyle(
-                            fontSize: 13,
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      switch (_currentrotationstate) {
-                        case 0:
-                          //_planettext = _uranushex.linename!;
-                          _planettext =
-                              '84 years of Breath PersonReality and Reality Unusual';
-                          break;
-                        case 1:
-                          _planettext =
-                              '84 years of Breath PersonReality and Reality Unusual';
+                              '18.6 years of silence PersonReality and Reality leaving behind';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -2443,378 +2042,854 @@ class _RotateComplexState extends State<RotateComplex> {
                         minRadius: 13.0,
                         maxRadius: 13.0,
                         backgroundColor: Colors.yellow,
-                        backgroundImage: AssetImage('assets/planets/uranus.png')),
+                        backgroundImage:
+                            AssetImage('assets/planets/southnode.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
-                        decoration: const InputDecoration.collapsed(hintText: ''),
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
-                        controller: _controllerUranusGate,
+                        controller: _controllerSouthNodeGate,
                         style: const TextStyle(
                             fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.normal)),
                   ),
-                ],
-              ),
-              Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerDesignNeptuneGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        switch (_currentrotationstate) {
-                          case 0:
-                            //_planettext = _neptunehex.linename!;
-                            _planettext =
-                                '165 years of Breath PersonReality and Reality Hidden';
-                            break;
-                          case 1:
-                            _planettext =
-                                '165 years of Breath PersonReality and Reality Hidden';
-                            break;
-                          case 2:
-                            _planettext = 'breath';
-                            break;
-                          case 3:
-                            _planettext = 'silence';
-                            break;
-                          default:
-                            break;
-                        }
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetDialog(context, _planettext),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[100],
-                        shape: const CircleBorder(),
-                      ),
-                      child: const CircleAvatar(
-                          minRadius: 13.0,
-                          maxRadius: 13.0,
-                          backgroundColor: Colors.red,
-                          backgroundImage:
-                              AssetImage('assets/planets/neptune.png')),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerNeptuneGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                  ]),
-              Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerDesignPlutoGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        switch (_currentrotationstate) {
-                          case 0:
-                            //_planettext = _plutohex.linename!;
-                            _planettext =
-                                '248 yeays of Breath PersonReality and Reality Truth';
-                            break;
-                          case 1:
-                            _planettext =
-                                '248 yeays of Breath PersonReality and Reality Truth';
-                            break;
-                          case 2:
-                            _planettext = 'breath';
-                            break;
-                          case 3:
-                            _planettext = 'silence';
-                            break;
-                          default:
-                            break;
-                        }
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetDialog(context, _planettext),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[100],
-                        shape: const CircleBorder(),
-                      ),
-                      child: const CircleAvatar(
-                          minRadius: 13.0,
-                          maxRadius: 13.0,
-                          backgroundColor: Colors.red,
-                          backgroundImage:
-                              AssetImage('assets/planets/pluto.png')),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: AutoSizeTextField(
-                          readOnly: true,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
-                          textAlign: TextAlign.center,
-                          controller: _controllerPlutoGate,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal)),
-                    ),
-                  ]),
-
-              const Divider(
-                color: Colors.blue,
-              ),
-              Stack(
-                fit: StackFit.loose,
+                ]),
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircleList(
-                    rotateMode: RotateMode.stopRotate,
-                    innerRadius: 50,
-                    initialAngle: 4.22,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(13, (index) {
-                      return CircleAvatar(
-                        minRadius: 5,
-                        maxRadius: 13,
-                        foregroundImage: AssetImage(planetsfullList[index]),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignMoonGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      switch (_currentrotationstate) {
+                        case 0:
+                          //_planettext = _moonhex.linename!;
+                          _planettext =
+                              '27 days of Simple PersonReality and Reality driven to rise';
+                          break;
+                        case 1:
+                          _planettext =
+                              '27 days of Simple PersonReality and Reality driven to rise';
+                          break;
+                        case 2:
+                          _planettext = 'breath';
+                          break;
+                        case 3:
+                          _planettext = 'silence';
+                          break;
+                        default:
+                          break;
+                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPlanetDialog(context, _planettext),
                       );
-                    }),
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[100],
+                      shape: const CircleBorder(),
+                    ),
+                    child: const CircleAvatar(
+                        minRadius: 13.0,
+                        maxRadius: 13.0,
+                        backgroundColor: Colors.blue,
+                        backgroundImage: AssetImage('assets/planets/moon.png')),
                   ),
-                  CircleList(
-                    rotateMode: RotateMode.stopRotate,
-                    innerRadius: 100,
-                    initialAngle: 4.2,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(13, (index) {
-                      return InkWell(
-                          child: Container(
-                            width: 45,
-                            margin: const EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(width: 2, color: Colors.blue)),
-                            child: AutoSizeText(
-                                listpersonalitygates[index].toString(),
-                                //minFontSize: 8,
-                                //maxFontSize: 85,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) => buildWalletPopUp(
-                                  context, listpersonalitygates[index]),
-                            );
-                          });
-                    }),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerMoonGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
                   ),
-                ],
-              ),
-              Stack(
-                fit: StackFit.loose,
+                ]),
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircleList(
-                    rotateMode: RotateMode.stopRotate,
-                    innerRadius: 50,
-                    initialAngle: 4.22,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(13, (index) {
-                      return CircleAvatar(
-                        minRadius: 5,
-                        maxRadius: 13,
-                        foregroundImage: AssetImage(planetsfullList[index]),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignMercuryGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      switch (_currentrotationstate) {
+                        case 0:
+                          //_planettext = _mercuryhex.linename!;
+                          _planettext =
+                              '88 days of Simple PersonReality and Reality communicating';
+                          break;
+                        case 1:
+                          _planettext =
+                              '88 days of Simple PersonReality and Reality communicating';
+                          break;
+                        case 2:
+                          _planettext = 'breath';
+                          break;
+                        case 3:
+                          _planettext = 'silence';
+                          break;
+                        default:
+                          break;
+                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPlanetDialog(context, _planettext),
                       );
-                    }),
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[100],
+                      shape: const CircleBorder(),
+                    ),
+                    child: const CircleAvatar(
+                        minRadius: 13.0,
+                        maxRadius: 13.0,
+                        backgroundColor: Colors.green,
+                        backgroundImage:
+                            AssetImage('assets/planets/mercury.png')),
                   ),
-                  CircleList(
-                    rotateMode: RotateMode.stopRotate,
-                    innerRadius: 1,
-                    initialAngle: 4.22,
-                    childrenPadding: 1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(13, (index) {
-                      return InkWell(
-                          child: Container(
-                            width: 40,
-                            margin: const EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 2.0, color: Colors.red)),
-                            child: AutoSizeText(listdesigngates[index].toString(),
-                                //minFontSize: 8,
-                                //maxFontSize: 12,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) => buildWalletPopUp(
-                                  context, listdesigngates[index]),
-                            );
-                          });
-                    }),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerMercuryGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
                   ),
-                ],
+                ]),
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignVenusGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      switch (_currentrotationstate) {
+                        case 0:
+                          //_planettext = _venushex.linename!;                          break;
+                          _planettext =
+                              '225 days of Simple PersonReality and Reality values';
+                          break;
+                        case 1:
+                          _planettext =
+                              '225 days of Simple PersonReality and Reality values';
+                          break;
+                        case 2:
+                          _planettext = 'breath';
+                          break;
+                        case 3:
+                          _planettext = 'silence';
+                          break;
+                        default:
+                          break;
+                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPlanetDialog(context, _planettext),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[100],
+                      shape: const CircleBorder(),
+                    ),
+                    child: const CircleAvatar(
+                        minRadius: 13.0,
+                        maxRadius: 13.0,
+                        backgroundColor: Colors.green,
+                        backgroundImage:
+                            AssetImage('assets/planets/venus.png')),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerVenusGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ]),
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignMarsGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      switch (_currentrotationstate) {
+                        case 0:
+                          //_planettext = _marshex.linename!;
+                          _planettext =
+                              '687 days of Simple PersonReality and Reality Like Children';
+                          break;
+                        case 1:
+                          _planettext =
+                              '687 days of Simple PersonReality and Reality Like Children';
+                          break;
+                        case 2:
+                          _planettext = 'breath';
+                          break;
+                        case 3:
+                          _planettext = 'silence';
+                          break;
+                        default:
+                          break;
+                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPlanetDialog(context, _planettext),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[100],
+                      shape: const CircleBorder(),
+                    ),
+                    child: const CircleAvatar(
+                        minRadius: 13.0,
+                        maxRadius: 13.0,
+                        backgroundColor: Colors.green,
+                        backgroundImage: AssetImage('assets/planets/mars.png')),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerMarsGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ]),
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignJupiterGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      switch (_currentrotationstate) {
+                        case 0:
+                          //_planettext = _jupiterhex.linename!;
+                          _planettext =
+                              '12 years of Breath PersonReality and Reality Justice';
+                          break;
+                        case 1:
+                          _planettext =
+                              '12 years of Breath PersonReality and Reality Justice';
+                          break;
+                        case 2:
+                          _planettext = 'breath';
+                          break;
+                        case 3:
+                          _planettext = 'silence';
+                          break;
+                        default:
+                          break;
+                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPlanetDialog(context, _planettext),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[100],
+                      shape: const CircleBorder(),
+                    ),
+                    child: const CircleAvatar(
+                        minRadius: 13.0,
+                        maxRadius: 13.0,
+                        backgroundColor: Colors.yellow,
+                        backgroundImage:
+                            AssetImage('assets/planets/jupiter.png')),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerJupiterGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ]),
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignSaturnGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      switch (_currentrotationstate) {
+                        case 0:
+                          //_planettext = _saturnhex.linename!;
+                          _planettext =
+                              '29 years of Breath PersonReality and Reality Discipline';
+                          break;
+                        case 1:
+                          _planettext =
+                              '29 years of Breath PersonReality and Reality Discipline';
+                          break;
+                        case 2:
+                          _planettext = 'breath';
+                          break;
+                        case 3:
+                          _planettext = 'silence';
+                          break;
+                        default:
+                          break;
+                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPlanetDialog(context, _planettext),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[100],
+                      shape: const CircleBorder(),
+                    ),
+                    child: const CircleAvatar(
+                        minRadius: 13.0,
+                        maxRadius: 13.0,
+                        backgroundColor: Colors.yellow,
+                        backgroundImage:
+                            AssetImage('assets/planets/saturn.png')),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerSaturnGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ]),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: AutoSizeTextField(
+                      readOnly: true,
+                      decoration: const InputDecoration.collapsed(hintText: ''),
+                      textAlign: TextAlign.center,
+                      controller: _controllerDesignUranusGate,
+                      style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal)),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    switch (_currentrotationstate) {
+                      case 0:
+                        //_planettext = _uranushex.linename!;
+                        _planettext =
+                            '84 years of Breath PersonReality and Reality Unusual';
+                        break;
+                      case 1:
+                        _planettext =
+                            '84 years of Breath PersonReality and Reality Unusual';
+                        break;
+                      case 2:
+                        _planettext = 'breath';
+                        break;
+                      case 3:
+                        _planettext = 'silence';
+                        break;
+                      default:
+                        break;
+                    }
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildPlanetDialog(context, _planettext),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey[100],
+                    shape: const CircleBorder(),
+                  ),
+                  child: const CircleAvatar(
+                      minRadius: 13.0,
+                      maxRadius: 13.0,
+                      backgroundColor: Colors.yellow,
+                      backgroundImage: AssetImage('assets/planets/uranus.png')),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: AutoSizeTextField(
+                      readOnly: true,
+                      decoration: const InputDecoration.collapsed(hintText: ''),
+                      textAlign: TextAlign.center,
+                      controller: _controllerUranusGate,
+                      style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal)),
+                ),
+              ],
+            ),
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignNeptuneGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      switch (_currentrotationstate) {
+                        case 0:
+                          //_planettext = _neptunehex.linename!;
+                          _planettext =
+                              '165 years of Breath PersonReality and Reality Hidden';
+                          break;
+                        case 1:
+                          _planettext =
+                              '165 years of Breath PersonReality and Reality Hidden';
+                          break;
+                        case 2:
+                          _planettext = 'breath';
+                          break;
+                        case 3:
+                          _planettext = 'silence';
+                          break;
+                        default:
+                          break;
+                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPlanetDialog(context, _planettext),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[100],
+                      shape: const CircleBorder(),
+                    ),
+                    child: const CircleAvatar(
+                        minRadius: 13.0,
+                        maxRadius: 13.0,
+                        backgroundColor: Colors.red,
+                        backgroundImage:
+                            AssetImage('assets/planets/neptune.png')),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerNeptuneGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ]),
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignPlutoGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      switch (_currentrotationstate) {
+                        case 0:
+                          //_planettext = _plutohex.linename!;
+                          _planettext =
+                              '248 yeays of Breath PersonReality and Reality Truth';
+                          break;
+                        case 1:
+                          _planettext =
+                              '248 yeays of Breath PersonReality and Reality Truth';
+                          break;
+                        case 2:
+                          _planettext = 'breath';
+                          break;
+                        case 3:
+                          _planettext = 'silence';
+                          break;
+                        default:
+                          break;
+                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPlanetDialog(context, _planettext),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[100],
+                      shape: const CircleBorder(),
+                    ),
+                    child: const CircleAvatar(
+                        minRadius: 13.0,
+                        maxRadius: 13.0,
+                        backgroundColor: Colors.red,
+                        backgroundImage:
+                            AssetImage('assets/planets/pluto.png')),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                            const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerPlutoGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ]),
+            Stack(
+              fit: StackFit.loose,
+              children: [
+                CircleList(
+                  rotateMode: RotateMode.stopRotate,
+                  innerRadius: 50,
+                  initialAngle: 4.22,
+                  childrenPadding: 0.1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(13, (index) {
+                    return CircleAvatar(
+                      minRadius: 5,
+                      maxRadius: 13,
+                      foregroundImage: AssetImage(planetsfullList[index]),
+                    );
+                  }),
+                ),
+                CircleList(
+                  rotateMode: RotateMode.stopRotate,
+                  innerRadius: 100,
+                  initialAngle: 4.2,
+                  childrenPadding: 0.1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(13, (index) {
+                    return InkWell(
+                        child: Container(
+                          width: 45,
+                          margin: const EdgeInsets.all(1),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(width: 2, color: Colors.blue)),
+                          child: AutoSizeText(
+                              listpersonalitygates[index].toString(),
+                              //minFontSize: 8,
+                              //maxFontSize: 85,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => buildWalletPopUp(
+                                context, listpersonalitygates[index]),
+                          );
+                        });
+                  }),
+                ),
+              ],
+            ),
+            Stack(
+              fit: StackFit.loose,
+              children: [
+                CircleList(
+                  rotateMode: RotateMode.stopRotate,
+                  innerRadius: 50,
+                  initialAngle: 4.22,
+                  childrenPadding: 0.1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(13, (index) {
+                    return CircleAvatar(
+                      minRadius: 5,
+                      maxRadius: 13,
+                      foregroundImage: AssetImage(planetsfullList[index]),
+                    );
+                  }),
+                ),
+                CircleList(
+                  rotateMode: RotateMode.stopRotate,
+                  innerRadius: 1,
+                  initialAngle: 4.22,
+                  childrenPadding: 1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(13, (index) {
+                    return InkWell(
+                        child: Container(
+                          width: 40,
+                          margin: const EdgeInsets.all(1),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border:
+                                  Border.all(width: 2.0, color: Colors.red)),
+                          child: AutoSizeText(listdesigngates[index].toString(),
+                              //minFontSize: 8,
+                              //maxFontSize: 12,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => buildWalletPopUp(
+                                context, listdesigngates[index]),
+                          );
+                        });
+                  }),
+                ),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(mplantsneg[3]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
               ),
-              const Divider(
-                color: Colors.blue,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(mplantsneg[2]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
               ),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width / 2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(mplantsneg[3]),
-                    fit: BoxFit.scaleDown,
-                  ),
-                  shape: BoxShape.rectangle,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(mplantsneg[1]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(mplantsneg[0]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(mplantspos[3]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(mplantspos[2]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(mplantspos[1]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(mplantspos[0]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+            const SizedBox(
+              width: 50,
+              child: AutoSizeText(
+                'a',
+                maxLines: 1,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 40,
+                  fontFamily: 'iChing',
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width / 2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(mplantsneg[2]),
-                    fit: BoxFit.scaleDown,
-                  ),
-                  shape: BoxShape.rectangle,
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width / 2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(mplantsneg[1]),
-                    fit: BoxFit.scaleDown,
-                  ),
-                  shape: BoxShape.rectangle,
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width / 2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(mplantsneg[0]),
-                    fit: BoxFit.scaleDown,
-                  ),
-                  shape: BoxShape.rectangle,
-                ),
-              ),
-              const Divider(
-                color: Colors.blue,
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width / 2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(mplantspos[3]),
-                    fit: BoxFit.scaleDown,
-                  ),
-                  shape: BoxShape.rectangle,
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width / 2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(mplantspos[2]),
-                    fit: BoxFit.scaleDown,
-                  ),
-                  shape: BoxShape.rectangle,
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width / 2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(mplantspos[1]),
-                    fit: BoxFit.scaleDown,
-                  ),
-                  shape: BoxShape.rectangle,
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width / 2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(mplantspos[0]),
-                    fit: BoxFit.scaleDown,
-                  ),
-                  shape: BoxShape.rectangle,
-                ),
-              ),
-              const Divider(
-                color: Colors.blue,
-              ),
-              const SizedBox(
-                width: 50,
-                child: AutoSizeText(
-                  'a',
-                  maxLines: 1,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 40,
-                    fontFamily: 'iChing',
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -2904,7 +2979,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   textStyle: const TextStyle(
                       fontSize: 15, fontWeight: FontWeight.normal)),
               child: const Text(
-                'לקבוע זמן',
+                'שעה',
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -2941,7 +3016,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   backgroundColor: Colors.green,
                   textStyle: const TextStyle(
                       fontSize: 15, fontWeight: FontWeight.normal)),
-              child: const Text('לקבוע תאריך',
+              child: const Text('תאריך',
                   style: TextStyle(color: Colors.white)),
             ),
             const Divider(
@@ -3050,86 +3125,6 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.black,
               thickness: 5,
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                _now = DateTime.now();
-
-                _planetsnowList = await PlanetsServices.getCurrentData(_now);
-
-                //_designTime = await AstrologyServices.getDesignTime(_now);
-                //emulate design time to now time to prevent blank
-                _planetsdesignList = await PlanetsServices.getCurrentData(_now);
-
-                _channelsList =
-                    HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                _personchannelsList = [];
-                _designchannelsList = [];
-
-                //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                //_controlHDData(hdbasicdata);
-                _controlHDData(hdfinaldata);
-
-                _centers = HDServices.getHDDefinedCenters(_channelsList);
-                //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                //_selfreminderSentence = HDServices.getSelfReminder();
-                _selfreminder = _timeselfreminder;
-
-                _setDateTime(_now);
-
-                _planetsList = _planetsnowList;
-                _planethex = _planetsList[0];
-
-                _setCoins();
-
-                _controllerlinetext.text = _planethex.line!.toString();
-                _controllergatelinestory.text = idonotknowlinesList[
-                    (idonotknowlinesList.indexOf(_planethex.gate!) +
-                        _planethex.line!)];
-
-                switch (_previousPlanetIndex) {
-                  case -1:
-                    _previousPlanetIndex = 0;
-                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                    break;
-                  default:
-                    _isPlanetSelectedList[_previousPlanetIndex] =
-                        !_isPlanetSelectedList[_previousPlanetIndex];
-                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                    _previousPlanetIndex = 0;
-                }
-
-                switch (_currentconstate) {
-                  case 0:
-                    _controllerconstate.jumpToPage(1);
-                    _controllerconstate.jumpToPage(0);
-                    _controllerrotationstate.jumpToPage(0);
-                    break;
-                  case 1:
-                    _controllerconstate.jumpToPage(0);
-                    break;
-                  default:
-                    _controllerconstate.jumpToPage(0);
-                    break;
-                }
-
-                setState(() {
-                  Navigator.of(context).pop();
-                });
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  textStyle: const TextStyle(
-                      fontSize: 17, fontWeight: FontWeight.normal)),
-              child: const Text('להשיג זמן כעת',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal)),
             ),
           ],
         ),
@@ -3794,7 +3789,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildGatesDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text('Wallets'),
+      title: const Text('ארנקים'),
       content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: ListView.builder(
@@ -3817,7 +3812,7 @@ class _RotateComplexState extends State<RotateComplex> {
                           fontWeight: FontWeight.bold, fontSize: 14),
                     ),
                     Text(
-                      idkHexList[_planetsList[index].gate!],
+                      idkNewHebrewList[_planetsList[index].gate!],
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 14),
@@ -3840,7 +3835,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildLinesDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text('Coins'),
+      title: const Text('מטבעות'),
       content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: ListView.builder(

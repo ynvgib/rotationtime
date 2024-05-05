@@ -897,9 +897,7 @@ final List<String> orderHexagramsWheelORIGINAL = [
   '32', '50', '28', '44',
 ];
 
-final List<int> hexCarouselAlignList = [
-  1,
-];
+
 final List<String> hexagramNames = [
   //qurater mutation complex
   'ZERO', 'The Creative', 'The Responsive', 'Mutative', 'Logic',
@@ -2950,8 +2948,15 @@ final List<String> basicPlantsList = [
   'assets/plants/rotom.png',
 ];
 
+final List<String> PlantsRoutes = [
+  '/rotatecomplex',
+  '/rotatesimple',
+  '/rotatebreath',
+  '/rotatesilence',
+];
+
 final List<String> titlesicon = [
-  'assets/rotateicon.png',
+  'assets/fullcoins.png',
   'assets/silencedown.png',
   'assets/breathout.png',
   'assets/simplein.png',
@@ -2984,14 +2989,6 @@ final List<String> mplantsneg = [
   'assets/plants/rotban.png',
   'assets/plants/rotav.png',
   'assets/plants/rotegi.png',
-];
-
-final List<String> mplants_old = [
-  'assets/plants/mrcamog.png',
-  'assets/plants/msredtom.png',
-  'assets/plants/msyelban.png',
-  'assets/plants/mrgreavo.png',
-  'assets/plants/mrbluep.png',
 ];
 
 final List<double> titlesangle = [
@@ -3109,13 +3106,6 @@ final List<String> hexNamesList = [
   'פשוט',
   'נשימה',
   'שתיקה',
-];
-
-final List<String> hexNamesList_old = [
-  'COMPLEX',
-  'Simple',
-  'Breath',
-  'silence',
 ];
 
 final List<String> hexNamesEngList = [

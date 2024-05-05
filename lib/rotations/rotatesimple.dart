@@ -997,9 +997,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                   height: 500,
                   child: Stack(
                     children: [
-
-                      //channels
-
                       //64 47
                       Positioned(
                         top: 10,

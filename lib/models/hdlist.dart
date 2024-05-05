@@ -74,6 +74,7 @@ final List<String> hdchannelRotationList = [
   '21.45',
   'COMPLEX Money',
 ];
+
 final List<String> hdchannelsilenceList = [
   '6.59',
   'silence of Mating',
@@ -1820,7 +1821,6 @@ final List rotationtimenewwallet_heb = [
 final List rtwalletq_heb = [
   0, 'נטול שער',
   'נטול תאור',
-
   13, 'המאזין',
   'זה חשב להאזין.',
   49, 'עקרונות',

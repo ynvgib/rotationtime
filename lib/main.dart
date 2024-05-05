@@ -70,7 +70,6 @@ class RotateMain extends StatelessWidget {
 class RotateHome extends StatelessWidget {
   RotateHome({Key? key}) : super(key: key);
 
-
   //final String _title = maintitle
   final String _title = 'זמן סיבוב בים',
       beidontknowsite = 'rotation-time.web.app',
@@ -90,7 +89,7 @@ class RotateHome extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             //mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(height: 10),
+              const SizedBox(height: 30),
               const Divider(
                 color: Colors.white,
                 thickness: 5,
@@ -238,32 +237,39 @@ class RotateHome extends StatelessWidget {
                 direction: Axis.horizontal,
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width / 4,
+                    width: MediaQuery.of(context).size.width / 6,
                     height: MediaQuery.of(context).size.height / 10,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(hexList[0]),)),
+                          image: AssetImage(titlesicon[0]),)),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width / 4,
+                    width: MediaQuery.of(context).size.width / 6,
                     height: MediaQuery.of(context).size.height / 10,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(hexList[1]),)),
+                          image: AssetImage(titlesicon[1]),)),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width / 4,
+                    width: MediaQuery.of(context).size.width / 6,
                     height: MediaQuery.of(context).size.height / 10,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(hexList[2]),)),
+                          image: AssetImage(titlesicon[2]),)),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width / 4,
+                    width: MediaQuery.of(context).size.width / 6,
                     height: MediaQuery.of(context).size.height / 10,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(hexList[3]),)),
+                          image: AssetImage(titlesicon[3]),)),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(titlesicon[4]),)),
                   ),
                 ],
               ),
@@ -278,7 +284,7 @@ class RotateHome extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, subroutes[0]);
                   },
-                  child: Text('HD',
+                  child: Text('הגדרה גבוהה של עיצוב אנושי',
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           color: Colors.black,
