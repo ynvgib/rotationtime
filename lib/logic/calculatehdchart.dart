@@ -363,7 +363,7 @@ class HDServices {
         strategy = hdstrategyList[6];
       //} else if (authority == 'ego') {
       } else if (authority == hdauthority[3]) {
-        print(authority);
+        //print(authority);
         //strategy = 'recognize invitation to prove yourself';
         strategy = hdstrategyList[7];
         authority = hdauthority[4];

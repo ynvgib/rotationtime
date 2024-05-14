@@ -6,6 +6,7 @@ import 'package:finallyicanlearn/logic/calculatehdchart.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
+import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/services/fetchplanets.dart';
@@ -24,6 +25,24 @@ class RotateComplex extends StatefulWidget {
 }
 
 class _RotateComplexState extends State<RotateComplex> {
+  // human design
+  Color headcolor = Colors.yellow, ajnacolor = Colors.green;
+  bool headstate = true,
+      ajnastate = true,
+      throatstate = true,
+      gstate = true,
+      sacralstate = true,
+      rootstate = true,
+      heartstate = true,
+      spleenstate = true,
+      solarstate = true;
+  // gate state
+  // 0-undefined, 1-personality, 2-design, 3-both, 4 - transit
+
+  List<int> gatestatelist = List.filled(65, 0, growable: false);
+
+  /// end hd
+
   List<String> _centers = [], language = ['English', 'Hebrew'];
 
   List<int> listdesigngates = List.generate(13, (index) => index++),
@@ -42,6 +61,7 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllerSentence = TextEditingController(),
       _controllerFinalLine = TextEditingController(),
       _controllerTime = TextEditingController(),
+      _controllerSetTime = TextEditingController(),
       _controllerPersonTime = TextEditingController(),
       _controllerDesignTime = TextEditingController(),
       _controllerTimePick = TextEditingController(),
@@ -129,7 +149,8 @@ class _RotateComplexState extends State<RotateComplex> {
       _formatsaturnreturnDate = '',
       _formatsaturnreturnTime = '',
       _formatsUranusOppDate = '',
-      _formatsUranusOppTime = '';
+      _formatsUranusOppTime = '',
+      _settimestamp = 'דקות';
 
   DateTime _now = DateTime.now(),
       _newnow = DateTime.now(),
@@ -159,7 +180,10 @@ class _RotateComplexState extends State<RotateComplex> {
       _hexagramVal = 0,
       _carouselvalueindex = 0,
       _previousPlanetIndex = -1,
-      _currentline = 1;
+      _currentline = 1,
+      _newts = 1;
+
+  bool _setupdown = true;
 
   Hexagram _sunhex = Hexagram(),
       _earthhex = Hexagram(),
@@ -294,7 +318,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) =>
-                            _buildTimePopupDialog(context),
+                            buildTimePopupDialog(context),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -302,21 +326,26 @@ class _RotateComplexState extends State<RotateComplex> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
                     child: const Text(
-                      'הזמן בים-יוחד',
+                      'תכנית בים-יוחד',
                       style: TextStyle(
-                        fontSize: 15,
-                          fontWeight: FontWeight.bold, color: Colors.white),
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     )),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 ElevatedButton(
                   onPressed: () async {
                     _now = DateTime.now();
 
-                    _planetsnowList = await PlanetsServices.getCurrentData(_now);
+                    _planetsnowList =
+                        await PlanetsServices.getCurrentData(_now);
 
                     //_designTime = await AstrologyServices.getDesignTime(_now);
                     //emulate design time to now time to prevent blank
-                    _planetsdesignList = await PlanetsServices.getCurrentData(_now);
+                    _planetsdesignList =
+                        await PlanetsServices.getCurrentData(_now);
 
                     _channelsList =
                         HDServices.getHDChannelsJustNow(_planetsnowList);
@@ -331,6 +360,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     _controlHDData(hdfinaldata);
 
                     _centers = HDServices.getHDDefinedCenters(_channelsList);
+
                     //_fearSentence = HDServices.getHDDefinedFears(_centers);
                     //_selfreminderSentence = HDServices.getSelfReminder();
                     _selfreminder = _timeselfreminder;
@@ -344,8 +374,8 @@ class _RotateComplexState extends State<RotateComplex> {
 
                     _controllerlinetext.text = _planethex.line!.toString();
                     _controllergatelinestory.text = idonotknowlinesList[
-                    (idonotknowlinesList.indexOf(_planethex.gate!) +
-                        _planethex.line!)];
+                        (idonotknowlinesList.indexOf(_planethex.gate!) +
+                            _planethex.line!)];
 
                     switch (_previousPlanetIndex) {
                       case -1:
@@ -354,7 +384,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         break;
                       default:
                         _isPlanetSelectedList[_previousPlanetIndex] =
-                        !_isPlanetSelectedList[_previousPlanetIndex];
+                            !_isPlanetSelectedList[_previousPlanetIndex];
                         _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
                         _previousPlanetIndex = 0;
                     }
@@ -373,6 +403,9 @@ class _RotateComplexState extends State<RotateComplex> {
                         break;
                     }
 
+                    //new hd chart
+                    _setChart(_centers);
+
                     //setState(() {
                     //  Navigator.of(context).pop();
                     //});
@@ -381,7 +414,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       backgroundColor: Colors.purple,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
-                  child: const Text('הזמן כעט',
+                  child: const Text('תכנית כעט',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
@@ -496,6 +529,852 @@ class _RotateComplexState extends State<RotateComplex> {
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 )),
+            const Divider(
+              color: Colors.blue,
+              thickness: 5,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: CircleAvatar(
+                    //minRadius: 5,
+                      maxRadius: 15,
+                      foregroundImage: AssetImage(rtimageBolList[1])),
+                  tooltip: 'הורדה',
+                  onPressed: () {
+                    _setupdown = false;
+                    controlSetTime (_setupdown);
+                  },
+                ),
+                const SizedBox(width: 5),
+                IconButton(
+                  icon: CircleAvatar(
+                    //minRadius: 5,
+                      maxRadius: 15,
+                      foregroundImage: AssetImage(rtimageBolList[0])),
+                  tooltip: 'העלאה',
+                    onPressed: () {
+                      _setupdown = true;
+                      controlSetTime (_setupdown);
+                    },
+                ),
+                const SizedBox(width: 5),
+                DropdownButton(
+                  underline: DropdownButtonHideUnderline(child: Container()),
+                  value: _settimestamp,
+                  icon: const Icon(Icons.keyboard_arrow_down,
+                      color: Colors.black),
+                  items: timecoinsDropDownLst,
+                  onChanged: (String? _newsettimestamp) {
+                    setState(() {
+                      _settimestamp = _newsettimestamp!;
+                    });
+                  },
+                ),
+                const SizedBox(width: 10),
+                SizedBox(
+                  height: 15,
+                  width: 70,
+                  child: TextField(
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      ],
+                      readOnly: false,
+                      decoration:
+                      const InputDecoration.collapsed(hintText: '1'),
+                      controller: _controllerSetTime,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.black)),
+                ),
+              ],
+            ),
+            // human design
+            // head
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: 600,
+              color: Colors.black12,
+              child: Flex(
+                direction: Axis.vertical,
+                children: [
+                  SizedBox(height: 10),
+                  SizedBox(
+                    height: 70,
+                    width: 80,
+                    child: Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                HeadPainter(centerstate: headstate),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 80,
+                              width: 80,
+                            ),
+                          ),
+                        ),
+                        Center(
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                //image: AssetImage(mplantsfull[6],
+                                  image: AssetImage('assets/camel.png',
+                                  //image: AssetImage('assets/camog/mcamel.png',
+                                  )),),
+                          ),
+                        ),
+                        const Align(
+                          alignment: Alignment.bottomCenter,
+                          child: SizedBox(
+                            width: 50,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(
+                                  '64',
+                                  style: TextStyle(fontSize: 10),
+                                ),
+                                Text(
+                                  '61',
+                                  style: TextStyle(fontSize: 10),
+                                ),
+                                Text(
+                                  '63',
+                                  style: TextStyle(fontSize: 10),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // head gates
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 17,
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[64]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[61]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[63]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                    ],
+                  ),
+                  //ajna gates
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(width: 17),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[47]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[24]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[4]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // ajna
+                  SizedBox(
+                    height: 70,
+                    child: Stack(
+                      children: [
+                        //ajna gates
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(width: 17),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[17]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 70,
+                                width: 50 / 3,
+                              ),
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[43]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 70,
+                                width: 50 / 3,
+                              ),
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[11]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 70,
+                                width: 50 / 3,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                AjnaPainter(centerstate: ajnastate),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 70,
+                              width: 80,
+                            ),
+                          ),
+                        ),
+                        Center(
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  //image: AssetImage(mplantsfull[6],
+                                  image: AssetImage('assets/dog.png',
+                                  )),),
+                          ),
+                        ),
+                        Center(
+                          child: SizedBox(
+                            width: 50,
+                            child: const Align(
+                              alignment: Alignment.topCenter,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    '47',
+                                    style: TextStyle(fontSize: 10),
+                                  ),
+                                  Text(
+                                    '24',
+                                    style: TextStyle(fontSize: 10),
+                                  ),
+                                  Text(
+                                    '4',
+                                    style: TextStyle(fontSize: 10),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Container(
+                              width: 90,
+                            margin: EdgeInsets.all(15),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    '17',
+                                    style: TextStyle(fontSize: 10),
+                                  ),
+                                  Text(
+                                    '11',
+                                    style: TextStyle(fontSize: 10),
+                                  )
+                                ],
+                              ),
+                            ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            width: 90,
+                            margin: EdgeInsets.fromLTRB(80, 0, 0, 10),
+                            child:  Text(
+                              '43',
+                              style: TextStyle(fontSize: 10),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  //throat gates
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(width: 17),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[62]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 15,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[23]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 15,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[56]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 15,
+                          width: 50 / 3,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // throat
+                  Stack(
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional.center,
+                        child: CustomPaint(
+                          foregroundPainter: ThroatPainter(centerstate: throatstate),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 70,
+                            width: 70,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          margin: EdgeInsets.fromLTRB(0,10,0,0),
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(mplantsfull[6],
+                                )),),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: SizedBox(
+                          width: 50,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                '62',
+                                style: TextStyle(fontSize: 10),
+                              ),
+                              Text(
+                                '23',
+                                style: TextStyle(fontSize: 10),
+                              ),
+                              Text(
+                                '56',
+                                style: TextStyle(fontSize: 10),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          width: 45,
+                          margin: EdgeInsets.fromLTRB(0, 55, 0, 0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '31',
+                                style: TextStyle(fontSize: 10),
+                              ),
+                              Text(
+                                '8',
+                                style: TextStyle(fontSize: 10),
+                              ),
+                              Text(
+                                '33',
+                                style: TextStyle(fontSize: 10),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  // throat gates
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(width: 17),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[31]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 20,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[8]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 20,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[33]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 20,
+                          width: 50 / 3,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // g gates
+
+                  // g center
+                  SizedBox(
+                    height: 100,
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(top: 50.0, left: 120.0),
+                            child: CustomPaint(
+                              foregroundPainter:
+                                  HeartPainter(centerstate: heartstate),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 30,
+                                width: 50,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned.fill(
+                              child: Container(
+                                margin: EdgeInsets.only(top: 50.0, left: 120.0),
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(mplantsfull[7],
+                                      )),),
+                              ),
+                            ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(width: 17),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[7]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 40,
+                                width: 50 / 3,
+                              ),
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[1]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 40,
+                                width: 50 / 3,
+                              ),
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[13]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 40,
+                                width: 50 / 3,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const SizedBox(width: 17),
+                              CustomPaint(
+                                foregroundPainter: VerticalGatePainter(
+                                    gatestate: gatestatelist[15]),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 100,
+                                  width: 50 / 3,
+                                ),
+                              ),
+                              CustomPaint(
+                                foregroundPainter: VerticalGatePainter(
+                                    gatestate: gatestatelist[2]),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 100,
+                                  width: 50 / 3,
+                                ),
+                              ),
+                              CustomPaint(
+                                foregroundPainter: VerticalGatePainter(
+                                    gatestate: gatestatelist[46]),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 100,
+                                  width: 50 / 3,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: CustomPaint(
+                            foregroundPainter: GPainter(centerstate: gstate),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 70,
+                              width: 70,
+                            ),
+                          ),
+                        ),
+                        Center(
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(mplantsfull[5],
+                                  )),),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  // g to sacral gates
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(width: 17),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[5]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 20,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[14]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 20,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[29]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 20,
+                          width: 50 / 3,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Stack(
+                        children: [
+                          // spleen to sacral gates
+                          Positioned(
+                            top: 20,
+                            left: 30.0,
+                            child: CustomPaint(
+                              foregroundPainter: HorizontalGatePainter(
+                                  gatestate: gatestatelist[50]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 20,
+                              ),
+                            ),
+                          ),
+                          //spleen
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: CustomPaint(
+                              foregroundPainter:
+                                  SpleenPainter(centerstate: spleenstate),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 50,
+                                width: 50,
+                              ),
+                            ),
+                          ),
+                          Positioned.fill(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(mplantsfull[1],
+                                    )),),
+                            ),
+                          ),
+                        ],
+                      ),
+                      // spleen to sacral gates
+                      CustomPaint(
+                        foregroundPainter:
+                            HorizontalGatePainter(gatestate: gatestatelist[27]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 40,
+                        ),
+                      ),
+                      // sacral
+                      Stack(
+                        children: [
+                          CustomPaint(
+                            foregroundPainter:
+                                SacralPainter(centerstate: sacralstate),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 50,
+                              width: 50,
+                            ),
+                          ),
+                          Positioned.fill(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(mplantsfull[0],
+                                    ))),
+                            ),
+                          ),
+                        ],
+                      ),
+                      // solar to sacral gates
+                      CustomPaint(
+                        foregroundPainter:
+                            HorizontalGatePainter(gatestate: gatestatelist[59]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 40,
+                        ),
+                      ),
+
+                      // solar
+                      Stack(
+                        children: [
+                          // solar to sacral gates
+                          Positioned(
+                            top: 20,
+                            right: 30.0,
+                            child: CustomPaint(
+                              foregroundPainter: HorizontalGatePainter(
+                                  gatestate: gatestatelist[6]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 20,
+                              ),
+                            ),
+                          ),
+                          //
+                          // solar
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: CustomPaint(
+                              foregroundPainter:
+                                  SolarPainter(centerstate: solarstate),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 50,
+                                width: 50,
+                              ),
+                            ),
+                          ),
+                          Positioned.fill(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(mplantsfull[7],
+                                    )),),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  // sacral to root gates
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(width: 17),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[42]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[3]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[9]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(width: 17),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[53]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[60]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                      CustomPaint(
+                        foregroundPainter:
+                            VerticalGatePainter(gatestate: gatestatelist[52]),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 10,
+                          width: 50 / 3,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // root
+                  Stack(
+                    children: [
+                      CustomPaint(
+                        foregroundPainter: RootPainter(centerstate: rootstate),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 50,
+                          width: 50,
+                        ),
+                      ),
+                      Positioned.fill(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(mplantsfull[6],
+                                )),),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            // end human design
             const Divider(
               color: Colors.blue,
               thickness: 5,
@@ -910,8 +1789,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
                         //_controllertopfirsttext.text = _hexsentence.adjective!;
 
-                        _controllercoinsttext.text =
-                            rtbimBoxList[_chosenhex];
+                        _controllercoinsttext.text = rtbimBoxList[_chosenhex];
                         //_controllertopsecondtext.text = _hexsentence.subject!;
                         //_controllertopthirdtext.text = _hexsentence.verb!;
                         //_controllertopfourthtext.text = _hexsentence.adverb!;
@@ -958,8 +1836,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
                         //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
 
-                        _controllercoinsttext.text =
-                            rtbimBoxList[_chosenhex];
+                        _controllercoinsttext.text = rtbimBoxList[_chosenhex];
 
                         //_controllertopfirsttext.text = _hexsentence.adjective!;
                         //_controllertopsecondtext.text = _hexsentence.subject!;
@@ -1011,8 +1888,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
                         //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
 
-                        _controllercoinsttext.text =
-                            rtbimBoxList[_chosenhex];
+                        _controllercoinsttext.text = rtbimBoxList[_chosenhex];
                         //_controllertopfirsttext.text = _hexsentence.adjective!;
                         //_controllertopsecondtext.text = _hexsentence.subject!;
                         //_controllertopthirdtext.text = _hexsentence.verb!;
@@ -1184,511 +2060,8 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    //_now = DateTime.now();
-                    //_now = _newnow;
-                    //if (now !=)
-                    _now = _now.add(const Duration(hours: 1));
-
-                    _planetsnowList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    //_designTime = await AstrologyServices.getDesignTime(_now);
-                    //emulate design time to now time to prevent blank
-                    _planetsdesignList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    _channelsList =
-                        HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                    _personchannelsList = [];
-                    _designchannelsList = [];
-
-                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                    //_controlHDData(hdbasicdata);
-                    _controlHDData(hdfinaldata);
-
-                    _centers = HDServices.getHDDefinedCenters(_channelsList);
-                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                    //_selfreminderSentence = HDServices.getSelfReminder();
-                    _selfreminder = _timeselfreminder;
-
-                    _setDateTime(_now);
-
-                    _planetsList = _planetsnowList;
-                    _planethex = _planetsList[0];
-
-                    _setCoins();
-
-                    _controllerlinetext.text = _planethex.line!.toString();
-                    _controllergatelinestory.text = idonotknowlinesList[
-                        (idonotknowlinesList.indexOf(_planethex.gate!) +
-                            _planethex.line!)];
-
-                    switch (_previousPlanetIndex) {
-                      case -1:
-                        _previousPlanetIndex = 0;
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        break;
-                      default:
-                        _isPlanetSelectedList[_previousPlanetIndex] =
-                            !_isPlanetSelectedList[_previousPlanetIndex];
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        _previousPlanetIndex = 0;
-                    }
-
-                    switch (_currentconstate) {
-                      case 0:
-                        _controllerconstate.jumpToPage(1);
-                        _controllerconstate.jumpToPage(0);
-                        _controllerrotationstate.jumpToPage(0);
-                        break;
-                      case 1:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                      default:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      textStyle: const TextStyle(
-                          fontSize: 17, fontWeight: FontWeight.normal)),
-                  child: const Text('+1',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal)),
-                ),
-                const SizedBox(width: 5),
-                ElevatedButton(
-                  onPressed: () async {
-                    //_now = DateTime.now();
-                    //_now = _newnow;
-                    //if (now !=)
-                    _now = _now.add(const Duration(hours: 10));
-
-                    _planetsnowList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    //_designTime = await AstrologyServices.getDesignTime(_now);
-                    //emulate design time to now time to prevent blank
-                    _planetsdesignList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    _channelsList =
-                        HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                    _personchannelsList = [];
-                    _designchannelsList = [];
-
-                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                    //_controlHDData(hdbasicdata);
-                    _controlHDData(hdfinaldata);
-
-                    _centers = HDServices.getHDDefinedCenters(_channelsList);
-                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                    //_selfreminderSentence = HDServices.getSelfReminder();
-                    _selfreminder = _timeselfreminder;
-
-                    _setDateTime(_now);
-
-                    _planetsList = _planetsnowList;
-                    _planethex = _planetsList[0];
-
-                    _setCoins();
-
-                    _controllerlinetext.text = _planethex.line!.toString();
-                    _controllergatelinestory.text = idonotknowlinesList[
-                        (idonotknowlinesList.indexOf(_planethex.gate!) +
-                            _planethex.line!)];
-
-                    switch (_previousPlanetIndex) {
-                      case -1:
-                        _previousPlanetIndex = 0;
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        break;
-                      default:
-                        _isPlanetSelectedList[_previousPlanetIndex] =
-                            !_isPlanetSelectedList[_previousPlanetIndex];
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        _previousPlanetIndex = 0;
-                    }
-
-                    switch (_currentconstate) {
-                      case 0:
-                        _controllerconstate.jumpToPage(1);
-                        _controllerconstate.jumpToPage(0);
-                        _controllerrotationstate.jumpToPage(0);
-                        break;
-                      case 1:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                      default:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      textStyle: const TextStyle(
-                          fontSize: 17, fontWeight: FontWeight.normal)),
-                  child: const Text('+10',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal)),
-                ),
-                const SizedBox(width: 5),
-                ElevatedButton(
-                  onPressed: () async {
-                    //_now = DateTime.now();
-                    //_now = _newnow;
-                    //if (now !=)
-                    _now = _now.add(const Duration(hours: 24));
-
-                    _planetsnowList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    //_designTime = await AstrologyServices.getDesignTime(_now);
-                    //emulate design time to now time to prevent blank
-                    _planetsdesignList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    _channelsList =
-                        HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                    _personchannelsList = [];
-                    _designchannelsList = [];
-
-                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                    //_controlHDData(hdbasicdata);
-                    _controlHDData(hdfinaldata);
-
-                    _centers = HDServices.getHDDefinedCenters(_channelsList);
-                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                    //_selfreminderSentence = HDServices.getSelfReminder();
-                    _selfreminder = _timeselfreminder;
-
-                    _setDateTime(_now);
-
-                    _planetsList = _planetsnowList;
-                    _planethex = _planetsList[0];
-
-                    _setCoins();
-
-                    _controllerlinetext.text = _planethex.line!.toString();
-                    _controllergatelinestory.text = idonotknowlinesList[
-                        (idonotknowlinesList.indexOf(_planethex.gate!) +
-                            _planethex.line!)];
-
-                    switch (_previousPlanetIndex) {
-                      case -1:
-                        _previousPlanetIndex = 0;
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        break;
-                      default:
-                        _isPlanetSelectedList[_previousPlanetIndex] =
-                            !_isPlanetSelectedList[_previousPlanetIndex];
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        _previousPlanetIndex = 0;
-                    }
-
-                    switch (_currentconstate) {
-                      case 0:
-                        _controllerconstate.jumpToPage(1);
-                        _controllerconstate.jumpToPage(0);
-                        _controllerrotationstate.jumpToPage(0);
-                        break;
-                      case 1:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                      default:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      textStyle: const TextStyle(
-                          fontSize: 17, fontWeight: FontWeight.normal)),
-                  child: const Text('+24',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal)),
-                ),
-              ],
-            ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    //_now = DateTime.now();
-                    //_now = _newnow;
-                    //if (now !=)
-                    _now = _now.subtract(const Duration(hours: 1));
-
-                    _planetsnowList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    //_designTime = await AstrologyServices.getDesignTime(_now);
-                    //emulate design time to now time to prevent blank
-                    _planetsdesignList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    _channelsList =
-                        HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                    _personchannelsList = [];
-                    _designchannelsList = [];
-
-                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                    //_controlHDData(hdbasicdata);
-                    _controlHDData(hdfinaldata);
-
-                    _centers = HDServices.getHDDefinedCenters(_channelsList);
-                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                    //_selfreminderSentence = HDServices.getSelfReminder();
-                    _selfreminder = _timeselfreminder;
-
-                    _setDateTime(_now);
-
-                    _planetsList = _planetsnowList;
-                    _planethex = _planetsList[0];
-
-                    _setCoins();
-
-                    _controllerlinetext.text = _planethex.line!.toString();
-                    _controllergatelinestory.text = idonotknowlinesList[
-                        (idonotknowlinesList.indexOf(_planethex.gate!) +
-                            _planethex.line!)];
-
-                    switch (_previousPlanetIndex) {
-                      case -1:
-                        _previousPlanetIndex = 0;
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        break;
-                      default:
-                        _isPlanetSelectedList[_previousPlanetIndex] =
-                            !_isPlanetSelectedList[_previousPlanetIndex];
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        _previousPlanetIndex = 0;
-                    }
-
-                    switch (_currentconstate) {
-                      case 0:
-                        _controllerconstate.jumpToPage(1);
-                        _controllerconstate.jumpToPage(0);
-                        _controllerrotationstate.jumpToPage(0);
-                        break;
-                      case 1:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                      default:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      textStyle: const TextStyle(
-                          fontSize: 17, fontWeight: FontWeight.normal)),
-                  child: const Text('-1',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal)),
-                ),
-                const SizedBox(width: 5),
-                ElevatedButton(
-                  onPressed: () async {
-                    //_now = DateTime.now();
-                    //_now = _newnow;
-                    //if (now !=)
-                    _now = _now.subtract(const Duration(hours: 10));
-
-                    _planetsnowList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    //_designTime = await AstrologyServices.getDesignTime(_now);
-                    //emulate design time to now time to prevent blank
-                    _planetsdesignList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    _channelsList =
-                        HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                    _personchannelsList = [];
-                    _designchannelsList = [];
-
-                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                    //_controlHDData(hdbasicdata);
-                    _controlHDData(hdfinaldata);
-
-                    _centers = HDServices.getHDDefinedCenters(_channelsList);
-                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                    //_selfreminderSentence = HDServices.getSelfReminder();
-                    _selfreminder = _timeselfreminder;
-
-                    _setDateTime(_now);
-
-                    _planetsList = _planetsnowList;
-                    _planethex = _planetsList[0];
-
-                    _setCoins();
-
-                    _controllerlinetext.text = _planethex.line!.toString();
-                    _controllergatelinestory.text = idonotknowlinesList[
-                        (idonotknowlinesList.indexOf(_planethex.gate!) +
-                            _planethex.line!)];
-
-                    switch (_previousPlanetIndex) {
-                      case -1:
-                        _previousPlanetIndex = 0;
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        break;
-                      default:
-                        _isPlanetSelectedList[_previousPlanetIndex] =
-                            !_isPlanetSelectedList[_previousPlanetIndex];
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        _previousPlanetIndex = 0;
-                    }
-
-                    switch (_currentconstate) {
-                      case 0:
-                        _controllerconstate.jumpToPage(1);
-                        _controllerconstate.jumpToPage(0);
-                        _controllerrotationstate.jumpToPage(0);
-                        break;
-                      case 1:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                      default:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      textStyle: const TextStyle(
-                          fontSize: 17, fontWeight: FontWeight.normal)),
-                  child: const Text('-10',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal)),
-                ),
-                const SizedBox(width: 5),
-                ElevatedButton(
-                  onPressed: () async {
-                    //_now = DateTime.now();
-                    //_now = _newnow;
-                    //if (now !=)
-                    _now = _now.subtract(const Duration(hours: 24));
-
-                    _planetsnowList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    //_designTime = await AstrologyServices.getDesignTime(_now);
-                    //emulate design time to now time to prevent blank
-                    _planetsdesignList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    _channelsList =
-                        HDServices.getHDChannelsJustNow(_planetsnowList);
-
-                    _personchannelsList = [];
-                    _designchannelsList = [];
-
-                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
-                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                    //_controlHDData(hdbasicdata);
-                    _controlHDData(hdfinaldata);
-
-                    _centers = HDServices.getHDDefinedCenters(_channelsList);
-                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                    //_selfreminderSentence = HDServices.getSelfReminder();
-                    _selfreminder = _timeselfreminder;
-
-                    _setDateTime(_now);
-
-                    _planetsList = _planetsnowList;
-                    _planethex = _planetsList[0];
-
-                    _setCoins();
-
-                    _controllerlinetext.text = _planethex.line!.toString();
-                    _controllergatelinestory.text = idonotknowlinesList[
-                        (idonotknowlinesList.indexOf(_planethex.gate!) +
-                            _planethex.line!)];
-
-                    switch (_previousPlanetIndex) {
-                      case -1:
-                        _previousPlanetIndex = 0;
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        break;
-                      default:
-                        _isPlanetSelectedList[_previousPlanetIndex] =
-                            !_isPlanetSelectedList[_previousPlanetIndex];
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        _previousPlanetIndex = 0;
-                    }
-
-                    switch (_currentconstate) {
-                      case 0:
-                        _controllerconstate.jumpToPage(1);
-                        _controllerconstate.jumpToPage(0);
-                        _controllerrotationstate.jumpToPage(0);
-                        break;
-                      case 1:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                      default:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      textStyle: const TextStyle(
-                          fontSize: 17, fontWeight: FontWeight.normal)),
-                  child: const Text('-24',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal)),
-                ),
-              ],
-            ),
-            SizedBox(height: 10),
             SizedBox(
-              height: 30,
+              height: 15,
               child: TextField(
                   textAlign: TextAlign.center,
                   readOnly: true,
@@ -1697,87 +2070,70 @@ class _RotateComplexState extends State<RotateComplex> {
                   controller: _controllerTime,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: 15,
                       color: Colors.black)),
-            ),
-            const Divider(
-              color: Colors.blue,
             ),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 30,
-                  width: 30,
-                  child: CarouselSlider(
-                    items: mixHexagramSlidersNew,
-                    carouselController: _controllerrotationstate,
-                    options: CarouselOptions(
-                        scrollDirection: Axis.horizontal,
-                        autoPlay: false,
-                        enlargeCenterPage: true,
-                        aspectRatio: 1.3,
-                        onPageChanged: (indexcrotstate, reason) {
-                          setState(() {
-                            _currentrotationstate = indexcrotstate;
-
-                            switch (_currentrotationstate) {
-                              case 0:
-                                _textlevel = 'complex';
-                                _changeTextLevels(_textlevel);
-                                break;
-                              case 1:
-                                _textlevel = 'simple';
-                                _changeTextLevels(_textlevel);
-                                break;
-                              case 2:
-                                _textlevel = 'breath';
-                                _changeTextLevels(_textlevel);
-                                break;
-                              case 3:
-                                _textlevel = 'silence';
-                                _changeTextLevels(_textlevel);
-                                break;
-                              default:
-                                _textlevel = 'complex';
-                                _changeTextLevels(_textlevel);
-                                break;
-                            }
-                          });
-                        }),
-                  ),
+                IconButton(
+                  icon: CircleAvatar(
+                      //minRadius: 5,
+                      maxRadius: 15,
+                      foregroundImage: AssetImage(rtimageBolList[1])),
+                  tooltip: 'הורדה',
+                  onPressed: ()  {
+                    _setupdown = false;
+                  controlSetTime (_setupdown);},
                 ),
                 const SizedBox(width: 5),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 3,
-                  child: AutoSizeTextField(
-                      fullwidth: false,
-                      readOnly: true,
-                      textAlign: TextAlign.right,
-                      decoration:
-                          //const InputDecoration.collapsed(hintText: 'Sentence'),
-                          const InputDecoration.collapsed(hintText: 'משפטי'),
-                      controller: _controllerPlanetSubType,
-                      style:
-                          const TextStyle(fontSize: 12, color: Colors.black)),
+                IconButton(
+                  icon: CircleAvatar(
+                      //minRadius: 5,
+                      maxRadius: 15,
+                      foregroundImage: AssetImage(rtimageBolList[0])),
+                  tooltip: 'העלאה',
+                  onPressed: () {
+                    _setupdown = true;
+                    controlSetTime (_setupdown);
+                  },
                 ),
                 const SizedBox(width: 5),
+                DropdownButton(
+                  underline: DropdownButtonHideUnderline(child: Container()),
+                  value: _settimestamp,
+                  icon: const Icon(Icons.keyboard_arrow_down,
+                      color: Colors.black),
+                  items: timecoinsDropDownLst,
+                  onChanged: (String? _newsettimestamp) {
+                    setState(() {
+                      _settimestamp = _newsettimestamp!;
+                    });
+                  },
+                ),
+                const SizedBox(width: 10),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width / 3,
-                  child: AutoSizeTextField(
-                      fullwidth: false,
-                      textAlign: TextAlign.left,
-                      readOnly: true,
+                  height: 15,
+                  width: 70,
+                  child: TextField(
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      ],
+                      readOnly: false,
                       decoration:
-                          //const InputDecoration.collapsed(hintText: 'Rotation'),
-                          const InputDecoration.collapsed(hintText: 'סיבוב'),
-                      controller: _controllerPlanetType,
-                      style:
-                          const TextStyle(fontSize: 12, color: Colors.black)),
+                          const InputDecoration.collapsed(hintText: '1'),
+                      controller: _controllerSetTime,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.black)),
                 ),
               ],
             ),
+
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -2630,11 +2986,11 @@ class _RotateComplexState extends State<RotateComplex> {
                         case 0:
                           //_planettext = _plutohex.linename!;
                           _planettext =
-                              '248 yeays of Breath PersonReality and Reality Truth';
+                              '248 years of Breath PersonReality and Reality Truth';
                           break;
                         case 1:
                           _planettext =
-                              '248 yeays of Breath PersonReality and Reality Truth';
+                              '248 years of Breath PersonReality and Reality Truth';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -2676,6 +3032,81 @@ class _RotateComplexState extends State<RotateComplex> {
                             fontWeight: FontWeight.normal)),
                   ),
                 ]),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 30,
+                  width: 30,
+                  child: CarouselSlider(
+                    items: mixHexagramSlidersNew,
+                    carouselController: _controllerrotationstate,
+                    options: CarouselOptions(
+                        scrollDirection: Axis.horizontal,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 1.3,
+                        onPageChanged: (indexcrotstate, reason) {
+                          setState(() {
+                            _currentrotationstate = indexcrotstate;
+
+                            switch (_currentrotationstate) {
+                              case 0:
+                                _textlevel = 'complex';
+                                _changeTextLevels(_textlevel);
+                                break;
+                              case 1:
+                                _textlevel = 'simple';
+                                _changeTextLevels(_textlevel);
+                                break;
+                              case 2:
+                                _textlevel = 'breath';
+                                _changeTextLevels(_textlevel);
+                                break;
+                              case 3:
+                                _textlevel = 'silence';
+                                _changeTextLevels(_textlevel);
+                                break;
+                              default:
+                                _textlevel = 'complex';
+                                _changeTextLevels(_textlevel);
+                                break;
+                            }
+                          });
+                        }),
+                  ),
+                ),
+                const SizedBox(width: 5),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 3,
+                  child: AutoSizeTextField(
+                      fullwidth: false,
+                      readOnly: true,
+                      textAlign: TextAlign.right,
+                      decoration:
+                      //const InputDecoration.collapsed(hintText: 'Sentence'),
+                      const InputDecoration.collapsed(hintText: 'משפטי'),
+                      controller: _controllerPlanetSubType,
+                      style:
+                      const TextStyle(fontSize: 12, color: Colors.black)),
+                ),
+                const SizedBox(width: 5),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 3,
+                  child: AutoSizeTextField(
+                      fullwidth: false,
+                      textAlign: TextAlign.left,
+                      readOnly: true,
+                      decoration:
+                      //const InputDecoration.collapsed(hintText: 'Rotation'),
+                      const InputDecoration.collapsed(hintText: 'סיבוב'),
+                      controller: _controllerPlanetType,
+                      style:
+                      const TextStyle(fontSize: 12, color: Colors.black)),
+                ),
+              ],
+            ),
             Stack(
               fit: StackFit.loose,
               children: [
@@ -2782,94 +3213,28 @@ class _RotateComplexState extends State<RotateComplex> {
               color: Colors.blue,
             ),
             Container(
-              height: MediaQuery.of(context).size.height / 3,
-              width: MediaQuery.of(context).size.width / 2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(mplantsneg[3]),
-                  fit: BoxFit.scaleDown,
+              height: 250,
+              width: 250,
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 1,
+                  crossAxisCount: 4, // number of items in each row
+                  mainAxisSpacing: 8.0, // spacing between rows
+                  crossAxisSpacing: 8.0, // spacing between columns
                 ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 3,
-              width: MediaQuery.of(context).size.width / 2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(mplantsneg[2]),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 3,
-              width: MediaQuery.of(context).size.width / 2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(mplantsneg[1]),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 3,
-              width: MediaQuery.of(context).size.width / 2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(mplantsneg[0]),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            const Divider(
-              color: Colors.blue,
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 3,
-              width: MediaQuery.of(context).size.width / 2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(mplantspos[3]),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 3,
-              width: MediaQuery.of(context).size.width / 2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(mplantspos[2]),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 3,
-              width: MediaQuery.of(context).size.width / 2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(mplantspos[1]),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 3,
-              width: MediaQuery.of(context).size.width / 2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(mplantspos[0]),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
+                padding: EdgeInsets.all(8.0), // padding around the grid
+                itemCount: 16, // total number of items
+                itemBuilder: (context, index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(rtimgcoins[index]),
+                            colorFilter: ColorFilter.mode(
+                              Colors.white.withOpacity(1.0),
+                              BlendMode.modulate,
+                            ))),
+                  );
+                },
               ),
             ),
             const Divider(
@@ -2941,10 +3306,10 @@ class _RotateComplexState extends State<RotateComplex> {
     );
   }
 
-  Widget _buildTimePopupDialog(BuildContext context) {
+  Widget buildTimePopupDialog(BuildContext context) {
     return AlertDialog(
       title: const Text(
-        'Time',
+        'זמן תכנית תנכית',
         style: TextStyle(color: Colors.white),
       ),
       backgroundColor: Colors.black,
@@ -3016,8 +3381,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   backgroundColor: Colors.green,
                   textStyle: const TextStyle(
                       fontSize: 15, fontWeight: FontWeight.normal)),
-              child: const Text('תאריך',
-                  style: TextStyle(color: Colors.white)),
+              child: const Text('תאריך', style: TextStyle(color: Colors.white)),
             ),
             const Divider(
               color: Colors.black,
@@ -3110,12 +3474,121 @@ class _RotateComplexState extends State<RotateComplex> {
                 //_uranusoppostiontime = await PlanetsServices.getUranusOpposition(_now);
                 //_formatsUranusOppDate = DateFormat('MM/dd/yyyy').format(_uranusoppostiontime);
                 //_formatsUranusOppTime = DateFormat.Hms().format(_uranusoppostiontime);
+
+                //new hd chart
+                _setChart(_centers);
+
                 setState(() {
                   Navigator.of(context).pop();
                 });
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
               child: const Text('להשיג זמן עבורך',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal)),
+            ),
+            Divider(),
+            ElevatedButton(
+              onPressed: () async {
+                // _selectedDate by user pick
+                //print (_now);
+                //_now = _selectedDate.applied(_selectedtime);
+
+                _planetsnowList = await PlanetsServices.getCurrentData(_now);
+
+                _designTime = await PlanetsServices.getDesignTime(_now);
+                _planetsdesignList =
+                await PlanetsServices.getCurrentData(_designTime);
+
+                _allplanetsList = _planetsnowList + _planetsdesignList;
+                _channelsList = HDServices.getHDChannels(_allplanetsList);
+                _personchannelsList = HDServices.getHDChannels(_planetsnowList);
+                _designchannelsList =
+                    HDServices.getHDChannels(_planetsdesignList);
+
+                //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+                hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                _centers = HDServices.getHDDefinedCenters(_channelsList);
+                //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                //_selfreminderSentence = HDServices.getSelfReminder();
+                _selfreminder = _timeselfreminder;
+
+                //_controlHDData(hdbasicdata);
+                _controlHDData(hdfinaldata);
+                //hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                _setDateTime(_now);
+
+                //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
+                //_formattedTime = DateFormat.Hms().format(_now);
+                //_controllerTime.text = 'text $_formattedTime $_formattedDate';
+
+                _planetsList = _planetsnowList;
+                _planethex = _planetsList[0];
+                //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
+
+                _setCoins();
+
+                //_hexalignedList = hexagramAlignment(_planethex.gate!);
+
+                //_controllertop.jumpToPage(_hexalignedList[0]);
+                //_controllermid.jumpToPage(_hexalignedList[1]);
+                //_controllerbot.jumpToPage(_hexalignedList[2]);
+
+                _controllerlinetext.text = _planethex.line!.toString();
+                _controllergatelinestory.text = idonotknowlinesList[
+                (idonotknowlinesList.indexOf(_planethex.gate!) +
+                    _planethex.line!)];
+
+                switch (_previousPlanetIndex) {
+                  case -1:
+                    _previousPlanetIndex = 0;
+                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                    break;
+                  default:
+                    _isPlanetSelectedList[_previousPlanetIndex] =
+                    !_isPlanetSelectedList[_previousPlanetIndex];
+                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                    _previousPlanetIndex = 0;
+                }
+
+                switch (_currentconstate) {
+                  case 0:
+                    _controllerconstate.jumpToPage(1);
+                    _controllerconstate.jumpToPage(0);
+                    _controllerrotationstate.jumpToPage(0);
+                    break;
+                  case 1:
+                    _controllerconstate.jumpToPage(0);
+                    break;
+                  default:
+                    _controllerconstate.jumpToPage(0);
+                    break;
+                }
+
+                // idk
+                // calc cycles
+                //_saturnreturntime = await PlanetsServices.getSaturnReturn(_now);
+                //_formatsaturnreturnDate = DateFormat('MM/dd/yyyy').format(_saturnreturntime);
+                //_formatsaturnreturnTime = DateFormat.Hms().format(_saturnreturntime);
+
+                //_uranusoppostiontime = await PlanetsServices.getUranusOpposition(_now);
+                //_formatsUranusOppDate = DateFormat('MM/dd/yyyy').format(_uranusoppostiontime);
+                //_formatsUranusOppTime = DateFormat.Hms().format(_uranusoppostiontime);
+
+                //new hd chart
+                _setChart(_centers);
+
+                setState(() {
+                  Navigator.of(context).pop();
+                });
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
+              child: const Text('להשיג זמן מחודש',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
@@ -3693,6 +4166,139 @@ class _RotateComplexState extends State<RotateComplex> {
     return finalcolor;
   }
 
+  void controlSetTime(bool _newsetupdown) async {
+    if (_controllerSetTime.text.isEmpty)
+    {
+      _newts = int.parse('1');
+    }
+    else
+    {
+      _newts = int.parse(_controllerSetTime.text);
+    }
+
+    if (_newsetupdown){
+      switch (_settimestamp) {
+        case 'שניות':
+          _now = _now.add(Duration(seconds: _newts));
+          break;
+        case 'דקות':
+          _now = _now.add(Duration(minutes: _newts));
+          break;
+        case 'שעות':
+          _now = _now.add(Duration(hours: _newts));
+          break;
+        case 'ימים':
+          _now =
+              DateTime(_now.year, _now.month, _now.day + _newts, _now.hour, _now.minute, _now.second);
+          break;
+        case 'חודשים':
+          _now =
+              DateTime(_now.year, _now.month + _newts, _now.day, _now.hour, _now.minute, _now.second);
+          break;
+        case 'שנים':
+          _now =
+              DateTime(_now.year + _newts, _now.month, _now.day, _now.hour, _now.minute, _now.second);
+          break;
+        default:
+          _now = _now.add(Duration(minutes: _newts));
+          break;
+      }
+    }
+    else
+      {
+        switch (_settimestamp) {
+          case 'שניות':
+            _now = _now.subtract(Duration(seconds: _newts));
+            break;
+          case 'דקות':
+            _now = _now.subtract(Duration(minutes: _newts));
+            break;
+          case 'שעות':
+            _now = _now.subtract(Duration(hours: _newts));
+            break;
+          case 'ימים':
+            _now =
+                DateTime(_now.year, _now.month, _now.day - _newts, _now.hour, _now.minute, _now.second);
+            break;
+          case 'חודשים':
+            _now =
+                DateTime(_now.year, _now.month - _newts, _now.day, _now.hour, _now.minute, _now.second);
+            break;
+          case 'שנים':
+            _now =
+                DateTime(_now.year - _newts, _now.month, _now.day, _now.hour, _now.minute, _now.second);
+            break;
+          default:
+            _now = _now.subtract(Duration(minutes: _newts));
+            break;
+        }
+      }
+
+    _planetsnowList =
+        await PlanetsServices.getCurrentData(_now);
+
+    //_designTime = await AstrologyServices.getDesignTime(_now);
+    //emulate design time to now time to prevent blank
+    _planetsdesignList =
+        await PlanetsServices.getCurrentData(_now);
+
+    _channelsList =
+        HDServices.getHDChannelsJustNow(_planetsnowList);
+
+    _personchannelsList = [];
+    _designchannelsList = [];
+
+    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+
+    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+    //_controlHDData(hdbasicdata);
+    _controlHDData(hdfinaldata);
+
+    _centers = HDServices.getHDDefinedCenters(_channelsList);
+    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+    //_selfreminderSentence = HDServices.getSelfReminder();
+    _selfreminder = _timeselfreminder;
+
+    _setDateTime(_now);
+
+    _planetsList = _planetsnowList;
+    _planethex = _planetsList[0];
+
+    _setCoins();
+
+    _controllerlinetext.text = _planethex.line!.toString();
+    _controllergatelinestory.text = idonotknowlinesList[
+    (idonotknowlinesList.indexOf(_planethex.gate!) +
+        _planethex.line!)];
+
+    switch (_previousPlanetIndex) {
+      case -1:
+        _previousPlanetIndex = 0;
+        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+        break;
+      default:
+        _isPlanetSelectedList[_previousPlanetIndex] =
+        !_isPlanetSelectedList[_previousPlanetIndex];
+        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+        _previousPlanetIndex = 0;
+    }
+
+    switch (_currentconstate) {
+      case 0:
+        _controllerconstate.jumpToPage(1);
+        _controllerconstate.jumpToPage(0);
+        _controllerrotationstate.jumpToPage(0);
+        break;
+      case 1:
+        _controllerconstate.jumpToPage(0);
+        break;
+      default:
+        _controllerconstate.jumpToPage(0);
+        break;
+    }
+    _setChart(_centers);
+  }
+
   Widget _buildHebGatesDialog(BuildContext context) {
     return AlertDialog(
       title: const Text('ארנקים'),
@@ -4036,6 +4642,51 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllertop.jumpToPage(_hexalignedList[0]);
     _controllermid.jumpToPage(_hexalignedList[1]);
     _controllerbot.jumpToPage(_hexalignedList[2]);
+  }
+
+  void _setChart(List<String> definedCenters) {
+    headstate = false;
+    ajnastate = false;
+    throatstate = false;
+    gstate = false;
+    sacralstate = false;
+    rootstate = false;
+    heartstate = false;
+    spleenstate = false;
+    solarstate = false;
+    for (int i = 0; i < definedCenters.length; i++) {
+      switch (definedCenters[i]) {
+        case 'head':
+          headstate = true;
+          break;
+        case 'ajna':
+          ajnastate = true;
+          break;
+        case 'throat':
+          throatstate = true;
+          break;
+        case 'self':
+          gstate = true;
+          break;
+        case 'heart':
+          heartstate = true;
+          break;
+        case 'spleen':
+          spleenstate = true;
+          break;
+        case 'sacral':
+          sacralstate = true;
+          break;
+        case 'solar':
+          solarstate = true;
+          break;
+        case 'root':
+          rootstate = true;
+          break;
+        default:
+          break;
+      }
+    }
   }
 
   void _changeTextLevels(String textlevel) {

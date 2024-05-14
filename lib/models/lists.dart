@@ -107,6 +107,8 @@ final List<String> rtimages = [
   'assets/plants/rotom.png',
 ];
 
+
+
 final List rturlfull = [
   'https://rotation-time.web.app/',
   'https://rotation-time.web.app/#/rotatesilence',
@@ -2927,6 +2929,28 @@ final List<int> hexCarouselWheelOrderList = [
 
 /// FULL SENTENCE
 
+final List<String> rtimgcoins = [
+  'assets/planets/sun.png',
+  'assets/complexup.png',
+  'assets/plants/mrbluep.png',
+  'assets/plants/rotegi.png',
+
+  'assets/planets/northnode.png',
+  'assets/simplein.png',
+  'assets/plants/mrgreavo.png',
+  'assets/plants/rotav.png',
+
+  'assets/planets/southnode.png',
+  'assets/breathout.png',
+  'assets/plants/msyelban.png',
+  'assets/plants/rotban.png',
+
+  'assets/planets/earth.png',
+  'assets/silencedown.png',
+  'assets/plants/msredtom.png',
+  'assets/plants/rotom.png',
+];
+
 final List<String> hexBasicList = [
   'assets/complex.png',
   'assets/simple.png',
@@ -2963,6 +2987,22 @@ final List<String> titlesicon = [
   'assets/complexup.png',
 ];
 
+final List<String> titlesname_heb = [
+  'א.ל.י.מ',
+  'שתיקה',
+  'נשימה',
+  'פשוט',
+  'מורכב',
+];
+
+final List<String> titlesname = [
+  'i.d.k.m',
+  'silence',
+  'Breath',
+  'Simple',
+  'COMPLEX',
+];
+
 final List<String> mplants = [
   'assets/plants/mrcamog.png',
   'assets/plants/rotom.png',
@@ -2971,24 +3011,21 @@ final List<String> mplants = [
   'assets/plants/mrbluep.png',
 ];
 
-final List<String> mcameldog = [
-  'assets/camog/mcamog.png',
-  'assets/camog/mcamel.png',
-  'assets/camog/mcdog.png',
-];
-
-final List<String> mplantspos = [
+final List<String> mplantsfull = [
+  'assets/plants/rotom.png',
+  'assets/plants/rotban.png',
+  'assets/plants/rotav.png',
+  'assets/plants/rotegi.png',
   'assets/plants/msredtom.png',
   'assets/plants/msyelban.png',
   'assets/plants/mrgreavo.png',
   'assets/plants/mrbluep.png',
 ];
 
-final List<String> mplantsneg = [
-  'assets/plants/rotom.png',
-  'assets/plants/rotban.png',
-  'assets/plants/rotav.png',
-  'assets/plants/rotegi.png',
+final List<String> mcameldog = [
+  'assets/camog/mcamog.png',
+  'assets/camog/mcamel.png',
+  'assets/camog/mcdog.png',
 ];
 
 final List<double> titlesangle = [
@@ -3123,10 +3160,10 @@ final List<String> hexNamesHebList = [
 ];
 
 final List<String> bimboxlist = [
-  'חזי בימשו מורכב',
-  'פשוט אבי בים',
-  'ביני נושמת',
-  'בטי שותקת',
+  'חזי בימשו',
+  'אבי בים',
+  'ביני',
+  'בטי',
 ];
 
 final List<String> newCoinNames = [
@@ -3143,8 +3180,27 @@ final List<String> newCoinNames_old = [
   'build',
 ];
 
+final List<String> timecoins = [
+  'seconds',
+  'minutes',
+  'hours',
+  'days',
+  'months',
+  'years',
+];
+
+final List<String> timecoinsheb = [
+  'שניות',
+  'דקות',
+  'שעות',
+  'ימים',
+  'חודשים',
+  'שנים',
+];
+
 // variables
 List<int> hexagramslist = List<int>.generate(65, (counter) => counter++);
+
 var hexagramslistfinal = hexagramslist.getRange(1, hexagramslist.length);
 
 // SLIDERS
@@ -3306,6 +3362,18 @@ final List<DropdownMenuItem<String>> iChingFontList =
           color: Colors.black,
           fontSize: 30.0,
           fontFamily: 'iChing',
+        )),
+  );
+}).toList();
+
+final List<DropdownMenuItem<String>> timecoinsDropDownLst =
+timecoinsheb.map((String newtimecoin) {
+  return DropdownMenuItem(
+    value: newtimecoin,
+    child: Text(newtimecoin,
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 15.0
         )),
   );
 }).toList();

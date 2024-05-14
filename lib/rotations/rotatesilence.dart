@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/models/lists.dart';
+import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:flutter/material.dart';
 
 class RotateSilence extends StatefulWidget {

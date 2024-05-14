@@ -241,21 +241,7 @@ class RotateHome extends StatelessWidget {
                     height: MediaQuery.of(context).size.height / 10,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(titlesicon[0]),)),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 6,
-                    height: MediaQuery.of(context).size.height / 10,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(titlesicon[1]),)),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 6,
-                    height: MediaQuery.of(context).size.height / 10,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(titlesicon[2]),)),
+                          image: AssetImage(titlesicon[4]),)),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width / 6,
@@ -269,29 +255,137 @@ class RotateHome extends StatelessWidget {
                     height: MediaQuery.of(context).size.height / 10,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(titlesicon[4]),)),
+                          image: AssetImage(titlesicon[2]),)),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(titlesicon[1]),)),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(titlesicon[0]),)),
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(titlesname_heb[4],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(titlesname_heb[3],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(titlesname_heb[2],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(titlesname_heb[1],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(titlesname_heb[0],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: AutoSizeText(titlesname[4],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: AutoSizeText(titlesname[3],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: AutoSizeText(titlesname[2],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: AutoSizeText(titlesname[1],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: AutoSizeText(titlesname[0],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal)),
                   ),
                 ],
               ),
               const Divider(
-                color: Colors.white,
-                thickness: 5,
-              ),
-              FittedBox(
-                fit: BoxFit.scaleDown,
-                child:
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, subroutes[0]);
-                  },
-                  child: Text('הגדרה גבוהה של עיצוב אנושי',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold)),
-                ),
-              ),  const Divider(
                 color: Colors.white,
                 thickness: 5,
               ),
