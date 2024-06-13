@@ -39,6 +39,8 @@ Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner
 Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner\Release\flutter_windows.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner\Release\url_launcher_windows_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner\Release\sweph.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner\Release\syncfusion_pdfviewer_windows_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner\Release\pdfium.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner\Release\data\*"; DestDir: "{app}\data"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 

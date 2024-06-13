@@ -36,53 +36,55 @@ final List<String> temproutes = [
 ];
 
 final List<String> rtimages = [
-  'assets/camel.png',
-  'assets/cameldog.png',
-  'assets/dog.png',
+  'assets/kithe/blkithe.png',
+  'assets/kithe/grkithe.png',
+  'assets/kithe/yelkithe.png',
+  'assets/kithe/redkithe.png',
+  'assets/kithe/blkithebg.png',
+  'assets/kithe/grkithebg.png',
+  'assets/kithe/yelkithebg.png',
+  'assets/kithe/redkithebg.png',
+  'assets/kithe/qkithe.gif',
+  'assets/kithe/quekithe.png',
+  'assets/kithe/exkithebg.png',
+  'assets/kithe/exkithebg.png',
+  'assets/coins/camel.png',
+  'assets/coins/cameldog.png',
+  'assets/coins/complex.png',
+  'assets/coins/complexblack.png',
+  'assets/coins/complexin.png',
+  'assets/coins/complexout.png',
+  'assets/coins/simple.png',
+  'assets/coins/simpleblack.png',
+  'assets/coins/simpleout.png',
+  'assets/coins/simplewhite.png',
+  'assets/coins/breath.png',
+  'assets/coins/breathblack.png',
+  'assets/coins/breathin.png',
+  'assets/coins/breathwhite.png',
+  'assets/coins/silence.png',
+  'assets/coins/silencein.png',
+  'assets/coins/silenceout.png',
+  'assets/coins/silencewhite.png',
+  'assets/coins/dog.png',
+  'assets/coins/emptybodygraph.png',
+  'assets/coins/emptymandala.png',
+  'assets/coins/fullcoins.png',
+  'assets/coins/fullcoinsbg.png',
+  'assets/coins/fullrotateicon.png',
+  'assets/coins/oldrotateicon500.png',
+  'assets/coins/rotateicon.png',
+  'assets/coins/rotateicon1.png',
+  'assets/coins/rotateicon500.png',
+  'assets/coins/rotateiconbck.png',
+  'assets/coins/yangyang.png',
+  'assets/coins/yangyin.png',
+  'assets/coins/yinyang.png',
+  'assets/coins/yinyin.png',
   'assets/camog/mcamel.png',
+  'assets/camog/mcamelyellow.png',
   'assets/camog/mcamog.png',
   'assets/camog/mcdog.png',
-  'assets/complex.png',
-  'assets/complexblack.png',
-  'assets/complexdown.png',
-  'assets/complexin.png',
-  'assets/complexone.png',
-  'assets/complexout.png',
-  'assets/complextwo.png',
-  'assets/complexup.png',
-  'assets/complexwhite.png',
-  'assets/simple.png',
-  'assets/simpleblack.png',
-  'assets/simpledown.png',
-  'assets/simplein.png',
-  'assets/simpleone.png',
-  'assets/simpleout.png',
-  'assets/simpletwo.png',
-  'assets/simpleup.png',
-  'assets/simplewhite.png',
-  'assets/breath.png',
-  'assets/breathblack.png',
-  'assets/breathdown.png',
-  'assets/breathin.png',
-  'assets/breathone.png',
-  'assets/breathout.png',
-  'assets/breathtwo.png',
-  'assets/breathup.png',
-  'assets/breathwhite.png',
-  'assets/fullrotateicon.png',
-  'assets/silence.png',
-  'assets/silenceblack.png',
-  'assets/silencedown.png',
-  'assets/silencein.png',
-  'assets/silenceone.png',
-  'assets/silenceout.png',
-  'assets/silencetwo.png',
-  'assets/silenceup.png',
-  'assets/silencewhite.png',
-  'assets/yangyang.png',
-  'assets/yangyin.png',
-  'assets/yinyang.png',
-  'assets/yinyin.png',
   'assets/planets/chiron.png',
   'assets/planets/earth.png',
   'assets/planets/jupiter.png',
@@ -98,6 +100,7 @@ final List<String> rtimages = [
   'assets/planets/uranus.png',
   'assets/planets/venus.png',
   'assets/plants/mrbluep.png',
+  'assets/plants/mrcamog.png',
   'assets/plants/mrgreavo.png',
   'assets/plants/msredtom.png',
   'assets/plants/msyelban.png',
@@ -210,15 +213,15 @@ final List<String> planetsCrossList = [
 ];
 
 final List<String> hexList = [
-  'assets/complexup.png',
-  'assets/simplein.png',
-  'assets/breathout.png',
-  'assets/silencedown.png',
+  'assets/coins/complex.png',
+  'assets/coins/simple.png',
+  'assets/coins/breath.png',
+  'assets/coins/silence.png',
 ];
 
 final List<String> rtimageBolList = [
-  'assets/complexup.png',
-  'assets/silencedown.png',
+  'assets/coins/complex.png',
+  'assets/coins/silence.png',
 ];
 
 final List<String> fontHexOrderList = [
@@ -2931,38 +2934,45 @@ final List<int> hexCarouselWheelOrderList = [
 
 final List<String> rtimgcoins = [
   'assets/planets/sun.png',
-  'assets/complexup.png',
+  'assets/coins/complex.png',
   'assets/plants/mrbluep.png',
   'assets/plants/rotegi.png',
 
   'assets/planets/northnode.png',
-  'assets/simplein.png',
+  'assets/coins/simple.png',
   'assets/plants/mrgreavo.png',
   'assets/plants/rotav.png',
 
   'assets/planets/southnode.png',
-  'assets/breathout.png',
+  'assets/coins/breath.png',
   'assets/plants/msyelban.png',
   'assets/plants/rotban.png',
 
   'assets/planets/earth.png',
-  'assets/silencedown.png',
+  'assets/coins/silence.png',
   'assets/plants/msredtom.png',
   'assets/plants/rotom.png',
 ];
 
 final List<String> hexBasicList = [
-  'assets/complex.png',
-  'assets/simple.png',
-  'assets/breath.png',
-  'assets/silence.png',
+  'assets/coins/complex.png',
+  'assets/coins/simple.png',
+  'assets/coins/breath.png',
+  'assets/coins/silence.png',
 ];
 
 final List<String> hexBasicMixList = [
-  'assets/complexup.png',
-  'assets/simplein.png',
-  'assets/breathout.png',
-  'assets/silencedown.png',
+  'assets/coins/complex.png',
+  'assets/coins/simple.png',
+  'assets/coins/breath.png',
+  'assets/coins/silence.png',
+];
+
+final List<String> basicKitheList = [
+  'assets/kithe/blkithe.png',
+  'assets/kithe/grkithe.png',
+  'assets/kithe/yelkithe.png',
+  'assets/kithe/redkithe.png',
 ];
 
 final List<String> basicPlantsList = [
@@ -2980,11 +2990,11 @@ final List<String> PlantsRoutes = [
 ];
 
 final List<String> titlesicon = [
-  'assets/fullcoins.png',
-  'assets/silencedown.png',
-  'assets/breathout.png',
-  'assets/simplein.png',
-  'assets/complexup.png',
+  'assets/coins/fullcoins.png',
+  'assets/coins/silence.png',
+  'assets/coins/breath.png',
+  'assets/coins/simple.png',
+  'assets/coins/complex.png',
 ];
 
 final List<String> titlesname_heb = [
@@ -2993,6 +3003,14 @@ final List<String> titlesname_heb = [
   'נשימה',
   'פשוט',
   'מורכב',
+];
+
+final List<String> bimnamesheb = [
+  'גמלכלב',
+  'בטי',
+  'ביני',
+  'אבי',
+  'חזי',
 ];
 
 final List<String> titlesname = [
@@ -3011,6 +3029,15 @@ final List<String> mplants = [
   'assets/plants/mrbluep.png',
 ];
 
+final List<String> maincoins = [
+  //'assets/kithe/quekithe.png',
+  'assets/kithe/qkithe.gif',
+  'assets/kithe/redkithe.png',
+  'assets/kithe/yelkithe.png',
+  'assets/kithe/grkithe.png',
+  'assets/kithe/blkithe.png',
+];
+
 final List<String> mplantsfull = [
   'assets/plants/rotom.png',
   'assets/plants/rotban.png',
@@ -3026,6 +3053,14 @@ final List<String> mcameldog = [
   'assets/camog/mcamog.png',
   'assets/camog/mcamel.png',
   'assets/camog/mcdog.png',
+];
+
+final List<String> pdftitle = [
+  'מילים',
+  'מאייטי אל גורוגי ומטאגי',
+  'from IT to Guru G and Mata G',
+  'בחיפוש אחר גוגל',
+  'In Search Of Google',
 ];
 
 final List<double> titlesangle = [
@@ -3054,6 +3089,14 @@ final List<String> subroutes = [
   '/rotatecomplexhd',
 ];
 
+final List<String> pdfroutes = [
+  '/rotatepdf',
+  '/rotatefitgamhe',
+  '/rotatefitgam',
+  '/rotateisoghe',
+  '/rotateisog',
+];
+
 final List<String> subtitles = [
   'I Don\'t Know',
   'silence',
@@ -3078,6 +3121,14 @@ final List<String> hebsub_rev = [
   'לאקזחי',
 ];
 
+final List<String> maintxt = [
+  'Q KIT He!',
+  'Bet KIT He!',
+  'Been KIT He!',
+  'Have KIT He!',
+  'Has KIT He!',
+];
+
 final List<String> hebsub_rev_old = [
   'תעדוי אל ינא',
   'הקיתש',
@@ -3094,49 +3145,6 @@ final List<String> subtitles_old = [
   'I don\'t know',
 ];
 
-final List<String> hexBasicDownList = [
-  'assets/complexdown.png',
-  'assets/simpledown.png',
-  'assets/breathdown.png',
-  'assets/silencedown.png',
-];
-
-final List<String> hexBasicUpList = [
-  'assets/complexup.png',
-  'assets/simpleup.png',
-  'assets/breathup.png',
-  'assets/silenceup.png',
-];
-
-final List<String> hexDualList = [
-  'assets/complexup.png',
-  'assets/complexdown.png',
-  'assets/simplein.png',
-  'assets/simpledown.png',
-  'assets/breathup.png',
-  'assets/breathout.png',
-  'assets/silenceup.png',
-  'assets/silencedown.png',
-];
-
-final List<String> hexFullList = [
-  'assets/complexup.png',
-  'assets/complexin.png',
-  'assets/complexout.png',
-  'assets/complexdown.png',
-  'assets/simpleup.png',
-  'assets/simplein.png',
-  'assets/simpleout.png',
-  'assets/simpledown.png',
-  'assets/breathup.png',
-  'assets/breathin.png',
-  'assets/breathout.png',
-  'assets/breathdown.png',
-  'assets/silenceup.png',
-  'assets/silencein.png',
-  'assets/silenceout.png',
-  'assets/silencedown.png',
-];
 
 final List<String> hexNamesList = [
   'מורכב',
@@ -3185,6 +3193,7 @@ final List<String> timecoins = [
   'minutes',
   'hours',
   'days',
+  'weeks',
   'months',
   'years',
 ];
@@ -3194,6 +3203,7 @@ final List<String> timecoinsheb = [
   'דקות',
   'שעות',
   'ימים',
+  'שבועות',
   'חודשים',
   'שנים',
 ];
@@ -3231,26 +3241,6 @@ final List<Widget> planetsCrossSliders = planetsCrossList
         ))
     .toList();
 
-final List<Widget> allItemsSliders = hexFullList
-    .map((hexImage) => CircleAvatar(
-        minRadius: 100.0,
-        maxRadius: 100.0,
-        backgroundImage: AssetImage(hexImage)))
-    .toList();
-
-final List<Widget> downHexagramSliders = hexBasicDownList
-    .map((item) => Container(
-          margin: const EdgeInsets.all(5.0),
-          child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-              child: Stack(
-                children: <Widget>[
-                  Image.asset(item, fit: BoxFit.cover, width: 500.0),
-                ],
-              )),
-        ))
-    .toList();
-
 final List<Widget> mixHexagramSliders = hexBasicMixList
     .map((item) => Container(
           margin: const EdgeInsets.all(5.0),
@@ -3279,6 +3269,22 @@ final List<Widget> miximageslider = rtimages
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(rtimagesmix),
+            fit: BoxFit.scaleDown,
+          ),
+          shape: BoxShape.rectangle,
+        ),
+      ),
+    )
+    .toList();
+
+final List<Widget> mixKitheSliders = basicKitheList
+    .map(
+      (kithemix) => Container(
+        height: 200,
+        width: 200,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(kithemix),
             fit: BoxFit.scaleDown,
           ),
           shape: BoxShape.rectangle,

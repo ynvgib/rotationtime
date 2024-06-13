@@ -63,12 +63,6 @@ class _RotateSimpleState extends State<RotateSimple> {
             direction: Axis.horizontal,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 15,
-                backgroundColor: Colors.transparent,
-                foregroundImage: AssetImage(mplantsneg[2]),
-              ),
-              SizedBox(width: 10),
               AutoSizeText(_title,
                   textAlign: TextAlign.left,
                   //maxFontSize: 15,
@@ -77,7 +71,7 @@ class _RotateSimpleState extends State<RotateSimple> {
               CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.transparent,
-                foregroundImage: AssetImage(mplantspos[2]),
+                foregroundImage: AssetImage(kitheimglst[2]),
               ),
             ],
           ),
@@ -100,7 +94,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height / 8,
-                    width: MediaQuery.of(context).size.width / 2,
+                    width: MediaQuery.of(context).size.width / 4,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(mplantsneg[2]),
@@ -111,7 +105,18 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height / 8,
-                    width: MediaQuery.of(context).size.width / 2,
+                    width: MediaQuery.of(context).size.width / 4,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(kitheimglst[2]),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 8,
+                    width: MediaQuery.of(context).size.width / 4,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(mplantspos[2]),
@@ -126,10 +131,10 @@ class _RotateSimpleState extends State<RotateSimple> {
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AutoSizeText('פשוט בים',
+                  AutoSizeText('ערכה הוא',
                       textAlign: TextAlign.center,
-                      minFontSize: 20,
-                      maxFontSize: 40,
+                      minFontSize: 35,
+                      maxFontSize: 45,
                       style: TextStyle(color: Colors.green)),
                 ],
               ),
@@ -137,7 +142,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 backgroundColor: Colors.white,
                 maxRadius: 70.0,
                 child: CarouselSlider(
-                  items: mixPlantsSliders,
+                  items: mixKitheSliders,
                   carouselController: _controllerplant,
                   options: CarouselOptions(
                       initialPage: 1,
@@ -161,7 +166,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                     minFontSize: 15,
                     fullwidth: false,
                     decoration: InputDecoration.collapsed(
-                      //hintText: hexNamesList[1],
+                        //hintText: hexNamesList[1],
                         hintText: bimboxlist[1],
                         hintStyle: const TextStyle(color: Colors.grey)),
                     textAlign: TextAlign.center,
@@ -171,7 +176,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                       fontWeight: FontWeight.bold,
                     ),
                     controller: _controllertoptext,
-                    readOnly: true,
+                    readOnly: false,
                   )),
               SizedBox(
                   width: MediaQuery.of(context).size.width / 0.8,
@@ -190,7 +195,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                       fontWeight: FontWeight.bold,
                     ),
                     controller: _controllerbottomtext,
-                    readOnly: true,
+                    readOnly: false,
                   )),
               CircleAvatar(
                 backgroundColor: Colors.white,
@@ -213,7 +218,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                       }),
                 ),
               ),
-
               const SizedBox(height: 20),
               const Divider(
                 color: Colors.green,
@@ -317,7 +321,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
-                  items: mixPlantsSliders,
+                  items: mixKitheSliders,
                   carouselController: _controllertop,
                   options: CarouselOptions(
                       initialPage: 1,
@@ -340,7 +344,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
-                  items: mixPlantsSliders,
+                  items: mixKitheSliders,
                   carouselController: _controllermid,
                   options: CarouselOptions(
                       initialPage: 1,
@@ -363,7 +367,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
-                  items: mixPlantsSliders,
+                  items: mixKitheSliders,
                   carouselController: _controllerbot,
                   options: CarouselOptions(
                       initialPage: 1,
@@ -871,7 +875,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                     centerWidget: ClipRRect(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(50)),
-                        child: Image.asset("assets/fullrotateicon.png")),
+                        child: Image.asset("assets/coins/fullrotateicon.png")),
                   ),
                   CircleList(
                     innerRadius: MediaQuery.of(context).size.width / 8,
@@ -952,7 +956,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                     centerWidget: ClipRRect(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(50)),
-                        child: Image.asset("assets/fullrotateicon.png")),
+                        child: Image.asset("assets/coins/fullrotateicon.png")),
                   ),
                   CircleList(
                     rotateMode: RotateMode.stopRotate,
@@ -2159,41 +2163,45 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ],
                 ),
               ),
-
               Divider(
                   thickness: 5, indent: 5, endIndent: 5, color: Colors.green),
-              Container(
-                height: MediaQuery.of(context).size.height / 5,
-                width: MediaQuery.of(context).size.width / 3.2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(mcameldog[1]),
-                    fit: BoxFit.scaleDown,
+              Flex(
+                direction: Axis.horizontal,
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width / 3.2,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(mcameldog[1]),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),
                   ),
-                  shape: BoxShape.rectangle,
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height / 5,
-                width: MediaQuery.of(context).size.width / 3.2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(mcameldog[1]),
-                    fit: BoxFit.scaleDown,
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width / 3.2,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(mcameldog[1]),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),
                   ),
-                  shape: BoxShape.rectangle,
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height / 5,
-                width: MediaQuery.of(context).size.width / 3.2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(mcameldog[1]),
-                    fit: BoxFit.scaleDown,
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width / 3.2,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(mcameldog[1]),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),
                   ),
-                  shape: BoxShape.rectangle,
-                ),
+                ],
               ),
               const Divider(
                 color: Colors.green,

@@ -90,8 +90,8 @@ class PlanetsServices {
         saturnSubStructure,
         uranusSubStructure,
         neptuneSubStructure,
-        plutoSubStructure;
-        //chironSubStructure;
+        plutoSubStructure,
+        chironSubStructure;
 
     try {
 
@@ -134,7 +134,7 @@ class PlanetsServices {
         saturnSubStructure,
         uranusSubStructure,
         neptuneSubStructure,
-        plutoSubStructure
+        plutoSubStructure,
         //chironSubStructure
       ];
     } catch (err) {
@@ -142,6 +142,29 @@ class PlanetsServices {
     }
 
     return planetsHexagramList;
+  }
+
+  static Future<List<Hexagram>> mapOtherPlanets(List<CoordinatesWithSpeed> mapotherplanets) async {
+    // based Swiss ephemeris new method
+
+    List<Hexagram> otherPlanetsList = [];
+
+    CoordinatesWithSpeed cwsChiron = mapotherplanets [0];
+
+    Hexagram chironSubStructure;
+
+    try {
+
+      chironSubStructure = getGateStructure(cwsChiron.longitude);
+
+      otherPlanetsList = [
+        chironSubStructure
+      ];
+    } catch (err) {
+      Exception(err);
+    }
+
+    return otherPlanetsList;
   }
 
   static Future<DateTime> getDesignTime(DateTime nowdesign) async {

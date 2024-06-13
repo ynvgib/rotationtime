@@ -4,9 +4,7 @@ import 'package:finallyicanlearn/models/rotateclasses.dart';
 
 class HDServices {
   static List<HDChannel> getHDChannels(
-      //List<Hexagram> personalityplanets, designplanets) {
       List<Hexagram> combinedPlanetsList) {
-    //List<Hexagram> combinedPlanetsList;
     List<String> channelidList = [];
     List<int> uniquegatesList = [];
     Set<int> setgates;
@@ -19,10 +17,7 @@ class HDServices {
 
     HDChannel tempchannel;
 
-    //combinedPlanetsList = personalityplanets + designplanets;
     for (int i = 0; combinedPlanetsList.length > i; i++) {
-      //uniquegatesList.add(personalityplanets[i].gate!);
-      //uniquegatesList.add(designplanets[i].gate!);
       uniquegatesList.add(combinedPlanetsList[i].gate!);
     }
 

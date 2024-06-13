@@ -4,6 +4,7 @@ class Hexagram {
       linename, colorname, tonename, basename, gateline,
   gatelinecolor, gatelinecolortone,gatelinecolortonebase;
   int? gate, line, color, tone, base;
+  double? longitude;
 
   Hexagram({
     this.name,
@@ -18,7 +19,8 @@ class Hexagram {
     this.gateline,
     this.gatelinecolor,
     this.gatelinecolortone,
-    this.gatelinecolortonebase
+    this.gatelinecolortonebase,
+    this.longitude,
   });
 }
 

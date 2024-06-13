@@ -29,21 +29,15 @@ class _RotateBreathState extends State<RotateBreath> {
             direction: Axis.horizontal,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 15,
-                backgroundColor: Colors.transparent,
-                foregroundImage: AssetImage(mplantspos[1]),
-              ),
-              SizedBox(width: 10),
               AutoSizeText(_title,
                   textAlign: TextAlign.left,
                   //maxFontSize: 15,
-                  style: TextStyle(color: Colors.white)),
-              SizedBox(width: 10),
+                  style: const TextStyle(color: Colors.white)),
+              const SizedBox(width: 10),
               CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.transparent,
-                foregroundImage: AssetImage(mplantsneg[1]),
+                foregroundImage: AssetImage(kitheimglst[1]),
               ),
 
             ],
@@ -62,10 +56,31 @@ class _RotateBreathState extends State<RotateBreath> {
             const SizedBox(
               height: 15.0,
             ),
-            AutoSizeText('ביני בינה',
+            Container(
+              height: MediaQuery.of(context).size.height / 5,
+              width: MediaQuery.of(context).size.width / 3.2,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(kitheimglst[1]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            const AutoSizeText('ערכה הוא נשימה',
+                textAlign: TextAlign.center,
+                minFontSize: 35,
+                maxFontSize: 45,
+                style: TextStyle(color: Colors.yellow)),
+            const AutoSizeText('ביני בינה',
+                textAlign: TextAlign.center,
+                minFontSize: 35,
+                maxFontSize: 45,
+                style: TextStyle(color: Colors.yellow)),
+            const AutoSizeText('שאיפה נשיפה',
                 textAlign: TextAlign.center,
                 minFontSize: 25,
-                maxFontSize: 45,
+                maxFontSize: 35,
                 style: TextStyle(color: Colors.yellow)),
             Flex(
               direction: Axis.horizontal,
@@ -99,6 +114,45 @@ class _RotateBreathState extends State<RotateBreath> {
                 ),
               ],
             ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height / 5,
+                  width: MediaQuery.of(context).size.width / 3.2,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/camog/mcamelyellow.png'),
+                      fit: BoxFit.scaleDown,
+                    ),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height / 5,
+                  width: MediaQuery.of(context).size.width / 3.2,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/camog/mcamelyellow.png'),
+                      fit: BoxFit.scaleDown,
+                    ),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height / 5,
+                  width: MediaQuery.of(context).size.width / 3.2,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/camog/mcamelyellow.png'),
+                      fit: BoxFit.scaleDown,
+                    ),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+              ],
+            ),
             Center(
               child: AutoSizeTextField(
                   minFontSize: 10,
@@ -128,8 +182,8 @@ class _RotateBreathState extends State<RotateBreath> {
                 shape: BoxShape.rectangle,
               ),
             ),
-            Divider(thickness: 5,indent: 5, endIndent: 5,color: Colors.yellow),
-            SizedBox(height: 10,),
+            const Divider(thickness: 5,indent: 5, endIndent: 5,color: Colors.yellow),
+            const SizedBox(height: 10,),
             AutoSizeTextField(
                 minFontSize: 10,
                 maxLines: 1,
@@ -143,40 +197,8 @@ class _RotateBreathState extends State<RotateBreath> {
                     fontSize: 30,
                     color: Colors.white,
                     fontWeight: FontWeight.normal)),
-            Divider(thickness: 5,indent: 5, endIndent: 5,color: Colors.yellow),
-            Container(
-              height: MediaQuery.of(context).size.height / 5,
-              width: MediaQuery.of(context).size.width / 3.2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/camog/mcamelyellow.png'),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 5,
-              width: MediaQuery.of(context).size.width / 3.2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/camog/mcamelyellow.png'),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 5,
-              width: MediaQuery.of(context).size.width / 3.2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/camog/mcamelyellow.png'),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
+            const Divider(thickness: 5,indent: 5, endIndent: 5,color: Colors.yellow),
+            SizedBox(height: 10)
           ],
         ),
       ),

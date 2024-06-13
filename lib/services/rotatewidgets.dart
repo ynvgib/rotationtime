@@ -288,7 +288,8 @@ Widget build384PopUp(BuildContext context) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) =>
-                      build384rtPop(context, rtlines390lst_heb),
+                      //build384rtPop(context, rtlines390lst_heb),
+                      build384rtPop(context, rtlines384lst_heb),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
@@ -309,7 +310,7 @@ Widget build384PopUp(BuildContext context) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) =>
-                      build384rtPop(context, rtlines390lst),
+                      build384rtPop(context, rtlines384lst),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
@@ -836,29 +837,41 @@ Widget build384rtPop(BuildContext context, List<String> build384lst) {
         child: ListView.builder(
           reverse: true,
           padding: const EdgeInsets.all(5.0),
-          itemCount: 390,
-          itemBuilder: (context, index) => ListTile(
-            title: Flex(
-              direction: Axis.vertical,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  index.toString(),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 15),
-                ),
-                const SizedBox(width: 5),
-                Text(
-                  //LineSentenceList[index],
-                  build384lst[index],
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 15),
-                )
-              ],
-            ),
-          ),
+          itemCount: build384lst.length,
+          //itemCount: 390,
+          itemBuilder: (context, index) {
+            double _linecount = 0, _gateidx = 1;
+
+            _linecount = (index+1) / 6;
+            _linecount = _linecount.ceilToDouble();
+            _gateidx = (index + 1) - ((_linecount - 1) * 6);
+
+            return ListTile(
+              title: Flex(
+                direction: Axis.vertical,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    //((index+1)/6).ceil().toString()
+                    _linecount.toInt().toString()
+                    + '.' + _gateidx.toInt().toString()
+                        + ' (' + (index + 1).toString() + ')',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                  const SizedBox(width: 5),
+                  Text(
+                    //LineSentenceList[index],
+                    build384lst[index],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15),
+                  )
+                ],
+              ),
+            );
+          },
         )),
     actions: <Widget>[
       TextButton(
