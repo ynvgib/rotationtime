@@ -26,7 +26,15 @@ class RotateComplex extends StatefulWidget {
 
 class _RotateComplexState extends State<RotateComplex> {
   // human design
-  Color headcolor = Colors.yellow, ajnacolor = Colors.green;
+  Color headcolor = Colors.yellow,
+      ajnacolor = Colors.green,
+      grampacolor = Colors.black,
+      papacolor = Colors.black,
+      soncolor = Colors.black,
+      daughtercolor = Colors.black,
+      mamacolor = Colors.black,
+      grannycolor = Colors.black;
+
   bool headstate = true,
       ajnastate = true,
       throatstate = true,
@@ -130,7 +138,13 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllerSouthNodeGate = TextEditingController(),
       _controllerDesignSouthNodeGate = TextEditingController(),
       _controllerPlanetType = TextEditingController(),
-      _controllerPlanetSubType = TextEditingController();
+      _controllerPlanetSubType = TextEditingController(),
+      _controllergrampatxt = TextEditingController(),
+      _controllerpapaptxt = TextEditingController(),
+      _controllersontxt = TextEditingController(),
+      _controllerdaughtertxt = TextEditingController(),
+      _controllermamatxt = TextEditingController(),
+      _controllergrannytxt = TextEditingController();
 
   final CarouselController _controllercoin = CarouselController(),
       _controllerconstate = CarouselController(),
@@ -916,195 +930,327 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.black,
-                  border: Border.all(
-                    width: 5,
-                    color: Colors.blue,
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border(
+                          top: BorderSide(width: 5, color: grampacolor),
+                          bottom: BorderSide(width: 5, color: papacolor)),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: 10,
+                      minWidth: 10,
+                      maxHeight: MediaQuery.of(context).size.height * 0.1,
+                      maxWidth: MediaQuery.of(context).size.width * 0.15,
+                    ),
+                    child: CarouselSlider(
+                      items: mixKitheSliders,
+                      carouselController: _controllertop,
+                      options: CarouselOptions(
+                          autoPlay: false,
+                          enlargeCenterPage: true,
+                          aspectRatio: 1.3,
+                          onPageChanged: (indextop, reason) {
+                            setState(() {
+                              _currenttop = indextop;
+
+                              _hexagramVal = ((_currenttop + 1) * 100 +
+                                  (_currentmid + 1) * 10 +
+                                  (_currentbot + 1));
+
+                              _carouselvalueindex = hexCarouselWheelOrderList
+                                  .indexOf(_hexagramVal);
+
+                              _chosenhex =
+                                  orderHexagramsWheel[_carouselvalueindex];
+
+                              _controllergatetext.text = _chosenhex.toString();
+
+                              // idonotknow _currentline
+                              //_controllergatelinestory.text = 'test';
+                              _controllergatelinestory.text =
+                                  bbrt385lst_num_heb[
+                                      (bbrt385lst_num_heb.indexOf(_chosenhex) +
+                                          _currentline)];
+
+                              //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
+                              //_hexsentence = LineSentenceList[_planethex.gate!];
+
+                              //_controllertopfirsttext.text = _hexsentence.adjective!;
+
+                              _controllercoinsttext.text =
+                                  rtbimBoxList[_chosenhex];
+                              //_controllertopsecondtext.text = _hexsentence.subject!;
+                              //_controllertopthirdtext.text = _hexsentence.verb!;
+                              //_controllertopfourthtext.text = _hexsentence.adverb!;
+
+                              thirdcolor =
+                                  //controlCollor(finalhexNamesList[_currenttop]);
+                                  controlCollor(_currenttop);
+                              _controllercointhirdtext.text =
+                                  finalhexNamesList[_currenttop];
+                              _controllercointopthirdtext.text =
+                                  finalnewcoinnamesList[_currenttop];
+                            });
+                          }),
+                    ),
                   ),
-                  borderRadius: BorderRadius.all(Radius.circular(20))
-              ),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: 10,
-                  minWidth: 10,
-                  maxHeight: MediaQuery.of(context).size.height * 0.1,
-                  maxWidth: MediaQuery.of(context).size.width * 0.15,
                 ),
-                child: CarouselSlider(
-                  items: mixKitheSliders,
-                  carouselController: _controllertop,
-                  options: CarouselOptions(
-                      autoPlay: false,
-                      enlargeCenterPage: true,
-                      aspectRatio: 1.3,
-                      onPageChanged: (indextop, reason) {
-                        setState(() {
-                          _currenttop = indextop;
-
-                          _hexagramVal = ((_currenttop + 1) * 100 +
-                              (_currentmid + 1) * 10 +
-                              (_currentbot + 1));
-
-                          _carouselvalueindex =
-                              hexCarouselWheelOrderList.indexOf(_hexagramVal);
-
-                          _chosenhex = orderHexagramsWheel[_carouselvalueindex];
-
-                          _controllergatetext.text = _chosenhex.toString();
-
-                          // idonotknow _currentline
-                          //_controllergatelinestory.text = 'test';
-                          _controllergatelinestory.text = bbrt385lst_num_heb[
-                              (bbrt385lst_num_heb.indexOf(_chosenhex) +
-                                  _currentline)];
-
-                          //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-                          //_hexsentence = LineSentenceList[_planethex.gate!];
-
-                          //_controllertopfirsttext.text = _hexsentence.adjective!;
-
-                          _controllercoinsttext.text = rtbimBoxList[_chosenhex];
-                          //_controllertopsecondtext.text = _hexsentence.subject!;
-                          //_controllertopthirdtext.text = _hexsentence.verb!;
-                          //_controllertopfourthtext.text = _hexsentence.adverb!;
-
-                          thirdcolor =
-                              //controlCollor(finalhexNamesList[_currenttop]);
-                              controlCollor(_currenttop);
-                          _controllercointhirdtext.text =
-                              finalhexNamesList[_currenttop];
-                          _controllercointopthirdtext.text =
-                              finalnewcoinnamesList[_currenttop];
-                        });
-                      }),
+                Flex(
+                    direction: Axis.vertical,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 10),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      child: AutoSizeTextField(
+                          textAlign: TextAlign.center,
+                          readOnly: true,
+                          minLines: 1,
+                          maxLines: 1,
+                          decoration: const InputDecoration.collapsed(hintText: '6'),
+                          controller: _controllergrampatxt,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.black)),
+                    ),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      child: AutoSizeTextField(
+                          textAlign: TextAlign.center,
+                          readOnly: true,
+                          minLines: 1,
+                          maxLines: 1,
+                          decoration: const InputDecoration.collapsed(hintText: '5'),
+                          controller: _controllerpapaptxt,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.black)),
+                    ),
+                  ],
                 ),
-              ),
+              ],
             ),
-            Container(
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  border: Border.all(
-                    width: 4,
-                    color: Colors.yellow,
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border(
+                          top: BorderSide(width: 5, color: soncolor),
+                          bottom: BorderSide(width: 5, color: daughtercolor)),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: 10,
+                      minWidth: 10,
+                      maxHeight: MediaQuery.of(context).size.height * 0.1,
+                      maxWidth: MediaQuery.of(context).size.width * 0.15,
+                    ),
+                    child: CarouselSlider(
+                      items: mixKitheSliders,
+                      carouselController: _controllermid,
+                      options: CarouselOptions(
+                          autoPlay: false,
+                          enlargeCenterPage: true,
+                          aspectRatio: 1.3,
+                          onPageChanged: (indexmid, reason) {
+                            setState(() {
+                              _currentmid = indexmid;
+
+                              _hexagramVal = ((_currenttop + 1) * 100 +
+                                  (_currentmid + 1) * 10 +
+                                  (_currentbot + 1));
+
+                              _carouselvalueindex = hexCarouselWheelOrderList
+                                  .indexOf(_hexagramVal);
+
+                              _chosenhex =
+                                  orderHexagramsWheel[_carouselvalueindex];
+
+                              _controllergatetext.text = _chosenhex.toString();
+
+                              //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
+
+                              _controllercoinsttext.text =
+                                  rtbimBoxList[_chosenhex];
+
+                              //_controllertopfirsttext.text = _hexsentence.adjective!;
+                              //_controllertopsecondtext.text = _hexsentence.subject!;
+                              //_controllertopthirdtext.text = _hexsentence.verb!;
+                              //_controllertopfourthtext.text = _hexsentence.adverb!;
+
+                              _controllergatelinestory.text =
+                                  bbrt385lst_num_heb[
+                                      (bbrt385lst_num_heb.indexOf(_chosenhex) +
+                                          _currentline)];
+
+                              secondcolor =
+                                  //controlCollor(finalhexNamesList[_currentmid]);
+                                  controlCollor(_currentmid);
+                              _controllercoinsecondtext.text =
+                                  finalhexNamesList[_currentmid];
+                              _controllercointopsecondtext.text =
+                                  finalnewcoinnamesList[_currentmid];
+                            });
+                          }),
+                    ),
                   ),
-                  borderRadius: BorderRadius.all(Radius.circular(20))
-              ),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: 10,
-                  minWidth: 10,
-                  maxHeight: MediaQuery.of(context).size.height * 0.1,
-                  maxWidth: MediaQuery.of(context).size.width * 0.15,
                 ),
-                child: CarouselSlider(
-                  items: mixKitheSliders,
-                  carouselController: _controllermid,
-                  options: CarouselOptions(
-                      autoPlay: false,
-                      enlargeCenterPage: true,
-                      aspectRatio: 1.3,
-                      onPageChanged: (indexmid, reason) {
-                        setState(() {
-                          _currentmid = indexmid;
-
-                          _hexagramVal = ((_currenttop + 1) * 100 +
-                              (_currentmid + 1) * 10 +
-                              (_currentbot + 1));
-
-                          _carouselvalueindex =
-                              hexCarouselWheelOrderList.indexOf(_hexagramVal);
-
-                          _chosenhex = orderHexagramsWheel[_carouselvalueindex];
-
-                          _controllergatetext.text = _chosenhex.toString();
-
-                          //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-
-                          _controllercoinsttext.text = rtbimBoxList[_chosenhex];
-
-                          //_controllertopfirsttext.text = _hexsentence.adjective!;
-                          //_controllertopsecondtext.text = _hexsentence.subject!;
-                          //_controllertopthirdtext.text = _hexsentence.verb!;
-                          //_controllertopfourthtext.text = _hexsentence.adverb!;
-
-                          _controllergatelinestory.text = bbrt385lst_num_heb[
-                              (bbrt385lst_num_heb.indexOf(_chosenhex) +
-                                  _currentline)];
-
-                          secondcolor =
-                              //controlCollor(finalhexNamesList[_currentmid]);
-                              controlCollor(_currentmid);
-                          _controllercoinsecondtext.text =
-                              finalhexNamesList[_currentmid];
-                          _controllercointopsecondtext.text =
-                              finalnewcoinnamesList[_currentmid];
-                        });
-                      }),
+                Flex(
+                  direction: Axis.vertical,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 10),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      child: AutoSizeTextField(
+                          textAlign: TextAlign.center,
+                          readOnly: true,
+                          minLines: 1,
+                          maxLines: 1,
+                          decoration: const InputDecoration.collapsed(hintText: '4'),
+                          controller: _controllersontxt,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.black)),
+                    ),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      child: AutoSizeTextField(
+                          textAlign: TextAlign.center,
+                          readOnly: true,
+                          minLines: 1,
+                          maxLines: 1,
+                          decoration: const InputDecoration.collapsed(hintText: '3'),
+                          controller: _controllerdaughtertxt,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.black)),
+                    ),
+                  ],
                 ),
-              ),
+              ],
             ),
-            Container(
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  border: Border.all(
-                    width: 3,
-                    color: Colors.red,
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border(
+                          top: BorderSide(width: 5, color: mamacolor),
+                          bottom: BorderSide(width: 5, color: grannycolor)),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: 10,
+                      minWidth: 10,
+                      maxHeight: MediaQuery.of(context).size.height * 0.1,
+                      maxWidth: MediaQuery.of(context).size.width * 0.15,
+                    ),
+                    child: CarouselSlider(
+                      items: mixKitheSliders,
+                      carouselController: _controllerbot,
+                      options: CarouselOptions(
+                          autoPlay: false,
+                          enlargeCenterPage: true,
+                          aspectRatio: 1.3,
+                          onPageChanged: (indexbot, reason) {
+                            setState(() {
+                              _currentbot = indexbot;
+                              _hexagramVal = ((_currenttop + 1) * 100 +
+                                  (_currentmid + 1) * 10 +
+                                  (_currentbot + 1));
+
+                              _carouselvalueindex = hexCarouselWheelOrderList
+                                  .indexOf(_hexagramVal);
+
+                              _chosenhex =
+                                  orderHexagramsWheel[_carouselvalueindex];
+
+                              _controllergatetext.text = _chosenhex.toString();
+
+                              //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
+
+                              _controllercoinsttext.text =
+                                  rtbimBoxList[_chosenhex];
+                              //_controllertopfirsttext.text = _hexsentence.adjective!;
+                              //_controllertopsecondtext.text = _hexsentence.subject!;
+                              //_controllertopthirdtext.text = _hexsentence.verb!;
+                              //_controllertopfourthtext.text = _hexsentence.adverb!;
+
+                              _controllergatelinestory.text =
+                                  bbrt385lst_num_heb[
+                                      (bbrt385lst_num_heb.indexOf(_chosenhex) +
+                                          _currentline)];
+
+                              firstcolor =
+                                  //controlCollor(finalhexNamesList[_currentbot]);
+                                  controlCollor(_currentbot);
+                              _controllercoinfirsttext.text =
+                                  finalhexNamesList[_currentbot];
+                              _controllercointopfirsttext.text =
+                                  finalnewcoinnamesList[_currentbot];
+                            });
+                          }),
+                    ),
                   ),
-                  borderRadius: BorderRadius.all(Radius.circular(20))
-              ),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: 10,
-                  minWidth: 10,
-                  maxHeight: MediaQuery.of(context).size.height * 0.1,
-                  maxWidth: MediaQuery.of(context).size.width * 0.15,
                 ),
-                child: CarouselSlider(
-                  items: mixKitheSliders,
-                  carouselController: _controllerbot,
-                  options: CarouselOptions(
-                      autoPlay: false,
-                      enlargeCenterPage: true,
-                      aspectRatio: 1.3,
-                      onPageChanged: (indexbot, reason) {
-                        setState(() {
-                          _currentbot = indexbot;
-                          _hexagramVal = ((_currenttop + 1) * 100 +
-                              (_currentmid + 1) * 10 +
-                              (_currentbot + 1));
-
-                          _carouselvalueindex =
-                              hexCarouselWheelOrderList.indexOf(_hexagramVal);
-
-                          _chosenhex = orderHexagramsWheel[_carouselvalueindex];
-
-                          _controllergatetext.text = _chosenhex.toString();
-
-                          //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-
-                          _controllercoinsttext.text = rtbimBoxList[_chosenhex];
-                          //_controllertopfirsttext.text = _hexsentence.adjective!;
-                          //_controllertopsecondtext.text = _hexsentence.subject!;
-                          //_controllertopthirdtext.text = _hexsentence.verb!;
-                          //_controllertopfourthtext.text = _hexsentence.adverb!;
-
-                          _controllergatelinestory.text = bbrt385lst_num_heb[
-                              (bbrt385lst_num_heb.indexOf(_chosenhex) +
-                                  _currentline)];
-
-                          firstcolor =
-                              //controlCollor(finalhexNamesList[_currentbot]);
-                              controlCollor(_currentbot);
-                          _controllercoinfirsttext.text =
-                              finalhexNamesList[_currentbot];
-                          _controllercointopfirsttext.text =
-                              finalnewcoinnamesList[_currentbot];
-                        });
-                      }),
+                Flex(
+                  direction: Axis.vertical,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 10),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      child: AutoSizeTextField(
+                          textAlign: TextAlign.center,
+                          readOnly: true,
+                          minLines: 1,
+                          maxLines: 1,
+                          decoration: const InputDecoration.collapsed(hintText: '2'),
+                          controller: _controllermamatxt,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.black)),
+                    ),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      child: AutoSizeTextField(
+                          textAlign: TextAlign.center,
+                          readOnly: true,
+                          minLines: 1,
+                          maxLines: 1,
+                          decoration: const InputDecoration.collapsed(hintText: '1'),
+                          controller: _controllergrannytxt,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.black)),
+                    ),
+                  ],
                 ),
-              ),
+              ],
             ),
             const Divider(
               color: Colors.blue,
@@ -2327,20 +2473,20 @@ class _RotateComplexState extends State<RotateComplex> {
                   origin: const Offset(0, 0),
                   children: List.generate(13, (index) {
                     return Container(
-                          width: 45,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(width: 2, color: Colors.blue)),
-                          child: AutoSizeText(
-                              listpersonalitygates[index].toString(),
-                              //minFontSize: 8,
-                              //maxFontSize: 85,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold)),
-                        );
+                      width: 45,
+                      margin: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 2, color: Colors.blue)),
+                      child: AutoSizeText(
+                          listpersonalitygates[index].toString(),
+                          //minFontSize: 8,
+                          //maxFontSize: 85,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                    );
                   }),
                 ),
               ],
@@ -2370,20 +2516,19 @@ class _RotateComplexState extends State<RotateComplex> {
                   origin: const Offset(0, 0),
                   children: List.generate(13, (index) {
                     return Container(
-                          width: 40,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border:
-                                  Border.all(width: 2.0, color: Colors.red)),
-                          child: AutoSizeText(listdesigngates[index].toString(),
-                              //minFontSize: 8,
-                              //maxFontSize: 12,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold)),
-                        );
+                      width: 40,
+                      margin: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 2.0, color: Colors.red)),
+                      child: AutoSizeText(listdesigngates[index].toString(),
+                          //minFontSize: 8,
+                          //maxFontSize: 12,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                    );
                   }),
                 ),
               ],
@@ -2425,7 +2570,7 @@ class _RotateComplexState extends State<RotateComplex> {
               children: [
                 IconButton(
                   icon: CircleAvatar(
-                    //minRadius: 5,
+                      //minRadius: 5,
                       maxRadius: 15,
                       foregroundImage: AssetImage(rtimageBolList[1])),
                   tooltip: 'הורדה',
@@ -2437,7 +2582,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 const SizedBox(width: 5),
                 IconButton(
                   icon: CircleAvatar(
-                    //minRadius: 5,
+                      //minRadius: 5,
                       maxRadius: 15,
                       foregroundImage: AssetImage(rtimageBolList[0])),
                   tooltip: 'העלאה',
@@ -2471,7 +2616,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       ],
                       readOnly: false,
                       decoration:
-                      const InputDecoration.collapsed(hintText: '1'),
+                          const InputDecoration.collapsed(hintText: '1'),
                       controller: _controllerSetTime,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
@@ -2514,7 +2659,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         margin: const EdgeInsets.only(top: 90.0, left: 160.0),
                         child: CustomPaint(
                           foregroundPainter:
-                          HeartPainter(centerstate: heartstate),
+                              HeartPainter(centerstate: heartstate),
                           willChange: true,
                           child: const SizedBox(
                             height: 35,
@@ -2554,7 +2699,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.topCenter,
                               child: CustomPaint(
                                 foregroundPainter:
-                                HeadPainter(centerstate: headstate),
+                                    HeadPainter(centerstate: headstate),
                                 willChange: true,
                                 child: const SizedBox(
                                   height: 70,
@@ -2568,7 +2713,7 @@ class _RotateComplexState extends State<RotateComplex> {
                                 width: 50,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    //image: AssetImage(mplantsfull[6],
+                                      //image: AssetImage(mplantsfull[6],
                                       image: AssetImage(
                                         'assets/coins/camel.png',
                                         //image: AssetImage('assets/camog/mcamel.png',
@@ -2583,7 +2728,7 @@ class _RotateComplexState extends State<RotateComplex> {
                                 width: 50,
                                 child: Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
                                       '64',
@@ -2717,7 +2862,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.topCenter,
                               child: CustomPaint(
                                 foregroundPainter:
-                                AjnaPainter(centerstate: ajnastate),
+                                    AjnaPainter(centerstate: ajnastate),
                                 willChange: true,
                                 child: const SizedBox(
                                   height: 70,
@@ -2731,7 +2876,7 @@ class _RotateComplexState extends State<RotateComplex> {
                                 width: 50,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    //image: AssetImage(mplantsfull[6],
+                                      //image: AssetImage(mplantsfull[6],
                                       image: AssetImage(
                                         'assets/coins/dog.png',
                                       ),
@@ -2746,7 +2891,7 @@ class _RotateComplexState extends State<RotateComplex> {
                                   alignment: Alignment.topCenter,
                                   child: Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                        MainAxisAlignment.spaceAround,
                                     children: [
                                       Text(
                                         '47',
@@ -2772,7 +2917,7 @@ class _RotateComplexState extends State<RotateComplex> {
                                 margin: EdgeInsets.all(15),
                                 child: Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
                                       '17',
@@ -2842,7 +2987,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             alignment: AlignmentDirectional.center,
                             child: CustomPaint(
                               foregroundPainter:
-                              ThroatPainter(centerstate: throatstate),
+                                  ThroatPainter(centerstate: throatstate),
                               willChange: true,
                               child: const SizedBox(
                                 height: 60,
@@ -2871,7 +3016,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               width: 50,
                               child: Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceAround,
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   Text(
                                     '62',
@@ -2896,7 +3041,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               margin: EdgeInsets.fromLTRB(0, 12, 0, 0),
                               child: Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     '16',
@@ -2917,7 +3062,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               margin: EdgeInsets.only(top: 24),
                               child: Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     '20',
@@ -2949,7 +3094,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               margin: EdgeInsets.fromLTRB(0, 45, 0, 0),
                               child: Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     '31',
@@ -3079,7 +3224,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.center,
                               child: CustomPaint(
                                 foregroundPainter:
-                                GPainter(centerstate: gstate),
+                                    GPainter(centerstate: gstate),
                                 willChange: true,
                                 child: const SizedBox(
                                   height: 80,
@@ -3104,7 +3249,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.topCenter,
                               child: Container(
                                 margin:
-                                const EdgeInsets.only(right: 30, top: 27),
+                                    const EdgeInsets.only(right: 30, top: 27),
                                 child: Text(
                                   '7',
                                   style: TextStyle(fontSize: 9),
@@ -3125,7 +3270,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.topCenter,
                               child: Container(
                                 margin:
-                                const EdgeInsets.only(left: 30, top: 27),
+                                    const EdgeInsets.only(left: 30, top: 27),
                                 child: Text(
                                   '13',
                                   style: TextStyle(fontSize: 9),
@@ -3136,7 +3281,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.bottomCenter,
                               child: Container(
                                 margin:
-                                const EdgeInsets.only(left: 30, bottom: 27),
+                                    const EdgeInsets.only(left: 30, bottom: 27),
                                 child: Text(
                                   '15',
                                   style: TextStyle(fontSize: 9),
@@ -3291,7 +3436,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             alignment: Alignment.center,
                             child: CustomPaint(
                               foregroundPainter:
-                              SacralPainter(centerstate: sacralstate),
+                                  SacralPainter(centerstate: sacralstate),
                               willChange: true,
                               child: const SizedBox(
                                 height: 55,
@@ -3383,7 +3528,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         children: [
                           CustomPaint(
                             foregroundPainter:
-                            RootPainter(centerstate: rootstate),
+                                RootPainter(centerstate: rootstate),
                             willChange: true,
                             child: const SizedBox(
                               height: 55,
@@ -3411,7 +3556,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       margin: EdgeInsets.only(left: 220, bottom: 150),
                       child: CustomPaint(
                         foregroundPainter:
-                        SolarPainter(centerstate: solarstate),
+                            SolarPainter(centerstate: solarstate),
                         willChange: true,
                         child: const SizedBox(
                           height: 60,
@@ -3442,7 +3587,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       margin: EdgeInsets.only(right: 220, bottom: 150),
                       child: CustomPaint(
                         foregroundPainter:
-                        SpleenPainter(centerstate: spleenstate),
+                            SpleenPainter(centerstate: spleenstate),
                         willChange: true,
                         child: const SizedBox(
                           height: 60,
@@ -4422,8 +4567,8 @@ class _RotateComplexState extends State<RotateComplex> {
               _now.minute, _now.second);
           break;
         case 'שבועות':
-          _now = DateTime(_now.year, _now.month, (_now.day + _newts*7) , _now.hour,
-              _now.minute, _now.second);
+          _now = DateTime(_now.year, _now.month, (_now.day + _newts * 7),
+              _now.hour, _now.minute, _now.second);
           break;
         case 'חודשים':
           _now = DateTime(_now.year, _now.month + _newts, _now.day, _now.hour,
@@ -4453,8 +4598,8 @@ class _RotateComplexState extends State<RotateComplex> {
               _now.minute, _now.second);
           break;
         case 'שבועות':
-          _now = DateTime(_now.year, _now.month, (_now.day - _newts*7) , _now.hour,
-              _now.minute, _now.second);
+          _now = DateTime(_now.year, _now.month, (_now.day - _newts * 7),
+              _now.hour, _now.minute, _now.second);
           break;
         case 'חודשים':
           _now = DateTime(_now.year, _now.month - _newts, _now.day, _now.hour,
