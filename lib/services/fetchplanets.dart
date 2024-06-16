@@ -18,8 +18,7 @@ class PlanetsServices {
 
     final CoordinatesWithSpeed posSun, posEarth, posNorthnode, posSouthnode,
           posMoon, posMercury, posVenus, posMars, posJupiter,
-          posSaturn, posUranus, posNeptune, posPluto;
-        //posChiron;
+          posSaturn, posUranus, posNeptune, posPluto, posChiron;
 
 
     //print ("time is $now");
@@ -37,7 +36,7 @@ class PlanetsServices {
     posUranus = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_URANUS, SwephFlag.SEFLG_SWIEPH);
     posNeptune = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_NEPTUNE, SwephFlag.SEFLG_SWIEPH);
     posPluto = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_PLUTO, SwephFlag.SEFLG_SWIEPH);
-    //posChiron = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_CHIRON, SwephFlag.SEFLG_SWIEPH);
+    posChiron = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_CHIRON, SwephFlag.SEFLG_SWIEPH);
 
     //idk
     //double printNorthNode = posNorthnode.longitude;
@@ -48,7 +47,7 @@ class PlanetsServices {
     cswPlanets = [posSun, posNorthnode, posMoon,
                     posMercury, posVenus,
                     posMars, posJupiter, posSaturn,
-                    posUranus, posNeptune, posPluto];
+                    posUranus, posNeptune, posPluto, posChiron];
       //posChiron];
 
     return cswPlanets;
@@ -69,8 +68,8 @@ class PlanetsServices {
         cwsSaturn = mappedplanets [7],
         cwsUranus = mappedplanets [8],
         cwsNeptune = mappedplanets [9],
-        cwsPluto = mappedplanets [10];
-        //cwsChiron = mappedplanets [11];
+        cwsPluto = mappedplanets [10],
+        cwsChiron = mappedplanets [11];
 
     //double _latitude = 0.0,
     //   _longitude = 0.0,
@@ -119,7 +118,7 @@ class PlanetsServices {
       uranusSubStructure = getGateStructure(cwsUranus.longitude);
       neptuneSubStructure = getGateStructure(cwsNeptune.longitude);
       plutoSubStructure = getGateStructure(cwsPluto.longitude);
-      //chironSubStructure = getGateStructure(cwsChiron.longitude);
+      chironSubStructure = getGateStructure(cwsChiron.longitude);
 
       planetsHexagramList = [
         sunSubStructure,
@@ -135,7 +134,7 @@ class PlanetsServices {
         uranusSubStructure,
         neptuneSubStructure,
         plutoSubStructure,
-        //chironSubStructure
+        chironSubStructure
       ];
     } catch (err) {
       Exception(err);

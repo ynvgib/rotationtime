@@ -129,6 +129,8 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllerPlutoText = TextEditingController(),
       _controllerPlutoGate = TextEditingController(),
       _controllerDesignPlutoGate = TextEditingController(),
+      _controllerChironGate = TextEditingController(),
+      _controllerDesignChironGate = TextEditingController(),
       _controllerEarthHex = TextEditingController(),
       _controllerEarthText = TextEditingController(),
       _controllerEarthGate = TextEditingController(),
@@ -144,7 +146,8 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllersontxt = TextEditingController(),
       _controllerdaughtertxt = TextEditingController(),
       _controllermamatxt = TextEditingController(),
-      _controllergrannytxt = TextEditingController();
+      _controllergrannytxt = TextEditingController(),
+      _controllersavetxt = TextEditingController();
 
   final CarouselController _controllercoin = CarouselController(),
       _controllerconstate = CarouselController(),
@@ -212,6 +215,7 @@ class _RotateComplexState extends State<RotateComplex> {
       _uranushex = Hexagram(),
       _neptunehex = Hexagram(),
       _plutohex = Hexagram(),
+      _chironhex = Hexagram(),
       _sundesignhex = Hexagram(),
       _earthdesignhex = Hexagram(),
       _northnodedesignhex = Hexagram(),
@@ -224,7 +228,8 @@ class _RotateComplexState extends State<RotateComplex> {
       _saturndesignhex = Hexagram(),
       _uranusdesignhex = Hexagram(),
       _neptunedesignhex = Hexagram(),
-      _plutodesignhex = Hexagram();
+      _plutodesignhex = Hexagram(),
+      _chirondesignhex = Hexagram();
 
   Hexagram _planethex = Hexagram();
 
@@ -373,6 +378,8 @@ class _RotateComplexState extends State<RotateComplex> {
                     _planetsdesignList =
                         await PlanetsServices.getCurrentData(_now);
 
+                    _chironhex = _planetsnowList.last;
+                    _planetsnowList.removeLast();
                     _channelsList =
                         HDServices.getHDChannelsJustNow(_planetsnowList);
 
@@ -591,7 +598,7 @@ class _RotateComplexState extends State<RotateComplex> {
                                 _controllerTime.text =
                                     '$_formattedTime $_formattedDate';
                                 //_controllerDate.text = _formattedDate;
-                                _controllerPlanetType.text = 'Thought Later';
+                                _controllerPlanetType.text = 'אחר כך לחשוב';
 
                                 _controllerrotationstate.jumpToPage(0);
                                 break;
@@ -607,7 +614,7 @@ class _RotateComplexState extends State<RotateComplex> {
                                     '$_formattedTime $_formattedDate';
                                 //_controllerDate.text = _formattedDate;
 
-                                _controllerPlanetType.text = 'Life First';
+                                _controllerPlanetType.text = 'קודם לחיות';
 
                                 _controllerrotationstate.jumpToPage(3);
                                 break;
@@ -1002,7 +1009,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   ),
                 ),
                 Flex(
-                    direction: Axis.vertical,
+                  direction: Axis.vertical,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(height: 10),
@@ -1014,7 +1021,8 @@ class _RotateComplexState extends State<RotateComplex> {
                           readOnly: true,
                           minLines: 1,
                           maxLines: 1,
-                          decoration: const InputDecoration.collapsed(hintText: '6'),
+                          decoration:
+                              const InputDecoration.collapsed(hintText: '6'),
                           controller: _controllergrampatxt,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -1029,7 +1037,8 @@ class _RotateComplexState extends State<RotateComplex> {
                           readOnly: true,
                           minLines: 1,
                           maxLines: 1,
-                          decoration: const InputDecoration.collapsed(hintText: '5'),
+                          decoration:
+                              const InputDecoration.collapsed(hintText: '5'),
                           controller: _controllerpapaptxt,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -1121,7 +1130,8 @@ class _RotateComplexState extends State<RotateComplex> {
                           readOnly: true,
                           minLines: 1,
                           maxLines: 1,
-                          decoration: const InputDecoration.collapsed(hintText: '4'),
+                          decoration:
+                              const InputDecoration.collapsed(hintText: '4'),
                           controller: _controllersontxt,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -1136,7 +1146,8 @@ class _RotateComplexState extends State<RotateComplex> {
                           readOnly: true,
                           minLines: 1,
                           maxLines: 1,
-                          decoration: const InputDecoration.collapsed(hintText: '3'),
+                          decoration:
+                              const InputDecoration.collapsed(hintText: '3'),
                           controller: _controllerdaughtertxt,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -1226,7 +1237,8 @@ class _RotateComplexState extends State<RotateComplex> {
                           readOnly: true,
                           minLines: 1,
                           maxLines: 1,
-                          decoration: const InputDecoration.collapsed(hintText: '2'),
+                          decoration:
+                              const InputDecoration.collapsed(hintText: '2'),
                           controller: _controllermamatxt,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -1241,7 +1253,8 @@ class _RotateComplexState extends State<RotateComplex> {
                           readOnly: true,
                           minLines: 1,
                           maxLines: 1,
-                          decoration: const InputDecoration.collapsed(hintText: '1'),
+                          decoration:
+                              const InputDecoration.collapsed(hintText: '1'),
                           controller: _controllergrannytxt,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -2419,6 +2432,17 @@ class _RotateComplexState extends State<RotateComplex> {
                   ),
                 ),
                 const SizedBox(width: 5),
+                InkWell(
+                  child: ImageIcon(
+                    AssetImage("assets/coins/longitude.png"),
+                    color: Colors.black,
+                    size: 25,
+                  ),
+                  onTap: () {
+                    _setLongitude();
+                  },
+                ),
+                const SizedBox(width: 5),
                 SizedBox(
                   width: MediaQuery.of(context).size.width / 3,
                   child: AutoSizeTextField(
@@ -2448,6 +2472,90 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
               ],
             ),
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerDesignChironGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      switch (_currentrotationstate) {
+                        case 0:
+                        //_planettext = _plutohex.linename!;
+                          _planettext =
+                          '50.7 years of Silence PersonReality and Reality Cycle';
+                          break;
+                        case 1:
+                          _planettext =
+                          '50.7 years of Silence PersonReality and Reality Cycle';
+                          break;
+                        case 2:
+                          _planettext = 'breath';
+                          break;
+                        case 3:
+                          _planettext = 'silence';
+                          break;
+                        default:
+                          break;
+                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPlanetDialog(context, _planettext),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[100],
+                      shape: const CircleBorder(),
+                    ),
+                    child: const CircleAvatar(
+                        minRadius: 13.0,
+                        maxRadius: 13.0,
+                        backgroundColor: Colors.white,
+                        backgroundImage:
+                        AssetImage('assets/planets/chiron.png')),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: AutoSizeTextField(
+                        readOnly: true,
+                        decoration:
+                        const InputDecoration.collapsed(hintText: ''),
+                        textAlign: TextAlign.center,
+                        controller: _controllerChironGate,
+                        style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ]),
+            SizedBox(height: 10),
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 2,
+              child: AutoSizeTextField(
+                  readOnly: false,
+                  decoration:
+                  const InputDecoration.collapsed(hintText: 'מחזיק מטבע לרגע'),
+                  textAlign: TextAlign.center,
+                  controller: _controllersavetxt,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal)),
+            ),
+            Divider(color: Colors.blue),
             Stack(
               fit: StackFit.loose,
               children: [
@@ -3775,6 +3883,11 @@ class _RotateComplexState extends State<RotateComplex> {
                 _planetsdesignList =
                     await PlanetsServices.getCurrentData(_designTime);
 
+                _chironhex = _planetsnowList.last;
+                _chirondesignhex = _planetsdesignList.last;
+                _planetsnowList.removeLast();
+                _planetsdesignList.removeLast();
+
                 _allplanetsList = _planetsnowList + _planetsdesignList;
                 _channelsList = HDServices.getHDChannels(_allplanetsList);
                 _personchannelsList = HDServices.getHDChannels(_planetsnowList);
@@ -3879,6 +3992,11 @@ class _RotateComplexState extends State<RotateComplex> {
                 _designTime = await PlanetsServices.getDesignTime(_now);
                 _planetsdesignList =
                     await PlanetsServices.getCurrentData(_designTime);
+
+                _chironhex = _planetsnowList.last;
+                _chirondesignhex = _planetsdesignList.last;
+                _planetsnowList.removeLast();
+                _planetsdesignList.removeLast();
 
                 _allplanetsList = _planetsnowList + _planetsdesignList;
                 _channelsList = HDServices.getHDChannels(_allplanetsList);
@@ -4621,6 +4739,8 @@ class _RotateComplexState extends State<RotateComplex> {
     //emulate design time to now time to prevent blank
     _planetsdesignList = await PlanetsServices.getCurrentData(_now);
 
+    _chironhex = _planetsnowList.last;
+    _planetsnowList.removeLast();
     _channelsList = HDServices.getHDChannelsJustNow(_planetsnowList);
 
     _personchannelsList = [];
@@ -4957,6 +5077,7 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerUranusGate.text = _uranushex.gatelinecolor!;
     _controllerNeptuneGate.text = _neptunehex.gatelinecolor!;
     _controllerPlutoGate.text = _plutohex.gatelinecolor!;
+    _controllerChironGate.text = _chironhex.gatelinecolor!;
 
     _controllerDesignSunGate.text = _sundesignhex.gatelinecolortonebase!;
     _controllerDesignEarthGate.text = _earthdesignhex.gatelinecolortonebase!;
@@ -4973,6 +5094,7 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerDesignUranusGate.text = _uranusdesignhex.gatelinecolor!;
     _controllerDesignNeptuneGate.text = _neptunedesignhex.gatelinecolor!;
     _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor!;
+    _controllerDesignChironGate.text = _chirondesignhex.gatelinecolor!;
 
     listpersonalitygates = [
       _northnodehex.gate!,
@@ -5011,6 +5133,69 @@ class _RotateComplexState extends State<RotateComplex> {
     _formattedDate = DateFormat('MM/dd/yyyy').format(timedata);
     _formattedTime = DateFormat.Hms().format(timedata);
     _controllerTime.text = '$_formattedTime $_formattedDate';
+  }
+
+  void _setLongitude() {
+    _sunhex = _planetsnowList[0];
+    _earthhex = _planetsnowList[1];
+    _northnodehex = _planetsnowList[2];
+    _southnodehex = _planetsnowList[3];
+    _moonhex = _planetsnowList[4];
+    _mercuryhex = _planetsnowList[5];
+    _venushex = _planetsnowList[6];
+    _marshex = _planetsnowList[7];
+    _jupiterhex = _planetsnowList[8];
+    _saturnhex = _planetsnowList[9];
+    _uranushex = _planetsnowList[10];
+    _neptunehex = _planetsnowList[11];
+    _plutohex = _planetsnowList[12];
+
+    _sundesignhex = _planetsdesignList[0];
+    _earthdesignhex = _planetsdesignList[1];
+    _northnodedesignhex = _planetsdesignList[2];
+    _southnodedesignhex = _planetsdesignList[3];
+    _moondesignhex = _planetsdesignList[4];
+    _mercurydesignhex = _planetsdesignList[5];
+    _venusdesignhex = _planetsdesignList[6];
+    _marsdesignhex = _planetsdesignList[7];
+    _jupiterdesignhex = _planetsdesignList[8];
+    _saturndesignhex = _planetsdesignList[9];
+    _uranusdesignhex = _planetsdesignList[10];
+    _neptunedesignhex = _planetsdesignList[11];
+    _plutodesignhex = _planetsdesignList[12];
+
+    _controllerSunGate.text = _sunhex.longitude.toString();
+    _controllerEarthGate.text = _earthhex.longitude.toString();
+    _controllerNorthNodeGate.text = _northnodehex.longitude.toString();
+    _controllerSouthNodeGate.text = _southnodehex.longitude.toString();
+    _controllerMoonGate.text = _moonhex.longitude.toString();
+    _controllerMercuryGate.text = _mercuryhex.longitude.toString();
+    _controllerVenusGate.text = _venushex.longitude.toString();
+    _controllerMarsGate.text = _marshex.longitude.toString();
+    _controllerJupiterGate.text = _jupiterhex.longitude.toString();
+    _controllerSaturnGate.text = _saturnhex.longitude.toString();
+    _controllerUranusGate.text = _uranushex.longitude.toString();
+    _controllerNeptuneGate.text = _neptunehex.longitude.toString();
+    _controllerPlutoGate.text = _plutohex.longitude.toString();
+    _controllerChironGate.text = _chironhex.longitude.toString();
+
+
+    _controllerDesignSunGate.text = _sundesignhex.longitude.toString();
+    _controllerDesignEarthGate.text = _earthdesignhex.longitude.toString();
+    _controllerDesignNorthNodeGate.text =
+        _northnodedesignhex.longitude.toString();
+    _controllerDesignSouthNodeGate.text =
+        _southnodedesignhex.longitude.toString()!;
+    _controllerDesignMoonGate.text = _moondesignhex.longitude.toString();
+    _controllerDesignMercuryGate.text = _mercurydesignhex.longitude.toString();
+    _controllerDesignVenusGate.text = _venusdesignhex.longitude.toString();
+    _controllerDesignMarsGate.text = _marsdesignhex.longitude.toString();
+    _controllerDesignJupiterGate.text = _jupiterdesignhex.longitude.toString();
+    _controllerDesignSaturnGate.text = _saturndesignhex.longitude.toString();
+    _controllerDesignUranusGate.text = _uranusdesignhex.longitude.toString();
+    _controllerDesignNeptuneGate.text = _neptunedesignhex.longitude.toString();
+    _controllerDesignPlutoGate.text = _plutodesignhex.longitude.toString();
+    _controllerDesignChironGate.text = _chirondesignhex.longitude.toString();
   }
 
   void _setCoins() {
@@ -5069,7 +5254,8 @@ class _RotateComplexState extends State<RotateComplex> {
   void _changeTextLevels(String textlevel) {
     switch (textlevel) {
       case 'complex':
-        _controllerPlanetSubType.text = 'COMPLEX';
+        //_controllerPlanetSubType.text = 'COMPLEX';
+        _controllerPlanetSubType.text = 'מורכב';
 
         _controllerSunGate.text = _sunhex.gatelinecolortonebase!;
         _controllerEarthGate.text = _earthhex.gatelinecolortonebase!;
@@ -5084,6 +5270,7 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerUranusGate.text = _uranushex.gatelinecolor!;
         _controllerNeptuneGate.text = _neptunehex.gatelinecolor!;
         _controllerPlutoGate.text = _plutohex.gatelinecolor!;
+        _controllerChironGate.text = _chironhex.gatelinecolor!;
 
         _controllerDesignSunGate.text = _sundesignhex.gatelinecolortonebase!;
         _controllerDesignEarthGate.text =
@@ -5101,10 +5288,11 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerDesignUranusGate.text = _uranusdesignhex.gatelinecolor!;
         _controllerDesignNeptuneGate.text = _neptunedesignhex.gatelinecolor!;
         _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor!;
+        _controllerDesignChironGate.text = _chirondesignhex.gatelinecolor!;
 
         break;
       case 'simple':
-        _controllerPlanetSubType.text = 'Simple';
+        _controllerPlanetSubType.text = 'פשוט';
 
         _controllerSunGate.text = _sunhex.gateline!;
         _controllerEarthGate.text = _earthhex.gateline!;
@@ -5119,6 +5307,7 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerUranusGate.text = _uranushex.gateline!;
         _controllerNeptuneGate.text = _neptunehex.gateline!;
         _controllerPlutoGate.text = _plutohex.gateline!;
+        _controllerChironGate.text = _chironhex.gateline!;
 
         _controllerDesignSunGate.text = _sundesignhex.gateline!;
         _controllerDesignEarthGate.text = _earthdesignhex.gateline!;
@@ -5133,10 +5322,11 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerDesignUranusGate.text = _uranusdesignhex.gateline!;
         _controllerDesignNeptuneGate.text = _neptunedesignhex.gateline!;
         _controllerDesignPlutoGate.text = _plutodesignhex.gateline!;
+        _controllerDesignChironGate.text = _chirondesignhex.gateline!;
 
         break;
       case 'breath':
-        _controllerPlanetSubType.text = 'Breathe';
+        _controllerPlanetSubType.text = 'נשימה';
 
         _controllerSunGate.text = 'Exhale';
         _controllerEarthGate.text = 'Inhale';
@@ -5151,6 +5341,7 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerUranusGate.text = 'Inhale';
         _controllerNeptuneGate.text = 'Inhale';
         _controllerPlutoGate.text = 'Inhale';
+        _controllerChironGate.text = 'Inhale';
 
         _controllerDesignSunGate.text = 'Exhale';
         _controllerDesignEarthGate.text = 'Inhale';
@@ -5165,10 +5356,11 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerDesignUranusGate.text = 'Inhale';
         _controllerDesignNeptuneGate.text = 'Inhale';
         _controllerDesignPlutoGate.text = 'Inhale';
+        _controllerDesignChironGate.text = 'Inhale';
 
         break;
       case 'silence':
-        _controllerPlanetSubType.text = 'silent';
+        _controllerPlanetSubType.text = 'שתיקה';
 
         _controllerSunGate.text = '';
         _controllerEarthGate.text = '';
@@ -5183,6 +5375,7 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerUranusGate.text = '';
         _controllerNeptuneGate.text = '';
         _controllerPlutoGate.text = '';
+        _controllerChironGate.text = '';
 
         _controllerDesignSunGate.text = '';
         _controllerDesignEarthGate.text = '';
@@ -5197,6 +5390,7 @@ class _RotateComplexState extends State<RotateComplex> {
         _controllerDesignUranusGate.text = '';
         _controllerDesignNeptuneGate.text = '';
         _controllerDesignPlutoGate.text = '';
+        _controllerDesignChironGate.text = '';
 
         break;
       default:

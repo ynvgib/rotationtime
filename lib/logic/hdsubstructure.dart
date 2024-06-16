@@ -26,10 +26,8 @@ Hexagram getGateStructure(double planetlongitude) {
 
   //double _decimalDegrees = 0.0;
 
-  double exactLine = 0.0;
-  double exactColor = 0.0;
-  double exactTone = 0.0;
-  double exactBase = 0.0;
+  double exactLine = 0.0, exactColor = 0.0, exactTone = 0.0, exactBase = 0.0,
+  gatelongitude = 0.0;
 
   Hexagram gateStructure = Hexagram();
 
@@ -87,6 +85,8 @@ Hexagram getGateStructure(double planetlongitude) {
   // string gate line color tone base
   gatelinecolortonebase = "$gate.$line.$color.$tone.$base";
 
+  // set longitude
+  gatelongitude = planetlongitude;
 
   gateStructure.name = name;
   gateStructure.hex = hex;
@@ -101,6 +101,7 @@ Hexagram getGateStructure(double planetlongitude) {
   gateStructure.gatelinecolor = gatelinecolor;
   gateStructure.gatelinecolortone = gatelinecolortone;
   gateStructure.gatelinecolortonebase = gatelinecolortonebase;
+  gateStructure.longitude = gatelongitude;
 
 
   return gateStructure;
