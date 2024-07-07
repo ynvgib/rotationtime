@@ -4,7 +4,7 @@
 #define MyAppName "RotationTime"
 #define MyAppVersion "34.20"
 #define MyAppPublisher "beidontknow"
-#define MyAppURL "https://beidontknow.com/"
+#define MyAppURL "https://rotation-time.web.app/"
 #define MyAppExeName "finallyicanlearn.exe"
 
 [Setup]
@@ -41,6 +41,7 @@ Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner
 Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner\Release\sweph.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner\Release\syncfusion_pdfviewer_windows_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner\Release\pdfium.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner\Release\flutter_localization_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\val\projects\flutter\finallyicanlearn\build\windows\x64\runner\Release\data\*"; DestDir: "{app}\data"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 

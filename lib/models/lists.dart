@@ -36,6 +36,26 @@ final List<String> temproutes = [
 ];
 
 final List<String> rtimages = [
+  'assets/minmax/mincomplex.png',
+  'assets/minmax/minsimple.png',
+  'assets/minmax/minbreath.png',
+  'assets/minmax/minsilence.png',
+  'assets/minmax/bluemax.png',
+  'assets/minmax/greenmax.png',
+  'assets/minmax/yellowmin.png',
+  'assets/minmax/redmin.png',
+  'assets/minmax/minque.gif',
+  'assets/minmax/minmicex.png',
+  'assets/minmax/blackmax.png',
+  'assets/minmax/bluemin.png',
+  'assets/minmax/greenmin.png',
+  'assets/minmax/greymax.png',
+  'assets/minmax/whitemax.png',
+  'assets/kithe/kitcomplex.png',
+  'assets/kithe/kitsimple.png',
+  'assets/kithe/kitbreath.png',
+  'assets/kithe/kitsilence.png',
+  'assets/kithe/kitidkm.png',
   'assets/kithe/blkithe.png',
   'assets/kithe/grkithe.png',
   'assets/kithe/yelkithe.png',
@@ -46,7 +66,6 @@ final List<String> rtimages = [
   'assets/kithe/redkithebg.png',
   'assets/kithe/qkithe.gif',
   'assets/kithe/quekithe.png',
-  'assets/kithe/exkithebg.png',
   'assets/kithe/exkithebg.png',
   'assets/coins/camel.png',
   'assets/coins/cameldog.png',
@@ -73,7 +92,7 @@ final List<String> rtimages = [
   'assets/coins/fullcoinsbg.png',
   'assets/coins/fullrotateicon.png',
   'assets/coins/oldrotateicon500.png',
-  'assets/coins/rotateicon.png',
+  'assets/coins/rotateicon2.png',
   'assets/coins/rotateicon1.png',
   'assets/coins/rotateicon500.png',
   'assets/coins/rotateiconbck.png',
@@ -2935,6 +2954,24 @@ final List<int> hexCarouselWheelOrderList = [
 final List<String> rtimgcoins = [
   'assets/planets/sun.png',
   'assets/coins/complex.png',
+  'assets/minmax/bluemax.png',
+
+  'assets/planets/northnode.png',
+  'assets/coins/simple.png',
+  'assets/minmax/greenmax.png',
+
+  'assets/planets/southnode.png',
+  'assets/coins/breath.png',
+  'assets/minmax/yellowmin.png',
+
+  'assets/planets/earth.png',
+  'assets/coins/silence.png',
+  'assets/minmax/redmin.png',
+];
+
+final List<String> rtimgcoinsold = [
+  'assets/planets/sun.png',
+  'assets/coins/complex.png',
   'assets/plants/mrbluep.png',
   'assets/plants/rotegi.png',
 
@@ -3011,6 +3048,14 @@ final List<String> bimnamesheb = [
   'ביני',
   'אבי',
   'חזי',
+];
+
+final List<String> kithename = [
+  'Kit He Camel?',
+  'Bet Kit He',
+  'Been Kit He',
+  'Have Kit He',
+  'Has Kit He',
 ];
 
 final List<String> titlesname = [
@@ -3122,9 +3167,9 @@ final List<String> hebsub_rev = [
 ];
 
 final List<String> maintxt = [
-  'Q KIT He!',
-  'Bet KIT He!',
-  'Been KIT He!',
+  'IDK KIT He!',
+  'Bet KIT She!',
+  'Been KIT She!',
   'Have KIT He!',
   'Has KIT He!',
 ];

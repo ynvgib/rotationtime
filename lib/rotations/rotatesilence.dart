@@ -29,13 +29,13 @@ class _RotateSilenceState extends State<RotateSilence> {
                 width: 30,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(kitheimglst[0]),
+                    image: AssetImage(minmaximglst[0]),
                     fit: BoxFit.scaleDown,
                   ),
                   shape: BoxShape.rectangle,
                 ),
               ),
-              AutoSizeText(_title, style: TextStyle(color: Colors.white)),
+              AutoSizeText(_title, style: const TextStyle(color: Colors.white)),
             ],
           ),
           leading: IconButton(
@@ -50,57 +50,95 @@ class _RotateSilenceState extends State<RotateSilence> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Divider(thickness: 5, indent: 20, endIndent: 10,color: Colors.red),
                 Container(
                   height: MediaQuery.of(context).size.height / 4,
                   width: MediaQuery.of(context).size.width / 3,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(kitheimglst[0]),
+                      image: AssetImage(newminmaxcoins[1]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
                   ),
                 ),
-                Transform.scale(
-                  scaleX: -1,
-                  child: Container(
-                    height: MediaQuery.of(context).size.height / 4,
-                    width: MediaQuery.of(context).size.width / 2,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(mplantspos[0]),
-                        fit: BoxFit.scaleDown,
+                Flex(
+                  direction: Axis.horizontal,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height / 6,
+                      width: MediaQuery.of(context).size.width / 6,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(minmaximglst[0]),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.rectangle,
                       ),
-                      shape: BoxShape.rectangle,
                     ),
-                  ),
-                ),
-                Transform.scale(
-                  scaleX: -1,
-                  child: Container(
-                    height: MediaQuery.of(context).size.height / 4,
-                    width: MediaQuery.of(context).size.width / 2,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(mplantsneg[0]),
-                        fit: BoxFit.scaleDown,
+                    Container(
+                      height: MediaQuery.of(context).size.height / 6,
+                      width: MediaQuery.of(context).size.width / 6,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(kitheimglst[0]),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.rectangle,
                       ),
-                      shape: BoxShape.rectangle,
                     ),
-                  ),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height / 4,
-                  width: MediaQuery.of(context).size.width / 3,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(titlesicon[1]),
-                      fit: BoxFit.scaleDown,
+                    Transform.scale(
+                      scaleX: -1,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height / 6,
+                        width: MediaQuery.of(context).size.width / 6,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mplantspos[0]),
+                            fit: BoxFit.scaleDown,
+                          ),
+                          shape: BoxShape.rectangle,
+                        ),
+                      ),
                     ),
-                    shape: BoxShape.rectangle,
-                  ),
+                    Transform.scale(
+                      scaleX: -1,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height / 6,
+                        width: MediaQuery.of(context).size.width / 6,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mplantsneg[0]),
+                            fit: BoxFit.scaleDown,
+                          ),
+                          shape: BoxShape.rectangle,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height / 6,
+                      width: MediaQuery.of(context).size.width / 6,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(titlesicon[1]),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.rectangle,
+                      ),
+                    ),
+                  ],
                 ),
+
+                const SizedBox(height: 10),
+                const Divider(thickness: 5, indent: 20, endIndent: 10,color: Colors.red),                const SizedBox(height: 10),
+                const AutoSizeText(' @',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontFamily: 'iChing',
+                        fontSize: 80,
+                        color: Colors.red,
+                        fontWeight: FontWeight.normal)),
+                const Divider(thickness: 5, indent: 20, endIndent: 10,color: Colors.red),                const SizedBox(height: 10),
               ]),
         ),
       ),

@@ -29,7 +29,8 @@ class _RotateSimpleState extends State<RotateSimple> {
   final rtScrollController = ScrollController();
 
   final TextEditingController _controllertoptext = TextEditingController(),
-      _controllerbottomtext = TextEditingController();
+      _controllerbottomtext = TextEditingController(),
+      _controllerichingtext = TextEditingController();
 
   //final String _title = subtitles[3];
   //final String _title = subtitles_heb[3];
@@ -63,15 +64,21 @@ class _RotateSimpleState extends State<RotateSimple> {
             direction: Axis.horizontal,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const CircleAvatar(
+                radius: 15,
+                backgroundColor: Colors.transparent,
+                foregroundImage: AssetImage('assets/minmax/greenmin.png',),
+              ),
+              const SizedBox(width: 10),
               AutoSizeText(_title,
                   textAlign: TextAlign.left,
                   //maxFontSize: 15,
-                  style: TextStyle(color: Colors.white)),
-              SizedBox(width: 10),
-              CircleAvatar(
+                  style: const TextStyle(color: Colors.white)),
+              const SizedBox(width: 10),
+              const CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.transparent,
-                foregroundImage: AssetImage(kitheimglst[2]),
+                foregroundImage: AssetImage('assets/minmax/greenmax.png',),
               ),
             ],
           ),
@@ -95,9 +102,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                   Container(
                     height: MediaQuery.of(context).size.height / 8,
                     width: MediaQuery.of(context).size.width / 4,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(mplantsneg[2]),
+                        image: AssetImage('assets/minmax/greenmin.png'),
                         fit: BoxFit.scaleDown,
                       ),
                       shape: BoxShape.rectangle,
@@ -106,20 +113,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                   Container(
                     height: MediaQuery.of(context).size.height / 8,
                     width: MediaQuery.of(context).size.width / 4,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(kitheimglst[2]),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height / 8,
-                    width: MediaQuery.of(context).size.width / 4,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(mplantspos[2]),
+                        image: AssetImage( 'assets/minmax/greenmax.png'),
                         fit: BoxFit.scaleDown,
                       ),
                       shape: BoxShape.rectangle,
@@ -127,11 +123,11 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ),
                 ],
               ),
-              Flex(
+              const Flex(
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AutoSizeText('ערכה הוא',
+                  AutoSizeText('מיני מיקי',
                       textAlign: TextAlign.center,
                       minFontSize: 35,
                       maxFontSize: 45,
@@ -142,7 +138,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 backgroundColor: Colors.white,
                 maxRadius: 70.0,
                 child: CarouselSlider(
-                  items: mixKitheSliders,
+                  items: minmaxbasicSlider,
                   carouselController: _controllerplant,
                   options: CarouselOptions(
                       initialPage: 1,
@@ -153,7 +149,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                       onPageChanged: (indextop, reason) {
                         setState(() {
                           _currenttop = indextop;
-                          _controllertoptext.text = bimboxlist[indextop];
+                          _controllertoptext.text = minmaxnames[indextop];
                           //_controllerbottomtext.text = hexNamesList[indextop];
                         });
                       }),
@@ -165,10 +161,10 @@ class _RotateSimpleState extends State<RotateSimple> {
                     minLines: 1,
                     minFontSize: 15,
                     fullwidth: false,
-                    decoration: InputDecoration.collapsed(
+                    decoration: const InputDecoration.collapsed(
                         //hintText: hexNamesList[1],
-                        hintText: bimboxlist[1],
-                        hintStyle: const TextStyle(color: Colors.grey)),
+                        hintText: 'רמז',
+                        hintStyle: TextStyle(color: Colors.grey)),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.black,
@@ -321,7 +317,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
-                  items: mixKitheSliders,
+                  items: minmaxcoinsSlider,
                   carouselController: _controllertop,
                   options: CarouselOptions(
                       initialPage: 1,
@@ -344,7 +340,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
-                  items: mixKitheSliders,
+                  items: minmaxcoinsSlider,
                   carouselController: _controllermid,
                   options: CarouselOptions(
                       initialPage: 1,
@@ -367,7 +363,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
-                  items: mixKitheSliders,
+                  items: minmaxcoinsSlider,
                   carouselController: _controllerbot,
                   options: CarouselOptions(
                       initialPage: 1,
@@ -443,6 +439,17 @@ class _RotateSimpleState extends State<RotateSimple> {
                 color: Colors.green,
                 thickness: 5,
               ),
+              Container(
+                height: MediaQuery.of(context).size.height / 8,
+                width: MediaQuery.of(context).size.width / 6,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(newkithecoins[0]),
+                    fit: BoxFit.scaleDown,
+                  ),
+                  shape: BoxShape.rectangle,
+                ),
+              ),
               Stack(
                 children: [
                   CircleList(
@@ -460,9 +467,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                             border: Border.all(width: 2, color: Colors.black)),
                       );
                     }),
-                    centerWidget: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        child: Image.asset(mplantspos[3])),
                   ),
                   CircleList(
                     innerRadius: MediaQuery.of(context).size.width / 12 + 10,
@@ -518,6 +522,17 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ),
                 ],
               ),
+              Container(
+                height: MediaQuery.of(context).size.height / 8,
+                width: MediaQuery.of(context).size.width / 6,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(newkithecoins[1]),
+                    fit: BoxFit.scaleDown,
+                  ),
+                  shape: BoxShape.rectangle,
+                ),
+              ),
               Stack(
                 children: [
                   CircleList(
@@ -535,9 +550,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                             border: Border.all(width: 2, color: Colors.black)),
                       );
                     }),
-                    centerWidget: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        child: Image.asset(mplantspos[2])),
                   ),
                   CircleList(
                     innerRadius: MediaQuery.of(context).size.width / 12 + 10,
@@ -593,6 +605,17 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ),
                 ],
               ),
+              Container(
+                height: MediaQuery.of(context).size.height / 8,
+                width: MediaQuery.of(context).size.width / 6,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(newkithecoins[2]),
+                    fit: BoxFit.scaleDown,
+                  ),
+                  shape: BoxShape.rectangle,
+                ),
+              ),
               Stack(
                 children: [
                   CircleList(
@@ -610,9 +633,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                             border: Border.all(width: 2, color: Colors.black)),
                       );
                     }),
-                    centerWidget: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        child: Image.asset(mplantsneg[1])),
                   ),
                   CircleList(
                     innerRadius: MediaQuery.of(context).size.width / 12 + 10,
@@ -668,6 +688,17 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ),
                 ],
               ),
+              Container(
+                height: MediaQuery.of(context).size.height / 8,
+                width: MediaQuery.of(context).size.width / 6,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(newkithecoins[3]),
+                    fit: BoxFit.scaleDown,
+                  ),
+                  shape: BoxShape.rectangle,
+                ),
+              ),
               Stack(
                 children: [
                   CircleList(
@@ -685,9 +716,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                             border: Border.all(width: 2, color: Colors.black)),
                       );
                     }),
-                    centerWidget: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        child: Image.asset(mplantsneg[0])),
                   ),
                   CircleList(
                     innerRadius: MediaQuery.of(context).size.width / 12 + 10,
@@ -851,6 +879,25 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ),
                 ),
               ),
+              const SizedBox(height: 15),
+              AutoSizeTextField(
+                minLines: 1,
+                minFontSize: 15,
+                fullwidth: false,
+                decoration: const InputDecoration.collapsed(
+                  //hintText: hexNamesList[1],
+                    hintText: '1',
+                    hintStyle: TextStyle(color: Colors.grey)),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 55.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'iChing',
+                ),
+                controller: _controllerichingtext,
+                readOnly: false,
+              ),
               const Divider(
                 color: Colors.green,
                 thickness: 5,
@@ -862,6 +909,10 @@ class _RotateSimpleState extends State<RotateSimple> {
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
+                    centerWidget: ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(50)),
+                        child: Image.asset("assets/coins/fullrotateicon.png")),
                     children: List.generate(64, (index) {
                       return Container(
                         width: 35,
@@ -872,10 +923,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                         ),
                       );
                     }),
-                    centerWidget: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(50)),
-                        child: Image.asset("assets/coins/fullrotateicon.png")),
                   ),
                   CircleList(
                     innerRadius: MediaQuery.of(context).size.width / 8,
@@ -943,6 +990,10 @@ class _RotateSimpleState extends State<RotateSimple> {
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
+                    centerWidget: ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(50)),
+                        child: Image.asset("assets/coins/fullrotateicon.png")),
                     children: List.generate(16, (index) {
                       return Container(
                         width: 30,
@@ -953,10 +1004,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                         ),
                       );
                     }),
-                    centerWidget: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(50)),
-                        child: Image.asset("assets/coins/fullrotateicon.png")),
                   ),
                   CircleList(
                     rotateMode: RotateMode.stopRotate,
@@ -2163,7 +2210,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ],
                 ),
               ),
-              Divider(
+              const Divider(
                   thickness: 5, indent: 5, endIndent: 5, color: Colors.green),
               Flex(
                 direction: Axis.horizontal,
@@ -2203,6 +2250,347 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ),
                 ],
               ),
+              Container(
+                  height: 35,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: AutoSizeText(rtmoneytimetitleheb[0],
+                      textAlign: TextAlign.center,
+                      minFontSize: 20,
+                      maxFontSize: 25,
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold))),
+              SizedBox (height: 5),
+              Container(
+                  height: 35,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.0, 0.5, 1.0],
+                      colors: [Colors.blue ,Colors.yellow, Colors.red],
+                    ),
+                  ),
+                  child: AutoSizeText(rtmoneytimetitleheb[1],
+                      textAlign: TextAlign.center,
+                      minFontSize: 20,
+                      maxFontSize: 25,
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold))),
+              const Divider(
+                color: Colors.green,
+              ),
+              SizedBox (height: 5),
+              Container(
+                  height: 35,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: AutoSizeText(rtgroupmoneytimeheb[0],
+                      textAlign: TextAlign.center,
+                      minFontSize: 20,
+                      maxFontSize: 25,
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold))),
+              SizedBox(height: 5),
+              Container(
+                  height: 35,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.yellow,
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: AutoSizeText(rtgroupmoneytimeheb[1],
+                      textAlign: TextAlign.center,
+                      minFontSize: 20,
+                      maxFontSize: 25,
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold))),
+              SizedBox(height: 5),
+              Container(
+                  height: 50,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: AutoSizeText(rtgroupmoneytimeheb[2],
+                      textAlign: TextAlign.center,
+                      minFontSize: 15,
+                      maxFontSize: 20,
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold))),
+              SizedBox(height: 5),
+              Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      height: 30,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtgroupmoneytimeheb[5],
+                          textAlign: TextAlign.center,
+                          minFontSize: 15,
+                          maxFontSize: 20,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold))),
+                  Container(
+                      height: 30,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtgroupmoneytimeheb[4],
+                          textAlign: TextAlign.center,
+                          minFontSize: 15,
+                          maxFontSize: 20,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold))),
+                ],
+              ),
+              SizedBox(height: 5),
+              Container(
+                  height: 50,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: AutoSizeText(rtgroupmoneytimeheb[3],
+                      textAlign: TextAlign.center,
+                      minFontSize: 15,
+                      maxFontSize: 20,
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold))),
+              const Divider(
+                color: Colors.green,
+              ),
+              Container(
+                  height: 35,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.0, 1.0],
+                      colors: [Colors.yellow, Colors.red],
+                    ),
+                  ),
+                  child: AutoSizeText(rtmoneytimetitleheb[2],
+                      textAlign: TextAlign.center,
+                      minFontSize: 20,
+                      maxFontSize: 25,
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold))),
+              const Divider(
+                color: Colors.green,
+              ),
+              SizedBox(height: 5),
+              Container(
+                  height: 35,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    border: Border.all(
+                      color: Colors.yellow,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: AutoSizeText(rtmoneytimetitleheb[3],
+                      textAlign: TextAlign.center,
+                      minFontSize: 20,
+                      maxFontSize: 25,
+                      style: TextStyle(
+                          color: Colors.yellow, fontWeight: FontWeight.bold))),
+              SizedBox(height: 5),
+              Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtgrouptimeheb[2],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold))),
+                  Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtgrouptimeheb[1],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold))),
+                  Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtgrouptimeheb[0],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold))),
+                ],
+              ),
+              SizedBox(height: 5),
+              Container(
+                  height: 35,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.0, 1.0],
+                      colors: [Colors.yellow, Colors.red],
+                    ),
+                  ),
+                  child: AutoSizeText(rtmoneytimetitleheb[4],
+                      textAlign: TextAlign.center,
+                      minFontSize: 20,
+                      maxFontSize: 25,
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold))),
+              SizedBox(height: 5),
+              Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtgrouptimeheb[5],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold))),
+                  Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtgrouptimeheb[4],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold))),
+                  Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtgrouptimeheb[3],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold))),
+                ],
+              ),
+              SizedBox(height: 5),
+              Container(
+                  height: 35,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    border: Border.all(
+                      color: Colors.red,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: AutoSizeText(rtmoneytimetitleheb[5],
+                      textAlign: TextAlign.center,
+                      minFontSize: 20,
+                      maxFontSize: 25,
+                      style: TextStyle(
+                          color: Colors.red, fontWeight: FontWeight.bold))),
               const Divider(
                 color: Colors.green,
                 thickness: 5,
@@ -2228,18 +2616,18 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ),
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Container(
                 height: MediaQuery.of(context).size.height / 5,
                 width: 200,
                 child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: 1,
                     crossAxisCount: 3, // number of items in each row
                     mainAxisSpacing: 8.0, // spacing between rows
                     crossAxisSpacing: 8.0, // spacing between columns
                   ),
-                  padding: EdgeInsets.all(8.0), // padding around the grid
+                  padding: const EdgeInsets.all(8.0), // padding around the grid
                   itemCount: rtimages.length, // total number of items
                   itemBuilder: (context, index) {
                     return InkWell(

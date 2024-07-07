@@ -31,7 +31,7 @@ class _RotateIDKState extends State<RotateIDK> {
               CircleAvatar(
                 backgroundColor: Colors.transparent,
                 radius: 15,
-                foregroundImage: AssetImage(fullkitheimglst[9]),
+                foregroundImage: AssetImage(newminmaxcoins[0]),
               ),
               CircleAvatar(
                 backgroundColor: Colors.transparent,
@@ -44,8 +44,6 @@ class _RotateIDKState extends State<RotateIDK> {
                 //maxFontSize: 15,
                 style: const TextStyle(color: Colors.white),
               ),
-
-
             ],
           ),
           leading: IconButton(
@@ -60,6 +58,46 @@ class _RotateIDKState extends State<RotateIDK> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height / 6,
+                    width: MediaQuery.of(context).size.width / 6,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/minmax/minmicex.png'),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),
+                  ),
+                  onTap: () {
+                    _controlleriDogText.text = '!מיקי כלב לא יודע';
+                  },
+                ),
+                const SizedBox(width: 10),
+                InkWell(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height / 6,
+                    width: MediaQuery.of(context).size.width / 6,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(newminmaxcoins[0]),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),
+                  ),
+                  onTap: () {
+                    _controllerCamelText.text = '?עוד מיני שאלה';
+                  },
+                ),
+
+              ],
+            ),
             const Divider(thickness: 5, color: Colors.black),
             Flex(
               direction: Axis.horizontal,
@@ -101,9 +139,9 @@ class _RotateIDKState extends State<RotateIDK> {
                   child: Container(
                     height: MediaQuery.of(context).size.height / 6,
                     width: MediaQuery.of(context).size.width / 6,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(fullkitheimglst[10]),
+                        image: AssetImage('assets/kithe/kitidkm.png'),
                         fit: BoxFit.scaleDown,
                       ),
                       shape: BoxShape.rectangle,
@@ -113,14 +151,29 @@ class _RotateIDKState extends State<RotateIDK> {
                     _controlleriDogText.text = '!ערכה היא לא יודעת';
                   },
                 ),
-
+                InkWell(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height / 6,
+                    width: MediaQuery.of(context).size.width / 6,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(fullkitheimglst[10]),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),
+                  ),
+                  onTap: () {
+                    _controllerCamelText.text = '?ערכה היא שאלה';
+                  },
+                ),
               ],
             ),
             const Divider(thickness: 5, color: Colors.black),
             AutoSizeTextField(
                 maxFontSize: 30,
                 readOnly: false,
-                decoration: const InputDecoration.collapsed(hintText: '?ערכה הוא גמל'),
+                decoration: const InputDecoration.collapsed(hintText: '?מיני שאלה'),
                 textAlign: TextAlign.center,
                 controller: _controllerCamelText,
                 style: const TextStyle(
@@ -134,7 +187,7 @@ class _RotateIDKState extends State<RotateIDK> {
                 maxFontSize: 30,
                 readOnly: false,
                 decoration: const InputDecoration.collapsed(
-                    hintText: '!ערך הכלב אשר לא יודע'),
+                    hintText: '!ערכה היא לא יודעת'),
                 textAlign: TextAlign.center,
                 controller: _controlleriDogText,
                 style: const TextStyle(
@@ -159,7 +212,14 @@ class _RotateIDKState extends State<RotateIDK> {
               height: 30.0,
             ),
             const Divider(thickness: 5, color: Colors.black),
-            const AutoSizeText('גמלכלב',
+            const AutoSizeText('XIO Ido Not Know',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold)),
+            const Divider(thickness: 5, color: Colors.black),
+            const Divider(thickness: 5, color: Colors.black),
+            const AutoSizeText('!?גמלכלב',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 20.0,
@@ -240,6 +300,39 @@ class _RotateIDKState extends State<RotateIDK> {
                     color: Colors.black,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold)),
+            Container(
+              height: MediaQuery.of(context).size.height / 2,
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/minmax/minmicidk.png'),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            const AutoSizeText('מיק היא מיני מדיטציה',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold)),
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 3,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/kithe/kitidkm.png'),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            const AutoSizeText('ערכה היא מדיטציה',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold)),
+            const Divider(thickness: 5, color: Colors.black),
           ],
         ),
       ),

@@ -235,6 +235,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   final List<bool> _isPlanetSelectedList =
       List<bool>.filled(13, false, growable: false);
+  final List<bool> _isBoldList = List<bool>.filled(65, false, growable: false);
 
   final List<String> finalhexNamesList = hexNamesList,
       finalnewcoinnamesList = newCoinNames;
@@ -260,7 +261,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 textAlign: TextAlign.left,
                 //maxFontSize: 15,
                 style: const TextStyle(color: Colors.white)),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             CircleAvatar(
               backgroundColor: Colors.transparent,
               radius: 15,
@@ -292,10 +293,10 @@ class _RotateComplexState extends State<RotateComplex> {
               children: [
                 Container(
                   height: MediaQuery.of(context).size.height / 8,
-                  width: MediaQuery.of(context).size.width / 4,
+                  width: MediaQuery.of(context).size.width / 6,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(mplantsneg[3]),
+                      image: AssetImage(minmaxbasic[0]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -303,10 +304,10 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height / 8,
-                  width: MediaQuery.of(context).size.width / 4,
+                  width: MediaQuery.of(context).size.width / 6,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(kitheimglst[3]),
+                      image: AssetImage(minmaxbasic[1]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -314,10 +315,21 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height / 8,
-                  width: MediaQuery.of(context).size.width / 4,
+                  width: MediaQuery.of(context).size.width / 6,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(mplantspos[3]),
+                      image: AssetImage(minmaxbasic[2]),
+                      fit: BoxFit.scaleDown,
+                    ),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height / 8,
+                  width: MediaQuery.of(context).size.width / 6,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(minmaxbasic[3]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -325,15 +337,16 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
               ],
             ),
-            Flex(
+            const Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AutoSizeText('ערכה הוא מגיע מורכב',
+                AutoSizeText('ערכה מגיע',
                     textAlign: TextAlign.center,
                     minFontSize: 20,
                     maxFontSize: 40,
-                    style: TextStyle(color: Colors.deepPurple)),
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold)),
               ],
             ),
             const Divider(
@@ -344,26 +357,7 @@ class _RotateComplexState extends State<RotateComplex> {
               mainAxisAlignment: MainAxisAlignment.center,
               direction: Axis.horizontal,
               children: [
-                ElevatedButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) =>
-                            buildTimePopupDialog(context),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50))),
-                    child: const Text(
-                      'תכנית בים-יוחד',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    )),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 ElevatedButton(
@@ -379,7 +373,12 @@ class _RotateComplexState extends State<RotateComplex> {
                         await PlanetsServices.getCurrentData(_now);
 
                     _chironhex = _planetsnowList.last;
+                    _chirondesignhex = _planetsnowList.last;
                     _planetsnowList.removeLast();
+
+                    _resetgatesState();
+                    _settransitgatesState();
+
                     _channelsList =
                         HDServices.getHDChannelsJustNow(_planetsnowList);
 
@@ -461,72 +460,247 @@ class _RotateComplexState extends State<RotateComplex> {
               color: Colors.blue,
               thickness: 5,
             ),
-            SizedBox(
-              height: 40,
-              child: TextField(
-                  textAlign: TextAlign.center,
-                  readOnly: true,
-                  decoration: const InputDecoration.collapsed(hintText: 'זמן'),
-                  controller: _controllerTime,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.black)),
+            const SizedBox(
+              height: 5.0,
             ),
             Flex(
-              direction: Axis.vertical,
+              direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.2,
+                  height: 40,
+                  width: 70,
                   child: AutoSizeTextField(
-                    maxLines: 1,
-                    minFontSize: 25,
-                    fullwidth: false,
-                    decoration: InputDecoration.collapsed(
-                        //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
-                        hintText: '${hexNamesHebList[0]}',
-                        hintStyle: const TextStyle(color: Colors.grey)),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    controller: _controllermaintext,
-                    readOnly: true,
+                      minFontSize: 17,
+                      readOnly: true,
+                      decoration: InputDecoration.collapsed(
+                          hintText: DateFormat.Hm().format(_now),
+                          hintStyle: const TextStyle(color: Colors.grey)),
+                      textAlign: TextAlign.center,
+                      controller: _controllerTimePick,
+                      style: const TextStyle(
+                          fontSize: 17,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold)),
+                ),
+                SizedBox(
+                  height: 40,
+                  width: 110,
+                  child: AutoSizeTextField(
+                      minFontSize: 17,
+                      readOnly: true,
+                      decoration: InputDecoration.collapsed(
+                          hintText: DateFormat('MM/dd/yyyy').format(_now),
+                          hintStyle: const TextStyle(color: Colors.grey)),
+                      textAlign: TextAlign.center,
+                      controller: _controllerDatePick,
+                      style: const TextStyle(
+                          fontSize: 17,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    _selectedtime = await TimeServices.selectTime(context);
+                    setState(() {
+                      _controllerTimePick.text = _selectedtime.format(context);
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      textStyle: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.bold)),
+                  child: const Text(
+                    'ושעה',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 10,
-                    minWidth: 10,
-                    maxWidth: MediaQuery.of(context).size.width / 1.5,
-                  ),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 80.0,
-                    child: CarouselSlider(
-                      //items: mixHexagramSlidersNew,
-                      items: mixKitheSliders,
-                      carouselController: _controllercoin,
-                      options: CarouselOptions(
-                          autoPlay: false,
-                          enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                          enlargeCenterPage: true,
-                          aspectRatio: 1.5,
-                          onPageChanged: (indextop, reason) {
-                            setState(() {
-                              _currentmain = indextop;
-                              _controllermaintext.text =
-                                  //'${newCoinNames[_currentmain]} ${hexNamesList[_currentmain]}';
-                                  '${hexNamesHebList[_currentmain]}';
-                            });
-                          }),
-                    ),
-                  ),
-                )
+                const SizedBox(
+                  width: 15.0,
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    _selectedDate = await TimeServices.selectDate(context);
+                    _formattedDate =
+                        DateFormat('MM/dd/yyyy').format(_selectedDate);
+                    setState(() {
+                      //_controllerDatePick.text = "${_selectedDate.toLocal()}".split(' ')[0];
+                      _controllerDatePick.text = _formattedDate;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      textStyle: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.bold)),
+                  child: const Text('תאריך',
+                      style: TextStyle(color: Colors.white)),
+                ),
+                const SizedBox(
+                  width: 15.0,
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    // _selectedDate by user pick
+                    _now = _selectedDate.applied(_selectedtime);
+
+                    _planetsnowList =
+                        await PlanetsServices.getCurrentData(_now);
+
+                    _designTime = await PlanetsServices.getDesignTime(_now);
+                    _planetsdesignList =
+                        await PlanetsServices.getCurrentData(_designTime);
+
+                    _chironhex = _planetsnowList.last;
+                    _chirondesignhex = _planetsdesignList.last;
+                    _planetsnowList.removeLast();
+                    _planetsdesignList.removeLast();
+
+                    _resetgatesState();
+                    _setgatesState();
+
+                    _allplanetsList = _planetsnowList + _planetsdesignList;
+                    _channelsList = HDServices.getHDChannels(_allplanetsList);
+                    _personchannelsList =
+                        HDServices.getHDChannels(_planetsnowList);
+                    _designchannelsList =
+                        HDServices.getHDChannels(_planetsdesignList);
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    _selfreminder = _timeselfreminder;
+
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+                    //hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                    _setDateTime(_now);
+
+                    //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
+                    //_formattedTime = DateFormat.Hms().format(_now);
+                    //_controllerTime.text = 'text $_formattedTime $_formattedDate';
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+                    //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
+
+                    _setCoins();
+
+                    //_hexalignedList = hexagramAlignment(_planethex.gate!);
+
+                    //_controllertop.jumpToPage(_hexalignedList[0]);
+                    //_controllermid.jumpToPage(_hexalignedList[1]);
+                    //_controllerbot.jumpToPage(_hexalignedList[2]);
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = idonotknowlinesList[
+                        (idonotknowlinesList.indexOf(_planethex.gate!) +
+                            _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                            !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+
+                    _setChart(_centers);
+
+                    setState(() {
+                      //Navigator.of(context).pop();
+                    });
+                  },
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+                  child: const AutoSizeText('לפלוט',
+                      maxFontSize: 25,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold)),
+                ),
               ],
+            ),
+            const Divider(
+              color: Colors.blue,
+              thickness: 5,
+            ),
+
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 1.2,
+              child: AutoSizeTextField(
+                maxLines: 1,
+                minFontSize: 25,
+                fullwidth: false,
+                decoration: InputDecoration.collapsed(
+                    //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
+                    hintText: hexNamesHebList[0],
+                    hintStyle: const TextStyle(color: Colors.grey)),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
+                controller: _controllermaintext,
+                readOnly: true,
+              ),
+            ),
+            const SizedBox(height: 10),
+            // main coin
+            Container(
+              width: 200.0,
+              height: 200.0,
+              child: CarouselSlider(
+                //items: mixHexagramSlidersNew,
+                items: minmaxcoinsSlider,
+                carouselController: _controllercoin,
+                options: CarouselOptions(
+                    autoPlay: false,
+                    //enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                    //enlargeCenterPage: true,
+                    //aspectRatio: 1.5,
+                    onPageChanged: (indextop, reason) {
+                      setState(() {
+                        _currentmain = indextop;
+                        _controllermaintext.text =
+                            //'${newCoinNames[_currentmain]} ${hexNamesList[_currentmain]}';
+                            hexNamesHebList[_currentmain];
+                      });
+                    }),
+              ),
+            ),
+
+            const Divider(
+              color: Colors.blue,
+              thickness: 5,
             ),
             ElevatedButton(
                 onPressed: () {
@@ -539,10 +713,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                 child: const Text('מעבר-בים',
                     style: TextStyle(fontSize: 13, color: Colors.white))),
-            const Divider(
-              color: Colors.blue,
-              thickness: 5,
-            ),
+            const SizedBox(height: 10),
             ElevatedButton(
                 onPressed: () {
                   showDialog(
@@ -562,7 +733,1352 @@ class _RotateComplexState extends State<RotateComplex> {
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 )),
+            const Divider(
+              color: Colors.blue,
+              thickness: 5,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: CircleAvatar(
+                      //minRadius: 5,
+                      maxRadius: 15,
+                      foregroundImage: AssetImage(rtimageBolList[1])),
+                  tooltip: 'הורדה',
+                  onPressed: () {
+                    _setupdown = false;
+                    controlSetTime(_setupdown);
+                  },
+                ),
+                const SizedBox(width: 5),
+                IconButton(
+                  icon: CircleAvatar(
+                      //minRadius: 5,
+                      maxRadius: 15,
+                      foregroundImage: AssetImage(rtimageBolList[0])),
+                  tooltip: 'העלאה',
+                  onPressed: () {
+                    _setupdown = true;
+                    controlSetTime(_setupdown);
+                  },
+                ),
+                const SizedBox(width: 5),
+                DropdownButton(
+                  underline: DropdownButtonHideUnderline(child: Container()),
+                  value: _settimestamp,
+                  icon: const Icon(Icons.keyboard_arrow_down,
+                      color: Colors.black),
+                  items: timecoinsDropDownLst,
+                  onChanged: (String? newsettimestamp) {
+                    setState(() {
+                      _settimestamp = newsettimestamp!;
+                    });
+                  },
+                ),
+                const SizedBox(width: 10),
+                SizedBox(
+                  height: 15,
+                  width: 70,
+                  child: TextField(
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      ],
+                      readOnly: false,
+                      decoration:
+                          const InputDecoration.collapsed(hintText: '1'),
+                      controller: _controllerSetTime,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.black)),
+                ),
+              ],
+            ),
+            // human design chart
+            Container(
+              width: 350,
+              height: 600,
+              color: Colors.black12,
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 10, top: 155),
+                      child: Transform.rotate(
+                        angle: -0.3,
+                        child: CustomPaint(
+                          foregroundPainter: HorizontalGatePainter(
+                              gatestate: gatestatelist[26]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 10,
+                            width: 100,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 160, top: 208),
+                      child: Transform.rotate(
+                        angle: -0.3,
+                        child: CustomPaint(
+                          foregroundPainter: HorizontalGatePainter(
+                              gatestate: gatestatelist[44]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 10,
+                            width: 100,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 115, top: 192),
+                      child: Transform.rotate(
+                        angle: 0.47,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[16]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 123,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 215, top: 295),
+                      child: Transform.rotate(
+                        angle: 0.47,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[48]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 115,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 125, top: 190),
+                      child: Transform.rotate(
+                        angle: -0.47,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[35]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 123,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 228, top: 295),
+                      child: Transform.rotate(
+                        angle: -0.47,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[36]),
+                          //gatestate: 4),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 115,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Transform.rotate(
+                          angle: 0.1,
+                          child: Container(
+                            margin:
+                                const EdgeInsets.only(top: 90.0, left: 160.0),
+                            child: CustomPaint(
+                              foregroundPainter:
+                                  HeartPainter(centerstate: heartstate),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 35,
+                                width: 55,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 145, top: 90),
+                          child: Text(
+                            '21',
+                            style: TextStyle(
+                                fontSize: 9,
+                                fontWeight: _isBoldList[21]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 130, top: 108),
+                          child: Text(
+                            '51',
+                            style: TextStyle(
+                                fontSize: 9,
+                                fontWeight: _isBoldList[51]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 115, top: 125),
+                          child: Text(
+                            '26',
+                            style: TextStyle(
+                                fontSize: 9,
+                                fontWeight: _isBoldList[26]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 170, top: 127),
+                          child: Text(
+                            '40',
+                            style: TextStyle(
+                                fontSize: 9,
+                                fontWeight: _isBoldList[40]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      margin: const EdgeInsets.only(top: 100.0, left: 140.0),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                              mplantsfull[7],
+                            ),
+                            opacity: 0.1),
+                      ),
+                    ),
+                  ),
+                  // solar
+
+                  Flex(
+                    direction: Axis.vertical,
+                    children: [
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        height: 70,
+                        width: 80,
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: CustomPaint(
+                                foregroundPainter:
+                                    HeadPainter(centerstate: headstate),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 70,
+                                  width: 80,
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      //image: AssetImage(mplantsfull[6],
+                                      image: AssetImage(
+                                        'assets/coins/camel.png',
+                                        //image: AssetImage('assets/camog/mcamel.png',
+                                      ),
+                                      opacity: 0.5),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: SizedBox(
+                                width: 50,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      '64',
+                                      style: TextStyle(
+                                          fontSize: 9,
+                                          fontWeight: _isBoldList[64]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
+                                    Text(
+                                      '61',
+                                      style: TextStyle(
+                                          fontSize: 9,
+                                          fontWeight: _isBoldList[61]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
+                                    Text(
+                                      '63',
+                                      style: TextStyle(
+                                          fontSize: 9,
+                                          fontWeight: _isBoldList[63]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // head gates
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width: 17,
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[64]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[61]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[63]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                      //ajna gates
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(width: 17),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[47]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[24]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[4]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                      // ajna
+                      SizedBox(
+                        height: 80,
+                        child: Stack(
+                          children: [
+                            //ajna gates
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(width: 17),
+                                CustomPaint(
+                                  foregroundPainter: VerticalGatePainter(
+                                      gatestate: gatestatelist[17]),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 80,
+                                    width: 50 / 3,
+                                  ),
+                                ),
+                                CustomPaint(
+                                  foregroundPainter: VerticalGatePainter(
+                                      gatestate: gatestatelist[43]),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 80,
+                                    width: 50 / 3,
+                                  ),
+                                ),
+                                CustomPaint(
+                                  foregroundPainter: VerticalGatePainter(
+                                      gatestate: gatestatelist[11]),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 80,
+                                    width: 50 / 3,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: CustomPaint(
+                                foregroundPainter:
+                                    AjnaPainter(centerstate: ajnastate),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 70,
+                                  width: 80,
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      //image: AssetImage(mplantsfull[6],
+                                      image: AssetImage(
+                                        'assets/coins/dog.png',
+                                      ),
+                                      opacity: 0.5),
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: SizedBox(
+                                width: 50,
+                                child: Align(
+                                  alignment: Alignment.topCenter,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                        '47',
+                                        style: TextStyle(
+                                            fontSize: 9,
+                                            fontWeight: _isBoldList[47]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                      Text(
+                                        '24',
+                                        style: TextStyle(
+                                            fontSize: 9,
+                                            fontWeight: _isBoldList[24]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                      Text(
+                                        '4',
+                                        style: TextStyle(
+                                            fontSize: 9,
+                                            fontWeight: _isBoldList[4]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: Container(
+                                width: 90,
+                                margin: const EdgeInsets.all(15),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                      '17',
+                                      style: TextStyle(
+                                          fontSize: 9,
+                                          fontWeight: _isBoldList[17]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
+                                    Text(
+                                      '11',
+                                      style: TextStyle(
+                                          fontSize: 9,
+                                          fontWeight: _isBoldList[11]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                width: 90,
+                                margin: const EdgeInsets.fromLTRB(80, 0, 0, 20),
+                                child: Text(
+                                  '43',
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      fontWeight: _isBoldList[43]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      //throat gates
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const SizedBox(width: 17),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[62]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 15,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[23]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 15,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[56]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 15,
+                              width: 50 / 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                      // throat
+                      Stack(
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional.center,
+                            child: CustomPaint(
+                              foregroundPainter:
+                                  ThroatPainter(centerstate: throatstate),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 60,
+                                width: 70,
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              height: 50,
+                              width: 50,
+                              margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                      mplantsfull[6],
+                                    ),
+                                    opacity: 0.5),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: SizedBox(
+                              width: 50,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    '62',
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: _isBoldList[62]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                  Text(
+                                    '23',
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: _isBoldList[23]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                  Text(
+                                    '56',
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: _isBoldList[56]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: Container(
+                              width: 65,
+                              margin: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '16',
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: _isBoldList[16]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                  Text(
+                                    '35',
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: _isBoldList[35]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              width: 65,
+                              margin: const EdgeInsets.only(top: 24),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '20',
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: _isBoldList[20]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                  Text(
+                                    '12',
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: _isBoldList[12]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              width: 20,
+                              margin: const EdgeInsets.only(top: 35, left: 65),
+                              child: Text(
+                                '45',
+                                style: TextStyle(
+                                    fontSize: 9,
+                                    fontWeight: _isBoldList[45]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              width: 45,
+                              margin: const EdgeInsets.fromLTRB(0, 45, 0, 0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '31',
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: _isBoldList[31]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                  Text(
+                                    '8',
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: _isBoldList[8]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                  Text(
+                                    '33',
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        fontWeight: _isBoldList[33]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      // throat gates
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(width: 17),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[31]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 20,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[8]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 20,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[33]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 20,
+                              width: 50 / 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                      // g gates
+
+                      SizedBox(
+                        height: 100,
+                        child: Stack(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(width: 17),
+                                CustomPaint(
+                                  foregroundPainter: VerticalGatePainter(
+                                      gatestate: gatestatelist[7]),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 40,
+                                    width: 50 / 3,
+                                  ),
+                                ),
+                                CustomPaint(
+                                  foregroundPainter: VerticalGatePainter(
+                                      gatestate: gatestatelist[1]),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 40,
+                                    width: 50 / 3,
+                                  ),
+                                ),
+                                CustomPaint(
+                                  foregroundPainter: VerticalGatePainter(
+                                      gatestate: gatestatelist[13]),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 40,
+                                    width: 50 / 3,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(width: 17),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    height: 60,
+                                    margin: const EdgeInsets.only(top: 40),
+                                    child: CustomPaint(
+                                      foregroundPainter: VerticalGatePainter(
+                                          gatestate: gatestatelist[15]),
+                                      willChange: true,
+                                      child: const SizedBox(
+                                        height: 60,
+                                        width: 50 / 3,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    height: 100,
+                                    margin: const EdgeInsets.only(top: 20),
+                                    child: CustomPaint(
+                                      foregroundPainter: VerticalGatePainter(
+                                          gatestate: gatestatelist[2]),
+                                      willChange: true,
+                                      child: const SizedBox(
+                                        height: 100,
+                                        width: 50 / 3,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    height: 60,
+                                    margin: const EdgeInsets.only(top: 40),
+                                    child: CustomPaint(
+                                      foregroundPainter: VerticalGatePainter(
+                                          gatestate: gatestatelist[46]),
+                                      willChange: true,
+                                      child: const SizedBox(
+                                        height: 60,
+                                        width: 50 / 3,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: CustomPaint(
+                                foregroundPainter:
+                                    GPainter(centerstate: gstate),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 80,
+                                  width: 80,
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        mplantsfull[5],
+                                      ),
+                                      opacity: 0.2),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: Container(
+                                margin:
+                                    const EdgeInsets.only(right: 30, top: 27),
+                                child: Text(
+                                  '7',
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      fontWeight: _isBoldList[7]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: Container(
+                                margin: const EdgeInsets.only(top: 11),
+                                child: Text(
+                                  '1',
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      fontWeight: _isBoldList[1]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: Container(
+                                margin:
+                                    const EdgeInsets.only(left: 30, top: 27),
+                                child: Text(
+                                  '13',
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      fontWeight: _isBoldList[13]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin:
+                                    const EdgeInsets.only(left: 30, bottom: 27),
+                                child: Text(
+                                  '46',
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      fontWeight: _isBoldList[46]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: const EdgeInsets.only(bottom: 11),
+                                child: Text(
+                                  '2',
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      fontWeight: _isBoldList[2]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: const EdgeInsets.only(
+                                    right: 30, bottom: 27),
+                                child: Text(
+                                  '15',
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      fontWeight: _isBoldList[15]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 60),
+                                child: Text(
+                                  '10',
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      fontWeight: _isBoldList[10]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                margin: const EdgeInsets.only(left: 60),
+                                child: Text(
+                                  '25',
+                                  style: TextStyle(
+                                      fontSize: 9,
+                                      fontWeight: _isBoldList[25]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // g to sacral gates
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(width: 17),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[5]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 25,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[14]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 25,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[29]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 25,
+                              width: 50 / 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              margin:
+                                  const EdgeInsets.only(top: 25, right: 150),
+                              child: CustomPaint(
+                                foregroundPainter: HorizontalGatePainter(
+                                    gatestate: gatestatelist[50]),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 10,
+                                  width: 35,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 25, right: 80),
+                              child: CustomPaint(
+                                foregroundPainter: HorizontalGatePainter(
+                                    gatestate: gatestatelist[27]),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 10,
+                                  width: 35,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 25, left: 70),
+                              child: CustomPaint(
+                                foregroundPainter: HorizontalGatePainter(
+                                    gatestate: gatestatelist[59]),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 10,
+                                  width: 35,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 25, left: 140),
+                              child: CustomPaint(
+                                foregroundPainter: HorizontalGatePainter(
+                                    gatestate: gatestatelist[6]),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 10,
+                                  width: 35,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          // sacral
+
+                          Align(
+                            alignment: Alignment.center,
+                            child: CustomPaint(
+                              foregroundPainter:
+                                  SacralPainter(centerstate: sacralstate),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 55,
+                                width: 55,
+                              ),
+                            ),
+                          ),
+                          Positioned.fill(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        mplantsfull[0],
+                                      ),
+                                      opacity: 0.5)),
+                            ),
+                          ),
+                        ],
+                      ),
+                      // sacral to root gates
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(width: 17),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[42]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[3]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[9]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(width: 17),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[53]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[60]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                          CustomPaint(
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[52]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 10,
+                              width: 50 / 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                      // root
+                      Stack(
+                        children: [
+                          CustomPaint(
+                            foregroundPainter:
+                                RootPainter(centerstate: rootstate),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 55,
+                              width: 55,
+                            ),
+                          ),
+                          Positioned.fill(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                      mplantsfull[6],
+                                    ),
+                                    opacity: 0.5),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 220, bottom: 140),
+                      child: CustomPaint(
+                        foregroundPainter:
+                            SolarPainter(centerstate: solarstate),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 60,
+                          width: 60,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      margin: const EdgeInsets.only(left: 220, bottom: 150),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                              mplantsfull[7],
+                            ),
+                            opacity: 0.5),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 220, bottom: 140),
+                      child: CustomPaint(
+                        foregroundPainter:
+                            SpleenPainter(centerstate: spleenstate),
+                        willChange: true,
+                        child: const SizedBox(
+                          height: 60,
+                          width: 60,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      margin: const EdgeInsets.only(right: 220, bottom: 150),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                              mplantsfull[1],
+                            ),
+                            opacity: 0.5),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
             // end human design
+
+            const SizedBox(height: 5),
             const Divider(
               color: Colors.blue,
               thickness: 5,
@@ -880,7 +2396,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     )),
               ],
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -947,7 +2463,8 @@ class _RotateComplexState extends State<RotateComplex> {
                       border: Border(
                           top: BorderSide(width: 5, color: grampacolor),
                           bottom: BorderSide(width: 5, color: papacolor)),
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20))),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       minHeight: 10,
@@ -956,7 +2473,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       maxWidth: MediaQuery.of(context).size.width * 0.15,
                     ),
                     child: CarouselSlider(
-                      items: mixKitheSliders,
+                      items: minmaxcoinsSlider,
                       carouselController: _controllertop,
                       options: CarouselOptions(
                           autoPlay: false,
@@ -991,7 +2508,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               //_controllertopfirsttext.text = _hexsentence.adjective!;
 
                               _controllercoinsttext.text =
-                                  rtbimBoxList[_chosenhex];
+                                  rtminmicList[_chosenhex];
                               //_controllertopsecondtext.text = _hexsentence.subject!;
                               //_controllertopthirdtext.text = _hexsentence.verb!;
                               //_controllertopfourthtext.text = _hexsentence.adverb!;
@@ -1012,7 +2529,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   direction: Axis.vertical,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                       width: 30,
                       height: 30,
@@ -1059,7 +2576,8 @@ class _RotateComplexState extends State<RotateComplex> {
                       border: Border(
                           top: BorderSide(width: 5, color: soncolor),
                           bottom: BorderSide(width: 5, color: daughtercolor)),
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20))),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       minHeight: 10,
@@ -1068,7 +2586,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       maxWidth: MediaQuery.of(context).size.width * 0.15,
                     ),
                     child: CarouselSlider(
-                      items: mixKitheSliders,
+                      items: minmaxcoinsSlider,
                       carouselController: _controllermid,
                       options: CarouselOptions(
                           autoPlay: false,
@@ -1093,7 +2611,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
 
                               _controllercoinsttext.text =
-                                  rtbimBoxList[_chosenhex];
+                                  rtminmicList[_chosenhex];
 
                               //_controllertopfirsttext.text = _hexsentence.adjective!;
                               //_controllertopsecondtext.text = _hexsentence.subject!;
@@ -1121,7 +2639,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   direction: Axis.vertical,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                       width: 30,
                       height: 30,
@@ -1168,7 +2686,8 @@ class _RotateComplexState extends State<RotateComplex> {
                       border: Border(
                           top: BorderSide(width: 5, color: mamacolor),
                           bottom: BorderSide(width: 5, color: grannycolor)),
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20))),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       minHeight: 10,
@@ -1177,7 +2696,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       maxWidth: MediaQuery.of(context).size.width * 0.15,
                     ),
                     child: CarouselSlider(
-                      items: mixKitheSliders,
+                      items: minmaxcoinsSlider,
                       carouselController: _controllerbot,
                       options: CarouselOptions(
                           autoPlay: false,
@@ -1201,7 +2720,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
 
                               _controllercoinsttext.text =
-                                  rtbimBoxList[_chosenhex];
+                                  rtminmicList[_chosenhex];
                               //_controllertopfirsttext.text = _hexsentence.adjective!;
                               //_controllertopsecondtext.text = _hexsentence.subject!;
                               //_controllertopthirdtext.text = _hexsentence.verb!;
@@ -1228,7 +2747,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   direction: Axis.vertical,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                       width: 30,
                       height: 30,
@@ -1326,10 +2845,10 @@ class _RotateComplexState extends State<RotateComplex> {
                 minFontSize: 18,
                 maxFontSize: 18,
                 fullwidth: true,
-                decoration: InputDecoration.collapsed(
+                decoration: const InputDecoration.collapsed(
                     //hintText: LineSentenceList[0],
                     hintText: 'ארנק בים',
-                    hintStyle: const TextStyle(color: Colors.black)),
+                    hintStyle: TextStyle(color: Colors.black)),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.black,
@@ -1413,6 +2932,104 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
+            ElevatedButton(
+              onPressed: () async {
+                // _selectedDate by user pick
+                //print (_now);
+                //_now = _selectedDate.applied(_selectedtime);
+
+                _planetsnowList = await PlanetsServices.getCurrentData(_now);
+
+                _designTime = await PlanetsServices.getDesignTime(_now);
+                _planetsdesignList =
+                    await PlanetsServices.getCurrentData(_designTime);
+
+                _chironhex = _planetsnowList.last;
+                _chirondesignhex = _planetsdesignList.last;
+                _planetsnowList.removeLast();
+                _planetsdesignList.removeLast();
+
+                _allplanetsList = _planetsnowList + _planetsdesignList;
+                _channelsList = HDServices.getHDChannels(_allplanetsList);
+                _personchannelsList = HDServices.getHDChannels(_planetsnowList);
+                _designchannelsList =
+                    HDServices.getHDChannels(_planetsdesignList);
+
+                //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+                hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                _centers = HDServices.getHDDefinedCenters(_channelsList);
+                //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                //_selfreminderSentence = HDServices.getSelfReminder();
+                _selfreminder = _timeselfreminder;
+
+                //_controlHDData(hdbasicdata);
+                _controlHDData(hdfinaldata);
+                //hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                _setDateTime(_now);
+
+                //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
+                //_formattedTime = DateFormat.Hms().format(_now);
+                //_controllerTime.text = 'text $_formattedTime $_formattedDate';
+
+                _planetsList = _planetsnowList;
+                _planethex = _planetsList[0];
+                //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
+
+                _setCoins();
+
+                //_hexalignedList = hexagramAlignment(_planethex.gate!);
+
+                //_controllertop.jumpToPage(_hexalignedList[0]);
+                //_controllermid.jumpToPage(_hexalignedList[1]);
+                //_controllerbot.jumpToPage(_hexalignedList[2]);
+
+                _controllerlinetext.text = _planethex.line!.toString();
+                _controllergatelinestory.text = idonotknowlinesList[
+                    (idonotknowlinesList.indexOf(_planethex.gate!) +
+                        _planethex.line!)];
+
+                switch (_previousPlanetIndex) {
+                  case -1:
+                    _previousPlanetIndex = 0;
+                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                    break;
+                  default:
+                    _isPlanetSelectedList[_previousPlanetIndex] =
+                        !_isPlanetSelectedList[_previousPlanetIndex];
+                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                    _previousPlanetIndex = 0;
+                }
+
+                switch (_currentconstate) {
+                  case 0:
+                    _controllerconstate.jumpToPage(1);
+                    _controllerconstate.jumpToPage(0);
+                    _controllerrotationstate.jumpToPage(0);
+                    break;
+                  case 1:
+                    _controllerconstate.jumpToPage(0);
+                    break;
+                  default:
+                    _controllerconstate.jumpToPage(0);
+                    break;
+                }
+
+                _setChart(_centers);
+
+                setState(() {});
+              },
+              style:
+                  ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
+              child: const Text('זמן לעדכן',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold)),
+            ),
+            const Divider(),
             SizedBox(
               height: 25,
               child: TextField(
@@ -1460,9 +3077,9 @@ class _RotateComplexState extends State<RotateComplex> {
                   icon: const Icon(Icons.keyboard_arrow_down,
                       color: Colors.black),
                   items: timecoinsDropDownLst,
-                  onChanged: (String? _newsettimestamp) {
+                  onChanged: (String? newsettimestamp) {
                     setState(() {
-                      _settimestamp = _newsettimestamp!;
+                      _settimestamp = newsettimestamp!;
                     });
                   },
                 ),
@@ -2433,7 +4050,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
                 const SizedBox(width: 5),
                 InkWell(
-                  child: ImageIcon(
+                  child: const ImageIcon(
                     AssetImage("assets/coins/longitude.png"),
                     color: Colors.black,
                     size: 25,
@@ -2481,7 +4098,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerDesignChironGate,
                         style: const TextStyle(
@@ -2493,13 +4110,13 @@ class _RotateComplexState extends State<RotateComplex> {
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                        //_planettext = _plutohex.linename!;
+                          //_planettext = _plutohex.linename!;
                           _planettext =
-                          '50.7 years of Silence PersonReality and Reality Cycle';
+                              '50.7 years of Silence PersonReality and Reality Cycle';
                           break;
                         case 1:
                           _planettext =
-                          '50.7 years of Silence PersonReality and Reality Cycle';
+                              '50.7 years of Silence PersonReality and Reality Cycle';
                           break;
                         case 2:
                           _planettext = 'breath';
@@ -2525,14 +4142,14 @@ class _RotateComplexState extends State<RotateComplex> {
                         maxRadius: 13.0,
                         backgroundColor: Colors.white,
                         backgroundImage:
-                        AssetImage('assets/planets/chiron.png')),
+                            AssetImage('assets/planets/chiron.png')),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 4,
                     child: AutoSizeTextField(
                         readOnly: true,
                         decoration:
-                        const InputDecoration.collapsed(hintText: ''),
+                            const InputDecoration.collapsed(hintText: ''),
                         textAlign: TextAlign.center,
                         controller: _controllerChironGate,
                         style: const TextStyle(
@@ -2541,13 +4158,13 @@ class _RotateComplexState extends State<RotateComplex> {
                             fontWeight: FontWeight.normal)),
                   ),
                 ]),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             SizedBox(
               width: MediaQuery.of(context).size.width / 2,
               child: AutoSizeTextField(
                   readOnly: false,
-                  decoration:
-                  const InputDecoration.collapsed(hintText: 'מחזיק מטבע לרגע'),
+                  decoration: const InputDecoration.collapsed(
+                      hintText: 'מחזיק מטבע לרגע'),
                   textAlign: TextAlign.center,
                   controller: _controllersavetxt,
                   style: const TextStyle(
@@ -2555,7 +4172,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       color: Colors.black,
                       fontWeight: FontWeight.normal)),
             ),
-            Divider(color: Colors.blue),
+            const Divider(color: Colors.blue),
             Stack(
               fit: StackFit.loose,
               children: [
@@ -2645,17 +4262,17 @@ class _RotateComplexState extends State<RotateComplex> {
               color: Colors.blue,
             ),
             Container(
-              height: 250,
+              height: 350,
               width: 250,
               child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   childAspectRatio: 1,
-                  crossAxisCount: 4, // number of items in each row
+                  crossAxisCount: 3, // number of items in each row
                   mainAxisSpacing: 8.0, // spacing between rows
                   crossAxisSpacing: 8.0, // spacing between columns
                 ),
-                padding: EdgeInsets.all(8.0), // padding around the grid
-                itemCount: 16, // total number of items
+                padding: const EdgeInsets.all(8.0), // padding around the grid
+                itemCount: 12, // total number of items
                 itemBuilder: (context, index) {
                   return Container(
                     decoration: BoxDecoration(
@@ -2667,1059 +4284,6 @@ class _RotateComplexState extends State<RotateComplex> {
                             ))),
                   );
                 },
-              ),
-            ),
-            const Divider(
-              color: Colors.blue,
-            ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: CircleAvatar(
-                      //minRadius: 5,
-                      maxRadius: 15,
-                      foregroundImage: AssetImage(rtimageBolList[1])),
-                  tooltip: 'הורדה',
-                  onPressed: () {
-                    _setupdown = false;
-                    controlSetTime(_setupdown);
-                  },
-                ),
-                const SizedBox(width: 5),
-                IconButton(
-                  icon: CircleAvatar(
-                      //minRadius: 5,
-                      maxRadius: 15,
-                      foregroundImage: AssetImage(rtimageBolList[0])),
-                  tooltip: 'העלאה',
-                  onPressed: () {
-                    _setupdown = true;
-                    controlSetTime(_setupdown);
-                  },
-                ),
-                const SizedBox(width: 5),
-                DropdownButton(
-                  underline: DropdownButtonHideUnderline(child: Container()),
-                  value: _settimestamp,
-                  icon: const Icon(Icons.keyboard_arrow_down,
-                      color: Colors.black),
-                  items: timecoinsDropDownLst,
-                  onChanged: (String? _newsettimestamp) {
-                    setState(() {
-                      _settimestamp = _newsettimestamp!;
-                    });
-                  },
-                ),
-                const SizedBox(width: 10),
-                SizedBox(
-                  height: 15,
-                  width: 70,
-                  child: TextField(
-                      textAlign: TextAlign.center,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                      ],
-                      readOnly: false,
-                      decoration:
-                          const InputDecoration.collapsed(hintText: '1'),
-                      controller: _controllerSetTime,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Colors.black)),
-                ),
-              ],
-            ),
-            // human design
-            // head
-            Container(
-              width: 350,
-              height: 600,
-              color: Colors.black12,
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 30, top: 165),
-                      child: Transform.rotate(
-                        angle: -0.25,
-                        child: CustomPaint(
-                          foregroundPainter: HorizontalGatePainter(
-                              gatestate: gatestatelist[26]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 10,
-                            width: 190,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Transform.rotate(
-                      angle: 0.1,
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 90.0, left: 160.0),
-                        child: CustomPaint(
-                          foregroundPainter:
-                              HeartPainter(centerstate: heartstate),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 35,
-                            width: 55,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      margin: const EdgeInsets.only(top: 100.0, left: 140.0),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              mplantsfull[7],
-                            ),
-                            opacity: 0.5),
-                      ),
-                    ),
-                  ),
-                  // solar
-
-                  Flex(
-                    direction: Axis.vertical,
-                    children: [
-                      SizedBox(height: 10),
-                      SizedBox(
-                        height: 70,
-                        width: 80,
-                        child: Stack(
-                          children: [
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: CustomPaint(
-                                foregroundPainter:
-                                    HeadPainter(centerstate: headstate),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 70,
-                                  width: 80,
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      //image: AssetImage(mplantsfull[6],
-                                      image: AssetImage(
-                                        'assets/coins/camel.png',
-                                        //image: AssetImage('assets/camog/mcamel.png',
-                                      ),
-                                      opacity: 0.5),
-                                ),
-                              ),
-                            ),
-                            const Align(
-                              alignment: Alignment.bottomCenter,
-                              child: SizedBox(
-                                width: 50,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      '64',
-                                      style: TextStyle(fontSize: 9),
-                                    ),
-                                    Text(
-                                      '61',
-                                      style: TextStyle(fontSize: 9),
-                                    ),
-                                    Text(
-                                      '63',
-                                      style: TextStyle(fontSize: 9),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // head gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 17,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[64]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[61]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[63]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                      //ajna gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[47]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[24]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[4]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // ajna
-                      SizedBox(
-                        height: 70,
-                        child: Stack(
-                          children: [
-                            //ajna gates
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const SizedBox(width: 17),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[17]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 70,
-                                    width: 50 / 3,
-                                  ),
-                                ),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[43]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 70,
-                                    width: 50 / 3,
-                                  ),
-                                ),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[11]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 70,
-                                    width: 50 / 3,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: CustomPaint(
-                                foregroundPainter:
-                                    AjnaPainter(centerstate: ajnastate),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 70,
-                                  width: 80,
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      //image: AssetImage(mplantsfull[6],
-                                      image: AssetImage(
-                                        'assets/coins/dog.png',
-                                      ),
-                                      opacity: 0.5),
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: SizedBox(
-                                width: 50,
-                                child: const Align(
-                                  alignment: Alignment.topCenter,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        '47',
-                                        style: TextStyle(fontSize: 9),
-                                      ),
-                                      Text(
-                                        '24',
-                                        style: TextStyle(fontSize: 9),
-                                      ),
-                                      Text(
-                                        '4',
-                                        style: TextStyle(fontSize: 9),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: Container(
-                                width: 90,
-                                margin: EdgeInsets.all(15),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Text(
-                                      '17',
-                                      style: TextStyle(fontSize: 9),
-                                    ),
-                                    Text(
-                                      '11',
-                                      style: TextStyle(fontSize: 9),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                width: 90,
-                                margin: EdgeInsets.fromLTRB(80, 0, 0, 10),
-                                child: Text(
-                                  '43',
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      //throat gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[62]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 15,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[23]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 15,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[56]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 15,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // throat
-                      Stack(
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional.center,
-                            child: CustomPaint(
-                              foregroundPainter:
-                                  ThroatPainter(centerstate: throatstate),
-                              willChange: true,
-                              child: const SizedBox(
-                                height: 60,
-                                width: 70,
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              height: 50,
-                              width: 50,
-                              margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                      mplantsfull[6],
-                                    ),
-                                    opacity: 0.5),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: SizedBox(
-                              width: 50,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    '62',
-                                    style: TextStyle(fontSize: 9),
-                                  ),
-                                  Text(
-                                    '23',
-                                    style: TextStyle(fontSize: 9),
-                                  ),
-                                  Text(
-                                    '56',
-                                    style: TextStyle(fontSize: 9),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: Container(
-                              width: 65,
-                              margin: EdgeInsets.fromLTRB(0, 12, 0, 0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '16',
-                                    style: TextStyle(fontSize: 9),
-                                  ),
-                                  Text(
-                                    '35',
-                                    style: TextStyle(fontSize: 9),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              width: 65,
-                              margin: EdgeInsets.only(top: 24),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '20',
-                                    style: TextStyle(fontSize: 9),
-                                  ),
-                                  Text(
-                                    '12',
-                                    style: TextStyle(fontSize: 9),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              width: 20,
-                              margin: EdgeInsets.only(top: 35, left: 65),
-                              child: Text(
-                                '45',
-                                style: TextStyle(fontSize: 9),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              width: 45,
-                              margin: EdgeInsets.fromLTRB(0, 45, 0, 0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '31',
-                                    style: TextStyle(fontSize: 9),
-                                  ),
-                                  Text(
-                                    '8',
-                                    style: TextStyle(fontSize: 9),
-                                  ),
-                                  Text(
-                                    '33',
-                                    style: TextStyle(fontSize: 9),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      // throat gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[31]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 20,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[8]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 20,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[33]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 20,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // g gates
-
-                      SizedBox(
-                        height: 100,
-                        child: Stack(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const SizedBox(width: 17),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[7]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 40,
-                                    width: 50 / 3,
-                                  ),
-                                ),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[1]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 40,
-                                    width: 50 / 3,
-                                  ),
-                                ),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[13]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 40,
-                                    width: 50 / 3,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const SizedBox(width: 17),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[15]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 100,
-                                    width: 50 / 3,
-                                  ),
-                                ),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[2]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 100,
-                                    width: 50 / 3,
-                                  ),
-                                ),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[46]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 100,
-                                    width: 50 / 3,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: CustomPaint(
-                                foregroundPainter:
-                                    GPainter(centerstate: gstate),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 80,
-                                  width: 80,
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                        mplantsfull[5],
-                                      ),
-                                      opacity: 0.5),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: Container(
-                                margin:
-                                    const EdgeInsets.only(right: 30, top: 27),
-                                child: Text(
-                                  '7',
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: Container(
-                                margin: const EdgeInsets.only(top: 11),
-                                child: Text(
-                                  '1',
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: Container(
-                                margin:
-                                    const EdgeInsets.only(left: 30, top: 27),
-                                child: Text(
-                                  '13',
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                margin:
-                                    const EdgeInsets.only(left: 30, bottom: 27),
-                                child: Text(
-                                  '15',
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                margin: const EdgeInsets.only(bottom: 11),
-                                child: Text(
-                                  '2',
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                margin: const EdgeInsets.only(
-                                    right: 30, bottom: 27),
-                                child: Text(
-                                  '46',
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                margin: const EdgeInsets.only(right: 60),
-                                child: Text(
-                                  '10',
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                margin: const EdgeInsets.only(left: 60),
-                                child: Text(
-                                  '25',
-                                  style: TextStyle(fontSize: 9),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // g to sacral gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[5]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 25,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[14]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 25,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[29]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 25,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Stack(
-                        children: [
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              margin: EdgeInsets.only(top: 25, right: 150),
-                              child: CustomPaint(
-                                foregroundPainter: HorizontalGatePainter(
-                                    gatestate: gatestatelist[50]),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 10,
-                                  width: 35,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              margin: EdgeInsets.only(top: 25, right: 80),
-                              child: CustomPaint(
-                                foregroundPainter: HorizontalGatePainter(
-                                    gatestate: gatestatelist[27]),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 10,
-                                  width: 35,
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              margin: EdgeInsets.only(top: 25, left: 70),
-                              child: CustomPaint(
-                                foregroundPainter: HorizontalGatePainter(
-                                    gatestate: gatestatelist[59]),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 10,
-                                  width: 35,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              margin: EdgeInsets.only(top: 25, left: 140),
-                              child: CustomPaint(
-                                foregroundPainter: HorizontalGatePainter(
-                                    gatestate: gatestatelist[6]),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 10,
-                                  width: 35,
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          // sacral
-
-                          Align(
-                            alignment: Alignment.center,
-                            child: CustomPaint(
-                              foregroundPainter:
-                                  SacralPainter(centerstate: sacralstate),
-                              willChange: true,
-                              child: const SizedBox(
-                                height: 55,
-                                width: 55,
-                              ),
-                            ),
-                          ),
-                          Positioned.fill(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                        mplantsfull[0],
-                                      ),
-                                      opacity: 0.5)),
-                            ),
-                          ),
-                        ],
-                      ),
-                      // sacral to root gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[42]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[3]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[9]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(width: 17),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[53]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[60]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[52]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 50 / 3,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // root
-                      Stack(
-                        children: [
-                          CustomPaint(
-                            foregroundPainter:
-                                RootPainter(centerstate: rootstate),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 55,
-                              width: 55,
-                            ),
-                          ),
-                          Positioned.fill(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                      mplantsfull[6],
-                                    ),
-                                    opacity: 0.5),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: EdgeInsets.only(left: 220, bottom: 150),
-                      child: CustomPaint(
-                        foregroundPainter:
-                            SolarPainter(centerstate: solarstate),
-                        willChange: true,
-                        child: const SizedBox(
-                          height: 60,
-                          width: 60,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      margin: EdgeInsets.only(left: 220, bottom: 150),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              mplantsfull[7],
-                            ),
-                            opacity: 0.5),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: EdgeInsets.only(right: 220, bottom: 150),
-                      child: CustomPaint(
-                        foregroundPainter:
-                            SpleenPainter(centerstate: spleenstate),
-                        willChange: true,
-                        child: const SizedBox(
-                          height: 60,
-                          width: 60,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      margin: EdgeInsets.only(right: 220, bottom: 150),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              mplantsfull[1],
-                            ),
-                            opacity: 0.5),
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ),
             const Divider(
@@ -3777,324 +4341,6 @@ class _RotateComplexState extends State<RotateComplex> {
                     fontSize: 17,
                     color: Colors.black,
                     fontWeight: FontWeight.normal)),
-          ],
-        ),
-      ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Icon(Icons.close, color: Colors.white),
-        ),
-      ],
-    );
-  }
-
-  Widget buildTimePopupDialog(BuildContext context) {
-    return AlertDialog(
-      title: const Text(
-        'זמן תכנית תנכית',
-        style: TextStyle(color: Colors.white),
-      ),
-      backgroundColor: Colors.black,
-      content: SingleChildScrollView(
-        child: Flex(
-          direction: Axis.vertical,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-                readOnly: true,
-                decoration: const InputDecoration.collapsed(
-                    hintText: '07:30',
-                    hintStyle: TextStyle(color: Colors.grey)),
-                textAlign: TextAlign.center,
-                controller: _controllerTimePick,
-                style: const TextStyle(
-                    fontSize: 17,
-                    color: Colors.white,
-                    fontWeight: FontWeight.normal)),
-            const SizedBox(
-              height: 10.0,
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                _selectedtime = await TimeServices.selectTime(context);
-                setState(() {
-                  _controllerTimePick.text = _selectedtime.format(context);
-                });
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.normal)),
-              child: const Text(
-                'שעה',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            SizedBox(
-              width: 150,
-              child: TextField(
-                  readOnly: true,
-                  decoration: const InputDecoration.collapsed(
-                      hintText: '02/19/1984',
-                      hintStyle: TextStyle(color: Colors.grey)),
-                  textAlign: TextAlign.center,
-                  controller: _controllerDatePick,
-                  style: const TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal)),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                _selectedDate = await TimeServices.selectDate(context);
-                _formattedDate = DateFormat('MM/dd/yyyy').format(_selectedDate);
-                setState(() {
-                  //_controllerDatePick.text = "${_selectedDate.toLocal()}".split(' ')[0];
-                  _controllerDatePick.text = _formattedDate;
-                });
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  textStyle: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.normal)),
-              child: const Text('תאריך', style: TextStyle(color: Colors.white)),
-            ),
-            const Divider(
-              color: Colors.black,
-              thickness: 5,
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                // _selectedDate by user pick
-                _now = _selectedDate.applied(_selectedtime);
-
-                _planetsnowList = await PlanetsServices.getCurrentData(_now);
-
-                _designTime = await PlanetsServices.getDesignTime(_now);
-                _planetsdesignList =
-                    await PlanetsServices.getCurrentData(_designTime);
-
-                _chironhex = _planetsnowList.last;
-                _chirondesignhex = _planetsdesignList.last;
-                _planetsnowList.removeLast();
-                _planetsdesignList.removeLast();
-
-                _allplanetsList = _planetsnowList + _planetsdesignList;
-                _channelsList = HDServices.getHDChannels(_allplanetsList);
-                _personchannelsList = HDServices.getHDChannels(_planetsnowList);
-                _designchannelsList =
-                    HDServices.getHDChannels(_planetsdesignList);
-
-                //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-                hdfinaldata = HDServices.getHDBasicData(_channelsList);
-
-                _centers = HDServices.getHDDefinedCenters(_channelsList);
-                //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                //_selfreminderSentence = HDServices.getSelfReminder();
-                _selfreminder = _timeselfreminder;
-
-                //_controlHDData(hdbasicdata);
-                _controlHDData(hdfinaldata);
-                //hdfinaldata = HDServices.getHDBasicData(_channelsList);
-
-                _setDateTime(_now);
-
-                //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
-                //_formattedTime = DateFormat.Hms().format(_now);
-                //_controllerTime.text = 'text $_formattedTime $_formattedDate';
-
-                _planetsList = _planetsnowList;
-                _planethex = _planetsList[0];
-                //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
-
-                _setCoins();
-
-                //_hexalignedList = hexagramAlignment(_planethex.gate!);
-
-                //_controllertop.jumpToPage(_hexalignedList[0]);
-                //_controllermid.jumpToPage(_hexalignedList[1]);
-                //_controllerbot.jumpToPage(_hexalignedList[2]);
-
-                _controllerlinetext.text = _planethex.line!.toString();
-                _controllergatelinestory.text = idonotknowlinesList[
-                    (idonotknowlinesList.indexOf(_planethex.gate!) +
-                        _planethex.line!)];
-
-                switch (_previousPlanetIndex) {
-                  case -1:
-                    _previousPlanetIndex = 0;
-                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                    break;
-                  default:
-                    _isPlanetSelectedList[_previousPlanetIndex] =
-                        !_isPlanetSelectedList[_previousPlanetIndex];
-                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                    _previousPlanetIndex = 0;
-                }
-
-                switch (_currentconstate) {
-                  case 0:
-                    _controllerconstate.jumpToPage(1);
-                    _controllerconstate.jumpToPage(0);
-                    _controllerrotationstate.jumpToPage(0);
-                    break;
-                  case 1:
-                    _controllerconstate.jumpToPage(0);
-                    break;
-                  default:
-                    _controllerconstate.jumpToPage(0);
-                    break;
-                }
-
-                // idk
-                // calc cycles
-                //_saturnreturntime = await PlanetsServices.getSaturnReturn(_now);
-                //_formatsaturnreturnDate = DateFormat('MM/dd/yyyy').format(_saturnreturntime);
-                //_formatsaturnreturnTime = DateFormat.Hms().format(_saturnreturntime);
-
-                //_uranusoppostiontime = await PlanetsServices.getUranusOpposition(_now);
-                //_formatsUranusOppDate = DateFormat('MM/dd/yyyy').format(_uranusoppostiontime);
-                //_formatsUranusOppTime = DateFormat.Hms().format(_uranusoppostiontime);
-
-                //new hd chart
-                _setChart(_centers);
-
-                setState(() {
-                  Navigator.of(context).pop();
-                });
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
-              child: const Text('להשיג זמן עבורך',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal)),
-            ),
-            Divider(),
-            ElevatedButton(
-              onPressed: () async {
-                // _selectedDate by user pick
-                //print (_now);
-                //_now = _selectedDate.applied(_selectedtime);
-
-                _planetsnowList = await PlanetsServices.getCurrentData(_now);
-
-                _designTime = await PlanetsServices.getDesignTime(_now);
-                _planetsdesignList =
-                    await PlanetsServices.getCurrentData(_designTime);
-
-                _chironhex = _planetsnowList.last;
-                _chirondesignhex = _planetsdesignList.last;
-                _planetsnowList.removeLast();
-                _planetsdesignList.removeLast();
-
-                _allplanetsList = _planetsnowList + _planetsdesignList;
-                _channelsList = HDServices.getHDChannels(_allplanetsList);
-                _personchannelsList = HDServices.getHDChannels(_planetsnowList);
-                _designchannelsList =
-                    HDServices.getHDChannels(_planetsdesignList);
-
-                //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-                hdfinaldata = HDServices.getHDBasicData(_channelsList);
-
-                _centers = HDServices.getHDDefinedCenters(_channelsList);
-                //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                //_selfreminderSentence = HDServices.getSelfReminder();
-                _selfreminder = _timeselfreminder;
-
-                //_controlHDData(hdbasicdata);
-                _controlHDData(hdfinaldata);
-                //hdfinaldata = HDServices.getHDBasicData(_channelsList);
-
-                _setDateTime(_now);
-
-                //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
-                //_formattedTime = DateFormat.Hms().format(_now);
-                //_controllerTime.text = 'text $_formattedTime $_formattedDate';
-
-                _planetsList = _planetsnowList;
-                _planethex = _planetsList[0];
-                //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
-
-                _setCoins();
-
-                //_hexalignedList = hexagramAlignment(_planethex.gate!);
-
-                //_controllertop.jumpToPage(_hexalignedList[0]);
-                //_controllermid.jumpToPage(_hexalignedList[1]);
-                //_controllerbot.jumpToPage(_hexalignedList[2]);
-
-                _controllerlinetext.text = _planethex.line!.toString();
-                _controllergatelinestory.text = idonotknowlinesList[
-                    (idonotknowlinesList.indexOf(_planethex.gate!) +
-                        _planethex.line!)];
-
-                switch (_previousPlanetIndex) {
-                  case -1:
-                    _previousPlanetIndex = 0;
-                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                    break;
-                  default:
-                    _isPlanetSelectedList[_previousPlanetIndex] =
-                        !_isPlanetSelectedList[_previousPlanetIndex];
-                    _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                    _previousPlanetIndex = 0;
-                }
-
-                switch (_currentconstate) {
-                  case 0:
-                    _controllerconstate.jumpToPage(1);
-                    _controllerconstate.jumpToPage(0);
-                    _controllerrotationstate.jumpToPage(0);
-                    break;
-                  case 1:
-                    _controllerconstate.jumpToPage(0);
-                    break;
-                  default:
-                    _controllerconstate.jumpToPage(0);
-                    break;
-                }
-
-                // idk
-                // calc cycles
-                //_saturnreturntime = await PlanetsServices.getSaturnReturn(_now);
-                //_formatsaturnreturnDate = DateFormat('MM/dd/yyyy').format(_saturnreturntime);
-                //_formatsaturnreturnTime = DateFormat.Hms().format(_saturnreturntime);
-
-                //_uranusoppostiontime = await PlanetsServices.getUranusOpposition(_now);
-                //_formatsUranusOppDate = DateFormat('MM/dd/yyyy').format(_uranusoppostiontime);
-                //_formatsUranusOppTime = DateFormat.Hms().format(_uranusoppostiontime);
-
-                //new hd chart
-                _setChart(_centers);
-
-                setState(() {
-                  Navigator.of(context).pop();
-                });
-              },
-              style:
-                  ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
-              child: const Text('להשיג זמן מחודש',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal)),
-            ),
-            const Divider(
-              color: Colors.black,
-              thickness: 5,
-            ),
           ],
         ),
       ),
@@ -4198,35 +4444,35 @@ class _RotateComplexState extends State<RotateComplex> {
           child: Flex(
             direction: Axis.vertical,
             children: [
-              Divider(color: Colors.transparent),
+              const Divider(color: Colors.transparent),
               CircleAvatar(
                   minRadius: 5,
                   maxRadius: 13,
                   foregroundImage: AssetImage(hexList[0])),
-              Divider(color: Colors.transparent),
+              const Divider(color: Colors.transparent),
               channeldisplay(context, _channelsList),
-              Divider(color: Colors.transparent),
+              const Divider(color: Colors.transparent),
               CircleAvatar(
                   minRadius: 5,
                   maxRadius: 13,
                   foregroundImage: AssetImage(hexList[1])),
-              Divider(color: Colors.transparent),
+              const Divider(color: Colors.transparent),
               //channeldisplay(context, _personchannelsList),
-              Divider(color: Colors.transparent),
+              const Divider(color: Colors.transparent),
               CircleAvatar(
                   minRadius: 5,
                   maxRadius: 13,
                   foregroundImage: AssetImage(hexList[2])),
-              Divider(color: Colors.transparent),
+              const Divider(color: Colors.transparent),
               channeldisplay(context, _personchannelsList),
-              Divider(color: Colors.transparent),
+              const Divider(color: Colors.transparent),
               CircleAvatar(
                   minRadius: 5,
                   maxRadius: 13,
                   foregroundImage: AssetImage(hexList[3])),
-              Divider(color: Colors.transparent),
+              const Divider(color: Colors.transparent),
               channeldisplay(context, _designchannelsList),
-              Divider(color: Colors.transparent),
+              const Divider(color: Colors.transparent),
             ],
           ),
         ),
@@ -4632,6 +4878,54 @@ class _RotateComplexState extends State<RotateComplex> {
     //_currenttop = hexNamesList.indexOf(hdbasicdata.coinname!);
   }
 
+  void _setgatesState() {
+    int tempdesigngate = 0, temppersonngate = 0;
+    //_planetsnowList[0].
+    //_planetsdesignList[0].
+
+    gatestatelist.forEach((g) => g = 0);
+
+    for (var i = 0; i < _planetsdesignList.length; i++) {
+      tempdesigngate = _planetsdesignList[i].gate!;
+      gatestatelist[tempdesigngate] = 1;
+    }
+
+    for (var i = 0; i < _planetsnowList.length; i++) {
+      temppersonngate = _planetsnowList[i].gate!;
+
+      switch (gatestatelist[temppersonngate]) {
+        case 0:
+          gatestatelist[temppersonngate] = 2;
+          break;
+        case 1:
+          gatestatelist[temppersonngate] = 3;
+          break;
+        default:
+          gatestatelist[temppersonngate] = 2;
+          break;
+      }
+    }
+  }
+
+  void _settransitgatesState() {
+    int temppersonngate = 0;
+    //_planetsnowList[0].
+    //_planetsdesignList[0].
+
+    for (var i = 0; i < _planetsnowList.length; i++) {
+      temppersonngate = _planetsnowList[i].gate!;
+      gatestatelist[temppersonngate] = 2;
+      _isBoldList[temppersonngate] = true;
+    }
+  }
+
+  void _resetgatesState() {
+    for (var i = 0; i < gatestatelist.length; i++) {
+      gatestatelist[i] = 0;
+      _isBoldList[i] = false;
+    }
+  }
+
   controlCollor(int colorcoin) {
     Color finalcolor;
     switch (colorcoin) {
@@ -4662,14 +4956,14 @@ class _RotateComplexState extends State<RotateComplex> {
     return finalcolor;
   }
 
-  void controlSetTime(bool _newsetupdown) async {
+  void controlSetTime(bool newsetupdown) async {
     if (_controllerSetTime.text.isEmpty) {
       _newts = int.parse('1');
     } else {
       _newts = int.parse(_controllerSetTime.text);
     }
 
-    if (_newsetupdown) {
+    if (newsetupdown) {
       switch (_settimestamp) {
         case 'שניות':
           _now = _now.add(Duration(seconds: _newts));
@@ -4741,6 +5035,9 @@ class _RotateComplexState extends State<RotateComplex> {
 
     _chironhex = _planetsnowList.last;
     _planetsnowList.removeLast();
+
+    _resetgatesState();
+    _settransitgatesState();
     _channelsList = HDServices.getHDChannelsJustNow(_planetsnowList);
 
     _personchannelsList = [];
@@ -4961,7 +5258,7 @@ class _RotateComplexState extends State<RotateComplex> {
                           fontWeight: FontWeight.bold, fontSize: 12),
                     ),
                     Text(
-                      rtlines390lst[(_planetsList[index].gate! * 6) +
+                      rtlines390lstHeb[(_planetsList[index].gate! * 6) +
                           _planetsList[index].line! -
                           1],
                       textAlign: TextAlign.center,
@@ -5132,7 +5429,10 @@ class _RotateComplexState extends State<RotateComplex> {
   void _setDateTime(DateTime timedata) {
     _formattedDate = DateFormat('MM/dd/yyyy').format(timedata);
     _formattedTime = DateFormat.Hms().format(timedata);
-    _controllerTime.text = '$_formattedTime $_formattedDate';
+    //_controllerTime.text = '$_formattedTime $_formattedDate';
+    //_controllerTime.text = '$_formattedTime $_formattedDate';
+    _controllerDatePick.text = _formattedDate;
+    _controllerTimePick.text = _formattedTime;
   }
 
   void _setLongitude() {
@@ -5178,7 +5478,6 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerNeptuneGate.text = _neptunehex.longitude.toString();
     _controllerPlutoGate.text = _plutohex.longitude.toString();
     _controllerChironGate.text = _chironhex.longitude.toString();
-
 
     _controllerDesignSunGate.text = _sundesignhex.longitude.toString();
     _controllerDesignEarthGate.text = _earthdesignhex.longitude.toString();

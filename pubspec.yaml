@@ -54,12 +54,15 @@ dependencies:
   sweph: ^2.10.3+16
   syncfusion_flutter_pdfviewer: ^20.4.54
   path_provider: ^2.1.3
+  flutter_calendar_carousel: ^2.4.3
+  flutter_localization: ^0.2.0
+  calendar_view: ^1.2.0
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_launcher_icons: ^0.13.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -101,6 +104,7 @@ flutter:
    - assets/pdf/
    - assets/coins/
    - assets/kithe/
+   - assets/minmax/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

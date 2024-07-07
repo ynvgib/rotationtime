@@ -4,6 +4,7 @@ class TimeServices {
   static Future<DateTime> selectDate(BuildContext context) async {
     DateTime selectedDate = DateTime.now();
     DateTime? pickedDate = await showDatePicker(
+        locale: const Locale("he"),
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(1781),

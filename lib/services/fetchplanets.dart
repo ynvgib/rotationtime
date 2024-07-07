@@ -447,7 +447,7 @@ class PlanetsServices {
     //List<DateTime> planetsreturns = [];
 
     // 10220 = 365 days * 28 years
-    DateTime initialSolarReturn = DateTime (solaryear, nowtime.month, nowtime.minute, nowtime.second);;;
+    DateTime initialSolarReturn = DateTime (solaryear, nowtime.month, nowtime.minute, nowtime.second);
 
     //int calcyear = nowtime.year - solaryear;
     //solarreturntime = DateTime (solaryear, nowtime.month, nowtime.minute, nowtime.second);
@@ -1056,7 +1056,6 @@ class PlanetsServices {
         uranusoppositiontime = uranusoppositiontime.subtract(const Duration(days: 30));
       }
 
-      print ('month: $gaplongitude');
 
       // avoid loop
       listgaplongitude.add(gaplongitude);
@@ -1083,7 +1082,6 @@ class PlanetsServices {
         uranusoppositiontime = uranusoppositiontime.subtract(const Duration(days: 7));
       }
 
-      print ('weeks: $gaplongitude');
 
       // avoid loop
       listgaplongitude.add(gaplongitude);

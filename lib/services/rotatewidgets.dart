@@ -3,7 +3,9 @@ import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
+import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
 import 'package:url_launcher/url_launcher.dart';
@@ -70,7 +72,7 @@ Widget build36PopUp(BuildContext context) {
                   );
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                child: const Text('מורכב',
+                child: const Text('Complex',
                     style: TextStyle(color: Colors.white, fontSize: 25))),
             const SizedBox(
               height: 10,
@@ -318,6 +320,22 @@ Widget build384PopUp(BuildContext context) {
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build384rtPop(context, hdlines384lst),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: const Text('HD Lines',
+                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
 
           ],
         ),
@@ -358,7 +376,7 @@ Widget rtlines390lsthebPop(BuildContext context) {
                       fontWeight: FontWeight.bold, fontSize: 14),
                 ),
                 Text(
-                  rtlines390lst_heb[index],
+                  rtlines390lstHeb[index],
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 14),
@@ -853,9 +871,7 @@ Widget build384rtPop(BuildContext context, List<String> build384lst) {
                 children: [
                   Text(
                     //((index+1)/6).ceil().toString()
-                    _linecount.toInt().toString()
-                    + '.' + _gateidx.toInt().toString()
-                        + ' (' + (index + 1).toString() + ')',
+                    '${_linecount.toInt()}.${_gateidx.toInt()} (${index + 1})',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 15),
@@ -1517,12 +1533,12 @@ class VerticalGatePainter extends CustomPainter {
         gatecolor2 = Colors.white;
         break;
       case 1:
-        gatecolor1 = Colors.black;
-        gatecolor2 = Colors.black;
-        break;
-      case 2:
         gatecolor1 = Colors.red;
         gatecolor2 = Colors.red;
+        break;
+      case 2:
+        gatecolor1 = Colors.black;
+        gatecolor2 = Colors.black;
         break;
       case 3:
         gatecolor1 = Colors.red;
@@ -1578,12 +1594,12 @@ class HorizontalGatePainter extends CustomPainter {
         gatecolor2 = Colors.white;
         break;
       case 1:
-        gatecolor1 = Colors.black;
-        gatecolor2 = Colors.black;
-        break;
-      case 2:
         gatecolor1 = Colors.red;
         gatecolor2 = Colors.red;
+        break;
+      case 2:
+        gatecolor1 = Colors.black;
+        gatecolor2 = Colors.black;
         break;
       case 3:
         gatecolor1 = Colors.red;
