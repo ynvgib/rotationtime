@@ -115,7 +115,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                     width: MediaQuery.of(context).size.width / 4,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage( 'assets/minmax/greenmax.png'),
+                        image: AssetImage('assets/minmax/greenmax.png'),
                         fit: BoxFit.scaleDown,
                       ),
                       shape: BoxShape.rectangle,
@@ -2250,22 +2250,55 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ),
                 ],
               ),
-              Container(
-                  height: 35,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    border: Border.all(
-                      color: Colors.black,
-                    ),
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  ),
-                  child: AutoSizeText(rtmoneytimetitleheb[0],
-                      textAlign: TextAlign.center,
-                      minFontSize: 20,
-                      maxFontSize: 25,
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold))),
+              // סיבוב קיבוץ פשוט
+              Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      height: 35,
+                      width: 200,
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtmoneytimetitleheb[0],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold))),
+                  Container(
+                      height: 35,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(
+                          color: Colors.green,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(minmaxnames[1],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.green, fontWeight: FontWeight.bold))),
+                  Container(
+                    height: 30,
+                    width: 30,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/minmax/greenmax.png'),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),),
+                ],
+              ),
               SizedBox (height: 5),
               Container(
                   height: 35,
@@ -2292,43 +2325,108 @@ class _RotateSimpleState extends State<RotateSimple> {
                 color: Colors.green,
               ),
               SizedBox (height: 5),
-              Container(
-                  height: 35,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    border: Border.all(
-                      color: Colors.black,
-                    ),
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  ),
-                  child: AutoSizeText(rtgroupmoneytimeheb[0],
-                      textAlign: TextAlign.center,
-                      minFontSize: 20,
-                      maxFontSize: 25,
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold))),
+              // כסף מורכב
+              Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      height: 35,
+                      width: 200,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtgroupmoneytimeheb[0],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold))),
+                  Container(
+                      height: 35,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(
+                          color: Colors.blue,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(minmaxnames[0],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.blue, fontWeight: FontWeight.bold))),
+                  Container(
+                    height: 30,
+                    width: 30,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/minmax/bluemax.png'),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),),
+                ],
+              ),
+              SizedBox(height: 5),
+              Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      height: 35,
+                      width: 220,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtgroupmoneytimeheb[1],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold))),
+                  Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        border: Border.all(
+                          color: Colors.yellow,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(minmaxnames[2],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.yellow, fontWeight: FontWeight.bold))),
+                  Container(
+                    height: 30,
+                    width: 30,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/minmax/yellowmin.png'),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),),
+                ],
+              ),
               SizedBox(height: 5),
               Container(
-                  height: 35,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.yellow,
-                    border: Border.all(
-                      color: Colors.black,
-                    ),
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  ),
-                  child: AutoSizeText(rtgroupmoneytimeheb[1],
-                      textAlign: TextAlign.center,
-                      minFontSize: 20,
-                      maxFontSize: 25,
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold))),
-              SizedBox(height: 5),
-              Container(
-                  height: 50,
-                  width: 120,
+                  height: 30,
+                  width: 130,
                   decoration: BoxDecoration(
                     color: Colors.red,
                     border: Border.all(
@@ -2349,7 +2447,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 children: [
                   Container(
                       height: 30,
-                      width: 150,
+                      width: 100,
                       decoration: BoxDecoration(
                         color: Colors.red,
                         border: Border.all(
@@ -2364,8 +2462,24 @@ class _RotateSimpleState extends State<RotateSimple> {
                           style: TextStyle(
                               color: Colors.black, fontWeight: FontWeight.bold))),
                   Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        border: Border.all(
+                          color: Colors.red,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(minmaxnames[3],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold))),
+                  Container(
                       height: 30,
-                      width: 150,
+                      width: 100,
                       decoration: BoxDecoration(
                         color: Colors.red,
                         border: Border.all(
@@ -2379,12 +2493,22 @@ class _RotateSimpleState extends State<RotateSimple> {
                           maxFontSize: 20,
                           style: TextStyle(
                               color: Colors.black, fontWeight: FontWeight.bold))),
+                  Container(
+                    height: 30,
+                    width: 30,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/minmax/redmin.png'),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),),
                 ],
               ),
               SizedBox(height: 5),
               Container(
-                  height: 50,
-                  width: 120,
+                  height: 30,
+                  width: 130,
                   decoration: BoxDecoration(
                     color: Colors.red,
                     border: Border.all(
@@ -2426,22 +2550,54 @@ class _RotateSimpleState extends State<RotateSimple> {
                 color: Colors.green,
               ),
               SizedBox(height: 5),
-              Container(
-                  height: 35,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    border: Border.all(
-                      color: Colors.yellow,
-                    ),
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  ),
-                  child: AutoSizeText(rtmoneytimetitleheb[3],
-                      textAlign: TextAlign.center,
-                      minFontSize: 20,
-                      maxFontSize: 25,
-                      style: TextStyle(
-                          color: Colors.yellow, fontWeight: FontWeight.bold))),
+              Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        border: Border.all(
+                          color: Colors.yellow,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtmoneytimetitleheb[3],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.yellow, fontWeight: FontWeight.bold))),
+                  Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        border: Border.all(
+                          color: Colors.yellow,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(minmaxnames[2],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.yellow, fontWeight: FontWeight.bold))),
+                  Container(
+                    height: 30,
+                    width: 30,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/minmax/yellowmin.png'),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),),
+                ],
+              ),
               SizedBox(height: 5),
               Flex(
                 direction: Axis.horizontal,
@@ -2575,22 +2731,54 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ],
               ),
               SizedBox(height: 5),
-              Container(
-                  height: 35,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    border: Border.all(
-                      color: Colors.red,
-                    ),
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  ),
-                  child: AutoSizeText(rtmoneytimetitleheb[5],
-                      textAlign: TextAlign.center,
-                      minFontSize: 20,
-                      maxFontSize: 25,
-                      style: TextStyle(
-                          color: Colors.red, fontWeight: FontWeight.bold))),
+              Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        border: Border.all(
+                          color: Colors.red,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(rtmoneytimetitleheb[5],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold))),
+                  Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        border: Border.all(
+                          color: Colors.red,
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: AutoSizeText(minmaxnames[3],
+                          textAlign: TextAlign.center,
+                          minFontSize: 20,
+                          maxFontSize: 25,
+                          style: TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold))),
+                  Container(
+                    height: 30,
+                    width: 30,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/minmax/redmin.png'),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),),
+                ],
+              ),
               const Divider(
                 color: Colors.green,
                 thickness: 5,
