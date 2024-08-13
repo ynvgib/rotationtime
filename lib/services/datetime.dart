@@ -16,6 +16,11 @@ class TimeServices {
   static Future<TimeOfDay> selectTime(BuildContext context) async {
     TimeOfDay selectedtime = TimeOfDay.now();
     final TimeOfDay? newTime = await showTimePicker(
+      helpText: 'זמן לבחור',
+      cancelText: 'ביטול',
+        confirmText: 'אישור',
+        hourLabelText: 'שעות',
+        minuteLabelText: 'דקות',
         context: context,
         initialTime: selectedtime);
     selectedtime = newTime!;

@@ -1,0 +1,13 @@
+// flutter build windows
+
+// flutter build web --web-renderer canvaskit --no-tree-shake-icons
+// firebase deploy
+
+// flutter build apk --no-tree-shake-icons
+// flutter build apk --split-per-abi --no-tree-shake-icons
+
+// ---for new project--
+// flutter create --platforms=windows
+
+// ----add icons---
+// flutter pub run flutter_launcher_icons:main

@@ -86,3 +86,9 @@ class HDChannel {
     this.description, this.circuitry, this.circuit, this.stream, this.sentence});
 }
 
+class hdCenter {
+  String? id,name, adaptname;
+  int? state;
+  hdCenter({this.id, this.name, this.adaptname, this.state});
+}
+

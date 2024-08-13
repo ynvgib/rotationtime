@@ -26,8 +26,15 @@ class RotateComplex extends StatefulWidget {
 
 class _RotateComplexState extends State<RotateComplex> {
   // human design
-  Color headcolor = Colors.yellow,
+  Color headcolor = Colors.green,
       ajnacolor = Colors.green,
+      throatcolor = Colors.green,
+      gcolor = Colors.green,
+      sacralcolor = Colors.green,
+      rootcolor = Colors.green,
+      heartcolor = Colors.green,
+      spleencolor = Colors.green,
+      solarcolor = Colors.green,
       grampacolor = Colors.black,
       papacolor = Colors.black,
       soncolor = Colors.black,
@@ -35,40 +42,57 @@ class _RotateComplexState extends State<RotateComplex> {
       mamacolor = Colors.black,
       grannycolor = Colors.black;
 
-  bool headstate = true,
-      ajnastate = true,
-      throatstate = true,
-      gstate = true,
-      sacralstate = true,
-      rootstate = true,
-      heartstate = true,
-      spleenstate = true,
-      solarstate = true;
+  int headstate = 3,
+      ajnastate = 3,
+      throatstate = 3,
+      gstate = 3,
+      sacralstate = 3,
+      rootstate = 3,
+      heartstate = 3,
+      spleenstate = 3,
+      solarstate = 3;
+
+  int headcolorstate = 0,
+      ajnacolorstate = 0,
+      throatcolorstate = 0,
+      gcolorstate = 0,
+      sacralcolorstate = 0,
+      rootcolorstate = 0,
+      heartcolorstate = 0,
+      spleencolorstate = 0,
+      solarcolorstate = 0;
+
   // gate state
   // 0-undefined, 1-personality, 2-design, 3-both, 4 - transit
 
   List<int> gatestatelist = List.filled(65, 0, growable: false);
+  //listdesigngates = List.generate(13, (index) => index++),
+  //listpersonalitygates = List.generate(13, (index) => index++);
 
   /// end hd
 
-  List<String> _centers = [], language = ['English', 'Hebrew'];
+  //List<String> _centers = [],
+  List<String> finalhexNamesList = hexNamesList,
+      finalnewcoinnamesList = newCoinNames,
+      coins64List = rtminmic65List;
 
-  List<int> listdesigngates = List.generate(13, (index) => index++),
-      listpersonalitygates = List.generate(13, (index) => index++);
+  List<hdCenter> _centers = [];
+
+  List coins384List = rtmix390lstHeb;
 
   HumanDesign hdfinaldata = HumanDesign();
 
   String _selfreminder =
-      'First Choose Time\nThen Return Here \nFor the Reminder';
-  final String _timeselfreminder =
-      'Time is a\nComplex\nof the MIND\nwhich most people\nsimply do not fetch';
+          'First Choose Time\nThen Return Here \nFor the Reminder',
+      _timeselfreminder =
+          'Time is a\nComplex\nof the MIND\nwhich most people\nsimply do not fetch';
 
   final TextEditingController _controllerType = TextEditingController(),
       _controllerAuthority = TextEditingController(),
       _controllerStrategy = TextEditingController(),
       _controllerSentence = TextEditingController(),
       _controllerFinalLine = TextEditingController(),
-      _controllerTime = TextEditingController(),
+      //_controllerTime = TextEditingController(),
       _controllerSetTime = TextEditingController(),
       _controllerPersonTime = TextEditingController(),
       _controllerDesignTime = TextEditingController(),
@@ -162,26 +186,37 @@ class _RotateComplexState extends State<RotateComplex> {
   String _textlevel = '',
       _planettext = '',
       _formattedDate = '',
+      _formattedDay = '',
+      _formattedMonth = '',
+      _formattedYear = '',
       _formattedTime = '',
-      _formatsaturnreturnDate = '',
-      _formatsaturnreturnTime = '',
-      _formatsUranusOppDate = '',
-      _formatsUranusOppTime = '',
+      //_formatsaturnreturnDate = '',
+      //_formatsaturnreturnTime = '',
+      //_formatsUranusOppDate = '',
+      //_formatsUranusOppTime = '',
       _settimestamp = 'דקות';
 
   DateTime _now = DateTime.now(),
-      _newnow = DateTime.now(),
+      //_newnow = DateTime.now(),
+      _personTime = DateTime.now(),
       _designTime = DateTime.now(),
-      _selectedDate = DateTime.now(),
-      _saturnreturntime = DateTime.now(),
-      _uranusoppostiontime = DateTime.now();
+      _selectedDate = DateTime.now();
+  //_saturnreturntime = DateTime.now(),
+  //_uranusoppostiontime = DateTime.now();
 
   TimeOfDay _selectedtime = const TimeOfDay(hour: 0, minute: 0);
 
-  List<Hexagram> _planetsList = [Hexagram(line: 1)],
-      _planetsdesignList = [Hexagram(line: 1)],
-      _planetsnowList = [Hexagram(line: 1)],
-      _allplanetsList = [Hexagram(line: 1)];
+  List<Hexagram> _planetsList =
+          List.filled(14, Hexagram(gate: 1, line: 1, gateline: '1.1'), growable: true),
+      _planetsdesignList =
+          List.filled(14, Hexagram(gate: 2, line: 2, gateline: '2.2'), growable: true),
+      _planetsnowList =
+          List.filled(14, Hexagram(gate: 1, line: 1, gateline: '1.1'), growable: true),
+      _allplanetsList = List.filled(14, Hexagram(gate: 1, line: 1, gateline: '1.1')),
+      _planetsfulldesignList =
+          List.filled(14, Hexagram(gate: 2, line: 2, gateline: '2.2'), growable: true),
+      _planetsfullnowList =
+          List.filled(14, Hexagram(gate: 2, line: 2, gateline: '2.2'), growable: true);
 
   List<HDChannel> _channelsList = [],
       _personchannelsList = [],
@@ -198,7 +233,10 @@ class _RotateComplexState extends State<RotateComplex> {
       _carouselvalueindex = 0,
       _previousPlanetIndex = -1,
       _currentline = 1,
-      _newts = 1;
+      _newts = 1,
+      _linesListplace = 0,
+      _gatesListplace = 0,
+      _tempint = 0;
 
   bool _setupdown = true;
 
@@ -237,9 +275,6 @@ class _RotateComplexState extends State<RotateComplex> {
       List<bool>.filled(13, false, growable: false);
   final List<bool> _isBoldList = List<bool>.filled(65, false, growable: false);
 
-  final List<String> finalhexNamesList = hexNamesList,
-      finalnewcoinnamesList = newCoinNames;
-
   List<int> _hexalignedList = [0, 0, 0];
 
   Color colorindex = Colors.blue,
@@ -257,15 +292,25 @@ class _RotateComplexState extends State<RotateComplex> {
           direction: Axis.horizontal,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const CircleAvatar(
+              radius: 15,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(
+                'assets/minmax/bluemin.png',
+              ),
+            ),
+            const SizedBox(width: 10),
             AutoSizeText(_title,
                 textAlign: TextAlign.left,
                 //maxFontSize: 15,
                 style: const TextStyle(color: Colors.white)),
             const SizedBox(width: 10),
-            CircleAvatar(
-              backgroundColor: Colors.transparent,
+            const CircleAvatar(
               radius: 15,
-              foregroundImage: AssetImage(kitheimglst[3]),
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(
+                'assets/minmax/bluemax.png',
+              ),
             ),
           ],
         ),
@@ -341,7 +386,7 @@ class _RotateComplexState extends State<RotateComplex> {
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AutoSizeText('ערכה מגיע',
+                AutoSizeText('מינימום מיני מיקי מקסימום',
                     textAlign: TextAlign.center,
                     minFontSize: 20,
                     maxFontSize: 40,
@@ -354,30 +399,30 @@ class _RotateComplexState extends State<RotateComplex> {
               thickness: 5,
             ),
             Flex(
-              mainAxisAlignment: MainAxisAlignment.center,
               direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(
-                  width: 10,
-                ),
                 ElevatedButton(
                   onPressed: () async {
                     _now = DateTime.now();
+                    _personTime = _now;
 
-                    _planetsnowList =
+                    _planetsfullnowList =
                         await PlanetsServices.getCurrentData(_now);
 
                     //_designTime = await AstrologyServices.getDesignTime(_now);
                     //emulate design time to now time to prevent blank
-                    _planetsdesignList =
+                    _planetsfulldesignList =
                         await PlanetsServices.getCurrentData(_now);
 
-                    _chironhex = _planetsnowList.last;
-                    _chirondesignhex = _planetsnowList.last;
-                    _planetsnowList.removeLast();
+                    _chironhex = _planetsfullnowList.last;
+                    _chirondesignhex = _chironhex;
 
-                    _resetgatesState();
-                    _settransitgatesState();
+                    _planetsnowList = _planetsfullnowList;
+                    _planetsdesignList = _planetsfulldesignList;
+
+                    _planetsnowList.removeLast();
+                    _planetsdesignList.removeLast();
 
                     _channelsList =
                         HDServices.getHDChannelsJustNow(_planetsnowList);
@@ -385,18 +430,15 @@ class _RotateComplexState extends State<RotateComplex> {
                     _personchannelsList = [];
                     _designchannelsList = [];
 
-                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-
                     hdfinaldata = HDServices.getHDBasicData(_channelsList);
                     //_controlHDData(hdbasicdata);
                     _controlHDData(hdfinaldata);
 
-                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    //_centers = HDServices.getHDCenters(_channelsList);
+                    _centers = HDServices.getHDCenters(_channelsList);
 
                     //_fearSentence = HDServices.getHDDefinedFears(_centers);
                     //_selfreminderSentence = HDServices.getSelfReminder();
-                    _selfreminder = _timeselfreminder;
-
                     _setDateTime(_now);
 
                     _planetsList = _planetsnowList;
@@ -405,8 +447,8 @@ class _RotateComplexState extends State<RotateComplex> {
                     _setCoins();
 
                     _controllerlinetext.text = _planethex.line!.toString();
-                    _controllergatelinestory.text = bbrt385lst_num_heb[
-                        (bbrt385lst_num_heb.indexOf(_planethex.gate!) +
+                    _controllergatelinestory.text = coins384List[
+                        (coins384List.indexOf(_planethex.gate!) +
                             _planethex.line!)];
 
                     switch (_previousPlanetIndex) {
@@ -435,7 +477,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         break;
                     }
 
-                    //new hd chart
+                    _resetgatesState();
+                    _settransitgatesState();
                     _setChart(_centers);
 
                     //setState(() {
@@ -446,65 +489,16 @@ class _RotateComplexState extends State<RotateComplex> {
                       backgroundColor: Colors.purple,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
-                  child: const Text('תכנית כעט',
+                  child: const Text('כעט',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 15,
                           fontWeight: FontWeight.bold)),
                 ),
-              ],
-            ),
-
-            const Divider(
-              color: Colors.blue,
-              thickness: 5,
-            ),
-            const SizedBox(
-              height: 5.0,
-            ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 40,
-                  width: 70,
-                  child: AutoSizeTextField(
-                      minFontSize: 17,
-                      readOnly: true,
-                      decoration: InputDecoration.collapsed(
-                          hintText: DateFormat.Hm().format(_now),
-                          hintStyle: const TextStyle(color: Colors.grey)),
-                      textAlign: TextAlign.center,
-                      controller: _controllerTimePick,
-                      style: const TextStyle(
-                          fontSize: 17,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold)),
+                const SizedBox(
+                  width: 5.0,
                 ),
-                SizedBox(
-                  height: 40,
-                  width: 110,
-                  child: AutoSizeTextField(
-                      minFontSize: 17,
-                      readOnly: true,
-                      decoration: InputDecoration.collapsed(
-                          hintText: DateFormat('MM/dd/yyyy').format(_now),
-                          hintStyle: const TextStyle(color: Colors.grey)),
-                      textAlign: TextAlign.center,
-                      controller: _controllerDatePick,
-                      style: const TextStyle(
-                          fontSize: 17,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold)),
-                ),
-              ],
-            ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
                 ElevatedButton(
                   onPressed: () async {
                     _selectedtime = await TimeServices.selectTime(context);
@@ -522,13 +516,13 @@ class _RotateComplexState extends State<RotateComplex> {
                   ),
                 ),
                 const SizedBox(
-                  width: 15.0,
+                  width: 5.0,
                 ),
                 ElevatedButton(
                   onPressed: () async {
                     _selectedDate = await TimeServices.selectDate(context);
-                    _formattedDate =
-                        DateFormat('MM/dd/yyyy').format(_selectedDate);
+                    //_formattedDate = DateFormat('MM/dd/yyyy').format(_selectedDate);
+                    _formattedDate = _formatDate(_selectedDate);
                     setState(() {
                       //_controllerDatePick.text = "${_selectedDate.toLocal()}".split(' ')[0];
                       _controllerDatePick.text = _formattedDate;
@@ -542,27 +536,249 @@ class _RotateComplexState extends State<RotateComplex> {
                       style: TextStyle(color: Colors.white)),
                 ),
                 const SizedBox(
-                  width: 15.0,
+                  width: 5.0,
                 ),
                 ElevatedButton(
                   onPressed: () async {
                     // _selectedDate by user pick
-                    _now = _selectedDate.applied(_selectedtime);
+                    //_now = _selectedDate.applied(_selectedtime);
+                    _personTime = _selectedDate.applied(_selectedtime);
 
-                    _planetsnowList =
-                        await PlanetsServices.getCurrentData(_now);
+                    _planetsfullnowList =
+                        await PlanetsServices.getCurrentData(_personTime);
 
-                    _designTime = await PlanetsServices.getDesignTime(_now);
-                    _planetsdesignList =
+                    _designTime =
+                        await PlanetsServices.getDesignTime(_personTime);
+                    _planetsfulldesignList =
                         await PlanetsServices.getCurrentData(_designTime);
 
-                    _chironhex = _planetsnowList.last;
-                    _chirondesignhex = _planetsdesignList.last;
+                    _planetsnowList = _planetsfullnowList;
+                    _planetsdesignList = _planetsfulldesignList;
+
+                    _chironhex = _planetsfullnowList.last;
+                    _chirondesignhex = _planetsfulldesignList.last;
+
                     _planetsnowList.removeLast();
                     _planetsdesignList.removeLast();
 
+                    _allplanetsList = _planetsnowList + _planetsdesignList;
+                    _channelsList = HDServices.getHDChannels(_allplanetsList);
+                    _personchannelsList =
+                        HDServices.getHDChannels(_planetsnowList);
+                    _designchannelsList =
+                        HDServices.getHDChannels(_planetsdesignList);
+
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                    _centers = HDServices.getHDCenters(_channelsList);
+                    //_selfreminder = _timeselfreminder;
+
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+                    //hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                    //_setDateTime(_now);
+                    _setDateTime(_personTime);
+
+                    _planetsList = _planetsnowList;
+                    _planethex = _planetsList[0];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                            !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+
                     _resetgatesState();
                     _setgatesState();
+                    _setChart(_centers);
+                    _setCoins();
+
+                    _controllergatelinestory.text =
+                        coins384List[(_planethex.gate! * 7) + _planethex.line!];
+
+                    //_controllergatelinestory.text = coins384List[
+                    //(coins384List.indexOf(_planethex.gate!) +
+                    //   _planethex.line!)];
+                    _controllerlinetext.text = _planethex.line.toString();
+
+                    //setState(() {
+                    //Navigator.of(context).pop();
+                    //});
+                  },
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+                  child: const AutoSizeText('לפלוט',
+                      maxFontSize: 25,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 25,
+                  width: 70,
+                  child: AutoSizeTextField(
+                      minFontSize: 16,
+                      readOnly: true,
+                      decoration: InputDecoration.collapsed(
+                          hintText: DateFormat.Hm().format(_now),
+                          hintStyle: const TextStyle(color: Colors.grey)),
+                      textAlign: TextAlign.center,
+                      controller: _controllerTimePick,
+                      style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold)),
+                ),
+                SizedBox(
+                  height: 25,
+                  width: 200,
+                  child: AutoSizeTextField(
+                      minFontSize: 16,
+                      readOnly: true,
+                      decoration: InputDecoration.collapsed(
+                          //hintText: DateFormat('MM/dd/yyyy').format(_now),
+                          hintText: _formatDate(_now),
+                          hintStyle: const TextStyle(color: Colors.grey)),
+                      textAlign: TextAlign.center,
+                      controller: _controllerDatePick,
+                      style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+              thickness: 5,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 150.0,
+                  height: 150.0,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1.5,
+                        color: Colors.blue,
+                      ),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(100))),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: minmaxcoinsSlider,
+                    carouselController: _controllercoin,
+                    options: CarouselOptions(
+                        height: 95,
+                        //aspectRatio: 0.4,
+                        autoPlay: false,
+                        //enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                        //enlargeCenterPage: true,
+                        //aspectRatio: 1.5,
+                        onPageChanged: (indextop, reason) {
+                          setState(() {
+                            _currentmain = indextop;
+                            _controllermaintext.text =
+                                //'${newCoinNames[_currentmain]} ${hexNamesList[_currentmain]}';
+                                hexNamesHebList[_currentmain];
+                          });
+                        }),
+                  ),
+                ),
+                SizedBox(
+                  width: 100,
+                  height: 50,
+                  child: AutoSizeTextField(
+                    maxLines: 1,
+                    minFontSize: 25,
+                    fullwidth: false,
+                    decoration: InputDecoration.collapsed(
+                        //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
+                        hintText: hexNamesHebList[0],
+                        hintStyle: const TextStyle(color: Colors.grey)),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    controller: _controllermaintext,
+                    readOnly: true,
+                  ),
+                ),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+              thickness: 5,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildChannelsPopUp(context),
+                      );
+                    },
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                    child: const Text('מעבר-בים',
+                        style: TextStyle(fontSize: 13, color: Colors.white))),
+                SizedBox(width: 5),
+                ElevatedButton(
+                  onPressed: () async {
+                    _planetsfullnowList =
+                        await PlanetsServices.getCurrentData(_personTime);
+
+                    _designTime =
+                        await PlanetsServices.getDesignTime(_personTime);
+                    _planetsfulldesignList =
+                        await PlanetsServices.getCurrentData(_designTime);
+
+                    _planetsnowList = _planetsfullnowList;
+                    _planetsdesignList = _planetsfulldesignList;
+
+                    _chironhex = _planetsfullnowList.last;
+                    _chirondesignhex = _planetsfulldesignList.last;
+
+                    _planetsnowList.removeLast();
+                    _planetsdesignList.removeLast();
 
                     _allplanetsList = _planetsnowList + _planetsdesignList;
                     _channelsList = HDServices.getHDChannels(_allplanetsList);
@@ -574,7 +790,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
                     hdfinaldata = HDServices.getHDBasicData(_channelsList);
 
-                    _centers = HDServices.getHDDefinedCenters(_channelsList);
+                    _centers = HDServices.getHDCenters(_channelsList);
                     //_fearSentence = HDServices.getHDDefinedFears(_centers);
                     //_selfreminderSentence = HDServices.getSelfReminder();
                     _selfreminder = _timeselfreminder;
@@ -583,7 +799,8 @@ class _RotateComplexState extends State<RotateComplex> {
                     _controlHDData(hdfinaldata);
                     //hdfinaldata = HDServices.getHDBasicData(_channelsList);
 
-                    _setDateTime(_now);
+                    //_setDateTime(_now);
+                    _setDateTime(_personTime);
 
                     //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
                     //_formattedTime = DateFormat.Hms().format(_now);
@@ -602,8 +819,8 @@ class _RotateComplexState extends State<RotateComplex> {
                     //_controllerbot.jumpToPage(_hexalignedList[2]);
 
                     _controllerlinetext.text = _planethex.line!.toString();
-                    _controllergatelinestory.text = idonotknowlinesList[
-                        (idonotknowlinesList.indexOf(_planethex.gate!) +
+                    _controllergatelinestory.text = coins384List[
+                        (coins384List.indexOf(_planethex.gate!) +
                             _planethex.line!)];
 
                     switch (_previousPlanetIndex) {
@@ -632,107 +849,46 @@ class _RotateComplexState extends State<RotateComplex> {
                         break;
                     }
 
+                    _resetgatesState();
+                    _setgatesState();
                     _setChart(_centers);
 
-                    setState(() {
-                      //Navigator.of(context).pop();
-                    });
+                    //setState(() {});
                   },
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: Colors.purple),
-                  child: const AutoSizeText('לפלוט',
-                      maxFontSize: 25,
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.redAccent),
+                  child: const Text('זמן לעדכן',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold)),
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold)),
                 ),
+                SizedBox(width: 5),
+                ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildDataPopUp(context),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      //'Rotate Design',
+                      'זמן עיצוב',
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    )),
               ],
             ),
-            const Divider(
-              color: Colors.blue,
-              thickness: 5,
-            ),
-
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 1.2,
-              child: AutoSizeTextField(
-                maxLines: 1,
-                minFontSize: 25,
-                fullwidth: false,
-                decoration: InputDecoration.collapsed(
-                    //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
-                    hintText: hexNamesHebList[0],
-                    hintStyle: const TextStyle(color: Colors.grey)),
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                ),
-                controller: _controllermaintext,
-                readOnly: true,
-              ),
-            ),
             const SizedBox(height: 10),
-            // main coin
-            Container(
-              width: 200.0,
-              height: 200.0,
-              child: CarouselSlider(
-                //items: mixHexagramSlidersNew,
-                items: minmaxcoinsSlider,
-                carouselController: _controllercoin,
-                options: CarouselOptions(
-                    autoPlay: false,
-                    //enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                    //enlargeCenterPage: true,
-                    //aspectRatio: 1.5,
-                    onPageChanged: (indextop, reason) {
-                      setState(() {
-                        _currentmain = indextop;
-                        _controllermaintext.text =
-                            //'${newCoinNames[_currentmain]} ${hexNamesList[_currentmain]}';
-                            hexNamesHebList[_currentmain];
-                      });
-                    }),
-              ),
-            ),
 
-            const Divider(
-              color: Colors.blue,
-              thickness: 5,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildChannelsPopUp(context),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                child: const Text('מעבר-בים',
-                    style: TextStyle(fontSize: 13, color: Colors.white))),
-            const SizedBox(height: 10),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) => _buildDataPopUp(context),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50))),
-                child: const Text(
-                  //'Rotate Design',
-                  'זמן עיצוב',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                )),
             const Divider(
               color: Colors.blue,
               thickness: 5,
@@ -745,7 +901,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   icon: CircleAvatar(
                       //minRadius: 5,
                       maxRadius: 15,
-                      foregroundImage: AssetImage(rtimageBolList[1])),
+                      foregroundImage: AssetImage(coins4lst[3])),
                   tooltip: 'הורדה',
                   onPressed: () {
                     _setupdown = false;
@@ -757,7 +913,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   icon: CircleAvatar(
                       //minRadius: 5,
                       maxRadius: 15,
-                      foregroundImage: AssetImage(rtimageBolList[0])),
+                      foregroundImage: AssetImage(coins4lst[0])),
                   tooltip: 'העלאה',
                   onPressed: () {
                     _setupdown = true;
@@ -798,26 +954,168 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
               ],
             ),
-            // human design chart
+            // start hd chart
             Container(
               width: 350,
-              height: 600,
-              color: Colors.black12,
+              height: 608,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                border: Border.all(
+                  color: Colors.blue,
+                  width: 4,
+                ),
+                borderRadius: BorderRadius.circular(20),
+              ),
               child: Stack(
                 children: [
                   Align(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                        width: 65,
+                        height: 50,
+                        margin: const EdgeInsets.only(top: 5, left: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 3,
+                            color: Colors.black,
+                          ),
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(_planetsdesignList[0].gateline!,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ), 
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                      width: 65,
+                      height: 50,
+                        margin: const EdgeInsets.only(top: 55, left: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 3,
+                            color: Colors.black,
+                          ),
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(_planetsdesignList[1].gateline!,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      width: 65,
+                      height: 50,
+                        margin: const EdgeInsets.only(top: 5, right: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 3,
+                            color: Colors.black,
+                          ),
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(_planetsnowList[0].gateline!,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      width: 65,
+                      height: 50,
+                      margin: const EdgeInsets.only(top: 55, right: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 3,
+                            color: Colors.black,
+                          ),
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(_planetsnowList[1].gateline!,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ),
+
+                  Align(
                     alignment: Alignment.center,
                     child: Container(
-                      margin: const EdgeInsets.only(left: 10, top: 155),
-                      child: Transform.rotate(
-                        angle: -0.3,
+                      margin: const EdgeInsets.only(right: 100, top: 80),
+                      child: RotationTransition(
+                        turns: const AlwaysStoppedAnimation(90 / 360),
                         child: CustomPaint(
-                          foregroundPainter: HorizontalGatePainter(
-                              gatestate: gatestatelist[26]),
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[10]),
                           willChange: true,
                           child: const SizedBox(
-                            height: 10,
-                            width: 100,
+                            height: 85,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 100, bottom: 135),
+                      child: Transform.rotate(
+                        angle: -0.60,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[34]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 140,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 35, top: 168),
+                      child: Transform.rotate(
+                        angle: -1.81,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[26]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 110,
+                            width: 5,
                           ),
                         ),
                       ),
@@ -826,16 +1124,16 @@ class _RotateComplexState extends State<RotateComplex> {
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      margin: const EdgeInsets.only(right: 160, top: 208),
+                      margin: const EdgeInsets.only(right: 166, top: 217),
                       child: Transform.rotate(
-                        angle: -0.3,
+                        angle: -1.81,
                         child: CustomPaint(
-                          foregroundPainter: HorizontalGatePainter(
-                              gatestate: gatestatelist[44]),
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[44]),
                           willChange: true,
                           child: const SizedBox(
-                            height: 10,
-                            width: 100,
+                            height: 110,
+                            width: 5,
                           ),
                         ),
                       ),
@@ -847,7 +1145,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: Container(
                       margin: const EdgeInsets.only(right: 115, top: 192),
                       child: Transform.rotate(
-                        angle: 0.47,
+                        angle: 0.55,
                         child: CustomPaint(
                           foregroundPainter:
                               VerticalGatePainter(gatestate: gatestatelist[16]),
@@ -863,12 +1161,160 @@ class _RotateComplexState extends State<RotateComplex> {
                   Align(
                     alignment: Alignment.topCenter,
                     child: Container(
-                      margin: const EdgeInsets.only(right: 215, top: 295),
+                      margin: const EdgeInsets.only(right: 243, top: 295),
                       child: Transform.rotate(
-                        angle: 0.47,
+                        angle: 0.55,
                         child: CustomPaint(
                           foregroundPainter:
                               VerticalGatePainter(gatestate: gatestatelist[48]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 125,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 78, top: 87),
+                      child: Transform.rotate(
+                        angle: -0.8,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[25]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 20,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 105, top: 113),
+                      child: Transform.rotate(
+                        angle: -0.8,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[51]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 20,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 234, top: 215),
+                      child: Transform.rotate(
+                        angle: -0.64,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[37]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 25,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 208, top: 180),
+                      child: Transform.rotate(
+                        angle: -0.64,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[40]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 25,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 82, bottom: 50),
+                      child: Transform.rotate(
+                        angle: -0.42,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[45]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 65,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 122, top: 40),
+                      child: Transform.rotate(
+                        angle: -0.42,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[21]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 50,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 120, top: 224),
+                      child: Transform.rotate(
+                        angle: 0.55,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[20]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 123,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 242, top: 328),
+                      child: Transform.rotate(
+                        angle: 0.55,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[57]),
                           willChange: true,
                           child: const SizedBox(
                             height: 115,
@@ -882,9 +1328,9 @@ class _RotateComplexState extends State<RotateComplex> {
                   Align(
                     alignment: Alignment.topCenter,
                     child: Container(
-                      margin: const EdgeInsets.only(left: 125, top: 190),
+                      margin: const EdgeInsets.only(left: 121, top: 188),
                       child: Transform.rotate(
-                        angle: -0.47,
+                        angle: -0.55,
                         child: CustomPaint(
                           foregroundPainter:
                               VerticalGatePainter(gatestate: gatestatelist[35]),
@@ -900,16 +1346,272 @@ class _RotateComplexState extends State<RotateComplex> {
                   Align(
                     alignment: Alignment.topCenter,
                     child: Container(
-                      margin: const EdgeInsets.only(left: 228, top: 295),
+                      margin: const EdgeInsets.only(left: 246, top: 290),
                       child: Transform.rotate(
-                        angle: -0.47,
+                        angle: -0.55,
                         child: CustomPaint(
                           foregroundPainter:
                               VerticalGatePainter(gatestate: gatestatelist[36]),
-                          //gatestate: 4),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 123,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 121, top: 215),
+                      child: Transform.rotate(
+                        angle: -0.55,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[12]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 123,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 239, top: 315),
+                      child: Transform.rotate(
+                        angle: -0.55,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[22]),
                           willChange: true,
                           child: const SizedBox(
                             height: 115,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 208, bottom: 98),
+                      child: Transform.rotate(
+                        angle: -1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[32]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 70,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 211, bottom: 84),
+                      child: Transform.rotate(
+                        angle: -1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[28]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 70,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 229, bottom: 69),
+                      child: Transform.rotate(
+                        angle: -1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[18]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 80,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 100, bottom: 62),
+                      child: Transform.rotate(
+                        angle: -1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[54]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 80,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 100, bottom: 47),
+                      child: Transform.rotate(
+                        angle: -1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[38]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 80,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 100, bottom: 32),
+                      child: Transform.rotate(
+                        angle: -1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[58]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 80,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 104, bottom: 59),
+                      child: Transform.rotate(
+                        angle: 1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[19]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 75,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 104, bottom: 44),
+                      child: Transform.rotate(
+                        angle: 1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[39]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 75,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 104, bottom: 29),
+                      child: Transform.rotate(
+                        angle: 1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[41]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 75,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 235, bottom: 94),
+                      child: Transform.rotate(
+                        angle: 1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[49]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 80,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 235, bottom: 79),
+                      child: Transform.rotate(
+                        angle: 1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[55]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 80,
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 235, bottom: 64),
+                      child: Transform.rotate(
+                        angle: 1.05,
+                        child: CustomPaint(
+                          foregroundPainter:
+                              VerticalGatePainter(gatestate: gatestatelist[30]),
+                          willChange: true,
+                          child: const SizedBox(
+                            height: 80,
                             width: 5,
                           ),
                         ),
@@ -925,14 +1627,14 @@ class _RotateComplexState extends State<RotateComplex> {
                           angle: 0.1,
                           child: Container(
                             margin:
-                                const EdgeInsets.only(top: 90.0, left: 160.0),
+                                const EdgeInsets.only(top: 110.0, left: 155.0),
                             child: CustomPaint(
                               foregroundPainter:
                                   HeartPainter(centerstate: heartstate),
                               willChange: true,
                               child: const SizedBox(
-                                height: 35,
-                                width: 55,
+                                height: 50,
+                                width: 72,
                               ),
                             ),
                           ),
@@ -941,11 +1643,14 @@ class _RotateComplexState extends State<RotateComplex> {
                       Align(
                         alignment: Alignment.center,
                         child: Container(
-                          margin: const EdgeInsets.only(left: 145, top: 90),
+                          margin: const EdgeInsets.only(left: 137, top: 105),
                           child: Text(
                             '21',
                             style: TextStyle(
-                                fontSize: 9,
+                                backgroundColor: _isBoldList[21]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
                                 fontWeight: _isBoldList[21]
                                     ? FontWeight.bold
                                     : FontWeight.normal),
@@ -955,25 +1660,14 @@ class _RotateComplexState extends State<RotateComplex> {
                       Align(
                         alignment: Alignment.center,
                         child: Container(
-                          margin: const EdgeInsets.only(left: 130, top: 108),
-                          child: Text(
-                            '51',
-                            style: TextStyle(
-                                fontSize: 9,
-                                fontWeight: _isBoldList[51]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 115, top: 125),
+                          margin: const EdgeInsets.only(left: 103, top: 152),
                           child: Text(
                             '26',
                             style: TextStyle(
-                                fontSize: 9,
+                                backgroundColor: _isBoldList[26]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
                                 fontWeight: _isBoldList[26]
                                     ? FontWeight.bold
                                     : FontWeight.normal),
@@ -983,11 +1677,31 @@ class _RotateComplexState extends State<RotateComplex> {
                       Align(
                         alignment: Alignment.center,
                         child: Container(
-                          margin: const EdgeInsets.only(left: 170, top: 127),
+                          margin: const EdgeInsets.only(left: 124, top: 130),
+                          child: Text(
+                            '51',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[51]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[51]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 170, top: 158),
                           child: Text(
                             '40',
                             style: TextStyle(
-                                fontSize: 9,
+                                backgroundColor: _isBoldList[40]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
                                 fontWeight: _isBoldList[40]
                                     ? FontWeight.bold
                                     : FontWeight.normal),
@@ -996,104 +1710,118 @@ class _RotateComplexState extends State<RotateComplex> {
                       ),
                     ],
                   ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      margin: const EdgeInsets.only(top: 100.0, left: 140.0),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              mplantsfull[7],
-                            ),
-                            opacity: 0.1),
-                      ),
-                    ),
-                  ),
                   // solar
 
                   Flex(
                     direction: Axis.vertical,
                     children: [
                       const SizedBox(height: 10),
-                      SizedBox(
-                        height: 70,
-                        width: 80,
-                        child: Stack(
-                          children: [
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: CustomPaint(
-                                foregroundPainter:
-                                    HeadPainter(centerstate: headstate),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 70,
-                                  width: 80,
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      //image: AssetImage(mplantsfull[6],
-                                      image: AssetImage(
-                                        'assets/coins/camel.png',
-                                        //image: AssetImage('assets/camog/mcamel.png',
+                      Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: SizedBox(
+                              height: 70,
+                              width: 80,
+                              child: Stack(
+                                children: [
+                                  CustomPaint(
+                                    foregroundPainter:
+                                        HeadPainter(centerstate: headstate),
+                                    //centercolorstate: headcolorstate),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 70,
+                                      width: 80,
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.bottomCenter,
+                                    child: SizedBox(
+                                      width: 50,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text(
+                                            '64',
+                                            style: TextStyle(
+                                                backgroundColor: _isBoldList[64]
+                                                    ? Colors.white
+                                                    : Colors.transparent,
+                                                fontSize: 11, // gatefont
+                                                fontWeight: _isBoldList[64]
+                                                    ? FontWeight.bold
+                                                    : FontWeight.normal),
+                                          ),
+                                          Text(
+                                            '61',
+                                            style: TextStyle(
+                                                backgroundColor: _isBoldList[61]
+                                                    ? Colors.white
+                                                    : Colors.transparent,
+                                                fontSize: 11, // gatefont
+                                                fontWeight: _isBoldList[61]
+                                                    ? FontWeight.bold
+                                                    : FontWeight.normal),
+                                          ),
+                                          Text(
+                                            '63',
+                                            style: TextStyle(
+                                                backgroundColor: _isBoldList[63]
+                                                    ? Colors.white
+                                                    : Colors.transparent,
+                                                fontSize: 11, // gatefont
+                                                fontWeight: _isBoldList[63]
+                                                    ? FontWeight.bold
+                                                    : FontWeight.normal),
+                                          ),
+                                        ],
                                       ),
-                                      opacity: 0.5),
-                                ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: SizedBox(
-                                width: 50,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      '64',
-                                      style: TextStyle(
-                                          fontSize: 9,
-                                          fontWeight: _isBoldList[64]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
+                          ),
+                          PositionedDirectional(
+                            start: 70,
+                            child: Container(
+                              height: 70,
+                              width: 70,
+                              decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                      'assets/coins/camel.png',
                                     ),
-                                    Text(
-                                      '61',
-                                      style: TextStyle(
-                                          fontSize: 9,
-                                          fontWeight: _isBoldList[61]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                    Text(
-                                      '63',
-                                      style: TextStyle(
-                                          fontSize: 9,
-                                          fontWeight: _isBoldList[63]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    )
-                                  ],
-                                ),
+                                    opacity: 1.0),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                          PositionedDirectional(
+                            start: 220,
+                            child: IconButton(
+                              icon: CircleAvatar(
+                                  //minRadius: 5,
+                                  maxRadius: 20,
+                                  foregroundImage: AssetImage(coins4lst[1])),
+                              tooltip: 'פשוט',
+                              onPressed: () {
+                                setState(() {
+                                  _resetgatesState();
+                                  _resetcentersState();
+                                });
+                              },
+                            ),
+                          ),
+                        ],
                       ),
                       // head gates
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const SizedBox(
-                            width: 17,
+                            width: 6,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1101,8 +1829,11 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1110,8 +1841,11 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1119,7 +1853,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
                           ),
                         ],
@@ -1128,15 +1862,20 @@ class _RotateComplexState extends State<RotateComplex> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(width: 17),
+                          const SizedBox(
+                            width: 6,
+                          ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
                                 gatestate: gatestatelist[47]),
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1144,8 +1883,11 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1153,7 +1895,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
                           ),
                         ],
@@ -1164,38 +1906,50 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Stack(
                           children: [
                             //ajna gates
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const SizedBox(width: 17),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[17]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 80,
-                                    width: 50 / 3,
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 20, 0, 0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const SizedBox(
+                                    width: 5,
                                   ),
-                                ),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[43]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 80,
-                                    width: 50 / 3,
+                                  CustomPaint(
+                                    foregroundPainter: VerticalGatePainter(
+                                        gatestate: gatestatelist[17]),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 60,
+                                      width: 5,
+                                    ),
                                   ),
-                                ),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[11]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 80,
-                                    width: 50 / 3,
+                                  const SizedBox(
+                                    width: 12,
                                   ),
-                                ),
-                              ],
+                                  CustomPaint(
+                                    foregroundPainter: VerticalGatePainter(
+                                        gatestate: gatestatelist[43]),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 60,
+                                      width: 5,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 12,
+                                  ),
+                                  CustomPaint(
+                                    foregroundPainter: VerticalGatePainter(
+                                        gatestate: gatestatelist[11]),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 60,
+                                      width: 5,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             Align(
                               alignment: Alignment.topCenter,
@@ -1209,20 +1963,35 @@ class _RotateComplexState extends State<RotateComplex> {
                                 ),
                               ),
                             ),
-                            Center(
+                            PositionedDirectional(
+                              start: 70,
                               child: Container(
-                                height: 50,
-                                width: 50,
+                                height: 70,
+                                width: 70,
                                 decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                      //image: AssetImage(mplantsfull[6],
                                       image: AssetImage(
                                         'assets/coins/dog.png',
                                       ),
-                                      opacity: 0.5),
+                                      opacity: 1.0),
                                 ),
                               ),
                             ),
+                            PositionedDirectional(
+                              start: 220,
+                              child: IconButton(
+                                icon: CircleAvatar(
+                                    //minRadius: 5,
+                                    maxRadius: 20,
+                                    foregroundImage: AssetImage(coins4lst[2])),
+                                tooltip: 'נשימה',
+                                onPressed: () {
+                                  //setState(() {
+                                  //});
+                                },
+                              ),
+                            ),
+
                             Center(
                               child: SizedBox(
                                 width: 50,
@@ -1235,27 +2004,44 @@ class _RotateComplexState extends State<RotateComplex> {
                                       Text(
                                         '47',
                                         style: TextStyle(
-                                            fontSize: 9,
+                                            backgroundColor: _isBoldList[47]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
                                             fontWeight: _isBoldList[47]
                                                 ? FontWeight.bold
                                                 : FontWeight.normal),
                                       ),
-                                      Text(
-                                        '24',
-                                        style: TextStyle(
-                                            fontSize: 9,
-                                            fontWeight: _isBoldList[24]
-                                                ? FontWeight.bold
-                                                : FontWeight.normal),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 4),
+                                        child: Text(
+                                          '24',
+                                          style: TextStyle(
+                                              backgroundColor: _isBoldList[24]
+                                                  ? Colors.white
+                                                  : Colors.transparent,
+                                              fontSize: 11, // gatefont
+                                              fontWeight: _isBoldList[24]
+                                                  ? FontWeight.bold
+                                                  : FontWeight.normal),
+                                        ),
                                       ),
-                                      Text(
-                                        '4',
-                                        style: TextStyle(
-                                            fontSize: 9,
-                                            fontWeight: _isBoldList[4]
-                                                ? FontWeight.bold
-                                                : FontWeight.normal),
-                                      )
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 2.0),
+                                        child: Text(
+                                          '4',
+                                          style: TextStyle(
+                                              backgroundColor: _isBoldList[4]
+                                                  ? Colors.white
+                                                  : Colors.transparent,
+                                              fontSize: 11, // gatefont
+                                              fontWeight: _isBoldList[4]
+                                                  ? FontWeight.bold
+                                                  : FontWeight.normal),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -1273,7 +2059,10 @@ class _RotateComplexState extends State<RotateComplex> {
                                     Text(
                                       '17',
                                       style: TextStyle(
-                                          fontSize: 9,
+                                          backgroundColor: _isBoldList[17]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
                                           fontWeight: _isBoldList[17]
                                               ? FontWeight.bold
                                               : FontWeight.normal),
@@ -1281,7 +2070,10 @@ class _RotateComplexState extends State<RotateComplex> {
                                     Text(
                                       '11',
                                       style: TextStyle(
-                                          fontSize: 9,
+                                          backgroundColor: _isBoldList[11]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
                                           fontWeight: _isBoldList[11]
                                               ? FontWeight.bold
                                               : FontWeight.normal),
@@ -1294,11 +2086,14 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.bottomCenter,
                               child: Container(
                                 width: 90,
-                                margin: const EdgeInsets.fromLTRB(80, 0, 0, 20),
+                                margin: const EdgeInsets.fromLTRB(80, 0, 2, 20),
                                 child: Text(
                                   '43',
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      backgroundColor: _isBoldList[43]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
                                       fontWeight: _isBoldList[43]
                                           ? FontWeight.bold
                                           : FontWeight.normal),
@@ -1311,17 +2106,21 @@ class _RotateComplexState extends State<RotateComplex> {
                       //throat gates
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          const SizedBox(width: 17),
+                          const SizedBox(
+                            width: 5,
+                          ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
                                 gatestate: gatestatelist[62]),
                             willChange: true,
                             child: const SizedBox(
                               height: 15,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1329,8 +2128,11 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 15,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1338,7 +2140,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 15,
-                              width: 50 / 3,
+                              width: 5,
                             ),
                           ),
                         ],
@@ -1353,23 +2155,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                   ThroatPainter(centerstate: throatstate),
                               willChange: true,
                               child: const SizedBox(
-                                height: 60,
-                                width: 70,
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              height: 50,
-                              width: 50,
-                              margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                      mplantsfull[6],
-                                    ),
-                                    opacity: 0.5),
+                                height: 72,
+                                width: 72,
                               ),
                             ),
                           ),
@@ -1384,7 +2171,10 @@ class _RotateComplexState extends State<RotateComplex> {
                                   Text(
                                     '62',
                                     style: TextStyle(
-                                        fontSize: 9,
+                                        backgroundColor: _isBoldList[62]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
                                         fontWeight: _isBoldList[62]
                                             ? FontWeight.bold
                                             : FontWeight.normal),
@@ -1392,7 +2182,10 @@ class _RotateComplexState extends State<RotateComplex> {
                                   Text(
                                     '23',
                                     style: TextStyle(
-                                        fontSize: 9,
+                                        backgroundColor: _isBoldList[23]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
                                         fontWeight: _isBoldList[23]
                                             ? FontWeight.bold
                                             : FontWeight.normal),
@@ -1400,7 +2193,10 @@ class _RotateComplexState extends State<RotateComplex> {
                                   Text(
                                     '56',
                                     style: TextStyle(
-                                        fontSize: 9,
+                                        backgroundColor: _isBoldList[56]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
                                         fontWeight: _isBoldList[56]
                                             ? FontWeight.bold
                                             : FontWeight.normal),
@@ -1412,8 +2208,8 @@ class _RotateComplexState extends State<RotateComplex> {
                           Align(
                             alignment: Alignment.topCenter,
                             child: Container(
-                              width: 65,
-                              margin: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+                              width: 63,
+                              margin: const EdgeInsets.fromLTRB(0, 12, 1, 0),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -1421,7 +2217,10 @@ class _RotateComplexState extends State<RotateComplex> {
                                   Text(
                                     '16',
                                     style: TextStyle(
-                                        fontSize: 9,
+                                        backgroundColor: _isBoldList[16]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
                                         fontWeight: _isBoldList[16]
                                             ? FontWeight.bold
                                             : FontWeight.normal),
@@ -1429,7 +2228,10 @@ class _RotateComplexState extends State<RotateComplex> {
                                   Text(
                                     '35',
                                     style: TextStyle(
-                                        fontSize: 9,
+                                        backgroundColor: _isBoldList[35]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
                                         fontWeight: _isBoldList[35]
                                             ? FontWeight.bold
                                             : FontWeight.normal),
@@ -1441,8 +2243,9 @@ class _RotateComplexState extends State<RotateComplex> {
                           Align(
                             alignment: Alignment.bottomCenter,
                             child: Container(
-                              width: 65,
-                              margin: const EdgeInsets.only(top: 24),
+                              width: 63,
+                              //margin: const EdgeInsets.only(top: 30),
+                              margin: const EdgeInsets.fromLTRB(0, 28, 1, 0),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -1450,7 +2253,10 @@ class _RotateComplexState extends State<RotateComplex> {
                                   Text(
                                     '20',
                                     style: TextStyle(
-                                        fontSize: 9,
+                                        backgroundColor: _isBoldList[20]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
                                         fontWeight: _isBoldList[20]
                                             ? FontWeight.bold
                                             : FontWeight.normal),
@@ -1458,8 +2264,57 @@ class _RotateComplexState extends State<RotateComplex> {
                                   Text(
                                     '12',
                                     style: TextStyle(
-                                        fontSize: 9,
+                                        backgroundColor: _isBoldList[12]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
                                         fontWeight: _isBoldList[12]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              width: 45,
+                              margin: const EdgeInsets.fromLTRB(0, 55, 0, 0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '31',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[31]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[31]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                  Text(
+                                    '8',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[8]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[8]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                  Text(
+                                    '33',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[33]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[33]
                                             ? FontWeight.bold
                                             : FontWeight.normal),
                                   )
@@ -1471,51 +2326,17 @@ class _RotateComplexState extends State<RotateComplex> {
                             alignment: Alignment.center,
                             child: Container(
                               width: 20,
-                              margin: const EdgeInsets.only(top: 35, left: 65),
+                              margin: const EdgeInsets.only(top: 43, left: 56),
                               child: Text(
                                 '45',
                                 style: TextStyle(
-                                    fontSize: 9,
+                                    backgroundColor: _isBoldList[45]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
                                     fontWeight: _isBoldList[45]
                                         ? FontWeight.bold
                                         : FontWeight.normal),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              width: 45,
-                              margin: const EdgeInsets.fromLTRB(0, 45, 0, 0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '31',
-                                    style: TextStyle(
-                                        fontSize: 9,
-                                        fontWeight: _isBoldList[31]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
-                                  ),
-                                  Text(
-                                    '8',
-                                    style: TextStyle(
-                                        fontSize: 9,
-                                        fontWeight: _isBoldList[8]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
-                                  ),
-                                  Text(
-                                    '33',
-                                    style: TextStyle(
-                                        fontSize: 9,
-                                        fontWeight: _isBoldList[33]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
-                                  )
-                                ],
                               ),
                             ),
                           ),
@@ -1525,15 +2346,20 @@ class _RotateComplexState extends State<RotateComplex> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(width: 17),
+                          const SizedBox(
+                            width: 5,
+                          ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
                                 gatestate: gatestatelist[31]),
                             willChange: true,
                             child: const SizedBox(
                               height: 20,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1541,8 +2367,11 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 20,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1550,7 +2379,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 20,
-                              width: 50 / 3,
+                              width: 5,
                             ),
                           ),
                         ],
@@ -1564,15 +2393,20 @@ class _RotateComplexState extends State<RotateComplex> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const SizedBox(width: 17),
+                                const SizedBox(
+                                  width: 5,
+                                ),
                                 CustomPaint(
                                   foregroundPainter: VerticalGatePainter(
                                       gatestate: gatestatelist[7]),
                                   willChange: true,
                                   child: const SizedBox(
                                     height: 40,
-                                    width: 50 / 3,
+                                    width: 5,
                                   ),
+                                ),
+                                const SizedBox(
+                                  width: 12,
                                 ),
                                 CustomPaint(
                                   foregroundPainter: VerticalGatePainter(
@@ -1580,8 +2414,11 @@ class _RotateComplexState extends State<RotateComplex> {
                                   willChange: true,
                                   child: const SizedBox(
                                     height: 40,
-                                    width: 50 / 3,
+                                    width: 5,
                                   ),
+                                ),
+                                const SizedBox(
+                                  width: 12,
                                 ),
                                 CustomPaint(
                                   foregroundPainter: VerticalGatePainter(
@@ -1589,7 +2426,7 @@ class _RotateComplexState extends State<RotateComplex> {
                                   willChange: true,
                                   child: const SizedBox(
                                     height: 40,
-                                    width: 50 / 3,
+                                    width: 5,
                                   ),
                                 ),
                               ],
@@ -1597,51 +2434,59 @@ class _RotateComplexState extends State<RotateComplex> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const SizedBox(width: 17),
+                                const SizedBox(
+                                  width: 5,
+                                ),
                                 Align(
                                   alignment: Alignment.center,
                                   child: Container(
-                                    height: 60,
-                                    margin: const EdgeInsets.only(top: 40),
+                                    height: 40,
+                                    margin: const EdgeInsets.only(top: 70),
                                     child: CustomPaint(
                                       foregroundPainter: VerticalGatePainter(
                                           gatestate: gatestatelist[15]),
                                       willChange: true,
                                       child: const SizedBox(
-                                        height: 60,
-                                        width: 50 / 3,
+                                        height: 40,
+                                        width: 5,
                                       ),
                                     ),
                                   ),
                                 ),
+                                const SizedBox(
+                                  width: 12,
+                                ),
                                 Align(
                                   alignment: Alignment.center,
                                   child: Container(
-                                    height: 100,
-                                    margin: const EdgeInsets.only(top: 20),
+                                    height: 30,
+                                    margin: const EdgeInsets.only(top: 80),
                                     child: CustomPaint(
                                       foregroundPainter: VerticalGatePainter(
                                           gatestate: gatestatelist[2]),
                                       willChange: true,
                                       child: const SizedBox(
-                                        height: 100,
-                                        width: 50 / 3,
+                                        height: 30,
+                                        width: 5,
                                       ),
                                     ),
                                   ),
                                 ),
+                                const SizedBox(
+                                  width: 12,
+                                ),
                                 Align(
                                   alignment: Alignment.center,
                                   child: Container(
-                                    height: 60,
-                                    margin: const EdgeInsets.only(top: 40),
+                                    height: 40,
+                                    margin: const EdgeInsets.only(top: 70),
                                     child: CustomPaint(
                                       foregroundPainter: VerticalGatePainter(
                                           gatestate: gatestatelist[46]),
                                       willChange: true,
                                       child: const SizedBox(
-                                        height: 60,
-                                        width: 50 / 3,
+                                        height: 40,
+                                        width: 5,
                                       ),
                                     ),
                                   ),
@@ -1655,21 +2500,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                     GPainter(centerstate: gstate),
                                 willChange: true,
                                 child: const SizedBox(
-                                  height: 80,
-                                  width: 80,
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                        mplantsfull[5],
-                                      ),
-                                      opacity: 0.2),
+                                  height: 84,
+                                  width: 84,
                                 ),
                               ),
                             ),
@@ -1677,11 +2509,14 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.topCenter,
                               child: Container(
                                 margin:
-                                    const EdgeInsets.only(right: 30, top: 27),
+                                    const EdgeInsets.only(right: 30, top: 29),
                                 child: Text(
                                   '7',
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      backgroundColor: _isBoldList[7]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
                                       fontWeight: _isBoldList[7]
                                           ? FontWeight.bold
                                           : FontWeight.normal),
@@ -1691,11 +2526,14 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.topCenter,
                               child: Container(
-                                margin: const EdgeInsets.only(top: 11),
+                                margin: const EdgeInsets.only(top: 13),
                                 child: Text(
                                   '1',
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      backgroundColor: _isBoldList[1]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
                                       fontWeight: _isBoldList[1]
                                           ? FontWeight.bold
                                           : FontWeight.normal),
@@ -1706,11 +2544,14 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.topCenter,
                               child: Container(
                                 margin:
-                                    const EdgeInsets.only(left: 30, top: 27),
+                                    const EdgeInsets.only(left: 30, top: 29),
                                 child: Text(
                                   '13',
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      backgroundColor: _isBoldList[13]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
                                       fontWeight: _isBoldList[13]
                                           ? FontWeight.bold
                                           : FontWeight.normal),
@@ -1721,11 +2562,14 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.bottomCenter,
                               child: Container(
                                 margin:
-                                    const EdgeInsets.only(left: 30, bottom: 27),
+                                    const EdgeInsets.only(left: 30, bottom: 29),
                                 child: Text(
                                   '46',
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      backgroundColor: _isBoldList[46]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
                                       fontWeight: _isBoldList[46]
                                           ? FontWeight.bold
                                           : FontWeight.normal),
@@ -1735,11 +2579,14 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                margin: const EdgeInsets.only(bottom: 11),
+                                margin: const EdgeInsets.only(bottom: 13),
                                 child: Text(
                                   '2',
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      backgroundColor: _isBoldList[2]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
                                       fontWeight: _isBoldList[2]
                                           ? FontWeight.bold
                                           : FontWeight.normal),
@@ -1750,11 +2597,14 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.bottomCenter,
                               child: Container(
                                 margin: const EdgeInsets.only(
-                                    right: 30, bottom: 27),
+                                    right: 30, bottom: 29),
                                 child: Text(
                                   '15',
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      backgroundColor: _isBoldList[15]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
                                       fontWeight: _isBoldList[15]
                                           ? FontWeight.bold
                                           : FontWeight.normal),
@@ -1764,11 +2614,14 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.center,
                               child: Container(
-                                margin: const EdgeInsets.only(right: 60),
+                                margin: const EdgeInsets.only(right: 54),
                                 child: Text(
                                   '10',
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      backgroundColor: _isBoldList[10]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
                                       fontWeight: _isBoldList[10]
                                           ? FontWeight.bold
                                           : FontWeight.normal),
@@ -1778,11 +2631,14 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.center,
                               child: Container(
-                                margin: const EdgeInsets.only(left: 60),
+                                margin: const EdgeInsets.only(left: 54),
                                 child: Text(
                                   '25',
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      backgroundColor: _isBoldList[25]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
                                       fontWeight: _isBoldList[25]
                                           ? FontWeight.bold
                                           : FontWeight.normal),
@@ -1796,15 +2652,20 @@ class _RotateComplexState extends State<RotateComplex> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(width: 17),
+                          const SizedBox(
+                            width: 5,
+                          ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
                                 gatestate: gatestatelist[5]),
                             willChange: true,
                             child: const SizedBox(
                               height: 25,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1812,8 +2673,11 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 25,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1821,7 +2685,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 25,
-                              width: 50 / 3,
+                              width: 5,
                             ),
                           ),
                         ],
@@ -1831,15 +2695,17 @@ class _RotateComplexState extends State<RotateComplex> {
                           Align(
                             alignment: Alignment.center,
                             child: Container(
-                              margin:
-                                  const EdgeInsets.only(top: 25, right: 150),
-                              child: CustomPaint(
-                                foregroundPainter: HorizontalGatePainter(
-                                    gatestate: gatestatelist[50]),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 10,
-                                  width: 35,
+                              margin: const EdgeInsets.only(top: 19, right: 78),
+                              child: RotationTransition(
+                                turns: const AlwaysStoppedAnimation(-78 / 360),
+                                child: CustomPaint(
+                                  foregroundPainter: VerticalGatePainter(
+                                      gatestate: gatestatelist[27]),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 35,
+                                    width: 5,
+                                  ),
                                 ),
                               ),
                             ),
@@ -1847,14 +2713,18 @@ class _RotateComplexState extends State<RotateComplex> {
                           Align(
                             alignment: Alignment.center,
                             child: Container(
-                              margin: const EdgeInsets.only(top: 25, right: 80),
-                              child: CustomPaint(
-                                foregroundPainter: HorizontalGatePainter(
-                                    gatestate: gatestatelist[27]),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 10,
-                                  width: 35,
+                              margin:
+                                  const EdgeInsets.only(top: 12, right: 145),
+                              child: RotationTransition(
+                                turns: const AlwaysStoppedAnimation(-78 / 360),
+                                child: CustomPaint(
+                                  foregroundPainter: VerticalGatePainter(
+                                      gatestate: gatestatelist[50]),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 35,
+                                    width: 5,
+                                  ),
                                 ),
                               ),
                             ),
@@ -1863,29 +2733,36 @@ class _RotateComplexState extends State<RotateComplex> {
                           Align(
                             alignment: Alignment.center,
                             child: Container(
-                              margin: const EdgeInsets.only(top: 25, left: 70),
-                              child: CustomPaint(
-                                foregroundPainter: HorizontalGatePainter(
-                                    gatestate: gatestatelist[59]),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 10,
-                                  width: 35,
+                              margin: const EdgeInsets.only(top: 23, left: 80),
+                              child: RotationTransition(
+                                turns: const AlwaysStoppedAnimation(78 / 360),
+                                child: CustomPaint(
+                                  foregroundPainter: VerticalGatePainter(
+                                      gatestate: gatestatelist[59]),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 35,
+                                    width: 5,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
+
                           Align(
                             alignment: Alignment.center,
                             child: Container(
-                              margin: const EdgeInsets.only(top: 25, left: 140),
-                              child: CustomPaint(
-                                foregroundPainter: HorizontalGatePainter(
-                                    gatestate: gatestatelist[6]),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 10,
-                                  width: 35,
+                              margin: const EdgeInsets.only(top: 16, left: 145),
+                              child: RotationTransition(
+                                turns: const AlwaysStoppedAnimation(78 / 360),
+                                child: CustomPaint(
+                                  foregroundPainter: VerticalGatePainter(
+                                      gatestate: gatestatelist[6]),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 35,
+                                    width: 5,
+                                  ),
                                 ),
                               ),
                             ),
@@ -1893,27 +2770,176 @@ class _RotateComplexState extends State<RotateComplex> {
 
                           // sacral
 
-                          Align(
-                            alignment: Alignment.center,
-                            child: CustomPaint(
-                              foregroundPainter:
-                                  SacralPainter(centerstate: sacralstate),
-                              willChange: true,
-                              child: const SizedBox(
-                                height: 55,
-                                width: 55,
+                          Stack(
+                            children: [
+                              Positioned(
+                                left: 138,
+                                child: CustomPaint(
+                                  foregroundPainter:
+                                      SacralPainter(centerstate: sacralstate),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 62,
+                                    width: 65,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                          Positioned.fill(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                        mplantsfull[0],
-                                      ),
-                                      opacity: 0.5)),
-                            ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 35),
+                                  child: Text(
+                                    '29',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[29]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[29]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Text(
+                                  '14',
+                                  style: TextStyle(
+                                      backgroundColor: _isBoldList[14]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
+                                      fontWeight: _isBoldList[14]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  margin: const EdgeInsets.only(right: 35),
+                                  child: Text(
+                                    '5',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[5]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[5]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  margin:
+                                      const EdgeInsets.only(left: 35, top: 46),
+                                  child: Text(
+                                    '9',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[9]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[9]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  margin: const EdgeInsets.only(top: 46),
+                                  child: Text(
+                                    '3',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[3]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[3]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  margin:
+                                      const EdgeInsets.only(right: 35, top: 46),
+                                  child: Text(
+                                    '42',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[42]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[42]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  margin:
+                                      const EdgeInsets.only(right: 46, top: 14),
+                                  child: Text(
+                                    '34',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[34]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[34]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  margin:
+                                      const EdgeInsets.only(left: 46, top: 30),
+                                  child: Text(
+                                    '59',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[59]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[59]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  margin:
+                                      const EdgeInsets.only(right: 46, top: 30),
+                                  child: Text(
+                                    '27',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[27]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[27]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -1921,15 +2947,20 @@ class _RotateComplexState extends State<RotateComplex> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(width: 17),
+                          const SizedBox(
+                            width: 5,
+                          ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
                                 gatestate: gatestatelist[42]),
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1937,8 +2968,11 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1946,23 +2980,29 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
                           ),
                         ],
                       ),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(width: 17),
+                          const SizedBox(
+                            width: 5,
+                          ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
                                 gatestate: gatestatelist[53]),
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1970,8 +3010,11 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
+                          ),
+                          const SizedBox(
+                            width: 12,
                           ),
                           CustomPaint(
                             foregroundPainter: VerticalGatePainter(
@@ -1979,31 +3022,190 @@ class _RotateComplexState extends State<RotateComplex> {
                             willChange: true,
                             child: const SizedBox(
                               height: 10,
-                              width: 50 / 3,
+                              width: 5,
                             ),
                           ),
                         ],
                       ),
+
                       // root
                       Stack(
                         children: [
-                          CustomPaint(
-                            foregroundPainter:
-                                RootPainter(centerstate: rootstate),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 55,
-                              width: 55,
+                          PositionedDirectional(
+                            top: 10,
+                            end: 10,
+                            child: IconButton(
+                              icon: CircleAvatar(
+                                  //minRadius: 5,
+                                  maxRadius: 20,
+                                  foregroundImage: AssetImage(coins4lst[3])),
+                              tooltip: 'שתיקה',
+                              onPressed: () {
+                                //setState(() {
+                                //setSilenceChart();
+                                //});
+                              },
                             ),
                           ),
-                          Positioned.fill(
+                          Align(
+                            alignment: Alignment.center,
+                            child: CustomPaint(
+                              foregroundPainter:
+                                  RootPainter(centerstate: rootstate),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 65,
+                                width: 65,
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
                             child: Container(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                      mplantsfull[6],
-                                    ),
-                                    opacity: 0.5),
+                              margin: const EdgeInsets.only(left: 35),
+                              child: Text(
+                                '52',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[52]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[52]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              '60',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[60]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[60]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 35),
+                              child: Text(
+                                '53',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[53]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[53]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 45, top: 15),
+                              child: Text(
+                                '54',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[54]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[54]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 45, top: 30),
+                              child: Text(
+                                '38',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[38]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[38]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 45, top: 45),
+                              child: Text(
+                                '58',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[58]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[58]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 45, top: 15),
+                              child: Text(
+                                '19',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[19]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[19]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 45, top: 30),
+                              child: Text(
+                                '39',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[39]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[39]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 45, top: 45),
+                              child: Text(
+                                '41',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[41]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[41]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
                               ),
                             ),
                           ),
@@ -2011,72 +3213,369 @@ class _RotateComplexState extends State<RotateComplex> {
                       ),
                     ],
                   ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 220, bottom: 140),
-                      child: CustomPaint(
-                        foregroundPainter:
-                            SolarPainter(centerstate: solarstate),
-                        willChange: true,
-                        child: const SizedBox(
-                          height: 60,
-                          width: 60,
+                  Stack(
+                    children: [
+                      PositionedDirectional(
+                        top: 230,
+                        start: 270,
+                        child: IconButton(
+                          icon: CircleAvatar(
+                              //minRadius: 5,
+                              maxRadius: 20,
+                              foregroundImage: AssetImage(coins4lst[0])),
+                          tooltip: 'מורכב',
+                          onPressed: () {
+                            //setState(() {
+                            //setComplexChart();
+                            //});
+                          },
                         ),
                       ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      margin: const EdgeInsets.only(left: 220, bottom: 150),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              mplantsfull[7],
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 240, bottom: 120),
+                          child: CustomPaint(
+                            foregroundPainter:
+                                SolarPainter(centerstate: solarstate),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 80,
+                              width: 80,
                             ),
-                            opacity: 0.5),
+                          ),
+                        ),
                       ),
-                    ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 204, bottom: 153),
+                          child: Text(
+                            '6',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[6]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[6]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 251, bottom: 142),
+                          child: Text(
+                            '49',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[49]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[49]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 251, bottom: 164),
+                          child: Text(
+                            '37',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[37]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[37]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 303, bottom: 178),
+                          child: Text(
+                            '36',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[36]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[36]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 303, bottom: 130),
+                          child: Text(
+                            '30',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[30]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[30]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 277, bottom: 170),
+                          child: Text(
+                            '22',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[22]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[22]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 277, bottom: 136),
+                          child: Text(
+                            '55',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[55]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[55]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
 
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 220, bottom: 140),
-                      child: CustomPaint(
-                        foregroundPainter:
-                            SpleenPainter(centerstate: spleenstate),
-                        willChange: true,
-                        child: const SizedBox(
-                          height: 60,
-                          width: 60,
+                  Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin:
+                              const EdgeInsets.only(right: 240, bottom: 120),
+                          child: CustomPaint(
+                            foregroundPainter:
+                                SpleenPainter(centerstate: spleenstate),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 80,
+                              width: 80,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      margin: const EdgeInsets.only(right: 220, bottom: 150),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              mplantsfull[1],
-                            ),
-                            opacity: 0.5),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin:
+                              const EdgeInsets.only(right: 204, bottom: 153),
+                          child: Text(
+                            '50',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[50]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[50]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
                       ),
-                    ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin:
+                              const EdgeInsets.only(right: 251, bottom: 142),
+                          child: Text(
+                            '32',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[32]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[32]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin:
+                              const EdgeInsets.only(right: 251, bottom: 164),
+                          child: Text(
+                            '44',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[44]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[44]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin:
+                              const EdgeInsets.only(right: 303, bottom: 178),
+                          child: Text(
+                            '48',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[48]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[48]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin:
+                              const EdgeInsets.only(right: 303, bottom: 130),
+                          child: Text(
+                            '18',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[18]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[18]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin:
+                              const EdgeInsets.only(right: 277, bottom: 170),
+                          child: Text(
+                            '57',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[57]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[57]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin:
+                              const EdgeInsets.only(right: 277, bottom: 136),
+                          child: Text(
+                            '28',
+                            style: TextStyle(
+                                backgroundColor: _isBoldList[28]
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                fontSize: 11, // gatefont
+                                fontWeight: _isBoldList[28]
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  PositionedDirectional(
+                    start: 10,
+                    bottom: 4,
+                    child: Container(
+                        height: 33,
+                        width: 320,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          border: Border.all(color: Colors.white, width: 3),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Flex(
+                            direction: Axis.horizontal,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(
+                                height: 20,
+                                width: 70,
+                                child: AutoSizeTextField(
+                                    minFontSize: 14,
+                                    readOnly: true,
+                                    decoration: InputDecoration.collapsed(
+                                        hintText: DateFormat.Hm().format(_now),
+                                        hintStyle: const TextStyle(
+                                            color: Colors.grey)),
+                                    textAlign: TextAlign.center,
+                                    controller: _controllerTimePick,
+                                    style: const TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                              SizedBox(
+                                height: 20,
+                                width: 150,
+                                child: AutoSizeTextField(
+                                    minFontSize: 14,
+                                    readOnly: true,
+                                    decoration: InputDecoration.collapsed(
+                                        //hintText: DateFormat('MM/dd/yyyy').format(_now),
+                                        hintText: _formatDate(_now),
+                                        hintStyle: const TextStyle(
+                                            color: Colors.grey)),
+                                    textAlign: TextAlign.center,
+                                    controller: _controllerDatePick,
+                                    style: const TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ],
+                          ),
+                        )),
                   ),
                 ],
               ),
             ),
 
-            // end human design
+            // end hd chart
 
             const SizedBox(height: 5),
             const Divider(
@@ -2108,11 +3607,14 @@ class _RotateComplexState extends State<RotateComplex> {
 
                                 _controlPlanetHexagramData(_planetsList);
 
-                                _formattedDate =
-                                    DateFormat('MM/dd/yyyy').format(_now);
-                                _formattedTime = DateFormat.Hms().format(_now);
-                                _controllerTime.text =
-                                    '$_formattedTime $_formattedDate';
+                                //_formattedDate =
+                                //    DateFormat('MM/dd/yyyy').format(_now);
+                                //_formattedTime = DateFormat.Hms().format(_now);
+                                //_controllerTime.text =
+                                //   '$_formattedTime $_formattedDate';
+
+                                _setDateTime(_personTime);
+
                                 //_controllerDate.text = _formattedDate;
                                 _controllerPlanetType.text = 'אחר כך לחשוב';
 
@@ -2122,13 +3624,14 @@ class _RotateComplexState extends State<RotateComplex> {
                                 _planetsList = _planetsdesignList;
                                 _controlPlanetHexagramData(_planetsdesignList);
 
-                                _formattedDate = DateFormat('MM/dd/yyyy')
-                                    .format(_designTime);
-                                _formattedTime =
-                                    DateFormat.Hms().format(_designTime);
-                                _controllerTime.text =
-                                    '$_formattedTime $_formattedDate';
+                                //_formattedDate = DateFormat('MM/dd/yyyy')
+                                //    .format(_designTime);
+                                //_formattedTime =
+                                //    DateFormat.Hms().format(_designTime);
+                                //_controllerTime.text =
+                                //    '$_formattedTime $_formattedDate';
                                 //_controllerDate.text = _formattedDate;
+                                _setDateTime(_designTime);
 
                                 _controllerPlanetType.text = 'קודם לחיות';
 
@@ -2139,12 +3642,14 @@ class _RotateComplexState extends State<RotateComplex> {
 
                                 _controlPlanetHexagramData(_planetsList);
 
-                                _formattedDate =
-                                    DateFormat('MM/dd/yyyy').format(_now);
-                                _formattedTime = DateFormat.Hms().format(_now);
-                                _controllerTime.text =
-                                    '$_formattedTime $_formattedDate';
+                                //_formattedDate =
+                                //   DateFormat('MM/dd/yyyy').format(_now);
+                                //_formattedTime = DateFormat.Hms().format(_now);
+                                //_controllerTime.text =
+                                //   '$_formattedTime $_formattedDate';
                                 //_controllerDate.text = _formattedDate;
+                                _setDateTime(_personTime);
+
                                 break;
                             }
                           });
@@ -2181,6 +3686,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       _isPlanetSelectedList[index] =
                           !_isPlanetSelectedList[index];
                       _previousPlanetIndex = index;
+                      break;
                   }
 
                   _planethex = _planetsList[index];
@@ -2198,12 +3704,8 @@ class _RotateComplexState extends State<RotateComplex> {
                   _controllerlinetext.text = _planethex.line!.toString();
                   _currentline = _planethex.line!;
 
-                  _controllergatelinestory.text = bbrt385lst_num_heb[
-                      (bbrt385lst_num_heb.indexOf(_planethex.gate!) +
-                          _planethex.line!)];
-
-                  _controllergatelinestory.text = bbrt385lst_num_heb[
-                      (bbrt385lst_num_heb.indexOf(_planethex.gate!) +
+                  _controllergatelinestory.text = coins384List[
+                      (coins384List.indexOf(_planethex.gate!) +
                           _planethex.line!)];
                 });
               },
@@ -2497,10 +3999,9 @@ class _RotateComplexState extends State<RotateComplex> {
 
                               // idonotknow _currentline
                               //_controllergatelinestory.text = 'test';
-                              _controllergatelinestory.text =
-                                  bbrt385lst_num_heb[
-                                      (bbrt385lst_num_heb.indexOf(_chosenhex) +
-                                          _currentline)];
+                              _controllergatelinestory.text = coins384List[
+                                  (coins384List.indexOf(_chosenhex) +
+                                      _currentline)];
 
                               //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
                               //_hexsentence = LineSentenceList[_planethex.gate!];
@@ -2508,7 +4009,8 @@ class _RotateComplexState extends State<RotateComplex> {
                               //_controllertopfirsttext.text = _hexsentence.adjective!;
 
                               _controllercoinsttext.text =
-                                  rtminmicList[_chosenhex];
+                                  coins64List[_chosenhex];
+                              //rtminmicList[_chosenhex];
                               //_controllertopsecondtext.text = _hexsentence.subject!;
                               //_controllertopthirdtext.text = _hexsentence.verb!;
                               //_controllertopfourthtext.text = _hexsentence.adverb!;
@@ -2530,7 +4032,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(height: 10),
-                    Container(
+                    SizedBox(
                       width: 30,
                       height: 30,
                       child: AutoSizeTextField(
@@ -2546,7 +4048,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               fontSize: 15,
                               color: Colors.black)),
                     ),
-                    Container(
+                    SizedBox(
                       width: 30,
                       height: 30,
                       child: AutoSizeTextField(
@@ -2611,17 +4113,16 @@ class _RotateComplexState extends State<RotateComplex> {
                               //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
 
                               _controllercoinsttext.text =
-                                  rtminmicList[_chosenhex];
+                                  coins64List[_chosenhex];
 
                               //_controllertopfirsttext.text = _hexsentence.adjective!;
                               //_controllertopsecondtext.text = _hexsentence.subject!;
                               //_controllertopthirdtext.text = _hexsentence.verb!;
                               //_controllertopfourthtext.text = _hexsentence.adverb!;
 
-                              _controllergatelinestory.text =
-                                  bbrt385lst_num_heb[
-                                      (bbrt385lst_num_heb.indexOf(_chosenhex) +
-                                          _currentline)];
+                              _controllergatelinestory.text = coins384List[
+                                  (coins384List.indexOf(_chosenhex) +
+                                      _currentline)];
 
                               secondcolor =
                                   //controlCollor(finalhexNamesList[_currentmid]);
@@ -2640,7 +4141,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(height: 10),
-                    Container(
+                    SizedBox(
                       width: 30,
                       height: 30,
                       child: AutoSizeTextField(
@@ -2656,7 +4157,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               fontSize: 15,
                               color: Colors.black)),
                     ),
-                    Container(
+                    SizedBox(
                       width: 30,
                       height: 30,
                       child: AutoSizeTextField(
@@ -2720,16 +4221,15 @@ class _RotateComplexState extends State<RotateComplex> {
                               //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
 
                               _controllercoinsttext.text =
-                                  rtminmicList[_chosenhex];
+                                  coins64List[_chosenhex];
                               //_controllertopfirsttext.text = _hexsentence.adjective!;
                               //_controllertopsecondtext.text = _hexsentence.subject!;
                               //_controllertopthirdtext.text = _hexsentence.verb!;
                               //_controllertopfourthtext.text = _hexsentence.adverb!;
 
-                              _controllergatelinestory.text =
-                                  bbrt385lst_num_heb[
-                                      (bbrt385lst_num_heb.indexOf(_chosenhex) +
-                                          _currentline)];
+                              _controllergatelinestory.text = coins384List[
+                                  (coins384List.indexOf(_chosenhex) +
+                                      _currentline)];
 
                               firstcolor =
                                   //controlCollor(finalhexNamesList[_currentbot]);
@@ -2748,7 +4248,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(height: 10),
-                    Container(
+                    SizedBox(
                       width: 30,
                       height: 30,
                       child: AutoSizeTextField(
@@ -2764,7 +4264,7 @@ class _RotateComplexState extends State<RotateComplex> {
                               fontSize: 15,
                               color: Colors.black)),
                     ),
-                    Container(
+                    SizedBox(
                       width: 30,
                       height: 30,
                       child: AutoSizeTextField(
@@ -2889,8 +4389,66 @@ class _RotateComplexState extends State<RotateComplex> {
             ),
             Flex(
               direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                IconButton(
+                  icon: Icon(Icons.recycling),
+                  tooltip: 'להחליף ארנק',
+                  onPressed: () {
+                    switch (_gatesListplace) {
+                      case 0:
+                        coins64List = rtbimBox65List;
+                        _gatesListplace++;
+                        break;
+                      case 1:
+                        coins64List = hexRTNames65lst;
+                        _gatesListplace++;
+                        break;
+                      case 2:
+                        coins64List = new_hexRTNames65lst;
+                        _gatesListplace++;
+                        break;
+                      case 3:
+                        coins64List = rtwallets65lst_heb;
+                        _gatesListplace++;
+                        break;
+                      case 4:
+                        coins64List = new_rtbbwallet65lst_heb;
+                        _gatesListplace++;
+                        break;
+                      case 5:
+                        coins64List = hdgates65lst_heb;
+                        _gatesListplace++;
+                        break;
+                      case 6:
+                        coins64List = rtgateswallet65lst_heb;
+                        _gatesListplace++;
+                        break;
+                      case 7:
+                        coins64List = new_hexRTNames65lst;
+                        _gatesListplace++;
+                        break;
+                      case 8:
+                        coins64List = hexNames65lst;
+                        _gatesListplace++;
+                        break;
+                      case 9:
+                        coins64List = hdgates65lst;
+                        _gatesListplace++;
+                        break;
+                      case 10:
+                        coins64List = iChingEng65lst;
+                        _gatesListplace++;
+                        break;
+                      case 11:
+                        coins64List = rtminmic65List;
+                        _linesListplace = 0;
+                        break;
+                      default:
+                        break;
+                    }
+                  },
+                ),
                 ElevatedButton(
                     onPressed: () {
                       showDialog(
@@ -2909,6 +4467,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.white),
                     )),
+                SizedBox(width: 5),
                 ElevatedButton(
                     onPressed: () {
                       showDialog(
@@ -2927,6 +4486,32 @@ class _RotateComplexState extends State<RotateComplex> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.white),
                     )),
+                IconButton(
+                  icon: Icon(Icons.recycling),
+                  tooltip: 'להחליף מטבעות',
+                  onPressed: () {
+                    switch (_linesListplace) {
+                      case 0:
+                        coins384List = rtmix390lst;
+                        _linesListplace++;
+                        break;
+                      case 1:
+                        coins384List = hdmixlines390lst;
+                        _linesListplace++;
+                        break;
+                      case 2:
+                        coins384List = hdmixlines390lstHeb;
+                        _linesListplace++;
+                        break;
+                      case 3:
+                        coins384List = rtmix390lstHeb;
+                        _linesListplace = 0;
+                        break;
+                      default:
+                        break;
+                    }
+                  },
+                ),
               ],
             ),
             const Divider(
@@ -2934,18 +4519,19 @@ class _RotateComplexState extends State<RotateComplex> {
             ),
             ElevatedButton(
               onPressed: () async {
-                // _selectedDate by user pick
-                //print (_now);
-                //_now = _selectedDate.applied(_selectedtime);
+                _planetsfulldesignList =
+                    await PlanetsServices.getCurrentData(_personTime);
 
-                _planetsnowList = await PlanetsServices.getCurrentData(_now);
-
-                _designTime = await PlanetsServices.getDesignTime(_now);
-                _planetsdesignList =
+                _designTime = await PlanetsServices.getDesignTime(_personTime);
+                _planetsfullnowList =
                     await PlanetsServices.getCurrentData(_designTime);
 
-                _chironhex = _planetsnowList.last;
-                _chirondesignhex = _planetsdesignList.last;
+                _planetsnowList = _planetsfullnowList;
+                _planetsdesignList = _planetsfulldesignList;
+
+                _chironhex = _planetsfullnowList.last;
+                _chirondesignhex = _planetsfulldesignList.last;
+
                 _planetsnowList.removeLast();
                 _planetsdesignList.removeLast();
 
@@ -2958,7 +4544,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
                 hdfinaldata = HDServices.getHDBasicData(_channelsList);
 
-                _centers = HDServices.getHDDefinedCenters(_channelsList);
+                _centers = HDServices.getHDCenters(_channelsList);
                 //_fearSentence = HDServices.getHDDefinedFears(_centers);
                 //_selfreminderSentence = HDServices.getSelfReminder();
                 _selfreminder = _timeselfreminder;
@@ -2967,7 +4553,8 @@ class _RotateComplexState extends State<RotateComplex> {
                 _controlHDData(hdfinaldata);
                 //hdfinaldata = HDServices.getHDBasicData(_channelsList);
 
-                _setDateTime(_now);
+                //_setDateTime(_now);
+                _setDateTime(_personTime);
 
                 //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
                 //_formattedTime = DateFormat.Hms().format(_now);
@@ -2979,15 +4566,9 @@ class _RotateComplexState extends State<RotateComplex> {
 
                 _setCoins();
 
-                //_hexalignedList = hexagramAlignment(_planethex.gate!);
-
-                //_controllertop.jumpToPage(_hexalignedList[0]);
-                //_controllermid.jumpToPage(_hexalignedList[1]);
-                //_controllerbot.jumpToPage(_hexalignedList[2]);
-
                 _controllerlinetext.text = _planethex.line!.toString();
-                _controllergatelinestory.text = idonotknowlinesList[
-                    (idonotknowlinesList.indexOf(_planethex.gate!) +
+                _controllergatelinestory.text = coins384List[
+                    (coins384List.indexOf(_planethex.gate!) +
                         _planethex.line!)];
 
                 switch (_previousPlanetIndex) {
@@ -3016,9 +4597,9 @@ class _RotateComplexState extends State<RotateComplex> {
                     break;
                 }
 
+                _resetgatesState();
+                _setgatesState();
                 _setChart(_centers);
-
-                setState(() {});
               },
               style:
                   ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
@@ -3029,19 +4610,45 @@ class _RotateComplexState extends State<RotateComplex> {
                       fontSize: 15,
                       fontWeight: FontWeight.bold)),
             ),
-            const Divider(),
-            SizedBox(
-              height: 25,
-              child: TextField(
-                  textAlign: TextAlign.center,
-                  readOnly: true,
-                  //decoration: const InputDecoration.collapsed(hintText: 'Time'),
-                  decoration: const InputDecoration.collapsed(hintText: 'זמן'),
-                  controller: _controllerTime,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Colors.black)),
+            SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 25,
+                  width: 70,
+                  child: AutoSizeTextField(
+                      minFontSize: 16,
+                      readOnly: true,
+                      decoration: InputDecoration.collapsed(
+                          hintText: DateFormat.Hm().format(_now),
+                          hintStyle: const TextStyle(color: Colors.grey)),
+                      textAlign: TextAlign.center,
+                      controller: _controllerTimePick,
+                      style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold)),
+                ),
+                SizedBox(
+                  height: 25,
+                  width: 200,
+                  child: AutoSizeTextField(
+                      minFontSize: 16,
+                      readOnly: true,
+                      decoration: InputDecoration.collapsed(
+                          //hintText: DateFormat('MM/dd/yyyy').format(_now),
+                          hintText: _formatDate(_now),
+                          hintStyle: const TextStyle(color: Colors.grey)),
+                      textAlign: TextAlign.center,
+                      controller: _controllerDatePick,
+                      style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ],
             ),
             Flex(
               direction: Axis.horizontal,
@@ -3437,7 +5044,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: const CircleAvatar(
                         minRadius: 13.0,
                         maxRadius: 13.0,
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.green,
                         backgroundImage: AssetImage('assets/planets/moon.png')),
                   ),
                   SizedBox(
@@ -4176,92 +5783,91 @@ class _RotateComplexState extends State<RotateComplex> {
             Stack(
               fit: StackFit.loose,
               children: [
-                CircleList(
-                  rotateMode: RotateMode.stopRotate,
-                  innerRadius: 50,
-                  initialAngle: 4.22,
-                  childrenPadding: 0.1,
-                  origin: const Offset(0, 0),
-                  children: List.generate(13, (index) {
-                    return CircleAvatar(
-                      minRadius: 5,
-                      maxRadius: 13,
-                      foregroundImage: AssetImage(planetsfullList[index]),
-                    );
-                  }),
+                Center(
+                  child: CircleList(
+                    rotateMode: RotateMode.stopRotate,
+                    innerRadius: 1,
+                    initialAngle: 4.55,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    children: List.generate(13, (index) {
+                      return CircleAvatar(
+                        //backgroundColor: Colors.black12,
+                        backgroundColor: planetscolorList[index],
+                        minRadius: 10,
+                        maxRadius: 12,
+                        foregroundImage: AssetImage(planetsfullList[index]),
+                      );
+                    }),
+                  ),
                 ),
-                CircleList(
-                  rotateMode: RotateMode.stopRotate,
-                  innerRadius: 100,
-                  initialAngle: 4.2,
-                  childrenPadding: 0.1,
-                  origin: const Offset(0, 0),
-                  children: List.generate(13, (index) {
-                    return Container(
-                      width: 45,
-                      margin: const EdgeInsets.all(1),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(width: 2, color: Colors.blue)),
-                      child: AutoSizeText(
-                          listpersonalitygates[index].toString(),
-                          //minFontSize: 8,
-                          //maxFontSize: 85,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold)),
-                    );
-                  }),
+                Center(
+                  child: CircleList(
+                    rotateMode: RotateMode.stopRotate,
+                    innerRadius: 60,
+                    initialAngle: 4.55,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    children: List.generate(13, (index) {
+                      return Container(
+                        width: 30,
+                        height: 30,
+                        margin: const EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(width: 1, color: Colors.red)),
+                        child: Center(
+                          child: AutoSizeText(
+                              _planetsfulldesignList[index]
+                                  .gateline!, //minFontSize: 8,
+                              minFontSize: 12,
+                              maxFontSize: 14,
+                              maxLines: 1,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      );
+                    }),
+                  ),
                 ),
-              ],
-            ),
-            Stack(
-              fit: StackFit.loose,
-              children: [
-                CircleList(
-                  rotateMode: RotateMode.stopRotate,
-                  innerRadius: 50,
-                  initialAngle: 4.22,
-                  childrenPadding: 0.1,
-                  origin: const Offset(0, 0),
-                  children: List.generate(13, (index) {
-                    return CircleAvatar(
-                      minRadius: 5,
-                      maxRadius: 13,
-                      foregroundImage: AssetImage(planetsfullList[index]),
-                    );
-                  }),
-                ),
-                CircleList(
-                  rotateMode: RotateMode.stopRotate,
-                  innerRadius: 1,
-                  initialAngle: 4.22,
-                  childrenPadding: 1,
-                  origin: const Offset(0, 0),
-                  children: List.generate(13, (index) {
-                    return Container(
-                      width: 40,
-                      margin: const EdgeInsets.all(1),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(width: 2.0, color: Colors.red)),
-                      child: AutoSizeText(listdesigngates[index].toString(),
-                          //minFontSize: 8,
-                          //maxFontSize: 12,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold)),
-                    );
-                  }),
+                Center(
+                  child: CircleList(
+                    rotateMode: RotateMode.stopRotate,
+                    innerRadius: 125,
+                    initialAngle: 4.55,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    children: List.generate(13, (index) {
+                      return Container(
+                        width: 30,
+                        height: 30,
+                        margin: const EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(width: 1, color: Colors.blue)),
+                        child: Center(
+                          child: AutoSizeText(
+                              _planetsfullnowList[index].gateline!,
+                              minFontSize: 12,
+                              maxFontSize: 14,
+                              maxLines: 1,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      );
+                    }),
+                  ),
                 ),
               ],
             ),
             const Divider(
               color: Colors.blue,
             ),
-            Container(
+            SizedBox(
               height: 350,
               width: 250,
               child: GridView.builder(
@@ -4309,120 +5915,200 @@ class _RotateComplexState extends State<RotateComplex> {
   }
 
   // idk
-  Widget _buildCyclesPopupDialog(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Cycles'),
-      backgroundColor: Colors.white,
-      content: SingleChildScrollView(
-        child: Flex(
-          direction: Axis.vertical,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Saturn Return',
-                style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal)),
-            Text('$_formatsaturnreturnTime   $_formatsaturnreturnDate',
-                style: const TextStyle(
-                    fontSize: 17,
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal)),
-            const Divider(
-              thickness: 5,
-            ),
-            const Text('Uranus Opposition',
-                style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal)),
-            Text('$_formatsUranusOppTime   $_formatsUranusOppDate',
-                style: const TextStyle(
-                    fontSize: 17,
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal)),
-          ],
-        ),
-      ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Icon(Icons.close, color: Colors.white),
-        ),
-      ],
-    );
-  }
 
   Widget _buildCentersPopUp(BuildContext context) {
     return AlertDialog(
       title: const Text('טחן-אות'),
-      content: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: ListView.builder(
-            padding: const EdgeInsets.all(1),
-            itemCount: _centers.length,
-            itemBuilder: (BuildContext context, int index) {
-              Color centercolor = Colors.green;
-              switch (_centers[index]) {
-                case 'head':
-                  centercolor = Colors.yellow;
-                  break;
-                case 'ajna':
-                  centercolor = Colors.yellow;
-                  break;
-                case 'throat':
-                  centercolor = const Color(0xFF807A2B);
-                  break;
-                case 'self':
-                  centercolor = const Color(0xFFFF7700);
-                  break;
-                case 'sacral':
-                  centercolor = Colors.red;
-                  break;
-                case 'root':
-                  centercolor = const Color(0xFFFF7700);
-                  break;
-                case 'spleen':
-                  centercolor = const Color(0xFFFF7700);
-                  break;
-                case 'solar':
-                  centercolor = const Color(0xFF807A2B);
-                  break;
-                case 'heart':
-                  centercolor = const Color(0xFF809A56);
-                  break;
-                default:
-                  centercolor = Colors.red;
-                  break;
-              }
-              return Container(
+      content: SingleChildScrollView(
+        child: SizedBox(
+          width: 300,
+          height: MediaQuery.of(context).size.height,
+          child: Flex(
+            direction: Axis.vertical,
+            children: [
+              const Divider(color: Colors.transparent),
+              CircleAvatar(
+                  minRadius: 5,
+                  maxRadius: 13,
+                  foregroundImage: AssetImage(coins4lst[0])),
+              const Divider(color: Colors.transparent),
+              Container(
                 decoration: BoxDecoration(
-                    color: centercolor,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[500]!,
-                          offset: const Offset(4, 4),
-                          blurRadius: 5,
-                          spreadRadius: 1),
-                      const BoxShadow(
-                          color: Colors.blueGrey,
-                          offset: Offset(-4, -4),
-                          blurRadius: 5,
-                          spreadRadius: 1),
-                    ]),
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: solarcolor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text(
-                    _centers[index],
+                    'רגש',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 18, color: Colors.black),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                 ),
-              );
-            }),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    //color: Colors.blue[100],
+                    color: heartcolor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'רצון',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ),
+              ),
+              const Divider(color: Colors.transparent),
+              CircleAvatar(
+                  minRadius: 5,
+                  maxRadius: 13,
+                  foregroundImage: AssetImage(coins4lst[1])),
+              const Divider(color: Colors.transparent),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: throatcolor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'מלונת המדבר',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ),
+              ),
+              const Divider(color: Colors.transparent),
+              CircleAvatar(
+                  minRadius: 5,
+                  maxRadius: 13,
+                  foregroundImage: AssetImage(coins4lst[2])),
+              const Divider(color: Colors.transparent),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: headcolor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'גמל',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    //color: Colors.blue[100],
+                    color: ajnacolor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'כלב',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: gcolor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'עצמי',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: spleencolor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'גוף בריא',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: rootcolor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'לחץ לנשום ולשתוק',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ),
+              ),
+              const Divider(color: Colors.transparent),
+              CircleAvatar(
+                  minRadius: 5,
+                  maxRadius: 13,
+                  foregroundImage: AssetImage(coins4lst[3])),
+              const Divider(color: Colors.transparent),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: sacralcolor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'חיי שתיקה',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ),
+              ),
+              const Divider(color: Colors.transparent),
+            ],
+          ),
+        ),
       ),
       actions: <Widget>[
         TextButton(
@@ -4534,32 +6220,6 @@ class _RotateComplexState extends State<RotateComplex> {
         });
   }
 
-  Widget _buildSelfReminderPopUp(BuildContext context) {
-    return AlertDialog(
-      title: const Text('RE-MIND HER'),
-      content: Flex(
-        direction: Axis.vertical,
-        children: [
-          Text(
-            _selfreminder,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 25,
-            ),
-          )
-        ],
-      ),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Icon(Icons.close, color: Colors.black),
-        ),
-      ],
-    );
-  }
-
   Widget _buildDataPopUp(BuildContext context) {
     return AlertDialog(
       title: const Text('זמן עיצוב',
@@ -4667,193 +6327,139 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildProfilePopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('חלי-פה', style: TextStyle(color: Colors.black)),
-      content: Column(
-        children: [
-          Flex(
+      title: const Text('חלי-פה'),
+      content: SingleChildScrollView(
+        child: SizedBox(
+          width: 300,
+          height: 450,
+          child: Flex(
             direction: Axis.vertical,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              FittedBox(
-                fit: BoxFit.fill,
+              CircleAvatar(
+                  minRadius: 20,
+                  maxRadius: 30,
+                  backgroundColor: Colors.transparent,
+                  foregroundImage: AssetImage(minmaxcoins[0])),
+              const Divider(color: Colors.transparent),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(15)),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey[500]!,
-                              offset: const Offset(4, 4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                          const BoxShadow(
-                              color: Colors.blueGrey,
-                              offset: Offset(-4, -4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(_planetsnowList[0].line.toString(),
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              color: Colors.blue, fontSize: 15)),
+                  child: Text(_planetsnowList[0].line.toString(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
                     ),
-                  ),
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('מקסימום איות מורכב',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold)),
                 ),
               ),
-              FittedBox(
-                fit: BoxFit.fill,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey[500]!,
-                            offset: const Offset(4, 4),
-                            blurRadius: 5,
-                            spreadRadius: 1),
-                        const BoxShadow(
-                            color: Colors.blueGrey,
-                            offset: Offset(-4, -4),
-                            blurRadius: 5,
-                            spreadRadius: 1),
-                      ]),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('Conscious ',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.blue, fontSize: 15)),
-                  ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(rt6profile[_planetsnowList[0].line!].toString(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold)),
                 ),
               ),
-              FittedBox(
-                fit: BoxFit.fill,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey[500]!,
-                            offset: const Offset(4, 4),
-                            blurRadius: 5,
-                            spreadRadius: 1),
-                        const BoxShadow(
-                            color: Colors.blueGrey,
-                            offset: Offset(-4, -4),
-                            blurRadius: 5,
-                            spreadRadius: 1),
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                        idonotknowlinesList[_planetsnowList[0].line!]
-                            .toString(),
-                        textAlign: TextAlign.center,
-                        style:
-                            const TextStyle(color: Colors.blue, fontSize: 15)),
-                  ),
+              const Divider(color: Colors.transparent),
+              CircleAvatar(
+                  minRadius: 20,
+                  maxRadius: 30,
+                  backgroundColor: Colors.transparent,
+                  foregroundImage: AssetImage(minmaxcoins[3])),
+              const Divider(color: Colors.transparent),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(_planetsdesignList[0].line.toString(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('מינימום אישה שתיקה',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                      rt6profile[_planetsdesignList[0].line!].toString(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold)),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 20),
-          Flex(
-            direction: Axis.vertical,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              FittedBox(
-                fit: BoxFit.fill,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey[500]!,
-                              offset: const Offset(4, 4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                          const BoxShadow(
-                              color: Colors.blueGrey,
-                              offset: Offset(-4, -4),
-                              blurRadius: 5,
-                              spreadRadius: 1),
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(_planetsdesignList[0].line.toString(),
-                          textAlign: TextAlign.center,
-                          style:
-                              const TextStyle(color: Colors.red, fontSize: 15)),
-                    ),
-                  ),
-                ),
-              ),
-              FittedBox(
-                fit: BoxFit.fill,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey[500]!,
-                            offset: const Offset(4, 4),
-                            blurRadius: 5,
-                            spreadRadius: 1),
-                        const BoxShadow(
-                            color: Colors.blueGrey,
-                            offset: Offset(-4, -4),
-                            blurRadius: 5,
-                            spreadRadius: 1),
-                      ]),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('Living ',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.red, fontSize: 15)),
-                  ),
-                ),
-              ),
-              FittedBox(
-                fit: BoxFit.fill,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey[500]!,
-                            offset: const Offset(4, 4),
-                            blurRadius: 5,
-                            spreadRadius: 1),
-                        const BoxShadow(
-                            color: Colors.blueGrey,
-                            offset: Offset(-4, -4),
-                            blurRadius: 5,
-                            spreadRadius: 1),
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                        idonotknowlinesList[_planetsdesignList[0].line!]
-                            .toString(),
-                        textAlign: TextAlign.center,
-                        style:
-                            const TextStyle(color: Colors.red, fontSize: 15)),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
+        ),
       ),
       actions: <Widget>[
         TextButton(
@@ -4882,27 +6488,47 @@ class _RotateComplexState extends State<RotateComplex> {
     int tempdesigngate = 0, temppersonngate = 0;
     //_planetsnowList[0].
     //_planetsdesignList[0].
+    //Set<int> uniquegateset;
+    //List<int> _uniquegatesList = [];
 
-    gatestatelist.forEach((g) => g = 0);
+    //for (int i = 0; _allplanetsList.length > i; i++) {
+    //  _uniquegatesList.add(_allplanetsList[i].gate!);
+    //}
+    //_uniquegatesList = _planetsdesignList;
+    //uniquegateset = _uniquegatesList.toSet();
+    //_uniquegatesList = uniquegateset.toList();
+    //_uniquegatesList.sort();
+
+    //for (var i = 0; i < _uniquegatesList.length; i++) {
+    // tempdesigngate = _uniquegatesList[i];
+    // if (gatestatelist[tempdesigngate] == 0) {
+    //   gatestatelist[tempdesigngate] = 1;
+    //   _isBoldList[tempdesigngate] = true;
+    // }
+    //}
+
+    for (var g in gatestatelist) {
+      g = 0;
+    }
 
     for (var i = 0; i < _planetsdesignList.length; i++) {
       tempdesigngate = _planetsdesignList[i].gate!;
-      gatestatelist[tempdesigngate] = 1;
+      if (gatestatelist[tempdesigngate] == 0) {
+        gatestatelist[tempdesigngate] = 1;
+        _isBoldList[tempdesigngate] = true;
+      }
     }
 
     for (var i = 0; i < _planetsnowList.length; i++) {
       temppersonngate = _planetsnowList[i].gate!;
+      _isBoldList[temppersonngate] = true;
 
-      switch (gatestatelist[temppersonngate]) {
-        case 0:
-          gatestatelist[temppersonngate] = 2;
-          break;
-        case 1:
+      if (gatestatelist[temppersonngate] == 0) {
+        gatestatelist[temppersonngate] = 2;
+      } else {
+        if (gatestatelist[temppersonngate] == 1) {
           gatestatelist[temppersonngate] = 3;
-          break;
-        default:
-          gatestatelist[temppersonngate] = 2;
-          break;
+        }
       }
     }
   }
@@ -4924,6 +6550,20 @@ class _RotateComplexState extends State<RotateComplex> {
       gatestatelist[i] = 0;
       _isBoldList[i] = false;
     }
+  }
+
+  void _resetcentersState() {
+    setState(() {
+      headstate = 3;
+      ajnastate = 3;
+      throatstate = 3;
+      gstate = 3;
+      sacralstate = 3;
+      rootstate = 3;
+      heartstate = 3;
+      spleenstate = 3;
+      solarstate = 3;
+    });
   }
 
   controlCollor(int colorcoin) {
@@ -4966,74 +6606,117 @@ class _RotateComplexState extends State<RotateComplex> {
     if (newsetupdown) {
       switch (_settimestamp) {
         case 'שניות':
-          _now = _now.add(Duration(seconds: _newts));
+          _personTime = _personTime.add(Duration(seconds: _newts));
           break;
         case 'דקות':
-          _now = _now.add(Duration(minutes: _newts));
+          _personTime = _personTime.add(Duration(minutes: _newts));
           break;
         case 'שעות':
-          _now = _now.add(Duration(hours: _newts));
+          _personTime = _personTime.add(Duration(hours: _newts));
           break;
         case 'ימים':
-          _now = DateTime(_now.year, _now.month, _now.day + _newts, _now.hour,
-              _now.minute, _now.second);
+          _personTime = DateTime(
+              _personTime.year,
+              _personTime.month,
+              _personTime.day + _newts,
+              _now.hour,
+              _personTime.minute,
+              _personTime.second);
           break;
         case 'שבועות':
-          _now = DateTime(_now.year, _now.month, (_now.day + _newts * 7),
-              _now.hour, _now.minute, _now.second);
+          _personTime = DateTime(
+              _personTime.year,
+              _personTime.month,
+              (_personTime.day + _newts * 7),
+              _personTime.hour,
+              _personTime.minute,
+              _personTime.second);
           break;
         case 'חודשים':
-          _now = DateTime(_now.year, _now.month + _newts, _now.day, _now.hour,
-              _now.minute, _now.second);
+          _personTime = DateTime(
+              _personTime.year,
+              _personTime.month + _newts,
+              _personTime.day,
+              _personTime.hour,
+              _personTime.minute,
+              _personTime.second);
           break;
         case 'שנים':
-          _now = DateTime(_now.year + _newts, _now.month, _now.day, _now.hour,
-              _now.minute, _now.second);
+          _personTime = DateTime(
+              _personTime.year + _newts,
+              _personTime.month,
+              _personTime.day,
+              _personTime.hour,
+              _personTime.minute,
+              _personTime.second);
           break;
         default:
-          _now = _now.add(Duration(minutes: _newts));
+          _personTime = _personTime.add(Duration(minutes: _newts));
           break;
       }
     } else {
       switch (_settimestamp) {
         case 'שניות':
-          _now = _now.subtract(Duration(seconds: _newts));
+          _personTime = _personTime.subtract(Duration(seconds: _newts));
           break;
         case 'דקות':
-          _now = _now.subtract(Duration(minutes: _newts));
+          _personTime = _personTime.subtract(Duration(minutes: _newts));
           break;
         case 'שעות':
-          _now = _now.subtract(Duration(hours: _newts));
+          _personTime = _personTime.subtract(Duration(hours: _newts));
           break;
         case 'ימים':
-          _now = DateTime(_now.year, _now.month, _now.day - _newts, _now.hour,
-              _now.minute, _now.second);
+          _personTime = DateTime(
+              _personTime.year,
+              _personTime.month,
+              _personTime.day - _newts,
+              _personTime.hour,
+              _personTime.minute,
+              _personTime.second);
           break;
         case 'שבועות':
-          _now = DateTime(_now.year, _now.month, (_now.day - _newts * 7),
-              _now.hour, _now.minute, _now.second);
+          _personTime = DateTime(
+              _personTime.year,
+              _personTime.month,
+              (_personTime.day - _newts * 7),
+              _personTime.hour,
+              _personTime.minute,
+              _personTime.second);
           break;
         case 'חודשים':
-          _now = DateTime(_now.year, _now.month - _newts, _now.day, _now.hour,
-              _now.minute, _now.second);
+          _personTime = DateTime(
+              _personTime.year,
+              _personTime.month - _newts,
+              _personTime.day,
+              _personTime.hour,
+              _personTime.minute,
+              _personTime.second);
           break;
         case 'שנים':
-          _now = DateTime(_now.year - _newts, _now.month, _now.day, _now.hour,
-              _now.minute, _now.second);
+          _personTime = DateTime(
+              _personTime.year - _newts,
+              _personTime.month,
+              _personTime.day,
+              _personTime.hour,
+              _personTime.minute,
+              _personTime.second);
           break;
         default:
-          _now = _now.subtract(Duration(minutes: _newts));
+          _personTime = _personTime.subtract(Duration(minutes: _newts));
           break;
       }
     }
 
-    _planetsnowList = await PlanetsServices.getCurrentData(_now);
+    _planetsfullnowList = await PlanetsServices.getCurrentData(_personTime);
 
-    //_designTime = await AstrologyServices.getDesignTime(_now);
     //emulate design time to now time to prevent blank
-    _planetsdesignList = await PlanetsServices.getCurrentData(_now);
+    _planetsfulldesignList = await PlanetsServices.getCurrentData(_personTime);
 
-    _chironhex = _planetsnowList.last;
+    _chironhex = _planetsfullnowList.last;
+
+    _planetsnowList = _planetsfullnowList;
+    _planetsdesignList = _planetsfulldesignList;
+
     _planetsnowList.removeLast();
 
     _resetgatesState();
@@ -5049,12 +6732,12 @@ class _RotateComplexState extends State<RotateComplex> {
     //_controlHDData(hdbasicdata);
     _controlHDData(hdfinaldata);
 
-    _centers = HDServices.getHDDefinedCenters(_channelsList);
+    _centers = HDServices.getHDCenters(_channelsList);
     //_fearSentence = HDServices.getHDDefinedFears(_centers);
     //_selfreminderSentence = HDServices.getSelfReminder();
     _selfreminder = _timeselfreminder;
 
-    _setDateTime(_now);
+    _setDateTime(_personTime);
 
     _planetsList = _planetsnowList;
     _planethex = _planetsList[0];
@@ -5062,8 +6745,8 @@ class _RotateComplexState extends State<RotateComplex> {
     _setCoins();
 
     _controllerlinetext.text = _planethex.line!.toString();
-    _controllergatelinestory.text = idonotknowlinesList[
-        (idonotknowlinesList.indexOf(_planethex.gate!) + _planethex.line!)];
+    _controllergatelinestory.text = coins384List[
+        (coins384List.indexOf(_planethex.gate!) + _planethex.line!)];
 
     switch (_previousPlanetIndex) {
       case -1:
@@ -5093,100 +6776,6 @@ class _RotateComplexState extends State<RotateComplex> {
     _setChart(_centers);
   }
 
-  Widget _buildHebGatesDialog(BuildContext context) {
-    return AlertDialog(
-      title: const Text('ארנקים'),
-      content: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.8,
-          child: ListView.builder(
-            reverse: false,
-            itemCount: _planetsList.length,
-            itemBuilder: (context, index) => ListTile(
-              title: SizedBox(
-                child: Flex(
-                  direction: Axis.vertical,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CircleAvatar(
-                        maxRadius: 20,
-                        backgroundColor: Colors.transparent,
-                        foregroundImage: AssetImage(planetsimagelist[index])),
-                    Text(
-                      _planetsList[index].gate!.toString(),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 14),
-                    ),
-                    Text(
-                      idkNewHebrewList[_planetsList[index].gate!],
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 14),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          )),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Icon(Icons.close, color: Colors.black),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildHebLinesDialog(BuildContext context) {
-    return AlertDialog(
-      title: const Text('מטבעות'),
-      content: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.8,
-          child: ListView.builder(
-            reverse: false,
-            itemCount: _planetsList.length,
-            itemBuilder: (context, index) => ListTile(
-              title: SizedBox(
-                child: Flex(
-                  direction: Axis.vertical,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CircleAvatar(
-                        maxRadius: 20,
-                        backgroundColor: Colors.transparent,
-                        foregroundImage: AssetImage(planetsimagelist[index])),
-                    Text(
-                      _planetsList[index].gateline!.toString(),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 12),
-                    ),
-                    Text(
-                      idonotknowOnlylinesList[(_planetsList[index].gate! * 6) +
-                          _planetsList[index].line! -
-                          1],
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 13),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          )),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Icon(Icons.close, color: Colors.black),
-        ),
-      ],
-    );
-  }
-
   Widget _buildGatesDialog(BuildContext context) {
     return AlertDialog(
       title: const Text('ארנקים'),
@@ -5212,7 +6801,7 @@ class _RotateComplexState extends State<RotateComplex> {
                           fontWeight: FontWeight.bold, fontSize: 14),
                     ),
                     Text(
-                      idkNewHebrewList[_planetsList[index].gate!],
+                      coins64List[_planetsList[index].gate!],
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 14),
@@ -5258,9 +6847,8 @@ class _RotateComplexState extends State<RotateComplex> {
                           fontWeight: FontWeight.bold, fontSize: 12),
                     ),
                     Text(
-                      rtlines390lstHeb[(_planetsList[index].gate! * 6) +
-                          _planetsList[index].line! -
-                          1],
+                      coins384List[(_planetsList[index].gate! * 7) +
+                          _planetsList[index].line!],
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 13),
@@ -5392,47 +6980,34 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerDesignNeptuneGate.text = _neptunedesignhex.gatelinecolor!;
     _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor!;
     _controllerDesignChironGate.text = _chirondesignhex.gatelinecolor!;
-
-    listpersonalitygates = [
-      _northnodehex.gate!,
-      _sunhex.gate!,
-      _moonhex.gate!,
-      _mercuryhex.gate!,
-      _venushex.gate!,
-      _marshex.gate!,
-      _jupiterhex.gate!,
-      _saturnhex.gate!,
-      _uranushex.gate!,
-      _neptunehex.gate!,
-      _plutohex.gate!,
-      _earthhex.gate!,
-      _southnodehex.gate!,
-    ];
-
-    listdesigngates = [
-      _northnodedesignhex.gate!,
-      _sundesignhex.gate!,
-      _moondesignhex.gate!,
-      _mercurydesignhex.gate!,
-      _venusdesignhex.gate!,
-      _marsdesignhex.gate!,
-      _jupiterdesignhex.gate!,
-      _saturndesignhex.gate!,
-      _uranusdesignhex.gate!,
-      _neptunedesignhex.gate!,
-      _plutodesignhex.gate!,
-      _earthdesignhex.gate!,
-      _southnodedesignhex.gate!,
-    ];
   }
 
   void _setDateTime(DateTime timedata) {
-    _formattedDate = DateFormat('MM/dd/yyyy').format(timedata);
+    //_formattedDate = DateFormat('MM/dd/yyyy').format(timedata);
+    //_formattedDate = DateFormat('זמן: dd MMMM yyyy', 'he').format(timedata);
+    _formattedDate = _formatDate(timedata);
+    //DateFormat.MMMMd(locale).format(now);
+
     _formattedTime = DateFormat.Hms().format(timedata);
+
+    print (timedata);
+
     //_controllerTime.text = '$_formattedTime $_formattedDate';
     //_controllerTime.text = '$_formattedTime $_formattedDate';
     _controllerDatePick.text = _formattedDate;
     _controllerTimePick.text = _formattedTime;
+  }
+
+  _formatDate(DateTime formatdata) {
+    //_formattedDate = DateFormat('MM/dd/yyyy').format(timedata);
+    _formattedDate = DateFormat('זמן: dd MMMM yyyy', 'he').format(formatdata);
+    //DateFormat.MMMMd(locale).format(now);
+    //_formattedTime = DateFormat.Hms().format(formatdata);
+    //_controllerTime.text = '$_formattedTime $_formattedDate';
+    //_controllerTime.text = '$_formattedTime $_formattedDate';
+    //_controllerDatePick.text = _formattedDate;
+    //_controllerTimePick.text = _formattedTime;
+    return _formattedDate;
   }
 
   void _setLongitude() {
@@ -5484,7 +7059,7 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerDesignNorthNodeGate.text =
         _northnodedesignhex.longitude.toString();
     _controllerDesignSouthNodeGate.text =
-        _southnodedesignhex.longitude.toString()!;
+        _southnodedesignhex.longitude.toString();
     _controllerDesignMoonGate.text = _moondesignhex.longitude.toString();
     _controllerDesignMercuryGate.text = _mercurydesignhex.longitude.toString();
     _controllerDesignVenusGate.text = _venusdesignhex.longitude.toString();
@@ -5505,49 +7080,73 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerbot.jumpToPage(_hexalignedList[2]);
   }
 
-  void _setChart(List<String> definedCenters) {
-    headstate = false;
-    ajnastate = false;
-    throatstate = false;
-    gstate = false;
-    sacralstate = false;
-    rootstate = false;
-    heartstate = false;
-    spleenstate = false;
-    solarstate = false;
-    for (int i = 0; i < definedCenters.length; i++) {
-      switch (definedCenters[i]) {
-        case 'head':
-          headstate = true;
-          break;
-        case 'ajna':
-          ajnastate = true;
-          break;
-        case 'throat':
-          throatstate = true;
-          break;
-        case 'self':
-          gstate = true;
-          break;
-        case 'heart':
-          heartstate = true;
-          break;
-        case 'spleen':
-          spleenstate = true;
-          break;
-        case 'sacral':
-          sacralstate = true;
-          break;
-        case 'solar':
-          solarstate = true;
-          break;
-        case 'root':
-          rootstate = true;
-          break;
-        default:
-          break;
-      }
-    }
+  void _setChart(List<hdCenter> updatecenters) {
+    headstate = 3;
+    ajnastate = 3;
+    throatstate = 3;
+    gstate = 3;
+    sacralstate = 3;
+    rootstate = 3;
+    heartstate = 3;
+    spleenstate = 3;
+    solarstate = 3;
+
+    headstate = updatecenters[0].state!;
+    ajnastate = updatecenters[1].state!;
+    throatstate = updatecenters[2].state!;
+    gstate = updatecenters[3].state!;
+    heartstate = updatecenters[4].state!;
+    spleenstate = updatecenters[5].state!;
+    sacralstate = updatecenters[6].state!;
+    solarstate = updatecenters[7].state!;
+    rootstate = updatecenters[8].state!;
+
+    //for (int i = 0; i < updatecenters.length; i++) {
+    //  {
+
+    //   }
+
+    //switch (updatecenters[i]) {
+    // case 'head':
+    //  headstate = 1;
+    //  headcolor = Colors.yellow;
+    // break;
+    // case 'ajna':
+    //   ajnastate = 1;
+    //   ajnacolor = Colors.yellow;
+    //   break;
+    // case 'throat':
+    //   throatstate = 1;
+    //   throatcolor = Colors.yellow;
+    //   break;
+    // case 'self':
+    //   gstate = 1;
+    //  gcolor = Colors.yellow;
+    //  break;
+    // case 'heart':
+    //   heartstate = 1;
+    //  heartcolor = Colors.blue;
+    //  break;
+    // case 'spleen':
+    //  spleenstate = 1;
+    //   spleencolor = Colors.yellow;
+    //  break;
+    // case 'sacral':
+    //   sacralstate = 1;
+    //  sacralcolor = Colors.red;
+    //  break;
+    // case 'solar':
+    //  solarstate = 1;
+    //   solarcolor = Colors.blue;
+    //   break;
+    // case 'root':
+    //   rootstate = 1;
+    //   rootcolor = Colors.brown;
+    //   break;
+    // default:
+    //   break;
+    //}
+    // }
   }
 
   void _changeTextLevels(String textlevel) {

@@ -14,21 +14,12 @@ import 'package:finallyicanlearn/rotations/rotatesilence.dart';
 import 'package:finallyicanlearn/rotations/rotatebreath.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_circular_text/circular_text.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sweph/sweph.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // github project link
 // https://www.github.com/ynvgib/rotationtime
-
-// flutter build windows
-// flutter build web --web-renderer canvaskit --no-tree-shake-icons
-// firebase deploy
-// flutter build apk --no-tree-shake-icons
-
-// for new project
-// flutter create --platforms=windows .
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -252,15 +243,15 @@ class RotateHome extends StatelessWidget {
                           spreadRadius: 1),
                     ]),
                 child: const FittedBox(
-                  fit: BoxFit.fitHeight,
-                  child: AutoSizeText(
-                    'מיני מיקי שעהשוע',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
+                    fit: BoxFit.fitHeight,
+                    child: AutoSizeText(
+                      'מיני מיקי שעהשוע',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
               ),
               const Divider(
                 color: Colors.black87,

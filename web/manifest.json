@@ -1,11 +1,11 @@
 {
-    "name": "rotateextension",
-    "short_name": "rotateextension",
+    "name": "Rotation Time",
+    "short_name": "RT",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "rotate extensions",
+    "description": "Rotation Time Zmansi Bob",
     "orientation": "any",
     "prefer_related_applications": false,
     "icons": [

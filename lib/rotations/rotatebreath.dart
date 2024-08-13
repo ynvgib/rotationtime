@@ -214,7 +214,7 @@ class _RotateBreathState extends State<RotateBreath> {
                     color: Colors.white,
                     fontWeight: FontWeight.normal)),
             const Divider(thickness: 5,indent: 5, endIndent: 5,color: Colors.yellow),
-            SizedBox(height: 10)
+            const SizedBox(height: 10)
           ],
         ),
       ),

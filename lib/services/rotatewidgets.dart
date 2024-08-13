@@ -2,13 +2,209 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
+import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
-import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
-import 'package:url_launcher/url_launcher.dart';
+
+Widget build4PopUp(BuildContext context) {
+  List<String> titles4 = [
+    'Types',
+    'טיפוסים',
+    'MinMax',
+    'מינימיקי',
+    'Coins',
+    'מטבעות',
+    'New Coins',
+    'מטבעות חדשים',
+    'בימבוקס',
+    'Kit He'
+  ];
+  return AlertDialog(
+    //title: const Text('36 Transactions'),
+    title: const Text('4'),
+    content: SingleChildScrollView(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.6,
+        child: Flex(
+          direction: Axis.vertical,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Heb
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, hdType4lst, titles4[0]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[0],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, hdType4Heblst, titles4[1]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[1],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => build4rtPop(
+                      context, minmax4lst, titles4[2]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[2],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, minmax4Heblst, titles4[3]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[3],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            //const Divider(color: Colors.black, thickness: 5),
+            // Eng
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, coinsEng4lst, titles4[4]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[4],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, coinsHeb4lst, titles4[5]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[5],
+                  style: const TextStyle(color: Colors.white, fontSize: 15)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, newcoinsEng4lst, titles4[6]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[6],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, newcoinsHeb4lst, titles4[7]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[7],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, bimboxHeb4lst, titles4[8]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[8],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, kithe4lst, titles4[9]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[9],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+            ),
+          ],
+        ),
+      ),
+    ),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
 
 Widget build36PopUp(BuildContext context) {
   return AlertDialog(
@@ -121,6 +317,18 @@ Widget build36PopUp(BuildContext context) {
 }
 
 Widget build64PopUp(BuildContext context) {
+  List<String> titles64 = [
+    'ארנקים',
+    'סיבוב בים',
+    'סיבוב חדש',
+    'שערים',
+    'Rotations',
+    'New Rotations',
+    'Gates',
+    'Describe Gates',
+    'Hexagrams',
+    'iJudgement'
+  ];
   return AlertDialog(
     //title: const Text('36 Transactions'),
     title: const Text('64'),
@@ -137,12 +345,12 @@ Widget build64PopUp(BuildContext context) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) =>
-                      build64rtPop(context, rtwallets65lst_heb),
+                      build64rtPop(context, rtwallets65lst_heb, titles64[0]),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('ארנקים',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              child: Text(titles64[0],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
             ),
             const SizedBox(
               height: 10,
@@ -152,12 +360,28 @@ Widget build64PopUp(BuildContext context) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) =>
-                      build64rtPop(context, rtbbwallet65lst_heb),
+                      build64rtPop(context, rtbbwallet65lst_heb, titles64[1]),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('סיבוב בים',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              child: Text(titles64[1],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => build64rtPop(
+                      context, rtgateswallet65lst_heb, titles64[2]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles64[2],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
               //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
             ),
             const SizedBox(
@@ -168,28 +392,12 @@ Widget build64PopUp(BuildContext context) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) =>
-                      build64rtPop(context, rtgateswallet65lst_heb),
+                      build64rtPop(context, hdgates65lst_heb, titles64[3]),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('סיבוב חדש',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
-              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      build64rtPop(context, hdgates65lst_heb),
-                );
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('שערים',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              child: Text(titles64[3],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
               //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
             ),
             const Divider(color: Colors.black, thickness: 5),
@@ -199,12 +407,12 @@ Widget build64PopUp(BuildContext context) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) =>
-                      build64rtPop(context, hexRTNames65lst),
+                      build64rtPop(context, hexRTNames65lst, titles64[4]),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('Rotations',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              child: Text(titles64[4],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
               //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
             ),
             const SizedBox(
@@ -215,12 +423,12 @@ Widget build64PopUp(BuildContext context) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) =>
-                      build64rtPop(context, hdgates65lst),
+                      build64rtPop(context, new_hexRTNames65lst, titles64[5]),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('Gates',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              child: Text(titles64[5],
+                  style: const TextStyle(color: Colors.white, fontSize: 15)),
               //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
             ),
             const SizedBox(
@@ -231,12 +439,12 @@ Widget build64PopUp(BuildContext context) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) =>
-                      build64rtPop(context, hexNames65lst),
+                      build64rtPop(context, hdgates65lst, titles64[6]),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('Hexagrams',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              child: Text(titles64[6],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
               //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
             ),
             const SizedBox(
@@ -247,15 +455,46 @@ Widget build64PopUp(BuildContext context) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) =>
-                      build64rtPop(context, new_hexRTNames65lst),
+                      build64rtPop(context, hdgatesdesc, titles64[7]),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('New Rotations',
-                  style: TextStyle(color: Colors.white, fontSize: 15)),
+              child: Text(titles64[7],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
               //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
             ),
-
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build64rtPop(context, hexNames65lst, titles64[8]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles64[8],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build64rtPop(context, iChingEng65lst, titles64[9]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles64[9],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
           ],
         ),
       ),
@@ -285,6 +524,24 @@ Widget build384PopUp(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Heb
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build384rtPlanetPop(context),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: const CircleAvatar(
+                  minRadius: 30,
+                  maxRadius: 30,
+                  backgroundColor: Colors.white,
+                  foregroundImage: AssetImage('assets/camog/mcamog.png')),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -336,7 +593,22 @@ Widget build384PopUp(BuildContext context) {
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
             ),
-
+            const SizedBox(
+              height: 10,
+            ),
+            //ElevatedButton(
+            // onPressed: () {
+            //   showDialog(
+            //    context: context,
+            //    builder: (BuildContext context) =>
+            //build384rtPlanetPop(context, hdlinesplanet),
+            //);
+            //            },
+            //      style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+            //      child: const Text('HD Planet aLine',
+            //        style: TextStyle(color: Colors.white, fontSize: 20)),
+            //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            //    ),
           ],
         ),
       ),
@@ -459,6 +731,7 @@ Widget _buildComplexTransactions(BuildContext context) {
     ],
   );
 }
+
 Widget _buildBreathTransactions(BuildContext context) {
   return AlertDialog(
     //title: const Text('Breath Transactions'),
@@ -512,6 +785,7 @@ Widget _buildBreathTransactions(BuildContext context) {
     ],
   );
 }
+
 Widget _buildSilencetransactions(BuildContext context) {
   return AlertDialog(
     //title: const Text('silence Transactions'),
@@ -579,7 +853,7 @@ Widget _buildComplexTS(BuildContext context, List<String> complexlst) {
         itemBuilder: (context, index) {
           return Container(
             decoration: BoxDecoration(
-              //color: Colors.blue[100],
+                //color: Colors.blue[100],
                 color: Colors.blue,
                 border: Border.all(
                   width: 3,
@@ -620,6 +894,7 @@ Widget _buildComplexTS(BuildContext context, List<String> complexlst) {
     ],
   );
 }
+
 Widget _buildBreathTS(BuildContext context, List<String> breathlst) {
   return AlertDialog(
     //title: const Text('Breath Transactions'),
@@ -673,6 +948,7 @@ Widget _buildBreathTS(BuildContext context, List<String> breathlst) {
     ],
   );
 }
+
 Widget _buildSilenceTS(BuildContext context, List<String> silencelst) {
   return AlertDialog(
     //title: const Text('silence Transactions'),
@@ -786,7 +1062,15 @@ Widget buildGodheadPopUp(BuildContext context, int ghidx) {
     ),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.4,
-        child: Text(revhebgodheads[ghidx])),
+        height: 150,
+        child: Flex(
+          direction: Axis.vertical,
+          children: [
+            Text(revhebgodheads[ghidx]),
+            const SizedBox(height: 5),
+            Text(revgodheads[ghidx]),
+          ],
+        )),
     actions: <Widget>[
       TextButton(
         onPressed: () {
@@ -801,9 +1085,57 @@ Widget buildGodheadPopUp(BuildContext context, int ghidx) {
   );
 }
 
-Widget build64rtPop(BuildContext context, List<String> build64lst) {
+Widget build4rtPop(BuildContext context, List<String> build4lst, String title4) {
   return AlertDialog(
-    title: const Text('64'),
+    title: Text("4: $title4"),
+    content: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.6,
+        height: 300,
+        child: ListView.builder(
+          reverse: false,
+          padding: const EdgeInsets.all(5.0),
+          itemCount: 4,
+          itemBuilder: (context, index) => ListTile(
+            title: Flex(
+              direction: Axis.vertical,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                (build4lst.length - index).toString(),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                const SizedBox(width: 5),
+                Text(
+                  //LineSentenceList[index],
+                  build4lst[index],
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 15),
+                )
+              ],
+            ),
+          ),
+        )),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
+
+Widget build64rtPop(BuildContext context, List<String> build64lst, String title64) {
+  return AlertDialog(
+    title: Text("64: $title64"),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
         child: ListView.builder(
@@ -860,7 +1192,7 @@ Widget build384rtPop(BuildContext context, List<String> build384lst) {
           itemBuilder: (context, index) {
             double _linecount = 0, _gateidx = 1;
 
-            _linecount = (index+1) / 6;
+            _linecount = (index + 1) / 6;
             _linecount = _linecount.ceilToDouble();
             _gateidx = (index + 1) - ((_linecount - 1) * 6);
 
@@ -898,6 +1230,106 @@ Widget build384rtPop(BuildContext context, List<String> build384lst) {
           'X',
           style: TextStyle(color: Colors.black),
         ),
+      ),
+    ],
+  );
+}
+
+Widget build384rtPlanetPop(BuildContext context) {
+  return AlertDialog(
+    title: const Text('כוחה בים'),
+    //title: CircleAvatar(
+    //    minRadius: 5,
+    //    maxRadius: 13,
+    //    backgroundColor: Colors.transparent,
+    //    foregroundImage: AssetImage('assets/camog/mcamog.png')),
+    content: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.6,
+        child: ListView.builder(
+          reverse: true,
+          padding: const EdgeInsets.all(5.0),
+          itemCount: 384,
+          itemBuilder: (context, index) {
+            int idxline = index*3;
+            return ListTile(
+              title: Flex(
+                direction: Axis.vertical,
+                children: [
+                  CircleAvatar(
+                      minRadius: 13,
+                      maxRadius: 13,
+                      backgroundColor: Colors.transparent,
+                      foregroundImage: AssetImage(hdlinesplanet[idxline+2])),
+                  Text(hdlinesplanet[idxline],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                  CircleAvatar(
+                      minRadius: 13,
+                      maxRadius: 13,
+                      backgroundColor: Colors.transparent,
+                      foregroundImage: AssetImage(hdlinesplanet[idxline+1])),
+                ],
+              ),
+            );
+          },
+        )),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget _buildPlanetGatesPop(BuildContext context, List<Hexagram> planetLst) {
+  return AlertDialog(
+    title: const Text('ארנקים'),
+    content: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.8,
+        child: ListView.builder(
+          reverse: false,
+          itemCount: planetLst.length,
+          itemBuilder: (context, index) => ListTile(
+            title: SizedBox(
+              child: Flex(
+                direction: Axis.vertical,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CircleAvatar(
+                      maxRadius: 20,
+                      backgroundColor: Colors.transparent,
+                      foregroundImage: AssetImage(planetsimagelist[index])),
+                  Text(
+                    planetLst[index].gate!.toString(),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
+                  Text(
+                    rtwallets65lst_heb[planetLst[index].gate!],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        )),
+    actions: [
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Icon(Icons.close, color: Colors.black),
       ),
     ],
   );
@@ -1174,18 +1606,23 @@ Widget buildSilencePopUp(BuildContext context) {
 
 // human design chart
 class HeadPainter extends CustomPainter {
-  bool centerstate = true;
+  int centerstate = 1;
+  Color centercolor = Colors.yellow;
+  //int centercolorstate = 0;
 
   HeadPainter({
+    //required this.centerstate, required this.centercolorstate
     required this.centerstate,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
-    Color centercolor = Colors.yellow;
+    //Color centercolor = Colors.yellow;
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
-    centerstate ? centercolor = Colors.yellow : centercolor = Colors.white;
+    //centerstate ? centercolor = Colors.yellow : centercolor = Colors.green;
+
+    centercolor = setCenterColor(centerstate);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1206,7 +1643,7 @@ class HeadPainter extends CustomPainter {
 }
 
 class AjnaPainter extends CustomPainter {
-  bool centerstate = true;
+int centerstate = 1;
 
   AjnaPainter({
     required this.centerstate,
@@ -1214,10 +1651,12 @@ class AjnaPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    Color centercolor = Colors.green;
+    Color centercolor = Colors.yellow;
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
-    centerstate ? centercolor = Colors.green : centercolor = Colors.white;
+    //centerstate ? centercolor = Colors.yellow : centercolor = Colors.green;
+    centercolor = setCenterColor(centerstate);
+
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1239,7 +1678,7 @@ class AjnaPainter extends CustomPainter {
 }
 
 class ThroatPainter extends CustomPainter {
-  bool centerstate = true;
+int centerstate = 1;
 
   ThroatPainter({
     required this.centerstate,
@@ -1253,10 +1692,12 @@ class ThroatPainter extends CustomPainter {
       height: size.height,
     );
 
-    Color centercolor = Colors.brown;
+    //Color centercolor = Color(0xff807a2b);
+    Color centercolor = Colors.blue;
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
-    centerstate ? centercolor = Colors.brown : centercolor = Colors.white;
+    //centerstate ? centercolor = Colors.blue : centercolor = Colors.green;
+    centercolor = setCenterColor(centerstate);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1282,7 +1723,7 @@ class ThroatPainter extends CustomPainter {
 }
 
 class GPainter extends CustomPainter {
-  bool centerstate = true;
+int centerstate = 1;
 
   GPainter({
     required this.centerstate,
@@ -1290,12 +1731,13 @@ class GPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    Color centercolor = Colors.green;
+    Color centercolor = Colors.yellow;
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
     //var angle = (math.pi * 2) / 4;
 
-    centerstate ? centercolor = Colors.yellow : centercolor = Colors.white;
+    //centerstate ? centercolor = Colors.yellow : centercolor = Colors.green;
+    centercolor = setCenterColor(centerstate);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1331,7 +1773,7 @@ class GPainter extends CustomPainter {
 }
 
 class SacralPainter extends CustomPainter {
-  bool centerstate = true;
+int centerstate = 1;
 
   SacralPainter({
     required this.centerstate,
@@ -1348,7 +1790,9 @@ class SacralPainter extends CustomPainter {
     Color centercolor = Colors.red;
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
-    centerstate ? centercolor = Colors.red : centercolor = Colors.white;
+    //centerstate ? centercolor = Colors.red : centercolor = Colors.green;
+    centercolor = setCenterColor(centerstate);
+
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1374,7 +1818,7 @@ class SacralPainter extends CustomPainter {
 }
 
 class RootPainter extends CustomPainter {
-  bool centerstate = true;
+int centerstate = 1;
 
   RootPainter({
     required this.centerstate,
@@ -1388,10 +1832,13 @@ class RootPainter extends CustomPainter {
       height: size.height,
     );
 
-    Color centercolor = Colors.brown;
+    //#FF7700 #AA8B00
+    //Color centercolor = Color(0xffaa8b00);
+    Color centercolor = Colors.yellow;
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
-    centerstate ? centercolor = Colors.brown : centercolor = Colors.white;
+    //centerstate ? centercolor = Colors.yellow : centercolor = Colors.green;
+    centercolor = setCenterColor(centerstate);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1417,7 +1864,7 @@ class RootPainter extends CustomPainter {
 }
 
 class SpleenPainter extends CustomPainter {
-  bool centerstate = true;
+int centerstate = 1;
 
   SpleenPainter({
     required this.centerstate,
@@ -1425,10 +1872,12 @@ class SpleenPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    Color centercolor = Colors.brown;
-    //PaintingStyle centerstyle = PaintingStyle.fill;
+    Color centercolor = Colors.yellow;
+    //AA8B00
+    //Color centercolor = Color(0xffaa8b00);
 
-    centerstate ? centercolor = Colors.brown : centercolor = Colors.white;
+    //centerstate ? centercolor = Colors.yellow : centercolor = Colors.green;
+    centercolor = setCenterColor(centerstate);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1449,7 +1898,7 @@ class SpleenPainter extends CustomPainter {
 }
 
 class SolarPainter extends CustomPainter {
-  bool centerstate = true;
+int centerstate = 1;
 
   SolarPainter({
     required this.centerstate,
@@ -1457,10 +1906,11 @@ class SolarPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    Color centercolor = Colors.brown;
+    Color centercolor = Colors.blue;
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
-    centerstate ? centercolor = Colors.brown : centercolor = Colors.white;
+    //centerstate ? centercolor = Colors.blue : centercolor = Colors.green;
+    centercolor = setCenterColor(centerstate);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1481,7 +1931,7 @@ class SolarPainter extends CustomPainter {
 }
 
 class HeartPainter extends CustomPainter {
-  bool centerstate = true;
+int centerstate = 1;
 
   HeartPainter({
     required this.centerstate,
@@ -1489,10 +1939,12 @@ class HeartPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    Color centercolor = Colors.red;
+    Color centercolor = Colors.blue;
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
-    centerstate ? centercolor = Colors.red : centercolor = Colors.white;
+    //centerstate ? centercolor = Colors.blue : centercolor = Colors.green;
+    centercolor = setCenterColor(centerstate);
+    //print (centerstate);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1515,7 +1967,7 @@ class HeartPainter extends CustomPainter {
 class VerticalGatePainter extends CustomPainter {
   int gatestate = 0;
   // gate type
-  // 0 - undefined , 1 - personality, 2 - design, 3 - both, 4 - transit
+  // 0 - undefined , 1 - design, 2 - personality, 3 - both, 4 - transit
   VerticalGatePainter({required this.gatestate});
 
   @override
@@ -1523,43 +1975,20 @@ class VerticalGatePainter extends CustomPainter {
     const p1 = Offset(0, 0);
     final p2 = Offset(0, size.height);
 
-    Color gatecolor1 = Colors.white;
-    Color gatecolor2 = Colors.white;
+    //Color gatecolor1 = Colors.green;
+    //Color gatecolor2 = Colors.green;
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
-    switch (gatestate) {
-      case 0:
-        gatecolor1 = Colors.white;
-        gatecolor2 = Colors.white;
-        break;
-      case 1:
-        gatecolor1 = Colors.red;
-        gatecolor2 = Colors.red;
-        break;
-      case 2:
-        gatecolor1 = Colors.black;
-        gatecolor2 = Colors.black;
-        break;
-      case 3:
-        gatecolor1 = Colors.red;
-        gatecolor2 = Colors.black;
-        break;
-      case 4:
-        gatecolor1 = Color.alphaBlend(Colors.red, Colors.black);
-        gatecolor2 = Colors.blue;
-        break;
-      default:
-        gatecolor1 = Colors.pink;
-        gatecolor2 = Colors.pink;
-        break;
-    }
+    List<Color> gateColorsList = [];
+    gateColorsList = setGateColor(gatestate);
 
     Paint paint = Paint()
       ..strokeWidth = 6
       ..shader = ui.Gradient.linear(
           const Offset(0, 4), // center
           const Offset(1, 4), // radius
-          [gatecolor1, gatecolor2],
+          //[gatecolor1, gatecolor2],
+          gateColorsList,
           [0.5, 0.5],
           TileMode.clamp);
 
@@ -1584,43 +2013,22 @@ class HorizontalGatePainter extends CustomPainter {
     const p1 = Offset(0, 5);
     final p2 = Offset(size.width, 5);
 
-    Color gatecolor1 = Colors.white;
-    Color gatecolor2 = Colors.white;
+    //Color gatecolor1 = Colors.green;
+    ///Color gatecolor2 = Colors.green;
+
+    List<Color> gateColorsList = [];
+    gateColorsList = setGateColor(gatestate);
+
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
-    switch (gatestate) {
-      case 0:
-        gatecolor1 = Colors.white;
-        gatecolor2 = Colors.white;
-        break;
-      case 1:
-        gatecolor1 = Colors.red;
-        gatecolor2 = Colors.red;
-        break;
-      case 2:
-        gatecolor1 = Colors.black;
-        gatecolor2 = Colors.black;
-        break;
-      case 3:
-        gatecolor1 = Colors.red;
-        gatecolor2 = Colors.black;
-        break;
-      case 4:
-        gatecolor1 = Color.alphaBlend(Colors.red, Colors.black);
-        gatecolor2 = Colors.blue;
-        break;
-      default:
-        gatecolor1 = Colors.pink;
-        gatecolor2 = Colors.pink;
-        break;
-    }
 
     Paint paint = Paint()
       ..strokeWidth = 6
       ..shader = ui.Gradient.linear(
           const Offset(0, 4), // center
           const Offset(1, 4), // radius
-          [gatecolor1, gatecolor2],
+          //[gatecolor1, gatecolor2],
+          gateColorsList,
           [0.5, 0.5],
           TileMode.clamp);
 
@@ -1632,6 +2040,86 @@ class HorizontalGatePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+setGateColor (int finalgatestate){
+  //int gatestate = 0;
+
+  List<Color> gatecolorlist = [Colors.green, Colors.green];
+
+  switch (finalgatestate) {
+    case 0:
+      gatecolorlist[0] = Colors.green;
+      gatecolorlist[1] = Colors.green;
+      break;
+    case 1:
+      gatecolorlist[0] = Colors.red;
+      gatecolorlist[1] = Colors.red;
+      break;
+    case 2:
+      gatecolorlist[0] = Colors.blue;
+      gatecolorlist[1] = Colors.blue;
+      break;
+    case 3:
+      gatecolorlist[0] = Colors.blue;
+      gatecolorlist[1] = Colors.red;
+      break;
+    case 4:
+      gatecolorlist[0] = Colors.yellow;
+      gatecolorlist[1] = Colors.yellow;
+      break;
+    case 5:
+      gatecolorlist[0] = Colors.black;
+      gatecolorlist[1] = Colors.black;
+      break;
+    case 6:
+      gatecolorlist[0] = Colors.white;
+      gatecolorlist[1] = Colors.white;
+      break;
+    case 7:
+      gatecolorlist[0] = Colors.white;
+      gatecolorlist[1] = Colors.black;
+      break;
+    default:
+      gatecolorlist[0] = Colors.pink;
+      gatecolorlist[1] = Colors.pink;
+      break;
+  }
+
+  return gatecolorlist;
+}
+
+setCenterColor (int finalcenterstate){
+  //int gatestate = 0;
+
+  List<Color> centercolorlist = [Colors.black, Colors.red, Colors.yellow, Colors.green, Colors.blue, Colors.white];
+  Color centercolor = Colors.green;
+
+  switch (finalcenterstate) {
+    case 0:
+      centercolor = centercolorlist[0]; // green
+      break;
+    case 1:
+      centercolor = centercolorlist[1];
+      break;
+    case 2:
+      centercolor = centercolorlist[2];
+      break;
+    case 3:
+      centercolor = centercolorlist[3]; // black
+      break;
+    case 4:
+      centercolor = centercolorlist[4];
+      break;
+    case 5:
+      centercolor = centercolorlist[5];
+      break;
+    default:
+      centercolor = Colors.pink;
+      break;
+  }
+
+  return centercolor;
 }
 
 // end hd chart

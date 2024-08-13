@@ -3,8 +3,7 @@ import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 
 class HDServices {
-  static List<HDChannel> getHDChannels(
-      List<Hexagram> combinedPlanetsList) {
+  static List<HDChannel> getHDChannels(List<Hexagram> combinedPlanetsList) {
     List<String> channelidList = [];
     List<int> uniquegatesList = [];
     Set<int> setgates;
@@ -20,7 +19,6 @@ class HDServices {
     for (int i = 0; combinedPlanetsList.length > i; i++) {
       uniquegatesList.add(combinedPlanetsList[i].gate!);
     }
-
 
     setgates = uniquegatesList.toSet();
     uniquegatesList = setgates.toList();
@@ -128,49 +126,242 @@ class HDServices {
     return hdchannels;
   }
 
-  static List<String> getHDDefinedCenters(List<HDChannel> channelids) {
-    List<String> centers = [];
+  static List<hdCenter> getHDCenters(List<HDChannel> channelids) {
+    List<hdCenter> centers = [];
+
+    hdCenter headcenter = hdCenter(),
+        ajnacenter = hdCenter(),
+        throatcenter = hdCenter(),
+        selfcenter = hdCenter(),
+        heartcenter = hdCenter(),
+        spleencenter = hdCenter(),
+        sacralcenter = hdCenter(),
+        solarcenter = hdCenter(),
+        rootcenter = hdCenter();
+    //List<bool> centerslist = List.filled(9, false, growable: false);;
+    //head 0, ajna 1, throat 2, self 3, heart 4 , spleen 5, sacral 6, solar 7, root 8
     //int _channelidx;
-    Set<String> centersset;
+    //Set<String> centersset;
+
+    headcenter.name = 'head';
+    ajnacenter.name = 'ajna';
+    throatcenter.name = 'throat';
+    selfcenter.name = 'self';
+    heartcenter.name = 'heart';
+    spleencenter.name = 'spleen';
+    sacralcenter.name = 'sacral';
+    solarcenter.name = 'solar';
+    rootcenter.name = 'root';
+
+    headcenter.state = 3;
+    ajnacenter.state = 3;
+    throatcenter.state = 3;
+    selfcenter.state = 3;
+    heartcenter.state = 3;
+    spleencenter.state = 3;
+    sacralcenter.state = 3;
+    solarcenter.state = 3;
+    rootcenter.state = 3;
 
     if (channelids.isNotEmpty) {
       for (int i = 0; channelids.length > i; i++) {
-        centers.add(channelids[i].firstcenter!);
-        centers.add(channelids[i].secondcenter!);
+
+        switch (channelids[i].coin) {
+          case 'silence':
+            if (channelids[i].firstcenter! == 'sacral') {
+              sacralcenter.state = 1;
+              switch (channelids[i].secondcenter!) {
+                case 'root':
+                  rootcenter.state = 1;
+                  break;
+                case 'spleen':
+                  spleencenter.state = 1;
+                  break;
+                case 'self':
+                  selfcenter.state = 1;
+                  break;
+                case 'throat':
+                  throatcenter.state = 1;
+                  break;
+                default:
+                  break;
+              }
+            } else {
+              sacralcenter.state = 1;
+              solarcenter.state = 1;
+            }
+            break;
+          case 'breath':
+            switch (channelids[i].firstcenter!) {
+              case 'solar':
+                if (solarcenter.state == 2) {
+                  if (channelids[i].secondcenter == 'heart') {
+                    if (heartcenter.state == 3) {
+                      heartcenter.state == 2;
+                    }
+                  } else {
+                    if (rootcenter.state == 3) {
+                      heartcenter.state == 2;
+                    }
+                  }
+                }
+                else if (solarcenter.state == 3) {
+                  solarcenter.state = 2;
+                }
+                break;
+              case 'spleen':
+                if (spleencenter.state == 2) {
+                  switch (channelids[i].secondcenter!) {
+                    case 'root':
+                      if (rootcenter.state == 3) {
+                        rootcenter.state = 2;
+                      }
+                      break;
+                    case 'heart':
+                      if (heartcenter.state == 3) {
+                        heartcenter.state = 2;
+                      }
+                      break;
+                    case 'self':
+                      if (selfcenter.state == 3) {
+                        selfcenter.state = 2;
+                      }
+                      break;
+                    case 'throat':
+                      if (throatcenter.state == 3) {
+                        selfcenter.state = 2;
+                      }
+                      break;
+                    default:
+                      break;
+                  }
+                }
+                else if (spleencenter.state == 3) {
+                  spleencenter.state = 2;
+                  switch (channelids[i].secondcenter!) {
+                    case 'root':
+                      if (rootcenter.state == 3) {
+                        rootcenter.state = 2;
+                      }
+                      break;
+                    case 'heart':
+                      if (heartcenter.state == 3) {
+                        heartcenter.state = 2;
+                      }
+                      break;
+                    case 'self':
+                      if (selfcenter.state == 3) {
+                        selfcenter.state = 2;
+                      }
+                      break;
+                    case 'throat':
+                      if (throatcenter.state == 3) {
+                        selfcenter.state = 2;
+                      }
+                      break;
+                    default:
+                      break;
+                  }
+                }
+                break;
+              case 'heart':
+                if (heartcenter.state == 2) {
+                  if (selfcenter.state == 3){
+                    selfcenter.state = 2;
+                  }
+                }
+                else if (heartcenter.state == 3) {
+                    heartcenter.state = 2;
+                    if (selfcenter.state == 3){
+                      selfcenter.state = 2;
+                    }
+                }
+                break;
+              case 'self':
+                if (selfcenter.state == 2) {
+                  if (throatcenter.state == 3){
+                    throatcenter.state = 2;
+                  }
+                }
+                else if (selfcenter.state == 3) {
+                  selfcenter.state = 2;
+                  if (throatcenter.state == 3){
+                    throatcenter.state = 2;
+                  }
+                }
+                break;
+              case 'throat':
+                if (throatcenter.state != 3) {
+                    ajnacenter.state = 2;
+                }
+                else if (throatcenter.state == 3) {
+                  throatcenter.state = 2;
+                    ajnacenter.state = 2;
+                }
+                break;
+              case 'ajna':
+                if (ajnacenter.state == 2) {
+                    headcenter.state = 2;
+                }
+                else if (ajnacenter.state == 3) {
+                  ajnacenter.state = 2;
+                    headcenter.state = 2;
+                }
+                break;
+              default:
+                break;
+            }
+            break;
+          case 'complex':
+            switch (channelids[i].firstcenter!) {
+              case 'solar':
+                if (solarcenter.state == 3) {
+                  solarcenter.state = 4;
+                  if (throatcenter.state! != 1) {
+                    throatcenter.state = 4;
+                  }
+                }
+                break;
+              case 'heart':
+                if (heartcenter.state == 3) {
+                  heartcenter.state = 4;
+                  if (throatcenter.state! > 1 && throatcenter.state! < 4) {
+                    throatcenter.state = 4;
+                  }
+                }
+                break;
+              default:
+                break;
+            }
+            break;
+          default:
+            break;
+        }
+
+        //centers.add(channelids[i].firstcenter!);
+
+        //head ajna throat self heart spleen sacral solar root
+
+        //centers.add(channelids[i].secondcenter!);
       }
-      centersset = centers.toSet();
-      centers = centersset.toList();
+      //centersset = centers.toSet();
+      //centers = centersset.toList();
     }
+
+
+    centers = [
+      headcenter,
+      ajnacenter,
+      throatcenter,
+      selfcenter,
+      heartcenter,
+      spleencenter,
+      sacralcenter,
+      solarcenter,
+      rootcenter
+    ];
+
     return centers;
-  }
-
-  static List<String> getHDDefinedFears(centers) {
-    List<String> fears = [];
-    List<String> fearsSentence =
-        List<String>.filled(3, 'FEAR', growable: false);
-
-    if (centers.contains('spleen')) {
-      fears.add('FEAR');
-      fearsSentence[0] = 'Fear turns Physical Awareness';
-    } else {
-      fearsSentence[0] = 'No Fear turns Physical Awareness';
-    }
-
-    if (centers.contains('ajna')) {
-      fears.add('ANXIETY');
-      fearsSentence[1] = 'Anxiety turns Mental Awareness';
-    } else {
-      fearsSentence[1] = 'No Anxiety turns Mental Awareness';
-    }
-
-    if (centers.contains('solar')) {
-      fears.add('NERVOUSNESS');
-      fearsSentence[2] = 'Nervousness turns Emotional Awareness';
-    } else {
-      fearsSentence[2] = 'No Nervousness turns Emotional Awareness';
-    }
-
-    return fearsSentence;
   }
 
   static List<String> getSelfReminder() {
@@ -188,7 +379,17 @@ class HDServices {
   }
 
   static HumanDesign getHDBasicData(List<HDChannel> hdchannels) {
-    List<String> hdbasicdata = [], centers = [], channelsList = [];
+    List<String> hdbasicdata = [], channelsList = [];
+    List<hdCenter> centers = [];
+    hdCenter headcenter = hdCenter(),
+        ajnacenter = hdCenter(),
+        throatcenter = hdCenter(),
+        selfcenter = hdCenter(),
+        heartcenter = hdCenter(),
+        spleencenter = hdCenter(),
+        sacralcenter = hdCenter(),
+        solarcenter = hdCenter(),
+        rootcenter = hdCenter();
 
     HumanDesign hddata = HumanDesign();
 
@@ -203,7 +404,16 @@ class HDServices {
         coinname = '';
 
     //hdchannels = getHDChannels(personalityplanets, designplanets);
-    centers = getHDDefinedCenters(hdchannels);
+    centers = getHDCenters(hdchannels);
+    headcenter = centers[0];
+    ajnacenter = centers[1];
+    throatcenter = centers[2];
+    selfcenter = centers[3];
+    heartcenter = centers[4];
+    spleencenter = centers[5];
+    sacralcenter = centers[6];
+    solarcenter = centers[7];
+    rootcenter = centers[8];
 
     for (int i = 0; hdchannels.length > i; i++) {
       channelid = hdchannels[i].id!;
@@ -212,26 +422,33 @@ class HDServices {
 
     // first set reflector
     // no channels
-    if (centers.isEmpty) {
+    //if (centers.isEmpty) {
+    if (hdchannels.isEmpty) {
       type = hdtypesList.last;
       authority = hdauthority.last;
-    } else if (centers.contains('solar')) {
+      //} else if (centers.contains('solar')) {
+    } else if (solarcenter.state != 3) {
       //authority = 'emotional';
       authority = hdauthority[0];
-      if (centers.contains('sacral')) {
+      //if (centers.contains('sacral')) {
+      if (sacralcenter.state != 3) {
         type = hdtypesList[2];
       }
-    } else if (centers.contains('sacral')) {
+    //} else if (centers.contains('sacral')) {
+    } else if (sacralcenter.state != 3) {
       //authority = 'sacral';
       authority = hdauthority[1];
       type = hdtypesList[2];
-    } else if (centers.contains('spleen')) {
+    //} else if (centers.contains('spleen')) {
+    } else if (spleencenter.state != 3) {
       //authority = 'splenic';
       authority = hdauthority[2];
-    } else if (centers.contains('heart')) {
+    //} else if (centers.contains('heart')) {
+    } else if (heartcenter.state != 3) {
       //authority = 'ego';
       authority = hdauthority[3];
-    } else if (centers.contains('self')) {
+    //} else if (centers.contains('self')) {
+    } else if (selfcenter.state != 3) {
       //authority = 'self';
       authority = hdauthority[5];
       type = hdtypesList[3];
@@ -241,11 +458,14 @@ class HDServices {
       type = hdtypesList[3];
     }
 
-    if (centers.isEmpty) {
+    //if (centers.isEmpty) {
+    if (hdchannels.isEmpty) {
       type = hdtypesList[4];
     } else {
-      if (!centers.contains('throat')) {
-        if (!centers.contains('sacral')) {
+      //if (!centers.contains('throat')) {
+      if (throatcenter.state == 3) {
+        //if (!centers.contains('sacral')) {
+        if (sacralcenter.state != 3) {
           type = hdtypesList[3];
         } else {
           type = hdtypesList[2];
@@ -281,7 +501,8 @@ class HDServices {
         }
       }
 
-      if (centers.contains('sacral')) {
+      //if (centers.contains('sacral')) {
+      if (sacralcenter.state == 1) {
         //if (type == 'manifestor') {
         if (type == hdtypesList[0]) {
           //type = 'manifesting generator';
@@ -312,11 +533,12 @@ class HDServices {
         }
       }
 
-      if (centers.contains('sacral')) {
+      //if (centers.contains('sacral')) {
+      if (sacralcenter.state == 1) {
         if (type != hdtypesList[1]) {
           type = hdtypesList[2];
         }
-      //} else if (type != 'manifestor') {
+        //} else if (type != 'manifestor') {
       } else if (type != hdtypesList[0]) {
         type = hdtypesList[3];
       }
@@ -330,7 +552,7 @@ class HDServices {
       if (authority == hdauthority[0]) {
         //strategy = 'inform with emotional clarity';
         strategy = hdstrategyList[0];
-      //} else if (authority == 'splenic') {
+        //} else if (authority == 'splenic') {
       } else if (authority == hdauthority[2]) {
         //strategy = 'inform spontaneously';
         strategy = hdstrategyList[1];
@@ -338,7 +560,8 @@ class HDServices {
         //strategy = 'inform at will';
         strategy = hdstrategyList[2];
       }
-    } else if (centers.contains('sacral')) {
+    //} else if (centers.contains('sacral')) {
+    } else if (sacralcenter.state == 1) {
       //if (authority == 'emotional') {
       if (authority == hdauthority[0]) {
         //strategy = 'respond with emotional clarity';
@@ -352,17 +575,17 @@ class HDServices {
       if (authority == hdauthority[0]) {
         //strategy = 'recognize invitation with emotional clarity';
         strategy = hdstrategyList[5];
-      //} else if (authority == 'splenic') {
+        //} else if (authority == 'splenic') {
       } else if (authority == hdauthority[2]) {
         //strategy = 'recognize spontaneous invitation';
         strategy = hdstrategyList[6];
-      //} else if (authority == 'ego') {
+        //} else if (authority == 'ego') {
       } else if (authority == hdauthority[3]) {
         //print(authority);
         //strategy = 'recognize invitation to prove yourself';
         strategy = hdstrategyList[7];
         authority = hdauthority[4];
-      //} else if (authority == 'self') {
+        //} else if (authority == 'self') {
       } else if (authority == hdauthority[5]) {
         //strategy = 'recognize invitation to express who you are';
         strategy = hdstrategyList[8];

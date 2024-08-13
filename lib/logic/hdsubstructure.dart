@@ -1,7 +1,9 @@
+import 'package:decimal/decimal.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/hebrew/lists_he.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
+import 'package:finallyicanlearn/models/rtlists.dart';
 
 Hexagram getGateStructure(double planetlongitude) {
   String name = '',
@@ -34,6 +36,11 @@ Hexagram getGateStructure(double planetlongitude) {
   //_decimalDegrees = _degrees + _minutes / 60 + _seconds / 3600;
   //_planetlongitude += _decimalDegrees;
 
+  //print ('decimalhdsub: ${gateStructure.gate!}');
+  //print (Decimal.parse(((planetlongitude).toString())));
+  //print ('normal:');
+  //print (posNorthnode.longitude);
+
   planetlongitude += 58;
 
   if (planetlongitude > 360) {
@@ -61,7 +68,7 @@ Hexagram getGateStructure(double planetlongitude) {
   base = ((exactBase % 5) + 1).floor();
 
   // get name of hexagram
-  name = hexagramNames[gate];
+  name = hdgates65lst[gate];
   hexfontindex = fontHexNumbersList.indexOf(gate);
   hex = fontHexOrderList[hexfontindex];
 
@@ -102,7 +109,6 @@ Hexagram getGateStructure(double planetlongitude) {
   gateStructure.gatelinecolortone = gatelinecolortone;
   gateStructure.gatelinecolortonebase = gatelinecolortonebase;
   gateStructure.longitude = gatelongitude;
-
 
   return gateStructure;
 }
