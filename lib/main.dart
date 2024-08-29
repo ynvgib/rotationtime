@@ -183,6 +183,20 @@ class RotateHome extends StatelessWidget {
                     ),
                   ),
               ),
+              Container(
+                //height: MediaQuery.of(context).size.height / 2,
+                //width: MediaQuery.of(context).size.width * 0.95,
+                height: 200,
+                width: 300,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                        //'assets/coins/dog.png',
+                        'assets/camog/dogswoofgoof.gif',
+                      ),
+                      opacity: 1.0),
+                ),
+              ),
               const Divider(
                 color: Colors.black87,
                 thickness: 5,
@@ -253,6 +267,7 @@ class RotateHome extends StatelessWidget {
                     ),
                   ),
               ),
+
               const Divider(
                 color: Colors.black87,
                 thickness: 5,

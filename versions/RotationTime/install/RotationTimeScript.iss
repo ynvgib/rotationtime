@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "RotationTime"
-#define MyAppVersion "34.20"
+#define MyAppVersion "40.1"
 #define MyAppPublisher "beidontknow"
 #define MyAppURL "https://rotation-time.web.app/"
 #define MyAppExeName "finallyicanlearn.exe"

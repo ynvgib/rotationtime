@@ -194,19 +194,29 @@ class HDServices {
           case 'breath':
             switch (channelids[i].firstcenter!) {
               case 'solar':
-                if (solarcenter.state == 2) {
+                if (solarcenter.state != 3) {
                   if (channelids[i].secondcenter == 'heart') {
                     if (heartcenter.state == 3) {
-                      heartcenter.state == 2;
+                      heartcenter.state = 2;
                     }
                   } else {
                     if (rootcenter.state == 3) {
-                      heartcenter.state == 2;
+                      rootcenter.state = 2;
                     }
                   }
                 }
-                else if (solarcenter.state == 3) {
+                //else if (solarcenter.state == 3) {
+                else {
                   solarcenter.state = 2;
+                  if (channelids[i].secondcenter == 'heart') {
+                    if (heartcenter.state == 3) {
+                      heartcenter.state = 2;
+                    }
+                  } else {
+                    if (rootcenter.state == 3) {
+                      rootcenter.state = 2;
+                    }
+                  }
                 }
                 break;
               case 'spleen':
@@ -256,7 +266,7 @@ class HDServices {
                       break;
                     case 'throat':
                       if (throatcenter.state == 3) {
-                        selfcenter.state = 2;
+                        throatcenter.state = 2;
                       }
                       break;
                     default:
@@ -265,7 +275,7 @@ class HDServices {
                 }
                 break;
               case 'heart':
-                if (heartcenter.state == 2) {
+                if (heartcenter.state == 2 || heartcenter.state == 4) {
                   if (selfcenter.state == 3){
                     selfcenter.state = 2;
                   }
@@ -338,16 +348,8 @@ class HDServices {
             break;
         }
 
-        //centers.add(channelids[i].firstcenter!);
-
-        //head ajna throat self heart spleen sacral solar root
-
-        //centers.add(channelids[i].secondcenter!);
       }
-      //centersset = centers.toSet();
-      //centers = centersset.toList();
     }
-
 
     centers = [
       headcenter,
@@ -361,6 +363,10 @@ class HDServices {
       rootcenter
     ];
 
+    //for (int i = 0 ; centers.length > i; i++){
+    //  print (centers[i].name);
+    //  print (centers[i].state);
+    //}
     return centers;
   }
 

@@ -67,8 +67,8 @@ Widget build4PopUp(BuildContext context) {
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (BuildContext context) => build4rtPop(
-                      context, minmax4lst, titles4[2]),
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, minmax4lst, titles4[2]),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
@@ -1010,7 +1010,7 @@ Widget buildWalletPopUp(BuildContext context, int walletindex) {
       //child: Text('Wallet: $wallet\n'
       child: Text(' ארנק $walletindex\n'
           //'${LineSentenceList[wallet]}'),
-          '${idkNewHebrewList[walletindex]}'),
+          '${rtwallets65lst_heb[walletindex]}'),
     ),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.4,
@@ -1031,7 +1031,7 @@ Widget buildWalletPopUp(BuildContext context, int walletindex) {
                 ),
                 const SizedBox(width: 5),
                 Text(
-                  idonotknowlinesList[walletindex * 7 + index + 1],
+                  rtmix390lstHeb[walletindex * 7 + index + 1],
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 15),
@@ -1085,7 +1085,8 @@ Widget buildGodheadPopUp(BuildContext context, int ghidx) {
   );
 }
 
-Widget build4rtPop(BuildContext context, List<String> build4lst, String title4) {
+Widget build4rtPop(
+    BuildContext context, List<String> build4lst, String title4) {
   return AlertDialog(
     title: Text("4: $title4"),
     content: SizedBox(
@@ -1101,7 +1102,7 @@ Widget build4rtPop(BuildContext context, List<String> build4lst, String title4) 
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                (build4lst.length - index).toString(),
+                  (build4lst.length - index).toString(),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 15),
@@ -1132,8 +1133,8 @@ Widget build4rtPop(BuildContext context, List<String> build4lst, String title4) 
   );
 }
 
-
-Widget build64rtPop(BuildContext context, List<String> build64lst, String title64) {
+Widget build64rtPop(
+    BuildContext context, List<String> build64lst, String title64) {
   return AlertDialog(
     title: Text("64: $title64"),
     content: SizedBox(
@@ -1250,7 +1251,7 @@ Widget build384rtPlanetPop(BuildContext context) {
           padding: const EdgeInsets.all(5.0),
           itemCount: 384,
           itemBuilder: (context, index) {
-            int idxline = index*3;
+            int idxline = index * 3;
             return ListTile(
               title: Flex(
                 direction: Axis.vertical,
@@ -1259,8 +1260,9 @@ Widget build384rtPlanetPop(BuildContext context) {
                       minRadius: 13,
                       maxRadius: 13,
                       backgroundColor: Colors.transparent,
-                      foregroundImage: AssetImage(hdlinesplanet[idxline+2])),
-                  Text(hdlinesplanet[idxline],
+                      foregroundImage: AssetImage(hdlinesplanet[idxline + 2])),
+                  Text(
+                    hdlinesplanet[idxline],
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 15),
@@ -1269,7 +1271,7 @@ Widget build384rtPlanetPop(BuildContext context) {
                       minRadius: 13,
                       maxRadius: 13,
                       backgroundColor: Colors.transparent,
-                      foregroundImage: AssetImage(hdlinesplanet[idxline+1])),
+                      foregroundImage: AssetImage(hdlinesplanet[idxline + 1])),
                 ],
               ),
             );
@@ -1643,7 +1645,7 @@ class HeadPainter extends CustomPainter {
 }
 
 class AjnaPainter extends CustomPainter {
-int centerstate = 1;
+  int centerstate = 1;
 
   AjnaPainter({
     required this.centerstate,
@@ -1656,7 +1658,6 @@ int centerstate = 1;
 
     //centerstate ? centercolor = Colors.yellow : centercolor = Colors.green;
     centercolor = setCenterColor(centerstate);
-
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1678,7 +1679,7 @@ int centerstate = 1;
 }
 
 class ThroatPainter extends CustomPainter {
-int centerstate = 1;
+  int centerstate = 1;
 
   ThroatPainter({
     required this.centerstate,
@@ -1723,7 +1724,7 @@ int centerstate = 1;
 }
 
 class GPainter extends CustomPainter {
-int centerstate = 1;
+  int centerstate = 1;
 
   GPainter({
     required this.centerstate,
@@ -1773,7 +1774,7 @@ int centerstate = 1;
 }
 
 class SacralPainter extends CustomPainter {
-int centerstate = 1;
+  int centerstate = 1;
 
   SacralPainter({
     required this.centerstate,
@@ -1792,7 +1793,6 @@ int centerstate = 1;
 
     //centerstate ? centercolor = Colors.red : centercolor = Colors.green;
     centercolor = setCenterColor(centerstate);
-
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1818,7 +1818,7 @@ int centerstate = 1;
 }
 
 class RootPainter extends CustomPainter {
-int centerstate = 1;
+  int centerstate = 1;
 
   RootPainter({
     required this.centerstate,
@@ -1864,7 +1864,7 @@ int centerstate = 1;
 }
 
 class SpleenPainter extends CustomPainter {
-int centerstate = 1;
+  int centerstate = 1;
 
   SpleenPainter({
     required this.centerstate,
@@ -1898,7 +1898,7 @@ int centerstate = 1;
 }
 
 class SolarPainter extends CustomPainter {
-int centerstate = 1;
+  int centerstate = 1;
 
   SolarPainter({
     required this.centerstate,
@@ -1931,7 +1931,7 @@ int centerstate = 1;
 }
 
 class HeartPainter extends CustomPainter {
-int centerstate = 1;
+  int centerstate = 1;
 
   HeartPainter({
     required this.centerstate,
@@ -2021,7 +2021,6 @@ class HorizontalGatePainter extends CustomPainter {
 
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
-
     Paint paint = Paint()
       ..strokeWidth = 6
       ..shader = ui.Gradient.linear(
@@ -2042,7 +2041,7 @@ class HorizontalGatePainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
 
-setGateColor (int finalgatestate){
+setGateColor(int finalgatestate) {
   //int gatestate = 0;
 
   List<Color> gatecolorlist = [Colors.green, Colors.green];
@@ -2089,10 +2088,17 @@ setGateColor (int finalgatestate){
   return gatecolorlist;
 }
 
-setCenterColor (int finalcenterstate){
+setCenterColor(int finalcenterstate) {
   //int gatestate = 0;
 
-  List<Color> centercolorlist = [Colors.black, Colors.red, Colors.yellow, Colors.green, Colors.blue, Colors.white];
+  List<Color> centercolorlist = [
+    Colors.black,
+    Colors.red,
+    Colors.yellow,
+    Colors.green,
+    Colors.blue,
+    Colors.white
+  ];
   Color centercolor = Colors.green;
 
   switch (finalcenterstate) {
@@ -2129,3 +2135,99 @@ launchUrl(url) async {
     throw Exception('Could not launch $url');
   }
 }
+
+class OvalContainer extends StatelessWidget {
+  const OvalContainer({
+    Key? key,
+    this.width = 35,
+    this.height = 70,
+    this.colorin = Colors.transparent,
+    required this.colorout,
+  }) : super(key: key);
+  final double width;
+  final double height;
+  final Color colorin, colorout;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        color: colorin,
+        border: Border.all(color: colorout, width: 3.0),
+        borderRadius: new BorderRadius.all(Radius.elliptical(90, 60)),
+      ),
+    );
+  }
+}
+
+class EvolutionContainer extends StatelessWidget {
+  const EvolutionContainer(
+      {Key? key,
+      this.width = 90,
+      this.height = 90,
+      this.colorinsilence = Colors.red,
+      this.colorinbreath = Colors.yellow,
+      this.colorinsimple = Colors.green,
+      this.colorincomplex = Colors.green,
+      this.coloroutsilence = Colors.red,
+      this.coloroutbreath = Colors.yellow,
+      this.coloroutsimple = Colors.green,
+      this.coloroutcomplex = Colors.blue})
+      : super(key: key);
+
+  final double width;
+  final double height;
+  final Color colorinsilence,
+      colorinbreath,
+      colorinsimple,
+      colorincomplex,
+      coloroutsilence,
+      coloroutbreath,
+      coloroutsimple,
+      coloroutcomplex;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      child: Stack(
+        children: [
+          Container(
+              height: height - 5,
+              width: width - 5,
+              child: Flex(
+                  direction: Axis.horizontal,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    OvalContainer(colorout: coloroutsilence, colorin: colorinsilence),
+                    SizedBox(width: 10),
+                    OvalContainer(
+                        colorout: coloroutcomplex, colorin: colorincomplex),
+                  ])),
+          RotationTransition(
+            turns: const AlwaysStoppedAnimation(90 / 360),
+            child: Container(
+                height: height - 5,
+                width: width - 5,
+                child: Flex(
+                    direction: Axis.horizontal,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      OvalContainer(
+                          colorout: coloroutsimple,
+                          colorin: colorinsimple.withOpacity(0.85)),
+                      SizedBox(width: 10),
+                      OvalContainer(
+                          colorout: coloroutbreath,
+                          colorin: colorinbreath.withOpacity(0.85)),
+                    ])),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+// zodiac

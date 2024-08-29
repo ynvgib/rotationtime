@@ -19,9 +19,9 @@ class RotateSimple extends StatefulWidget {
 }
 
 class _RotateSimpleState extends State<RotateSimple> {
-  final CarouselController _controllerone = CarouselController(),
-      _controllerplant = CarouselController(),
-      _controllerimages = CarouselController();
+  final CarouselSliderController _controllerone = CarouselSliderController(),
+      _controllerplant = CarouselSliderController(),
+      _controllerimages = CarouselSliderController();
 
   final rtScrollController = ScrollController();
 
@@ -30,7 +30,8 @@ class _RotateSimpleState extends State<RotateSimple> {
       _controllerichingtext = TextEditingController(),
       _controllerlettext = TextEditingController(),
       _controllernumtext = TextEditingController(),
-      _controllercointext = TextEditingController();
+      _controllercointext = TextEditingController(),
+      _controllercoinnumber = TextEditingController();
 
   //final String _title = subtitles[3];
   //final String _title = subtitles_heb[3];
@@ -43,12 +44,14 @@ class _RotateSimpleState extends State<RotateSimple> {
       _textHexValueChange = 1,
       _fontindex = 0,
       _fonthexconverted = 0,
-      gatcolorstate = 0;
+      gatcolorstate = 0,
+  _currentevolution = 0;
   //_hexagramVal = 0;
 
-  final CarouselController _controllertop = CarouselController(),
-      _controllermid = CarouselController(),
-      _controllerbot = CarouselController();
+  final CarouselSliderController _controllertop = CarouselSliderController(),
+      _controllermid = CarouselSliderController(),
+      _controllerbot = CarouselSliderController(),
+      _controlEvolutionContainerSlider = CarouselSliderController();
 
   var _dropdownvalue = hexagramslist[1],
       _dropdowichingvalue = fontHexOrderList[0],
@@ -67,10 +70,15 @@ class _RotateSimpleState extends State<RotateSimple> {
       rootstate = 3,
       heartstate = 3,
       spleenstate = 3,
-      solarstate = 3;
+      solarstate = 3,
+      wallet = 1;
+
+  double screenwidth = 1, screenheight = 1;
 
   @override
   Widget build(BuildContext context) {
+    screenwidth = MediaQuery.of(context).size.width;
+    screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
           toolbarHeight: 40,
@@ -118,8 +126,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height / 8,
-                    width: MediaQuery.of(context).size.width / 4,
+                    height: screenheight / 8,
+                    width: screenwidth / 4,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/minmax/greenmin.png'),
@@ -129,8 +137,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                     ),
                   ),
                   Container(
-                    height: MediaQuery.of(context).size.height / 8,
-                    width: MediaQuery.of(context).size.width / 4,
+                    height: screenheight / 8,
+                    width: screenwidth / 4,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/minmax/greenmax.png'),
@@ -145,12 +153,24 @@ class _RotateSimpleState extends State<RotateSimple> {
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AutoSizeText('מיני מיקי',
+                  AutoSizeText('פשוט מיקי',
                       textAlign: TextAlign.center,
                       minFontSize: 35,
                       maxFontSize: 45,
                       style: TextStyle(color: Colors.green)),
                 ],
+              ),
+              Container(
+                height: screenheight / 2,
+                width: screenwidth * 0.95,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                        //'assets/coins/dog.png',
+                        'assets/camog/dogswoofgoof.gif',
+                      ),
+                      opacity: 1.0),
+                ),
               ),
               CircleAvatar(
                 backgroundColor: Colors.white,
@@ -174,7 +194,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
               ),
               SizedBox(
-                  width: MediaQuery.of(context).size.width / 0.8,
+                  width: screenwidth / 0.8,
                   child: AutoSizeTextField(
                     minLines: 1,
                     minFontSize: 15,
@@ -193,7 +213,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                     readOnly: false,
                   )),
               SizedBox(
-                  width: MediaQuery.of(context).size.width / 0.8,
+                  width: screenwidth / 0.8,
                   child: AutoSizeTextField(
                     minLines: 1,
                     minFontSize: 15,
@@ -330,8 +350,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                 constraints: BoxConstraints(
                   minHeight: 10,
                   minWidth: 10,
-                  maxHeight: MediaQuery.of(context).size.height * 0.2,
-                  maxWidth: MediaQuery.of(context).size.width * 0.5,
+                  maxHeight: screenheight * 0.2,
+                  maxWidth: screenwidth * 0.5,
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
@@ -353,8 +373,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                 constraints: BoxConstraints(
                   minHeight: 10,
                   minWidth: 10,
-                  maxHeight: MediaQuery.of(context).size.height * 0.2,
-                  maxWidth: MediaQuery.of(context).size.width * 0.5,
+                  maxHeight: screenheight * 0.2,
+                  maxWidth: screenwidth * 0.5,
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
@@ -376,8 +396,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                 constraints: BoxConstraints(
                   minHeight: 10,
                   minWidth: 10,
-                  maxHeight: MediaQuery.of(context).size.height * 0.2,
-                  maxWidth: MediaQuery.of(context).size.width * 0.5,
+                  maxHeight: screenheight * 0.2,
+                  maxWidth: screenwidth * 0.5,
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
@@ -1062,11 +1082,10 @@ class _RotateSimpleState extends State<RotateSimple> {
                                   onTap: () {
                                     setState(() {
                                       //heartstate = !heartstate;
-                                      if (heartstate < 5){
+                                      if (heartstate < 5) {
                                         heartstate++;
-                                      }
-                                      else{
-                                            heartstate = 0;
+                                      } else {
+                                        heartstate = 0;
                                       }
                                     });
                                   }),
@@ -1172,10 +1191,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                       onTap: () {
                                         setState(() {
                                           //headstate = !headstate;
-                                          if (headstate < 5){
+                                          if (headstate < 5) {
                                             headstate++;
-                                          }
-                                          else{
+                                          } else {
                                             headstate = 0;
                                           }
                                         });
@@ -1415,10 +1433,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                   onTap: () {
                                     setState(() {
                                       //ajnastate = !ajnastate;
-                                      if (ajnastate < 5){
+                                      if (ajnastate < 5) {
                                         ajnastate++;
-                                      }
-                                      else{
+                                      } else {
                                         ajnastate = 0;
                                       }
                                     });
@@ -1628,10 +1645,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                   onTap: () {
                                     setState(() {
                                       //throatstate = !throatstate;
-                                      if (throatstate < 5){
+                                      if (throatstate < 5) {
                                         throatstate++;
-                                      }
-                                      else{
+                                      } else {
                                         throatstate = 0;
                                       }
                                     });
@@ -1986,10 +2002,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                     onTap: () {
                                       setState(() {
                                         //gstate = !gstate;
-                                        if (gstate < 5){
+                                        if (gstate < 5) {
                                           gstate++;
-                                        }
-                                        else{
+                                        } else {
                                           gstate = 0;
                                         }
                                       });
@@ -2283,10 +2298,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                       onTap: () {
                                         setState(() {
                                           //sacralstate = !sacralstate;
-                                          if (sacralstate < 5){
+                                          if (sacralstate < 5) {
                                             sacralstate++;
-                                          }
-                                          else{
+                                          } else {
                                             sacralstate = 0;
                                           }
                                         });
@@ -2570,10 +2584,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                   onTap: () {
                                     setState(() {
                                       //rootstate = !rootstate;
-                                      if (rootstate < 5){
+                                      if (rootstate < 5) {
                                         rootstate++;
-                                      }
-                                      else{
+                                      } else {
                                         rootstate = 0;
                                       }
                                     });
@@ -2775,10 +2788,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                 onTap: () {
                                   setState(() {
                                     //solarstate = !solarstate;
-                                    if (solarstate < 5){
+                                    if (solarstate < 5) {
                                       solarstate++;
-                                    }
-                                    else{
+                                    } else {
                                       solarstate = 0;
                                     }
                                   });
@@ -2934,10 +2946,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                 onTap: () {
                                   setState(() {
                                     //spleenstate = !spleenstate;
-                                    if (spleenstate < 5){
+                                    if (spleenstate < 5) {
                                       spleenstate++;
-                                    }
-                                    else{
+                                    } else {
                                       spleenstate = 0;
                                     }
                                   });
@@ -3072,6 +3083,29 @@ class _RotateSimpleState extends State<RotateSimple> {
                         ),
                       ],
                     ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        width: 20,
+                        height: 20,
+                        margin: const EdgeInsets.only(top: 72, right: 180),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 3,
+                              color: Colors.black,
+                            ),
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.circular(15)),
+                        child: const AutoSizeText('I',
+                            textAlign: TextAlign.center,
+                            minFontSize: 6,
+                            maxFontSize: 10,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+
                     PositionedDirectional(
                       start: 10,
                       bottom: 4,
@@ -3159,9 +3193,196 @@ class _RotateSimpleState extends State<RotateSimple> {
                 color: Colors.green,
                 thickness: 5,
               ),
+              Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    child: const CircleAvatar(
+                      radius: 35,
+                      backgroundColor: Colors.transparent,
+                      foregroundImage: AssetImage(
+                        'assets/minmax/greenmin.png',
+                      ),
+                    ),
+                    onTap: (){
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            buildWalletPopUp(context, wallet),
+                      );
+                    },
+                  ),
+                  SizedBox(
+                      width: 60,
+                      height: 60,
+                      child: AutoSizeTextField(
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: '1',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          //contentPadding: EdgeInsets.only(left: 30),
+                        ),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 55.0,
+                          fontWeight: FontWeight.bold,
+                          //fontFamily: 'iChing',
+                        ),
+                        controller: _controllercoinnumber,
+                        readOnly: true,
+                      ),
+                    ),
+                ],
+              ),
+
+              // new wheel
+              Stack(
+                children: [
+                  CircleList(
+                    innerRadius: screenwidth / 60,
+                    initialAngle: 3.85,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    children: List.generate(12, (index) {
+                      return Container(
+                          width: 65,
+                          margin: const EdgeInsets.all(1),
+                          decoration: BoxDecoration(
+                            //color: revZodiacColorList[index],
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [
+                                //Colors.purple.shade900,
+                                //Colors.purple.shade100,
+                                revzodiacGradeColorlist[index * 2],
+                                revzodiacGradeColorlist[index * 2 + 1],
+                              ],
+                            ),
+                            image: DecorationImage(
+                              image: AssetImage(revZodiacList[index]),
+                              fit: BoxFit.scaleDown,
+                        ),
+                            shape: BoxShape.circle,
+                          ),
+                      );
+                    }),
+                  ),
+                  CircleList(
+                    innerRadius: screenwidth / 60 + 80,
+                    initialAngle: -0.8,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    children: List.generate(64, (index) {
+                      return Container(
+                        width: 35,
+                        margin: const EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                          color: reversedbotcoincolor[index],
+                          shape: BoxShape.circle,
+                        ),
+                      );
+                    }),
+                  ),
+                  CircleList(
+                    innerRadius: screenwidth / 60 + 110,
+                    initialAngle: -0.8,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    children: List.generate(64, (index) {
+                      return Container(
+                        width: 35,
+                        margin: const EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                          color: reversedmidcoincolor[index],
+                          shape: BoxShape.circle,
+                        ),
+                      );
+                    }),
+                  ),
+                  //external wheel
+                  CircleList(
+                    rotateMode: RotateMode.stopRotate,
+                    innerRadius: screenwidth / 60 + 145,
+                    initialAngle: -0.8,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    children: List.generate(64, (index) {
+                      return InkWell(
+                        child: Tooltip(
+                          message: reversedHexagramsWheel[index].toString(),
+                          textStyle: const TextStyle (fontSize: 15, color: Colors.white),
+                          child: Container(
+                            width: 20,
+                            margin: const EdgeInsets.all(1),
+                            decoration: BoxDecoration(
+                                color: reversedtopcoincolor[index],
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                    width: 0.5, color: Colors.black)),
+                            child: AutoSizeText(
+                                reversedHexagramsWheel[index].toString(),
+                                minFontSize: 8,
+                                maxFontSize: 12,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                        ),
+                        onTap: () {
+                          wallet = reversedHexagramsWheel[index];
+                          _controllercoinnumber.text = wallet.toString();
+                        },
+                      );
+                    }),
+                  ),
+                ],
+              ),
+              CircleList(
+                innerRadius: screenwidth / 10,
+                initialAngle: 3.85,
+                childrenPadding: 0.1,
+                origin: const Offset(0, 0),
+                children: List.generate(12, (index) {
+                  return Tooltip(
+                    message: revzodiacNameHeblist[index] + "\n" + revzodiacNamelist[index],
+                    textAlign: TextAlign.center,
+                    textStyle: const TextStyle (fontSize: 20, color: Colors.white,),
+                    child: Container(
+                      width: 90,
+                      margin: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        //color: revZodiacColorList[index],
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            //Colors.purple.shade900,
+                            //Colors.purple.shade100,
+                            revzodiacGradeColorlist[index * 2],
+                            revzodiacGradeColorlist[index * 2 + 1],
+                          ],
+                        ),
+                        image: DecorationImage(
+                          image: AssetImage(revZodiacList[index]),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  );
+                }),
+              ),
+              const Divider(
+                color: Colors.green,
+                thickness: 5,
+              ),
               Container(
-                height: MediaQuery.of(context).size.height / 8,
-                width: MediaQuery.of(context).size.width / 6,
+                height: screenheight / 8,
+                width: screenwidth / 6,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(newkithecoins[0]),
@@ -3174,7 +3395,7 @@ class _RotateSimpleState extends State<RotateSimple> {
               Stack(
                 children: [
                   CircleList(
-                    innerRadius: MediaQuery.of(context).size.width / 60,
+                    innerRadius: screenwidth / 60,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3190,7 +3411,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                     }),
                   ),
                   CircleList(
-                    innerRadius: MediaQuery.of(context).size.width / 12 + 10,
+                    innerRadius: screenwidth / 12 + 10,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3208,7 +3429,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                   //external wheel
                   CircleList(
                     rotateMode: RotateMode.stopRotate,
-                    innerRadius: MediaQuery.of(context).size.width / 7 + 20,
+                    innerRadius: screenwidth / 7 + 20,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3244,8 +3465,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ],
               ),
               Container(
-                height: MediaQuery.of(context).size.height / 8,
-                width: MediaQuery.of(context).size.width / 6,
+                height: screenheight / 8,
+                width: screenwidth / 6,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(newkithecoins[1]),
@@ -3257,7 +3478,7 @@ class _RotateSimpleState extends State<RotateSimple> {
               Stack(
                 children: [
                   CircleList(
-                    innerRadius: MediaQuery.of(context).size.width / 60,
+                    innerRadius: screenwidth / 60,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3273,7 +3494,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                     }),
                   ),
                   CircleList(
-                    innerRadius: MediaQuery.of(context).size.width / 12 + 10,
+                    innerRadius: screenwidth / 12 + 10,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3291,7 +3512,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                   //external wheel
                   CircleList(
                     rotateMode: RotateMode.stopRotate,
-                    innerRadius: MediaQuery.of(context).size.width / 7 + 20,
+                    innerRadius: screenwidth / 7 + 20,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3327,8 +3548,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ],
               ),
               Container(
-                height: MediaQuery.of(context).size.height / 8,
-                width: MediaQuery.of(context).size.width / 6,
+                height: screenheight / 8,
+                width: screenwidth / 6,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(newkithecoins[2]),
@@ -3340,7 +3561,7 @@ class _RotateSimpleState extends State<RotateSimple> {
               Stack(
                 children: [
                   CircleList(
-                    innerRadius: MediaQuery.of(context).size.width / 60,
+                    innerRadius: screenwidth / 60,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3356,7 +3577,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                     }),
                   ),
                   CircleList(
-                    innerRadius: MediaQuery.of(context).size.width / 12 + 10,
+                    innerRadius: screenwidth / 12 + 10,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3374,7 +3595,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                   //external wheel
                   CircleList(
                     rotateMode: RotateMode.stopRotate,
-                    innerRadius: MediaQuery.of(context).size.width / 7 + 20,
+                    innerRadius: screenwidth / 7 + 20,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3410,8 +3631,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ],
               ),
               Container(
-                height: MediaQuery.of(context).size.height / 8,
-                width: MediaQuery.of(context).size.width / 6,
+                height: screenheight / 8,
+                width: screenwidth / 6,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(newkithecoins[3]),
@@ -3423,7 +3644,7 @@ class _RotateSimpleState extends State<RotateSimple> {
               Stack(
                 children: [
                   CircleList(
-                    innerRadius: MediaQuery.of(context).size.width / 60,
+                    innerRadius: screenwidth / 60,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3439,7 +3660,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                     }),
                   ),
                   CircleList(
-                    innerRadius: MediaQuery.of(context).size.width / 12 + 10,
+                    innerRadius: screenwidth / 12 + 10,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3457,7 +3678,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                   //external wheel
                   CircleList(
                     rotateMode: RotateMode.stopRotate,
-                    innerRadius: MediaQuery.of(context).size.width / 7 + 20,
+                    innerRadius: screenwidth / 7 + 20,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3497,231 +3718,138 @@ class _RotateSimpleState extends State<RotateSimple> {
                 thickness: 5,
               ),
               // 64 coins wheel
-              Container(
-                //fit: BoxFit.scaleDown,
-                width: MediaQuery.of(context).size.width * 0.95,
-                height: MediaQuery.of(context).size.height * 0.95,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Stack(
-                    children: [
-                      CircleList(
-                        //innerRadius: MediaQuery.of(context).size.height / 6.2,
-                        innerRadius: MediaQuery.of(context).size.width * 0.18,
-                        initialAngle: -0.8,
-                        childrenPadding: 0.1,
-                        origin: const Offset(0, 0),
-                        children: List.generate(64, (index) {
-                          return Container(
-                            width: 35,
-                            margin: const EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                              color: reversedbotcoincolor[index],
-                              shape: BoxShape.circle,
-                            ),
-                          );
-                        }),
+              const SizedBox(height: 10),
+              Stack(
+                children: [
+                  Positioned(
+                    top: screenheight / 4,
+                    bottom: screenheight / 4,
+                    left: screenwidth / 20,
+                    right: screenwidth / 20,
+                    child: Center(
+                      child: TextField(
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: '1',
+                          hintStyle: TextStyle(color: Colors.white),
+                          contentPadding: EdgeInsets.only(left: 30),
+                        ),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 55.0,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'iChing',
+                        ),
+                        controller: _controllercointext,
+                        readOnly: true,
                       ),
-                      CircleList(
-                        //innerRadius: MediaQuery.of(context).size.height / 5,
-                        innerRadius: MediaQuery.of(context).size.width * 0.25,
-                        initialAngle: -0.8,
-                        childrenPadding: 0.1,
-                        origin: const Offset(0, 0),
-                        children: List.generate(64, (index) {
-                          return Container(
-                            width: 35,
-                            margin: const EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                              color: reversedmidcoincolor[index],
-                              shape: BoxShape.circle,
-                            ),
-                          );
-                        }),
-                      ),
-                      //external wheel
-                      CircleList(
-                        rotateMode: RotateMode.stopRotate,
-                        //innerRadius: MediaQuery.of(context).size.height / 4,
-                        innerRadius: MediaQuery.of(context).size.width * 0.33,
-                        initialAngle: -0.8,
-                        childrenPadding: 0.1,
-                        origin: const Offset(0, 0),
-                        children: List.generate(64, (index) {
-                          return InkWell(
-                            child: Container(
-                              width: 20,
-                              margin: const EdgeInsets.all(1),
-                              decoration: BoxDecoration(
-                                  color: reversedtopcoincolor[index],
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width: 0.5, color: Colors.black)),
-                              child: AutoSizeText(
-                                  reversedHexagramsWheel[index].toString(),
-                                  minFontSize: 8,
-                                  maxFontSize: 12,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold)),
-                            ),
-                            onTap: () {
-                              int wallet = reversedHexagramsWheel[index];
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    buildWalletPopUp(context, wallet),
-                              );
-                            },
-                          );
-                        }),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                //fit: BoxFit.scaleDown,
-                width: MediaQuery.of(context).size.width * 0.95,
-                height: MediaQuery.of(context).size.height * 0.95,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: MediaQuery.of(context).size.height / 4,
-                        bottom: MediaQuery.of(context).size.height / 4,
-                        left: MediaQuery.of(context).size.width / 20,
-                        right: MediaQuery.of(context).size.width / 20,
-                        child: Center(
-                          child: TextField(
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              hintText: '1',
-                              hintStyle: TextStyle(color: Colors.white),
-                              contentPadding: EdgeInsets.only(left: 30),
-                            ),
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 55.0,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'iChing',
-                            ),
-                            controller: _controllercointext,
-                            readOnly: true,
+                  CircleList(
+                    innerRadius: screenwidth / 60 + 40,
+                    initialAngle: -0.8,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    rotateMode: RotateMode.stopRotate,
+                    children: List.generate(64, (index) {
+                      return Container(
+                        width: 20,
+                        margin: const EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                          color: reversedbotcoincolor[index],
+                          shape: BoxShape.circle,
+                        ),
+                        child: AutoSizeText(
+                          revfontWheelHexOrderList[index],
+                          minFontSize: 10,
+                          maxFontSize: 15,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            //fontFamily: 'iChing',
                           ),
                         ),
-                      ),
-                      CircleList(
-                        innerRadius: MediaQuery.of(context).size.width * 0.18,
-                        initialAngle: -0.8,
-                        childrenPadding: 0.1,
-                        origin: const Offset(0, 0),
-                        rotateMode: RotateMode.stopRotate,
-                        children: List.generate(64, (index) {
-                          return Container(
-                            width: 20,
-                            margin: const EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                              color: reversedbotcoincolor[index],
-                              shape: BoxShape.circle,
-                            ),
+                      );
+                    }),
+                  ),
+                  CircleList(
+                    rotateMode: RotateMode.stopRotate,
+                    innerRadius: screenwidth / 12 + 60,
+                    initialAngle: -0.8,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    children: List.generate(64, (index) {
+                      return Container(
+                        width: 35,
+                        margin: const EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                            color: reversedmidcoincolor[index],
+                            shape: BoxShape.circle,
+                            border: Border.all(width: 1, color: Colors.black)),
+                        child: AutoSizeText(
+                            reversedHexagramsWheel[index].toString(),
+                            minFontSize: 10,
+                            maxFontSize: 12,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)),
+                      );
+                    }),
+                  ),
+                  CircleList(
+                    innerRadius: screenwidth / 7 + 80,
+                    initialAngle: -0.8,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    rotateMode: RotateMode.stopRotate,
+                    children: List.generate(64, (index) {
+                      return InkWell(
+                        child: Container(
+                          width: 55,
+                          margin: const EdgeInsets.all(1),
+                          //decoration: BoxDecoration(
+                          //  border: Border.all(
+                          //      color: Colors.transparent,
+                          //color: reversedtopcoincolor[index],
+                          //      width: 1),
+                          //color: reversedtopcoincolor[index],
+                          //  color: Colors.white,
+                          //  shape: BoxShape.circle,
+                          //),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 4),
                             child: AutoSizeText(
                               revfontWheelHexOrderList[index],
                               minFontSize: 10,
-                              maxFontSize: 15,
+                              maxFontSize: 13,
                               textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                color: Colors.black,
-                                //fontFamily: 'iChing',
+                              style: TextStyle(
+                                //color: Colors.white,
+                                color: reversedtopcoincolor[index],
+                                fontFamily: 'iChing',
                               ),
                             ),
-                          );
-                        }),
-                      ),
-                      CircleList(
-                        rotateMode: RotateMode.stopRotate,
-                        innerRadius: MediaQuery.of(context).size.width * 0.25,
-                        initialAngle: -0.8,
-                        childrenPadding: 0.1,
-                        origin: const Offset(0, 0),
-                        children: List.generate(64, (index) {
-                          return Container(
-                            width: 35,
-                            margin: const EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                                color: reversedmidcoincolor[index],
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 1, color: Colors.black)),
-                            child: AutoSizeText(
-                                reversedHexagramsWheel[index].toString(),
-                                minFontSize: 10,
-                                maxFontSize: 12,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold)),
-                          );
-                        }),
-                      ),
-                      CircleList(
-                        innerRadius: MediaQuery.of(context).size.width * 0.33,
-                        initialAngle: -0.8,
-                        childrenPadding: 0.1,
-                        origin: const Offset(0, 0),
-                        rotateMode: RotateMode.stopRotate,
-                        children: List.generate(64, (index) {
-                          return InkWell(
-                            child: Container(
-                              width: 55,
-                              margin: const EdgeInsets.all(1),
-                              //decoration: BoxDecoration(
-                              //  border: Border.all(
-                              //      color: Colors.transparent,
-                                    //color: reversedtopcoincolor[index],
-                              //      width: 1),
-                                //color: reversedtopcoincolor[index],
-                              //  color: Colors.white,
-                              //  shape: BoxShape.circle,
-                              //),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 4),
-                                child: AutoSizeText(
-                                  revfontWheelHexOrderList[index],
-                                  minFontSize: 10,
-                                  maxFontSize: 13,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    //color: Colors.white,
-                                    color: reversedtopcoincolor[index],
-                                    fontFamily: 'iChing',
-                                  ),
-                                ),
-                              ),
-                            ),
-                            onTap: () {
-                              int wallet = reversedHexagramsWheel[index];
-                              _controllerlettext.text =
-                                  revfontWheelHexOrderList[index];
-                              _controllerichingtext.text =
-                                  revfontWheelHexOrderList[index];
-                              _controllernumtext.text =
-                                  reversedHexagramsWheel[index].toString();
-                              _controllercointext.text =
-                                  revfontWheelHexOrderList[index];
-                            },
-                          );
-                        }),
-                      ),
-                    ],
+                          ),
+                        ),
+                        onTap: () {
+                          wallet = reversedHexagramsWheel[index];
+                          _controllerlettext.text =
+                              revfontWheelHexOrderList[index];
+                          _controllerichingtext.text =
+                              revfontWheelHexOrderList[index];
+                          _controllernumtext.text =
+                              reversedHexagramsWheel[index].toString();
+                          _controllercointext.text =
+                              revfontWheelHexOrderList[index];
+                        },
+                      );
+                    }),
                   ),
-                ),
+                ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Flex(
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -3793,7 +3921,7 @@ class _RotateSimpleState extends State<RotateSimple> {
               Stack(
                 children: [
                   CircleList(
-                    innerRadius: MediaQuery.of(context).size.width / 16,
+                    innerRadius: screenwidth / 16,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3814,7 +3942,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ),
                   CircleList(
                     rotateMode: RotateMode.stopRotate,
-                    innerRadius: MediaQuery.of(context).size.width / 5.5,
+                    innerRadius: screenwidth / 5.5,
                     initialAngle: -0.8,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -3847,8 +3975,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                 direction: Axis.horizontal,
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height / 5,
-                    width: MediaQuery.of(context).size.width / 3.2,
+                    height: screenheight / 5,
+                    width: screenwidth / 3.2,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(mcameldog[1]),
@@ -3858,8 +3986,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                     ),
                   ),
                   Container(
-                    height: MediaQuery.of(context).size.height / 5,
-                    width: MediaQuery.of(context).size.width / 3.2,
+                    height: screenheight / 5,
+                    width: screenwidth / 3.2,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(mcameldog[1]),
@@ -3869,8 +3997,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                     ),
                   ),
                   Container(
-                    height: MediaQuery.of(context).size.height / 5,
-                    width: MediaQuery.of(context).size.width / 3.2,
+                    height: screenheight / 5,
+                    width: screenwidth / 3.2,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(mcameldog[1]),
@@ -4455,7 +4583,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 color: Colors.green,
                 thickness: 5,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 10),
               Container(
                   height: 35,
                   width: 200,
@@ -4464,43 +4592,199 @@ class _RotateSimpleState extends State<RotateSimple> {
                     border: Border.all(
                       color: Colors.black,
                     ),
-                    borderRadius:
-                    const BorderRadius.all(Radius.circular(20)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                   ),
-                  child: AutoSizeText('אבוד-לוציה',
+                  child: const AutoSizeText('אבוד-לוציה',
                       textAlign: TextAlign.center,
                       minFontSize: 20,
                       maxFontSize: 25,
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold))),
+              const SizedBox(height: 10),
+              // rt evolution
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: 10,
+                  minWidth: 10,
+                  maxHeight: screenheight * 0.15,
+                  maxWidth: screenwidth * 0.5,
+                ),
+                child: CarouselSlider(
+                  //items: mixHexagramSlidersNew,
+                  items: evolutionContainerSlider,
+                  carouselController: _controlEvolutionContainerSlider,
+                  options: CarouselOptions(
+                      initialPage: 0,
+                      autoPlay: false,
+                      enlargeCenterPage: true,
+                      aspectRatio: 1.3,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          //_currenttop = indextop;
+                          _currentevolution = index;
+                        });
+                      }),
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  EvolutionContainer(
+                      colorinsilence: Colors.blue,
+                      colorinbreath: Colors.blue,
+                      colorinsimple: Colors.blue,
+                      colorincomplex: Colors.blue),
+                  EvolutionContainer(
+                      colorinsilence: Colors.blue,
+                      colorinbreath: Colors.green,
+                      colorinsimple: Colors.blue,
+                      colorincomplex: Colors.yellow),
+                  EvolutionContainer(
+                      colorinsilence: Colors.blue,
+                      colorinbreath: Colors.blue,
+                      colorinsimple: Colors.green,
+                      colorincomplex: Colors.green),
+                  EvolutionContainer(
+                      colorinsilence: Colors.blue,
+                      colorinbreath: Colors.green,
+                      colorinsimple: Colors.green,
+                      colorincomplex: Colors.red),
+                ],
+              ),
+              const Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  EvolutionContainer(
+                      colorinsilence: Colors.yellow,
+                      colorinbreath: Colors.yellow,
+                      colorinsimple: Colors.blue,
+                      colorincomplex: Colors.blue),
+                  EvolutionContainer(
+                      colorinsilence: Colors.yellow,
+                      colorinbreath: Colors.red,
+                      colorinsimple: Colors.blue,
+                      colorincomplex: Colors.yellow),
+                  EvolutionContainer(
+                      colorinsilence: Colors.yellow,
+                      colorinbreath: Colors.yellow,
+                      colorinsimple: Colors.green,
+                      colorincomplex: Colors.green),
+                  EvolutionContainer(
+                      colorinsilence: Colors.yellow,
+                      colorinbreath: Colors.red,
+                      colorinsimple: Colors.green,
+                      colorincomplex: Colors.red),
+                ],
+              ),
+              const Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  EvolutionContainer(
+                      colorinsilence: Colors.green,
+                      colorinbreath: Colors.blue,
+                      colorinsimple: Colors.yellow,
+                      colorincomplex: Colors.blue),
+                  EvolutionContainer(
+                      colorinsilence: Colors.green,
+                      colorinbreath: Colors.green,
+                      colorinsimple: Colors.yellow,
+                      colorincomplex: Colors.yellow),
+                  EvolutionContainer(
+                      colorinsilence: Colors.green,
+                      colorinbreath: Colors.blue,
+                      colorinsimple: Colors.red,
+                      colorincomplex: Colors.green),
+                  EvolutionContainer(
+                      colorinsilence: Colors.green,
+                      colorinbreath: Colors.green,
+                      colorinsimple: Colors.red,
+                      colorincomplex: Colors.red),
+                ],
+              ),
+              const Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  EvolutionContainer(
+                      colorinsilence: Colors.red,
+                      colorinbreath: Colors.yellow,
+                      colorinsimple: Colors.yellow,
+                      colorincomplex: Colors.blue),
+                  EvolutionContainer(
+                      colorinsilence: Colors.red,
+                      colorinbreath: Colors.red,
+                      colorinsimple: Colors.yellow,
+                      colorincomplex: Colors.yellow),
+                  EvolutionContainer(
+                      colorinsilence: Colors.red,
+                      colorinbreath: Colors.yellow,
+                      colorinsimple: Colors.red,
+                      colorincomplex: Colors.green),
+                  EvolutionContainer(
+                      colorinsilence: Colors.red,
+                      colorinbreath: Colors.red,
+                      colorinsimple: Colors.red,
+                      colorincomplex: Colors.red),
+                ],
+              ),
+              const SizedBox(height: 10),
+              // rt evolution
+              Container(
+                //height: screenheight * 0.9,
+                height: 400,
+                //width: screenwidth,
+                width: 400,
+                decoration: BoxDecoration(
+                    //shape: BoxShape.circle,
+                    color: Colors.black,
+                    border: Border.all(
+                      color: Colors.green,
+                      width: 4,
+                    ),
+                    borderRadius: BorderRadius.circular(20), // border color
+                    image: const DecorationImage(
+                      image: AssetImage('assets/coins/rtevolutionnobg.png'),
+                      //colorFilter: ColorFilter.mode(
+                      //Colors.white.withOpacity(1.0),
+                      //    BlendMode.modulate,
+                      //    )
+                    )),
+              ),
+
               Center(
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 2.5,
-                  //width: MediaQuery.of(context).size.width * 0.9,
+                  height: screenheight / 2.5,
+                  //width: screenwidth * 0.9,
                   width: 390,
                   //height: 400,
                   child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       childAspectRatio: 0.5,
                       crossAxisCount: 12, // number of items in each row
                       mainAxisSpacing: 1.0, // spacing between rows
                       crossAxisSpacing: 1.0, // spacing between columns
                     ),
-                    padding: const EdgeInsets.all(2.0), // padding around the grid
+                    padding:
+                        const EdgeInsets.all(2.0), // padding around the grid
                     itemCount: coinsevolution.length, // total number of items
                     itemBuilder: (context, index) {
                       return Container(
-                            decoration: BoxDecoration(
-                              //shape: BoxShape.circle,
-                               // color: Colors.green, // border color
-                                image: DecorationImage(
-                                    image: AssetImage(coinsevolution[index]),
-                                    //colorFilter: ColorFilter.mode(
-                                      //Colors.white.withOpacity(1.0),
-                                  //    BlendMode.modulate,
-                                //    )
-                                )),
-                          );
+                        decoration: BoxDecoration(
+                            //shape: BoxShape.circle,
+                            // color: Colors.green, // border color
+                            image: DecorationImage(
+                          image: AssetImage(coinsevolution[index]),
+                          //colorFilter: ColorFilter.mode(
+                          //Colors.white.withOpacity(1.0),
+                          //    BlendMode.modulate,
+                          //    )
+                        )),
+                      );
                     },
                   ),
                 ),
@@ -4510,11 +4794,11 @@ class _RotateSimpleState extends State<RotateSimple> {
                 thickness: 5,
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width / 1.5,
+                height: screenheight / 3,
+                width: screenwidth / 1.5,
                 child: CircleAvatar(
                   backgroundColor: Colors.white,
-                  maxRadius: MediaQuery.of(context).size.height / 4,
+                  maxRadius: screenheight / 4,
                   child: CarouselSlider(
                     items: miximageslider,
                     carouselController: _controllerimages,
@@ -4532,8 +4816,8 @@ class _RotateSimpleState extends State<RotateSimple> {
               ),
               const SizedBox(height: 40),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 5,
-                width: 200,
+                height: screenheight / 2,
+                width: 350,
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: 1,

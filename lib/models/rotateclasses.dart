@@ -2,8 +2,8 @@
 class Hexagram {
   String? name, hex, gatename,
       linename, colorname, tonename, basename, gateline,
-  gatelinecolor, gatelinecolortone,gatelinecolortonebase;
-  int? gate, line, color, tone, base;
+  gatelinecolor, gatelinecolortone,gatelinecolortonebase, zodiacsign, planet;
+  int? gate, line, color, tone, base, zodiacid;
   double? longitude;
 
   Hexagram({
@@ -21,6 +21,9 @@ class Hexagram {
     this.gatelinecolortone,
     this.gatelinecolortonebase,
     this.longitude,
+    this.zodiacsign,
+    this.zodiacid,
+    this.planet
   });
 }
 

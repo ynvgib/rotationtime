@@ -1,12 +1,15 @@
-// flutter build windows
+// flutter build apk --split-per-abi --no-tree-shake-icons
 
 // flutter build web --web-renderer canvaskit --no-tree-shake-icons
 // firebase deploy
 
-// flutter build apk --no-tree-shake-icons
-// flutter build apk --split-per-abi --no-tree-shake-icons
+// flutter build windows
 
-// ---for new project--
+
+// old APK build (no 64 bit split)
+// flutter build apk --no-tree-shake-icons
+
+// ---adding platform---
 // flutter create --platforms=windows
 
 // ----add icons---

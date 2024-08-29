@@ -4,6 +4,7 @@ import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/hebrew/lists_he.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
+import 'package:sweph/sweph.dart';
 
 Hexagram getGateStructure(double planetlongitude) {
   String name = '',
@@ -13,18 +14,24 @@ Hexagram getGateStructure(double planetlongitude) {
   gateline = '',
   gatelinecolor = '',
   gatelinecolortone = '',
-  gatelinecolortonebase = '';
+  gatelinecolortonebase = '',
+  zodiacsign = '';
 
   int gate = 1,
       line = 1,
       color = 1,
       tone = 1,
       base = 1,
-      //_degrees = 0,
-      //_minutes = 0,
-      //_seconds = 0,
+  zodiacid = 1,
+      degrees = 0,
+      minutes = 0,
+      seconds = 0,
       hexfontindex = 0,
   lineindex;
+  
+  double secondsOfArc = 0.0;
+
+  DegreeSplitData planetDSP;
 
   //double _decimalDegrees = 0.0;
 
@@ -33,13 +40,18 @@ Hexagram getGateStructure(double planetlongitude) {
 
   Hexagram gateStructure = Hexagram();
 
-  //_decimalDegrees = _degrees + _minutes / 60 + _seconds / 3600;
-  //_planetlongitude += _decimalDegrees;
+  planetDSP = Sweph.swe_split_deg(planetlongitude, SplitDegFlags.SE_SPLIT_DEG_ZODIACAL);
+  //print (planetDSP);
+  zodiacid = planetDSP.sign;
+  degrees = planetDSP.degrees;
+  minutes = planetDSP.minutes;
+  seconds = planetDSP.seconds;
+  secondsOfArc = planetDSP.secondsOfArc;
 
-  //print ('decimalhdsub: ${gateStructure.gate!}');
-  //print (Decimal.parse(((planetlongitude).toString())));
-  //print ('normal:');
-  //print (posNorthnode.longitude);
+  zodiacsign = zodiacSwephlist[zodiacid];
+
+  //print (zodiacid);
+  //print (zodiacSwephlist[zodiacid]);
 
   planetlongitude += 58;
 
@@ -95,6 +107,8 @@ Hexagram getGateStructure(double planetlongitude) {
   // set longitude
   gatelongitude = planetlongitude;
 
+
+
   gateStructure.name = name;
   gateStructure.hex = hex;
   gateStructure.gate = gate;
@@ -109,6 +123,8 @@ Hexagram getGateStructure(double planetlongitude) {
   gateStructure.gatelinecolortone = gatelinecolortone;
   gateStructure.gatelinecolortonebase = gatelinecolortonebase;
   gateStructure.longitude = gatelongitude;
+  gateStructure.zodiacid = zodiacid;
+  gateStructure.zodiacsign = zodiacsign;
 
   return gateStructure;
 }
