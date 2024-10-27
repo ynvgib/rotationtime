@@ -2,7 +2,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:circle_list/circle_list.dart';
+import 'package:fibonacci/fibonacci.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
+import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:finallyicanlearn/services/rotatewidgets.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +33,8 @@ class _RotateSimpleState extends State<RotateSimple> {
       _controllerlettext = TextEditingController(),
       _controllernumtext = TextEditingController(),
       _controllercointext = TextEditingController(),
-      _controllercoinnumber = TextEditingController();
+      _controllercoinnumber = TextEditingController(),
+      _controllerfibo = TextEditingController();
 
   //final String _title = subtitles[3];
   //final String _title = subtitles_heb[3];
@@ -86,26 +89,21 @@ class _RotateSimpleState extends State<RotateSimple> {
             direction: Axis.horizontal,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const CircleAvatar(
-                radius: 15,
-                backgroundColor: Colors.transparent,
-                foregroundImage: AssetImage(
-                  'assets/minmax/greenmin.png',
-                ),
-              ),
-              const SizedBox(width: 10),
-              AutoSizeText(_title,
+              AutoSizeText('ווף',
                   textAlign: TextAlign.left,
                   //maxFontSize: 15,
                   style: const TextStyle(color: Colors.white)),
               const SizedBox(width: 10),
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.transparent,
-                foregroundImage: AssetImage(
-                  'assets/minmax/greenmax.png',
-                ),
+                foregroundImage: AssetImage(coins4lst[1]),
               ),
+              const SizedBox(width: 10),
+              AutoSizeText('פשוט',
+                  textAlign: TextAlign.left,
+                  //maxFontSize: 15,
+                  style: const TextStyle(color: Colors.white)),
             ],
           ),
           leading: IconButton(
@@ -121,6 +119,22 @@ class _RotateSimpleState extends State<RotateSimple> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
+              Container(
+                height: screenheight / 8,
+                width: screenwidth / 4,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/camog/greendog.png'),
+                    fit: BoxFit.scaleDown,
+                  ),
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+              AutoSizeText('ווף',
+                  textAlign: TextAlign.center,
+                  minFontSize: 45,
+                  maxFontSize: 55,
+                  style: TextStyle(color: Colors.green)),
               Flex(
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -149,24 +163,18 @@ class _RotateSimpleState extends State<RotateSimple> {
                   ),
                 ],
               ),
-              const Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AutoSizeText('פשוט מיקי',
-                      textAlign: TextAlign.center,
-                      minFontSize: 35,
-                      maxFontSize: 45,
-                      style: TextStyle(color: Colors.green)),
-                ],
-              ),
+              AutoSizeText('פשוט מיקי',
+                  textAlign: TextAlign.center,
+                  minFontSize: 25,
+                  maxFontSize: 35,
+                  style: TextStyle(color: Colors.green)),
               Container(
-                height: screenheight / 2,
-                width: screenwidth * 0.95,
+                height: 300,
+                width: 300,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
-                        //'assets/coins/dog.png',
+                        //'assets/camog/dog.png',
                         'assets/camog/dogswoofgoof.gif',
                       ),
                       opacity: 1.0),
@@ -1450,7 +1458,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                          'assets/coins/dog.png',
+                                          'assets/camog/dog.png',
                                         ),
                                         opacity: 1.0),
                                   ),
@@ -3189,10 +3197,68 @@ class _RotateSimpleState extends State<RotateSimple> {
                   },
                 ),
               ),
+
+              SizedBox(
+                height: 300,
+                width: 300,
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 1,
+                    crossAxisCount: 5, // number of items in each row
+                    mainAxisSpacing: 8.0, // spacing between rows
+                    crossAxisSpacing: 8.0, // spacing between columns
+                  ),
+                  padding: const EdgeInsets.all(8.0), // padding around the grid
+                  itemCount: 21, // total number of items
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                        child: Container(
+                          width: 35,
+                          margin: const EdgeInsets.all(1),
+                          decoration: BoxDecoration(
+                              color: _isBoldList[index + 1]
+                                  ? Colors.black
+                                  : Colors.white,
+                              shape: BoxShape.circle,
+                              border:
+                              Border.all(width: 2, color: Colors.black)),
+                          child: Center(
+                            child: Text((hdZBCodonName[index]),
+                                style: TextStyle(
+                                    color: _isBoldList[index + 1]
+                                        ? Colors.white
+                                        : Colors.black,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            if (gatestatelist[index + 1] == 0) {
+                              _isBoldList[index + 1] = !_isBoldList[index + 1];
+                              gatestatelist[index + 1]++;
+                              //&&
+                            } else {
+                              if (gatestatelist[index + 1] == 7) {
+                                gatestatelist[index + 1] = 0;
+                                _isBoldList[index + 1] =
+                                !_isBoldList[index + 1];
+                              } else {
+                                gatestatelist[index + 1]++;
+                              }
+                            }
+                          });
+                        });
+                  },
+                ),
+              ),
               const Divider(
                 color: Colors.green,
                 thickness: 5,
               ),
+
+
+
               Flex(
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -3236,7 +3302,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                     ),
                 ],
               ),
-
               // new wheel
               Stack(
                 children: [
@@ -3335,9 +3400,40 @@ class _RotateSimpleState extends State<RotateSimple> {
                         onTap: () {
                           wallet = reversedHexagramsWheel[index];
                           _controllercoinnumber.text = wallet.toString();
+                          _controllerfibo.text = Fibonacci.printSeries(
+                              size: wallet)
+                              .toString();
                         },
                       );
                     }),
+                  ),
+                ],
+              ),
+              Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 300,
+                    height: 60,
+                    child: AutoSizeTextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: '1',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        //contentPadding: EdgeInsets.only(left: 30),
+                      ),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 45.0,
+                        fontWeight: FontWeight.bold,
+                        //fontFamily: 'iChing',
+                      ),
+                      controller: _controllerfibo,
+                      readOnly: true,
+                      maxFontSize: 25,
+                    ),
                   ),
                 ],
               ),

@@ -85,7 +85,7 @@ final List<String> rtimages = [
   'assets/coins/silencein.png',
   'assets/coins/silenceout.png',
   'assets/coins/silencewhite.png',
-  'assets/coins/dog.png',
+  'assets/camog/dog.png',
   'assets/coins/emptybodygraph.png',
   'assets/coins/emptymandala.png',
   'assets/coins/fullcoins.png',
@@ -114,6 +114,12 @@ final List<String> rtimages = [
   'assets/camog/dogstwogrey.gif',
   'assets/camog/elephantajclock.png',
   'assets/camog/elephantclock.png',
+  'assets/camog/bluedog.png',
+  'assets/camog/greendog.png',
+  'assets/camog/reddog.png',
+  'assets/camog/yellowdog.png',
+  'assets/camog/snoopyq.gif',
+  'assets/camog/snoopyempty.png',
   'assets/planets/sun.png',
   'assets/planets/earth.png',
   'assets/planets/southnode.png',
@@ -128,6 +134,7 @@ final List<String> rtimages = [
   'assets/planets/neptune.png',
   'assets/planets/pluto.png',
   'assets/planets/chiron.png',
+  //plants
   'assets/plants/mrbluep.png',
   'assets/plants/mrcamog.png',
   'assets/plants/mrgreavo.png',
@@ -137,6 +144,7 @@ final List<String> rtimages = [
   'assets/plants/rotban.png',
   'assets/plants/rotegi.png',
   'assets/plants/rotom.png',
+  'assets/plants/bimbox.png',
   //zodiac
   'assets/zodiac/pisces1.png',
   'assets/zodiac/aries2.png',
@@ -3369,6 +3377,22 @@ final List<String> bimnamesheb = [
   'ביני',
   'אבי',
   'חזי',
+];
+
+final List<String> woofgoofHebname = [
+  '?גופוף',
+  'גוף',
+  'גוף ווף',
+  'ווף',
+  'ניגוף',
+];
+
+final List<String> minmaxmainHebname = [
+  '?מקיא שאלה',
+  'מינימום',
+  'מיני',
+  'מיקי',
+  'מקסימום',
 ];
 
 final List<String> kithename = [

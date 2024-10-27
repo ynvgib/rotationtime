@@ -19,7 +19,8 @@ Widget build4PopUp(BuildContext context) {
     'New Coins',
     'מטבעות חדשים',
     'בימבוקס',
-    'Kit He'
+    'Kit He',
+    'ווף ווף גוף גוף'
   ];
   return AlertDialog(
     //title: const Text('36 Transactions'),
@@ -31,7 +32,6 @@ Widget build4PopUp(BuildContext context) {
           direction: Axis.vertical,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Heb
             ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -92,8 +92,6 @@ Widget build4PopUp(BuildContext context) {
                   style: const TextStyle(color: Colors.white, fontSize: 20)),
               //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
             ),
-            //const Divider(color: Colors.black, thickness: 5),
-            // Eng
             const SizedBox(
               height: 10,
             ),
@@ -182,6 +180,21 @@ Widget build4PopUp(BuildContext context) {
                   context: context,
                   builder: (BuildContext context) =>
                       build4rtPop(context, kithe4lst, titles4[9]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[9],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, zbwoofgoofheb, titles4[10]),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),

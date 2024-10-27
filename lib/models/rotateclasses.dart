@@ -30,6 +30,7 @@ class Hexagram {
 class HumanDesign {
   String? type, authority, strategy,
       definition, cross, profile, sentence, coin, coinname;
+  int? typeid;
 
   HumanDesign({
     this.type,
@@ -41,6 +42,7 @@ class HumanDesign {
     this.sentence,
     this.coin,
     this.coinname,
+    this.typeid,
   });
 }
 

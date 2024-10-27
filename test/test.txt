@@ -1,0 +1,48 @@
+complex
+
+'assets/coins/complex.png',
+'assets/plants/mrbluep.png',
+'assets/plants/rotegi.png',
+'assets/kithe/kitcomplex.png',
+'assets/kithe/blkithe.png',
+'assets/minmax/bluemax.png',
+'assets/minmax/bluemin.png',
+'assets/minmax/mincomplex.png',
+'assets/camog/bluedog.png',
+
+simple
+
+  'assets/coins/simple.png',
+   'assets/plants/mrgreavo.png',
+      'assets/plants/rotav.png',
+  'assets/kithe/kitsimple.png',
+  'assets/kithe/grkithe.png',
+  'assets/minmax/minsimple.png',
+    'assets/minmax/greenmax.png',
+      'assets/minmax/greenmin.png',
+  'assets/camog/greendog.png',
+
+
+breath
+
+  'assets/coins/breath.png',
+   'assets/plants/msyelban.png',
+      'assets/plants/rotban.png',
+  'assets/kithe/kitbreath.png',
+  'assets/kithe/yelkithe.png',
+  'assets/minmax/minbreath.png',
+    'assets/minmax/yellowmin.png',
+      'assets/camog/mcamelyellow.png',
+  'assets/camog/yellowdog.png',
+
+silence
+
+  'assets/coins/silence.png',
+   'assets/plants/msredtom.png',
+      'assets/plants/rotom.png',
+  'assets/kithe/kitsilence.png',
+    'assets/kithe/redkithe.png',
+    'assets/minmax/minsilence.png',
+    'assets/minmax/redmin.png',
+      'assets/camog/reddog.png',
+

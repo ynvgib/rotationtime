@@ -18,7 +18,7 @@ class _RotateBreathState extends State<RotateBreath> {
       _controllerComplexText = TextEditingController();
   //final String _title = subtitles[2];
   //final String _title = subtitles_heb[2];
-  final String _title = 'נשימה';
+  final String _title = woofgoofHebname[2];
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +37,13 @@ class _RotateBreathState extends State<RotateBreath> {
               CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.transparent,
-                foregroundImage: AssetImage(minmaximglst[1]),
+                foregroundImage: AssetImage(coins4lst[2]),
               ),
+              const SizedBox(width: 10),
+              AutoSizeText('נשימה',
+                  textAlign: TextAlign.left,
+                  //maxFontSize: 15,
+                  style: const TextStyle(color: Colors.white)),
 
             ],
           ),
@@ -61,12 +66,18 @@ class _RotateBreathState extends State<RotateBreath> {
               width: MediaQuery.of(context).size.width / 2.5,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(newminmaxcoins[2]),
+                  image: AssetImage(mainwoofgooflst[2]),
                   fit: BoxFit.scaleDown,
                 ),
                 shape: BoxShape.rectangle,
               ),
             ),
+
+            const AutoSizeText('ווף ווף גוף גוף',
+                textAlign: TextAlign.center,
+                minFontSize: 35,
+                maxFontSize: 45,
+                style: TextStyle(color: Colors.yellow)),
             const AutoSizeText('מיני נשימה',
                 textAlign: TextAlign.center,
                 minFontSize: 35,
@@ -87,6 +98,17 @@ class _RotateBreathState extends State<RotateBreath> {
                 minFontSize: 25,
                 maxFontSize: 35,
                 style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold)),
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 2.5,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(newminmaxcoins[2]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
             Container(
               height: MediaQuery.of(context).size.height / 5,
               width: MediaQuery.of(context).size.width / 3.2,

@@ -41,13 +41,8 @@ class RotateMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate
-      ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('he')
-      ],
+      localizationsDelegates: const [GlobalMaterialLocalizations.delegate],
+      supportedLocales: const [Locale('en'), Locale('he')],
       shortcuts: {
         LogicalKeySet(LogicalKeyboardKey.space): const ActivateIntent(),
       },
@@ -81,9 +76,8 @@ class RotateHome extends StatelessWidget {
   final String _title = 'כותרת',
       beidontknowsite = 'rotation-time.web.app',
       githubrotatesite = 'www.github.com/ynvgib/rotationtime',
-  githubproject = 'Github Project';
+      githubproject = 'Github Project';
   //final List<String> _titles = subtitles;
-
 
   final Uri beidontknowurl = Uri.parse('https://rotation-time.web.app/'),
       githubrotateurl = Uri.parse('https://www.github.com/ynvgib/rotationtime');
@@ -98,48 +92,52 @@ class RotateHome extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, pdfroutes[4]);
-                  },
-                  icon: Image.asset('assets/camog/mcdog.png',
-                  ),
+                onPressed: () {
+                  Navigator.pushNamed(context, pdfroutes[4]);
+                },
+                icon: Image.asset(
+                  'assets/camog/mcdog.png',
+                ),
                 tooltip: pdftitle[4],
               ),
               IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, pdfroutes[3]);
-                  },
-                  icon: Image.asset('assets/coins/dog.png',
-                  ),
+                onPressed: () {
+                  Navigator.pushNamed(context, pdfroutes[3]);
+                },
+                icon: Image.asset(
+                  'assets/camog/dog.png',
+                ),
                 tooltip: pdftitle[3],
               ),
               IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, pdfroutes[2]);
-                  },
-                  icon: Image.asset('assets/camog/mcdog.png',
-                  ),
+                onPressed: () {
+                  Navigator.pushNamed(context, pdfroutes[2]);
+                },
+                icon: Image.asset(
+                  'assets/camog/mcdog.png',
+                ),
                 tooltip: pdftitle[2],
               ),
               IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, pdfroutes[1]);
-                  },
-                  icon: Image.asset('assets/coins/dog.png',
-                  ),
+                onPressed: () {
+                  Navigator.pushNamed(context, pdfroutes[1]);
+                },
+                icon: Image.asset(
+                  'assets/camog/dog.png',
+                ),
                 tooltip: pdftitle[1],
               ),
               IconButton(
                 onPressed: () {
                   Navigator.pushNamed(context, pdfroutes[0]);
                 },
-                icon: Image.asset('assets/coins/cameldog.png',
+                icon: Image.asset(
+                  'assets/coins/cameldog.png',
                 ),
                 tooltip: pdftitle[0],
               ),
             ],
-          )
-      ),
+          )),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -172,16 +170,16 @@ class RotateHome extends StatelessWidget {
                           spreadRadius: 1),
                     ]),
                 child: const FittedBox(
-                    fit: BoxFit.fitHeight,
-                    child: AutoSizeText(
-                      'זמן סיבוב',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  fit: BoxFit.fitHeight,
+                  child: AutoSizeText(
+                    'זמן סיבוב',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
                   ),
+                ),
               ),
               Container(
                 //height: MediaQuery.of(context).size.height / 2,
@@ -191,7 +189,7 @@ class RotateHome extends StatelessWidget {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
-                        //'assets/coins/dog.png',
+                        //'assets/camog/dog.png',
                         'assets/camog/dogswoofgoof.gif',
                       ),
                       opacity: 1.0),
@@ -219,14 +217,20 @@ class RotateHome extends StatelessWidget {
                         alignment: Alignment.center,
                         fit: StackFit.loose,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(newminmaxcoins[index]),
-                                    colorFilter: ColorFilter.mode(
-                                      Colors.white.withOpacity(1.0),
-                                      BlendMode.modulate,
-                                    ))),
+                          Tooltip(
+                            message: woofgoofHebname[index],
+                            textStyle:
+                                TextStyle(fontSize: 14, color: Colors.white),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      //image: AssetImage(newminmaxcoins[index]),
+                                      image: AssetImage(mainwoofgooflst[index]),
+                                      colorFilter: ColorFilter.mode(
+                                        Colors.white.withOpacity(1.0),
+                                        BlendMode.modulate,
+                                      ))),
+                            ),
                           ),
                         ],
                       ),
@@ -257,17 +261,15 @@ class RotateHome extends StatelessWidget {
                           spreadRadius: 1),
                     ]),
                 child: const FittedBox(
-                    fit: BoxFit.fitHeight,
-                    child: AutoSizeText(
-                      'מיני מיקי שעהשוע',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  fit: BoxFit.fitHeight,
+                  child: AutoSizeText(
+                    'מיני מיקי שעהשוע',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
                   ),
+                ),
               ),
-
               const Divider(
                 color: Colors.black87,
                 thickness: 5,
@@ -297,8 +299,7 @@ class RotateHome extends StatelessWidget {
                     'XIO Ido Not Know',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
+                        color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -393,7 +394,6 @@ class RotateHome extends StatelessWidget {
                   ),
                 ),
               ),
-
               Flex(
                 mainAxisAlignment: MainAxisAlignment.center,
                 direction: Axis.horizontal,
@@ -405,7 +405,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(mainkithelst[4]),)),
+                        image: AssetImage(newminmaxcoins[4]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[4]);
@@ -417,7 +418,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(mainkithelst[3]),)),
+                        image: AssetImage(newminmaxcoins[3]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[3]);
@@ -429,7 +431,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(mainkithelst[2]),)),
+                        image: AssetImage(newminmaxcoins[2]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[2]);
@@ -441,7 +444,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(mainkithelst[1]),)),
+                        image: AssetImage(newminmaxcoins[1]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[1]);
@@ -453,7 +457,136 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(mainkithelst[0]),)),
+                        image: AssetImage(newminmaxcoins[0]),
+                      )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[0]);
+                    },
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(minmaxmainHebname[4],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(minmaxmainHebname[3],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(minmaxmainHebname[2],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(minmaxmainHebname[1],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(minmaxmainHebname[0],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  //idk
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage(mainkithelst[4]),
+                      )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[4]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage(mainkithelst[3]),
+                      )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[3]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage(mainkithelst[2]),
+                      )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[2]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage(mainkithelst[1]),
+                      )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[1]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage(mainkithelst[0]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[0]);
@@ -517,7 +650,6 @@ class RotateHome extends StatelessWidget {
                   ),
                 ],
               ),
-
               Flex(
                 mainAxisAlignment: MainAxisAlignment.center,
                 direction: Axis.horizontal,
@@ -529,7 +661,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(mplants[4]),)),
+                        image: AssetImage(mplants[4]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[4]);
@@ -541,11 +674,12 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(mplants[3]),)),
+                        image: AssetImage(mplants[3]),
+                      )),
                     ),
-                      onTap: () {
-                        Navigator.pushNamed(context, mainroutes[3]);
-                      },
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[3]);
+                    },
                   ),
                   InkWell(
                     child: Container(
@@ -553,7 +687,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(mplants[2]),)),
+                        image: AssetImage(mplants[2]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[2]);
@@ -565,7 +700,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(mplants[1]),)),
+                        image: AssetImage(mplants[1]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[1]);
@@ -577,7 +713,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(mplants[0]),)),
+                        image: AssetImage(mplants[0]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[0]);
@@ -652,7 +789,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(titlesicon[4]),)),
+                        image: AssetImage(titlesicon[4]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[4]);
@@ -664,7 +802,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(titlesicon[3]),)),
+                        image: AssetImage(titlesicon[3]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[3]);
@@ -676,7 +815,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(titlesicon[2]),)),
+                        image: AssetImage(titlesicon[2]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[2]);
@@ -688,7 +828,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(titlesicon[1]),)),
+                        image: AssetImage(titlesicon[1]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[1]);
@@ -700,7 +841,8 @@ class RotateHome extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(titlesicon[0]),)),
+                        image: AssetImage(titlesicon[0]),
+                      )),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, mainroutes[0]);
@@ -826,10 +968,12 @@ class RotateHome extends StatelessWidget {
               ),
               FittedBox(
                 fit: BoxFit.scaleDown,
-                child:
-                ElevatedButton(
-                  onPressed: () => launchUrl(beidontknowurl),
-                  child: Text(beidontknowsite,
+                child: ElevatedButton(
+                  onPressed: () {
+                    //launchUrl(beidontknowurl);
+                  },
+                  //child: Text(beidontknowsite,
+                  child: Text('אתר',
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           color: Colors.black,
@@ -843,10 +987,12 @@ class RotateHome extends StatelessWidget {
               ),
               FittedBox(
                 fit: BoxFit.scaleDown,
-                child:
-                ElevatedButton(
-                  onPressed: () => launchUrl(githubrotateurl),
-                  child: Text(githubproject,
+                child: ElevatedButton(
+                  onPressed: () {
+                    //launchUrl(githubrotateurl);
+                  },
+                  //child: Text(githubproject,
+                  child: Text('פרוייקט חינוכי',
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           color: Colors.black,

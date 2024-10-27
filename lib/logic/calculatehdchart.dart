@@ -239,7 +239,7 @@ class HDServices {
                       break;
                     case 'throat':
                       if (throatcenter.state == 3) {
-                        selfcenter.state = 2;
+                        throatcenter.state = 2;
                       }
                       break;
                     default:
@@ -399,7 +399,7 @@ class HDServices {
 
     HumanDesign hddata = HumanDesign();
 
-    int typeidx = 0;
+    int typeidx = 0, typeid = 0;
     //List<HDChannel> hdchannels = [];
     String channelid = '',
         type = '',
@@ -612,32 +612,38 @@ class HDServices {
         coin = hexBasicMixList[0];
         coinname = hexNamesList[0];
         sentence = 'Impact Positively with Peace';
+        typeid = 4;
         break;
       //case 'reflector':
       case 4:
         coinname = hexNamesList[1];
         sentence = 'Balance Oppositions with Surprise';
+        typeid = 3;
         break;
       //case 'projector':
       case 3:
         coin = hexBasicMixList[2];
         coinname = hexNamesList[2];
         sentence = 'Align Balance with Success';
+        typeid = 2;
         break;
       //case 'generator':
       case 2:
         coin = hexBasicMixList[3];
         coinname = hexNamesList[3];
         sentence = 'Filter Negativity with Satisfaction';
+        typeid = 1;
         break;
       //case 'manifesting generator':
       case 1:
         coin = hexBasicMixList[3];
         coinname = hexNamesList[3];
         sentence = 'Filter Negativity with Satisfaction';
+        typeid = 1;
         break;
       default:
         sentence = 'I don\'t know';
+        typeid = 0;
     }
 
     //print (strategy);
@@ -652,6 +658,7 @@ class HDServices {
     hddata.sentence = sentence;
     hddata.coin = '';
     hddata.coinname = coinname;
+    hddata.typeid = typeid;
 
     //return hdbasicdata;
     return hddata;

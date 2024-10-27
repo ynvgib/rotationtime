@@ -74,6 +74,53 @@ final List<String> minmaxnames = [
   'מינימום',
 ];
 
+final List<String> woofgoofcoinslst = [
+  'assets/camog/bluedog.png',
+  'assets/camog/greendog.png',
+  'assets/camog/yellowdog.png',
+  'assets/camog/reddog.png',
+];
+
+final List<String> woofgooffullslst = [
+      'assets/camog/snoopyq.gif',
+      //'assets/camog/dogswoofgoof.gif',
+      'assets/camog/bluedog.png',
+      'assets/camog/greendog.png',
+      'assets/camog/yellowdog.png',
+      'assets/camog/reddog.png',
+    ],
+    woofgoofcoinlst = [
+      //'assets/camog/snoopyq.gif',
+      'assets/camog/dogswoofgoof.gif',
+      'assets/camog/reddog.png',
+      'assets/camog/yellowdog.png',
+      'assets/camog/greendog.png',
+      'assets/camog/bluedog.png',
+    ],
+    zbwoofgooffullheb = [
+      '!?גוף או ווף',
+      'ניגוף',
+      'ווף',
+      'גופוף',
+      'גוף',
+    ];
+
+final List<Widget> woofgoofSlider = woofgooffullslst
+    .map(
+      (woofgoof) => Container(
+        height: 200,
+        width: 200,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(woofgoof),
+            fit: BoxFit.scaleDown,
+          ),
+          shape: BoxShape.rectangle,
+        ),
+      ),
+    )
+    .toList();
+
 final List<Widget> minmaxbasicSlider = minmaxbasic
     .map(
       (minmaxmix) => Container(
@@ -121,6 +168,14 @@ final List<String> newkithecoins = [
 ];
 
 // end 4
+
+final List<String> mainwoofgooflst = [
+  'assets/camog/snoopyq.gif',
+  'assets/camog/reddog.png',
+  'assets/camog/yellowdog.png',
+  'assets/camog/greendog.png',
+  'assets/camog/bluedog.png',
+];
 
 final List<String> mainkithelst = [
   'assets/kithe/quekithe.png',
@@ -268,75 +323,74 @@ final List<String> coinsevolution = [
   'assets/minmax/redmin.png',
 ];
 
+// 4
+
 final List<String> hdType4lst = [
-  'Manifestor',
-  'Reflector',
-  'Projector',
-  'Generator',
-];
-
-final List<String> hdType4Heblst = [
-  'מניפסטור',
-  'רפלקטור',
-  'פרוג\'קטור',
-  'גנרטור',
-];
-
-final List<String> minmax4lst = [
-  'MAXIMUM',
-  'Maxxie',
-  'Minnie',
-  'minimum',
-];
-
-final List<String> minmax4Heblst = [
-  'מקסימום',
-  'מיקי',
-  'מיני',
-  'מינימום',
-];
-
-final List<String> coinsEng4lst = [
-  'COMPLEX',
-  'Simple',
-  'Breath',
-  'silence',
-];
-
-final List<String> coinsHeb4lst = [
-  'מורכב',
-  'פשוט',
-  'נשימה',
-  'שתיקה',
-];
-
-final List<String> newcoinsEng4lst = [
-  'NEGLECT',
-  'Think',
-  'Use',
-  'build',
-];
-
-final List<String> newcoinsHeb4lst = [
-  'לזנוח',
-  'לחשוב',
-  'להשתמש',
-  'לבנות',
-];
-
-final List<String> kithe4lst = [
-  'Has Kit He',
-  'Have Kit He',
-  'Been Kit He',
-  'Bet Kit He',
-];
-
-final List<String> bimboxHeb4lst = [
-  'חזי בימשו',
-  'אבי בים',
-  'ביני',
-  'בטי',
-];
+      'Manifestor',
+      'Reflector',
+      'Projector',
+      'Generator',
+    ],
+    hdType4Heblst = [
+      'מניפסטור',
+      'רפלקטור',
+      'פרוג\'קטור',
+      'גנרטור',
+    ],
+    minmax4lst = [
+      'MAXIMUM',
+      'Maxxie',
+      'Minnie',
+      'minimum',
+    ],
+    minmax4Heblst = [
+      'מקסימום',
+      'מיקי',
+      'מיני',
+      'מינימום',
+    ],
+    coinsEng4lst = [
+      'COMPLEX',
+      'Simple',
+      'Breath',
+      'silence',
+    ],
+    coinsHeb4lst = [
+      'מורכב',
+      'פשוט',
+      'נשימה',
+      'שתיקה',
+    ],
+    newcoinsEng4lst = [
+      'NEGLECT',
+      'Think',
+      'Use',
+      'build',
+    ],
+    newcoinsHeb4lst = [
+      'לזנוח',
+      'לחשוב',
+      'להשתמש',
+      'לבנות',
+    ],
+    kithe4lst = [
+      'Has Kit He',
+      'Have Kit He',
+      'Been Kit He',
+      'Bet Kit He',
+    ],
+    bimboxHeb4lst = [
+      'חזי בימשו',
+      'אבי בים',
+      'ביני',
+      'בטי',
+    ],
+    zbwoofgoofheb = [
+      'ניגוף',
+      'ווף',
+      'גופוף',
+      'גוף',
+    ];
 
 //6
 
@@ -8709,116 +8763,113 @@ final List<String> rtmoneytimetitleheb = [
   'עבודה'
 ];
 
-final List<EvolutionContainer> evolutionContainerList =
-    [
-      //0
-      EvolutionContainer(
-          colorinsilence: Colors.red,
-          colorinbreath: Colors.yellow,
-          colorinsimple: Colors.green,
-          colorincomplex: Colors.blue),
-      //1
-      EvolutionContainer(
-        colorinsilence: Colors.blue,
-        colorinbreath: Colors.blue,
-        colorinsimple: Colors.blue,
-        colorincomplex: Colors.blue),
-      //2
-      EvolutionContainer(
-          colorinsilence: Colors.blue,
-          colorinbreath: Colors.green,
-          colorinsimple: Colors.blue,
-          colorincomplex: Colors.yellow),
-      //3
-      EvolutionContainer(
-          colorinsilence: Colors.blue,
-          colorinbreath: Colors.blue,
-          colorinsimple: Colors.green,
-          colorincomplex: Colors.green),
-      //4
-      EvolutionContainer(
-          colorinsilence: Colors.blue,
-          colorinbreath: Colors.green,
-          colorinsimple: Colors.green,
-          colorincomplex: Colors.red),
-      //5
-      EvolutionContainer(
-          colorinsilence: Colors.yellow,
-          colorinbreath: Colors.yellow,
-          colorinsimple: Colors.blue,
-          colorincomplex: Colors.blue),
-      //6
-      EvolutionContainer(
-          colorinsilence: Colors.yellow,
-          colorinbreath: Colors.red,
-          colorinsimple: Colors.blue,
-          colorincomplex: Colors.yellow),
-      //7
-      EvolutionContainer(
-          colorinsilence: Colors.yellow,
-          colorinbreath: Colors.yellow,
-          colorinsimple: Colors.green,
-          colorincomplex: Colors.green),
-      //8
-      EvolutionContainer(
-          colorinsilence: Colors.yellow,
-          colorinbreath: Colors.red,
-          colorinsimple: Colors.green,
-          colorincomplex: Colors.red),
-      //9
-      EvolutionContainer(
-          colorinsilence: Colors.green,
-          colorinbreath: Colors.blue,
-          colorinsimple: Colors.yellow,
-          colorincomplex: Colors.blue),
-      //10
-      EvolutionContainer(
-          colorinsilence: Colors.green,
-          colorinbreath: Colors.green,
-          colorinsimple: Colors.yellow,
-          colorincomplex: Colors.yellow),
-      //11
-      EvolutionContainer(
-          colorinsilence: Colors.green,
-          colorinbreath: Colors.blue,
-          colorinsimple: Colors.red,
-          colorincomplex: Colors.green),
-      //12
-      EvolutionContainer(
-          colorinsilence: Colors.green,
-          colorinbreath: Colors.green,
-          colorinsimple: Colors.red,
-          colorincomplex: Colors.red),
-      //13
-      EvolutionContainer(
-          colorinsilence: Colors.red,
-          colorinbreath: Colors.yellow,
-          colorinsimple: Colors.yellow,
-          colorincomplex: Colors.blue),
-      //14
-      EvolutionContainer(
-          colorinsilence: Colors.red,
-          colorinbreath: Colors.red,
-          colorinsimple: Colors.yellow,
-          colorincomplex: Colors.yellow),
-      //15
-      EvolutionContainer(
-          colorinsilence: Colors.red,
-          colorinbreath: Colors.yellow,
-          colorinsimple: Colors.red,
-          colorincomplex: Colors.green),
-      //16
-      EvolutionContainer(
-          colorinsilence: Colors.red,
-          colorinbreath: Colors.red,
-          colorinsimple: Colors.red,
-          colorincomplex: Colors.red),
-    ];
+final List<EvolutionContainer> evolutionContainerList = [
+  //0
+  EvolutionContainer(
+      colorinsilence: Colors.red,
+      colorinbreath: Colors.yellow,
+      colorinsimple: Colors.green,
+      colorincomplex: Colors.blue),
+  //1
+  EvolutionContainer(
+      colorinsilence: Colors.blue,
+      colorinbreath: Colors.blue,
+      colorinsimple: Colors.blue,
+      colorincomplex: Colors.blue),
+  //2
+  EvolutionContainer(
+      colorinsilence: Colors.blue,
+      colorinbreath: Colors.green,
+      colorinsimple: Colors.blue,
+      colorincomplex: Colors.yellow),
+  //3
+  EvolutionContainer(
+      colorinsilence: Colors.blue,
+      colorinbreath: Colors.blue,
+      colorinsimple: Colors.green,
+      colorincomplex: Colors.green),
+  //4
+  EvolutionContainer(
+      colorinsilence: Colors.blue,
+      colorinbreath: Colors.green,
+      colorinsimple: Colors.green,
+      colorincomplex: Colors.red),
+  //5
+  EvolutionContainer(
+      colorinsilence: Colors.yellow,
+      colorinbreath: Colors.yellow,
+      colorinsimple: Colors.blue,
+      colorincomplex: Colors.blue),
+  //6
+  EvolutionContainer(
+      colorinsilence: Colors.yellow,
+      colorinbreath: Colors.red,
+      colorinsimple: Colors.blue,
+      colorincomplex: Colors.yellow),
+  //7
+  EvolutionContainer(
+      colorinsilence: Colors.yellow,
+      colorinbreath: Colors.yellow,
+      colorinsimple: Colors.green,
+      colorincomplex: Colors.green),
+  //8
+  EvolutionContainer(
+      colorinsilence: Colors.yellow,
+      colorinbreath: Colors.red,
+      colorinsimple: Colors.green,
+      colorincomplex: Colors.red),
+  //9
+  EvolutionContainer(
+      colorinsilence: Colors.green,
+      colorinbreath: Colors.blue,
+      colorinsimple: Colors.yellow,
+      colorincomplex: Colors.blue),
+  //10
+  EvolutionContainer(
+      colorinsilence: Colors.green,
+      colorinbreath: Colors.green,
+      colorinsimple: Colors.yellow,
+      colorincomplex: Colors.yellow),
+  //11
+  EvolutionContainer(
+      colorinsilence: Colors.green,
+      colorinbreath: Colors.blue,
+      colorinsimple: Colors.red,
+      colorincomplex: Colors.green),
+  //12
+  EvolutionContainer(
+      colorinsilence: Colors.green,
+      colorinbreath: Colors.green,
+      colorinsimple: Colors.red,
+      colorincomplex: Colors.red),
+  //13
+  EvolutionContainer(
+      colorinsilence: Colors.red,
+      colorinbreath: Colors.yellow,
+      colorinsimple: Colors.yellow,
+      colorincomplex: Colors.blue),
+  //14
+  EvolutionContainer(
+      colorinsilence: Colors.red,
+      colorinbreath: Colors.red,
+      colorinsimple: Colors.yellow,
+      colorincomplex: Colors.yellow),
+  //15
+  EvolutionContainer(
+      colorinsilence: Colors.red,
+      colorinbreath: Colors.yellow,
+      colorinsimple: Colors.red,
+      colorincomplex: Colors.green),
+  //16
+  EvolutionContainer(
+      colorinsilence: Colors.red,
+      colorinbreath: Colors.red,
+      colorinsimple: Colors.red,
+      colorincomplex: Colors.red),
+];
 
-final List<Widget> evolutionContainerSlider = evolutionContainerList
-    .map(
-      (evcont) => evcont)
-    .toList();
+final List<Widget> evolutionContainerSlider =
+    evolutionContainerList.map((evcont) => evcont).toList();
 
 // rt spectrum
 
@@ -9084,3 +9135,100 @@ final List spectrumOfWordsHeb = [
   'בולבול',
   'ציפור נפש',
 ];
+
+final List complexImgs = [
+      'assets/coins/complex.png',
+      'assets/plants/mrbluep.png',
+      'assets/plants/rotegi.png',
+      'assets/kithe/kitcomplex.png',
+      'assets/kithe/blkithe.png',
+      'assets/minmax/bluemax.png',
+      'assets/minmax/bluemin.png',
+      'assets/minmax/mincomplex.png',
+      'assets/camog/bluedog.png',
+    ],
+    simpleImgs = [
+      'assets/coins/simple.png',
+      'assets/plants/mrgreavo.png',
+      'assets/plants/rotav.png',
+      'assets/kithe/kitsimple.png',
+      'assets/kithe/grkithe.png',
+      'assets/minmax/minsimple.png',
+      'assets/minmax/greenmax.png',
+      'assets/minmax/greenmin.png',
+      'assets/camog/greendog.png',
+    ],
+    breathImgs = [
+      'assets/coins/breath.png',
+      'assets/plants/msyelban.png',
+      'assets/plants/rotban.png',
+      'assets/kithe/kitbreath.png',
+      'assets/kithe/yelkithe.png',
+      'assets/minmax/minbreath.png',
+      'assets/minmax/yellowmin.png',
+      'assets/camog/mcamelyellow.png',
+      'assets/camog/yellowdog.png',
+    ],
+    silenceImgs = [
+      'assets/coins/silence.png',
+      'assets/plants/msredtom.png',
+      'assets/plants/rotom.png',
+      'assets/kithe/kitsilence.png',
+      'assets/kithe/redkithe.png',
+      'assets/minmax/minsilence.png',
+      'assets/minmax/redmin.png',
+      'assets/camog/reddog.png',
+    ];
+
+final List<Widget> complexSlider = complexImgs
+        .map(
+          (compleximg) => Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(compleximg),
+                fit: BoxFit.scaleDown,
+              ),
+              //shape: BoxShape.rectangle,
+            ),
+          ),
+        )
+        .toList(),
+    simpleSlider = simpleImgs
+        .map(
+          (simpleimg) => Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(simpleimg),
+                fit: BoxFit.scaleDown,
+              ),
+              //shape: BoxShape.rectangle,
+            ),
+          ),
+        )
+        .toList(),
+    breathSlider = breathImgs
+        .map(
+          (breathimg) => Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(breathimg),
+                fit: BoxFit.scaleDown,
+              ),
+              //shape: BoxShape.rectangle,
+            ),
+          ),
+        )
+        .toList(),
+    silenceSlider = silenceImgs
+        .map(
+          (silenceimg) => Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(silenceimg),
+                fit: BoxFit.scaleDown,
+              ),
+              //shape: BoxShape.rectangle,
+            ),
+          ),
+        )
+        .toList();

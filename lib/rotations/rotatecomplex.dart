@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:circle_list/circle_list.dart';
 import 'package:finallyicanlearn/logic/calculatehdchart.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
+import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
@@ -78,13 +79,14 @@ class _RotateComplexState extends State<RotateComplex> {
   List<String> coins64List = rtminmic65List,
   topcoinnamelist = minmaxnames,
   midcoinnamelist = newcoinsHeb4lst,
-  botcoinnamelist = coinsHeb4lst;
+  botcoinnamelist = coinsHeb4lst,
+  maincoin = zbwoofgooffullheb;
 
   List<hdCenter> _centers = [];
 
   List coins384List = rtmix390lstHeb, coinssidenamelist = rt6HEbcoins;
 
-  HumanDesign hdfinaldata = HumanDesign();
+  HumanDesign hdfinaldata = HumanDesign(typeid: 0);
 
   final TextEditingController _controllerType = TextEditingController(),
       _controllerAuthority = TextEditingController(),
@@ -181,7 +183,11 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllertop = CarouselSliderController(),
       _controllermid = CarouselSliderController(),
       _controllerbot = CarouselSliderController(),
-      _controlEvolutionContainerSlider = CarouselSliderController();
+      _controlEvolutionContainerSlider = CarouselSliderController(),
+  _controlComplexSlider = CarouselSliderController(),
+  _controlSimpleSlider = CarouselSliderController(),
+  _controlBreathSlider = CarouselSliderController(),
+  _controlSilenceSlider = CarouselSliderController();
 
   //final String _title = subtitles[4];
   final String _title = subtitles_heb[4];
@@ -269,7 +275,7 @@ class _RotateComplexState extends State<RotateComplex> {
       _plutodesignhex = Hexagram(),
       _chirondesignhex = Hexagram();
 
-  Hexagram _planethex = Hexagram(zodiacid: 7, zodiacsign: 'scorpio');
+  Hexagram _planethex = Hexagram(gateline: '1.1',zodiacid: 7, zodiacsign: 'scorpio');
 
   final List<bool> _isPlanetSelectedList =
       List<bool>.filled(13, false, growable: false);
@@ -298,26 +304,21 @@ class _RotateComplexState extends State<RotateComplex> {
           direction: Axis.horizontal,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const CircleAvatar(
-              radius: 15,
-              backgroundColor: Colors.transparent,
-              foregroundImage: AssetImage(
-                'assets/minmax/bluemin.png',
-              ),
-            ),
-            const SizedBox(width: 10),
-            AutoSizeText(_title,
+            const AutoSizeText('לנגף',
                 textAlign: TextAlign.left,
                 //maxFontSize: 15,
-                style: const TextStyle(color: Colors.white)),
+                style: TextStyle(color: Colors.white)),
             const SizedBox(width: 10),
-            const CircleAvatar(
+            CircleAvatar(
               radius: 15,
               backgroundColor: Colors.transparent,
-              foregroundImage: AssetImage(
-                'assets/minmax/bluemax.png',
-              ),
+              foregroundImage: AssetImage(coins4lst[0]),
             ),
+            const SizedBox(width: 10),
+            const AutoSizeText('מורכב',
+                textAlign: TextAlign.left,
+                //maxFontSize: 15,
+                style: TextStyle(color: Colors.white)),
           ],
         ),
         leading: IconButton(
@@ -337,10 +338,26 @@ class _RotateComplexState extends State<RotateComplex> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
+            Container(
+              height: screenheight / 8,
+              width: screenwidth / 4,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/camog/bluedog.png'),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            const AutoSizeText('ווף גוף גופוף ניגוף',
+                textAlign: TextAlign.center,
+                minFontSize: 25,
+                maxFontSize: 35,
+                style: TextStyle(color: Colors.blue)),
             Container(
               height: 200,
-              width: 400,
+              width: 200,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
@@ -348,18 +365,6 @@ class _RotateComplexState extends State<RotateComplex> {
                     ),
                     opacity: 1.0),
               ),
-            ),
-            const Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AutoSizeText('מינימום מיני מיקי מקסימום',
-                    textAlign: TextAlign.center,
-                    minFontSize: 20,
-                    maxFontSize: 40,
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold)),
-              ],
             ),
             Flex(
               direction: Axis.horizontal,
@@ -718,38 +723,8 @@ class _RotateComplexState extends State<RotateComplex> {
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 150.0,
-                  height: 150.0,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 1.5,
-                        color: Colors.blue,
-                      ),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(100))),
-                  child: CarouselSlider(
-                    //items: mixHexagramSlidersNew,
-                    items: minmaxcoinsSlider,
-                    carouselController: _controllercoin,
-                    options: CarouselOptions(
-                        height: 95,
-                        //aspectRatio: 0.4,
-                        autoPlay: false,
-                        //enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                        //enlargeCenterPage: true,
-                        //aspectRatio: 1.5,
-                        onPageChanged: (indextop, reason) {
-                          setState(() {
-                            _currentmain = indextop;
-                            _controllermaintext.text =
-                                coinsHeb4lst[_currentmain];
-                          });
-                        }),
-                  ),
-                ),
                 SizedBox(
-                  width: 100,
+                  width: 150,
                   height: 50,
                   child: AutoSizeTextField(
                     maxLines: 1,
@@ -757,7 +732,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     fullwidth: false,
                     decoration: InputDecoration.collapsed(
                         //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
-                        hintText: coinsHeb4lst[0],
+                        hintText: maincoin[0],
                         hintStyle: const TextStyle(color: Colors.grey)),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
@@ -769,181 +744,23 @@ class _RotateComplexState extends State<RotateComplex> {
                     readOnly: true,
                   ),
                 ),
-              ],
-            ),
-            const Divider(
-              color: Colors.blue,
-              thickness: 5,
-            ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      //minRadius: 5,
-                      maxRadius: 20,
-                      foregroundImage: AssetImage(minmaximglst[3])),
-                  tooltip: 'זמן לעדכן',
-                  onPressed: () async {
-                _planetsfullpersonList =
-                await PlanetsServices.getCurrentData(_personTime);
-
-                _designTime =
-                await PlanetsServices.getDesignTime(_personTime);
-                _planetsfulldesignList =
-                await PlanetsServices.getCurrentData(_designTime);
-
-                //_planetspersonList = _planetsfullpersonList;
-                //_planetsdesignList = _planetsfulldesignList;
-
-                for (int i = 0; _planetsfullpersonList.length - 1> i; i++) {
-                  _planetspersonList[i] = _planetsfullpersonList[i];
-                  _planetsdesignList[i] = _planetsfulldesignList[i];
-                }
-
-                _chironhex = _planetsfullpersonList.last;
-                _chirondesignhex = _planetsfulldesignList.last;
-
-                //_planetspersonList.removeLast();
-                //_planetsdesignList.removeLast();
-
-                _allplanetsList = _planetspersonList + _planetsdesignList;
-                _channelsList = HDServices.getHDChannels(_allplanetsList);
-                _personchannelsList =
-                HDServices.getHDChannels(_planetspersonList);
-                _designchannelsList =
-                HDServices.getHDChannels(_planetsdesignList);
-
-                //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-                hdfinaldata = HDServices.getHDBasicData(_channelsList);
-
-                _centers = HDServices.getHDCenters(_channelsList);
-                //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                //_selfreminderSentence = HDServices.getSelfReminder();
-                //_selfreminder = _timeselfreminder;
-
-                //_controlHDData(hdbasicdata);
-                _controlHDData(hdfinaldata);
-                //hdfinaldata = HDServices.getHDBasicData(_channelsList);
-
-                //_setDateTime(_now);
-                _setDateTime(_personTime);
-
-                //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
-                //_formattedTime = DateFormat.Hms().format(_now);
-                //_controllerTime.text = 'text $_formattedTime $_formattedDate';
-
-                _planetsfulldisplayList = _planetspersonList;
-                _planethex = _planetsfulldisplayList[0];
-                //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
-
-                _setCoins();
-
-                //_hexalignedList = hexagramAlignment(_planethex.gate!);
-
-                //_controllertop.jumpToPage(_hexalignedList[0]);
-                //_controllermid.jumpToPage(_hexalignedList[1]);
-                //_controllerbot.jumpToPage(_hexalignedList[2]);
-
-                _controllerlinetext.text = _planethex.line!.toString();
-                _controllergatelinestory.text = coins384List[
-                (coins384List.indexOf(_planethex.gate!) +
-                _planethex.line!)];
-
-                switch (_previousPlanetIndex) {
-                case -1:
-                _previousPlanetIndex = 0;
-                _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                break;
-                default:
-                _isPlanetSelectedList[_previousPlanetIndex] =
-                !_isPlanetSelectedList[_previousPlanetIndex];
-                _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                _previousPlanetIndex = 0;
-                }
-
-                switch (_currentconstate) {
-                case 0:
-                _controllerconstate.jumpToPage(1);
-                _controllerconstate.jumpToPage(0);
-                _controllerrotationstate.jumpToPage(0);
-                break;
-                case 1:
-                _controllerconstate.jumpToPage(0);
-                break;
-                default:
-                _controllerconstate.jumpToPage(0);
-                break;
-                }
-
-                _resetgatesState();
-                _setgatesState();
-                _setChart(_centers);
-
-                _setEvolutionCoin();
-
-                //setState(() {});
-                },
-                ),
-                const SizedBox(width: 5),
-                IconButton(
-                  icon: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      //minRadius: 5,
-                      maxRadius: 20,
-                      foregroundImage: AssetImage(minmaxcoins[0])),
-                  tooltip: 'העלאה',
-                  onPressed: () {
-                    _setupdown = true;
-                    controlSetTime(_setupdown);
-                  },
-                ),
-                const SizedBox(width: 5),
-                IconButton(
-                  icon: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      //minRadius: 5,
-                      maxRadius: 20,
-                      foregroundImage: AssetImage(minmaxcoins[3])),
-                  tooltip: 'הורדה',
-                  onPressed: () {
-                    _setupdown = false;
-                    controlSetTime(_setupdown);
-                  },
-                ),
-                const SizedBox(width: 5),
-                DropdownButton(
-                  underline: DropdownButtonHideUnderline(child: Container()),
-                  value: _settimestamp,
-                  icon: const Icon(Icons.keyboard_arrow_down,
-                      color: Colors.black),
-                  items: timecoinsDropDownLst,
-                  onChanged: (String? newsettimestamp) {
-                    setState(() {
-                      _settimestamp = newsettimestamp!;
-                    });
-                  },
-                ),
-                const SizedBox(width: 10),
-                SizedBox(
-                  height: 15,
-                  width: 70,
-                  child: TextField(
-                      textAlign: TextAlign.center,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                      ],
-                      readOnly: false,
-                      decoration:
-                      const InputDecoration.collapsed(hintText: '1'),
-                      controller: _controllerSetTime,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Colors.black)),
+                Container(
+                  width: 150.0,
+                  height: 150.0,
+                  child: CarouselSlider(
+                    items: woofgoofSlider,
+                    carouselController: _controllercoin,
+                    options: CarouselOptions(
+                        height: 95,
+                        autoPlay: false,
+                        onPageChanged: (indextop, reason) {
+                          setState(() {
+                            _currentmain = indextop;
+                            _controllermaintext.text =
+                            maincoin[_currentmain];
+                          });
+                        }),
+                  ),
                 ),
               ],
             ),
@@ -961,48 +778,84 @@ class _RotateComplexState extends State<RotateComplex> {
               ),
               child: Stack(
                 children: [
-                  // pro file - Prefessional Elephant
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Tooltip(message: _planetsdesignList[1].line!.toString(),
-                      textStyle: const TextStyle (fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
-                      child: Container(
-                          width: 50,
-                          height: 50,
-                          margin: const EdgeInsets.only(top: 5, right: 60),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 3,
-                              color: Colors.black,
+                  PositionedDirectional(
+                    end: 10,
+                    top: 10,
+                    child: Container(
+                      height: 80,
+                      width: 80,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(woofgoofcoinlst[hdfinaldata.typeid!],
+                              //'assets/camog/dogstwogrey.gif',
                             ),
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(35)),
-                        child: Icon(IconData
-                          (rt6iconshex[_planetsdesignList[1].line!], fontFamily: 'MaterialIcons'),
-                            color: Colors.black,
-                            size: 35),
+                            opacity: 1.0),
                       ),
                     ),
                   ),
+
+                  // pro file - Prefessional Elephant
                   Align(
                     alignment: Alignment.topRight,
-                    child: Tooltip(message: _planetspersonList[1].line!.toString(),
-                      textStyle: const TextStyle (fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        margin: const EdgeInsets.only(top: 5, right: 5),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 3,
-                              color: Colors.black,
+                    child: Container(
+                          width: 55,
+                          height: 55,
+                          margin: const EdgeInsets.only(top: 100, right: 60),
+                        //decoration: BoxDecoration(
+                         //   color: Colors.red),
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: Icon(IconData
+                                (rt6iconshex[_planetsdesignList[1].line!], fontFamily: 'MaterialIcons'),
+                                  color: Colors.red,
+                                  size: 55),
                             ),
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Icon(IconData
-                          (rt6iconshex[_planetspersonList[1].line!], fontFamily: 'MaterialIcons'),
-                            color: Colors.white,
-                            size: 35),
+                            Center(
+                              child: Text(_planetsdesignList[1].line!.toString(),
+                                style: const TextStyle (fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                        width: 55,
+                        height: 55,
+                        margin: const EdgeInsets.only(top: 100, right: 5),
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: Icon(IconData
+                                (rt6iconshex[_planetspersonList[1].line!], fontFamily: 'MaterialIcons'),
+                                  color: Colors.blue,
+                                  size: 55),
+                            ),
+                            Center(
+                              child: Text(_planetspersonList[1].line!.toString(),
+                                style: const TextStyle (fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ),
+                  PositionedDirectional(
+                    end: 15,
+                    top: 140,
+                    child: Container(
+                      height: 80,
+                      width: 80,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                              'assets/camog/elephantclock.png',
+                              //'assets/camog/dogstwogrey.gif',
+                            ),
+                            opacity: 1.0),
                       ),
                     ),
                   ),
@@ -1032,23 +885,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(
-                              'assets/coins/dog.png',
-                              //'assets/camog/dogstwogrey.gif',
-                            ),
-                            opacity: 1.0),
-                      ),
-                    ),
-                  ),
-                  PositionedDirectional(
-                    end: 5,
-                    top: 40,
-                    child: Container(
-                      height: 100,
-                      width: 100,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              'assets/camog/elephantclock.png',
+                              'assets/camog/dog.png',
                               //'assets/camog/dogstwogrey.gif',
                             ),
                             opacity: 1.0),
@@ -1056,69 +893,74 @@ class _RotateComplexState extends State<RotateComplex> {
                     ),
                   ),
 
+
                   // coins
                   PositionedDirectional(
+                    start: 10,
                     top: 200,
-                    end: 40,
-                    child: IconButton(
-                      icon: CircleAvatar(
-                        //minRadius: 5,
-                          maxRadius: 20,
-                          foregroundImage: AssetImage(coins4lst[0])),
-                      tooltip: 'מורכב',
-                      onPressed: () {
-                        //setState(() {
-                        //setComplexChart();
-                        //});
-                      },
+                    child: Container(
+                        height: 50,
+                      width: 50,
+                      child: CarouselSlider(
+                          items: complexSlider,
+                          carouselController: _controlComplexSlider,
+                          options: CarouselOptions(
+                              scrollDirection: Axis.horizontal,
+                              autoPlay: false,
+                              enlargeCenterPage: true,
+                              viewportFraction: 1.0)),
+                        
                     ),
                   ),
                   PositionedDirectional(
                     start: 10,
-                    top: 10, 
-                    child: IconButton(
-                      icon: CircleAvatar(
-                        //minRadius: 5,
-                          maxRadius: 20,
-                          foregroundImage: AssetImage(coins4lst[1])),
-                      tooltip: 'פשוט',
-                      onPressed: () {
-                        setState(() {
-                          _resetgatesState();
-                          _resetcentersState();
-                        });
-                      },
+                    top: 30,
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      child: CarouselSlider(
+                          items: simpleSlider,
+                          carouselController: _controlSimpleSlider,
+                          options: CarouselOptions(
+                              scrollDirection: Axis.horizontal,
+                              autoPlay: false,
+                              enlargeCenterPage: true,
+                              viewportFraction: 1.0)),
+
                     ),
                   ),
                   PositionedDirectional(
                     start: 10,
                     top: 110,
-                    child: IconButton(
-                      icon: CircleAvatar(
-                        //minRadius: 5,
-                          maxRadius: 20,
-                          foregroundImage: AssetImage(coins4lst[2])),
-                      tooltip: 'נשימה',
-                      onPressed: () {
-                        //setState(() {
-                        //});
-                      },
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      child: CarouselSlider(
+                          items: breathSlider,
+                          carouselController: _controlBreathSlider,
+                          options: CarouselOptions(
+                              scrollDirection: Axis.horizontal,
+                              autoPlay: false,
+                              enlargeCenterPage: true,
+                              viewportFraction: 1.0)),
+
                     ),
                   ),
                   PositionedDirectional(
-                    bottom: 40,
-                    end: 10,
-                    child: IconButton(
-                      icon: CircleAvatar(
-                        //minRadius: 5,
-                          maxRadius: 20,
-                          foregroundImage: AssetImage(coins4lst[3])),
-                      tooltip: 'שתיקה',
-                      onPressed: () {
-                        //setState(() {
-                        //setSilenceChart();
-                        //});
-                      },
+                    start: 10,
+                    bottom: 30,
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      child: CarouselSlider(
+                          items: silenceSlider,
+                          carouselController: _controlSilenceSlider,
+                          options: CarouselOptions(
+                              scrollDirection: Axis.horizontal,
+                              autoPlay: false,
+                              enlargeCenterPage: true,
+                              viewportFraction: 1.0)),
+
                     ),
                   ),
 
@@ -1700,16 +1542,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         alignment: Alignment.center,
                         child: Container(
                           margin: const EdgeInsets.only(left: 137, top: 105),
-                          child: Text(
-                            '21',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[21]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[21]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '21',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[21]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[21]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -1717,16 +1561,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         alignment: Alignment.center,
                         child: Container(
                           margin: const EdgeInsets.only(left: 103, top: 152),
-                          child: Text(
-                            '26',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[26]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[26]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '26',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[26]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[26]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -1734,16 +1580,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         alignment: Alignment.center,
                         child: Container(
                           margin: const EdgeInsets.only(left: 124, top: 130),
-                          child: Text(
-                            '51',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[51]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[51]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '51',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[51]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[51]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -1751,16 +1599,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         alignment: Alignment.center,
                         child: Container(
                           margin: const EdgeInsets.only(left: 170, top: 158),
-                          child: Text(
-                            '40',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[40]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[40]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '40',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[40]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[40]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -1799,38 +1649,44 @@ class _RotateComplexState extends State<RotateComplex> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceAround,
                                         children: [
-                                          Text(
-                                            '64',
-                                            style: TextStyle(
-                                                backgroundColor: _isBoldList[64]
-                                                    ? Colors.white
-                                                    : Colors.transparent,
-                                                fontSize: 11, // gatefont
-                                                fontWeight: _isBoldList[64]
-                                                    ? FontWeight.bold
-                                                    : FontWeight.normal),
+                                          ClipOval(
+                                            child: Text(
+                                              '64',
+                                              style: TextStyle(
+                                                  backgroundColor: _isBoldList[64]
+                                                      ? Colors.white
+                                                      : Colors.transparent,
+                                                  fontSize: 11, // gatefont
+                                                  fontWeight: _isBoldList[64]
+                                                      ? FontWeight.bold
+                                                      : FontWeight.normal),
+                                            ),
                                           ),
-                                          Text(
-                                            '61',
-                                            style: TextStyle(
-                                                backgroundColor: _isBoldList[61]
-                                                    ? Colors.white
-                                                    : Colors.transparent,
-                                                fontSize: 11, // gatefont
-                                                fontWeight: _isBoldList[61]
-                                                    ? FontWeight.bold
-                                                    : FontWeight.normal),
+                                          ClipOval(
+                                            child: Text(
+                                              '61',
+                                              style: TextStyle(
+                                                  backgroundColor: _isBoldList[61]
+                                                      ? Colors.white
+                                                      : Colors.transparent,
+                                                  fontSize: 11, // gatefont
+                                                  fontWeight: _isBoldList[61]
+                                                      ? FontWeight.bold
+                                                      : FontWeight.normal),
+                                            ),
                                           ),
-                                          Text(
-                                            '63',
-                                            style: TextStyle(
-                                                backgroundColor: _isBoldList[63]
-                                                    ? Colors.white
-                                                    : Colors.transparent,
-                                                fontSize: 11, // gatefont
-                                                fontWeight: _isBoldList[63]
-                                                    ? FontWeight.bold
-                                                    : FontWeight.normal),
+                                          ClipOval(
+                                            child: Text(
+                                              '63',
+                                              style: TextStyle(
+                                                  backgroundColor: _isBoldList[63]
+                                                      ? Colors.white
+                                                      : Colors.transparent,
+                                                  fontSize: 11, // gatefont
+                                                  fontWeight: _isBoldList[63]
+                                                      ? FontWeight.bold
+                                                      : FontWeight.normal),
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -1999,45 +1855,51 @@ class _RotateComplexState extends State<RotateComplex> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      Text(
-                                        '47',
-                                        style: TextStyle(
-                                            backgroundColor: _isBoldList[47]
-                                                ? Colors.white
-                                                : Colors.transparent,
-                                            fontSize: 11, // gatefont
-                                            fontWeight: _isBoldList[47]
-                                                ? FontWeight.bold
-                                                : FontWeight.normal),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 4),
+                                      ClipOval(
                                         child: Text(
-                                          '24',
+                                          '47',
                                           style: TextStyle(
-                                              backgroundColor: _isBoldList[24]
+                                              backgroundColor: _isBoldList[47]
                                                   ? Colors.white
                                                   : Colors.transparent,
                                               fontSize: 11, // gatefont
-                                              fontWeight: _isBoldList[24]
+                                              fontWeight: _isBoldList[47]
                                                   ? FontWeight.bold
                                                   : FontWeight.normal),
                                         ),
                                       ),
                                       Padding(
                                         padding:
+                                            const EdgeInsets.only(right: 4),
+                                        child: ClipOval(
+                                          child: Text(
+                                            '24',
+                                            style: TextStyle(
+                                                backgroundColor: _isBoldList[24]
+                                                    ? Colors.white
+                                                    : Colors.transparent,
+                                                fontSize: 11, // gatefont
+                                                fontWeight: _isBoldList[24]
+                                                    ? FontWeight.bold
+                                                    : FontWeight.normal),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
                                             const EdgeInsets.only(right: 2.0),
-                                        child: Text(
-                                          '4',
-                                          style: TextStyle(
-                                              backgroundColor: _isBoldList[4]
-                                                  ? Colors.white
-                                                  : Colors.transparent,
-                                              fontSize: 11, // gatefont
-                                              fontWeight: _isBoldList[4]
-                                                  ? FontWeight.bold
-                                                  : FontWeight.normal),
+                                        child: ClipOval(
+                                          child: Text(
+                                            '4',
+                                            style: TextStyle(
+                                                backgroundColor: _isBoldList[4]
+                                                    ? Colors.white
+                                                    : Colors.transparent,
+                                                fontSize: 11, // gatefont
+                                                fontWeight: _isBoldList[4]
+                                                    ? FontWeight.bold
+                                                    : FontWeight.normal),
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -2054,27 +1916,31 @@ class _RotateComplexState extends State<RotateComplex> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text(
-                                      '17',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[17]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[17]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
+                                    ClipOval(
+                                      child: Text(
+                                        '17',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[17]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[17]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
                                     ),
-                                    Text(
-                                      '11',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[11]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[11]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
+                                    ClipOval(
+                                      child: Text(
+                                        '11',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[11]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[11]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
                                     )
                                   ],
                                 ),
@@ -2083,18 +1949,20 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                width: 90,
-                                margin: const EdgeInsets.fromLTRB(80, 0, 2, 20),
-                                child: Text(
-                                  '43',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[43]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[43]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
+                                //width: 11,
+                                margin: const EdgeInsets.fromLTRB(0, 0, 2, 20),
+                                child: ClipOval(
+                                  child: Text(
+                                      '43',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[43]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[43]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                 ),
                               ),
                             ),
@@ -2166,38 +2034,44 @@ class _RotateComplexState extends State<RotateComplex> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  Text(
-                                    '62',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[62]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[62]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  ClipOval(
+                                    child: Text(
+                                      '62',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[62]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[62]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
-                                  Text(
-                                    '23',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[23]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[23]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  ClipOval(
+                                    child: Text(
+                                      '23',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[23]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[23]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
-                                  Text(
-                                    '56',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[56]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[56]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  ClipOval(
+                                    child: Text(
+                                      '56',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[56]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[56]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   )
                                 ],
                               ),
@@ -2212,27 +2086,31 @@ class _RotateComplexState extends State<RotateComplex> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    '16',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[16]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[16]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  ClipOval(
+                                    child: Text(
+                                      '16',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[16]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[16]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
-                                  Text(
-                                    '35',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[35]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[35]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  ClipOval(
+                                    child: Text(
+                                      '35',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[35]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[35]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   )
                                 ],
                               ),
@@ -2248,27 +2126,31 @@ class _RotateComplexState extends State<RotateComplex> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    '20',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[20]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[20]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  ClipOval(
+                                    child: Text(
+                                      '20',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[20]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[20]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
-                                  Text(
-                                    '12',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[12]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[12]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  ClipOval(
+                                    child: Text(
+                                      '12',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[12]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[12]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   )
                                 ],
                               ),
@@ -2283,38 +2165,44 @@ class _RotateComplexState extends State<RotateComplex> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    '31',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[31]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[31]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  ClipOval(
+                                    child: Text(
+                                      '31',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[31]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[31]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
-                                  Text(
-                                    '8',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[8]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[8]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  ClipOval(
+                                    child: Text(
+                                      '8',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[8]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[8]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
-                                  Text(
-                                    '33',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[33]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[33]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  ClipOval(
+                                    child: Text(
+                                      '33',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[33]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[33]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   )
                                 ],
                               ),
@@ -2323,18 +2211,20 @@ class _RotateComplexState extends State<RotateComplex> {
                           Align(
                             alignment: Alignment.center,
                             child: Container(
-                              width: 20,
-                              margin: const EdgeInsets.only(top: 43, left: 56),
-                              child: Text(
-                                '45',
-                                style: TextStyle(
-                                    backgroundColor: _isBoldList[45]
-                                        ? Colors.white
-                                        : Colors.transparent,
-                                    fontSize: 11, // gatefont
-                                    fontWeight: _isBoldList[45]
-                                        ? FontWeight.bold
-                                        : FontWeight.normal),
+                              //width: 11,
+                              margin: const EdgeInsets.only(top: 43, left: 51),
+                              child: ClipOval(
+                                child: Text(
+                                  '45',
+                                  style: TextStyle(
+                                      backgroundColor: _isBoldList[45]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
+                                      fontWeight: _isBoldList[45]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
                               ),
                             ),
                           ),
@@ -2508,16 +2398,18 @@ class _RotateComplexState extends State<RotateComplex> {
                               child: Container(
                                 margin:
                                     const EdgeInsets.only(right: 30, top: 29),
-                                child: Text(
-                                  '7',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[7]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[7]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
+                                child: ClipOval(
+                                  child: Text(
+                                    '7',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[7]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[7]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
                                 ),
                               ),
                             ),
@@ -2525,16 +2417,18 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.topCenter,
                               child: Container(
                                 margin: const EdgeInsets.only(top: 13),
-                                child: Text(
-                                  '1',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[1]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[1]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
+                                child: ClipOval(
+                                  child: Text(
+                                    '1',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[1]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[1]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
                                 ),
                               ),
                             ),
@@ -2543,16 +2437,18 @@ class _RotateComplexState extends State<RotateComplex> {
                               child: Container(
                                 margin:
                                     const EdgeInsets.only(left: 30, top: 29),
-                                child: Text(
-                                  '13',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[13]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[13]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
+                                child: ClipOval(
+                                  child: Text(
+                                    '13',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[13]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[13]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
                                 ),
                               ),
                             ),
@@ -2561,16 +2457,18 @@ class _RotateComplexState extends State<RotateComplex> {
                               child: Container(
                                 margin:
                                     const EdgeInsets.only(left: 30, bottom: 29),
-                                child: Text(
-                                  '46',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[46]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[46]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
+                                child: ClipOval(
+                                  child: Text(
+                                    '46',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[46]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[46]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
                                 ),
                               ),
                             ),
@@ -2578,16 +2476,18 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.bottomCenter,
                               child: Container(
                                 margin: const EdgeInsets.only(bottom: 13),
-                                child: Text(
-                                  '2',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[2]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[2]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
+                                child: ClipOval(
+                                  child: Text(
+                                    '2',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[2]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[2]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
                                 ),
                               ),
                             ),
@@ -2596,16 +2496,18 @@ class _RotateComplexState extends State<RotateComplex> {
                               child: Container(
                                 margin: const EdgeInsets.only(
                                     right: 30, bottom: 29),
-                                child: Text(
-                                  '15',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[15]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[15]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
+                                child: ClipOval(
+                                  child: Text(
+                                    '15',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[15]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[15]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
                                 ),
                               ),
                             ),
@@ -2613,16 +2515,18 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.center,
                               child: Container(
                                 margin: const EdgeInsets.only(right: 54),
-                                child: Text(
-                                  '10',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[10]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[10]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
+                                child: ClipOval(
+                                  child: Text(
+                                    '10',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[10]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[10]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
                                 ),
                               ),
                             ),
@@ -2630,16 +2534,18 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.center,
                               child: Container(
                                 margin: const EdgeInsets.only(left: 54),
-                                child: Text(
-                                  '25',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[25]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[25]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
+                                child: ClipOval(
+                                  child: Text(
+                                    '25',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[25]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[25]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
                                 ),
                               ),
                             ),
@@ -2786,14 +2692,32 @@ class _RotateComplexState extends State<RotateComplex> {
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
                                   margin: const EdgeInsets.only(left: 35),
+                                  child: ClipOval(
+                                    child: Text(
+                                      '29',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[29]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[29]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: ClipOval(
                                   child: Text(
-                                    '29',
+                                    '14',
                                     style: TextStyle(
-                                        backgroundColor: _isBoldList[29]
+                                        backgroundColor: _isBoldList[14]
                                             ? Colors.white
                                             : Colors.transparent,
                                         fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[29]
+                                        fontWeight: _isBoldList[14]
                                             ? FontWeight.bold
                                             : FontWeight.normal),
                                   ),
@@ -2801,32 +2725,20 @@ class _RotateComplexState extends State<RotateComplex> {
                               ),
                               Align(
                                 alignment: Alignment.bottomCenter,
-                                child: Text(
-                                  '14',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[14]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[14]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment.bottomCenter,
                                 child: Container(
                                   margin: const EdgeInsets.only(right: 35),
-                                  child: Text(
-                                    '5',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[5]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[5]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  child: ClipOval(
+                                    child: Text(
+                                      '5',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[5]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[5]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -2835,16 +2747,18 @@ class _RotateComplexState extends State<RotateComplex> {
                                 child: Container(
                                   margin:
                                       const EdgeInsets.only(left: 35, top: 46),
-                                  child: Text(
-                                    '9',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[9]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[9]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  child: ClipOval(
+                                    child: Text(
+                                      '9',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[9]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[9]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -2852,16 +2766,18 @@ class _RotateComplexState extends State<RotateComplex> {
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
                                   margin: const EdgeInsets.only(top: 46),
-                                  child: Text(
-                                    '3',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[3]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[3]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  child: ClipOval(
+                                    child: Text(
+                                      '3',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[3]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[3]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -2870,16 +2786,18 @@ class _RotateComplexState extends State<RotateComplex> {
                                 child: Container(
                                   margin:
                                       const EdgeInsets.only(right: 35, top: 46),
-                                  child: Text(
-                                    '42',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[42]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[42]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  child: ClipOval(
+                                    child: Text(
+                                      '42',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[42]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[42]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -2888,16 +2806,18 @@ class _RotateComplexState extends State<RotateComplex> {
                                 child: Container(
                                   margin:
                                       const EdgeInsets.only(right: 46, top: 14),
-                                  child: Text(
-                                    '34',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[34]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[34]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  child: ClipOval(
+                                    child: Text(
+                                      '34',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[34]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[34]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -2906,16 +2826,18 @@ class _RotateComplexState extends State<RotateComplex> {
                                 child: Container(
                                   margin:
                                       const EdgeInsets.only(left: 46, top: 30),
-                                  child: Text(
-                                    '59',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[59]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[59]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  child: ClipOval(
+                                    child: Text(
+                                      '59',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[59]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[59]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -2924,16 +2846,18 @@ class _RotateComplexState extends State<RotateComplex> {
                                 child: Container(
                                   margin:
                                       const EdgeInsets.only(right: 46, top: 30),
-                                  child: Text(
-                                    '27',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[27]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[27]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                  child: ClipOval(
+                                    child: Text(
+                                      '27',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[27]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[27]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -3045,14 +2969,32 @@ class _RotateComplexState extends State<RotateComplex> {
                             alignment: Alignment.bottomCenter,
                             child: Container(
                               margin: const EdgeInsets.only(left: 35),
+                              child: ClipOval(
+                                child: Text(
+                                  '52',
+                                  style: TextStyle(
+                                      backgroundColor: _isBoldList[52]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
+                                      fontWeight: _isBoldList[52]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: ClipOval(
                               child: Text(
-                                '52',
+                                '60',
                                 style: TextStyle(
-                                    backgroundColor: _isBoldList[52]
+                                    backgroundColor: _isBoldList[60]
                                         ? Colors.white
                                         : Colors.transparent,
                                     fontSize: 11, // gatefont
-                                    fontWeight: _isBoldList[52]
+                                    fontWeight: _isBoldList[60]
                                         ? FontWeight.bold
                                         : FontWeight.normal),
                               ),
@@ -3060,32 +3002,20 @@ class _RotateComplexState extends State<RotateComplex> {
                           ),
                           Align(
                             alignment: Alignment.bottomCenter,
-                            child: Text(
-                              '60',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[60]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[60]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
                             child: Container(
                               margin: const EdgeInsets.only(right: 35),
-                              child: Text(
-                                '53',
-                                style: TextStyle(
-                                    backgroundColor: _isBoldList[53]
-                                        ? Colors.white
-                                        : Colors.transparent,
-                                    fontSize: 11, // gatefont
-                                    fontWeight: _isBoldList[53]
-                                        ? FontWeight.bold
-                                        : FontWeight.normal),
+                              child: ClipOval(
+                                child: Text(
+                                  '53',
+                                  style: TextStyle(
+                                      backgroundColor: _isBoldList[53]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
+                                      fontWeight: _isBoldList[53]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
                               ),
                             ),
                           ),
@@ -3093,16 +3023,18 @@ class _RotateComplexState extends State<RotateComplex> {
                             alignment: Alignment.bottomCenter,
                             child: Container(
                               margin: const EdgeInsets.only(right: 45, top: 15),
-                              child: Text(
-                                '54',
-                                style: TextStyle(
-                                    backgroundColor: _isBoldList[54]
-                                        ? Colors.white
-                                        : Colors.transparent,
-                                    fontSize: 11, // gatefont
-                                    fontWeight: _isBoldList[54]
-                                        ? FontWeight.bold
-                                        : FontWeight.normal),
+                              child: ClipOval(
+                                child: Text(
+                                  '54',
+                                  style: TextStyle(
+                                      backgroundColor: _isBoldList[54]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
+                                      fontWeight: _isBoldList[54]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
                               ),
                             ),
                           ),
@@ -3110,16 +3042,18 @@ class _RotateComplexState extends State<RotateComplex> {
                             alignment: Alignment.bottomCenter,
                             child: Container(
                               margin: const EdgeInsets.only(right: 45, top: 30),
-                              child: Text(
-                                '38',
-                                style: TextStyle(
-                                    backgroundColor: _isBoldList[38]
-                                        ? Colors.white
-                                        : Colors.transparent,
-                                    fontSize: 11, // gatefont
-                                    fontWeight: _isBoldList[38]
-                                        ? FontWeight.bold
-                                        : FontWeight.normal),
+                              child: ClipOval(
+                                child: Text(
+                                  '38',
+                                  style: TextStyle(
+                                      backgroundColor: _isBoldList[38]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
+                                      fontWeight: _isBoldList[38]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
                               ),
                             ),
                           ),
@@ -3127,16 +3061,18 @@ class _RotateComplexState extends State<RotateComplex> {
                             alignment: Alignment.bottomCenter,
                             child: Container(
                               margin: const EdgeInsets.only(right: 45, top: 45),
-                              child: Text(
-                                '58',
-                                style: TextStyle(
-                                    backgroundColor: _isBoldList[58]
-                                        ? Colors.white
-                                        : Colors.transparent,
-                                    fontSize: 11, // gatefont
-                                    fontWeight: _isBoldList[58]
-                                        ? FontWeight.bold
-                                        : FontWeight.normal),
+                              child: ClipOval(
+                                child: Text(
+                                  '58',
+                                  style: TextStyle(
+                                      backgroundColor: _isBoldList[58]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
+                                      fontWeight: _isBoldList[58]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
                               ),
                             ),
                           ),
@@ -3144,16 +3080,18 @@ class _RotateComplexState extends State<RotateComplex> {
                             alignment: Alignment.bottomCenter,
                             child: Container(
                               margin: const EdgeInsets.only(left: 45, top: 15),
-                              child: Text(
-                                '19',
-                                style: TextStyle(
-                                    backgroundColor: _isBoldList[19]
-                                        ? Colors.white
-                                        : Colors.transparent,
-                                    fontSize: 11, // gatefont
-                                    fontWeight: _isBoldList[19]
-                                        ? FontWeight.bold
-                                        : FontWeight.normal),
+                              child: ClipOval(
+                                child: Text(
+                                  '19',
+                                  style: TextStyle(
+                                      backgroundColor: _isBoldList[19]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
+                                      fontWeight: _isBoldList[19]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
                               ),
                             ),
                           ),
@@ -3161,16 +3099,18 @@ class _RotateComplexState extends State<RotateComplex> {
                             alignment: Alignment.bottomCenter,
                             child: Container(
                               margin: const EdgeInsets.only(left: 45, top: 30),
-                              child: Text(
-                                '39',
-                                style: TextStyle(
-                                    backgroundColor: _isBoldList[39]
-                                        ? Colors.white
-                                        : Colors.transparent,
-                                    fontSize: 11, // gatefont
-                                    fontWeight: _isBoldList[39]
-                                        ? FontWeight.bold
-                                        : FontWeight.normal),
+                              child: ClipOval(
+                                child: Text(
+                                  '39',
+                                  style: TextStyle(
+                                      backgroundColor: _isBoldList[39]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
+                                      fontWeight: _isBoldList[39]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
                               ),
                             ),
                           ),
@@ -3178,16 +3118,18 @@ class _RotateComplexState extends State<RotateComplex> {
                             alignment: Alignment.bottomCenter,
                             child: Container(
                               margin: const EdgeInsets.only(left: 45, top: 45),
-                              child: Text(
-                                '41',
-                                style: TextStyle(
-                                    backgroundColor: _isBoldList[41]
-                                        ? Colors.white
-                                        : Colors.transparent,
-                                    fontSize: 11, // gatefont
-                                    fontWeight: _isBoldList[41]
-                                        ? FontWeight.bold
-                                        : FontWeight.normal),
+                              child: ClipOval(
+                                child: Text(
+                                  '41',
+                                  style: TextStyle(
+                                      backgroundColor: _isBoldList[41]
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      fontSize: 11, // gatefont
+                                      fontWeight: _isBoldList[41]
+                                          ? FontWeight.bold
+                                          : FontWeight.normal),
+                                ),
                               ),
                             ),
                           ),
@@ -3216,16 +3158,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           margin: const EdgeInsets.only(left: 204, bottom: 153),
-                          child: Text(
-                            '6',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[6]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[6]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '6',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[6]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[6]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3233,16 +3177,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           margin: const EdgeInsets.only(left: 251, bottom: 142),
-                          child: Text(
-                            '49',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[49]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[49]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '49',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[49]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[49]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3250,16 +3196,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           margin: const EdgeInsets.only(left: 251, bottom: 164),
-                          child: Text(
-                            '37',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[37]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[37]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '37',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[37]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[37]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3267,16 +3215,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           margin: const EdgeInsets.only(left: 303, bottom: 178),
-                          child: Text(
-                            '36',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[36]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[36]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '36',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[36]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[36]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3284,16 +3234,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           margin: const EdgeInsets.only(left: 303, bottom: 130),
-                          child: Text(
-                            '30',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[30]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[30]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '30',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[30]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[30]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3301,16 +3253,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           margin: const EdgeInsets.only(left: 277, bottom: 170),
-                          child: Text(
-                            '22',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[22]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[22]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '22',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[22]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[22]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3318,16 +3272,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           margin: const EdgeInsets.only(left: 277, bottom: 136),
-                          child: Text(
-                            '55',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[55]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[55]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '55',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[55]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[55]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3357,16 +3313,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Container(
                           margin:
                               const EdgeInsets.only(right: 204, bottom: 153),
-                          child: Text(
-                            '50',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[50]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[50]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '50',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[50]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[50]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3375,16 +3333,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Container(
                           margin:
                               const EdgeInsets.only(right: 251, bottom: 142),
-                          child: Text(
-                            '32',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[32]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[32]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '32',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[32]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[32]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3393,16 +3353,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Container(
                           margin:
                               const EdgeInsets.only(right: 251, bottom: 164),
-                          child: Text(
-                            '44',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[44]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[44]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '44',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[44]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[44]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3411,16 +3373,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Container(
                           margin:
                               const EdgeInsets.only(right: 303, bottom: 178),
-                          child: Text(
-                            '48',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[48]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[48]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '48',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[48]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[48]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3429,16 +3393,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Container(
                           margin:
                               const EdgeInsets.only(right: 303, bottom: 130),
-                          child: Text(
-                            '18',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[18]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[18]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '18',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[18]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[18]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3447,16 +3413,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Container(
                           margin:
                               const EdgeInsets.only(right: 277, bottom: 170),
-                          child: Text(
-                            '57',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[57]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[57]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '57',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[57]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[57]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3465,16 +3433,18 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Container(
                           margin:
                               const EdgeInsets.only(right: 277, bottom: 136),
-                          child: Text(
-                            '28',
-                            style: TextStyle(
-                                backgroundColor: _isBoldList[28]
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                fontSize: 11, // gatefont
-                                fontWeight: _isBoldList[28]
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
+                          child: ClipOval(
+                            child: Text(
+                              '28',
+                              style: TextStyle(
+                                  backgroundColor: _isBoldList[28]
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  fontSize: 11, // gatefont
+                                  fontWeight: _isBoldList[28]
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            ),
                           ),
                         ),
                       ),
@@ -3524,9 +3494,9 @@ class _RotateComplexState extends State<RotateComplex> {
                             children: [
                               SizedBox(
                                 height: 20,
-                                width: 70,
+                                width: 80,
                                 child: AutoSizeTextField(
-                                    minFontSize: 14,
+                                    minFontSize: 18,
                                     readOnly: true,
                                     decoration: InputDecoration.collapsed(
                                         hintText: DateFormat.Hm().format(_now),
@@ -3535,27 +3505,29 @@ class _RotateComplexState extends State<RotateComplex> {
                                     textAlign: TextAlign.center,
                                     controller: _controllerTimePick,
                                     style: const TextStyle(
-                                        fontSize: 14,
+                                        //fontSize: 14,
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold)),
                               ),
-                              SizedBox(
-                                height: 20,
-                                width: 150,
-                                child: AutoSizeTextField(
-                                    minFontSize: 14,
-                                    readOnly: true,
-                                    decoration: InputDecoration.collapsed(
-                                      //hintText: DateFormat('MM/dd/yyyy').format(_now),
-                                        hintText: _formatDate(_now),
-                                        hintStyle: const TextStyle(
-                                            color: Colors.grey)),
-                                    textAlign: TextAlign.center,
-                                    controller: _controllerDatePick,
-                                    style: const TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold)),
+                              Tooltip(message: 'dd mm yyyy',
+                                child: SizedBox(
+                                  height: 20,
+                                  width: 150,
+                                  child: AutoSizeTextField(
+                                      minFontSize: 18,
+                                      readOnly: true,
+                                      decoration: InputDecoration.collapsed(
+                                        //hintText: DateFormat('MM/dd/yyyy').format(_now),
+                                          hintText: _formatDate(_now),
+                                          hintStyle: const TextStyle(
+                                              color: Colors.grey)),
+                                      textAlign: TextAlign.center,
+                                      controller: _controllerDatePick,
+                                      style: const TextStyle(
+                                          //fontSize: 14,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold)),
+                                ),
                               ),
                             ],
                           ),
@@ -3566,6 +3538,178 @@ class _RotateComplexState extends State<RotateComplex> {
             ),
 
             // end hd chart
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      //minRadius: 5,
+                      maxRadius: 20,
+                      foregroundImage: AssetImage(minmaximglst[3])),
+                  tooltip: 'זמן לעדכן',
+                  onPressed: () async {
+                    _planetsfullpersonList =
+                    await PlanetsServices.getCurrentData(_personTime);
+
+                    _designTime =
+                    await PlanetsServices.getDesignTime(_personTime);
+                    _planetsfulldesignList =
+                    await PlanetsServices.getCurrentData(_designTime);
+
+                    //_planetspersonList = _planetsfullpersonList;
+                    //_planetsdesignList = _planetsfulldesignList;
+
+                    for (int i = 0; _planetsfullpersonList.length - 1> i; i++) {
+                      _planetspersonList[i] = _planetsfullpersonList[i];
+                      _planetsdesignList[i] = _planetsfulldesignList[i];
+                    }
+
+                    _chironhex = _planetsfullpersonList.last;
+                    _chirondesignhex = _planetsfulldesignList.last;
+
+                    //_planetspersonList.removeLast();
+                    //_planetsdesignList.removeLast();
+
+                    _allplanetsList = _planetspersonList + _planetsdesignList;
+                    _channelsList = HDServices.getHDChannels(_allplanetsList);
+                    _personchannelsList =
+                        HDServices.getHDChannels(_planetspersonList);
+                    _designchannelsList =
+                        HDServices.getHDChannels(_planetsdesignList);
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                    _centers = HDServices.getHDCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    //_selfreminder = _timeselfreminder;
+
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+                    //hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                    //_setDateTime(_now);
+                    _setDateTime(_personTime);
+
+                    //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
+                    //_formattedTime = DateFormat.Hms().format(_now);
+                    //_controllerTime.text = 'text $_formattedTime $_formattedDate';
+
+                    _planetsfulldisplayList = _planetspersonList;
+                    _planethex = _planetsfulldisplayList[0];
+                    //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
+
+                    _setCoins();
+
+                    //_hexalignedList = hexagramAlignment(_planethex.gate!);
+
+                    //_controllertop.jumpToPage(_hexalignedList[0]);
+                    //_controllermid.jumpToPage(_hexalignedList[1]);
+                    //_controllerbot.jumpToPage(_hexalignedList[2]);
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = coins384List[
+                    (coins384List.indexOf(_planethex.gate!) +
+                        _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                        !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+
+                    _resetgatesState();
+                    _setgatesState();
+                    _setChart(_centers);
+
+                    _setEvolutionCoin();
+
+                    //setState(() {});
+                  },
+                ),
+                const SizedBox(width: 5),
+                IconButton(
+                  icon: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      //minRadius: 5,
+                      maxRadius: 20,
+                      foregroundImage: AssetImage(minmaxcoins[0])),
+                  tooltip: 'העלאה',
+                  onPressed: () {
+                    _setupdown = true;
+                    controlSetTime(_setupdown);
+                  },
+                ),
+                const SizedBox(width: 5),
+                IconButton(
+                  icon: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      //minRadius: 5,
+                      maxRadius: 20,
+                      foregroundImage: AssetImage(minmaxcoins[3])),
+                  tooltip: 'הורדה',
+                  onPressed: () {
+                    _setupdown = false;
+                    controlSetTime(_setupdown);
+                  },
+                ),
+                const SizedBox(width: 5),
+                DropdownButton(
+                  underline: DropdownButtonHideUnderline(child: Container()),
+                  value: _settimestamp,
+                  icon: const Icon(Icons.keyboard_arrow_down,
+                      color: Colors.black),
+                  items: timecoinsDropDownLst,
+                  onChanged: (String? newsettimestamp) {
+                    setState(() {
+                      _settimestamp = newsettimestamp!;
+                    });
+                  },
+                ),
+                const SizedBox(width: 10),
+                SizedBox(
+                  height: 15,
+                  width: 70,
+                  child: TextField(
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      ],
+                      readOnly: false,
+                      decoration:
+                      const InputDecoration.collapsed(hintText: '1'),
+                      controller: _controllerSetTime,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.black)),
+                ),
+              ],
+            ),
             const SizedBox(height: 10),
             Flex(
               direction: Axis.horizontal,
@@ -3871,7 +4015,40 @@ class _RotateComplexState extends State<RotateComplex> {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
+                Flex(direction: Axis.vertical,
+                  children: [
+                    Container(
+                      width: 35,
+                      height: 35,
+                      margin: const EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                           //color: Colors.blue,
+                        image: DecorationImage(
+                          image: AssetImage(hdlinesplanet[(hdlinesplanet.indexOf(_planethex.gateline!)) + 1]),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.blue, width: 2),
+                      ),
+                    ),
+                    Container(
+                      width: 35,
+                      height: 35, 
+                      margin: const EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                        ///color: Colors.red,
+                        image: DecorationImage(
+                          image: AssetImage(hdlinesplanet[(hdlinesplanet.indexOf(_planethex.gateline!)) + 2]),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.red, width: 2),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 10),
                 Container(
                     width: 35,
                     height: 35,
@@ -3922,7 +4099,6 @@ class _RotateComplexState extends State<RotateComplex> {
                     )),
               ],
             ),
-
             const Divider(
               color: Colors.blue,
             ),
@@ -4750,7 +4926,6 @@ class _RotateComplexState extends State<RotateComplex> {
             ),
 
             // rt evolution
-
             ConstrainedBox(
               constraints: BoxConstraints(
                 minHeight: 10,
@@ -6042,6 +6217,84 @@ class _RotateComplexState extends State<RotateComplex> {
                       fontWeight: FontWeight.normal)),
             ),
             const Divider(color: Colors.blue),
+
+            Stack(
+              children: [
+                Center(
+                  child: CircleList(
+                    rotateMode: RotateMode.stopRotate,
+                    innerRadius: screenwidth / 60,
+                    //innerRadius: -1,
+                    initialAngle: 4.55,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    children: List.generate(14, (index) {
+                      return CircleAvatar(
+                        //backgroundColor: Colors.black12,
+                        backgroundColor: planetscolorList[index],
+                        minRadius: 1,
+                        maxRadius: 15,
+                        foregroundImage: AssetImage(planetsfullList[index]),
+                      );
+                    }),
+                  ),
+                ),
+                Center(
+                  child: CircleList(
+                    innerRadius: screenwidth / 60 + 70,
+                    initialAngle: 4.55,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    children: List.generate(14, (index) {
+                      return Container(
+                        width: 35,
+                        height: 35,
+                        margin: const EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                          //color: revZodiacColorList[index],
+                          image: DecorationImage(
+                            image: AssetImage(zodiacSwephImagelist[_planetsfullpersonList[index].zodiacid!]),
+                            fit: BoxFit.scaleDown,
+                          ),
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 1, color: Colors.blue),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+                Center(
+                  child: CircleList(
+                    rotateMode: RotateMode.stopRotate,
+                    innerRadius: screenwidth / 60 + 130,
+                    initialAngle: 4.55,
+                    childrenPadding: 0.1,
+                    origin: const Offset(0, 0),
+                    children: List.generate(14, (index) {
+                      return Container(
+                        width: 35,
+                        height: 35,
+                        margin: const EdgeInsets.all(1),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(width: 1, color: Colors.blue)),
+                        child: Center(
+                          child: AutoSizeText(
+                              _planetsfullpersonList[index].gateline!,
+                              minFontSize: 10,
+                              maxFontSize: 12,
+                              maxLines: 1,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+              ],
+            ),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -6252,84 +6505,6 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
               ],
             ),
-            Stack(
-              children: [
-                Center(
-                  child: CircleList(
-                    rotateMode: RotateMode.stopRotate,
-                    innerRadius: screenwidth / 60,
-                    //innerRadius: -1,
-                    initialAngle: 4.55,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(14, (index) {
-                      return CircleAvatar(
-                        //backgroundColor: Colors.black12,
-                        backgroundColor: planetscolorList[index],
-                        minRadius: 1,
-                        maxRadius: 15,
-                        foregroundImage: AssetImage(planetsfullList[index]),
-                      );
-                    }),
-                  ),
-                ),
-                Center(
-                  child: CircleList(
-                    innerRadius: screenwidth / 60 + 70,
-                    initialAngle: 4.55,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(14, (index) {
-                      return Container(
-                        width: 35,
-                        height: 35,
-                        margin: const EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          //color: revZodiacColorList[index],
-                          image: DecorationImage(
-                            image: AssetImage(zodiacSwephImagelist[_planetsfullpersonList[index].zodiacid!]),
-                            fit: BoxFit.scaleDown,
-                          ),
-                          shape: BoxShape.circle,
-                          border: Border.all(width: 1, color: Colors.blue),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-                Center(
-                  child: CircleList(
-                    rotateMode: RotateMode.stopRotate,
-                    innerRadius: screenwidth / 60 + 130,
-                    initialAngle: 4.55,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(14, (index) {
-                      return Container(
-                        width: 35,
-                        height: 35,
-                        margin: const EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 1, color: Colors.blue)),
-                        child: Center(
-                          child: AutoSizeText(
-                              _planetsfullpersonList[index].gateline!,
-                              minFontSize: 10,
-                              maxFontSize: 12,
-                              maxLines: 1,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-              ],
-            ),
-
             Stack(
               children: [
                 Center(
@@ -7023,7 +7198,7 @@ class _RotateComplexState extends State<RotateComplex> {
     _controllerType.text = hdbasicdata.type!;
     _controllerSentence.text = hdbasicdata.sentence!;
     //_controllercoinfirsttext.text = hdbasicdata.coinname!;
-    _controllercoin.jumpToPage(hexNamesList.indexOf(hdbasicdata.coinname!));
+    _controllercoin.jumpToPage(hexNamesList.indexOf(hdbasicdata.coinname!) + 1);
     //_currenttop = hexNamesList.indexOf(hdbasicdata.coinname!);
   }
 

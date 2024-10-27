@@ -31,16 +31,11 @@ class _RotateIDKState extends State<RotateIDK> {
               CircleAvatar(
                 backgroundColor: Colors.transparent,
                 radius: 15,
-                foregroundImage: AssetImage(newminmaxcoins[0]),
-              ),
-              CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: 15,
                 foregroundImage: AssetImage(fullkitheimglst[8]),
               ),
               const SizedBox(width: 10),
               AutoSizeText(
-                _title, textAlign: TextAlign.left,
+                '?אני לא יודעת גופוף', textAlign: TextAlign.left,
                 //maxFontSize: 15,
                 style: const TextStyle(color: Colors.white),
               ),
@@ -58,6 +53,30 @@ class _RotateIDKState extends State<RotateIDK> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
+            Container(
+              height: 215,
+              width: 215,
+              //margin: const EdgeInsets.only(right: 235, top: 35),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/camog/snoopyq.gif'),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            Container(
+                height: 500,
+                width: 500,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/camog/snoopyempty.png'),
+                    fit: BoxFit.scaleDown,
+                  ),
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+            const Divider(thickness: 5, color: Colors.black),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -99,6 +118,47 @@ class _RotateIDKState extends State<RotateIDK> {
               ],
             ),
             const Divider(thickness: 5, color: Colors.black),
+            AutoSizeTextField(
+                maxFontSize: 30,
+                readOnly: false,
+                decoration: const InputDecoration.collapsed(hintText: '?מיני שאלה'),
+                textAlign: TextAlign.center,
+                controller: _controllerCamelText,
+                style: const TextStyle(
+                    fontSize: 25,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal)),
+            const SizedBox(
+              height: 30.0,
+            ),
+            AutoSizeTextField(
+                maxFontSize: 30,
+                readOnly: false,
+                decoration: const InputDecoration.collapsed(
+                    hintText: '!ערכה היא לא יודעת'),
+                textAlign: TextAlign.center,
+                controller: _controlleriDogText,
+                style: const TextStyle(
+                    fontSize: 25,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal)),
+            const SizedBox(
+              height: 30.0,
+            ),
+            AutoSizeTextField(
+                maxFontSize: 30,
+                readOnly: false,
+                decoration: const InputDecoration.collapsed(hintText: '.'),
+                textAlign: TextAlign.center,
+                controller: _controlleriDogText,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 25.0,
+                    fontFamily: 'iChing',
+                    fontWeight: FontWeight.bold)),
+            const SizedBox(
+              height: 30.0,
+            ),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -170,48 +230,7 @@ class _RotateIDKState extends State<RotateIDK> {
               ],
             ),
             const Divider(thickness: 5, color: Colors.black),
-            AutoSizeTextField(
-                maxFontSize: 30,
-                readOnly: false,
-                decoration: const InputDecoration.collapsed(hintText: '?מיני שאלה'),
-                textAlign: TextAlign.center,
-                controller: _controllerCamelText,
-                style: const TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal)),
-            const SizedBox(
-              height: 30.0,
-            ),
-            AutoSizeTextField(
-                maxFontSize: 30,
-                readOnly: false,
-                decoration: const InputDecoration.collapsed(
-                    hintText: '!ערכה היא לא יודעת'),
-                textAlign: TextAlign.center,
-                controller: _controlleriDogText,
-                style: const TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal)),
-            const SizedBox(
-              height: 30.0,
-            ),
-            AutoSizeTextField(
-                maxFontSize: 30,
-                readOnly: false,
-                decoration: const InputDecoration.collapsed(hintText: '.'),
-                textAlign: TextAlign.center,
-                controller: _controlleriDogText,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 25.0,
-                    fontFamily: 'iChing',
-                    fontWeight: FontWeight.bold)),
-            const SizedBox(
-              height: 30.0,
-            ),
-            const Divider(thickness: 5, color: Colors.black),
+
             const AutoSizeText('XIO Ido Not Know',
                 style: TextStyle(
                     color: Colors.black,

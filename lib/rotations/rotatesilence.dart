@@ -24,18 +24,11 @@ class _RotateSilenceState extends State<RotateSilence> {
             direction: Axis.horizontal,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(minmaximglst[0]),
-                    fit: BoxFit.scaleDown,
-                  ),
-                  shape: BoxShape.rectangle,
-                ),
+              CircleAvatar(
+                radius: 15,
+                backgroundColor: Colors.transparent,
+                foregroundImage: AssetImage(coins4lst[3]),
               ),
-              AutoSizeText(_title, style: const TextStyle(color: Colors.white)),
             ],
           ),
           leading: IconButton(
@@ -50,6 +43,17 @@ class _RotateSilenceState extends State<RotateSilence> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Container(
+                  height: MediaQuery.of(context).size.height / 4,
+                  width: MediaQuery.of(context).size.width / 3,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(mainwoofgooflst[1]),
+                      fit: BoxFit.scaleDown,
+                    ),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
                 Container(
                   height: MediaQuery.of(context).size.height / 4,
                   width: MediaQuery.of(context).size.width / 3,

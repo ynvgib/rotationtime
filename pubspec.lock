@@ -145,14 +145,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
-  dashed_color_circle:
-    dependency: "direct main"
-    description:
-      name: dashed_color_circle
-      sha256: "680858a4614c78844b96c870da7f54e129a93bb4170f5853c2ab9ec5c6a5a216"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
   decimal:
     dependency: "direct main"
     description:
@@ -185,14 +177,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.1"
-  dropdown_search:
-    dependency: "direct main"
-    description:
-      name: dropdown_search
-      sha256: "55106e8290acaa97ed15bea1fdad82c3cf0c248dd410e651f5a8ac6870f783ab"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.0.6"
   fake_async:
     dependency: transitive
     description:
@@ -209,6 +193,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.3"
+  fibonacci:
+    dependency: "direct main"
+    description:
+      name: fibonacci
+      sha256: dc7382ac99f21b74dfdf3b134a5adc2169d5c166362423ec43e0ea53d8772a9c
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   file:
     dependency: transitive
     description:
@@ -509,6 +501,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  polygon:
+    dependency: "direct main"
+    description:
+      name: polygon
+      sha256: "9ebff01019574fb77662c5c9a9fa13df63176e9da6850dc594858a3dc0ac53ea"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   rational:
     dependency: transitive
     description:
