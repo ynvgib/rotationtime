@@ -317,7 +317,7 @@ class _RotateIDKState extends State<RotateIDK> {
             const AutoSizeText('אני לא יודעת מדיטציה',
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20.0,
+                    fontSize: 30.0,
                     fontWeight: FontWeight.bold)),
             Container(
               height: MediaQuery.of(context).size.height / 2,
@@ -330,11 +330,6 @@ class _RotateIDKState extends State<RotateIDK> {
                 shape: BoxShape.rectangle,
               ),
             ),
-            const AutoSizeText('מיק היא מיני מדיטציה',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold)),
             Container(
               height: MediaQuery.of(context).size.height / 3,
               width: MediaQuery.of(context).size.width / 3,
@@ -346,11 +341,6 @@ class _RotateIDKState extends State<RotateIDK> {
                 shape: BoxShape.rectangle,
               ),
             ),
-            const AutoSizeText('ערכה היא מדיטציה',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold)),
             const Divider(thickness: 5, color: Colors.black),
           ],
         ),

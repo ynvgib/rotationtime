@@ -3283,19 +3283,20 @@ final List<int> hexCarouselWheelOrderList = [
 final List<String> rtimgcoins = [
   'assets/planets/sun.png',
   'assets/coins/complex.png',
-  'assets/minmax/bluemax.png',
+  'assets/camog/bluedog.png',
+
 
   'assets/planets/northnode.png',
   'assets/coins/simple.png',
-  'assets/minmax/greenmax.png',
+  'assets/camog/greendog.png',
 
   'assets/planets/southnode.png',
   'assets/coins/breath.png',
-  'assets/minmax/yellowmin.png',
+  'assets/camog/yellowdog.png',
 
   'assets/planets/earth.png',
   'assets/coins/silence.png',
-  'assets/minmax/redmin.png',
+  'assets/camog/reddog.png',
 ];
 
 final List<String> rtimgcoinsold = [
@@ -3382,7 +3383,7 @@ final List<String> bimnamesheb = [
 final List<String> woofgoofHebname = [
   '?גופוף',
   'גוף',
-  'גוף ווף',
+  'גופוף',
   'ווף',
   'ניגוף',
 ];

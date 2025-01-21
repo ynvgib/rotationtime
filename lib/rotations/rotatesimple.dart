@@ -130,96 +130,11 @@ class _RotateSimpleState extends State<RotateSimple> {
                   shape: BoxShape.rectangle,
                 ),
               ),
-              AutoSizeText('ווף',
+              AutoSizeText(';ווף פשוט;',
                   textAlign: TextAlign.center,
                   minFontSize: 45,
                   maxFontSize: 55,
                   style: TextStyle(color: Colors.green)),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: screenheight / 8,
-                    width: screenwidth / 4,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/minmax/greenmin.png'),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                  Container(
-                    height: screenheight / 8,
-                    width: screenwidth / 4,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/minmax/greenmax.png'),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ],
-              ),
-              AutoSizeText('פשוט מיקי',
-                  textAlign: TextAlign.center,
-                  minFontSize: 25,
-                  maxFontSize: 35,
-                  style: TextStyle(color: Colors.green)),
-              Container(
-                height: 300,
-                width: 300,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                        //'assets/camog/dog.png',
-                        'assets/camog/dogswoofgoof.gif',
-                      ),
-                      opacity: 1.0),
-                ),
-              ),
-              CircleAvatar(
-                backgroundColor: Colors.white,
-                maxRadius: 70.0,
-                child: CarouselSlider(
-                  items: minmaxbasicSlider,
-                  carouselController: _controllerplant,
-                  options: CarouselOptions(
-                      initialPage: 1,
-                      autoPlay: false,
-                      enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                      enlargeCenterPage: true,
-                      aspectRatio: 1.3,
-                      onPageChanged: (indextop, reason) {
-                        setState(() {
-                          _currenttop = indextop;
-                          _controllertoptext.text = minmaxnames[indextop];
-                          //_controllerbottomtext.text = hexNamesList[indextop];
-                        });
-                      }),
-                ),
-              ),
-              SizedBox(
-                  width: screenwidth / 0.8,
-                  child: AutoSizeTextField(
-                    minLines: 1,
-                    minFontSize: 15,
-                    fullwidth: false,
-                    decoration: const InputDecoration.collapsed(
-                        //hintText: hexNamesList[1],
-                        hintText: 'רמז',
-                        hintStyle: TextStyle(color: Colors.grey)),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 35.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    controller: _controllertoptext,
-                    readOnly: false,
-                  )),
               SizedBox(
                   width: screenwidth / 0.8,
                   child: AutoSizeTextField(
@@ -261,6 +176,623 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
               ),
               const SizedBox(height: 20),
+              const Divider(
+                color: Colors.green,
+                thickness: 5,
+              ),
+              Container(
+                height: 30,
+                width: MediaQuery.of(context).size.width / 2.3,
+                margin: const EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(25),
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Colors.blueGrey,
+                          offset: Offset(4, 4),
+                          blurRadius: 20,
+                          spreadRadius: 1),
+                      BoxShadow(
+                          color: Colors.black87,
+                          offset: Offset(-4, -4),
+                          blurRadius: 15,
+                          spreadRadius: 1),
+                    ]),
+                child: const FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: AutoSizeText(
+                    'ערכה הוא',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                //height: MediaQuery.of(context).size.height / 2,
+                //width: MediaQuery.of(context).size.width * 0.95,
+                height: 200,
+                width: 300,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                        //'assets/camog/dog.png',
+                        'assets/camog/dogswoofgoof.gif',
+                      ),
+                      opacity: 1.0),
+                ),
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  //idk
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(newminmaxcoins[4]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[4]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(newminmaxcoins[3]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[3]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(newminmaxcoins[2]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[2]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(newminmaxcoins[1]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[1]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(newminmaxcoins[0]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[0]);
+                    },
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(minmaxmainHebname[4],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(minmaxmainHebname[3],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(minmaxmainHebname[2],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(minmaxmainHebname[1],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(minmaxmainHebname[0],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  //idk
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mainkithelst[4]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[4]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mainkithelst[3]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[3]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mainkithelst[2]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[2]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mainkithelst[1]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[1]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mainkithelst[0]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[0]);
+                    },
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(kithename[4],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(kithename[3],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(kithename[2],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(kithename[1],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(kithename[0],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  //idk
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mplants[4]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[4]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mplants[3]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[3]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mplants[2]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[2]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mplants[1]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[1]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(mplants[0]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[0]);
+                    },
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(bimnamesheb[4],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(bimnamesheb[3],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(bimnamesheb[2],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(bimnamesheb[1],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(bimnamesheb[0],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  //idk
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(titlesicon[4]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[4]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(titlesicon[3]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[3]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(titlesicon[2]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[2]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(titlesicon[1]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[1]);
+                    },
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 10,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(titlesicon[0]),
+                          )),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, mainroutes[0]);
+                    },
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(titlesname_heb[4],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(titlesname_heb[3],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(titlesname_heb[2],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(titlesname_heb[1],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 20,
+                    child: AutoSizeText(titlesname_heb[0],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ],
+              ),
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: AutoSizeText(titlesname[4],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: AutoSizeText(titlesname[3],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: AutoSizeText(titlesname[2],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: AutoSizeText(titlesname[1],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 6,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: AutoSizeText(titlesname[0],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal)),
+                  ),
+                ],
+              ),
               const Divider(
                 color: Colors.green,
                 thickness: 5,
@@ -363,7 +895,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
-                  items: minmaxcoinsSlider,
+                  items: mainSlider,
                   carouselController: _controllertop,
                   options: CarouselOptions(
                       initialPage: 1,
@@ -386,7 +918,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
-                  items: minmaxcoinsSlider,
+                  items: mainSlider,
                   carouselController: _controllermid,
                   options: CarouselOptions(
                       initialPage: 1,
@@ -409,7 +941,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
                 child: CarouselSlider(
                   //items: mixHexagramSlidersNew,
-                  items: minmaxcoinsSlider,
+                  items: mainSlider,
                   carouselController: _controllerbot,
                   options: CarouselOptions(
                       initialPage: 1,
@@ -3147,6 +3679,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                 height: 300,
                 width: 300,
                 child: GridView.builder(
+                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: 1,
                     crossAxisCount: 8, // number of items in each row
@@ -3201,7 +3734,8 @@ class _RotateSimpleState extends State<RotateSimple> {
               SizedBox(
                 height: 300,
                 width: 300,
-                child: GridView.builder(
+                child: GridView.builder(      
+                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: 1,
                     crossAxisCount: 5, // number of items in each row

@@ -24,6 +24,10 @@ class _RotateSilenceState extends State<RotateSilence> {
             direction: Axis.horizontal,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              AutoSizeText('.',
+                  textAlign: TextAlign.left,
+                  //maxFontSize: 15,
+                  style: const TextStyle(color: Colors.white)),
               CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.transparent,

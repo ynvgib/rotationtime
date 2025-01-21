@@ -18,7 +18,7 @@ class _RotateBreathState extends State<RotateBreath> {
       _controllerComplexText = TextEditingController();
   //final String _title = subtitles[2];
   //final String _title = subtitles_heb[2];
-  final String _title = woofgoofHebname[2];
+  final String _title = ',גופוף';
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +29,19 @@ class _RotateBreathState extends State<RotateBreath> {
             direction: Axis.horizontal,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AutoSizeText(_title,
+              AutoSizeText(',',
                   textAlign: TextAlign.left,
                   //maxFontSize: 15,
                   style: const TextStyle(color: Colors.white)),
               const SizedBox(width: 10),
+
               CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.transparent,
                 foregroundImage: AssetImage(coins4lst[2]),
               ),
               const SizedBox(width: 10),
-              AutoSizeText('נשימה',
+              AutoSizeText(',',
                   textAlign: TextAlign.left,
                   //maxFontSize: 15,
                   style: const TextStyle(color: Colors.white)),
@@ -73,31 +74,6 @@ class _RotateBreathState extends State<RotateBreath> {
               ),
             ),
 
-            const AutoSizeText('ווף ווף גוף גוף',
-                textAlign: TextAlign.center,
-                minFontSize: 35,
-                maxFontSize: 45,
-                style: TextStyle(color: Colors.yellow)),
-            const AutoSizeText('מיני נשימה',
-                textAlign: TextAlign.center,
-                minFontSize: 35,
-                maxFontSize: 45,
-                style: TextStyle(color: Colors.yellow)),
-            const AutoSizeText('ביני בינה',
-                textAlign: TextAlign.center,
-                minFontSize: 35,
-                maxFontSize: 45,
-                style: TextStyle(color: Colors.yellow)),
-            const AutoSizeText('ערכה הוא',
-                textAlign: TextAlign.center,
-                minFontSize: 25,
-                maxFontSize: 35,
-                style: TextStyle(color: Colors.yellow)),
-            const AutoSizeText('שאיפה נשיפה',
-                textAlign: TextAlign.center,
-                minFontSize: 25,
-                maxFontSize: 35,
-                style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold)),
             Container(
               height: MediaQuery.of(context).size.height / 3,
               width: MediaQuery.of(context).size.width / 2.5,

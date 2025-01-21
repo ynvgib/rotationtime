@@ -105,6 +105,22 @@ final List<String> woofgooffullslst = [
       'גוף',
     ];
 
+final List<Widget> mainSlider = coins4lst
+    .map(
+      (coinlst) => Container(
+    height: 200,
+    width: 200,
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage(coinlst),
+        fit: BoxFit.scaleDown,
+      ),
+      shape: BoxShape.rectangle,
+    ),
+  ),
+)
+    .toList();
+
 final List<Widget> woofgoofSlider = woofgooffullslst
     .map(
       (woofgoof) => Container(
