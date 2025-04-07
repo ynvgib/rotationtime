@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:circle_list/circle_list.dart';
+import 'package:country_state_city_pro/country_state_city_pro.dart';
 import 'package:finallyicanlearn/logic/calculatehdchart.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/hdlist.dart';
@@ -15,6 +16,7 @@ import 'package:finallyicanlearn/services/rotatewidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:sweph/sweph.dart';
 
 class RotateComplex extends StatefulWidget {
   const RotateComplex({Key? key}) : super(key: key);
@@ -51,7 +53,16 @@ class _RotateComplexState extends State<RotateComplex> {
       rootstate = 3,
       heartstate = 3,
       spleenstate = 3,
-      solarstate = 3;
+      solarstate = 3,
+      zbheadstate = 3,
+      zbajnastate = 3,
+      zbthroatstate = 3,
+      zbgstate = 3,
+      zbsacralstate = 3,
+      zbrootstate = 3,
+      zbheartstate = 3,
+      zbspleenstate = 3,
+      zbsolarstate = 3;
 
   int headcolorstate = 0,
       ajnacolorstate = 0,
@@ -176,7 +187,9 @@ class _RotateComplexState extends State<RotateComplex> {
       _controllermamatxt = TextEditingController(),
       _controllergrannytxt = TextEditingController(),
       _controllersavetxt = TextEditingController(),
-      _controllerchartname = TextEditingController();
+      _controllerchartname = TextEditingController(),
+      country=TextEditingController(),
+  state=TextEditingController(), city=TextEditingController();
 
   final CarouselSliderController _controllercoin = CarouselSliderController(),
       _controllerconstate = CarouselSliderController(),
@@ -200,7 +213,8 @@ class _RotateComplexState extends State<RotateComplex> {
       //_formattedMonth = '',
       //_formattedYear = '',
       _formattedTime = '',
-      _settimestamp = 'דקות';
+      _settimestamp = 'דקות',
+  cardstate = 'zb';
 
   DateTime _now = DateTime.now(),
       _personTime = DateTime.now(),
@@ -295,42 +309,56 @@ class _RotateComplexState extends State<RotateComplex> {
 
   double screenwidth = 1, screenheight = 1;
 
+  String silenceText = 'שתיקה',
+      breathText = 'נשימה',
+      simpleText = 'פשוט',
+      complexText = 'מורכב';
+      bool isSilenceText = true,
+          isBreathText = true,
+          isSimpleText = true,
+          isComplexText = true,
+          isFamilyText = true;
+
+
+  @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+    await Sweph.init(epheAssets: [
+      "packages/sweph/assets/ephe/seas_18.se1",]);
+    super.setState(() {}); // to update widget data
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
+    //cityTimeInit();
     screenwidth = MediaQuery.of(context).size.width;
     screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 40,
         title: Flex(
           direction: Axis.horizontal,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const AutoSizeText('"ניגוף',
-                textAlign: TextAlign.left,
-                //maxFontSize: 15,
-                style: TextStyle(color: Colors.white)),
-            const SizedBox(width: 10),
             CircleAvatar(
               radius: 15,
               backgroundColor: Colors.transparent,
               foregroundImage: AssetImage(coins4lst[0]),
             ),
-            const SizedBox(width: 10),
-            const AutoSizeText('מורכב"',
-                textAlign: TextAlign.left,
-                //maxFontSize: 15,
-                style: TextStyle(color: Colors.white)),
           ],
         ),
         leading: IconButton(
-          iconSize: 20,
-          icon: const Icon(Icons.close, color: Colors.white),
+          iconSize: 25,
+          icon: const Icon(Icons.close, color: Colors.lightBlue),
           onPressed: () => Navigator.of(context).pop(),
           //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
         ),
-        backgroundColor: Colors.lightBlue,
+        //backgroundColor: Colors.lightBlue.withOpacity(0.2),
+        backgroundColor: Colors.transparent,
         actions: const [
           SizedBox(
             width: 10,
@@ -353,11 +381,6 @@ class _RotateComplexState extends State<RotateComplex> {
                 shape: BoxShape.rectangle,
               ),
             ),
-            const AutoSizeText('"גוף. גופוף, ווף; ניגוף"',
-                textAlign: TextAlign.center,
-                minFontSize: 25,
-                maxFontSize: 35,
-                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
             Container(
               height: 200,
               width: 200,
@@ -419,17 +442,309 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
               ],
             ),
-
-            const Flex(
+            SizedBox (height: 10),
+            Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AutoSizeText('שתיקה נשימה פשוט מורכב',
-                    textAlign: TextAlign.center,
-                    minFontSize: 20,
-                    maxFontSize: 40,
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold)),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 4,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: const FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: AutoSizeText(
+                      '"',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold, height: 1.7),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 4.5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: const FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: AutoSizeText(
+                      ';',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold, height: 1.7),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.yellow,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: const FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: AutoSizeText(
+                      ',',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,height: 1.7),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 5.5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: const FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: AutoSizeText(
+                      '.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold, height: 1.7),
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 4,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: InkWell(
+                      child: AutoSizeText(
+                        complexText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold, height: 1.7),
+                      ),
+                      onTap: () {
+                        isComplexText = !isComplexText;
+                        setState(() {
+                          isComplexText == true
+                              ? complexText = "מורכב"
+                              : complexText = "COMPLEX";
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 4.5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: InkWell(
+                      child: AutoSizeText(
+                        simpleText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold, height: 1.8),
+                      ),
+                      onTap: () {
+                        isSilenceText = !isSilenceText;
+                        setState(() {
+                          isSilenceText == true
+                              ? simpleText = "פשוט"
+                              : simpleText = "Simple";
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.yellow,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: InkWell(
+                      child: AutoSizeText(
+                        breathText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold, height: 1.9),
+                      ),
+                      onTap: () {
+                        isBreathText = !isBreathText;
+                        setState(() {
+                          isBreathText == true
+                              ? breathText = "נשימה"
+                              : breathText = "Breath";
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 5.5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child:
+                    InkWell(
+                      child: AutoSizeText(
+                        silenceText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold, height: 2.0),
+                      ),
+                      onTap: () {
+                        isSilenceText = !isSilenceText;
+                        setState(() {
+                          isSilenceText == true
+                              ? silenceText = "שתיקה"
+                              : silenceText = "silence";
+                        });
+                      },
+                    ),
+                  ),
+                ),
+
               ],
             ),
             const Divider(
@@ -521,6 +836,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         break;
                     }
 
+                    resetChartColor;
                     _resetgatesState();
                     _settransitgatesState();
                     _setChart(_centers);
@@ -651,11 +967,15 @@ class _RotateComplexState extends State<RotateComplex> {
                         _controllerconstate.jumpToPage(0);
                         break;
                     }
+                    
+                    // idk
+                    resetChartColor();
 
                     _resetgatesState();
                     _setgatesState();
                     _setChart(_centers);
                     _setCoins();
+                    
 
                     _controllergatelinestory.text =
                         coins384List[(_planethex.gate! * 7) + _planethex.line!];
@@ -768,177 +1088,27 @@ class _RotateComplexState extends State<RotateComplex> {
               ],
             ),
             // start hd chart
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      //minRadius: 5,
-                      maxRadius: 20,
-                      foregroundImage: AssetImage(minmaximglst[3])),
-                  tooltip: 'זמן לעדכן',
-                  onPressed: () async {
-                    _planetsfullpersonList =
-                    await PlanetsServices.getCurrentData(_personTime);
-
-                    _designTime =
-                    await PlanetsServices.getDesignTime(_personTime);
-                    _planetsfulldesignList =
-                    await PlanetsServices.getCurrentData(_designTime);
-
-                    //_planetspersonList = _planetsfullpersonList;
-                    //_planetsdesignList = _planetsfulldesignList;
-
-                    for (int i = 0; _planetsfullpersonList.length - 1> i; i++) {
-                      _planetspersonList[i] = _planetsfullpersonList[i];
-                      _planetsdesignList[i] = _planetsfulldesignList[i];
-                    }
-
-                    _chironhex = _planetsfullpersonList.last;
-                    _chirondesignhex = _planetsfulldesignList.last;
-
-                    //_planetspersonList.removeLast();
-                    //_planetsdesignList.removeLast();
-
-                    _allplanetsList = _planetspersonList + _planetsdesignList;
-                    _channelsList = HDServices.getHDChannels(_allplanetsList);
-                    _personchannelsList =
-                        HDServices.getHDChannels(_planetspersonList);
-                    _designchannelsList =
-                        HDServices.getHDChannels(_planetsdesignList);
-
-                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
-                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
-
-                    _centers = HDServices.getHDCenters(_channelsList);
-                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                    //_selfreminderSentence = HDServices.getSelfReminder();
-                    //_selfreminder = _timeselfreminder;
-
-                    //_controlHDData(hdbasicdata);
-                    _controlHDData(hdfinaldata);
-                    //hdfinaldata = HDServices.getHDBasicData(_channelsList);
-
-                    //_setDateTime(_now);
-                    _setDateTime(_personTime);
-
-                    //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
-                    //_formattedTime = DateFormat.Hms().format(_now);
-                    //_controllerTime.text = 'text $_formattedTime $_formattedDate';
-
-                    _planetsfulldisplayList = _planetspersonList;
-                    _planethex = _planetsfulldisplayList[0];
-                    //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
-
-                    _setCoins();
-
-                    //_hexalignedList = hexagramAlignment(_planethex.gate!);
-
-                    //_controllertop.jumpToPage(_hexalignedList[0]);
-                    //_controllermid.jumpToPage(_hexalignedList[1]);
-                    //_controllerbot.jumpToPage(_hexalignedList[2]);
-
-                    _controllerlinetext.text = _planethex.line!.toString();
-                    _controllergatelinestory.text = coins384List[
-                    (coins384List.indexOf(_planethex.gate!) +
-                        _planethex.line!)];
-
-                    switch (_previousPlanetIndex) {
-                      case -1:
-                        _previousPlanetIndex = 0;
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        break;
-                      default:
-                        _isPlanetSelectedList[_previousPlanetIndex] =
-                        !_isPlanetSelectedList[_previousPlanetIndex];
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        _previousPlanetIndex = 0;
-                    }
-
-                    switch (_currentconstate) {
-                      case 0:
-                        _controllerconstate.jumpToPage(1);
-                        _controllerconstate.jumpToPage(0);
-                        _controllerrotationstate.jumpToPage(0);
-                        break;
-                      case 1:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                      default:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                    }
-
-                    _resetgatesState();
-                    _setgatesState();
-                    _setChart(_centers);
-
-                    _setEvolutionCoin();
-
-                    //setState(() {});
-                  },
+            SizedBox(
+              width: screenwidth * 0.8,
+              height: 50,
+              child: AutoSizeTextField(
+                maxLines: 1,
+                minFontSize: 15,
+                maxFontSize: 25,
+                fullwidth: false,
+                decoration: InputDecoration.collapsed(
+                  //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
+                    hintText: 'טיהור אשם',
+                    hintStyle: const TextStyle(color: Colors.grey)),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
                 ),
-                const SizedBox(width: 5),
-                IconButton(
-                  icon: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      //minRadius: 5,
-                      maxRadius: 20,
-                      foregroundImage: AssetImage(minmaxcoins[0])),
-                  tooltip: 'העלאה',
-                  onPressed: () {
-                    _setupdown = true;
-                    controlSetTime(_setupdown);
-                  },
-                ),
-                const SizedBox(width: 5),
-                IconButton(
-                  icon: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      //minRadius: 5,
-                      maxRadius: 20,
-                      foregroundImage: AssetImage(minmaxcoins[3])),
-                  tooltip: 'הורדה',
-                  onPressed: () {
-                    _setupdown = false;
-                    controlSetTime(_setupdown);
-                  },
-                ),
-                const SizedBox(width: 5),
-                DropdownButton(
-                  underline: DropdownButtonHideUnderline(child: Container()),
-                  value: _settimestamp,
-                  icon: const Icon(Icons.keyboard_arrow_down,
-                      color: Colors.black),
-                  items: timecoinsDropDownLst,
-                  onChanged: (String? newsettimestamp) {
-                    setState(() {
-                      _settimestamp = newsettimestamp!;
-                    });
-                  },
-                ),
-                const SizedBox(width: 10),
-                SizedBox(
-                  height: 15,
-                  width: 70,
-                  child: TextField(
-                      textAlign: TextAlign.center,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                      ],
-                      readOnly: false,
-                      decoration:
-                      const InputDecoration.collapsed(hintText: '1'),
-                      controller: _controllerSetTime,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Colors.black)),
-                ),
-              ],
+                controller: _controllerchartname,
+                readOnly: false,
+              ),
             ),
             InkWell(
               child: Container(
@@ -1020,9 +1190,43 @@ class _RotateComplexState extends State<RotateComplex> {
                           ),
                         ),
                     ),
+
                     PositionedDirectional(
-                      end: 15,
+                      end: 5,
                       top: 140,
+                      child: Container(
+                        height: 70,
+                        width: 70,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(
+                                familyList[_planetspersonList[1].line!],
+                                //'assets/camog/dogstwogrey.gif',
+                              ),
+                              opacity: 1.0),
+                        ),
+                      ),
+                    ),
+                    PositionedDirectional(
+                      end: 55,
+                      top: 140,
+                        child: Container(
+                          height: 70,
+                          width: 70,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                  familyList[_planetsdesignList[1].line!],
+                                  //'assets/camog/dogstwogrey.gif',
+                                ),
+                                opacity: 1.0),
+                          ),
+                        ),
+                    ),
+
+                    PositionedDirectional(
+                      end: 5,
+                      top: 190,
                       child: Container(
                         height: 80,
                         width: 80,
@@ -3713,42 +3917,321 @@ class _RotateComplexState extends State<RotateComplex> {
                   ],
                 ),
               ),
+              hoverColor: Colors.transparent,
               onTap: () {
                 setState(() {
-                  cardcolor = cardcolor == Colors.black ?
-                  Colors.white :
-                  Colors.black;
 
-                  timecolor = timecolor == Colors.white ?
-                  Colors.black :
-                  Colors.white;
+                  setChartState ();
+                  
+                  if (cardstate == 'zb')
+                    {
+                      //print ('hd card state');
+
+                      zbheadstate = headstate;
+                  zbajnastate = ajnastate;
+                  zbthroatstate = throatstate;
+                  zbgstate = gstate;
+                  zbsacralstate = sacralstate;
+                  zbrootstate = rootstate;
+                  zbheartstate = heartstate;
+                  zbspleenstate = spleenstate;
+                  zbsolarstate = solarstate;
+                      cardstate = 'hd';
+
+                      if (headstate == 3) {
+                        headstate = 5;
+                      }
+                      else {
+                        headstate = 2;
+                      }
+
+                      if (ajnastate == 3) {
+                        ajnastate = 5;
+                      }
+                      else {
+                        ajnastate = 3;
+                      }
+
+                      if (throatstate == 3) {
+                        throatstate = 5;
+                      }
+                      else {
+                        throatstate = 6;
+                      }
+
+                      if (gstate == 3) {
+                        gstate = 5;
+                      }
+                      else {
+                        gstate = 2;
+                      }
+
+                      if (rootstate == 3) {
+                        rootstate = 5;
+                      }
+                      else {
+                        rootstate = 6;
+                      }
+
+                      if (heartstate == 3) {
+                        heartstate = 5;
+                      }
+                      else {
+                        heartstate = 1;
+                      }
+
+
+                      if (sacralstate == 3) {
+                        sacralstate = 5;
+                      }
+                      else {
+                        sacralstate = 1;
+                      }
+
+                      if (spleenstate == 3) {
+                        spleenstate = 5;
+                      }
+                      else {
+                        spleenstate = 6;
+                      }
+
+                      if (solarstate == 3) {
+                        solarstate = 5;
+                      }
+                      else {
+                        solarstate = 6;
+                      }
+                    }
+                  else  {
+                      //print ('zb card state');
+                      headstate = zbheadstate;
+                      ajnastate = zbajnastate;
+                      throatstate = zbthroatstate;
+                      gstate = zbgstate;
+                      sacralstate = zbsacralstate;
+                      rootstate = zbrootstate;
+                      heartstate = zbheartstate;
+                      spleenstate = zbspleenstate;
+                      solarstate = zbsolarstate;
+                      cardstate = 'zb';
+                    }
+
+
+
+                  for (int i = 0; gatestatelist.length > i; i++) {
+                    //_isBoldList[i] = !_isBoldList[i];
+
+                    switch (gatestatelist[i]) {
+                      case 0:
+                        gatestatelist[i] = 6;
+                        break;
+                      case 1:
+                        break;
+                      case 2:
+                        gatestatelist[i] = 5;
+                        break;
+                      case 3:
+                        gatestatelist[i] = 8;
+                        break;
+                      case 4:
+                        break;
+                      case 5:
+                        gatestatelist[i] = 2;
+                        break;
+                      case 6:
+                        gatestatelist[i] = 0;
+                        break;
+                      case 7:
+                        break;
+                      case 8:
+                        gatestatelist[i] = 3;
+                        break;
+                      default:
+                        gatestatelist[i] = 0;
+                        break;
+                    }
+                  }
+
                 });
 
               },
             ),
 
             // end hd chart
-            SizedBox(
-              width: 150,
-              height: 50,
-              child: AutoSizeTextField(
-                maxLines: 1,
-                minFontSize: 25,
-                fullwidth: false,
-                decoration: InputDecoration.collapsed(
-                  //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
-                    hintText: 'טיהור אשם',
-                    hintStyle: const TextStyle(color: Colors.grey)),
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      //minRadius: 5,
+                      maxRadius: 20,
+                      foregroundImage: AssetImage('assets/camog/bluedog.png')),
+                  tooltip: 'זמן לעדכן',
+                  onPressed: () async {
+                    _planetsfullpersonList =
+                    await PlanetsServices.getCurrentData(_personTime);
+
+                    _designTime =
+                    await PlanetsServices.getDesignTime(_personTime);
+                    _planetsfulldesignList =
+                    await PlanetsServices.getCurrentData(_designTime);
+
+                    //_planetspersonList = _planetsfullpersonList;
+                    //_planetsdesignList = _planetsfulldesignList;
+
+                    for (int i = 0; _planetsfullpersonList.length - 1> i; i++) {
+                      _planetspersonList[i] = _planetsfullpersonList[i];
+                      _planetsdesignList[i] = _planetsfulldesignList[i];
+                    }
+
+                    _chironhex = _planetsfullpersonList.last;
+                    _chirondesignhex = _planetsfulldesignList.last;
+
+                    //_planetspersonList.removeLast();
+                    //_planetsdesignList.removeLast();
+
+                    _allplanetsList = _planetspersonList + _planetsdesignList;
+                    _channelsList = HDServices.getHDChannels(_allplanetsList);
+                    _personchannelsList =
+                        HDServices.getHDChannels(_planetspersonList);
+                    _designchannelsList =
+                        HDServices.getHDChannels(_planetsdesignList);
+
+                    //List<String> hdbasicdata = HDServices.getHDBasicData(_channelsList);
+                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                    _centers = HDServices.getHDCenters(_channelsList);
+                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
+                    //_selfreminderSentence = HDServices.getSelfReminder();
+                    //_selfreminder = _timeselfreminder;
+
+                    //_controlHDData(hdbasicdata);
+                    _controlHDData(hdfinaldata);
+                    //hdfinaldata = HDServices.getHDBasicData(_channelsList);
+
+                    //_setDateTime(_now);
+                    _setDateTime(_personTime);
+
+                    //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
+                    //_formattedTime = DateFormat.Hms().format(_now);
+                    //_controllerTime.text = 'text $_formattedTime $_formattedDate';
+
+                    _planetsfulldisplayList = _planetspersonList;
+                    _planethex = _planetsfulldisplayList[0];
+                    //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
+
+                    _setCoins();
+
+                    //_hexalignedList = hexagramAlignment(_planethex.gate!);
+
+                    //_controllertop.jumpToPage(_hexalignedList[0]);
+                    //_controllermid.jumpToPage(_hexalignedList[1]);
+                    //_controllerbot.jumpToPage(_hexalignedList[2]);
+
+                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllergatelinestory.text = coins384List[
+                    (coins384List.indexOf(_planethex.gate!) +
+                        _planethex.line!)];
+
+                    switch (_previousPlanetIndex) {
+                      case -1:
+                        _previousPlanetIndex = 0;
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        break;
+                      default:
+                        _isPlanetSelectedList[_previousPlanetIndex] =
+                        !_isPlanetSelectedList[_previousPlanetIndex];
+                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
+                        _previousPlanetIndex = 0;
+                    }
+
+                    switch (_currentconstate) {
+                      case 0:
+                        _controllerconstate.jumpToPage(1);
+                        _controllerconstate.jumpToPage(0);
+                        _controllerrotationstate.jumpToPage(0);
+                        break;
+                      case 1:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                      default:
+                        _controllerconstate.jumpToPage(0);
+                        break;
+                    }
+
+                    resetChartColor();
+                    _resetgatesState();
+                    _setgatesState();
+                    _setChart(_centers);
+
+                    _setEvolutionCoin();
+
+                    //setState(() {});
+                  },
                 ),
-                controller: _controllerchartname,
-                readOnly: false,
-              ),
+                const SizedBox(width: 5),
+                IconButton(
+                  icon: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      //minRadius: 5,
+                      maxRadius: 20,
+                      foregroundImage: AssetImage('assets/coins/complex.png')),
+                  tooltip: 'העלאה',
+                  onPressed: () {
+                    _setupdown = true;
+                    controlSetTime(_setupdown);
+                  },
+                ),
+                const SizedBox(width: 5),
+                IconButton(
+                  icon: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      //minRadius: 5,
+                      maxRadius: 20,
+                      foregroundImage: AssetImage('assets/coins/silence.png')),
+                  tooltip: 'הורדה',
+                  onPressed: () {
+                    _setupdown = false;
+                    controlSetTime(_setupdown);
+                  },
+                ),
+                const SizedBox(width: 5),
+                DropdownButton(
+                  underline: DropdownButtonHideUnderline(child: Container()),
+                  value: _settimestamp,
+                  icon: const Icon(Icons.keyboard_arrow_down,
+                      color: Colors.black),
+                  items: timecoinsDropDownLst,
+                  onChanged: (String? newsettimestamp) {
+                    setState(() {
+                      _settimestamp = newsettimestamp!;
+                    });
+                  },
+                ),
+                const SizedBox(width: 10),
+                SizedBox(
+                  height: 15,
+                  width: 70,
+                  child: TextField(
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      ],
+                      readOnly: false,
+                      decoration:
+                      const InputDecoration.collapsed(hintText: '1'),
+                      controller: _controllerSetTime,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.black)),
+                ),
+              ],
             ),
+
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -3765,56 +4248,6 @@ class _RotateComplexState extends State<RotateComplex> {
                     ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                     child: const Text('מעבר-בים',
                         style: TextStyle(fontSize: 13, color: Colors.white))),
-                const SizedBox(width: 20),
-                SizedBox(
-                  height: 40,
-                  width: 40,
-                  child: CarouselSlider(
-                    items: mixHexagramSlidersBol,
-                    carouselController: _controllerconstate,
-                    options: CarouselOptions(
-                        scrollDirection: Axis.horizontal,
-                        autoPlay: false,
-                        enlargeCenterPage: true,
-                        aspectRatio: 1.3,
-                        onPageChanged: (indexconstate, reason) {
-                          setState(() {
-                            _currentconstate = indexconstate;
-
-                            switch (_currentconstate) {
-                              case 0:
-                                _planetsfulldisplayList = _planetsfullpersonList;
-
-                                _controlPlanetHexagramData(_planetsfulldisplayList);
-
-                                _setDateTime(_personTime);
-
-                                _controllerPlanetType.text = 'אחר כך לחשוב';
-
-                                _controllerrotationstate.jumpToPage(0);
-                                break;
-                              case 1:
-                                _planetsfulldisplayList = _planetsfulldesignList;
-                                _controlPlanetHexagramData(_planetsfulldisplayList);
-
-                                _setDateTime(_designTime);
-
-                                _controllerPlanetType.text = 'קודם לחיות';
-
-                                _controllerrotationstate.jumpToPage(3);
-                                break;
-                              default:
-                              //_planetsList = _planetspersonList;
-
-                                _controlPlanetHexagramData(_planetsfullpersonList);
-                                _setDateTime(_personTime);
-
-                                break;
-                            }
-                          });
-                        }),
-                  ),
-                ),
                 const SizedBox(width: 20),
                 ElevatedButton(
                     onPressed: () {
@@ -3964,7 +4397,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
-                      foregroundImage: AssetImage(minmaximglst[3])),
+                      foregroundImage: AssetImage('assets/camog/bluedog.png')),
                   tooltip: 'זמן לעדכן',
                   onPressed: () async {
                     _planetsfullpersonList =
@@ -4058,11 +4491,13 @@ class _RotateComplexState extends State<RotateComplex> {
                         break;
                     }
 
+                    resetChartColor();
                     _resetgatesState();
                     _setgatesState();
                     _setChart(_centers);
 
                     _setEvolutionCoin();
+
                     //setState(() {});
                   },
                 ),
@@ -4072,7 +4507,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
-                      foregroundImage: AssetImage(minmaxcoins[0])),
+                      foregroundImage: AssetImage('assets/coins/complex.png')),
                   tooltip: 'העלאה',
                   onPressed: () {
                     _setupdown = true;
@@ -4085,7 +4520,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
-                      foregroundImage: AssetImage(minmaxcoins[3])),
+                      foregroundImage: AssetImage('assets/coins/silence.png')),
                   tooltip: 'הורדה',
                   onPressed: () {
                     _setupdown = false;
@@ -4394,6 +4829,56 @@ class _RotateComplexState extends State<RotateComplex> {
             Flex(direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: CarouselSlider(
+                    items: mixHexagramSlidersBol,
+                    carouselController: _controllerconstate,
+                    options: CarouselOptions(
+                        scrollDirection: Axis.horizontal,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 1.3,
+                        onPageChanged: (indexconstate, reason) {
+                          setState(() {
+                            _currentconstate = indexconstate;
+
+                            switch (_currentconstate) {
+                              case 0:
+                                _planetsfulldisplayList = _planetsfullpersonList;
+
+                                _controlPlanetHexagramData(_planetsfulldisplayList);
+
+                                _setDateTime(_personTime);
+
+                                _controllerPlanetType.text = 'אחר כך לחשוב';
+
+                                _controllerrotationstate.jumpToPage(0);
+                                break;
+                              case 1:
+                                _planetsfulldisplayList = _planetsfulldesignList;
+                                _controlPlanetHexagramData(_planetsfulldisplayList);
+
+                                _setDateTime(_designTime);
+
+                                _controllerPlanetType.text = 'קודם לחיות';
+
+                                _controllerrotationstate.jumpToPage(3);
+                                break;
+                              default:
+                              //_planetsList = _planetspersonList;
+
+                                _controlPlanetHexagramData(_planetsfullpersonList);
+                                _setDateTime(_personTime);
+
+                                break;
+                            }
+                          });
+                        }),
+                  ),
+                ),
+                const SizedBox(width: 20),
                 Tooltip(message: zodiacSwephNameHeblist[_planethex.zodiacid!],
                   child: Container(
                     width: 80,
@@ -4618,37 +5103,6 @@ class _RotateComplexState extends State<RotateComplex> {
                                       ),
                                     ],
                                   ),
-                   
-                                  Flex(
-                                    direction: Axis.vertical,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(height: 5),
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        color: thirdcolor,
-                                        child: AutoSizeText(coinssidenamelist[6],
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15,
-                                                color: Colors.black)),
-                                      ),
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        color: thirdcolor,
-                                        child: AutoSizeText(coinssidenamelist[5],
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15,
-                                                color: Colors.black)),
-                                      ),
-                                    ],
-                                  ),
-                   
                                   Flex(
                                     direction: Axis.vertical,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -4668,6 +5122,47 @@ class _RotateComplexState extends State<RotateComplex> {
                                       ),
                                     ],
                                   ),
+                                  Flex(
+                                    direction: Axis.vertical,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const SizedBox(height: 5),
+                                      InkWell(
+                                        child: Container(
+                                          width: 80,
+                                          height: 30,
+                                          color: thirdcolor,
+                                          child: AutoSizeText(coinssidenamelist[6],
+                                              textAlign: TextAlign.center,
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15,
+                                                  color: Colors.black)),
+                                        ),
+                                        onTap: () {
+                                          isFamilyText = !isFamilyText;
+                                          setState(() {
+                                            isFamilyText == true
+                                                ? coinssidenamelist = rt6HEbcoins
+                                                : coinssidenamelist = rt6coins;
+                                          });
+                                        },
+                                      ),
+                                      Container(
+                                        width: 80,
+                                        height: 30,
+                                        color: thirdcolor,
+                                        child: AutoSizeText(coinssidenamelist[5],
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15,
+                                                color: Colors.black)),
+                                      ),
+                                    ],
+                                  ),
+                   
+
                                 ],
                               ),
                               Flex(
@@ -4777,35 +5272,6 @@ class _RotateComplexState extends State<RotateComplex> {
                                     children: [
                                       const SizedBox(height: 5),
                                       Container(
-                                        width: 50,
-                                        height: 30,
-                                        color: secondcolor,
-                                        child: AutoSizeText(coinssidenamelist[4],
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15,
-                                                color: Colors.black)),
-                                      ),
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        color: secondcolor,
-                                        child: AutoSizeText(coinssidenamelist[3],
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15,
-                                                color: Colors.black)),
-                                      ),
-                                    ],
-                                  ),
-                                  Flex(
-                                    direction: Axis.vertical,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(height: 5),
-                                      Container(
                                         width: 30,
                                         height: 30,
                                         color: Colors.black,
@@ -4819,6 +5285,36 @@ class _RotateComplexState extends State<RotateComplex> {
                                       ),
                                     ],
                                   ),
+                                  Flex(
+                                    direction: Axis.vertical,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const SizedBox(height: 5),
+                                      Container(
+                                        width: 80,
+                                        height: 30,
+                                        color: secondcolor,
+                                        child: AutoSizeText(coinssidenamelist[4],
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15,
+                                                color: Colors.black)),
+                                      ),
+                                      Container(
+                                        width: 80,
+                                        height: 30,
+                                        color: secondcolor,
+                                        child: AutoSizeText(coinssidenamelist[3],
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15,
+                                                color: Colors.black)),
+                                      ),
+                                    ],
+                                  ),
+
                                 ],
                               ),
                               Flex(
@@ -4926,35 +5422,6 @@ class _RotateComplexState extends State<RotateComplex> {
                                     children: [
                                       const SizedBox(height: 5),
                                       Container(
-                                        width: 50,
-                                        height: 30,
-                                        color: firstcolor,
-                                        child: AutoSizeText(coinssidenamelist[2],
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15,
-                                                color: Colors.black)),
-                                      ),
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        color: firstcolor,
-                                        child: AutoSizeText(coinssidenamelist[1],
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15,
-                                                color: Colors.black)),
-                                      ),
-                                    ],
-                                  ),
-                                  Flex(
-                                    direction: Axis.vertical,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(height: 5),
-                                      Container(
                                         width: 30,
                                         height: 30,
                                         color: Colors.black,
@@ -4971,6 +5438,36 @@ class _RotateComplexState extends State<RotateComplex> {
                                       ),
                                     ],
                                   ),
+                                  Flex(
+                                    direction: Axis.vertical,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const SizedBox(height: 5),
+                                      Container(
+                                        width: 80,
+                                        height: 30,
+                                        color: firstcolor,
+                                        child: AutoSizeText(coinssidenamelist[2],
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15,
+                                                color: Colors.black)),
+                                      ),
+                                      Container(
+                                        width: 80,
+                                        height: 30,
+                                        color: firstcolor,
+                                        child: AutoSizeText(coinssidenamelist[1],
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15,
+                                                color: Colors.black)),
+                                      ),
+                                    ],
+                                  ),
+
                                 ],
                               ),
                             ]
@@ -5390,7 +5887,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
-                      foregroundImage: AssetImage(minmaximglst[3])),
+                      foregroundImage: AssetImage('assets/camog/bluedog.png')),
                   tooltip: 'זמן לעדכן',
                   onPressed: () async {
                     _planetsfullpersonList =
@@ -5484,21 +5981,23 @@ class _RotateComplexState extends State<RotateComplex> {
                         break;
                     }
 
+                    resetChartColor();
                     _resetgatesState();
                     _setgatesState();
                     _setChart(_centers);
 
                     _setEvolutionCoin();
+
                     //setState(() {});
                   },
                 ),
                 const SizedBox(width: 5),
                 IconButton(
                   icon: CircleAvatar(
-                          backgroundColor: Colors.transparent,
+                      backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
-                      foregroundImage: AssetImage(minmaxcoins[0])),
+                      foregroundImage: AssetImage('assets/coins/complex.png')),
                   tooltip: 'העלאה',
                   onPressed: () {
                     _setupdown = true;
@@ -5508,10 +6007,10 @@ class _RotateComplexState extends State<RotateComplex> {
                 const SizedBox(width: 5),
                 IconButton(
                   icon: CircleAvatar(
-                          backgroundColor: Colors.transparent,
+                      backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
-                      foregroundImage: AssetImage(minmaxcoins[3])),
+                      foregroundImage: AssetImage('assets/coins/silence.png')),
                   tooltip: 'הורדה',
                   onPressed: () {
                     _setupdown = false;
@@ -7230,6 +7729,22 @@ class _RotateComplexState extends State<RotateComplex> {
     );
   }
 
+  void resetChartColor (){
+    cardcolor = Colors.black;
+    timecolor = Colors.white;
+    cardstate = 'zb';
+  }
+
+  void setChartState (){
+    cardcolor = cardcolor == Colors.black ?
+    Colors.black.withOpacity(0.2) :
+    Colors.black;
+
+    timecolor = timecolor == Colors.white ?
+    Colors.black :
+    Colors.white;
+  }
+  
   void _controlHDData(HumanDesign hdbasicdata) {
     _controllerFinalLine.text = 'XIO I don\'t know';
 
@@ -7487,6 +8002,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
     //_planetspersonList.removeLast();
 
+    resetChartColor();
     _resetgatesState();
     _settransitgatesState();
     _channelsList = HDServices.getHDChannelsJustNow(_planetspersonList);
@@ -7676,6 +8192,7 @@ class _RotateComplexState extends State<RotateComplex> {
     _uranushex = _planetspersonList[10];
     _neptunehex = _planetspersonList[11];
     _plutohex = _planetspersonList[12];
+    _chironhex = _planetsfullpersonList[13];
 
     _sundesignhex = _planetsdesignList[0];
     _earthdesignhex = _planetsdesignList[1];
@@ -7690,6 +8207,7 @@ class _RotateComplexState extends State<RotateComplex> {
     _uranusdesignhex = _planetsdesignList[10];
     _neptunedesignhex = _planetsdesignList[11];
     _plutodesignhex = _planetsdesignList[12];
+    _chirondesignhex = _planetsfulldesignList[13];
 
     _controllerSunText.text = _sunhex.linename!;
     _controllerEarthText.text = _earthhex.linename!;
@@ -7903,6 +8421,7 @@ class _RotateComplexState extends State<RotateComplex> {
     //}
     // }
   }
+
 
   void _setEvolutionCoin (){
     // sun earth nodes design

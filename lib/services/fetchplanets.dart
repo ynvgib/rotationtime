@@ -25,6 +25,7 @@ class PlanetsServices {
     final NodesAndAspides moonNorthNode;
     final double longitudeNorthNode;
 
+
     posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_SWIEPH);
     //posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_TROPICAL);
     //pos_earth = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_EARTH, SwephFlag.SEFLG_SWIEPH);
@@ -52,6 +53,21 @@ class PlanetsServices {
     posNeptune = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_NEPTUNE, SwephFlag.SEFLG_SWIEPH);
     posPluto = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_PLUTO, SwephFlag.SEFLG_SWIEPH);
     posChiron = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_CHIRON, SwephFlag.SEFLG_SWIEPH);
+
+
+    //DegreeSplitData planetDSP;
+    //planetDSP = Sweph.swe_split_deg(posNorthnode.longitude, SplitDegFlags.SE_SPLIT_DEG_ZODIACAL);
+    //print (planetDSP);
+
+    //final starALH = 'AL HECKA';
+    //final starSAI = 'SAIPH';
+
+    //final fs = Sweph.swe_fixstar_ut(starALH, jd, SwephFlag.SEFLG_SWIEPH);
+    //final fsz = Sweph.swe_split_deg(fs.coordinates.longitude, SplitDegFlags.SE_SPLIT_DEG_KEEP_SIGN);
+
+    //print (fs);
+    //print (fsz);
+
 
 
     //cswPlanets = [posSun, posNorthnode, posMoon,

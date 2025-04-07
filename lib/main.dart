@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:circle_list/circle_list.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
@@ -27,9 +28,9 @@ import 'package:url_launcher/url_launcher.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Sweph.init(epheAssets: [
-    "packages/sweph/assets/ephe/seas_18.se1",
-  ]);
+  //await Sweph.init(epheAssets: [
+  //  "packages/sweph/assets/ephe/seas_18.se1",
+  //]);
 
   //teledart
   //https://t.me/idonotknowbot_bot
@@ -52,7 +53,7 @@ class RotateMain extends StatelessWidget {
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (ctx) => RotateHome(),
+        '/': (ctx) => const RotateHome(),
         pdfroutes[0]: (ctx) => const RotatePDF(),
         pdfroutes[1]: (ctx) => const RotateFitGamHe(),
         pdfroutes[2]: (ctx) => const RotateFitGam(),
@@ -80,7 +81,6 @@ class RotateHome extends StatefulWidget {
 }
 
 class _RotateHomeState extends State<RotateHome> {
-  //final String _title = maintitle
   final String _title = 'כותרת',
       beidontknowsite = 'rotation-time.web.app',
       githubrotatesite = 'www.github.com/ynvgib/rotationtime',
@@ -91,11 +91,22 @@ class _RotateHomeState extends State<RotateHome> {
       githubrotateurl = Uri.parse('https://www.github.com/ynvgib/rotationtime');
 
   Offset _offset = Offset.zero;
+  double screenwidth = 1, screenheight = 1;
+  final CarouselSliderController _controllertop = CarouselSliderController(),
+      _controllermid = CarouselSliderController(),
+      _controllerbot = CarouselSliderController();
+
+  int _currenttop = 0, _currentmid = 0, _currentbot = 0;
+
+  String mainTitle = "זמן סיבוב", subTitle = "מעט זמנסי בוב";
+  bool isMainTitle = true, isSubTitle = true;
 
   @override
   Widget build(BuildContext context) {
+    screenwidth = MediaQuery.of(context).size.width;
+    screenheight = MediaQuery.of(context).size.height;
     return GestureDetector(
-      onPanUpdate: (details){
+      onPanUpdate: (details) {
         setState(() => _offset += details.delta);
       },
       child: Scaffold(
@@ -179,13 +190,14 @@ class _RotateHomeState extends State<RotateHome> {
                           children: [
                             Tooltip(
                               message: woofgoofHebname[index],
-                              textStyle:
-                              TextStyle(fontSize: 14, color: Colors.white),
+                              textStyle: const TextStyle(
+                                  fontSize: 14, color: Colors.white),
                               child: Container(
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
-                                      //image: AssetImage(newminmaxcoins[index]),
-                                        image: AssetImage(mainwoofgooflst[index]),
+                                        //image: AssetImage(newminmaxcoins[index]),
+                                        image:
+                                            AssetImage(mainwoofgooflst[index]),
                                         colorFilter: ColorFilter.mode(
                                           Colors.white.withOpacity(1.0),
                                           BlendMode.modulate,
@@ -220,20 +232,32 @@ class _RotateHomeState extends State<RotateHome> {
                             blurRadius: 15,
                             spreadRadius: 1),
                       ]),
-                  child: const FittedBox(
+                  child: FittedBox(
                     fit: BoxFit.fitHeight,
-                    child: AutoSizeText(
-                      'זמן סיבוב',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold),
+                    child: InkWell(
+                      child: AutoSizeText(
+                        //'זמן סיבוב',
+                        mainTitle,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            height: 1.5),
+                      ),
+                      onTap: () {
+                        isMainTitle = !isMainTitle;
+                        setState(() {
+                          isMainTitle == true
+                              ? mainTitle = "זמן סיבוב"
+                              : mainTitle = "Rotation Time";
+                        });
+                      },
                     ),
                   ),
                 ),
                 Container(
-                  height: 25,
+                  height: 35,
                   width: MediaQuery.of(context).size.width / 1.5,
                   margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
@@ -251,36 +275,121 @@ class _RotateHomeState extends State<RotateHome> {
                             blurRadius: 15,
                             spreadRadius: 1),
                       ]),
-                  child: const FittedBox(
+                  child: FittedBox(
                     fit: BoxFit.fitHeight,
-                    child: AutoSizeText(
-                      'מעט זמנסי בוב',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                    child: InkWell(
+                      child: AutoSizeText(
+                      subTitle,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            height: 2.0),
+                      ),
+                      onTap: () {
+                        isSubTitle = !isSubTitle;
+                        setState(() {
+                          isSubTitle == true
+                              ? subTitle = "מעט זמנסי בוב"
+                              : subTitle = "bye Zmansi Bob";
+                        });
+                      },
                     ),
                   ),
                 ),
                 //new cube
-                SizedBox(height: 35),
+                const SizedBox(height: 35),
 
-                Container(height: 150, width: 150,
+                Container(
+                  height: 150,
+                  width: 150,
                   alignment: Alignment.center,
                   child: Transform(
                       transform: Matrix4.identity()
-                      ..setEntry(3,2,0.001)
-                      ..rotateX(_offset.dy * pi / 180)
-                      ..rotateY(_offset.dx * pi / 180)
-                      ..rotateZ(_offset.dx * pi / 180),
-                  child: Cube()),
+                        ..setEntry(3, 2, 0.001)
+                        ..rotateX(_offset.dy * pi / 180)
+                        ..rotateY(_offset.dx * pi / 180)
+                        ..rotateZ(_offset.dx * pi / 180),
+                      child: const Cube()),
                 ),
                 // end new cube
 
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
 
-
+                const Divider(
+                  color: Colors.black87,
+                  thickness: 5,
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight * 0.2,
+                    maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: mainSlider,
+                    carouselController: _controllertop,
+                    options: CarouselOptions(
+                        initialPage: 1,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 1.3,
+                        onPageChanged: (indextop, reason) {
+                          setState(() {
+                            _currenttop = indextop;
+                          });
+                        }),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight * 0.2,
+                    maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: mainSlider,
+                    carouselController: _controllermid,
+                    options: CarouselOptions(
+                        initialPage: 1,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 1.3,
+                        onPageChanged: (indexmid, reason) {
+                          setState(() {
+                            _currentmid = indexmid;
+                          });
+                        }),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight * 0.2,
+                    maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: mainSlider,
+                    carouselController: _controllerbot,
+                    options: CarouselOptions(
+                        initialPage: 1,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 1.3,
+                        onPageChanged: (indexbot, reason) {
+                          setState(() {
+                            _currentbot = indexbot;
+                          });
+                        }),
+                  ),
+                ),
                 const Divider(
                   color: Colors.black87,
                   thickness: 5,
@@ -297,7 +406,8 @@ class _RotateHomeState extends State<RotateHome> {
                 ),
                 const SizedBox(height: 10),
 
-                Flex(direction: Axis.horizontal,
+                Flex(
+                  direction: Axis.horizontal,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FittedBox(
@@ -307,9 +417,9 @@ class _RotateHomeState extends State<RotateHome> {
                           launchUrl(githubrotateurl);
                         },
                         //child: Text(githubproject,
-                        child: Text('קוד קוד',
+                        child: const Text('קוד קוד',
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold)),
@@ -322,9 +432,9 @@ class _RotateHomeState extends State<RotateHome> {
                           launchUrl(beidontknowurl);
                         },
                         //child: Text(beidontknowsite,
-                        child: Text('לאתר',
+                        child: const Text('לאתר',
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold)),
@@ -333,7 +443,6 @@ class _RotateHomeState extends State<RotateHome> {
                   ],
                 ),
                 const SizedBox(height: 10),
-
               ]),
         ),
       ),

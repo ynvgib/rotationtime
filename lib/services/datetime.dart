@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class TimeServices {
   static Future<DateTime> selectDate(BuildContext context) async {
@@ -32,4 +36,13 @@ extension DateTimeExtension on DateTime {
   DateTime applied(TimeOfDay time) {
     return DateTime(year, month, day, time.hour, time.minute);
   }
+}
+
+Future<CityTime> readJsonCityTime() async {
+  var data = json.decode(json.encode('assets/json/cityMap'));
+  //List<dynamic> data = json.decode(json.encode('assets/json/cityMap.json'));
+  //List<CityTime> ct = data.map((json) => CityTime.fromJson(json)).toList();
+  CityTime ct = CityTime.fromJson(jsonDecode(data));
+  print (ct.city);
+  return ct;
 }

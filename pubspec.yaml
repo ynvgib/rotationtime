@@ -58,6 +58,7 @@ dependencies:
   flutter_native_splash: ^2.4.1
   polygon: ^0.1.0
   fibonacci: ^0.0.2
+  country_state_city_pro: ^0.0.6
 
 dev_dependencies:
   flutter_test:
@@ -107,6 +108,8 @@ flutter:
    - assets/txt/
    - assets/txt/eng/
    - assets/txt/heb/
+   - assets/family/
+   - assets/json/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

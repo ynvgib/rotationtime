@@ -153,7 +153,7 @@ class Cube extends StatelessWidget {
             color: Colors.white,
             height: 135,
             width: 135,
-            child: CircleAvatar(
+            child: const CircleAvatar(
               //radius: 75,
               backgroundColor: Colors.transparent,
               foregroundImage: AssetImage('assets/camog/dogswoofgoof.gif'),
@@ -216,7 +216,7 @@ class Cube extends StatelessWidget {
             height: 135,
             width: 135,
             color: Colors.black,
-            child: CircleAvatar(
+            child: const CircleAvatar(
               //radius: 15,
               backgroundColor: Colors.black,
               foregroundImage: AssetImage('assets/camog/snoopyq.gif'),
@@ -237,5 +237,68 @@ class Cube extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class Codon {
+  String? name, hebname, zbname;
+  int? id;
+  List<int>? gates;
+
+
+  Codon({this.name, this.hebname, this.zbname, this.id, this.gates});
+}
+
+
+class CityTime {
+  String? city;
+  String? cityAscii;
+  double? lat;
+  double? lng;
+  int? pop;
+  String? country;
+  String? iso2;
+  String? iso3;
+  String? province;
+  String? timezone;
+
+  CityTime(
+      {this.city,
+        this.cityAscii,
+        this.lat,
+        this.lng,
+        this.pop,
+        this.country,
+        this.iso2,
+        this.iso3,
+        this.province,
+        this.timezone});
+
+  CityTime.fromJson(Map<String, dynamic> json) {
+    city = json['city'];
+    cityAscii = json['city_ascii'];
+    lat = json['lat'];
+    lng = json['lng'];
+    pop = json['pop'];
+    country = json['country'];
+    iso2 = json['iso2'];
+    iso3 = json['iso3'];
+    province = json['province'];
+    timezone = json['timezone'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['city'] = this.city;
+    data['city_ascii'] = this.cityAscii;
+    data['lat'] = this.lat;
+    data['lng'] = this.lng;
+    data['pop'] = this.pop;
+    data['country'] = this.country;
+    data['iso2'] = this.iso2;
+    data['iso3'] = this.iso3;
+    data['province'] = this.province;
+    data['timezone'] = this.timezone;
+    return data;
   }
 }

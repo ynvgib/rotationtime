@@ -1622,7 +1622,8 @@ Widget buildSilencePopUp(BuildContext context) {
 // human design chart
 class HeadPainter extends CustomPainter {
   int centerstate = 1;
-  Color centercolor = Colors.yellow;
+  Color centercolor = Colors.green;
+  //Color centercolor = Colors.yellow;
   //int centercolorstate = 0;
 
   HeadPainter({
@@ -1659,6 +1660,7 @@ class HeadPainter extends CustomPainter {
 
 class AjnaPainter extends CustomPainter {
   int centerstate = 1;
+  Color centercolor = Colors.green;
 
   AjnaPainter({
     required this.centerstate,
@@ -1693,6 +1695,8 @@ class AjnaPainter extends CustomPainter {
 
 class ThroatPainter extends CustomPainter {
   int centerstate = 1;
+  Color centercolor = Colors.green;
+
 
   ThroatPainter({
     required this.centerstate,
@@ -2092,6 +2096,10 @@ setGateColor(int finalgatestate) {
       gatecolorlist[0] = Colors.white;
       gatecolorlist[1] = Colors.black;
       break;
+    case 8:
+      gatecolorlist[0] = Colors.red;
+      gatecolorlist[1] = Colors.black;
+      break;
     default:
       gatecolorlist[0] = Colors.pink;
       gatecolorlist[1] = Colors.pink;
@@ -2110,7 +2118,8 @@ setCenterColor(int finalcenterstate) {
     Colors.yellow,
     Colors.green,
     Colors.blue,
-    Colors.white
+    Colors.white,
+    Colors.brown
   ];
   Color centercolor = Colors.green;
 
@@ -2132,6 +2141,9 @@ setCenterColor(int finalcenterstate) {
       break;
     case 5:
       centercolor = centercolorlist[5];
+      break;
+    case 6:
+      centercolor = centercolorlist[6];
       break;
     default:
       centercolor = Colors.pink;

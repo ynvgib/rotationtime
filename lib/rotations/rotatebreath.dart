@@ -23,38 +23,27 @@ class _RotateBreathState extends State<RotateBreath> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
           toolbarHeight: 40,
           title: Flex(
             direction: Axis.horizontal,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              AutoSizeText(',',
-                  textAlign: TextAlign.left,
-                  //maxFontSize: 15,
-                  style: const TextStyle(color: Colors.white)),
-              const SizedBox(width: 10),
-
               CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.transparent,
                 foregroundImage: AssetImage(coins4lst[2]),
               ),
-              const SizedBox(width: 10),
-              AutoSizeText(',',
-                  textAlign: TextAlign.left,
-                  //maxFontSize: 15,
-                  style: const TextStyle(color: Colors.white)),
-
             ],
           ),
           leading: IconButton(
-            iconSize: 20,
-            icon: const Icon(Icons.close, color: Colors.white),
+            iconSize: 25,
+            icon: const Icon(Icons.close, color: Colors.black),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.black87),
-      backgroundColor: Colors.white,
+          backgroundColor: Colors.yellow.withOpacity(0.5)),
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -62,6 +51,11 @@ class _RotateBreathState extends State<RotateBreath> {
             const SizedBox(
               height: 15.0,
             ),
+            AutoSizeText(',',
+                textAlign: TextAlign.center,
+                minFontSize: 65,
+                maxFontSize: 75,
+                style: TextStyle(color: Colors.yellow)),
             Container(
               height: MediaQuery.of(context).size.height / 3,
               width: MediaQuery.of(context).size.width / 2.5,

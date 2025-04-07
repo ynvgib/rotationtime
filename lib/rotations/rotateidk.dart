@@ -28,15 +28,17 @@ class _RotateIDKState extends State<RotateIDK> {
             direction: Axis.horizontal,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: 15,
-                foregroundImage: AssetImage(fullkitheimglst[8]),
+              AutoSizeText(
+                'X I O Ido Not know', textAlign: TextAlign.left,
+                minFontSize: 10,
+                maxFontSize: 15,
+                style: const TextStyle(color: Colors.white),
               ),
               const SizedBox(width: 10),
               AutoSizeText(
-                '?אני לא יודעת גופוף', textAlign: TextAlign.left,
-                //maxFontSize: 15,
+                '?  אני לא יודעת מדיטציה', textAlign: TextAlign.left,
+                minFontSize: 10,
+                maxFontSize: 15,
                 style: const TextStyle(color: Colors.white),
               ),
             ],
@@ -94,7 +96,7 @@ class _RotateIDKState extends State<RotateIDK> {
                     ),
                   ),
                   onTap: () {
-                    _controlleriDogText.text = '!מיקי כלב לא יודע';
+                    _controlleriDogText.text = '!אני לא יודעת';
                   },
                 ),
                 const SizedBox(width: 10),
@@ -111,7 +113,7 @@ class _RotateIDKState extends State<RotateIDK> {
                     ),
                   ),
                   onTap: () {
-                    _controllerCamelText.text = '?עוד מיני שאלה';
+                    _controllerCamelText.text = '?שאלתי ונגמלתי';
                   },
                 ),
 
@@ -121,7 +123,7 @@ class _RotateIDKState extends State<RotateIDK> {
             AutoSizeTextField(
                 maxFontSize: 30,
                 readOnly: false,
-                decoration: const InputDecoration.collapsed(hintText: '?מיני שאלה'),
+                decoration: const InputDecoration.collapsed(hintText: '?גמל גמל גמל'),
                 textAlign: TextAlign.center,
                 controller: _controllerCamelText,
                 style: const TextStyle(
@@ -135,7 +137,7 @@ class _RotateIDKState extends State<RotateIDK> {
                 maxFontSize: 30,
                 readOnly: false,
                 decoration: const InputDecoration.collapsed(
-                    hintText: '!ערכה היא לא יודעת'),
+                    hintText: '!כלב כלב כלב'),
                 textAlign: TextAlign.center,
                 controller: _controlleriDogText,
                 style: const TextStyle(
