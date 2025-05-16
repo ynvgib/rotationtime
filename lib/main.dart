@@ -16,10 +16,10 @@ import 'package:finallyicanlearn/rotations/rotatesimple.dart';
 import 'package:finallyicanlearn/rotations/rotateidk.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
 import 'package:finallyicanlearn/rotations/rotatebreath.dart';
+import 'package:finallyicanlearn/services/rotatewidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:sweph/sweph.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // github project link
@@ -54,11 +54,11 @@ class RotateMain extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (ctx) => const RotateHome(),
-        pdfroutes[0]: (ctx) => const RotatePDF(),
-        pdfroutes[1]: (ctx) => const RotateFitGamHe(),
-        pdfroutes[2]: (ctx) => const RotateFitGam(),
-        pdfroutes[3]: (ctx) => const RotateIsogHe(),
-        pdfroutes[4]: (ctx) => const RotateIsog(),
+        pdfroutes[2]: (ctx) => const RotateFitGamHe(),
+        pdfroutes[3]: (ctx) => const RotateFitGam(),
+        pdfroutes[0]: (ctx) => const RotateIsogHe(),
+        pdfroutes[1]: (ctx) => const RotateIsog(),
+        pdfroutes[4]: (ctx) => const RotatePDF(),
         mainroutes[4]: (ctx) => const RotateComplex(),
         mainroutes[3]: (ctx) => const RotateSimple(),
         mainroutes[2]: (ctx) => const RotateBreath(),
@@ -98,7 +98,7 @@ class _RotateHomeState extends State<RotateHome> {
 
   int _currenttop = 0, _currentmid = 0, _currentbot = 0;
 
-  String mainTitle = "זמן סיבוב", subTitle = "מעט זמנסי בוב";
+  String mainTitle = "זמן סיבוב", subTitle = "זמנסי בוב";
   bool isMainTitle = true, isSubTitle = true;
 
   @override
@@ -111,55 +111,46 @@ class _RotateHomeState extends State<RotateHome> {
       },
       child: Scaffold(
         bottomNavigationBar: BottomAppBar(
-            color: Colors.black87,
+            height: 100,
+            color: Colors.transparent,
             shape: const CircularNotchedRectangle(),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, pdfroutes[4]);
-                  },
-                  icon: Image.asset(
-                    'assets/camog/mcdog.png',
+                Container(
+                  height: 100,
+                  width: MediaQuery.of(context).size.width / 5,
+                  margin: const EdgeInsets.all(1.0),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(25),
                   ),
-                  tooltip: pdftitle[4],
+                  child: IconButton(
+                      onPressed: () {
+                        launchUrl(githubrotateurl);
+                      },
+                      icon: Image.asset(
+                        'assets/camog/mcdogline.png',
+                      ),
+                      tooltip: 'קוד קוד Cowd Code'),
                 ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, pdfroutes[3]);
-                  },
-                  icon: Image.asset(
-                    'assets/camog/dog.png',
+                Container(
+                  height: 60,
+                  width: MediaQuery.of(context).size.width / 5,
+                  margin: const EdgeInsets.all(1.0),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(25),
                   ),
-                  tooltip: pdftitle[3],
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, pdfroutes[2]);
-                  },
-                  icon: Image.asset(
-                    'assets/camog/mcdog.png',
-                  ),
-                  tooltip: pdftitle[2],
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, pdfroutes[1]);
-                  },
-                  icon: Image.asset(
-                    'assets/camog/dog.png',
-                  ),
-                  tooltip: pdftitle[1],
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, pdfroutes[0]);
-                  },
-                  icon: Image.asset(
-                    'assets/coins/cameldog.png',
-                  ),
-                  tooltip: pdftitle[0],
+                  child: IconButton(
+                      onPressed: () {
+                        launchUrl(beidontknowurl);
+                      },
+                      icon: Image.asset(
+                        'assets/camog/mcameline.png',
+                      ),
+                      tooltip: 'אוש איית רשת Web Spell'),
                 ),
               ],
             )),
@@ -189,15 +180,14 @@ class _RotateHomeState extends State<RotateHome> {
                           fit: StackFit.loose,
                           children: [
                             Tooltip(
-                              message: woofgoofHebname[index],
+                              message: circle_tips[index],
                               textStyle: const TextStyle(
                                   fontSize: 14, color: Colors.white),
                               child: Container(
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         //image: AssetImage(newminmaxcoins[index]),
-                                        image:
-                                            AssetImage(mainwoofgooflst[index]),
+                                        image: AssetImage(mainmailst[index]),
                                         colorFilter: ColorFilter.mode(
                                           Colors.white.withOpacity(1.0),
                                           BlendMode.modulate,
@@ -218,19 +208,21 @@ class _RotateHomeState extends State<RotateHome> {
                   width: MediaQuery.of(context).size.width / 1.5,
                   margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
-                      color: Colors.black87,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(25),
                       boxShadow: const [
                         BoxShadow(
-                            color: Colors.blueGrey,
+                            color: Colors.green,
                             offset: Offset(4, 4),
                             blurRadius: 20,
-                            spreadRadius: 1),
+                            blurStyle: BlurStyle.solid,
+                            spreadRadius: 4),
                         BoxShadow(
-                            color: Colors.black87,
+                            color: Colors.blue,
                             offset: Offset(-4, -4),
-                            blurRadius: 15,
-                            spreadRadius: 1),
+                            blurRadius: 20,
+                            blurStyle: BlurStyle.solid,
+                            spreadRadius: 5),
                       ]),
                   child: FittedBox(
                     fit: BoxFit.fitHeight,
@@ -240,7 +232,7 @@ class _RotateHomeState extends State<RotateHome> {
                         mainTitle,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 35,
                             fontWeight: FontWeight.bold,
                             height: 1.5),
@@ -249,13 +241,14 @@ class _RotateHomeState extends State<RotateHome> {
                         isMainTitle = !isMainTitle;
                         setState(() {
                           isMainTitle == true
-                              ? mainTitle = "זמן סיבוב"
+                              ? mainTitle = "סיבוב לעיצוב"
                               : mainTitle = "Rotation Time";
                         });
                       },
                     ),
                   ),
                 ),
+                SizedBox(height: 15),
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 1.5,
@@ -265,21 +258,23 @@ class _RotateHomeState extends State<RotateHome> {
                       borderRadius: BorderRadius.circular(25),
                       boxShadow: const [
                         BoxShadow(
-                            color: Colors.blueGrey,
+                            color: Colors.red,
                             offset: Offset(4, 4),
                             blurRadius: 20,
-                            spreadRadius: 1),
+                            blurStyle: BlurStyle.solid,
+                            spreadRadius: 2),
                         BoxShadow(
-                            color: Colors.black87,
+                            color: Colors.yellow,
                             offset: Offset(-4, -4),
                             blurRadius: 15,
-                            spreadRadius: 1),
+                            blurStyle: BlurStyle.solid,
+                            spreadRadius: 3),
                       ]),
                   child: FittedBox(
                     fit: BoxFit.fitHeight,
                     child: InkWell(
                       child: AutoSizeText(
-                      subTitle,
+                        subTitle,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
@@ -291,8 +286,8 @@ class _RotateHomeState extends State<RotateHome> {
                         isSubTitle = !isSubTitle;
                         setState(() {
                           isSubTitle == true
-                              ? subTitle = "מעט זמנסי בוב"
-                              : subTitle = "bye Zmansi Bob";
+                              ? subTitle = "זמנסי בוב"
+                              : subTitle = "Zmansi Bob";
                         });
                       },
                     ),
@@ -325,7 +320,7 @@ class _RotateHomeState extends State<RotateHome> {
                   constraints: BoxConstraints(
                     minHeight: 10,
                     minWidth: 10,
-                    maxHeight: screenheight * 0.2,
+                    maxHeight: screenheight * 0.15,
                     maxWidth: screenwidth * 0.5,
                   ),
                   child: CarouselSlider(
@@ -348,7 +343,7 @@ class _RotateHomeState extends State<RotateHome> {
                   constraints: BoxConstraints(
                     minHeight: 10,
                     minWidth: 10,
-                    maxHeight: screenheight * 0.2,
+                    maxHeight: screenheight * 0.15,
                     maxWidth: screenwidth * 0.5,
                   ),
                   child: CarouselSlider(
@@ -371,7 +366,7 @@ class _RotateHomeState extends State<RotateHome> {
                   constraints: BoxConstraints(
                     minHeight: 10,
                     minWidth: 10,
-                    maxHeight: screenheight * 0.2,
+                    maxHeight: screenheight * 0.15,
                     maxWidth: screenwidth * 0.5,
                   ),
                   child: CarouselSlider(
@@ -394,53 +389,71 @@ class _RotateHomeState extends State<RotateHome> {
                   color: Colors.black87,
                   thickness: 5,
                 ),
+                InkWell(
+                  hoverColor: Colors.black12,
+                    child: Container(
+                        height: MediaQuery.of(context).size.height / 4,
+                        width: MediaQuery.of(context).size.width / 3,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Stack(
+                          children: [
+                            PositionedDirectional(
+                              end: 5,
+                              bottom: 0,
+                              child: Container(
+                                height: MediaQuery.of(context).size.height / 6,
+                                width: MediaQuery.of(context).size.width / 5,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage('assets/camog/dogatapp.gif'),
+                                    fit: BoxFit.scaleDown,
+                                  ),
+                                  shape: BoxShape.rectangle,
+                                ),
+                              ),
+                            ),
+                            PositionedDirectional(
+                              start: 5,
+                              top: 0,
+                              child: Container(
+                                height: MediaQuery.of(context).size.height / 8,
+                                width: MediaQuery.of(context).size.width / 6,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image:
+                                    AssetImage('assets/coins/camel.png'),
+                                    fit: BoxFit.scaleDown,
+                                  ),
+                                  shape: BoxShape.rectangle,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            buildBookPopUp(context),
+                      );
+                    }),
+                const Divider(
+                  color: Colors.black87,
+                  thickness: 5,
+                ),
                 const AutoSizeText(
-                  'aO#P@',
-                  minFontSize: 20,
+                  'a@#OP',
+                  minFontSize: 25,
                   maxFontSize: 50,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black87,
                     fontFamily: 'iChing',
                   ),
-                ),
-                const SizedBox(height: 10),
-
-                Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          launchUrl(githubrotateurl);
-                        },
-                        //child: Text(githubproject,
-                        child: const Text('קוד קוד',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                    ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          launchUrl(beidontknowurl);
-                        },
-                        //child: Text(beidontknowsite,
-                        child: const Text('לאתר',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                    ),
-                  ],
                 ),
                 const SizedBox(height: 10),
               ]),

@@ -85,7 +85,6 @@ final List<String> rtimages = [
   'assets/coins/silencein.png',
   'assets/coins/silenceout.png',
   'assets/coins/silencewhite.png',
-  'assets/camog/dog.png',
   'assets/coins/emptybodygraph.png',
   'assets/coins/emptymandala.png',
   'assets/coins/fullcoins.png',
@@ -104,6 +103,11 @@ final List<String> rtimages = [
   'assets/coins/rtevolutionnobg.png',
   'assets/coins/yinyin.png',
   'assets/camog/mcamel.png',
+  'assets/camog/dog.png',
+  'assets/camog/dogatapp.gif',
+  'assets/camog/dogdownapp.png',
+  'assets/camog/dogidqnbglp.gif',
+  'assets/camog/dognamewink.png',
   'assets/camog/mcameline.png',
   'assets/camog/mcamelyellow.png',
   'assets/camog/mcamog.png',
@@ -179,6 +183,12 @@ final List<String> rtimages = [
   'assets/family/dson4nbg.png',
   'assets/family/epapa5nbg.png',
   'assets/family/fgrampa6nbg.png',
+  //gen
+  'assets/gen/pussydownlp.gif',
+  'assets/gen/vaggenbglp.gif',
+  'assets/gen/vaggenlp.gif',
+  'assets/gen/vaggenplexlp.gif',
+
 ];
 
 final List familyList = ['assets/minmax/minsilence.png',
@@ -3392,11 +3402,19 @@ final List<String> titlesicon = [
 ];
 
 final List<String> titlesname_heb = [
-  'א.ל.י.מ',
+  'לא יודעת מדיטציה',
   'שתיקה',
   'נשימה',
   'פשוט',
   'מורכב',
+];
+
+final List<String> circle_tips = [
+  'לא יודעת מדיטציה',
+  '.שתיקה',
+  ',נשימה',
+  ';פשוט',
+  '\"מורכב\"',
 ];
 
 final List<String> bimnamesheb = [
@@ -3413,6 +3431,14 @@ final List<String> woofgoofHebname = [
   'גופוף',
   'ווף',
   'ניגוף',
+];
+
+final List<String> hdHebname = [
+  '!?אלים',
+  'איטRגנרטו',
+  'טוריתGפרו',
+  'קטורLרפ',
+  'טורOמניפ',
 ];
 
 final List<String> minmaxmainHebname = [
@@ -3474,12 +3500,20 @@ final List<String> mcameldog = [
   'assets/camog/mccamelyellow.png',
 ];
 
+final List<String> pdfroutes = [
+  '/rotateisoghe',
+  '/rotateisog',
+  '/rotatefitgamhe',
+  '/rotatefitgam',
+  '/rotatepdf',
+];
+
 final List<String> pdftitle = [
-  'מילים',
-  'מאייטי אל גורוגי ומטאגי',
-  'from IT to Guru G and Mata G',
   'בחיפוש אחר גוגל',
-  'In Search Of Google',
+  'In Search of Google',
+  'מאי טי אל גורו גי ומטא גי',
+  'From IT to Guruji and Mata G',
+  'מילים Lyrics',
 ];
 
 final List<double> titlesangle = [
@@ -3506,14 +3540,6 @@ final List<String> mainroutes = [
 
 final List<String> subroutes = [
   '/rotatecomplexhd',
-];
-
-final List<String> pdfroutes = [
-  '/rotatepdf',
-  '/rotatefitgamhe',
-  '/rotatefitgam',
-  '/rotateisoghe',
-  '/rotateisog',
 ];
 
 final List<String> subtitles = [

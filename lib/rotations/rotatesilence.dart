@@ -34,7 +34,7 @@ class _RotateSilenceState extends State<RotateSilence> {
           ),
           leading: IconButton(
             iconSize: 25,
-            icon: const Icon(Icons.close, color: Colors.black),
+            icon: const Icon(Icons.close, color: Colors.white),
             onPressed: () => Navigator.of(context).pop(),
           ),
           backgroundColor: Colors.red.withOpacity(0.5)),
@@ -54,44 +54,24 @@ class _RotateSilenceState extends State<RotateSilence> {
                   width: MediaQuery.of(context).size.width / 3,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(mainwoofgooflst[1]),
+                      image: AssetImage('assets/gen/vaggenbglp.gif'),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
                   ),
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height / 4,
-                  width: MediaQuery.of(context).size.width / 3,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(newminmaxcoins[1]),
-                      fit: BoxFit.scaleDown,
-                    ),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
+                const SizedBox(height: 10),
+                const Divider(thickness: 5, indent: 20, endIndent: 10,color: Colors.red),
                 Flex(
                   direction: Axis.horizontal,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.height / 6,
-                      width: MediaQuery.of(context).size.width / 6,
+                      height: MediaQuery.of(context).size.height / 2.2,
+                      width: MediaQuery.of(context).size.width / 2.2,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(minmaximglst[0]),
-                          fit: BoxFit.scaleDown,
-                        ),
-                        shape: BoxShape.rectangle,
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height / 6,
-                      width: MediaQuery.of(context).size.width / 6,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(kitheimglst[0]),
+                          image: AssetImage(mplantspos[0]),
                           fit: BoxFit.scaleDown,
                         ),
                         shape: BoxShape.rectangle,
@@ -99,23 +79,10 @@ class _RotateSilenceState extends State<RotateSilence> {
                     ),
                     Transform.scale(
                       scaleX: -1,
+                      scaleY: -1,
                       child: Container(
-                        height: MediaQuery.of(context).size.height / 6,
-                        width: MediaQuery.of(context).size.width / 6,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(mplantspos[0]),
-                            fit: BoxFit.scaleDown,
-                          ),
-                          shape: BoxShape.rectangle,
-                        ),
-                      ),
-                    ),
-                    Transform.scale(
-                      scaleX: -1,
-                      child: Container(
-                        height: MediaQuery.of(context).size.height / 6,
-                        width: MediaQuery.of(context).size.width / 6,
+                        height: MediaQuery.of(context).size.height / 2.2,
+                        width: MediaQuery.of(context).size.width / 2.2,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage(mplantsneg[0]),
@@ -125,22 +92,10 @@ class _RotateSilenceState extends State<RotateSilence> {
                         ),
                       ),
                     ),
-                    Container(
-                      height: MediaQuery.of(context).size.height / 6,
-                      width: MediaQuery.of(context).size.width / 6,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(titlesicon[1]),
-                          fit: BoxFit.scaleDown,
-                        ),
-                        shape: BoxShape.rectangle,
-                      ),
-                    ),
                   ],
                 ),
-
+                const Divider(thickness: 5, indent: 20, endIndent: 10,color: Colors.red),
                 const SizedBox(height: 10),
-                const Divider(thickness: 5, indent: 20, endIndent: 10,color: Colors.red),                const SizedBox(height: 10),
                 const AutoSizeText(' @',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -148,7 +103,19 @@ class _RotateSilenceState extends State<RotateSilence> {
                         fontSize: 80,
                         color: Colors.red,
                         fontWeight: FontWeight.normal)),
-                const Divider(thickness: 5, indent: 20, endIndent: 10,color: Colors.red),                const SizedBox(height: 10),
+                const Divider(thickness: 5, indent: 20, endIndent: 10,color: Colors.red),
+                Container(
+                  height: MediaQuery.of(context).size.height / 4,
+                  width: MediaQuery.of(context).size.width / 3,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/gen/vaggenplexlp.gif'),
+                      fit: BoxFit.scaleDown,
+                    ),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+                const SizedBox(height: 10),
               ]),
         ),
       ),

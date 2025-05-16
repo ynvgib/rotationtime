@@ -305,19 +305,44 @@ class _RotateComplexState extends State<RotateComplex> {
       secondcolor = Colors.blue,
       thirdcolor = Colors.blue,
       _colorinsilence = Colors.red, _colorinbreath = Colors.yellow,
-  _colorinsimple = Colors.green, _colorincomplex = Colors.blue;
+  _colorinsimple = Colors.green, _colorincomplex = Colors.blue,
+  _inbodycolor = Colors.red, _exbodycolor = Colors.yellow,
+  _inpersoncolor = Colors.blue, _expersoncolor = Colors.green;
 
   double screenwidth = 1, screenheight = 1;
 
   String silenceText = 'שתיקה',
       breathText = 'נשימה',
       simpleText = 'פשוט',
-      complexText = 'מורכב';
-      bool isSilenceText = true,
+      complexText = 'מורכב',
+      silenceBottomText = 'גוף',
+      breathBottomText = 'גופוף',
+      simpleBottomText = 'ווף',
+      complexBottomText = 'ניגוף',
+      _inbodyalign = 'left',
+      _exbodyalign = 'left',
+      _inpersonalign = 'left',
+      _expersonalign = 'left';
+
+
+  bool isSilenceText = true,
           isBreathText = true,
           isSimpleText = true,
           isComplexText = true,
+      isSilenceBotText = true,
+      isBreathBotText = true,
+      isSimpleBotText = true,
+      isComplexBotText = true,
           isFamilyText = true;
+
+  double opacityLevel = 1.0;
+
+  IconData _inbodyicon = Icons.arrow_circle_right,
+      _exbodyicon = Icons.arrow_circle_right,
+      _inpersonicon = Icons.arrow_circle_left,
+      _expersonicon = Icons.arrow_circle_left;
+
+
 
 
   @override
@@ -370,27 +395,37 @@ class _RotateComplexState extends State<RotateComplex> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const SizedBox(height: 20),
-            Container(
-              height: screenheight / 8,
-              width: screenwidth / 4,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/camog/bluedog.png'),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            Container(
-              height: 200,
-              width: 200,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(
-                      'assets/camog/dogswoofgoof.gif',
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height / 2.2,
+                  width: MediaQuery.of(context).size.width / 2.2,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(mplantspos[3]),
+                      fit: BoxFit.scaleDown,
                     ),
-                    opacity: 1.0),
-              ),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+                Transform.scale(
+                  scaleX: -1,
+                  scaleY: -1,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height / 2.2,
+                    width: MediaQuery.of(context).size.width / 2.2,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(mplantsneg[3]),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),
+                  ),
+                ),
+              ],
             ),
             Flex(
               direction: Axis.horizontal,
@@ -651,9 +686,9 @@ class _RotateComplexState extends State<RotateComplex> {
                             fontWeight: FontWeight.bold, height: 1.8),
                       ),
                       onTap: () {
-                        isSilenceText = !isSilenceText;
+                        isSimpleText = !isSimpleText;
                         setState(() {
-                          isSilenceText == true
+                          isSimpleText == true
                               ? simpleText = "פשוט"
                               : simpleText = "Simple";
                         });
@@ -1124,102 +1159,117 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
                 child: Stack(
                   children: [
-                    PositionedDirectional(
-                      end: 10,
-                      top: 10,
-                      child: Container(
-                        height: 80,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(woofgoofcoinlst[hdfinaldata.typeid!],
-                                //'assets/camog/dogstwogrey.gif',
-                              ),
-                              opacity: 1.0),
+              PositionedDirectional(
+                        end: 10,
+                        top: 10,
+                        child: Opacity(
+                          opacity: opacityLevel,
+                          child: Container(
+                            height: 80,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(woofgoofcoinlst[hdfinaldata.typeid!],
+                                    //'assets/camog/dogstwogrey.gif',
+                                  ),
+                                  opacity: 1.0),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
 
                     // pro file - Prefessional Elephant
                     Align(
                       alignment: Alignment.topRight,
-                      child: Container(
-                            width: 55,
-                            height: 55,
-                            margin: const EdgeInsets.only(top: 100, right: 60),
-                          //decoration: BoxDecoration(
-                           //   color: Colors.red),
-                          child: Stack(
-                            children: [
-                              Center(
-                                child: Icon(IconData
-                                  (rt6iconshex[_planetsdesignList[1].line!], fontFamily: 'MaterialIcons'),
-                                    color: Colors.red,
-                                    size: 55),
-                              ),
-                              Center(
-                                child: Text(_planetsdesignList[1].line!.toString(),
-                                  style: TextStyle (fontSize: 20, color: timecolor, fontWeight: FontWeight.bold),
+                      child: Opacity(
+                          opacity: opacityLevel,
+                        child: Container(
+                              width: 55,
+                              height: 55,
+                              margin: const EdgeInsets.only(top: 100, right: 60),
+                            //decoration: BoxDecoration(
+                             //   color: Colors.red),
+                            child: Stack(
+                              children: [
+                                Center(
+                                  child: Icon(IconData
+                                    (rt6iconshex[_planetsdesignList[1].line!], fontFamily: 'MaterialIcons'),
+                                      color: Colors.red,
+                                      size: 55),
                                 ),
-                              ),
-                            ],
+                                Center(
+                                  child: Text(_planetsdesignList[1].line!.toString(),
+                                    style: TextStyle (fontSize: 20, color: timecolor, fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
+                      ),
                     ),
 
                     Align(
                       alignment: Alignment.topRight,
-                      child: Container(
-                          width: 55,
-                          height: 55,
-                          margin: const EdgeInsets.only(top: 100, right: 5),
-                          child: Stack(
-                            children: [
-                              Center(
-                                child: Icon(IconData
-                                  (rt6iconshex[_planetspersonList[1].line!], fontFamily: 'MaterialIcons'),
-                                    color: Colors.blue,
-                                    size: 55),
-                              ),
-                              Center(
-                                child: Text(_planetspersonList[1].line!.toString(),
-                                  style: TextStyle (fontSize: 20, color: timecolor, fontWeight: FontWeight.bold),
+                      child: Opacity(
+                          opacity: opacityLevel,
+                        child: Container(
+                            width: 55,
+                            height: 55,
+                            margin: const EdgeInsets.only(top: 100, right: 5),
+                            child: Stack(
+                              children: [
+                                Center(
+                                  child: Icon(IconData
+                                    (rt6iconshex[_planetspersonList[1].line!], fontFamily: 'MaterialIcons'),
+                                      color: Colors.blue,
+                                      size: 55),
                                 ),
-                              ),
-                            ],
+                                Center(
+                                  child: Text(_planetspersonList[1].line!.toString(),
+                                    style: TextStyle (fontSize: 20, color: timecolor, fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
+                      ),
                     ),
 
                     PositionedDirectional(
                       end: 5,
                       top: 140,
-                      child: Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(
-                                familyList[_planetspersonList[1].line!],
-                                //'assets/camog/dogstwogrey.gif',
-                              ),
-                              opacity: 1.0),
-                        ),
-                      ),
-                    ),
-                    PositionedDirectional(
-                      end: 55,
-                      top: 140,
+                      child: Opacity(
+                          opacity: opacityLevel,
                         child: Container(
                           height: 70,
                           width: 70,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                  familyList[_planetsdesignList[1].line!],
+                                  familyList[_planetspersonList[1].line!],
                                   //'assets/camog/dogstwogrey.gif',
                                 ),
                                 opacity: 1.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    PositionedDirectional(
+                      end: 55,
+                      top: 140,
+                        child: Opacity(
+                            opacity: opacityLevel,
+                          child: Container(
+                            height: 70,
+                            width: 70,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                    familyList[_planetsdesignList[1].line!],
+                                    //'assets/camog/dogstwogrey.gif',
+                                  ),
+                                  opacity: 1.0),
+                            ),
                           ),
                         ),
                     ),
@@ -1227,16 +1277,19 @@ class _RotateComplexState extends State<RotateComplex> {
                     PositionedDirectional(
                       end: 5,
                       top: 190,
-                      child: Container(
-                        height: 80,
-                        width: 80,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(
-                                'assets/camog/elephantclock.png',
-                                //'assets/camog/dogstwogrey.gif',
-                              ),
-                              opacity: 1.0),
+                      child: Opacity(
+                          opacity: opacityLevel,
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/camog/elephantclock.png',
+                                  //'assets/camog/dogstwogrey.gif',
+                                ),
+                                opacity: 1.0),
+                          ),
                         ),
                       ),
                     ),
@@ -1245,31 +1298,37 @@ class _RotateComplexState extends State<RotateComplex> {
                     PositionedDirectional(
                       start: 60,
                       top: 10,
-                      child: Container(
-                        height: 70,
-                        width: 70,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(
-                                'assets/coins/camel.png',
-                              ),
-                              opacity: 1.0),
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                          height: 70,
+                          width: 70,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/coins/camel.png',
+                                ),
+                                opacity: 1.0),
+                          ),
                         ),
                       ),
                     ),
                     PositionedDirectional(
                       start: 60,
                       top: 100,
-                      child: Container(
-                        height: 70,
-                        width: 70,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(
-                                'assets/camog/dog.png',
-                                //'assets/camog/dogstwogrey.gif',
-                              ),
-                              opacity: 1.0),
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                          height: 70,
+                          width: 70,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/camog/dog.png',
+                                  //'assets/camog/dogstwogrey.gif',
+                                ),
+                                opacity: 1.0),
+                          ),
                         ),
                       ),
                     ),
@@ -1279,69 +1338,81 @@ class _RotateComplexState extends State<RotateComplex> {
                     PositionedDirectional(
                       start: 10,
                       top: 200,
-                      child: Container(
-                          height: 50,
-                        width: 50,
-                        child: CarouselSlider(
-                            items: complexSlider,
-                            carouselController: _controlComplexSlider,
-                            options: CarouselOptions(
-                                scrollDirection: Axis.horizontal,
-                                autoPlay: false,
-                                enlargeCenterPage: true,
-                                viewportFraction: 1.0)),
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                            height: 50,
+                          width: 50,
+                          child: CarouselSlider(
+                              items: complexSlider,
+                              carouselController: _controlComplexSlider,
+                              options: CarouselOptions(
+                                  scrollDirection: Axis.horizontal,
+                                  autoPlay: false,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 1.0)),
 
+                        ),
                       ),
                     ),
                     PositionedDirectional(
                       start: 10,
                       top: 30,
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        child: CarouselSlider(
-                            items: simpleSlider,
-                            carouselController: _controlSimpleSlider,
-                            options: CarouselOptions(
-                                scrollDirection: Axis.horizontal,
-                                autoPlay: false,
-                                enlargeCenterPage: true,
-                                viewportFraction: 1.0)),
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          child: CarouselSlider(
+                              items: simpleSlider,
+                              carouselController: _controlSimpleSlider,
+                              options: CarouselOptions(
+                                  scrollDirection: Axis.horizontal,
+                                  autoPlay: false,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 1.0)),
 
+                        ),
                       ),
                     ),
                     PositionedDirectional(
                       start: 10,
                       top: 110,
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        child: CarouselSlider(
-                            items: breathSlider,
-                            carouselController: _controlBreathSlider,
-                            options: CarouselOptions(
-                                scrollDirection: Axis.horizontal,
-                                autoPlay: false,
-                                enlargeCenterPage: true,
-                                viewportFraction: 1.0)),
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          child: CarouselSlider(
+                              items: breathSlider,
+                              carouselController: _controlBreathSlider,
+                              options: CarouselOptions(
+                                  scrollDirection: Axis.horizontal,
+                                  autoPlay: false,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 1.0)),
 
+                        ),
                       ),
                     ),
                     PositionedDirectional(
                       start: 10,
                       bottom: 30,
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        child: CarouselSlider(
-                            items: silenceSlider,
-                            carouselController: _controlSilenceSlider,
-                            options: CarouselOptions(
-                                scrollDirection: Axis.horizontal,
-                                autoPlay: false,
-                                enlargeCenterPage: true,
-                                viewportFraction: 1.0)),
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          child: CarouselSlider(
+                              items: silenceSlider,
+                              carouselController: _controlSilenceSlider,
+                              options: CarouselOptions(
+                                  scrollDirection: Axis.horizontal,
+                                  autoPlay: false,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 1.0)),
 
+                        ),
                       ),
                     ),
 
@@ -4232,6 +4303,21 @@ class _RotateComplexState extends State<RotateComplex> {
               ],
             ),
 
+            Slider(
+              value: opacityLevel,
+              min: 0,
+              max: 1,
+              //divisions: values.length - 1,
+              //label: opacityLevel.toString(),
+              activeColor: Colors.blue,
+              inactiveColor: Colors.red,
+              onChanged: (double value) {
+                setState(() {
+                  opacityLevel = value;
+                });
+              },
+            ),
+            Divider(),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -5827,17 +5913,76 @@ class _RotateComplexState extends State<RotateComplex> {
             ),
 
             // rt evolution
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: 10,
-                minWidth: 10,
-                maxHeight: screenheight * 0.15,
-                maxWidth: screenwidth * 0.5,
-              ),
-              //child: EvolutionContainer(colorinsilence: Colors.red, colorinbreath: Colors.yellow,
-              child: EvolutionContainer(colorinsilence: _colorinsilence, colorinbreath: _colorinbreath,
-                  colorinsimple: _colorinsimple, colorincomplex: _colorincomplex)
-                //  colorinsimple: Colors.green, colorincomplex: Colors.blue)
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: 10,
+                      minWidth: 10,
+                      maxHeight: screenheight * 0.25,
+                      maxWidth: screenwidth * 0.5,
+                    ),
+                    //child: EvolutionContainer(colorinsilence: Colors.red, colorinbreath: Colors.yellow,
+                    child: Flex(direction: Axis.vertical,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          iconSize: 50,
+                          icon: Icon(_inbodyicon, color: _inbodycolor),
+                          onPressed: () => Navigator.of(context).pop(),
+                          //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
+                        ),
+                        IconButton(
+                          iconSize: 50,
+                          icon: Icon(_exbodyicon, color: _exbodycolor),
+                          onPressed: () => Navigator.of(context).pop(),
+                          //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
+                        ),
+                      ],
+                    ),
+                  //  colorinsimple: Colors.green, colorincomplex: Colors.blue)
+                ),
+                //ConstrainedBox(
+                //constraints: //BoxConstraints(
+                //                  minHeight: 10,
+                //               minWidth: 10,
+                //              maxHeight: //screenheight * 0.25,
+                //                 maxWidth: //screenwidth * 0.5,
+                //                ),
+                //               //child: //EvolutionContainer(colorinsilence: Colors.red, //colorinbreath: Colors.yellow,
+                //                child: EvolutionContainer(colorinsilence: _colorinsilence, //colorinbreath: _colorinbreath,
+                //                    colorinsimple: _colorinsimple, colorincomplex: //_colorincomplex)
+//                    //  colorinsimple: Colors.green, colorincomplex: Colors.blue)
+                //             ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight * 0.25,
+                    maxWidth: screenwidth * 0.5,
+                  ),
+                  //child: EvolutionContainer(colorinsilence: Colors.red, colorinbreath: Colors.yellow,
+                  child: Flex(direction: Axis.vertical,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        iconSize: 50,
+                        icon: Icon(_inpersonicon, color: _inpersoncolor),
+                        onPressed: () {}
+                      ),
+                      IconButton(
+                        iconSize: 50,
+                        icon: Icon(_expersonicon, color: _expersoncolor),
+                        onPressed: () {}
+                        //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
+                      ),
+                    ],
+                  ),
+                  //  colorinsimple: Colors.green, colorincomplex: Colors.blue)
+                ),
+              ],
             ),
             Flex(
               direction: Axis.horizontal,
@@ -7151,6 +7296,363 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: screenheight / 8,
+                  width: screenwidth / 6,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(coins4lst[0]),
+                      fit: BoxFit.scaleDown,
+                    ),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+                Container(
+                  height: screenheight / 8,
+                  width: screenwidth / 6,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(coins4lst[1]),
+                      fit: BoxFit.scaleDown,
+                    ),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+                Container(
+                  height: screenheight / 8,
+                  width: screenwidth / 6,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(coins4lst[2]),
+                      fit: BoxFit.scaleDown,
+                    ),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+                Container(
+                  height: screenheight / 8,
+                  width: screenwidth / 6,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(coins4lst[3]),
+                      fit: BoxFit.scaleDown,
+                    ),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+              ],
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 4,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: const FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: AutoSizeText(
+                      '"',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold, height: 1.7),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 4.5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: const FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: AutoSizeText(
+                      ';',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold, height: 1.7),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.yellow,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: const FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: AutoSizeText(
+                      ',',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,height: 1.7),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 5.5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: const FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: AutoSizeText(
+                      '.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold, height: 1.7),
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 4,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: InkWell(
+                      child: AutoSizeText(
+                        complexBottomText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold, height: 1.7),
+                      ),
+                      onTap: () {
+                        isComplexBotText = !isComplexBotText;
+                        setState(() {
+                          isComplexBotText == true
+                              ? complexBottomText = '\"ניגוף\"'
+                              : complexBottomText = '\"מר חה אות\"';
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 4.5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: InkWell(
+                      child: AutoSizeText(
+                        simpleBottomText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold, height: 1.8),
+                      ),
+                      onTap: () {
+                        isSimpleBotText = !isSimpleBotText;
+                        setState(() {
+                          isSimpleBotText == true
+                              ? simpleBottomText = ";ווף"
+                              : simpleBottomText = ";נעפסיק";
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.yellow,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: InkWell(
+                      child: AutoSizeText(
+                        breathBottomText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold, height: 1.9),
+                      ),
+                      onTap: () {
+                        isBreathBotText = !isBreathBotText;
+                        setState(() {
+                          isBreathBotText == true
+                              ? breathBottomText = ",גופוף"
+                              : breathBottomText = ",פסיקה";
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width / 5.5,
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.blueGrey,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black87,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child:
+                    InkWell(
+                      child: AutoSizeText(
+                        silenceBottomText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold, height: 2.0),
+                      ),
+                      onTap: () {
+                        isSilenceBotText = !isSilenceBotText;
+                        setState(() {
+                          isSilenceBotText == true
+                              ? silenceBottomText = ".גוף"
+                              : silenceBottomText = ".נקודה";
+                        });
+                      },
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
             const SizedBox(
               width: 50,
               child: AutoSizeText(
@@ -8427,48 +8929,85 @@ class _RotateComplexState extends State<RotateComplex> {
     // sun earth nodes design
     if (_planetsdesignList[0].tone! > 3)
       {
+        //_inbodyalign = 'right';
+        //_inbodycolor = Colors.red;
+        _inbodyicon = Icons.arrow_circle_right;
         if (_planetsdesignList[2].tone! > 3)
           {
             _colorinsilence = Colors.red;
+            //_exbodyalign = 'right';
+            //_exbodycolor = Colors.yellow;
+            _exbodyicon = Icons.arrow_circle_right;
           }
         else
           {
             _colorinsilence = Colors.green;
+            //_exbodyalign = 'left';
+            //_exbodycolor = Colors.green;
+            _exbodyicon = Icons.arrow_circle_left;
           }
       }
     else
       {
+        //_inbodyalign = 'left';
+        //_inbodycolor = Colors.blue;
+        _inbodyicon = Icons.arrow_circle_left;
         if (_planetsdesignList[2].tone! > 3)
         {
           _colorinsilence = Colors.yellow;
+          //_exbodyalign = 'right';
+          //_exbodycolor = Colors.yellow;
+          _exbodyicon = Icons.arrow_circle_right;
         }
         else
         {
           _colorinsilence = Colors.blue;
+          //_exbodyalign = 'left';
+          //_exbodycolor = Colors.green;
+          _exbodyicon = Icons.arrow_circle_left;
         }
       }
 
     // sun earth nodes person
     if (_planetspersonList[0].tone! > 3)
     {
+      //_inpersonalign = 'right';
+      //_inpersoncolor = Colors.blue;
+      _inpersonicon = Icons.arrow_circle_right;
       if (_planetspersonList[2].tone! > 3)
       {
         _colorincomplex = Colors.red;
+        //_expersonalign = 'right';
+        //_expersoncolor = Colors.yellow;
+        _expersonicon = Icons.arrow_circle_right;
       }
       else
       {
         _colorincomplex = Colors.green;
+        //_expersonalign = 'left';
+        //_expersoncolor = Colors.green;
+        _expersonicon = Icons.arrow_circle_left;
+
       }
     }
     else
     {
-      if (_planetspersonList[2].tone! > 3)
+      //_inpersonalign = 'left';
+      //_inpersoncolor = Colors.blue;
+    _inpersonicon = Icons.arrow_circle_left;
+    if (_planetspersonList[2].tone! > 3)
       {
         _colorincomplex = Colors.yellow;
+        //_expersonalign = 'right';
+        //_expersoncolor = Colors.yellow;
+        _expersonicon = Icons.arrow_circle_right;
       }
       else
       {
         _colorincomplex = Colors.blue;
+        //_expersonalign = 'left';
+        //_expersoncolor = Colors.green;
+        _expersonicon = Icons.arrow_circle_left;
       }
     }
 

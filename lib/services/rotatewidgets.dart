@@ -19,8 +19,10 @@ Widget build4PopUp(BuildContext context) {
     'New Coins',
     'מטבעות חדשים',
     'בימבוקס',
+    //'Kit He',
     'Kit He',
-    'ווף ווף גוף גוף'
+    'ווף'
+    //'ווף ווף גוף גוף'
   ];
   return AlertDialog(
     //title: const Text('36 Transactions'),
@@ -198,10 +200,41 @@ Widget build4PopUp(BuildContext context) {
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: Text(titles4[9],
+              child: Text(titles4[10],
                   style: const TextStyle(color: Colors.white, fontSize: 20)),
             ),
           ],
+        ),
+      ),
+    ),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget buildDogPopUp(BuildContext context) {
+  return AlertDialog(
+    title: const Text('ב-DO-G-כל'),
+    content: SizedBox(
+      width: MediaQuery.of(context).size.width * 0.6,
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              //image: AssetImage(newminmaxcoins[index]),
+              image: AssetImage('assets/camog/dogdownapp.png'),
+              colorFilter: ColorFilter.mode(
+                Colors.white.withOpacity(1.0),
+                BlendMode.modulate,
+              )),
         ),
       ),
     ),
@@ -572,6 +605,22 @@ Widget build384PopUp(BuildContext context) {
             const SizedBox(
               height: 10,
             ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build384rtPop(context, hdlines384lstHeb),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: const Text('קווי עיצוב',
+                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             const Divider(color: Colors.black, thickness: 5),
             // Eng
             const SizedBox(
@@ -609,19 +658,7 @@ Widget build384PopUp(BuildContext context) {
             const SizedBox(
               height: 10,
             ),
-            //ElevatedButton(
-            // onPressed: () {
-            //   showDialog(
-            //    context: context,
-            //    builder: (BuildContext context) =>
-            //build384rtPlanetPop(context, hdlinesplanet),
-            //);
-            //            },
-            //      style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-            //      child: const Text('HD Planet aLine',
-            //        style: TextStyle(color: Colors.white, fontSize: 20)),
-            //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
-            //    ),
+
           ],
         ),
       ),
@@ -677,6 +714,136 @@ Widget rtlines390lsthebPop(BuildContext context) {
           ),
         )),
     actions: [
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget buildBookPopUp(BuildContext context) {
+  List<String> booktitles = [
+    'בחיפוש אחר גוגל',
+    'In Search of Google',
+    'מאי טי אל גורו גי ומטא גי',
+    'From IT to Guruji and Mata G',
+    'מילים Lyrics',
+  ];
+  return AlertDialog(
+    //title: const Text('36 Transactions'),
+    title: const Text('Ido Not Now עידו לא כעט', textAlign: TextAlign.center,
+        style: TextStyle(fontWeight: FontWeight.normal, color: Colors.black, fontSize: 15)),
+    content: SingleChildScrollView(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.6,
+        child: Flex(
+          direction: Axis.vertical,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 120,
+              width: 120,
+              child: IconButton(
+                onPressed: () {},
+                icon: Image.asset(
+                  'assets/camog/dogatapp.gif',
+                ),
+                tooltip: 'Re ID לי קרוע',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, pdfroutes[0]);
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+              child: AutoSizeText(
+                booktitles[0],
+                minFontSize: 15,
+                maxFontSize: 25,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, pdfroutes[1]);
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+              child: AutoSizeText(
+                booktitles[1],
+                minFontSize: 15,
+                maxFontSize: 25,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, pdfroutes[2]);
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
+                child: AutoSizeText(
+                  booktitles[2],
+                  minFontSize: 15,
+                  maxFontSize: 25,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
+                )),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, pdfroutes[3]);
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                child: AutoSizeText(
+                  booktitles[3],
+                  minFontSize: 15,
+                  maxFontSize: 25,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
+                )),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, pdfroutes[4]);
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                child: AutoSizeText(
+                  booktitles[4],
+                  minFontSize: 15,
+                  maxFontSize: 25,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
+                )),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
+      ),
+    ),
+    actions: <Widget>[
       TextButton(
         onPressed: () {
           Navigator.of(context).pop();
@@ -1252,11 +1419,6 @@ Widget build384rtPop(BuildContext context, List<String> build384lst) {
 Widget build384rtPlanetPop(BuildContext context) {
   return AlertDialog(
     title: const Text('כוחה בים'),
-    //title: CircleAvatar(
-    //    minRadius: 5,
-    //    maxRadius: 13,
-    //    backgroundColor: Colors.transparent,
-    //    foregroundImage: AssetImage('assets/camog/mcamog.png')),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
         child: ListView.builder(
@@ -1696,7 +1858,6 @@ class AjnaPainter extends CustomPainter {
 class ThroatPainter extends CustomPainter {
   int centerstate = 1;
   Color centercolor = Colors.green;
-
 
   ThroatPainter({
     required this.centerstate,
@@ -2155,11 +2316,11 @@ setCenterColor(int finalcenterstate) {
 
 // end hd chart
 
-launchUrl(url) async {
-  if (!await launchUrl(url)) {
-    throw Exception('Could not launch $url');
-  }
-}
+//launchUrl(url) async {
+//  if (!await launchUrl(url)) {
+//    throw Exception('Could not launch $url');
+//  }
+//}
 
 class OvalContainer extends StatelessWidget {
   const OvalContainer({
@@ -2189,8 +2350,8 @@ class OvalContainer extends StatelessWidget {
 class EvolutionContainer extends StatelessWidget {
   const EvolutionContainer(
       {Key? key,
-      this.width = 90,
-      this.height = 90,
+      this.width = 100,
+      this.height = 100,
       this.colorinsilence = Colors.red,
       this.colorinbreath = Colors.yellow,
       this.colorinsimple = Colors.green,
@@ -2225,7 +2386,8 @@ class EvolutionContainer extends StatelessWidget {
                   direction: Axis.horizontal,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    OvalContainer(colorout: coloroutsilence, colorin: colorinsilence),
+                    OvalContainer(
+                        colorout: coloroutsilence, colorin: colorinsilence),
                     SizedBox(width: 10),
                     OvalContainer(
                         colorout: coloroutcomplex, colorin: colorincomplex),
@@ -2253,6 +2415,5 @@ class EvolutionContainer extends StatelessWidget {
     );
   }
 }
-
 
 // zodiac

@@ -56,40 +56,6 @@ class _RotateBreathState extends State<RotateBreath> {
                 minFontSize: 65,
                 maxFontSize: 75,
                 style: TextStyle(color: Colors.yellow)),
-            Container(
-              height: MediaQuery.of(context).size.height / 3,
-              width: MediaQuery.of(context).size.width / 2.5,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(mainwoofgooflst[2]),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-
-            Container(
-              height: MediaQuery.of(context).size.height / 3,
-              width: MediaQuery.of(context).size.width / 2.5,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(newminmaxcoins[2]),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 5,
-              width: MediaQuery.of(context).size.width / 3.2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(kitheimglst[1]),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
