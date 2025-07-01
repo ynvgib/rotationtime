@@ -59,6 +59,7 @@ dependencies:
   polygon: ^0.1.0
   fibonacci: ^0.0.2
   country_state_city_pro: ^0.0.6
+  flutter_colorpicker: ^1.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'dart:core';
 
+import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 
 final List<String> hdchannelRotationList = [
@@ -3709,6 +3710,25 @@ final List<int> hdMammalGates = [8, 1, 15, 5, 27, 50, 20, 57, 28, 38];
 final List<int> hdMammaltoHumanGate = [19, 12, 62];
 final List<String> hdMammalCenters = ['throat', 'self', 'sacral', 'spleen'];
 final int hdBirdsFishReptileLayout = 270;
+
+
+// Design of Forms
+
+final List<DesignForm> designFormsList =
+    [
+      DesignForm(id: 0, name: 'form', gates: [0], centers: ['none'], zbname: 'zbform', orient: 'updown'),
+      DesignForm(id: 1, name: 'inanimate', gates: [25], centers: ['none'], zbname: 'פשומם', orient: 'updown'),
+      DesignForm(id: 2, name: 'cell', gates: [3,5,15], centers: ['sacral','self'], zbname: 'אתא', orient: 'updown'),
+      DesignForm(id: 3, name: 'plant', gates: [10,34,57,15], centers: ['sacral','self','spleen'], zbname: 'צומח', orient: 'downup'),
+      DesignForm(id: 4, name: 'insect', gates: [5,10,15,20,34,57], centers: ['sacral','self','spleen','throat'], zbname: 'חרק', orient: 'updown'),
+      DesignForm(id: 5, name: 'birdReptileFish', gates: [1,8,5,15,34,44,57], centers: ['sacral','self','spleen','throat'], zbname: 'עופזוחלדג', orient: 'leftright'),
+      DesignForm(id: 6, name: 'mammal', gates: [1,5,8,12,15,19,20,27,28,38,42,50,53,57,62], centers: ['sacral','self','spleen','throat','root'], zbname: 'יונקלודם', orient: 'rightleft'),
+      DesignForm(id: 7, name: 'penta', gates: [1,2,5,7,8,13,14,15,29,31,33], centers: ['sacral','self','throat'], zbname: 'סלט קטן', orient: 'none'),
+      DesignForm(id: 8, name: 'wa', gates: [2,3,6,14,21,25,27,45,51,50,59,60], centers: ['sacral','self','spleen','solar','ego','throat','root'], zbname: 'סלט גדול', orient: 'none'),
+      DesignForm(id: 9, name: 'human', gates: numbers64, centers: ['none'], zbname: 'הואדם', orient: 'updown'),
+    ];
+
+
 
 // Codon
 

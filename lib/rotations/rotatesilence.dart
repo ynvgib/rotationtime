@@ -50,11 +50,12 @@ class _RotateSilenceState extends State<RotateSilence> {
                     maxFontSize: 100,
                     style: const TextStyle(color: Colors.red)),
                 Container(
-                  height: MediaQuery.of(context).size.height / 4,
-                  width: MediaQuery.of(context).size.width / 3,
+                  height: MediaQuery.of(context).size.height / 3,
+                  width: MediaQuery.of(context).size.width / 1.5,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/gen/vaggenbglp.gif'),
+                      image: AssetImage('assets/camog/zbredog2.png',
+                      ),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -96,14 +97,6 @@ class _RotateSilenceState extends State<RotateSilence> {
                 ),
                 const Divider(thickness: 5, indent: 20, endIndent: 10,color: Colors.red),
                 const SizedBox(height: 10),
-                const AutoSizeText(' @',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontFamily: 'iChing',
-                        fontSize: 80,
-                        color: Colors.red,
-                        fontWeight: FontWeight.normal)),
-                const Divider(thickness: 5, indent: 20, endIndent: 10,color: Colors.red),
                 Container(
                   height: MediaQuery.of(context).size.height / 4,
                   width: MediaQuery.of(context).size.width / 3,
@@ -115,6 +108,14 @@ class _RotateSilenceState extends State<RotateSilence> {
                     shape: BoxShape.rectangle,
                   ),
                 ),
+                const Divider(thickness: 5, indent: 20, endIndent: 10,color: Colors.red),
+                const AutoSizeText(' @',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontFamily: 'iChing',
+                        fontSize: 80,
+                        color: Colors.red,
+                        fontWeight: FontWeight.normal)),
                 const SizedBox(height: 10),
               ]),
         ),

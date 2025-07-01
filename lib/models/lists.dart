@@ -188,7 +188,25 @@ final List<String> rtimages = [
   'assets/gen/vaggenbglp.gif',
   'assets/gen/vaggenlp.gif',
   'assets/gen/vaggenplexlp.gif',
+  //new zb
+  'assets/camog/zblackcat.png',
+  'assets/camog/zbredog.png',
+  'assets/camog/zbyellowoctopussy.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbwhitecamel.png',
 
+  'assets/camog/zblackcat2.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbgreenoctopus2.png',
+  'assets/camog/zbluedog2.png',
+  'assets/camog/zbwhitecamel2.png',
+
+
+  'assets/camog/zbyellowcamel.png',
+  'assets/camog/zbgreencamel.png',
+  'assets/camog/zbluecamel.png',
 ];
 
 final List familyList = ['assets/minmax/minsilence.png',
@@ -1264,6 +1282,9 @@ final List<int> orderHexagramsToCalulateWheel = [
   10, 58, 38, 54,
   61, 60
 ];
+
+final List<int> numbers64 = List.generate(64, (i) => i + 1);
+
 
 final List<String> orderHexagramsWheelORIGINAL = [
   //qurater mutation complex

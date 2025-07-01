@@ -94,7 +94,13 @@ class _RotateHomeState extends State<RotateHome> {
   double screenwidth = 1, screenheight = 1;
   final CarouselSliderController _controllertop = CarouselSliderController(),
       _controllermid = CarouselSliderController(),
-      _controllerbot = CarouselSliderController();
+      _controllerbot = CarouselSliderController(),
+      _controllersix = CarouselSliderController(),
+      _controllerfive = CarouselSliderController(),
+      _controllerfour = CarouselSliderController(),
+      _controllerthree = CarouselSliderController(),
+      _controllertwo = CarouselSliderController(),
+      _controllerone = CarouselSliderController();
 
   int _currenttop = 0, _currentmid = 0, _currentbot = 0;
 
@@ -161,47 +167,18 @@ class _RotateHomeState extends State<RotateHome> {
               //mainAxisSize: MainAxisSize.min,
               children: [
                 const SizedBox(height: 10),
-                CircleList(
-                  innerRadius: 1,
-                  outerRadius: MediaQuery.of(context).size.height / 4.5,
-                  childrenPadding: 1,
-                  origin: const Offset(0, 0),
-                  children: List.generate(5, (index) {
-                    return InkWell(
-                      child: Container(
-                        width: MediaQuery.of(context).size.width / 3,
-                        margin: const EdgeInsets.all(1),
-                        decoration: const BoxDecoration(
-                          color: Colors.transparent,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Stack(
-                          alignment: Alignment.center,
-                          fit: StackFit.loose,
-                          children: [
-                            Tooltip(
-                              message: circle_tips[index],
-                              textStyle: const TextStyle(
-                                  fontSize: 14, color: Colors.white),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        //image: AssetImage(newminmaxcoins[index]),
-                                        image: AssetImage(mainmailst[index]),
-                                        colorFilter: ColorFilter.mode(
-                                          Colors.white.withOpacity(1.0),
-                                          BlendMode.modulate,
-                                        ))),
-                              ),
-                            ),
-                          ],
-                        ),
+                Container(
+                  height: MediaQuery.of(context).size.height / 4.0,
+                  width: MediaQuery.of(context).size.width / 4.0,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    image: DecorationImage(
+                      image: AssetImage('assets/camog/zbwhitecamel.png',
                       ),
-                      onTap: () {
-                        Navigator.pushNamed(context, mainroutes[index]);
-                      },
-                    );
-                  }),
+                      fit: BoxFit.scaleDown,
+                    ),
+                    shape: BoxShape.circle,
+                  ),
                 ),
                 Container(
                   height: 35,
@@ -293,6 +270,49 @@ class _RotateHomeState extends State<RotateHome> {
                     ),
                   ),
                 ),
+                CircleList(
+                  innerRadius: 1,
+                  outerRadius: MediaQuery.of(context).size.height / 4.5,
+                  childrenPadding: 1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(5, (index) {
+                    return InkWell(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 3,
+                        margin: const EdgeInsets.all(1),
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          fit: StackFit.loose,
+                          children: [
+                            Tooltip(
+                              message: circle_tips[index],
+                              textStyle: const TextStyle(
+                                  fontSize: 14, color: Colors.white),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        //image: AssetImage(newminmaxcoins[index]),
+                                        image: AssetImage(mainmailst[index]),
+                                        colorFilter: ColorFilter.mode(
+                                          Colors.white.withOpacity(1.0),
+                                          BlendMode.modulate,
+                                        ))),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamed(context, mainroutes[index]);
+                      },
+                    );
+                  }),
+                ),
+
                 //new cube
                 const SizedBox(height: 35),
 
@@ -311,7 +331,6 @@ class _RotateHomeState extends State<RotateHome> {
                 // end new cube
 
                 const SizedBox(height: 40),
-
                 const Divider(
                   color: Colors.black87,
                   thickness: 5,
@@ -325,13 +344,13 @@ class _RotateHomeState extends State<RotateHome> {
                   ),
                   child: CarouselSlider(
                     //items: mixHexagramSlidersNew,
-                    items: mainSlider,
-                    carouselController: _controllertop,
+                    items: sixSlider,
+                    carouselController: _controllersix,
                     options: CarouselOptions(
-                        initialPage: 1,
+                        initialPage: 5,
                         autoPlay: false,
                         enlargeCenterPage: true,
-                        aspectRatio: 1.3,
+                        aspectRatio: 3,
                         onPageChanged: (indextop, reason) {
                           setState(() {
                             _currenttop = indextop;
@@ -348,13 +367,13 @@ class _RotateHomeState extends State<RotateHome> {
                   ),
                   child: CarouselSlider(
                     //items: mixHexagramSlidersNew,
-                    items: mainSlider,
-                    carouselController: _controllermid,
+                    items: sixSlider,
+                    carouselController: _controllerfive,
                     options: CarouselOptions(
-                        initialPage: 1,
+                        initialPage: 4,
                         autoPlay: false,
                         enlargeCenterPage: true,
-                        aspectRatio: 1.3,
+                        aspectRatio: 3,
                         onPageChanged: (indexmid, reason) {
                           setState(() {
                             _currentmid = indexmid;
@@ -371,13 +390,82 @@ class _RotateHomeState extends State<RotateHome> {
                   ),
                   child: CarouselSlider(
                     //items: mixHexagramSlidersNew,
-                    items: mainSlider,
-                    carouselController: _controllerbot,
+                    items: sixSlider,
+                    carouselController: _controllerfour,
                     options: CarouselOptions(
-                        initialPage: 1,
+                        initialPage: 3,
                         autoPlay: false,
                         enlargeCenterPage: true,
-                        aspectRatio: 1.3,
+                        aspectRatio: 3,
+                        onPageChanged: (indexbot, reason) {
+                          setState(() {
+                            _currentbot = indexbot;
+                          });
+                        }),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight * 0.15,
+                    maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: sixSlider,
+                    carouselController: _controllerthree,
+                    options: CarouselOptions(
+                        initialPage: 8,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 3,
+                        onPageChanged: (indextop, reason) {
+                          setState(() {
+                            _currenttop = indextop;
+                          });
+                        }),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight * 0.15,
+                    maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: sixSlider,
+                    carouselController: _controllertwo,
+                    options: CarouselOptions(
+                        initialPage: 7,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 3,
+                        onPageChanged: (indexmid, reason) {
+                          setState(() {
+                            _currentmid = indexmid;
+                          });
+                        }),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight * 0.15,
+                    maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: sixSlider,
+                    carouselController: _controllerone,
+                    options: CarouselOptions(
+                        initialPage: 6,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 3,
                         onPageChanged: (indexbot, reason) {
                           setState(() {
                             _currentbot = indexbot;

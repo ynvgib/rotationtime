@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
 
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+
 Widget build4PopUp(BuildContext context) {
   List<String> titles4 = [
     'Types',
@@ -344,6 +346,91 @@ Widget build36PopUp(BuildContext context) {
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                 child: const Text('silence',
                     style: TextStyle(color: Colors.black, fontSize: 25))),
+            const SizedBox(
+              height: 10,
+            ),
+            //hd
+            const Divider(color: Colors.black, thickness: 5),
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildManifestChl(context, hdchannelcomplexList),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                child: const Text('הגשמה',
+                    style: TextStyle(color: Colors.white, fontSize: 25))),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildProjectedChl(context, hdchannelbreathList),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
+                child: const Text('הקרנה',
+                    style: TextStyle(color: Colors.grey, fontSize: 25))),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildGenerateChl(context, hdchannelsilenceList),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                child: const Text('מחול אל',
+                    style: TextStyle(color: Colors.black, fontSize: 25))),
+            const Divider(color: Colors.black, thickness: 5),
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildManifestChl(context, hdchannelcomplexList),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                child: const Text('Manifest',
+                    style: TextStyle(color: Colors.white, fontSize: 25))),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildProjectedChl(context, hdchannelbreathList),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
+                child: const Text('Project',
+                    style: TextStyle(color: Colors.grey, fontSize: 25))),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildGenerateChl(context, hdchannelsilenceList),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                child: const Text('Generate',
+                    style: TextStyle(color: Colors.black, fontSize: 25))),
+
           ],
         ),
       ),
@@ -1184,6 +1271,169 @@ Widget _buildSilenceTS(BuildContext context, List<String> silencelst) {
   );
 }
 
+Widget _buildManifestChl(BuildContext context, List<String> complexlst) {
+  return AlertDialog(
+    title: const Text('Manifest יוזמה'),
+    content: SizedBox(
+      width: MediaQuery.of(context).size.width * 0.6,
+      child: ListView.builder(
+        reverse: false,
+        padding: const EdgeInsets.all(5.0),
+        itemCount: hdchannelcomplexList.length,
+        itemBuilder: (context, index) {
+          return Container(
+            decoration: BoxDecoration(
+              //color: Colors.blue[100],
+                color: Colors.blue,
+                border: Border.all(
+                  width: 3,
+                  color: Colors.black,
+                ),
+                borderRadius: BorderRadius.circular(15)),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Flex(
+                direction: Axis.vertical,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AutoSizeText(
+                    complexlst[index],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    ),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget _buildProjectedChl(BuildContext context, List<String> breathlst) {
+  return AlertDialog(
+    //title: const Text('Breath Transactions'),
+    title: const Text('Breath נשימה'),
+    content: SizedBox(
+      width: MediaQuery.of(context).size.width * 0.6,
+      child: ListView.builder(
+        reverse: false,
+        padding: const EdgeInsets.all(5.0),
+        itemCount: hdchannelbreathList.length,
+        itemBuilder: (context, index) {
+          return Container(
+            decoration: BoxDecoration(
+                color: Colors.yellow,
+                border: Border.all(
+                  width: 3,
+                  color: Colors.black,
+                ),
+                borderRadius: BorderRadius.circular(15)),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Flex(
+                direction: Axis.vertical,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    breathlst[index],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.black54),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    ),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget _buildGenerateChl(BuildContext context, List<String> silencelst) {
+  return AlertDialog(
+    //title: const Text('silence Transactions'),
+    title: const Text('silence שתיקה'),
+    content: SizedBox(
+      width: MediaQuery.of(context).size.width * 0.6,
+      child: ListView.builder(
+        reverse: false,
+        padding: const EdgeInsets.all(5.0),
+        itemCount: hdchannelsilenceList.length,
+        itemBuilder: (context, index) {
+          return Container(
+            decoration: BoxDecoration(
+              color: Colors.redAccent,
+              border: Border.all(
+                width: 3,
+                color: Colors.black,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Flex(
+                direction: Axis.vertical,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    silencelst[index],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    ),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
 Widget buildWalletPopUp(BuildContext context, int walletindex) {
   return AlertDialog(
     title: Center(
@@ -1784,13 +2034,13 @@ Widget buildSilencePopUp(BuildContext context) {
 // human design chart
 class HeadPainter extends CustomPainter {
   int centerstate = 1;
-  Color centercolor = Colors.green;
+  Color centercolor = Colors.green, pickcolor = Colors.orange;
   //Color centercolor = Colors.yellow;
   //int centercolorstate = 0;
 
   HeadPainter({
     //required this.centerstate, required this.centercolorstate
-    required this.centerstate,
+    required this.centerstate, required this.pickcolor
   });
 
   @override
@@ -1800,7 +2050,7 @@ class HeadPainter extends CustomPainter {
 
     //centerstate ? centercolor = Colors.yellow : centercolor = Colors.green;
 
-    centercolor = setCenterColor(centerstate);
+    centercolor = setCenterColor(centerstate, pickcolor);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1822,10 +2072,11 @@ class HeadPainter extends CustomPainter {
 
 class AjnaPainter extends CustomPainter {
   int centerstate = 1;
-  Color centercolor = Colors.green;
+  Color centercolor = Colors.green, pickcolor = Colors.orange;
 
   AjnaPainter({
     required this.centerstate,
+    required this.pickcolor,
   });
 
   @override
@@ -1834,7 +2085,7 @@ class AjnaPainter extends CustomPainter {
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
     //centerstate ? centercolor = Colors.yellow : centercolor = Colors.green;
-    centercolor = setCenterColor(centerstate);
+    centercolor = setCenterColor(centerstate, pickcolor);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1857,10 +2108,11 @@ class AjnaPainter extends CustomPainter {
 
 class ThroatPainter extends CustomPainter {
   int centerstate = 1;
-  Color centercolor = Colors.green;
+  Color centercolor = Colors.green, pickcolor = Colors.orange;
 
   ThroatPainter({
     required this.centerstate,
+    required this.pickcolor
   });
 
   @override
@@ -1876,7 +2128,7 @@ class ThroatPainter extends CustomPainter {
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
     //centerstate ? centercolor = Colors.blue : centercolor = Colors.green;
-    centercolor = setCenterColor(centerstate);
+    centercolor = setCenterColor(centerstate, pickcolor);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1904,8 +2156,10 @@ class ThroatPainter extends CustomPainter {
 class GPainter extends CustomPainter {
   int centerstate = 1;
 
+  Color pickcolor = Colors.orange;
+
   GPainter({
-    required this.centerstate,
+    required this.centerstate, required this.pickcolor
   });
 
   @override
@@ -1916,7 +2170,7 @@ class GPainter extends CustomPainter {
     //var angle = (math.pi * 2) / 4;
 
     //centerstate ? centercolor = Colors.yellow : centercolor = Colors.green;
-    centercolor = setCenterColor(centerstate);
+    centercolor = setCenterColor(centerstate, pickcolor);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1953,9 +2207,10 @@ class GPainter extends CustomPainter {
 
 class SacralPainter extends CustomPainter {
   int centerstate = 1;
+  Color pickcolor = Colors.orange;
 
   SacralPainter({
-    required this.centerstate,
+    required this.centerstate, required this.pickcolor
   });
 
   @override
@@ -1970,7 +2225,7 @@ class SacralPainter extends CustomPainter {
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
     //centerstate ? centercolor = Colors.red : centercolor = Colors.green;
-    centercolor = setCenterColor(centerstate);
+    centercolor = setCenterColor(centerstate, pickcolor);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -1997,9 +2252,10 @@ class SacralPainter extends CustomPainter {
 
 class RootPainter extends CustomPainter {
   int centerstate = 1;
+  Color pickcolor = Colors.orange;
 
   RootPainter({
-    required this.centerstate,
+    required this.centerstate, required this.pickcolor
   });
 
   @override
@@ -2016,7 +2272,7 @@ class RootPainter extends CustomPainter {
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
     //centerstate ? centercolor = Colors.yellow : centercolor = Colors.green;
-    centercolor = setCenterColor(centerstate);
+    centercolor = setCenterColor(centerstate, pickcolor);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -2043,9 +2299,11 @@ class RootPainter extends CustomPainter {
 
 class SpleenPainter extends CustomPainter {
   int centerstate = 1;
+  Color pickcolor = Colors.orange;
 
   SpleenPainter({
     required this.centerstate,
+    required this.pickcolor,
   });
 
   @override
@@ -2055,7 +2313,7 @@ class SpleenPainter extends CustomPainter {
     //Color centercolor = Color(0xffaa8b00);
 
     //centerstate ? centercolor = Colors.yellow : centercolor = Colors.green;
-    centercolor = setCenterColor(centerstate);
+    centercolor = setCenterColor(centerstate, pickcolor);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -2077,9 +2335,10 @@ class SpleenPainter extends CustomPainter {
 
 class SolarPainter extends CustomPainter {
   int centerstate = 1;
+  Color pickcolor = Colors.orange;
 
   SolarPainter({
-    required this.centerstate,
+    required this.centerstate, required this.pickcolor
   });
 
   @override
@@ -2088,7 +2347,7 @@ class SolarPainter extends CustomPainter {
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
     //centerstate ? centercolor = Colors.blue : centercolor = Colors.green;
-    centercolor = setCenterColor(centerstate);
+    centercolor = setCenterColor(centerstate, pickcolor);
 
     Paint paint = Paint()
       ..color = centercolor
@@ -2110,9 +2369,11 @@ class SolarPainter extends CustomPainter {
 
 class HeartPainter extends CustomPainter {
   int centerstate = 1;
+  Color pickcolor = Colors.orange;
 
   HeartPainter({
     required this.centerstate,
+    required this.pickcolor
   });
 
   @override
@@ -2121,7 +2382,7 @@ class HeartPainter extends CustomPainter {
     //PaintingStyle centerstyle = PaintingStyle.fill;
 
     //centerstate ? centercolor = Colors.blue : centercolor = Colors.green;
-    centercolor = setCenterColor(centerstate);
+    centercolor = setCenterColor(centerstate, pickcolor);
     //print (centerstate);
 
     Paint paint = Paint()
@@ -2270,7 +2531,7 @@ setGateColor(int finalgatestate) {
   return gatecolorlist;
 }
 
-setCenterColor(int finalcenterstate) {
+setCenterColor(int finalcenterstate, Color pickedcolor) {
   //int gatestate = 0;
 
   List<Color> centercolorlist = [
@@ -2280,13 +2541,14 @@ setCenterColor(int finalcenterstate) {
     Colors.green,
     Colors.blue,
     Colors.white,
-    Colors.brown
+    Colors.brown,
+    pickedcolor,
   ];
   Color centercolor = Colors.green;
 
   switch (finalcenterstate) {
     case 0:
-      centercolor = centercolorlist[0]; // green
+      centercolor = centercolorlist[0];
       break;
     case 1:
       centercolor = centercolorlist[1];
@@ -2295,7 +2557,7 @@ setCenterColor(int finalcenterstate) {
       centercolor = centercolorlist[2];
       break;
     case 3:
-      centercolor = centercolorlist[3]; // black
+      centercolor = centercolorlist[3];
       break;
     case 4:
       centercolor = centercolorlist[4];
@@ -2305,6 +2567,9 @@ setCenterColor(int finalcenterstate) {
       break;
     case 6:
       centercolor = centercolorlist[6];
+      break;
+    case 7:
+      centercolor = centercolorlist[7];
       break;
     default:
       centercolor = Colors.pink;

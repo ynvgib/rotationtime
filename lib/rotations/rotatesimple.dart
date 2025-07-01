@@ -13,6 +13,7 @@ import 'package:finallyicanlearn/services/rotatewidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class RotateSimple extends StatefulWidget {
   const RotateSimple({Key? key}) : super(key: key);
@@ -54,7 +55,21 @@ class _RotateSimpleState extends State<RotateSimple> {
       _currentevolution = 0;
   //_hexagramVal = 0;
 
-  Color cardcolor = Colors.black, codoncolor = Colors.white;
+  Color cardcolor = Colors.black,
+      codoncolor = Colors.white,
+      pickedcolor = Colors.white,
+      currentcolor = Colors.green,
+      headcolor = Colors.green,
+      ajnacolor = Colors.green,
+      throatcolor = Colors.green,
+      gcolor = Colors.green,
+      heartcolor = Colors.green,
+      spleencolor = Colors.green,
+      sacralcolor = Colors.green,
+      solarcolor = Colors.green,
+      rootcolor = Colors.green;
+
+  void changeColor(Color color) => setState(() => currentcolor = color);
 
   final CarouselSliderController _controllertop = CarouselSliderController(),
       _controllermid = CarouselSliderController(),
@@ -127,39 +142,18 @@ class _RotateSimpleState extends State<RotateSimple> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
-                Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height / 2.2,
-                      width: MediaQuery.of(context).size.width / 2.2,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(mplantspos[2]),
-                          fit: BoxFit.scaleDown,
-                        ),
-                        shape: BoxShape.rectangle,
+                Container(
+                  height: MediaQuery.of(context).size.height / 2.5,
+                  width: MediaQuery.of(context).size.width / 1.5,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(  'assets/camog/zbgreenoctopus.png',
                       ),
+                      fit: BoxFit.scaleDown,
                     ),
-                    Transform.scale(
-                      scaleX: -1,
-                      scaleY: -1,
-                      child: Container(
-                        height: MediaQuery.of(context).size.height / 2.2,
-                        width: MediaQuery.of(context).size.width / 2.2,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(mplantsneg[2]),
-                            fit: BoxFit.scaleDown,
-                          ),
-                          shape: BoxShape.rectangle,
-                        ),
-                      ),
-                    ),
-                  ],
+                    shape: BoxShape.rectangle,
+                  ),
                 ),
-
                 InkWell(
                   child: AutoSizeText(
                     mainText,
@@ -517,6 +511,18 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
                 // HD CHART
                 InkWell(
+                  hoverColor: Colors.transparent,
+                  onTap: () {
+                    setState(() {
+                      cardcolor = cardcolor == Colors.black
+                          ? Colors.black.withOpacity(0.2)
+                          : Colors.black;
+
+                      //timecolor = timecolor == Colors.white ?
+                      //Colors.black :
+                      //Colors.white;
+                    });
+                  },
                   child: Container(
                     width: 350,
                     height: 608,
@@ -1108,7 +1114,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                                   child: InkWell(
                                       child: CustomPaint(
                                         foregroundPainter: HeartPainter(
-                                            centerstate: heartstate),
+                                            centerstate: heartstate,
+                                            pickcolor: heartcolor),
                                         willChange: true,
                                         child: const SizedBox(
                                           height: 50,
@@ -1117,11 +1124,11 @@ class _RotateSimpleState extends State<RotateSimple> {
                                       ),
                                       onTap: () {
                                         setState(() {
-                                          //heartstate = !heartstate;
-                                          if (heartstate < 6) {
-                                            heartstate++;
+                                          heartcolor = pickedcolor;
+                                          if (heartstate != 7) {
+                                            heartstate = 7;
                                           } else {
-                                            heartstate = 0;
+                                            heartstate = 3;
                                           }
                                         });
                                       }),
@@ -1220,7 +1227,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                                         InkWell(
                                           child: CustomPaint(
                                             foregroundPainter: HeadPainter(
-                                                centerstate: headstate),
+                                                centerstate: headstate,
+                                                pickcolor: headcolor),
                                             //centercolorstate: headcolorstate),
                                             willChange: true,
                                             child: const SizedBox(
@@ -1230,11 +1238,12 @@ class _RotateSimpleState extends State<RotateSimple> {
                                           ),
                                           onTap: () {
                                             setState(() {
-                                              //headstate = !headstate;
-                                              if (headstate < 6) {
-                                                headstate++;
+                                              headcolor = pickedcolor;
+                                              //if (headstate < 7) {
+                                              if (headstate != 7) {
+                                                headstate = 7;
                                               } else {
-                                                headstate = 0;
+                                                headstate = 3;
                                               }
                                             });
                                           },
@@ -1333,6 +1342,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                                 ),
                               ],
                             ),
+
                             // head gates
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -1477,8 +1487,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                     alignment: Alignment.topCenter,
                                     child: InkWell(
                                       child: CustomPaint(
-                                        foregroundPainter:
-                                            AjnaPainter(centerstate: ajnastate),
+                                        foregroundPainter: AjnaPainter(
+                                            centerstate: ajnastate,
+                                            pickcolor: ajnacolor),
                                         willChange: true,
                                         child: const SizedBox(
                                           height: 70,
@@ -1487,11 +1498,12 @@ class _RotateSimpleState extends State<RotateSimple> {
                                       ),
                                       onTap: () {
                                         setState(() {
-                                          //ajnastate = !ajnastate;
-                                          if (ajnastate < 6) {
-                                            ajnastate++;
+                                          ajnacolor = pickedcolor;
+                                          //if (ajnastate < 7) {
+                                          if (ajnastate! < 7) {
+                                            ajnastate = 7;
                                           } else {
-                                            ajnastate = 0;
+                                            ajnastate = 3;
                                           }
                                         });
                                       },
@@ -1511,6 +1523,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                                       ),
                                     ),
                                   ),
+
                                   PositionedDirectional(
                                     start: 220,
                                     child: IconButton(
@@ -1695,7 +1708,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                                   child: InkWell(
                                       child: CustomPaint(
                                         foregroundPainter: ThroatPainter(
-                                            centerstate: throatstate),
+                                            centerstate: throatstate,
+                                            pickcolor: throatcolor),
                                         willChange: true,
                                         child: const SizedBox(
                                           height: 72,
@@ -1704,11 +1718,12 @@ class _RotateSimpleState extends State<RotateSimple> {
                                       ),
                                       onTap: () {
                                         setState(() {
-                                          //throatstate = !throatstate;
-                                          if (throatstate < 6) {
-                                            throatstate++;
+                                          throatcolor = pickedcolor;
+                                          //if (throatstate < 7) {
+                                          if (throatstate != 7) {
+                                            throatstate = 7;
                                           } else {
-                                            throatstate = 0;
+                                            throatstate = 3;
                                           }
                                         });
                                       }),
@@ -2063,8 +2078,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                     alignment: Alignment.center,
                                     child: InkWell(
                                         child: CustomPaint(
-                                          foregroundPainter:
-                                              GPainter(centerstate: gstate),
+                                          foregroundPainter: GPainter(
+                                              centerstate: gstate,
+                                              pickcolor: gcolor),
                                           willChange: true,
                                           child: const SizedBox(
                                             height: 84,
@@ -2073,11 +2089,13 @@ class _RotateSimpleState extends State<RotateSimple> {
                                         ),
                                         onTap: () {
                                           setState(() {
-                                            //gstate = !gstate;
-                                            if (gstate < 6) {
-                                              gstate++;
+                                            gcolor = pickedcolor;
+                                            //if (gstate < 7) {
+                                            if (gstate != 7) {
+                                              gstate = 7;
                                             } else {
-                                              gstate = 0;
+                                              //gstate = 0;
+                                              gstate = 3;
                                             }
                                           });
                                         }),
@@ -2362,7 +2380,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                                       child: InkWell(
                                           child: CustomPaint(
                                             foregroundPainter: SacralPainter(
-                                                centerstate: sacralstate),
+                                                centerstate: sacralstate,
+                                                pickcolor: sacralcolor),
                                             willChange: true,
                                             child: const SizedBox(
                                               height: 62,
@@ -2371,11 +2390,11 @@ class _RotateSimpleState extends State<RotateSimple> {
                                           ),
                                           onTap: () {
                                             setState(() {
-                                              //sacralstate = !sacralstate;
-                                              if (sacralstate < 6) {
-                                                sacralstate++;
+                                              sacralcolor = pickedcolor;
+                                              if (sacralstate != 7) {
+                                                sacralstate = 7;
                                               } else {
-                                                sacralstate = 0;
+                                                sacralstate = 3;
                                               }
                                             });
                                           }),
@@ -2649,8 +2668,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                   alignment: Alignment.center,
                                   child: InkWell(
                                       child: CustomPaint(
-                                        foregroundPainter:
-                                            RootPainter(centerstate: rootstate),
+                                        foregroundPainter: RootPainter(
+                                            centerstate: rootstate,
+                                            pickcolor: rootcolor),
                                         willChange: true,
                                         child: const SizedBox(
                                           height: 65,
@@ -2659,11 +2679,11 @@ class _RotateSimpleState extends State<RotateSimple> {
                                       ),
                                       onTap: () {
                                         setState(() {
-                                          //rootstate = !rootstate;
-                                          if (rootstate < 6) {
-                                            rootstate++;
+                                          rootcolor = pickedcolor;
+                                          if (rootstate != 7) {
+                                            rootstate = 7;
                                           } else {
-                                            rootstate = 0;
+                                            rootstate = 3;
                                           }
                                         });
                                       }),
@@ -2853,8 +2873,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                                     left: 240, bottom: 120),
                                 child: InkWell(
                                     child: CustomPaint(
-                                      foregroundPainter:
-                                          SolarPainter(centerstate: solarstate),
+                                      foregroundPainter: SolarPainter(
+                                          centerstate: solarstate,
+                                          pickcolor: solarcolor),
                                       willChange: true,
                                       child: const SizedBox(
                                         height: 80,
@@ -2863,11 +2884,13 @@ class _RotateSimpleState extends State<RotateSimple> {
                                     ),
                                     onTap: () {
                                       setState(() {
-                                        //solarstate = !solarstate;
-                                        if (solarstate < 6) {
-                                          solarstate++;
+                                        solarcolor = pickedcolor;
+                                        //if (solarstate < 7) {
+                                        if (solarstate != 7) {
+                                          //solarstate++;
+                                          solarstate = 7;
                                         } else {
-                                          solarstate = 0;
+                                          solarstate = 3;
                                         }
                                       });
                                     }),
@@ -3012,7 +3035,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                                 child: InkWell(
                                     child: CustomPaint(
                                       foregroundPainter: SpleenPainter(
-                                          centerstate: spleenstate),
+                                          centerstate: spleenstate,
+                                          pickcolor: spleencolor),
                                       willChange: true,
                                       child: const SizedBox(
                                         height: 80,
@@ -3021,11 +3045,11 @@ class _RotateSimpleState extends State<RotateSimple> {
                                     ),
                                     onTap: () {
                                       setState(() {
-                                        //spleenstate = !spleenstate;
-                                        if (spleenstate < 6) {
-                                          spleenstate++;
+                                        spleencolor = pickedcolor;
+                                        if (spleenstate != 7) {
+                                          spleenstate = 7;
                                         } else {
-                                          spleenstate = 0;
+                                          spleenstate = 3;
                                         }
                                       });
                                     }),
@@ -3181,7 +3205,43 @@ class _RotateSimpleState extends State<RotateSimple> {
                                     fontWeight: FontWeight.bold)),
                           ),
                         ),
+                        PositionedDirectional(
+                          start: 10,
+                          bottom: 40,
+                          child: IconButton(
+                              icon: CircleAvatar(
+                                  //minRadius: 5,
+                                  maxRadius: 20,
+                                  foregroundImage:
+                                      AssetImage('assets/coins/fullcoins.png')),
+                              tooltip: 'צבע לבחור',
+                              onPressed: () {
+                                showDialog(
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                    title: const Text('צבע לבחור'),
+                                    content: SingleChildScrollView(
+                                      child: HueRingPicker(
+                                        pickerColor: currentcolor,
+                                        onColorChanged: changeColor,
 
+                                      ),
+                                    ),
+                                    actions: <Widget>[
+                                      ElevatedButton(
+                                        child: const Text('נצבע'),
+                                        onPressed: () {
+                                          //setState(() => pickedcolor = currentcolor);
+                                          pickedcolor = currentcolor;
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                  context: context,
+                                );
+                              }),
+                        ),
                         PositionedDirectional(
                           start: 10,
                           bottom: 4,
@@ -3219,18 +3279,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                       ],
                     ),
                   ),
-                  hoverColor: Colors.transparent,
-                  onTap: () {
-                    setState(() {
-                      cardcolor = cardcolor == Colors.black
-                          ? Colors.black.withOpacity(0.2)
-                          : Colors.black;
-
-                      //timecolor = timecolor == Colors.white ?
-                      //Colors.black :
-                      //Colors.white;
-                    });
-                  },
                 ),
 
                 SizedBox(
@@ -3293,6 +3341,75 @@ class _RotateSimpleState extends State<RotateSimple> {
                 ),
 
                 SizedBox(
+                  height: 220,
+                  width: 220,
+                  child: GridView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 1,
+                      crossAxisCount: 3, // number of items in each row
+                      mainAxisSpacing: 5.0, // spacing between rows
+                      crossAxisSpacing: 5.0, // spacing between columns
+                    ),
+                    padding:
+                        const EdgeInsets.all(5.0), // padding around the grid
+                    itemCount: 9, // total number of items
+                    itemBuilder: (context, index) {
+                      DesignForm designform = designFormsList
+                          .firstWhere((df) => df.id == index + 1);
+                      List<int> designformGates = designform.gates!;
+                      return InkWell(
+                          child: Tooltip(
+                            message:
+                                designform.name! + "\n" + designform.orient!,
+                            child: Container(
+                              width: 35,
+                              margin: const EdgeInsets.all(1),
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      width: 2, color: Colors.black)),
+                              child: Center(
+                                //child: Text((hdZBCodonName[index]),
+                                child: Text((designform.zbname!),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ),
+                          ),
+                          onTap: () {
+                            setState(() {
+                              for (final formgate in designformGates) {
+                                int tempformgate = formgate;
+
+                                if (gatestatelist[tempformgate] == 0) {
+                                  _isBoldList[tempformgate] =
+                                      !_isBoldList[tempformgate];
+                                  //gatestatelist[tmpcod]++;
+                                  gatestatelist[tempformgate] = 1;
+                                  //&&
+                                } else {
+                                  //if (gatestatelist[tmpcod] == 9) {
+                                  //if (gatestatelist[tmpcod] != 0) {
+                                  gatestatelist[tempformgate] = 0;
+                                  _isBoldList[tempformgate] =
+                                      !_isBoldList[tempformgate];
+                                  //} else {
+                                  // gatestatelist[tmpcod]++;
+                                  // }
+                                }
+                              }
+                            });
+                          });
+                    },
+                  ),
+                ),
+
+                SizedBox(
                   height: 300,
                   width: 300,
                   child: GridView.builder(
@@ -3311,9 +3428,10 @@ class _RotateSimpleState extends State<RotateSimple> {
                       Codon codon =
                           codonLst.firstWhere((cd) => cd.id == index + 1);
                       List<int> codongates = codon.gates!;
+                      var codonslist =  codongates.join(', ');
                       return InkWell(
                           child: Tooltip(
-                            message: codon.name,
+                            message: codon.name! + ': ' + codonslist,
                             child: Container(
                               width: 35,
                               margin: const EdgeInsets.all(1),
@@ -4230,7 +4348,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                     ),
                   ],
                 ),
-               
 
                 const Divider(
                   color: Colors.green,
@@ -4255,13 +4372,9 @@ class _RotateSimpleState extends State<RotateSimple> {
                             color: Colors.white, fontWeight: FontWeight.bold))),
                 const SizedBox(height: 10),
                 // rt evolution
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 10,
-                    minWidth: 10,
-                    maxHeight: screenheight * 0.15,
-                    maxWidth: screenwidth * 0.5,
-                  ),
+                Container(
+                  height: 130,
+                  width: 120,
                   child: CarouselSlider(
                     //items: mixHexagramSlidersNew,
                     items: evolutionContainerSlider,
@@ -4269,8 +4382,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                     options: CarouselOptions(
                         initialPage: 0,
                         autoPlay: false,
-                        enlargeCenterPage: true,
-                        aspectRatio: 1.3,
+                        enlargeCenterPage: false,
+                        aspectRatio: 1,
                         onPageChanged: (index, reason) {
                           setState(() {
                             //_currenttop = indextop;
@@ -4278,112 +4391,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                           });
                         }),
                   ),
-                ),
-                const SizedBox(height: 10),
-                const Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    EvolutionContainer(
-                        colorinsilence: Colors.blue,
-                        colorinbreath: Colors.blue,
-                        colorinsimple: Colors.blue,
-                        colorincomplex: Colors.blue),
-                    EvolutionContainer(
-                        colorinsilence: Colors.blue,
-                        colorinbreath: Colors.green,
-                        colorinsimple: Colors.blue,
-                        colorincomplex: Colors.yellow),
-                    EvolutionContainer(
-                        colorinsilence: Colors.blue,
-                        colorinbreath: Colors.blue,
-                        colorinsimple: Colors.green,
-                        colorincomplex: Colors.green),
-                    EvolutionContainer(
-                        colorinsilence: Colors.blue,
-                        colorinbreath: Colors.green,
-                        colorinsimple: Colors.green,
-                        colorincomplex: Colors.red),
-                  ],
-                ),
-                const Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    EvolutionContainer(
-                        colorinsilence: Colors.yellow,
-                        colorinbreath: Colors.yellow,
-                        colorinsimple: Colors.blue,
-                        colorincomplex: Colors.blue),
-                    EvolutionContainer(
-                        colorinsilence: Colors.yellow,
-                        colorinbreath: Colors.red,
-                        colorinsimple: Colors.blue,
-                        colorincomplex: Colors.yellow),
-                    EvolutionContainer(
-                        colorinsilence: Colors.yellow,
-                        colorinbreath: Colors.yellow,
-                        colorinsimple: Colors.green,
-                        colorincomplex: Colors.green),
-                    EvolutionContainer(
-                        colorinsilence: Colors.yellow,
-                        colorinbreath: Colors.red,
-                        colorinsimple: Colors.green,
-                        colorincomplex: Colors.red),
-                  ],
-                ),
-                const Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    EvolutionContainer(
-                        colorinsilence: Colors.green,
-                        colorinbreath: Colors.blue,
-                        colorinsimple: Colors.yellow,
-                        colorincomplex: Colors.blue),
-                    EvolutionContainer(
-                        colorinsilence: Colors.green,
-                        colorinbreath: Colors.green,
-                        colorinsimple: Colors.yellow,
-                        colorincomplex: Colors.yellow),
-                    EvolutionContainer(
-                        colorinsilence: Colors.green,
-                        colorinbreath: Colors.blue,
-                        colorinsimple: Colors.red,
-                        colorincomplex: Colors.green),
-                    EvolutionContainer(
-                        colorinsilence: Colors.green,
-                        colorinbreath: Colors.green,
-                        colorinsimple: Colors.red,
-                        colorincomplex: Colors.red),
-                  ],
-                ),
-                const Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    EvolutionContainer(
-                        colorinsilence: Colors.red,
-                        colorinbreath: Colors.yellow,
-                        colorinsimple: Colors.yellow,
-                        colorincomplex: Colors.blue),
-                    EvolutionContainer(
-                        colorinsilence: Colors.red,
-                        colorinbreath: Colors.red,
-                        colorinsimple: Colors.yellow,
-                        colorincomplex: Colors.yellow),
-                    EvolutionContainer(
-                        colorinsilence: Colors.red,
-                        colorinbreath: Colors.yellow,
-                        colorinsimple: Colors.red,
-                        colorincomplex: Colors.green),
-                    EvolutionContainer(
-                        colorinsilence: Colors.red,
-                        colorinbreath: Colors.red,
-                        colorinsimple: Colors.red,
-                        colorincomplex: Colors.red),
-                  ],
-                ),
+                  ),
                 const SizedBox(height: 10),
                 // rt evolution
                 Container(
@@ -4407,7 +4415,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                         //    )
                       )),
                 ),
-                
+
                 const Divider(
                   color: Colors.green,
                   thickness: 5,
@@ -4654,6 +4662,398 @@ class _RotateSimpleState extends State<RotateSimple> {
     throatstate = 4;
     solarstate = 4;
     heartstate = 4;
+  }
+
+  setformsChart(int design) {
+    for (var i = 0; i < designFormsList[design].gates!.length; i++) {
+      gatestatelist[designFormsList[design].gates![i]] = 2;
+      _isBoldList[designFormsList[design].gates![i]] = true;
+    }
+  }
+
+  setinanimateChart() {
+    for (var i = 0; i < designFormsList[1].gates!.length; i++) {
+      gatestatelist[designFormsList[1].gates![i]] = 1;
+      _isBoldList[designFormsList[1].gates![i]] = true;
+    }
+  }
+
+  setcellChart() {
+    for (var i = 0; i < designFormsList[2].gates!.length; i++) {
+      gatestatelist[designFormsList[1].gates![i]] = 1;
+      _isBoldList[designFormsList[1].gates![i]] = true;
+    }
+  }
+
+  setplantChart() {
+    gatestatelist[34] = 1;
+    gatestatelist[5] = 1;
+    gatestatelist[14] = 1;
+    gatestatelist[29] = 1;
+    gatestatelist[42] = 1;
+    gatestatelist[3] = 1;
+    gatestatelist[9] = 1;
+    gatestatelist[59] = 1;
+    gatestatelist[27] = 1;
+
+    gatestatelist[10] = 1;
+    gatestatelist[20] = 1;
+    gatestatelist[57] = 1;
+    gatestatelist[15] = 1;
+    gatestatelist[2] = 1;
+    gatestatelist[46] = 1;
+    gatestatelist[53] = 1;
+    gatestatelist[60] = 1;
+    gatestatelist[52] = 1;
+    gatestatelist[6] = 1;
+    gatestatelist[50] = 1;
+
+    _isBoldList[34] = true;
+    _isBoldList[5] = true;
+    _isBoldList[14] = true;
+    _isBoldList[29] = true;
+    _isBoldList[42] = true;
+    _isBoldList[3] = true;
+    _isBoldList[9] = true;
+    _isBoldList[59] = true;
+    _isBoldList[27] = true;
+
+    _isBoldList[10] = true;
+    _isBoldList[20] = true;
+    _isBoldList[57] = true;
+    _isBoldList[15] = true;
+    _isBoldList[2] = true;
+    _isBoldList[46] = true;
+    _isBoldList[53] = true;
+    _isBoldList[60] = true;
+    _isBoldList[52] = true;
+    _isBoldList[6] = true;
+    _isBoldList[50] = true;
+
+    throatstate = 1;
+    gstate = 1;
+    sacralstate = 1;
+    rootstate = 1;
+    spleenstate = 1;
+    solarstate = 1;
+  }
+
+  setinsectChart() {
+    gatestatelist[34] = 1;
+    gatestatelist[5] = 1;
+    gatestatelist[14] = 1;
+    gatestatelist[29] = 1;
+    gatestatelist[42] = 1;
+    gatestatelist[3] = 1;
+    gatestatelist[9] = 1;
+    gatestatelist[59] = 1;
+    gatestatelist[27] = 1;
+
+    gatestatelist[10] = 1;
+    gatestatelist[20] = 1;
+    gatestatelist[57] = 1;
+    gatestatelist[15] = 1;
+    gatestatelist[2] = 1;
+    gatestatelist[46] = 1;
+    gatestatelist[53] = 1;
+    gatestatelist[60] = 1;
+    gatestatelist[52] = 1;
+    gatestatelist[6] = 1;
+    gatestatelist[50] = 1;
+
+    _isBoldList[34] = true;
+    _isBoldList[5] = true;
+    _isBoldList[14] = true;
+    _isBoldList[29] = true;
+    _isBoldList[42] = true;
+    _isBoldList[3] = true;
+    _isBoldList[9] = true;
+    _isBoldList[59] = true;
+    _isBoldList[27] = true;
+
+    _isBoldList[10] = true;
+    _isBoldList[20] = true;
+    _isBoldList[57] = true;
+    _isBoldList[15] = true;
+    _isBoldList[2] = true;
+    _isBoldList[46] = true;
+    _isBoldList[53] = true;
+    _isBoldList[60] = true;
+    _isBoldList[52] = true;
+    _isBoldList[6] = true;
+    _isBoldList[50] = true;
+
+    throatstate = 1;
+    gstate = 1;
+    sacralstate = 1;
+    rootstate = 1;
+    spleenstate = 1;
+    solarstate = 1;
+  }
+
+  setbirdReptileFishChart() {
+    gatestatelist[34] = 1;
+    gatestatelist[5] = 1;
+    gatestatelist[14] = 1;
+    gatestatelist[29] = 1;
+    gatestatelist[42] = 1;
+    gatestatelist[3] = 1;
+    gatestatelist[9] = 1;
+    gatestatelist[59] = 1;
+    gatestatelist[27] = 1;
+
+    gatestatelist[10] = 1;
+    gatestatelist[20] = 1;
+    gatestatelist[57] = 1;
+    gatestatelist[15] = 1;
+    gatestatelist[2] = 1;
+    gatestatelist[46] = 1;
+    gatestatelist[53] = 1;
+    gatestatelist[60] = 1;
+    gatestatelist[52] = 1;
+    gatestatelist[6] = 1;
+    gatestatelist[50] = 1;
+
+    _isBoldList[34] = true;
+    _isBoldList[5] = true;
+    _isBoldList[14] = true;
+    _isBoldList[29] = true;
+    _isBoldList[42] = true;
+    _isBoldList[3] = true;
+    _isBoldList[9] = true;
+    _isBoldList[59] = true;
+    _isBoldList[27] = true;
+
+    _isBoldList[10] = true;
+    _isBoldList[20] = true;
+    _isBoldList[57] = true;
+    _isBoldList[15] = true;
+    _isBoldList[2] = true;
+    _isBoldList[46] = true;
+    _isBoldList[53] = true;
+    _isBoldList[60] = true;
+    _isBoldList[52] = true;
+    _isBoldList[6] = true;
+    _isBoldList[50] = true;
+
+    throatstate = 1;
+    gstate = 1;
+    sacralstate = 1;
+    rootstate = 1;
+    spleenstate = 1;
+    solarstate = 1;
+  }
+
+  setmammalChart() {
+    gatestatelist[34] = 1;
+    gatestatelist[5] = 1;
+    gatestatelist[14] = 1;
+    gatestatelist[29] = 1;
+    gatestatelist[42] = 1;
+    gatestatelist[3] = 1;
+    gatestatelist[9] = 1;
+    gatestatelist[59] = 1;
+    gatestatelist[27] = 1;
+
+    gatestatelist[10] = 1;
+    gatestatelist[20] = 1;
+    gatestatelist[57] = 1;
+    gatestatelist[15] = 1;
+    gatestatelist[2] = 1;
+    gatestatelist[46] = 1;
+    gatestatelist[53] = 1;
+    gatestatelist[60] = 1;
+    gatestatelist[52] = 1;
+    gatestatelist[6] = 1;
+    gatestatelist[50] = 1;
+
+    _isBoldList[34] = true;
+    _isBoldList[5] = true;
+    _isBoldList[14] = true;
+    _isBoldList[29] = true;
+    _isBoldList[42] = true;
+    _isBoldList[3] = true;
+    _isBoldList[9] = true;
+    _isBoldList[59] = true;
+    _isBoldList[27] = true;
+
+    _isBoldList[10] = true;
+    _isBoldList[20] = true;
+    _isBoldList[57] = true;
+    _isBoldList[15] = true;
+    _isBoldList[2] = true;
+    _isBoldList[46] = true;
+    _isBoldList[53] = true;
+    _isBoldList[60] = true;
+    _isBoldList[52] = true;
+    _isBoldList[6] = true;
+    _isBoldList[50] = true;
+
+    throatstate = 1;
+    gstate = 1;
+    sacralstate = 1;
+    rootstate = 1;
+    spleenstate = 1;
+    solarstate = 1;
+  }
+
+  setpentaChart() {
+    gatestatelist[34] = 1;
+    gatestatelist[5] = 1;
+    gatestatelist[14] = 1;
+    gatestatelist[29] = 1;
+    gatestatelist[42] = 1;
+    gatestatelist[3] = 1;
+    gatestatelist[9] = 1;
+    gatestatelist[59] = 1;
+    gatestatelist[27] = 1;
+
+    gatestatelist[10] = 1;
+    gatestatelist[20] = 1;
+    gatestatelist[57] = 1;
+    gatestatelist[15] = 1;
+    gatestatelist[2] = 1;
+    gatestatelist[46] = 1;
+    gatestatelist[53] = 1;
+    gatestatelist[60] = 1;
+    gatestatelist[52] = 1;
+    gatestatelist[6] = 1;
+    gatestatelist[50] = 1;
+
+    _isBoldList[34] = true;
+    _isBoldList[5] = true;
+    _isBoldList[14] = true;
+    _isBoldList[29] = true;
+    _isBoldList[42] = true;
+    _isBoldList[3] = true;
+    _isBoldList[9] = true;
+    _isBoldList[59] = true;
+    _isBoldList[27] = true;
+
+    _isBoldList[10] = true;
+    _isBoldList[20] = true;
+    _isBoldList[57] = true;
+    _isBoldList[15] = true;
+    _isBoldList[2] = true;
+    _isBoldList[46] = true;
+    _isBoldList[53] = true;
+    _isBoldList[60] = true;
+    _isBoldList[52] = true;
+    _isBoldList[6] = true;
+    _isBoldList[50] = true;
+
+    throatstate = 1;
+    gstate = 1;
+    sacralstate = 1;
+    rootstate = 1;
+    spleenstate = 1;
+    solarstate = 1;
+  }
+
+  setwaChart() {
+    gatestatelist[34] = 1;
+    gatestatelist[5] = 1;
+    gatestatelist[14] = 1;
+    gatestatelist[29] = 1;
+    gatestatelist[42] = 1;
+    gatestatelist[3] = 1;
+    gatestatelist[9] = 1;
+    gatestatelist[59] = 1;
+    gatestatelist[27] = 1;
+
+    gatestatelist[10] = 1;
+    gatestatelist[20] = 1;
+    gatestatelist[57] = 1;
+    gatestatelist[15] = 1;
+    gatestatelist[2] = 1;
+    gatestatelist[46] = 1;
+    gatestatelist[53] = 1;
+    gatestatelist[60] = 1;
+    gatestatelist[52] = 1;
+    gatestatelist[6] = 1;
+    gatestatelist[50] = 1;
+
+    _isBoldList[34] = true;
+    _isBoldList[5] = true;
+    _isBoldList[14] = true;
+    _isBoldList[29] = true;
+    _isBoldList[42] = true;
+    _isBoldList[3] = true;
+    _isBoldList[9] = true;
+    _isBoldList[59] = true;
+    _isBoldList[27] = true;
+
+    _isBoldList[10] = true;
+    _isBoldList[20] = true;
+    _isBoldList[57] = true;
+    _isBoldList[15] = true;
+    _isBoldList[2] = true;
+    _isBoldList[46] = true;
+    _isBoldList[53] = true;
+    _isBoldList[60] = true;
+    _isBoldList[52] = true;
+    _isBoldList[6] = true;
+    _isBoldList[50] = true;
+
+    throatstate = 1;
+    gstate = 1;
+    sacralstate = 1;
+    rootstate = 1;
+    spleenstate = 1;
+    solarstate = 1;
+  }
+
+  sethumanChart() {
+    gatestatelist[34] = 1;
+    gatestatelist[5] = 1;
+    gatestatelist[14] = 1;
+    gatestatelist[29] = 1;
+    gatestatelist[42] = 1;
+    gatestatelist[3] = 1;
+    gatestatelist[9] = 1;
+    gatestatelist[59] = 1;
+    gatestatelist[27] = 1;
+
+    gatestatelist[10] = 1;
+    gatestatelist[20] = 1;
+    gatestatelist[57] = 1;
+    gatestatelist[15] = 1;
+    gatestatelist[2] = 1;
+    gatestatelist[46] = 1;
+    gatestatelist[53] = 1;
+    gatestatelist[60] = 1;
+    gatestatelist[52] = 1;
+    gatestatelist[6] = 1;
+    gatestatelist[50] = 1;
+
+    _isBoldList[34] = true;
+    _isBoldList[5] = true;
+    _isBoldList[14] = true;
+    _isBoldList[29] = true;
+    _isBoldList[42] = true;
+    _isBoldList[3] = true;
+    _isBoldList[9] = true;
+    _isBoldList[59] = true;
+    _isBoldList[27] = true;
+
+    _isBoldList[10] = true;
+    _isBoldList[20] = true;
+    _isBoldList[57] = true;
+    _isBoldList[15] = true;
+    _isBoldList[2] = true;
+    _isBoldList[46] = true;
+    _isBoldList[53] = true;
+    _isBoldList[60] = true;
+    _isBoldList[52] = true;
+    _isBoldList[6] = true;
+    _isBoldList[50] = true;
+
+    throatstate = 1;
+    gstate = 1;
+    sacralstate = 1;
+    rootstate = 1;
+    spleenstate = 1;
+    solarstate = 1;
   }
 
   void _resetgatesState() {

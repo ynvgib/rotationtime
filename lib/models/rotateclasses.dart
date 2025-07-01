@@ -109,6 +109,9 @@ class HDChannel {
       firstcenter,
       secondcenter,
       name,
+      hebname,
+      zbname,
+      zbhebname,
       adaptname,
       coin,
       description,
@@ -117,18 +120,24 @@ class HDChannel {
       stream,
       sentence;
 
+  Color? color;
+
   HDChannel(
       {this.id,
       this.firstcenter,
       this.secondcenter,
       this.name,
+      this.hebname,
       this.adaptname,
+      this.zbname,
+      this.zbhebname,
       this.coin,
       this.description,
       this.circuitry,
       this.circuit,
       this.stream,
-      this.sentence});
+      this.sentence,
+      this.color});
 }
 
 class hdCenter {
@@ -228,12 +237,14 @@ class Cube extends StatelessWidget {
           alignment: Alignment.center,
           child: Container(
             height: 135,
-              width: 135,
-              color: Colors.indigoAccent, child: CircleAvatar(
-            //radius: 15,
-            backgroundColor: Colors.transparent,
-            foregroundImage: AssetImage(coins4lst[0]),
-          ),),
+            width: 135,
+            color: Colors.indigoAccent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins4lst[0]),
+            ),
+          ),
         ),
       ],
     );
@@ -245,10 +256,24 @@ class Codon {
   int? id;
   List<int>? gates;
 
-
   Codon({this.name, this.hebname, this.zbname, this.id, this.gates});
 }
 
+class DesignForm {
+  String? name, hebname, zbname, orient;
+  int? id;
+  List<int>? gates;
+  List<String>? centers;
+
+  DesignForm(
+      {this.name,
+      this.hebname,
+      this.zbname,
+      this.id,
+      this.gates,
+      this.centers,
+      this.orient});
+}
 
 class CityTime {
   String? city;
@@ -264,15 +289,15 @@ class CityTime {
 
   CityTime(
       {this.city,
-        this.cityAscii,
-        this.lat,
-        this.lng,
-        this.pop,
-        this.country,
-        this.iso2,
-        this.iso3,
-        this.province,
-        this.timezone});
+      this.cityAscii,
+      this.lat,
+      this.lng,
+      this.pop,
+      this.country,
+      this.iso2,
+      this.iso3,
+      this.province,
+      this.timezone});
 
   CityTime.fromJson(Map<String, dynamic> json) {
     city = json['city'];
@@ -288,17 +313,17 @@ class CityTime {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['city'] = this.city;
-    data['city_ascii'] = this.cityAscii;
-    data['lat'] = this.lat;
-    data['lng'] = this.lng;
-    data['pop'] = this.pop;
-    data['country'] = this.country;
-    data['iso2'] = this.iso2;
-    data['iso3'] = this.iso3;
-    data['province'] = this.province;
-    data['timezone'] = this.timezone;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['city'] = city;
+    data['city_ascii'] = cityAscii;
+    data['lat'] = lat;
+    data['lng'] = lng;
+    data['pop'] = pop;
+    data['country'] = country;
+    data['iso2'] = iso2;
+    data['iso3'] = iso3;
+    data['province'] = province;
+    data['timezone'] = timezone;
     return data;
   }
 }
