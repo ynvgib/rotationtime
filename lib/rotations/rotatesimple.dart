@@ -67,7 +67,11 @@ class _RotateSimpleState extends State<RotateSimple> {
       spleencolor = Colors.green,
       sacralcolor = Colors.green,
       solarcolor = Colors.green,
-      rootcolor = Colors.green;
+      rootcolor = Colors.green,
+      maintextcolor = Colors.green,
+      controlbottxtcolor = Colors.green;
+
+  List<Color> simplewgscolor = reversedtopcoincolor;
 
   void changeColor(Color color) => setState(() => currentcolor = color);
 
@@ -77,7 +81,8 @@ class _RotateSimpleState extends State<RotateSimple> {
       _controlEvolutionContainerSlider = CarouselSliderController();
 
   var _dropdownvalue = hexagramslist[1],
-      _dropdowichingvalue = fontHexOrderList[0],
+      //_dropdowichingvalue = fontHexOrderList[0],
+      _dropdowichingvalue = fontWheelHexOrderList[0],
       _dropdowichingordervalue = orderHexagramsWheel[0];
 
   List<int> _hexalignedList = [0, 0, 0];
@@ -99,7 +104,7 @@ class _RotateSimpleState extends State<RotateSimple> {
   double screenwidth = 1, screenheight = 1;
   Offset _offset = Offset.zero;
 
-  String mainText = ';פשוט ומפתיע', chartText = 'מפה רואים בחוץ ובפנים';
+  String mainText = ';זה לא אני תמנונירוק', chartText = 'מפה רואים בחוץ ובפנים';
   bool isMainText = true, isChartText = true;
 
   @override
@@ -158,16 +163,16 @@ class _RotateSimpleState extends State<RotateSimple> {
                   child: AutoSizeText(
                     mainText,
                     textAlign: TextAlign.center,
-                    minFontSize: 25,
-                    maxFontSize: 35,
-                    style: TextStyle(color: Colors.green),
+                    minFontSize: 20,
+                    maxFontSize: 25,
+                    style: TextStyle(color: maintextcolor),
                   ),
                   onTap: () {
                     isMainText = !isMainText;
                     setState(() {
                       isMainText == true
                           ? mainText = ";פשוט ומפתיע"
-                          : mainText = "לא פשוט וגם מאכזב";
+                          : mainText = "зеленый осьминог;";
                     });
                   },
                 ),
@@ -187,7 +192,11 @@ class _RotateSimpleState extends State<RotateSimple> {
                           setState(() {
                             _currenttop = indextop;
                             //_controllertoptext.text = bimboxlist[indextop];
-                            _controllerbottomtext.text = hexNamesList[indextop];
+                            //_controllerbottomtext.text = hexNamesList[indextop];
+                            _controllerbottomtext.text = russianamelist[indextop];
+                            mainText = puncNamesList[indextop];
+                            maintextcolor = coincolors4lst[indextop];
+                            controlbottxtcolor = coincolors4lst[indextop];
                           });
                         }),
                   ),
@@ -196,16 +205,17 @@ class _RotateSimpleState extends State<RotateSimple> {
                     width: screenwidth / 0.8,
                     child: AutoSizeTextField(
                       minLines: 1,
+                      maxLines: 2,
                       minFontSize: 15,
                       fullwidth: false,
                       decoration: InputDecoration.collapsed(
-                          hintText: hexNamesList[1],
-                          //hintText: bimboxlist[1],
+                          hintText: russianamelist[1],
+                          //hintText: hexNamesList[1],
                           hintStyle: const TextStyle(color: Colors.grey)),
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 35.0,
+                      style: TextStyle(
+                        color: controlbottxtcolor,
+                        fontSize: 25.0,
                         fontWeight: FontWeight.bold,
                       ),
                       controller: _controllerbottomtext,
@@ -327,7 +337,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                         radius: 35,
                         backgroundColor: Colors.transparent,
                         foregroundImage: AssetImage(
-                          'assets/coins/simple.png',
+                          'assets/camog/greendog.png',
                         ),
                       ),
                       onTap: () {
@@ -3224,7 +3234,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                                       child: HueRingPicker(
                                         pickerColor: currentcolor,
                                         onColorChanged: changeColor,
-
+                                        enableAlpha: true,
                                       ),
                                     ),
                                     actions: <Widget>[
@@ -3605,7 +3615,8 @@ class _RotateSimpleState extends State<RotateSimple> {
                               width: 20,
                               margin: const EdgeInsets.all(1),
                               decoration: BoxDecoration(
-                                  color: reversedtopcoincolor[index],
+                                //color: reversedtopcoincolor[index],
+                                  color: simplewgscolor[index],
                                   shape: BoxShape.circle,
                                   border: Border.all(
                                       width: 0.5, color: Colors.black)),
@@ -3709,17 +3720,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                   color: Colors.green,
                   thickness: 5,
                 ),
-                Container(
-                  height: screenheight / 8,
-                  width: screenwidth / 6,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(newkithecoins[0]),
-                      fit: BoxFit.scaleDown,
-                    ),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
                 // 64 coins wheel
                 Stack(
                   children: [
@@ -3764,6 +3764,13 @@ class _RotateSimpleState extends State<RotateSimple> {
                       initialAngle: -0.8,
                       childrenPadding: 0.1,
                       origin: const Offset(0, 0),
+                      centerWidget: Container(width: 100,
+                        child: ClipRRect(
+                            borderRadius:
+                            const BorderRadius.all(Radius.circular(1)),
+                            child:
+                            Image.asset(zoo4lst[0])),
+                      ),
                       children: List.generate(16, (index) {
                         return InkWell(
                           child: Container(
@@ -3794,17 +3801,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                       }),
                     ),
                   ],
-                ),
-                Container(
-                  height: screenheight / 8,
-                  width: screenwidth / 6,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(newkithecoins[1]),
-                      fit: BoxFit.scaleDown,
-                    ),
-                    shape: BoxShape.rectangle,
-                  ),
                 ),
                 Stack(
                   children: [
@@ -3849,6 +3845,13 @@ class _RotateSimpleState extends State<RotateSimple> {
                       initialAngle: -0.8,
                       childrenPadding: 0.1,
                       origin: const Offset(0, 0),
+                      centerWidget: Container(width: 100,
+                        child: ClipRRect(
+                            borderRadius:
+                            const BorderRadius.all(Radius.circular(1)),
+                            child:
+                            Image.asset(zoo4lst[1])),
+                      ),
                       children: List.generate(16, (index) {
                         return InkWell(
                           child: Container(
@@ -3879,17 +3882,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                       }),
                     ),
                   ],
-                ),
-                Container(
-                  height: screenheight / 8,
-                  width: screenwidth / 6,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(newkithecoins[2]),
-                      fit: BoxFit.scaleDown,
-                    ),
-                    shape: BoxShape.rectangle,
-                  ),
                 ),
                 Stack(
                   children: [
@@ -3934,6 +3926,13 @@ class _RotateSimpleState extends State<RotateSimple> {
                       initialAngle: -0.8,
                       childrenPadding: 0.1,
                       origin: const Offset(0, 0),
+                      centerWidget: Container(width: 100,
+                        child: ClipRRect(
+                            borderRadius:
+                            const BorderRadius.all(Radius.circular(1)),
+                            child:
+                            Image.asset(zoo4lst[2])),
+                      ),
                       children: List.generate(16, (index) {
                         return InkWell(
                           child: Container(
@@ -3964,17 +3963,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                       }),
                     ),
                   ],
-                ),
-                Container(
-                  height: screenheight / 8,
-                  width: screenwidth / 6,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(newkithecoins[3]),
-                      fit: BoxFit.scaleDown,
-                    ),
-                    shape: BoxShape.rectangle,
-                  ),
                 ),
                 Stack(
                   children: [
@@ -4019,6 +4007,13 @@ class _RotateSimpleState extends State<RotateSimple> {
                       initialAngle: -0.8,
                       childrenPadding: 0.1,
                       origin: const Offset(0, 0),
+                      centerWidget: Container(width: 100,
+                        child: ClipRRect(
+                            borderRadius:
+                            const BorderRadius.all(Radius.circular(1)),
+                            child:
+                            Image.asset(zoo4lst[3])),
+                      ),
                       children: List.generate(16, (index) {
                         return InkWell(
                           child: Container(
@@ -4147,15 +4142,6 @@ class _RotateSimpleState extends State<RotateSimple> {
                           child: Container(
                             width: 55,
                             margin: const EdgeInsets.all(1),
-                            //decoration: BoxDecoration(
-                            //  border: Border.all(
-                            //      color: Colors.transparent,
-                            //color: reversedtopcoincolor[index],
-                            //      width: 1),
-                            //color: reversedtopcoincolor[index],
-                            //  color: Colors.white,
-                            //  shape: BoxShape.circle,
-                            //),
                             child: Padding(
                               padding: const EdgeInsets.only(left: 4),
                               child: AutoSizeText(
@@ -4165,7 +4151,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   //color: Colors.white,
-                                  color: reversedtopcoincolor[index],
+                                  color: simplewgscolor[index],
                                   fontFamily: 'iChing',
                                 ),
                               ),
@@ -4273,7 +4259,13 @@ class _RotateSimpleState extends State<RotateSimple> {
                           width: 30,
                           margin: const EdgeInsets.all(1),
                           decoration: BoxDecoration(
-                            color: revfourbotcoincolor[index],
+                              image: DecorationImage(
+                              image: AssetImage(revbotfourzoonimal[index]),
+                              fit: BoxFit.scaleDown,
+                            ),
+                            //color: revfourbotcoincolor[index],
+                            //revbotfourzoonimal
+                            color: Colors.transparent,
                             shape: BoxShape.circle,
                           ),
                         );
@@ -4291,7 +4283,12 @@ class _RotateSimpleState extends State<RotateSimple> {
                             width: 30,
                             margin: const EdgeInsets.all(1),
                             decoration: BoxDecoration(
-                              color: revfourtopcoincolor[index],
+                              image: DecorationImage(
+                                image: AssetImage(topfourzoonimal[index]),
+                                fit: BoxFit.scaleDown,
+                              ),
+                              //topfourzoonimal
+                              color: Colors.transparent,
                               shape: BoxShape.circle,
                             ),
                           ),
@@ -4318,7 +4315,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                       width: screenwidth / 3.2,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(mcameldog[1]),
+                          image: AssetImage('assets/camog/zbgreencamel.png'),
                           fit: BoxFit.scaleDown,
                         ),
                         shape: BoxShape.rectangle,
@@ -4329,7 +4326,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                       width: screenwidth / 3.2,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(mcameldog[1]),
+                          image: AssetImage('assets/camog/zbgreencamel.png'),
                           fit: BoxFit.scaleDown,
                         ),
                         shape: BoxShape.rectangle,
@@ -4340,7 +4337,7 @@ class _RotateSimpleState extends State<RotateSimple> {
                       width: screenwidth / 3.2,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(mcameldog[1]),
+                          image: AssetImage('assets/camog/zbgreencamel.png'),
                           fit: BoxFit.scaleDown,
                         ),
                         shape: BoxShape.rectangle,

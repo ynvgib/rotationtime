@@ -91,7 +91,7 @@ class _RotateComplexState extends State<RotateComplex> {
       topcoinnamelist = minmaxnames,
       midcoinnamelist = newcoinsHeb4lst,
       botcoinnamelist = coinsHeb4lst,
-      maincoin = zbwoofgooffullheb;
+      maincoin = zbrussianames;
 
   List<hdCenter> _centers = [];
 
@@ -261,6 +261,7 @@ class _RotateComplexState extends State<RotateComplex> {
       _newts = 1,
       _linesListplace = 0,
       _gatesListplace = 0;
+
   bool _setupdown = true;
 
   List<Color> colorlst = [Colors.white, Colors.black];
@@ -319,7 +320,14 @@ class _RotateComplexState extends State<RotateComplex> {
       _expersoncolor = Colors.green,
       pickedColor = Colors.green;
 
-  double screenwidth = 1, screenheight = 1;
+  List<Color> wheelgatescolor = List<Color>.filled(64, Colors.black26, growable: false);
+  List<Color> complexrevtopcoincolor = reversedtopcoincolor;
+  //List<Color> wheelgatescolor = complexrevtopcoincolor;
+  //List<Color> revwheelgatescolor = List<Color>.filled(65, Colors.black26, growable: false);
+
+
+
+  double screenwidth = 1, screenheight = 1, wheelgateopacity = 0.3;
 
   String silenceText = 'שתיקה',
       breathText = 'נשימה',
@@ -332,7 +340,11 @@ class _RotateComplexState extends State<RotateComplex> {
       _inbodyalign = 'left',
       _exbodyalign = 'left',
       _inpersonalign = 'left',
-      _expersonalign = 'left';
+      _expersonalign = 'left',
+      bitchText = '.',
+      octopussyText = ',',
+      octocaText = ';',
+      dogText = '\"';
 
   bool isSilenceText = true,
       isBreathText = true,
@@ -342,7 +354,11 @@ class _RotateComplexState extends State<RotateComplex> {
       isBreathBotText = true,
       isSimpleBotText = true,
       isComplexBotText = true,
-      isFamilyText = true;
+      isFamilyText = true,
+      isBitchText = true,
+      isOctopussyText = true,
+      isOctocatText = true,
+      isDogText = true;
 
   double opacityLevel = 1.0;
 
@@ -399,37 +415,56 @@ class _RotateComplexState extends State<RotateComplex> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: 50),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height / 2.2,
-                  width: MediaQuery.of(context).size.width / 2.2,
+                  //height: MediaQuery.of(context).size.height / 2.2,
+                  height: 150,
+                  width: 150,
+                  //width: MediaQuery.of(context).size.width / 2.2,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/camog/zbluedog.png',
+                      image: AssetImage(
+                        'assets/camog/zbluedog.png',
                       ),
                       fit: BoxFit.scaleDown,
                     ),
-                    shape: BoxShape.rectangle,
+                    shape: BoxShape.circle,
+                      color: Colors.red.withOpacity(0.5)
                   ),
                 ),
-               Container(
-                    height: MediaQuery.of(context).size.height / 2.2,
-                    width: MediaQuery.of(context).size.width / 2.2,
+                SizedBox(width: 5),
+                ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.elliptical(90,50),
+                      bottomRight: Radius.circular(30),
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.zero,
+                    ),
+                  child: Container(
+                    //height: MediaQuery.of(context).size.height / 2.2,
+                    height: 150,
+                    width: 150,
+                    //width: MediaQuery.of(context).size.width / 2.2,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/camog/zbluecamel.png',
+                        image: AssetImage(
+                          'assets/camog/zbwhitecamel.png',
                         ),
                         fit: BoxFit.scaleDown,
                       ),
                       shape: BoxShape.rectangle,
+                        color: Colors.black
                     ),
                   ),
+                ),
               ],
             ),
+
+
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -439,7 +474,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: screenwidth / 6,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(coins4lst[0]),
+                      image: AssetImage(zoo4lst[0]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -450,7 +485,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: screenwidth / 6,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(coins4lst[1]),
+                      image: AssetImage(zoo4lst[1]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -461,7 +496,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: screenwidth / 6,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(coins4lst[2]),
+                      image: AssetImage(zoo4lst[2]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -472,7 +507,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: screenwidth / 6,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(coins4lst[3]),
+                      image: AssetImage(zoo4lst[3]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -491,7 +526,8 @@ class _RotateComplexState extends State<RotateComplex> {
                   margin: EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.blue,
-                      borderRadius: BorderRadius.circular(25),
+                      //borderRadius: BorderRadius.circular(25),
+                      shape: BoxShape.rectangle,
                       boxShadow: const [
                         BoxShadow(
                             color: Colors.blueGrey,
@@ -504,17 +540,28 @@ class _RotateComplexState extends State<RotateComplex> {
                             blurRadius: 15,
                             spreadRadius: 1),
                       ]),
-                  child: const FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: AutoSizeText(
-                      '"',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                          height: 1.7),
+                  child: InkWell(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                        child: AutoSizeText(
+                          dogText,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              height: 1.7),
+                        ),
+
                     ),
+                    onTap: () {
+                      isDogText = !isDogText;
+                      setState(() {
+                        isDogText == true
+                            ? dogText = "\"BLUGOD\""
+                            : dogText = "\"אלגמלכלב\"";
+                      });
+                    },
                   ),
                 ),
                 Container(
@@ -523,7 +570,8 @@ class _RotateComplexState extends State<RotateComplex> {
                   margin: EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.green,
-                      borderRadius: BorderRadius.circular(25),
+                      //borderRadius: BorderRadius.circular(25),
+                      shape: BoxShape.rectangle,
                       boxShadow: const [
                         BoxShadow(
                             color: Colors.blueGrey,
@@ -536,17 +584,27 @@ class _RotateComplexState extends State<RotateComplex> {
                             blurRadius: 15,
                             spreadRadius: 1),
                       ]),
-                  child: const FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: AutoSizeText(
-                      ';',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                          height: 1.7),
+                  child: InkWell(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                        child: AutoSizeText(
+                          octocaText,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              height: 1.7),
+                        ),
                     ),
+                    onTap: () {
+                      isOctocatText = !isOctocatText;
+                      setState(() {
+                        isOctocatText == true
+                            ? octocaText = "osminog;"
+                            : octocaText = ";זה לא אני";
+                      });
+                    },
                   ),
                 ),
                 Container(
@@ -568,17 +626,27 @@ class _RotateComplexState extends State<RotateComplex> {
                             blurRadius: 15,
                             spreadRadius: 1),
                       ]),
-                  child: const FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: AutoSizeText(
-                      ',',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                          height: 1.7),
+                  child: InkWell(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: AutoSizeText(
+                          octopussyText,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              height: 1.7),
+                        ),
                     ),
+                    onTap: () {
+                      isOctopussyText = !isOctopussyText;
+                      setState(() {
+                        isOctopussyText == true
+                            ? octopussyText = "octopussy,"
+                            : octopussyText =  ",ג'ולייטה";
+                      });
+                    },
                   ),
                 ),
                 Container(
@@ -600,17 +668,27 @@ class _RotateComplexState extends State<RotateComplex> {
                             blurRadius: 15,
                             spreadRadius: 1),
                       ]),
-                  child: const FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: AutoSizeText(
-                      '.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                          height: 1.7),
+                  child: InkWell(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: AutoSizeText(
+                          bitchText,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              height: 1.7),
+                        ),
                     ),
+                    onTap: () {
+                      isBitchText = !isBitchText;
+                      setState(() {
+                        isBitchText == true
+                            ? bitchText = "redbitch."
+                            : bitchText = ".כלבדומא";
+                      });
+                    },
                   ),
                 ),
               ],
@@ -625,8 +703,9 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: MediaQuery.of(context).size.width / 4,
                   margin: EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                      //borderRadius: BorderRadius.circular(15),
+                      shape: BoxShape.rectangle,
                       boxShadow: const [
                         BoxShadow(
                             color: Colors.blueGrey,
@@ -634,32 +713,32 @@ class _RotateComplexState extends State<RotateComplex> {
                             blurRadius: 20,
                             spreadRadius: 1),
                         BoxShadow(
-                            color: Colors.black87,
+                            color: Colors.white60,
                             offset: Offset(-4, -4),
                             blurRadius: 15,
                             spreadRadius: 1),
                       ]),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: InkWell(
+                  child: InkWell(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
                       child: AutoSizeText(
-                        complexText,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                            height: 1.7),
-                      ),
-                      onTap: () {
-                        isComplexText = !isComplexText;
-                        setState(() {
-                          isComplexText == true
-                              ? complexText = "מורכב"
-                              : complexText = "COMPLEX";
-                        });
-                      },
+                          complexText,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              height: 1.7),
+                        ),
                     ),
+                    onTap: () {
+                      isComplexText = !isComplexText;
+                      setState(() {
+                        isComplexText == true
+                            ? complexText = "מורכב"
+                            : complexText = "COMPLEX";
+                      });
+                    },
                   ),
                 ),
                 Container(
@@ -667,8 +746,9 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: MediaQuery.of(context).size.width / 4.5,
                   margin: EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.transparent,
+                      //borderRadius: BorderRadius.circular(25),
+                      shape: BoxShape.rectangle,
                       boxShadow: const [
                         BoxShadow(
                             color: Colors.blueGrey,
@@ -676,32 +756,32 @@ class _RotateComplexState extends State<RotateComplex> {
                             blurRadius: 20,
                             spreadRadius: 1),
                         BoxShadow(
-                            color: Colors.black87,
+                            color: Colors.white60,
                             offset: Offset(-4, -4),
                             blurRadius: 15,
                             spreadRadius: 1),
                       ]),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: InkWell(
+                  child: InkWell(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
                       child: AutoSizeText(
-                        simpleText,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                            height: 1.8),
-                      ),
-                      onTap: () {
-                        isSimpleText = !isSimpleText;
-                        setState(() {
-                          isSimpleText == true
-                              ? simpleText = "פשוט"
-                              : simpleText = "Simple";
-                        });
-                      },
+                          simpleText,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              height: 1.8),
+                        ),
                     ),
+                    onTap: () {
+                      isSimpleText = !isSimpleText;
+                      setState(() {
+                        isSimpleText == true
+                            ? simpleText = "פשוט"
+                            : simpleText = "Simple";
+                      });
+                    },
                   ),
                 ),
                 Container(
@@ -709,7 +789,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: MediaQuery.of(context).size.width / 5,
                   margin: EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
-                      color: Colors.yellow,
+                      color: Colors.transparent,
                       borderRadius: BorderRadius.circular(25),
                       boxShadow: const [
                         BoxShadow(
@@ -723,27 +803,27 @@ class _RotateComplexState extends State<RotateComplex> {
                             blurRadius: 15,
                             spreadRadius: 1),
                       ]),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: InkWell(
+                  child: InkWell(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
                       child: AutoSizeText(
-                        breathText,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                            height: 1.9),
-                      ),
-                      onTap: () {
-                        isBreathText = !isBreathText;
-                        setState(() {
-                          isBreathText == true
-                              ? breathText = "נשימה"
-                              : breathText = "Breath";
-                        });
-                      },
+                          breathText,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.yellow,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              height: 1.9),
+                        ),
                     ),
+                    onTap: () {
+                      isBreathText = !isBreathText;
+                      setState(() {
+                        isBreathText == true
+                            ? breathText = "נשימה"
+                            : breathText = "Breath";
+                      });
+                    },
                   ),
                 ),
                 Container(
@@ -751,7 +831,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: MediaQuery.of(context).size.width / 5.5,
                   margin: EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(25),
                       boxShadow: const [
                         BoxShadow(
@@ -765,33 +845,33 @@ class _RotateComplexState extends State<RotateComplex> {
                             blurRadius: 15,
                             spreadRadius: 1),
                       ]),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: InkWell(
+                  child: InkWell(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
                       child: AutoSizeText(
-                        silenceText,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                            height: 2.0),
-                      ),
-                      onTap: () {
-                        isSilenceText = !isSilenceText;
-                        setState(() {
-                          isSilenceText == true
-                              ? silenceText = "שתיקה"
-                              : silenceText = "silence";
-                        });
-                      },
+                          silenceText,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              height: 2.0),
+                        ),
                     ),
+                    onTap: () {
+                      isSilenceText = !isSilenceText;
+                      setState(() {
+                        isSilenceText == true
+                            ? silenceText = "שתיקה"
+                            : silenceText = "silence";
+                      });
+                    },
                   ),
                 ),
               ],
             ),
             const Divider(
-              color: Colors.blue,
+              color: Colors.transparent,
               thickness: 5,
             ),
             Flex(
@@ -884,11 +964,8 @@ class _RotateComplexState extends State<RotateComplex> {
                     _resetgatesState();
                     _settransitgatesState();
                     _setChart(_centers);
-
+                    _setgatesState();
                     _setEvolutionCoin();
-                    //setState(() {
-                    //  Navigator.of(context).pop();
-                    //});
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
@@ -1079,18 +1156,35 @@ class _RotateComplexState extends State<RotateComplex> {
               ],
             ),
             const Divider(
-              color: Colors.blue,
+              color: Colors.transparent,
               thickness: 5,
+            ),
+            Container(
+              width: 150.0,
+              height: 150.0,
+              child: CarouselSlider(
+                items: zooslider,
+                carouselController: _controllercoin,
+                options: CarouselOptions(
+                    height: 95,
+                    autoPlay: false,
+                    onPageChanged: (indextop, reason) {
+                      setState(() {
+                        _currentmain = indextop;
+                        _controllermaintext.text = maincoin[_currentmain];
+                      });
+                    }),
+              ),
             ),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 150,
-                  height: 50,
+                  width: 250,
+                  height: 100,
                   child: AutoSizeTextField(
-                    maxLines: 1,
+                    maxLines: 2,
                     minFontSize: 25,
                     fullwidth: false,
                     decoration: InputDecoration.collapsed(
@@ -1105,23 +1199,6 @@ class _RotateComplexState extends State<RotateComplex> {
                     ),
                     controller: _controllermaintext,
                     readOnly: false,
-                  ),
-                ),
-                Container(
-                  width: 150.0,
-                  height: 150.0,
-                  child: CarouselSlider(
-                    items: woofgoofSlider,
-                    carouselController: _controllercoin,
-                    options: CarouselOptions(
-                        height: 95,
-                        autoPlay: false,
-                        onPageChanged: (indextop, reason) {
-                          setState(() {
-                            _currentmain = indextop;
-                            _controllermaintext.text = maincoin[_currentmain];
-                          });
-                        }),
                   ),
                 ),
               ],
@@ -1173,7 +1250,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
-                                woofgoofcoinlst[hdfinaldata.typeid!],
+                                zoocoins[hdfinaldata.typeid!],
                                 //'assets/camog/dogstwogrey.gif',
                               ),
                               opacity: 1.0),
@@ -1260,9 +1337,12 @@ class _RotateComplexState extends State<RotateComplex> {
                         height: 70,
                         width: 70,
                         decoration: BoxDecoration(
+                          //color: Colors.black12,
                           image: DecorationImage(
                               image: AssetImage(
-                                familyList[_planetspersonList[1].line!],
+                                zooprofiles[_planetspersonList[1].line!],
+                                //familyList[_planetspersonList[1].line!],
+                                //'assets/camog/dogstwogrey.gif',
                                 //'assets/camog/dogstwogrey.gif',
                               ),
                               opacity: 1.0),
@@ -1281,7 +1361,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
-                                familyList[_planetsdesignList[1].line!],
+                                //familyList[_planetsdesignList[1].line!],
+                                zooprofiles[_planetsdesignList[1].line!],
                                 //'assets/camog/dogstwogrey.gif',
                               ),
                               opacity: 1.0),
@@ -1444,7 +1525,7 @@ class _RotateComplexState extends State<RotateComplex> {
                           decoration: const BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                  'assets/coins/camel.png',
+                                  'assets/camog/zbgreencamel.png',
                                 ),
                                 opacity: 1.0),
                           ),
@@ -1469,7 +1550,7 @@ class _RotateComplexState extends State<RotateComplex> {
                           decoration: const BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                  'assets/camog/dog.png',
+                                  'assets/camog/greendog.png',
                                   //'assets/camog/dogstwogrey.gif',
                                 ),
                                 opacity: 1.0),
@@ -4339,7 +4420,6 @@ class _RotateComplexState extends State<RotateComplex> {
                 });
               },
             ),
-            Divider(),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -4751,6 +4831,245 @@ class _RotateComplexState extends State<RotateComplex> {
               ],
             ),
 
+            Stack(
+              children: [
+                CircleList(
+                  innerRadius: screenwidth / 60,
+                  initialAngle: 3.85,
+                  childrenPadding: 0.1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(12, (index) {
+                    return Container(
+                      width: 65,
+                      margin: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        //color: revZodiacColorList[index],
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            //Colors.purple.shade900,
+                            //Colors.purple.shade100,
+                            revzodiacGradeColorlist[index * 2],
+                            revzodiacGradeColorlist[index * 2 + 1],
+                          ],
+                        ),
+                        image: DecorationImage(
+                          image: AssetImage(revZodiacList[index]),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.circle,
+                      ),
+                    );
+                  }),
+                ),
+                CircleList(
+                  innerRadius: screenwidth / 60 + 80,
+                  initialAngle: -0.8,
+                  childrenPadding: 0.1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(64, (index) {
+                    return Container(
+                      width: 35,
+                      margin: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        color: reversedbotcoincolor[index],
+                        shape: BoxShape.circle,
+                      ),
+                    );
+                  }),
+                ),
+                CircleList(
+                  innerRadius: screenwidth / 60 + 110,
+                  initialAngle: -0.8,
+                  childrenPadding: 0.1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(64, (index) {
+                    return Container(
+                      width: 35,
+                      margin: const EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        color: reversedmidcoincolor[index],
+                        shape: BoxShape.circle,
+                      ),
+                    );
+                  }),
+                ),
+                //external wheel
+                CircleList(
+                  rotateMode: RotateMode.stopRotate,
+                  innerRadius: screenwidth / 60 + 145,
+                  initialAngle: -0.8,
+                  childrenPadding: 0.1,
+                  origin: const Offset(0, 0),
+                  children: List.generate(64, (index) {
+                    return InkWell(
+                      child: Tooltip(
+                        message: reversedHexagramsWheel[index].toString(),
+                        textStyle: const TextStyle(
+                            fontSize: 15, color: Colors.white),
+                        child: Container(
+                          width: 20,
+                          margin: const EdgeInsets.all(1),
+                          decoration: BoxDecoration(
+                              //color: reversedtopcoincolor[index].withOpacity(wheelgateopacity),
+                              color: wheelgatescolor[index],
+                              //color: wheelgatescolor[index].withOpacity(wheelgateopacity),
+                              //color: revwheelgatescolor[index],
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                  width: 0.5, color: Colors.black)),
+                                  //width: 0.5, color: reversedtopcoincolor[index])),
+                          child: AutoSizeText(
+                              reversedHexagramsWheel[index].toString(),
+                              minFontSize: 8,
+                              maxFontSize: 12,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                      onTap: () {
+                        //setState(() {
+                        //});
+                      },
+                    );
+                  }),
+                ),
+              ],
+            ),
+
+            const Divider(
+              color: Colors.blue,
+            ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.recycling),
+                  tooltip: 'להחליף ארנק',
+                  onPressed: () {
+                    switch (_gatesListplace) {
+                      case 0:
+                        coins64List = rtbimBox65List;
+                        _gatesListplace++;
+                        break;
+                      case 1:
+                        coins64List = hexRTNames65lst;
+                        _gatesListplace++;
+                        break;
+                      case 2:
+                        coins64List = new_hexRTNames65lst;
+                        _gatesListplace++;
+                        break;
+                      case 3:
+                        coins64List = rtwallets65lst_heb;
+                        _gatesListplace++;
+                        break;
+                      case 4:
+                        coins64List = new_rtbbwallet65lst_heb;
+                        _gatesListplace++;
+                        break;
+                      case 5:
+                        coins64List = hdgates65lst_heb;
+                        _gatesListplace++;
+                        break;
+                      case 6:
+                        coins64List = rtgateswallet65lst_heb;
+                        _gatesListplace++;
+                        break;
+                      case 7:
+                        coins64List = new_hexRTNames65lst;
+                        _gatesListplace++;
+                        break;
+                      case 8:
+                        coins64List = hexNames65lst;
+                        _gatesListplace++;
+                        break;
+                      case 9:
+                        coins64List = hdgates65lst;
+                        _gatesListplace++;
+                        break;
+                      case 10:
+                        coins64List = iChingEng65lst;
+                        _gatesListplace++;
+                        break;
+                      case 11:
+                        coins64List = rtminmic65List;
+                        _linesListplace = 0;
+                        break;
+                      default:
+                        break;
+                    }
+                  },
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildGatesDialog(context),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      //'Wallets',
+                      'ארנקים',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    )),
+                const SizedBox(width: 5),
+                ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildLinesDialog(context),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      //'Coins',
+                      'מטבעות',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    )),
+                IconButton(
+                  icon: const Icon(Icons.recycling),
+                  tooltip: 'להחליף מטבעות',
+                  onPressed: () {
+                    switch (_linesListplace) {
+                      case 0:
+                        coins384List = rtmix390lst;
+                        _linesListplace++;
+                        break;
+                      case 1:
+                        coins384List = hdmixlines390lst;
+                        _linesListplace++;
+                        break;
+                      case 2:
+                        coins384List = hdmixlines390lstHeb;
+                        _linesListplace++;
+                        break;
+                      case 3:
+                        coins384List = rtmix390lstHeb;
+                        _linesListplace = 0;
+                        break;
+                      default:
+                        break;
+                    }
+                  },
+                ),
+              ],
+            ),
             const Divider(
               color: Colors.blue,
             ),
@@ -5853,209 +6172,143 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.recycling),
-                  tooltip: 'להחליף ארנק',
-                  onPressed: () {
-                    switch (_gatesListplace) {
-                      case 0:
-                        coins64List = rtbimBox65List;
-                        _gatesListplace++;
-                        break;
-                      case 1:
-                        coins64List = hexRTNames65lst;
-                        _gatesListplace++;
-                        break;
-                      case 2:
-                        coins64List = new_hexRTNames65lst;
-                        _gatesListplace++;
-                        break;
-                      case 3:
-                        coins64List = rtwallets65lst_heb;
-                        _gatesListplace++;
-                        break;
-                      case 4:
-                        coins64List = new_rtbbwallet65lst_heb;
-                        _gatesListplace++;
-                        break;
-                      case 5:
-                        coins64List = hdgates65lst_heb;
-                        _gatesListplace++;
-                        break;
-                      case 6:
-                        coins64List = rtgateswallet65lst_heb;
-                        _gatesListplace++;
-                        break;
-                      case 7:
-                        coins64List = new_hexRTNames65lst;
-                        _gatesListplace++;
-                        break;
-                      case 8:
-                        coins64List = hexNames65lst;
-                        _gatesListplace++;
-                        break;
-                      case 9:
-                        coins64List = hdgates65lst;
-                        _gatesListplace++;
-                        break;
-                      case 10:
-                        coins64List = iChingEng65lst;
-                        _gatesListplace++;
-                        break;
-                      case 11:
-                        coins64List = rtminmic65List;
-                        _linesListplace = 0;
-                        break;
-                      default:
-                        break;
-                    }
-                  },
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) =>
-                            _buildGatesDialog(context),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50))),
-                    child: const Text(
-                      //'Wallets',
-                      'ארנקים',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.white),
-                    )),
-                const SizedBox(width: 5),
-                ElevatedButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) =>
-                            _buildLinesDialog(context),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50))),
-                    child: const Text(
-                      //'Coins',
-                      'מטבעות',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.white),
-                    )),
-                IconButton(
-                  icon: const Icon(Icons.recycling),
-                  tooltip: 'להחליף מטבעות',
-                  onPressed: () {
-                    switch (_linesListplace) {
-                      case 0:
-                        coins384List = rtmix390lst;
-                        _linesListplace++;
-                        break;
-                      case 1:
-                        coins384List = hdmixlines390lst;
-                        _linesListplace++;
-                        break;
-                      case 2:
-                        coins384List = hdmixlines390lstHeb;
-                        _linesListplace++;
-                        break;
-                      case 3:
-                        coins384List = rtmix390lstHeb;
-                        _linesListplace = 0;
-                        break;
-                      default:
-                        break;
-                    }
-                  },
-                ),
-              ],
-            ),
+
             const Divider(
               color: Colors.blue,
             ),
 
             // rt evolution
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 10,
-                    minWidth: 10,
-                    maxHeight: screenheight * 0.25,
-                    maxWidth: screenwidth * 0.5,
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 10,
+                minWidth: 10,
+                maxHeight: screenheight * 0.25,
+                maxWidth: screenwidth * 0.5,
+              ),
+              //child: EvolutionContainer(colorinsilence: Colors.red, colorinbreath: Colors.yellow,
+              child: Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.transparent,
+                        border: Border.all(
+                          color:
+                              Colors.red, //                   <--- border color
+                          width: 1.0,
+                        ),
+                        image: DecorationImage(
+                            //image: AssetImage(newminmaxcoins[index]),
+                            image: AssetImage('assets/camog/zbredog.png'),
+                            colorFilter: ColorFilter.mode(
+                              Colors.white.withOpacity(1.0),
+                              BlendMode.modulate,
+                            ))),
                   ),
-                  //child: EvolutionContainer(colorinsilence: Colors.red, colorinbreath: Colors.yellow,
-                  child: Flex(
-                    direction: Axis.vertical,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        iconSize: 50,
-                        icon: Icon(_inbodyicon, color: _inbodycolor),
-                        onPressed: () => Navigator.of(context).pop(),
-                        //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
+                  IconButton(
+                    iconSize: 50,
+                    icon: Icon(_inbodyicon, color: _inbodycolor),
+                    onPressed: () {},
+                    //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
+                  ),
+                  IconButton(
+                      iconSize: 50,
+                      icon: Icon(_inpersonicon, color: _inpersoncolor),
+                      onPressed: () {}),
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.transparent,
+                        border: Border.all(
+                          color:
+                              Colors.blue, //                   <--- border color
+                          width: 4.0,
+                        ),
+                        image: DecorationImage(
+                            //image: AssetImage(newminmaxcoins[index]),
+                            image: AssetImage('assets/camog/zbluedog.png'),
+                            colorFilter: ColorFilter.mode(
+                              Colors.white.withOpacity(1.0),
+                              BlendMode.modulate,
+                            ))),
+                  ),
+                ],
+              ),
+              //  colorinsimple: Colors.green, colorincomplex: Colors.blue)
+            ),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 10,
+                minWidth: 10,
+                maxHeight: screenheight * 0.25,
+                maxWidth: screenwidth * 0.5,
+              ),
+              //child: EvolutionContainer(colorinsilence: Colors.red, colorinbreath: Colors.yellow,
+              child: Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.transparent,
+                        border: Border.all(
+                          color: Colors
+                              .yellow, //                   <--- border color
+                          width: 2.0,
+                        ),
+                        image: DecorationImage(
+                            //image: AssetImage(newminmaxcoins[index]),
+                            image: AssetImage(
+                                'assets/camog/zbyellowoctopussy.png'),
+                            colorFilter: ColorFilter.mode(
+                              Colors.white.withOpacity(1.0),
+                              BlendMode.modulate,
+                            ))),
+                  ),
+                  IconButton(
+                    iconSize: 50,
+                    icon: Icon(_exbodyicon, color: _exbodycolor),
+                    onPressed: () {},
+                    //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
+                  ),
+                  IconButton(
+                      iconSize: 50,
+                      icon: Icon(_expersonicon, color: _expersoncolor),
+                      onPressed: () {}
+                      //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
                       ),
-                      IconButton(
-                        iconSize: 50,
-                        icon: Icon(_exbodyicon, color: _exbodycolor),
-                        onPressed: () => Navigator.of(context).pop(),
-                        //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
-                      ),
-                    ],
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.transparent,
+                        border: Border.all(
+                          color: Colors
+                              .green, //                   <--- border color
+                          width: 3.0,
+                        ),
+                        image: DecorationImage(
+                            //image: AssetImage(newminmaxcoins[index]),
+                            image:
+                                AssetImage('assets/camog/zbgreenoctopus.png'),
+                            colorFilter: ColorFilter.mode(
+                              Colors.white.withOpacity(1.0),
+                              BlendMode.modulate,
+                            ))),
                   ),
-                  //  colorinsimple: Colors.green, colorincomplex: Colors.blue)
-                ),
-                //ConstrainedBox(
-                //constraints: //BoxConstraints(
-                //                  minHeight: 10,
-                //               minWidth: 10,
-                //              maxHeight: //screenheight * 0.25,
-                //                 maxWidth: //screenwidth * 0.5,
-                //                ),
-                //               //child: //EvolutionContainer(colorinsilence: Colors.red, //colorinbreath: Colors.yellow,
-                //                child: EvolutionContainer(colorinsilence: _colorinsilence, //colorinbreath: _colorinbreath,
-                //                    colorinsimple: _colorinsimple, colorincomplex: //_colorincomplex)
-//                    //  colorinsimple: Colors.green, colorincomplex: Colors.blue)
-                //             ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 10,
-                    minWidth: 10,
-                    maxHeight: screenheight * 0.25,
-                    maxWidth: screenwidth * 0.5,
-                  ),
-                  //child: EvolutionContainer(colorinsilence: Colors.red, colorinbreath: Colors.yellow,
-                  child: Flex(
-                    direction: Axis.vertical,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                          iconSize: 50,
-                          icon: Icon(_inpersonicon, color: _inpersoncolor),
-                          onPressed: () {}),
-                      IconButton(
-                          iconSize: 50,
-                          icon: Icon(_expersonicon, color: _expersoncolor),
-                          onPressed: () {}
-                          //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
-                          ),
-                    ],
-                  ),
-                  //  colorinsimple: Colors.green, colorincomplex: Colors.blue)
-                ),
-              ],
+                ],
+              ),
+              //  colorinsimple: Colors.green, colorincomplex: Colors.blue)
             ),
             Flex(
               direction: Axis.horizontal,
@@ -7344,17 +7597,18 @@ class _RotateComplexState extends State<RotateComplex> {
               color: Colors.blue,
             ),
             SizedBox(
-              height: 350,
-              width: 250,
+              height: 300,
+              width: 350,
               child: GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 1,
-                  crossAxisCount: 3, // number of items in each row
+                  childAspectRatio: 1.2,
+                  crossAxisCount: 4, // number of items in each row
                   mainAxisSpacing: 8.0, // spacing between rows
                   crossAxisSpacing: 8.0, // spacing between columns
                 ),
-                padding: const EdgeInsets.all(8.0), // padding around the grid
-                itemCount: 12, // total number of items
+                padding: const EdgeInsets.all(4.0), // padding around the grid
+                itemCount: 16, // total number of items
                 itemBuilder: (context, index) {
                   return Container(
                     decoration: BoxDecoration(
@@ -7380,7 +7634,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: screenwidth / 6,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(coins4lst[0]),
+                      image: AssetImage(zoo4lst[0]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -7391,7 +7645,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: screenwidth / 6,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(coins4lst[1]),
+                      image: AssetImage(zoo4lst[1]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -7402,7 +7656,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: screenwidth / 6,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(coins4lst[2]),
+                      image: AssetImage(zoo4lst[2]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -7413,7 +7667,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   width: screenwidth / 6,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(coins4lst[3]),
+                      image: AssetImage(zoo4lst[3]),
                       fit: BoxFit.scaleDown,
                     ),
                     shape: BoxShape.rectangle,
@@ -8328,9 +8582,9 @@ class _RotateComplexState extends State<RotateComplex> {
 
   void setSilenceOnly() {
     int tempdesigngate = 0, temppersongate = 0;
-    //for (var g in gatestatelist) {
-    // g = 0;
-    //}
+    for (var g in gatestatelist) {
+     g = 0;
+    }
 
     if (cardstate == 'zb') {
       for (var i = 0; i < _planetsdesignList.length; i++) {
@@ -8338,8 +8592,8 @@ class _RotateComplexState extends State<RotateComplex> {
         if (gatestatelist[tempdesigngate] == 3) {
           gatestatelist[tempdesigngate] = 1;
           _isBoldList[tempdesigngate] = true;
-        }
-        else if (gatestatelist[tempdesigngate] == 0 || gatestatelist[tempdesigngate] == 2) {
+        } else if (gatestatelist[tempdesigngate] == 0 ||
+            gatestatelist[tempdesigngate] == 2) {
           gatestatelist[tempdesigngate] = 1;
           _isBoldList[tempdesigngate] = true;
         }
@@ -8361,8 +8615,8 @@ class _RotateComplexState extends State<RotateComplex> {
         if (gatestatelist[tempdesigngate] == 8) {
           gatestatelist[tempdesigngate] = 1;
           _isBoldList[tempdesigngate] = true;
-        }
-        else if (gatestatelist[tempdesigngate] == 6 || gatestatelist[tempdesigngate] == 5) {
+        } else if (gatestatelist[tempdesigngate] == 6 ||
+            gatestatelist[tempdesigngate] == 5) {
           gatestatelist[tempdesigngate] = 1;
           _isBoldList[tempdesigngate] = true;
         }
@@ -8396,15 +8650,14 @@ class _RotateComplexState extends State<RotateComplex> {
       }
 
       //for (var i = 0; i < _planetspersonList.length; i++) {
-       // temppersongate = _planetspersonList[i].gate!;
-        //_isBoldList[temppersongate] = true;
+      // temppersongate = _planetspersonList[i].gate!;
+      //_isBoldList[temppersongate] = true;
 
-        //if (gatestatelist[temppersongate] == 3) {
-         // gatestatelist[temppersongate] = 2;
-        //}
+      //if (gatestatelist[temppersongate] == 3) {
+      // gatestatelist[temppersongate] = 2;
       //}
-    }
-    else {
+      //}
+    } else {
       for (var i = 0; i < _planetsdesignList.length; i++) {
         tempdesigngate = _planetsdesignList[i].gate!;
         if (gatestatelist[tempdesigngate] == 1) {
@@ -8425,7 +8678,6 @@ class _RotateComplexState extends State<RotateComplex> {
       // }
       //}
     }
-
   }
 
   void _controlHDData(HumanDesign hdbasicdata) {
@@ -8441,23 +8693,43 @@ class _RotateComplexState extends State<RotateComplex> {
   }
 
   void _setgatesState() {
-    int tempdesigngate = 0, temppersongate = 0;
+    int tempdesigngate = 0, temppersongate = 0, tempcolorgatewheel = 0;
+    //revwheelgatescolor = wheelgatescolor.reversed.toList();
 
-    for (var g in gatestatelist) {
-      g = 0;
-    }
+    //reversedHexagramsWheel
+
 
     for (var i = 0; i < _planetsdesignList.length; i++) {
       tempdesigngate = _planetsdesignList[i].gate!;
       if (gatestatelist[tempdesigngate] == 0) {
         gatestatelist[tempdesigngate] = 1;
         _isBoldList[tempdesigngate] = true;
+
+        // set color of gate on wheel
+        //coins384List[
+        //(coins384List.indexOf(_planethex.gate!) + _planethex.line!)];
+        //revwheelgatescolor[tempdesigngate] = reversedtopcoincolor[tempdesigngate];
+        tempcolorgatewheel = reversedHexagramsWheel.indexOf(tempdesigngate);
+      setState(() {
+        wheelgatescolor[tempcolorgatewheel] = complexrevtopcoincolor[tempcolorgatewheel].withOpacity(1);
+        //wheelgatescolor[tempcolorgatewheel] = reversedtopcoincolor[tempcolorgatewheel];
+        //wheelgatescolor[tempcolorgatewheel] = wheelgatescolor[tempcolorgatewheel].withOpacity(1);
+      });
       }
     }
 
     for (var i = 0; i < _planetspersonList.length; i++) {
       temppersongate = _planetspersonList[i].gate!;
       _isBoldList[temppersongate] = true;
+
+      tempcolorgatewheel = reversedHexagramsWheel.indexOf(temppersongate);
+      //wheelgateopacity = 1.0;
+      setState(() {
+        wheelgatescolor[tempcolorgatewheel] = complexrevtopcoincolor[tempcolorgatewheel].withOpacity(1);
+        //wheelgatescolor[tempcolorgatewheel] = reversedtopcoincolor[tempcolorgatewheel];
+        //wheelgatescolor[tempcolorgatewheel] = wheelgatescolor[tempcolorgatewheel].withOpacity(1);
+      });
+
 
       if (gatestatelist[temppersongate] == 0) {
         gatestatelist[temppersongate] = 2;
@@ -8485,6 +8757,15 @@ class _RotateComplexState extends State<RotateComplex> {
     for (var i = 0; i < gatestatelist.length; i++) {
       gatestatelist[i] = 0;
       _isBoldList[i] = false;
+
+      setState(() {
+        for (var i = 0; i < wheelgatescolor.length; i++) {
+          //wheelgatescolor[i] = reversedtopcoincolor[i].withOpacity(0.1);
+          wheelgatescolor[i] = complexrevtopcoincolor[i];
+          wheelgatescolor[i] = wheelgatescolor[i].withOpacity(0.1);
+        }
+      });
+
     }
   }
 
@@ -9040,52 +9321,6 @@ class _RotateComplexState extends State<RotateComplex> {
     solarstate = updatecenters[7].state!;
     rootstate = updatecenters[8].state!;
 
-    //for (int i = 0; i < updatecenters.length; i++) {
-    //  {
-
-    //   }
-
-    //switch (updatecenters[i]) {
-    // case 'head':
-    //  headstate = 1;
-    //  headcolor = Colors.yellow;
-    // break;
-    // case 'ajna':
-    //   ajnastate = 1;
-    //   ajnacolor = Colors.yellow;
-    //   break;
-    // case 'throat':
-    //   throatstate = 1;
-    //   throatcolor = Colors.yellow;
-    //   break;
-    // case 'self':
-    //   gstate = 1;
-    //  gcolor = Colors.yellow;
-    //  break;
-    // case 'heart':
-    //   heartstate = 1;
-    //  heartcolor = Colors.blue;
-    //  break;
-    // case 'spleen':
-    //  spleenstate = 1;
-    //   spleencolor = Colors.yellow;
-    //  break;
-    // case 'sacral':
-    //   sacralstate = 1;
-    //  sacralcolor = Colors.red;
-    //  break;
-    // case 'solar':
-    //  solarstate = 1;
-    //   solarcolor = Colors.blue;
-    //   break;
-    // case 'root':
-    //   rootstate = 1;
-    //   rootcolor = Colors.brown;
-    //   break;
-    // default:
-    //   break;
-    //}
-    // }
   }
 
   void _setEvolutionCoin() {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // new lists
 
-final List<String> coins6lst = [
+final List<String> coins12lst = [
   'assets/camog/zblackcat.png',
   'assets/camog/zbredog.png',
   'assets/camog/zbyellowoctopussy.png',
@@ -17,6 +17,60 @@ final List<String> coins6lst = [
   'assets/camog/zbgreenoctopus2.png',
   'assets/camog/zbluedog2.png',
   'assets/camog/zbwhitecamel2.png',
+];
+
+final List<String> coins6lst0 = [
+  'assets/camog/zblackcat2.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbgreenoctopus2.png',
+  'assets/camog/zbluedog2.png',
+  'assets/camog/zbwhitecamel2.png',
+];
+
+final List<String> coins6lst1 = [
+  'assets/camog/zblackcat.png',
+  'assets/camog/zbredog.png',
+  'assets/camog/zbyellowoctopussy.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbwhitecamel.png',
+];
+
+final List<String> zoocoins = [
+  //'assets/camog/zblackcat2.png',
+  'assets/camog/zbwhitecamel.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbluedog.png',
+
+];
+
+final List<String> zoorotatelst = [
+  //'assets/camog/zblackcat2.png',
+  'assets/camog/mcameline.png',
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbyellowoctopussy.png',
+  'assets/camog/zbredog.png',
+];
+
+final List<String> zoonewrotatelst = [
+  //'assets/camog/zblackcat2.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/mcameline.png',
+  'assets/camog/zbluedog.png',
+];
+
+final List<String> zoo4lst = [
+  //'assets/camog/zblackcat2.png',
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbredog2.png',
 ];
 
 //4
@@ -39,6 +93,14 @@ final List<Color> coincolors4lst = [
   Colors.green,
   Colors.yellow,
   Colors.red
+];
+
+final List<Color> colors5lst = [
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.white,
+  Colors.blue,
 ];
 
 final List<String> basicPlantsList = [
@@ -107,11 +169,20 @@ final List<String> woofgooffullslst = [
     ],
     woofgoofcoinlst = [
       //'assets/camog/snoopyq.gif',
-      'assets/camog/dogidqnbglp.gif',
+      'assets/camog/zbwhitecamel.png',
       'assets/camog/reddog.png',
       'assets/camog/yellowdog.png',
       'assets/camog/greendog.png',
-        'assets/camog/bluedog.png',
+      'assets/camog/bluedog.png',
+    ],
+    zooprofiles = [
+      'assets/camog/snoopyq.gif',
+      'assets/camog/zblackcat.png',
+      'assets/camog/zbredog.png',
+      'assets/camog/zbyellowoctopussy.png',
+      'assets/camog/zbgreenoctopus.png',
+      'assets/camog/zbluedog.png',
+      'assets/camog/zbwhitecamel.png',
     ],
     zbwoofgooffullheb = [
       '!?גוף או ווף',
@@ -119,42 +190,85 @@ final List<String> woofgooffullslst = [
       'ווף',
       'גופוף',
       'גוף',
+    ],
+    zbzooheb = [
+      'גמל? !כלב',
+      '/"בלודוג/"',
+      ';זה לא אני תמנון',
+      'ג\'ולייתמנונה',
+      '.כלבדומא',
+    ],
+    zbrussianames = [
+      'верблюд? собака!',
+      '\"сложная синяя собака\"',
+      'простой зеленый осьминог;',
+      'желтый дыхание осьминога,',
+      'тишина красныйа сука.',
     ];
 
-final List<Widget> sixSlider = coins6lst
+final List<String> puncNamesList = [
+  '\"כלב כחולדש גלמל מורכב\"',
+  ';זה פשוט לא אני התמנון והמר',
+  ',גולייטה פסיקה תמנונה צבועה',
+  '.כלבאדומה תישיקה',
+];
+
+final List<String> russianamelist = [
+  '\"сложная синяя собака\"',
+  'простой зеленый осьминог;',
+  'желтый дыхание осьминога,',
+  'тишина красныйа сука.',
+];
+
+final List<Widget> sixSlider = coins12lst
     .map(
-      (coinsixlst) => Container(
-    height: 100,
-    width: 100,
-    decoration: BoxDecoration(
-      color: Colors.black12,
-      //borderRadius: BorderRadius.circular(1),
-      image: DecorationImage(
-        image: AssetImage(coinsixlst),
-        fit: BoxFit.scaleDown,
+      (cointresarlst) => Container(
+        height: 100,
+        width: 100,
+        decoration: BoxDecoration(
+          color: Colors.black12,
+          //borderRadius: BorderRadius.circular(1),
+          image: DecorationImage(
+            image: AssetImage(cointresarlst),
+            fit: BoxFit.scaleDown,
+          ),
+          shape: BoxShape.circle,
+        ),
       ),
-      shape: BoxShape.circle,
-    ),
-  ),
-)
+    )
     .toList();
 
 final List<Widget> mainSlider = coins4lst
     .map(
       (coinlst) => Container(
-    height: 200,
-    width: 200,
-    decoration: BoxDecoration(
-      image: DecorationImage(
-        image: AssetImage(coinlst),
-        fit: BoxFit.scaleDown,
+        height: 200,
+        width: 200,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(coinlst),
+            fit: BoxFit.scaleDown,
+          ),
+          shape: BoxShape.rectangle,
+        ),
       ),
-      shape: BoxShape.rectangle,
-    ),
-  ),
-)
+    )
     .toList();
 
+final List<Widget> zooslider = zoorotatelst
+    .map(
+      (zoozb) => Container(
+        height: 200,
+        width: 200,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(zoozb),
+            fit: BoxFit.scaleDown,
+          ),
+          shape: BoxShape.rectangle,
+        ),
+      ),
+    )
+    .toList();
 
 final List<Widget> woofgoofSlider = woofgooffullslst
     .map(
@@ -228,12 +342,20 @@ final List<String> mainwoofgooflst = [
   'assets/camog/bluedog.png',
 ];
 
+final List<String> rotatelst = [
+  'assets/coins/silence.png',
+  'assets/coins/breath.png',
+  'assets/coins/simple.png',
+  'assets/coins/quex.png',
+  'assets/coins/complex.png',
+];
+
 final List<String> mainmailst = [
-  'assets/camog/dogidqnbglp.gif',
   'assets/coins/silence.png',
   'assets/coins/breath.png',
   'assets/coins/simple.png',
   'assets/coins/complex.png',
+  'assets/coins/fullcoins.png',
 ];
 
 final List<String> mainkithelst = [
@@ -688,10 +810,11 @@ final List<Color> changecolor16lst = [
 
 // 36
 
-final List<HDChannel> zbchannels  = [
+final List<HDChannel> zbchannels = [
   //  head ajna throat self heart spleen sacral solar root
- // complex channels
-  HDChannel(id: '36.35',
+  // complex channels
+  HDChannel(
+    id: '36.35',
     firstcenter: 'solar',
     secondcenter: 'throat',
     coin: 'COMPLEX',
@@ -703,8 +826,10 @@ final List<HDChannel> zbchannels  = [
     description: 'jack of all trades',
     circuitry: 'collective',
     circuit: 'abstract',
-    stream: 'desire',),
-  HDChannel(id: '22.12',
+    stream: 'desire',
+  ),
+  HDChannel(
+    id: '22.12',
     firstcenter: 'solar',
     secondcenter: 'throat',
     coin: 'COMPLEX',
@@ -716,8 +841,10 @@ final List<HDChannel> zbchannels  = [
     description: 'Being Social',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'emoting',),
-  HDChannel(id: '21.45',
+    stream: 'emoting',
+  ),
+  HDChannel(
+    id: '21.45',
     firstcenter: 'heart',
     secondcenter: 'throat',
     coin: 'COMPLEX',
@@ -729,14 +856,16 @@ final List<HDChannel> zbchannels  = [
     description: 'Materialist',
     circuitry: 'tribal',
     circuit: 'ego',
-    stream: 'none',),
+    stream: 'none',
+  ),
 
   // breath channels
   // not finished
 
   //ajnd
 
-  HDChannel(id: '47.64',
+  HDChannel(
+    id: '47.64',
     firstcenter: 'ajna',
     secondcenter: 'head',
     coin: 'breath',
@@ -748,8 +877,10 @@ final List<HDChannel> zbchannels  = [
     description: 'mental activity mixed with clarity',
     circuitry: 'collective',
     circuit: 'abstract',
-    stream: 'sensing',),
-  HDChannel(id: '24.61',
+    stream: 'sensing',
+  ),
+  HDChannel(
+    id: '24.61',
     firstcenter: 'ajna',
     secondcenter: 'head',
     coin: 'breath',
@@ -761,8 +892,10 @@ final List<HDChannel> zbchannels  = [
     description: 'Thinker',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'knowing',),
-  HDChannel(id: '4.63',
+    stream: 'knowing',
+  ),
+  HDChannel(
+    id: '4.63',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -774,8 +907,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '11.56',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '11.56',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -787,8 +922,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '43.23',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '43.23',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -800,8 +937,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '17.62',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '17.62',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -813,10 +952,12 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
+    stream: 'none',
+  ),
 
   // self
-  HDChannel(id: '7.31',
+  HDChannel(
+    id: '7.31',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -828,8 +969,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '1.8',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '1.8',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -841,8 +984,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '13.33',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '13.33',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -854,8 +999,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '10.20',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '10.20',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -867,10 +1014,12 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
+    stream: 'none',
+  ),
 
   // heart
-  HDChannel(id: '25.51',
+  HDChannel(
+    id: '25.51',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -882,10 +1031,12 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
+    stream: 'none',
+  ),
 
   // spleen
-  HDChannel(id: '57.10',
+  HDChannel(
+    id: '57.10',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -897,8 +1048,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '57.20',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '57.20',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -910,8 +1063,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '28.38',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '28.38',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -923,8 +1078,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '18.58',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '18.58',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -936,8 +1093,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '48.16',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '48.16',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -949,8 +1108,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '44.26',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '44.26',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -962,8 +1123,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '32.54',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '32.54',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -975,10 +1138,12 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
+    stream: 'none',
+  ),
 
   // solar
-  HDChannel(id: '37.40',
+  HDChannel(
+    id: '37.40',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -990,8 +1155,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '49.19',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '49.19',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1003,8 +1170,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '55.39',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '55.39',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1016,8 +1185,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '30.41',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '30.41',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1029,14 +1200,16 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
+    stream: 'none',
+  ),
 
   // silence channels
   // not finished
 
   // sacral
 
-  HDChannel(id: '34.20',
+  HDChannel(
+    id: '34.20',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1048,8 +1221,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '34.57',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '34.57',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1061,8 +1236,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '34.10',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '34.10',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1074,8 +1251,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '3.60',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '3.60',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1087,8 +1266,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '14.2',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '14.2',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1100,8 +1281,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '9.52',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '9.52',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1113,8 +1296,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '5.15',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '5.15',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1126,8 +1311,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '42.53',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '42.53',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1139,8 +1326,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '29.46',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '29.46',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1152,8 +1341,10 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-  HDChannel(id: '27.50',
+    stream: 'none',
+  ),
+  HDChannel(
+    id: '27.50',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1165,10 +1356,12 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
+    stream: 'none',
+  ),
 
   // solar
-  HDChannel(id: '6.59',
+  HDChannel(
+    id: '6.59',
     firstcenter: 'self',
     secondcenter: 'throat',
     coin: 'breath',
@@ -1180,11 +1373,8 @@ final List<HDChannel> zbchannels  = [
     description: 'creative role model',
     circuitry: 'individual',
     circuit: 'knowing',
-    stream: 'none',),
-
-
-
-
+    stream: 'none',
+  ),
 ];
 
 final List<String> rtransaction36Englst = [
@@ -10149,6 +10339,7 @@ final List spectrumOfWordsHeb = [
 
 final List complexImgs = [
       'assets/coins/complex.png',
+      'assets/camog/zbluedog.png',
       'assets/plants/mrbluep.png',
       'assets/plants/rotegi.png',
       'assets/kithe/kitcomplex.png',
@@ -10157,9 +10348,11 @@ final List complexImgs = [
       'assets/minmax/bluemin.png',
       'assets/minmax/mincomplex.png',
       'assets/camog/bluedog.png',
+      'assets/camog/zbluecamel.png',
     ],
     simpleImgs = [
       'assets/coins/simple.png',
+      'assets/camog/zbgreenoctopus.png',
       'assets/plants/mrgreavo.png',
       'assets/plants/rotav.png',
       'assets/kithe/kitsimple.png',
@@ -10168,9 +10361,11 @@ final List complexImgs = [
       'assets/minmax/greenmax.png',
       'assets/minmax/greenmin.png',
       'assets/camog/greendog.png',
+      'assets/camog/zbgreencamel.png',
     ],
     breathImgs = [
       'assets/coins/breath.png',
+      'assets/camog/zbyellowoctopussy2.png',
       'assets/plants/msyelban.png',
       'assets/plants/rotban.png',
       'assets/kithe/kitbreath.png',
@@ -10179,9 +10374,11 @@ final List complexImgs = [
       'assets/minmax/yellowmin.png',
       'assets/camog/mcamelyellow.png',
       'assets/camog/yellowdog.png',
+      'assets/camog/zbyellowcamel.png',
     ],
     silenceImgs = [
       'assets/coins/silence.png',
+      'assets/camog/zbredog2.png',
       'assets/plants/msredtom.png',
       'assets/plants/rotom.png',
       'assets/kithe/kitsilence.png',
@@ -10189,6 +10386,7 @@ final List complexImgs = [
       'assets/minmax/minsilence.png',
       'assets/minmax/redmin.png',
       'assets/camog/reddog.png',
+      'assets/camog/zblackcat2.png',
     ];
 
 final List<Widget> complexSlider = complexImgs

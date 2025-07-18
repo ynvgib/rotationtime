@@ -59,11 +59,11 @@ class RotateMain extends StatelessWidget {
         pdfroutes[0]: (ctx) => const RotateIsogHe(),
         pdfroutes[1]: (ctx) => const RotateIsog(),
         pdfroutes[4]: (ctx) => const RotatePDF(),
+        mainroutes[3]: (ctx) => const RotateIDK(),
         mainroutes[4]: (ctx) => const RotateComplex(),
-        mainroutes[3]: (ctx) => const RotateSimple(),
-        mainroutes[2]: (ctx) => const RotateBreath(),
-        mainroutes[1]: (ctx) => const RotateSilence(),
-        mainroutes[0]: (ctx) => const RotateIDK(),
+        mainroutes[2]: (ctx) => const RotateSimple(),
+        mainroutes[1]: (ctx) => const RotateBreath(),
+        mainroutes[0]: (ctx) => const RotateSilence(),
       },
       theme: ThemeData(
         dialogBackgroundColor: Colors.white,
@@ -105,7 +105,10 @@ class _RotateHomeState extends State<RotateHome> {
   int _currenttop = 0, _currentmid = 0, _currentbot = 0;
 
   String mainTitle = "זמן סיבוב", subTitle = "זמנסי בוב";
-  bool isMainTitle = true, isSubTitle = true;
+  bool isMainTitle = true, isSubTitle = true, isFullScreen = true;
+
+  final List<BoxShape> bordershapelist = [BoxShape.circle, BoxShape.circle, BoxShape.rectangle,
+    BoxShape.circle, BoxShape.rectangle];
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +120,7 @@ class _RotateHomeState extends State<RotateHome> {
       },
       child: Scaffold(
         bottomNavigationBar: BottomAppBar(
-            height: 100,
+            height: 80,
             color: Colors.transparent,
             shape: const CircularNotchedRectangle(),
             child: Flex(
@@ -166,27 +169,53 @@ class _RotateHomeState extends State<RotateHome> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               //mainAxisSize: MainAxisSize.min,
               children: [
-                const SizedBox(height: 10),
-                Container(
-                  height: MediaQuery.of(context).size.height / 4.0,
-                  width: MediaQuery.of(context).size.width / 4.0,
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    image: DecorationImage(
-                      image: AssetImage('assets/camog/zbwhitecamel.png',
-                      ),
-                      fit: BoxFit.scaleDown,
+                const SizedBox(height: 30),
+                InkWell(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.elliptical(50,20),
+                      bottomRight: Radius.circular(10),
+                      topLeft: Radius.circular(5),
+                      topRight: Radius.zero,
                     ),
-                    shape: BoxShape.circle,
+                    child: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        image: DecorationImage(
+                          image: AssetImage(
+                            'assets/camog/zbwhitecamel.png',
+                          ),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.rectangle,
+                      ),
+                    ),
                   ),
+                  onDoubleTap: () {
+                    //setState(() {
+                    //appBarHeight = 35; // After status bar hidden, make AppBar height smaller
+                    //});
+                    isFullScreen = !isFullScreen;
+                    isFullScreen == true
+                        ? SystemChrome.setEnabledSystemUIMode(
+                            SystemUiMode.manual,
+                            overlays: [SystemUiOverlay.bottom])
+                        : SystemChrome.setEnabledSystemUIMode(
+                            SystemUiMode.immersive);
+                    setState(() {});
+                  },
                 ),
+                const SizedBox(height: 20),
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 1.5,
                   margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(25),
+                      //borderRadius: BorderRadius.circular(25),
+                      shape: BoxShape.rectangle,
                       boxShadow: const [
                         BoxShadow(
                             color: Colors.green,
@@ -218,7 +247,7 @@ class _RotateHomeState extends State<RotateHome> {
                         isMainTitle = !isMainTitle;
                         setState(() {
                           isMainTitle == true
-                              ? mainTitle = "סיבוב לעיצוב"
+                              ? mainTitle = "סיבוביצוב"
                               : mainTitle = "Rotation Time";
                         });
                       },
@@ -263,26 +292,50 @@ class _RotateHomeState extends State<RotateHome> {
                         isSubTitle = !isSubTitle;
                         setState(() {
                           isSubTitle == true
-                              ? subTitle = "זמנסי בוב"
-                              : subTitle = "Zmansi Bob";
+                              ? subTitle = "זמנסי גנחיוט בוב"
+                              : subTitle = "ZB ZOO BE";
                         });
                       },
                     ),
                   ),
                 ),
+                const Divider(
+                  color: Colors.transparent,
+                  thickness: 5,
+                ),
                 CircleList(
-                  innerRadius: 1,
-                  outerRadius: MediaQuery.of(context).size.height / 4.5,
+                  innerRadius: 35,
                   childrenPadding: 1,
+                  initialAngle: 1,
                   origin: const Offset(0, 0),
+                  centerWidget: Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Colors
+                                .black, //                   <--- border color
+                            width: 1.0,
+                          ),
+                          image: DecorationImage(
+                              //image: AssetImage(newminmaxcoins[index]),
+                              image: AssetImage('assets/camog/zblackcat2.png'),
+                              colorFilter: ColorFilter.mode(
+                                Colors.white.withOpacity(1.0),
+                                BlendMode.modulate,
+                              ))),
+                    ),
+                  ),
                   children: List.generate(5, (index) {
                     return InkWell(
+                      customBorder: const CircleBorder(),
                       child: Container(
-                        width: MediaQuery.of(context).size.width / 3,
+                        width: 100,
+                        height: 100,
                         margin: const EdgeInsets.all(1),
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.transparent,
-                          shape: BoxShape.circle,
                         ),
                         child: Stack(
                           alignment: Alignment.center,
@@ -294,14 +347,30 @@ class _RotateHomeState extends State<RotateHome> {
                                   fontSize: 14, color: Colors.white),
                               child: Container(
                                 decoration: BoxDecoration(
+                                    shape: bordershapelist[index],
+                                    border: Border.all(
+                                      color: colors5lst[
+                                          index], //                   <--- border color
+                                      width: 5.0,
+                                    ),
                                     image: DecorationImage(
                                         //image: AssetImage(newminmaxcoins[index]),
-                                        image: AssetImage(mainmailst[index]),
+                                        image: AssetImage(rotatelst[index]),
                                         colorFilter: ColorFilter.mode(
-                                          Colors.white.withOpacity(1.0),
+                                          Colors.white.withOpacity(0.2),
                                           BlendMode.modulate,
                                         ))),
                               ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      //image: AssetImage(newminmaxcoins[index]),
+                                      image: AssetImage(zoonewrotatelst[index]),
+                                      colorFilter: ColorFilter.mode(
+                                        Colors.white.withOpacity(1.0),
+                                        BlendMode.modulate,
+                                      ))),
                             ),
                           ],
                         ),
@@ -313,34 +382,16 @@ class _RotateHomeState extends State<RotateHome> {
                   }),
                 ),
 
-                //new cube
-                const SizedBox(height: 35),
-
-                Container(
-                  height: 150,
-                  width: 150,
-                  alignment: Alignment.center,
-                  child: Transform(
-                      transform: Matrix4.identity()
-                        ..setEntry(3, 2, 0.001)
-                        ..rotateX(_offset.dy * pi / 180)
-                        ..rotateY(_offset.dx * pi / 180)
-                        ..rotateZ(_offset.dx * pi / 180),
-                      child: const Cube()),
-                ),
-                // end new cube
-
-                const SizedBox(height: 40),
                 const Divider(
-                  color: Colors.black87,
+                  color: Colors.transparent,
                   thickness: 5,
                 ),
                 ConstrainedBox(
                   constraints: BoxConstraints(
                     minHeight: 10,
                     minWidth: 10,
-                    maxHeight: screenheight * 0.15,
-                    maxWidth: screenwidth * 0.5,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
                   ),
                   child: CarouselSlider(
                     //items: mixHexagramSlidersNew,
@@ -362,8 +413,8 @@ class _RotateHomeState extends State<RotateHome> {
                   constraints: BoxConstraints(
                     minHeight: 10,
                     minWidth: 10,
-                    maxHeight: screenheight * 0.15,
-                    maxWidth: screenwidth * 0.5,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
                   ),
                   child: CarouselSlider(
                     //items: mixHexagramSlidersNew,
@@ -385,8 +436,8 @@ class _RotateHomeState extends State<RotateHome> {
                   constraints: BoxConstraints(
                     minHeight: 10,
                     minWidth: 10,
-                    maxHeight: screenheight * 0.15,
-                    maxWidth: screenwidth * 0.5,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
                   ),
                   child: CarouselSlider(
                     //items: mixHexagramSlidersNew,
@@ -408,8 +459,8 @@ class _RotateHomeState extends State<RotateHome> {
                   constraints: BoxConstraints(
                     minHeight: 10,
                     minWidth: 10,
-                    maxHeight: screenheight * 0.15,
-                    maxWidth: screenwidth * 0.5,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
                   ),
                   child: CarouselSlider(
                     //items: mixHexagramSlidersNew,
@@ -431,8 +482,8 @@ class _RotateHomeState extends State<RotateHome> {
                   constraints: BoxConstraints(
                     minHeight: 10,
                     minWidth: 10,
-                    maxHeight: screenheight * 0.15,
-                    maxWidth: screenwidth * 0.5,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
                   ),
                   child: CarouselSlider(
                     //items: mixHexagramSlidersNew,
@@ -454,8 +505,8 @@ class _RotateHomeState extends State<RotateHome> {
                   constraints: BoxConstraints(
                     minHeight: 10,
                     minWidth: 10,
-                    maxHeight: screenheight * 0.15,
-                    maxWidth: screenwidth * 0.5,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
                   ),
                   child: CarouselSlider(
                     //items: mixHexagramSlidersNew,
@@ -473,12 +524,13 @@ class _RotateHomeState extends State<RotateHome> {
                         }),
                   ),
                 ),
+                SizedBox(height: 10),
                 const Divider(
-                  color: Colors.black87,
+                  color: Colors.transparent,
                   thickness: 5,
                 ),
                 InkWell(
-                  hoverColor: Colors.black12,
+                    hoverColor: Colors.black12,
                     child: Container(
                         height: MediaQuery.of(context).size.height / 4,
                         width: MediaQuery.of(context).size.width / 3,
@@ -512,8 +564,7 @@ class _RotateHomeState extends State<RotateHome> {
                                 width: MediaQuery.of(context).size.width / 6,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image:
-                                    AssetImage('assets/coins/camel.png'),
+                                    image: AssetImage('assets/coins/camel.png'),
                                     fit: BoxFit.scaleDown,
                                   ),
                                   shape: BoxShape.rectangle,
@@ -530,7 +581,28 @@ class _RotateHomeState extends State<RotateHome> {
                       );
                     }),
                 const Divider(
-                  color: Colors.black87,
+                  color: Colors.transparent,
+                  thickness: 5,
+                ),
+                //new cube
+                const SizedBox(height: 35),
+
+                Container(
+                  height: 150,
+                  width: 150,
+                  alignment: Alignment.center,
+                  child: Transform(
+                      transform: Matrix4.identity()
+                        ..setEntry(3, 2, 0.001)
+                        ..rotateX(_offset.dy * pi / 180)
+                        ..rotateY(_offset.dx * pi / 180)
+                        ..rotateZ(_offset.dx * pi / 180),
+                      child: const Cube()),
+                ),
+                // end new cube
+                const SizedBox(height: 50),
+                const Divider(
+                  color: Colors.black,
                   thickness: 5,
                 ),
                 const AutoSizeText(
@@ -543,7 +615,7 @@ class _RotateHomeState extends State<RotateHome> {
                     fontFamily: 'iChing',
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 5),
               ]),
         ),
       ),

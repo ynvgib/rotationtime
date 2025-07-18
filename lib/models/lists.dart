@@ -203,21 +203,26 @@ final List<String> rtimages = [
   'assets/camog/zbluedog2.png',
   'assets/camog/zbwhitecamel2.png',
 
-
   'assets/camog/zbyellowcamel.png',
   'assets/camog/zbgreencamel.png',
   'assets/camog/zbluecamel.png',
+
+  'assets/coins/quex.png',
+  'assets/coins/quexblack.png',
 ];
 
-final List familyList = ['assets/minmax/minsilence.png',
+final List familyList = [
+  'assets/minmax/minsilence.png',
   'assets/family/agranny1nbg.png',
   'assets/family/bmama2nbg.png',
   'assets/family/cdaughter3nbg.png',
   'assets/family/dson4nbg.png',
   'assets/family/epapa5nbg.png',
-  'assets/family/fgrampa6nbg.png',];
+  'assets/family/fgrampa6nbg.png',
+];
 
-final List zodiaclist = ['assets/zodiac/pisces1.png',
+final List zodiaclist = [
+  'assets/zodiac/pisces1.png',
   'assets/zodiac/aries2.png',
   'assets/zodiac/taurus3.png',
   'assets/zodiac/gemini4.png',
@@ -228,9 +233,11 @@ final List zodiaclist = ['assets/zodiac/pisces1.png',
   'assets/zodiac/scorpio9.png',
   'assets/zodiac/sagittarius10.png',
   'assets/zodiac/capricorn11.png',
-  'assets/zodiac/aquarius12.png'];
+  'assets/zodiac/aquarius12.png'
+];
 
-final List zodiacNamelist = ['pisces',
+final List zodiacNamelist = [
+  'pisces',
   'aries',
   'taurus',
   'gemini',
@@ -241,7 +248,8 @@ final List zodiacNamelist = ['pisces',
   'scorpio',
   'sagittarius',
   'capricorn',
-  'aquarius',];
+  'aquarius',
+];
 
 final List zodiacSwephlist = [
   //1
@@ -267,7 +275,8 @@ final List zodiacSwephlist = [
   //11
   'aquarius',
   //12
-  'pisces',];
+  'pisces',
+];
 
 final List zodiacSwephImagelist = [
   'assets/zodiac/aries2.png',
@@ -281,8 +290,8 @@ final List zodiacSwephImagelist = [
   'assets/zodiac/sagittarius10.png',
   'assets/zodiac/capricorn11.png',
   'assets/zodiac/aquarius12.png',
-  'assets/zodiac/pisces1.png',];
-
+  'assets/zodiac/pisces1.png',
+];
 
 final List zodiacillSwephlist = [
   'assets/zodiac/aaries2il.png',
@@ -323,7 +332,8 @@ final List zodiacSwephGradeColorlist = [
   Colors.blue,
   Colors.green,
   Colors.green,
-  Colors.green,];
+  Colors.green,
+];
 
 final List zodiacSwephNameHeblist = [
   'טל ה',
@@ -337,9 +347,11 @@ final List zodiacSwephNameHeblist = [
   'קש את',
   'ג די',
   'ד לי',
-  'דג עם',];
+  'דג עם',
+];
 
-final List zodiacNameHeblist = ['דג עם',
+final List zodiacNameHeblist = [
+  'דג עם',
   'טל ה',
   'חד מימד תא השור',
   'תאום עם',
@@ -350,7 +362,8 @@ final List zodiacNameHeblist = ['דג עם',
   'הקרב',
   'קש את',
   'ג די',
-  'ד לי',];
+  'ד לי',
+];
 
 final List zodiacColorlist = [
   Colors.green,
@@ -364,7 +377,8 @@ final List zodiacColorlist = [
   Colors.yellow,
   Colors.blue,
   Colors.blue,
-  Colors.blue];
+  Colors.blue
+];
 
 final List zodiacGradeColorlist = [
   Colors.green,
@@ -390,9 +404,8 @@ final List zodiacGradeColorlist = [
   Colors.blue,
   Colors.blue,
   Colors.blue,
-  Colors.green];
-
-
+  Colors.green
+];
 
 List revZodiacList = zodiaclist.reversed.toList();
 List revZodiacColorList = zodiacColorlist.reversed.toList();
@@ -401,8 +414,6 @@ List revzodiacSwephGradeColorlist = zodiacSwephGradeColorlist.reversed.toList();
 List revzodiacNamelist = zodiacNamelist.reversed.toList();
 List revzodiacNameHeblist = zodiacNameHeblist.reversed.toList();
 List revzodiacSwephlist = zodiacSwephlist.reversed.toList();
-
-
 
 final List rturlfull = [
   'https://rotation-time.web.app/',
@@ -436,7 +447,6 @@ final List<String> planetsfullList = [
   'assets/planets/pluto.png',
   'assets/planets/chiron.png',
 ];
-
 
 final List<Color> planetscolorList = [
   //'assets/planets/sun.png',
@@ -617,151 +627,209 @@ final List<String> fontHexOrderList = [
 ];
 
 List<String> revfontHexOrderList = fontHexOrderList.reversed.toList();
-
-final List<String> fontHexMixOrderList = [
-  'a','1',
-  'g','43',
-  'f','14',
-  'l','34',
-  'e','9',
-  'p','5',
-  'k','26',
-  'z','11',
-  'd','10',
-  's','58',
-  'o','38',
-  'C','54',
-  'j','61',
-  'F','60',
-  'y','41',
-  'S','19',
-
-  'c','13',
-  'u','49',
-  'r','30',
-  'H','55',
-  'n','37',
-  'O','63',
-  'B','22',
-  'U','36',
-  'i','25',
-  'J','17',
-  'E','21',
-  'W','51',
-  'x','42',
-  'Y','3',
-  'R','27',
-  '6','24',
-
-  '@','2',
-  '!','23',
-  '0','8',
-  'Q','20',
-  '9','16',
-  'X','35',
-  '2','45',
-  'w','12',
-  '8','15',
-  'V','52',
-  '4','39',
-  'D','53',
-  '1','62',
-  'I','56',
-  'L','31',
-  'h','33',
-
-  '7','7',
-  'T','4',
-  '3','29',
-  'A','59',
-  '5','40',
-  'P','64',
-  'M','47',
-  'm','6',
-  'Z','46',
-  'G','18',
-  'N','48',
-  'q','57',
-  'K','32',
-  't','50',
-  'v','28',
-  'b','44',
-];
-final List<String> fontWheelHexOrderList = [
-  'a',//'1',
-  'g',//'43',
-  'f',//'14',
-  'l',//'34',
-  'e',//'9',
-  'p',//'5',
-  'k',//'26',
-  'z',//'11',
-  'd',//'10',
-  's',//'58',
-  'o',//'38',
-  'C',//'54',
-  'j',//'61',
-  'F',//'60',
-  'y',//'41',
-  'S',//'19',
-
-  'c',//'13',
-  'u',//'49',
-  'r',//'30',
-  'H',//'55',
-  'n',//'37',
-  'O',//'63',
-  'B',//'22',
-  'U',//'36',
-  'i',//'25',
-  'J',//'17',
-  'E',//'21',
-  'W',//'51',
-  'x',//'42',
-  'Y',//'3',
-  'R',//'27',
-  '6',//'24',
-
-  '@',//'2',
-  '!',//'23',
-  '0',//'8',
-  'Q',//'20',
-  '9',//'16',
-  'X',//'35',
-  '2',//'45',
-  'w',//'12',
-  '8',//'15',
-  'V',//'52',
-  '4',//'39',
-  'D',//'53',
-  '1',//'62',
-  'I',//'56',
-  'L',//'31',
-  'h',//'33',
-
-  '7',//'7',
-  'T',//'4',
-  '3',//'29',
-  'A',//'59',
-  '5',//'40',
-  'P',//'64',
-  'M',//'47',
-  'm',//'6',
-  'Z',//'46',
-  'G',//'18',
-  'N',//'48',
-  'q',//'57',
-  'K',//'32',
-  't',//'50',
-  'v',//'28',
-  'b',//'44',
-];
-
 List<String> revfontWheelHexOrderList = fontWheelHexOrderList.reversed.toList();
 
+final List<String> fontHexMixOrderList = [
+  'a',
+  '1',
+  'g',
+  '43',
+  'f',
+  '14',
+  'l',
+  '34',
+  'e',
+  '9',
+  'p',
+  '5',
+  'k',
+  '26',
+  'z',
+  '11',
+  'd',
+  '10',
+  's',
+  '58',
+  'o',
+  '38',
+  'C',
+  '54',
+  'j',
+  '61',
+  'F',
+  '60',
+  'y',
+  '41',
+  'S',
+  '19',
+  'c',
+  '13',
+  'u',
+  '49',
+  'r',
+  '30',
+  'H',
+  '55',
+  'n',
+  '37',
+  'O',
+  '63',
+  'B',
+  '22',
+  'U',
+  '36',
+  'i',
+  '25',
+  'J',
+  '17',
+  'E',
+  '21',
+  'W',
+  '51',
+  'x',
+  '42',
+  'Y',
+  '3',
+  'R',
+  '27',
+  '6',
+  '24',
+  '@',
+  '2',
+  '!',
+  '23',
+  '0',
+  '8',
+  'Q',
+  '20',
+  '9',
+  '16',
+  'X',
+  '35',
+  '2',
+  '45',
+  'w',
+  '12',
+  '8',
+  '15',
+  'V',
+  '52',
+  '4',
+  '39',
+  'D',
+  '53',
+  '1',
+  '62',
+  'I',
+  '56',
+  'L',
+  '31',
+  'h',
+  '33',
+  '7',
+  '7',
+  'T',
+  '4',
+  '3',
+  '29',
+  'A',
+  '59',
+  '5',
+  '40',
+  'P',
+  '64',
+  'M',
+  '47',
+  'm',
+  '6',
+  'Z',
+  '46',
+  'G',
+  '18',
+  'N',
+  '48',
+  'q',
+  '57',
+  'K',
+  '32',
+  't',
+  '50',
+  'v',
+  '28',
+  'b',
+  '44',
+];
+final List<String> fontWheelHexOrderList = [
+  'a', //'1',
+  'g', //'43',
+  'f', //'14',
+  'l', //'34',
+  'e', //'9',
+  'p', //'5',
+  'k', //'26',
+  'z', //'11',
+  'd', //'10',
+  's', //'58',
+  'o', //'38',
+  'C', //'54',
+  'j', //'61',
+  'F', //'60',
+  'y', //'41',
+  'S', //'19',
+
+  'c', //'13',
+  'u', //'49',
+  'r', //'30',
+  'H', //'55',
+  'n', //'37',
+  'O', //'63',
+  'B', //'22',
+  'U', //'36',
+  'i', //'25',
+  'J', //'17',
+  'E', //'21',
+  'W', //'51',
+  'x', //'42',
+  'Y', //'3',
+  'R', //'27',
+  '6', //'24',
+
+  '@', //'2',
+  '!', //'23',
+  '0', //'8',
+  'Q', //'20',
+  '9', //'16',
+  'X', //'35',
+  '2', //'45',
+  'w', //'12',
+  '8', //'15',
+  'V', //'52',
+  '4', //'39',
+  'D', //'53',
+  '1', //'62',
+  'I', //'56',
+  'L', //'31',
+  'h', //'33',
+
+  '7', //'7',
+  'T', //'4',
+  '3', //'29',
+  'A', //'59',
+  '5', //'40',
+  'P', //'64',
+  'M', //'47',
+  'm', //'6',
+  'Z', //'46',
+  'G', //'18',
+  'N', //'48',
+  'q', //'57',
+  'K', //'32',
+  't', //'50',
+  'v', //'28',
+  'b', //'44',
+];
 
 List<String> revfontHexMixOrderList = fontHexMixOrderList.reversed.toList();
-
 
 final List<int> fontHexNumbersList = [
   1,
@@ -898,7 +966,6 @@ final List<int> fontHexLetterList = [
 
 List<int> revfontHexNumbersList = fontHexNumbersList.reversed.toList();
 
-
 final List<int> orderHexagramsWheel = [
   //qurater mutation complex
   1, 43, 14, 34,
@@ -967,6 +1034,45 @@ final List<Color> topfourcoincolor = [
 
 List<Color> revfourbotcoincolor = botfourcoincolor.reversed.toList();
 List<Color> revfourtopcoincolor = topfourcoincolor.reversed.toList();
+
+List<String> revbotfourzoonimal = botfourzoonimal.reversed.toList();
+
+final List<String> botfourzoonimal = [
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbyellowoctopussy2.png',
+];
+final List<String> topfourzoonimal = [
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbredog2.png',
+  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/camog/zbluedog.png',
+];
 
 final List<Color> botcoincolor = [
   Colors.blue,
@@ -1285,7 +1391,6 @@ final List<int> orderHexagramsToCalulateWheel = [
 
 final List<int> numbers64 = List.generate(64, (i) => i + 1);
 
-
 final List<String> orderHexagramsWheelORIGINAL = [
   //qurater mutation complex
   '1', '43', '14', '34',
@@ -1311,7 +1416,6 @@ final List<String> orderHexagramsWheelORIGINAL = [
   '46', '18', '48', '57',
   '32', '50', '28', '44',
 ];
-
 
 final List<String> hexagramNames = [
   //qurater mutation complex
@@ -3342,19 +3446,19 @@ final List<String> rtimgcoins = [
   'assets/planets/sun.png',
   'assets/coins/complex.png',
   'assets/camog/bluedog.png',
-
-
+  'assets/camog/zbluedog.png',
   'assets/planets/northnode.png',
   'assets/coins/simple.png',
   'assets/camog/greendog.png',
-
+  'assets/camog/zbgreenoctopus.png',
   'assets/planets/southnode.png',
   'assets/coins/breath.png',
   'assets/camog/yellowdog.png',
-
+  'assets/camog/zbyellowoctopussy.png',
   'assets/planets/earth.png',
   'assets/coins/silence.png',
   'assets/camog/reddog.png',
+  'assets/camog/zbredog.png',
 ];
 
 final List<String> rtimgcoinsold = [
@@ -3362,17 +3466,14 @@ final List<String> rtimgcoinsold = [
   'assets/coins/complex.png',
   'assets/plants/mrbluep.png',
   'assets/plants/rotegi.png',
-
   'assets/planets/northnode.png',
   'assets/coins/simple.png',
   'assets/plants/mrgreavo.png',
   'assets/plants/rotav.png',
-
   'assets/planets/southnode.png',
   'assets/coins/breath.png',
   'assets/plants/msyelban.png',
   'assets/plants/rotban.png',
-
   'assets/planets/earth.png',
   'assets/coins/silence.png',
   'assets/plants/msredtom.png',
@@ -3551,11 +3652,11 @@ final List<double> titlesangle = [
 ];
 
 final List<String> mainroutes = [
-  '/rotatesidk',
   '/rotatesilence',
   '/rotatebreath',
   '/rotatesimple',
   '/rotatecomplex',
+  '/rotatesidk',
   //'/rotatecomplexhd',
 ];
 
@@ -3611,13 +3712,13 @@ final List<String> subtitles_old = [
   'I don\'t know',
 ];
 
-
 final List<String> hexNamesList = [
   'מורכב',
   'פשוט',
   'נשימה',
   'שתיקה',
 ];
+
 
 final List<String> hexNamesEngList = [
   'COMPLEX',
@@ -3802,13 +3903,14 @@ final List<DropdownMenuItem<int>> hexDropDownNumbersList =
 }).toList();
 
 final List<DropdownMenuItem<String>> fontHexList =
-    fontHexOrderList.map((String chosenHexagrams) {
+    //fontHexOrderList.map((String chosenHexagrams) {
+    fontWheelHexOrderList.map((String chosenHexagrams) {
   return DropdownMenuItem(
     value: chosenHexagrams,
     child: Text(chosenHexagrams,
         style: const TextStyle(
           color: Colors.black,
-          fontSize: 20.0,
+          fontSize: 35.0,
           fontFamily: 'iChing',
         )),
   );
@@ -3839,14 +3941,11 @@ final List<DropdownMenuItem<String>> iChingFontList =
 }).toList();
 
 final List<DropdownMenuItem<String>> timecoinsDropDownLst =
-timecoinsheb.map((String newtimecoin) {
+    timecoinsheb.map((String newtimecoin) {
   return DropdownMenuItem(
     value: newtimecoin,
     child: Text(newtimecoin,
-        style: const TextStyle(
-          color: Colors.black,
-          fontSize: 15.0
-        )),
+        style: const TextStyle(color: Colors.black, fontSize: 15.0)),
   );
 }).toList();
 
@@ -3855,7 +3954,8 @@ timecoinsheb.map((String newtimecoin) {
 final fontHexagramsMap = fontHexOrderList.asMap();
 final fontHexagramsWheelMap = fontHexNumbersList.asMap();
 
-final List fixedStars  = ['ACAMAR',
+final List fixedStars = [
+  'ACAMAR',
   'ACHERNAR',
   'ACHIRD',
   'ACRAB',
@@ -4144,7 +4244,8 @@ final List fixedStars  = ['ACAMAR',
   'ZUBEN ELAKRIBI',
   'ZUBEN ELGENUBI  (South Scale)',
   'ZUBEN HAKRABI',
-  'ZUBENELSCHEMALI  (North Scale)',];
+  'ZUBENELSCHEMALI  (North Scale)',
+];
 
 // gene keys spectrum of consciousness
 final List spectrumOfWords = [
@@ -4409,4 +4510,3 @@ final List spectrumOfWords = [
   'imagination',
   'illumination',
 ];
-

@@ -1,9 +1,9 @@
-// flutter build apk --split-per-abi --no-tree-shake-icons
+flutter build apk --split-per-abi --no-tree-shake-icons
 
-// flutter build web --web-renderer canvaskit --no-tree-shake-icons
-// firebase deploy
+flutter build web --web-renderer canvaskit --no-tree-shake-icons
+firebase deploy
 
-// flutter build windows
+flutter build windows
 
 
 // old APK build (no 64 bit split)

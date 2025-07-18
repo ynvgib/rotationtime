@@ -20,7 +20,7 @@ class _RotateIDKState extends State<RotateIDK> {
   //final String _title = subtitles[0];
   final String _title = subtitles_heb[0];
 
-  String meditationText = "מדיטציה", camogText = '?!גמלכלב';
+  String meditationText = "מדיטציה", camogText = '!?חתולאיודעת';
   bool isMeditationText = true, isCamogText = true;
 
   @override
@@ -52,7 +52,7 @@ class _RotateIDKState extends State<RotateIDK> {
             icon: const Icon(Icons.close, color: Colors.white),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.grey),
+          backgroundColor: Colors.black),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -80,6 +80,38 @@ class _RotateIDKState extends State<RotateIDK> {
                       ),
                     ),
                   ),
+                  PositionedDirectional(bottom: 10, start: 100,
+                    child: Transform(
+                      transform: Matrix4.rotationY(math.pi),
+                      child: Container(
+                        height: 100,
+                        width: 100,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/camog/zbgreencamel.png'),
+                            fit: BoxFit.scaleDown,
+                          ),
+                          shape: BoxShape.rectangle,
+                        ),
+                      ),
+                    ),
+                  ),
+                  PositionedDirectional(bottom: 40, start: 150,
+                    child: Transform(
+                      transform: Matrix4.rotationY(math.pi),
+                      child: Container(
+                        height: 100,
+                        width: 100,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/camog/zbluecamel.png'),
+                            fit: BoxFit.scaleDown,
+                          ),
+                          shape: BoxShape.rectangle,
+                        ),
+                      ),
+                    ),
+                  ),
                   PositionedDirectional(bottom: 10, end: -100,
                     child: Transform(
                       transform: Matrix4.rotationY(math.pi),
@@ -88,23 +120,7 @@ class _RotateIDKState extends State<RotateIDK> {
                         width: 100,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/camog/mcamel.png'),
-                            fit: BoxFit.scaleDown,
-                          ),
-                          shape: BoxShape.rectangle,
-                        ),
-                      ),
-                    ),
-                  ),
-                  PositionedDirectional(bottom: 10, start: 100,
-                    child: Transform(
-                      transform: Matrix4.rotationZ(3),
-                      child: Container(
-                        height: 100,
-                        width: 100,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/camog/mcamelyellow.png'),
+                            image: AssetImage('assets/camog/zbyellowcamel.png'),
                             fit: BoxFit.scaleDown,
                           ),
                           shape: BoxShape.rectangle,
@@ -113,16 +129,18 @@ class _RotateIDKState extends State<RotateIDK> {
                     ),
                   ),
 
+
+
                 ],
               ),
             ),
             Container(
-              height: 215,
-              width: 215,
+              height: 150,
+              width: 150,
               //margin: const EdgeInsets.only(right: 235, top: 35),
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/camog/dogidqnbglp.gif'),
+                  image: AssetImage('assets/camog/dogdownapp.png'),
                   fit: BoxFit.scaleDown,
                 ),
                 shape: BoxShape.rectangle,
@@ -319,6 +337,17 @@ class _RotateIDKState extends State<RotateIDK> {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/camog/dognamewink.png'),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 2,
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/camog/zblackcat.png'),
                   fit: BoxFit.scaleDown,
                 ),
                 shape: BoxShape.rectangle,
