@@ -821,6 +821,7 @@ Widget buildBookPopUp(BuildContext context) {
     'מאי טי אל גורו גי ומטא גי',
     'From IT to Guruji and Mata G',
     'מילים Lyrics',
+    'בחיפוש אחר מפות',
   ];
   return AlertDialog(
     //title: const Text('36 Transactions'),
@@ -843,6 +844,23 @@ Widget buildBookPopUp(BuildContext context) {
                 ),
                 tooltip: 'Re ID לי קרוע',
               ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, pdfroutes[5]);
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+              child: AutoSizeText(
+                booktitles[5],
+                minFontSize: 15,
+                maxFontSize: 25,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.black),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             ElevatedButton(
               onPressed: () {

@@ -3628,6 +3628,7 @@ final List<String> pdfroutes = [
   '/rotatefitgamhe',
   '/rotatefitgam',
   '/rotatepdf',
+  '/rotateisogch',
 ];
 
 final List<String> pdftitle = [
@@ -3636,6 +3637,8 @@ final List<String> pdftitle = [
   'מאי טי אל גורו גי ומטא גי',
   'From IT to Guruji and Mata G',
   'מילים Lyrics',
+  'בחיפוש אחר מפות',
+
 ];
 
 final List<double> titlesangle = [
@@ -3655,8 +3658,8 @@ final List<String> mainroutes = [
   '/rotatesilence',
   '/rotatebreath',
   '/rotatesimple',
-  '/rotatecomplex',
   '/rotatesidk',
+  '/rotatecomplex',
   //'/rotatecomplexhd',
 ];
 

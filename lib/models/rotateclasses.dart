@@ -146,6 +146,111 @@ class hdCenter {
   hdCenter({this.id, this.name, this.adaptname, this.state});
 }
 
+class ZBCube extends StatelessWidget {
+  const ZBCube({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(0.0, -75.0, 0.0)
+            ..rotateX(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            color: Colors.transparent,
+            height: 135,
+            width: 135,
+            child: CircleAvatar(
+              //radius: 75,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins6lst1[0]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()..translate(0.0, 0.0, 75.0),
+          //..rotateY(-pi / 2),
+          //alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins6lst1[1]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(75.0, 0.0, 0.0)
+            ..rotateY(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins6lst1[3]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(-75.0, 0.0, 0.0)
+            ..rotateY(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins6lst1[2]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(0.0, 75.0, 0.0)
+            ..rotateX(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.black,
+              foregroundImage: AssetImage(coins6lst1[5]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()..translate(0.0, 0.0, -75.0),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins6lst1[4]),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class Cube extends StatelessWidget {
   const Cube({Key? key}) : super(key: key);
 
@@ -176,7 +281,7 @@ class Cube extends StatelessWidget {
           child: Container(
             height: 135,
             width: 135,
-            color: Colors.red,
+            color: Colors.transparent,
             child: CircleAvatar(
               //radius: 15,
               //backgroundColor: Colors.black,
@@ -192,7 +297,7 @@ class Cube extends StatelessWidget {
           child: Container(
             height: 135,
             width: 135,
-            color: Colors.green,
+            color: Colors.transparent,
             child: CircleAvatar(
               //radius: 15,
               //backgroundColor: Colors.black,
@@ -208,7 +313,7 @@ class Cube extends StatelessWidget {
           child: Container(
             height: 135,
             width: 135,
-            color: Colors.yellow,
+            color: Colors.transparent,
             child: CircleAvatar(
               //radius: 15,
               //backgroundColor: Colors.black,
@@ -224,7 +329,7 @@ class Cube extends StatelessWidget {
           child: Container(
             height: 135,
             width: 135,
-            color: Colors.black,
+            color: Colors.transparent,
             child: const CircleAvatar(
               //radius: 15,
               backgroundColor: Colors.black,
@@ -238,7 +343,7 @@ class Cube extends StatelessWidget {
           child: Container(
             height: 135,
             width: 135,
-            color: Colors.indigoAccent,
+            color: Colors.transparent,
             child: CircleAvatar(
               //radius: 15,
               backgroundColor: Colors.transparent,

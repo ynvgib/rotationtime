@@ -10,6 +10,7 @@ import 'package:finallyicanlearn/rotations/rotatecomplex.dart';
 import 'package:finallyicanlearn/rotations/rotatefitgam.dart';
 import 'package:finallyicanlearn/rotations/rotatefitgamhe.dart';
 import 'package:finallyicanlearn/rotations/rotateisog.dart';
+import 'package:finallyicanlearn/rotations/rotateisogch.dart';
 import 'package:finallyicanlearn/rotations/rotateisoghe.dart';
 import 'package:finallyicanlearn/rotations/rotatepdf.dart';
 import 'package:finallyicanlearn/rotations/rotatesimple.dart';
@@ -54,6 +55,7 @@ class RotateMain extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (ctx) => const RotateHome(),
+        pdfroutes[5]: (ctx) => const RotateIsogHeCh(),
         pdfroutes[2]: (ctx) => const RotateFitGamHe(),
         pdfroutes[3]: (ctx) => const RotateFitGam(),
         pdfroutes[0]: (ctx) => const RotateIsogHe(),
@@ -586,6 +588,20 @@ class _RotateHomeState extends State<RotateHome> {
                 ),
                 //new cube
                 const SizedBox(height: 35),
+
+                Container(
+                  height: 150,
+                  width: 150,
+                  alignment: Alignment.center,
+                  child: Transform(
+                      transform: Matrix4.identity()
+                        ..setEntry(3, 2, 0.001)
+                        ..rotateX(_offset.dy * pi / 180)
+                        ..rotateY(_offset.dx * pi / 180)
+                        ..rotateZ(_offset.dx * pi / 180),
+                      child: const ZBCube()),
+                ),
+                const SizedBox(height: 75),
 
                 Container(
                   height: 150,

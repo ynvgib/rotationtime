@@ -5,6 +5,8 @@ import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+
 class RotateIDK extends StatefulWidget {
   const RotateIDK({Key? key}) : super(key: key);
 
@@ -22,6 +24,7 @@ class _RotateIDKState extends State<RotateIDK> {
 
   String meditationText = "מדיטציה", camogText = '!?חתולאיודעת';
   bool isMeditationText = true, isCamogText = true;
+
 
   @override
   Widget build(BuildContext context) {
@@ -353,7 +356,7 @@ class _RotateIDKState extends State<RotateIDK> {
                 shape: BoxShape.rectangle,
               ),
             ),
-            const Divider(thickness: 5, color: Colors.black),
+            //const Divider(thickness: 5, color: Colors.black),
           ],
         ),
       ),

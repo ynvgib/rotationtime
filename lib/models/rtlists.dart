@@ -44,7 +44,6 @@ final List<String> zoocoins = [
   'assets/camog/zbyellowoctopussy2.png',
   'assets/camog/zbgreenoctopus.png',
   'assets/camog/zbluedog.png',
-
 ];
 
 final List<String> zoorotatelst = [
@@ -146,18 +145,23 @@ final List<String> minmaxbasic = [
 ];
 
 final List<String> minmaxnames = [
-  'מקסימום',
-  'מיקי',
-  'מיני',
-  'מינימום',
-];
-
-final List<String> woofgoofcoinslst = [
-  'assets/camog/bluedog.png',
-  'assets/camog/greendog.png',
-  'assets/camog/yellowdog.png',
-  'assets/camog/reddog.png',
-];
+      'מקסימום',
+      'מיקי',
+      'מיני',
+      'מינימום',
+    ],
+    zbzoo4names = [
+      '\"כלב\"',
+      ';אמנון',
+      ',ג\'ולייטה',
+      '.כלבה',
+    ],
+    woofgoofcoinslst = [
+      'assets/camog/bluedog.png',
+      'assets/camog/greendog.png',
+      'assets/camog/yellowdog.png',
+      'assets/camog/reddog.png',
+    ];
 
 final List<String> woofgooffullslst = [
       'assets/camog/snoopyq.gif',

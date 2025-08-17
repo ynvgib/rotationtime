@@ -88,7 +88,7 @@ class _RotateComplexState extends State<RotateComplex> {
   //List<String> coinsHeb4lst = hexNamesList,
   //List<String> newcoinsHeb4lst = newcoinsHeb4lst,
   List<String> coins64List = rtminmic65List,
-      topcoinnamelist = minmaxnames,
+      topcoinnamelist = zbzoo4names,
       midcoinnamelist = newcoinsHeb4lst,
       botcoinnamelist = coinsHeb4lst,
       maincoin = zbrussianames;
@@ -360,7 +360,7 @@ class _RotateComplexState extends State<RotateComplex> {
       isOctocatText = true,
       isDogText = true;
 
-  double opacityLevel = 1.0;
+  double opacityLevel = 1.0, opacityMainLevel = 1.0;
 
   IconData _inbodyicon = Icons.arrow_circle_right,
       _exbodyicon = Icons.arrow_circle_right,
@@ -1237,1392 +1237,1565 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Stack(
-                children: [
-                  PositionedDirectional(
-                    end: 10,
-                    top: 10,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: Container(
-                        height: 80,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(
-                                zoocoins[hdfinaldata.typeid!],
-                                //'assets/camog/dogstwogrey.gif',
-                              ),
-                              opacity: 1.0),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  // pro file - Prefessional Elephant
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: Container(
-                        width: 55,
-                        height: 55,
-                        margin: const EdgeInsets.only(top: 100, right: 60),
-                        //decoration: BoxDecoration(
-                        //   color: Colors.red),
-                        child: Stack(
-                          children: [
-                            Center(
-                              child: Icon(
-                                  IconData(
-                                      rt6iconshex[_planetsdesignList[1].line!],
-                                      fontFamily: 'MaterialIcons'),
-                                  color: Colors.red,
-                                  size: 55),
-                            ),
-                            Center(
-                              child: Text(
-                                _planetsdesignList[1].line!.toString(),
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: timecolor,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: Container(
-                        width: 55,
-                        height: 55,
-                        margin: const EdgeInsets.only(top: 100, right: 5),
-                        child: Stack(
-                          children: [
-                            Center(
-                              child: Icon(
-                                  IconData(
-                                      rt6iconshex[_planetspersonList[1].line!],
-                                      fontFamily: 'MaterialIcons'),
-                                  color: Colors.blue,
-                                  size: 55),
-                            ),
-                            Center(
-                              child: Text(
-                                _planetspersonList[1].line!.toString(),
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: timecolor,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  PositionedDirectional(
-                    end: 5,
-                    top: 140,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                          //color: Colors.black12,
-                          image: DecorationImage(
-                              image: AssetImage(
-                                zooprofiles[_planetspersonList[1].line!],
-                                //familyList[_planetspersonList[1].line!],
-                                //'assets/camog/dogstwogrey.gif',
-                                //'assets/camog/dogstwogrey.gif',
-                              ),
-                              opacity: 1.0),
-                        ),
-                      ),
-                    ),
-                  ),
-                  PositionedDirectional(
-                    end: 55,
-                    top: 140,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(
-                                //familyList[_planetsdesignList[1].line!],
-                                zooprofiles[_planetsdesignList[1].line!],
-                                //'assets/camog/dogstwogrey.gif',
-                              ),
-                              opacity: 1.0),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  PositionedDirectional(
-                    end: 5,
-                    top: 190,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: InkWell(
+              child: Opacity(
+                opacity: opacityMainLevel,
+                child: Stack(
+                  children: [
+                    PositionedDirectional(
+                      end: 10,
+                      top: 10,
+                      child: Opacity(
+                        opacity: opacityLevel,
                         child: Container(
                           height: 80,
                           width: 80,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                  'assets/camog/elephantclock.png',
+                                  zoocoins[hdfinaldata.typeid!],
                                   //'assets/camog/dogstwogrey.gif',
                                 ),
                                 opacity: 1.0),
                           ),
                         ),
-                        onTap: () {
-                          setState(() {
-                            setChartState();
-
-                            if (cardstate == 'zb') {
-                              //print ('hd card state');
-
-                              zbheadstate = headstate;
-                              zbajnastate = ajnastate;
-                              zbthroatstate = throatstate;
-                              zbgstate = gstate;
-                              zbsacralstate = sacralstate;
-                              zbrootstate = rootstate;
-                              zbheartstate = heartstate;
-                              zbspleenstate = spleenstate;
-                              zbsolarstate = solarstate;
-                              cardstate = 'hd';
-
-                              if (headstate == 3) {
-                                headstate = 5;
-                              } else {
-                                headstate = 2;
-                              }
-
-                              if (ajnastate == 3) {
-                                ajnastate = 5;
-                              } else {
-                                ajnastate = 3;
-                              }
-
-                              if (throatstate == 3) {
-                                throatstate = 5;
-                              } else {
-                                throatstate = 6;
-                              }
-
-                              if (gstate == 3) {
-                                gstate = 5;
-                              } else {
-                                gstate = 2;
-                              }
-
-                              if (rootstate == 3) {
-                                rootstate = 5;
-                              } else {
-                                rootstate = 6;
-                              }
-
-                              if (heartstate == 3) {
-                                heartstate = 5;
-                              } else {
-                                heartstate = 1;
-                              }
-
-                              if (sacralstate == 3) {
-                                sacralstate = 5;
-                              } else {
-                                sacralstate = 1;
-                              }
-
-                              if (spleenstate == 3) {
-                                spleenstate = 5;
-                              } else {
-                                spleenstate = 6;
-                              }
-
-                              if (solarstate == 3) {
-                                solarstate = 5;
-                              } else {
-                                solarstate = 6;
-                              }
-                            } else {
-                              //print ('zb card state');
-                              headstate = zbheadstate;
-                              ajnastate = zbajnastate;
-                              throatstate = zbthroatstate;
-                              gstate = zbgstate;
-                              sacralstate = zbsacralstate;
-                              rootstate = zbrootstate;
-                              heartstate = zbheartstate;
-                              spleenstate = zbspleenstate;
-                              solarstate = zbsolarstate;
-                              cardstate = 'zb';
-                            }
-                            for (int i = 0; gatestatelist.length > i; i++) {
-                              //_isBoldList[i] = !_isBoldList[i];
-
-                              switch (gatestatelist[i]) {
-                                case 0:
-                                  gatestatelist[i] = 6;
-                                  break;
-                                case 1:
-                                  break;
-                                case 2:
-                                  gatestatelist[i] = 5;
-                                  break;
-                                case 3:
-                                  gatestatelist[i] = 8;
-                                  break;
-                                case 4:
-                                  break;
-                                case 5:
-                                  gatestatelist[i] = 2;
-                                  break;
-                                case 6:
-                                  gatestatelist[i] = 0;
-                                  break;
-                                case 7:
-                                  break;
-                                case 8:
-                                  gatestatelist[i] = 3;
-                                  break;
-                                default:
-                                  gatestatelist[i] = 0;
-                                  break;
-                              }
-                            }
-                          });
-                        },
                       ),
                     ),
-                  ),
 
-                  // animals
-                  PositionedDirectional(
-                    start: 60,
-                    top: 10,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: InkWell(
+                    // pro file - Prefessional Elephant
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Opacity(
+                        opacity: opacityLevel,
                         child: Container(
-                          height: 70,
-                          width: 70,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                                  'assets/camog/zbgreencamel.png',
+                          width: 55,
+                          height: 55,
+                          margin: const EdgeInsets.only(top: 100, right: 60),
+                          //decoration: BoxDecoration(
+                          //   color: Colors.red),
+                          child: Stack(
+                            children: [
+                              Center(
+                                child: Icon(
+                                    IconData(
+                                        rt6iconshex[_planetsdesignList[1].line!],
+                                        fontFamily: 'MaterialIcons'),
+                                    color: Colors.red,
+                                    size: 55),
+                              ),
+                              Center(
+                                child: Text(
+                                  _planetsdesignList[1].line!.toString(),
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: timecolor,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                opacity: 1.0),
+                              ),
+                            ],
                           ),
                         ),
-                        onTap: () {
-                          setState(() {
-                            setComplexOnly();
-                          });
-                        },
                       ),
                     ),
-                  ),
-                  PositionedDirectional(
-                    start: 60,
-                    top: 100,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: InkWell(
+
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                          width: 55,
+                          height: 55,
+                          margin: const EdgeInsets.only(top: 100, right: 5),
+                          child: Stack(
+                            children: [
+                              Center(
+                                child: Icon(
+                                    IconData(
+                                        rt6iconshex[_planetspersonList[1].line!],
+                                        fontFamily: 'MaterialIcons'),
+                                    color: Colors.blue,
+                                    size: 55),
+                              ),
+                              Center(
+                                child: Text(
+                                  _planetspersonList[1].line!.toString(),
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: timecolor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    PositionedDirectional(
+                      end: 5,
+                      top: 140,
+                      child: Opacity(
+                        opacity: opacityLevel,
                         child: Container(
                           height: 70,
                           width: 70,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
+                            //color: Colors.black12,
                             image: DecorationImage(
                                 image: AssetImage(
-                                  'assets/camog/greendog.png',
+                                  zooprofiles[_planetspersonList[1].line!],
+                                  //familyList[_planetspersonList[1].line!],
+                                  //'assets/camog/dogstwogrey.gif',
                                   //'assets/camog/dogstwogrey.gif',
                                 ),
                                 opacity: 1.0),
                           ),
                         ),
-                        onTap: () {
-                          setState(() {
-                            setSilenceOnly();
-                          });
-                        },
                       ),
                     ),
-                  ),
+                    PositionedDirectional(
+                      end: 55,
+                      top: 140,
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                          height: 70,
+                          width: 70,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                  //familyList[_planetsdesignList[1].line!],
+                                  zooprofiles[_planetsdesignList[1].line!],
+                                  //'assets/camog/dogstwogrey.gif',
+                                ),
+                                opacity: 1.0),
+                          ),
+                        ),
+                      ),
+                    ),
 
-                  // coins
-                  PositionedDirectional(
-                    start: 10,
-                    top: 200,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        child: CarouselSlider(
-                            items: complexSlider,
-                            carouselController: _controlComplexSlider,
-                            options: CarouselOptions(
-                                scrollDirection: Axis.horizontal,
-                                autoPlay: false,
-                                enlargeCenterPage: true,
-                                viewportFraction: 1.0)),
-                      ),
-                    ),
-                  ),
-                  PositionedDirectional(
-                    start: 10,
-                    top: 30,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        child: CarouselSlider(
-                            items: simpleSlider,
-                            carouselController: _controlSimpleSlider,
-                            options: CarouselOptions(
-                                scrollDirection: Axis.horizontal,
-                                autoPlay: false,
-                                enlargeCenterPage: true,
-                                viewportFraction: 1.0)),
-                      ),
-                    ),
-                  ),
-                  PositionedDirectional(
-                    start: 10,
-                    top: 110,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        child: CarouselSlider(
-                            items: breathSlider,
-                            carouselController: _controlBreathSlider,
-                            options: CarouselOptions(
-                                scrollDirection: Axis.horizontal,
-                                autoPlay: false,
-                                enlargeCenterPage: true,
-                                viewportFraction: 1.0)),
-                      ),
-                    ),
-                  ),
-                  PositionedDirectional(
-                    start: 10,
-                    bottom: 30,
-                    child: Opacity(
-                      opacity: opacityLevel,
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        child: CarouselSlider(
-                            items: silenceSlider,
-                            carouselController: _controlSilenceSlider,
-                            options: CarouselOptions(
-                                scrollDirection: Axis.horizontal,
-                                autoPlay: false,
-                                enlargeCenterPage: true,
-                                viewportFraction: 1.0)),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 100, top: 80),
-                      child: RotationTransition(
-                        turns: const AlwaysStoppedAnimation(90 / 360),
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[10]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 85,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 100, bottom: 135),
-                      child: Transform.rotate(
-                        angle: -0.60,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[34]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 140,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 35, top: 168),
-                      child: Transform.rotate(
-                        angle: -1.81,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[26]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 110,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 166, top: 217),
-                      child: Transform.rotate(
-                        angle: -1.81,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[44]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 110,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 115, top: 192),
-                      child: Transform.rotate(
-                        angle: 0.55,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[16]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 123,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 243, top: 295),
-                      child: Transform.rotate(
-                        angle: 0.55,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[48]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 125,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 78, top: 87),
-                      child: Transform.rotate(
-                        angle: -0.8,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[25]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 20,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 105, top: 113),
-                      child: Transform.rotate(
-                        angle: -0.8,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[51]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 20,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 234, top: 215),
-                      child: Transform.rotate(
-                        angle: -0.64,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[37]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 25,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 208, top: 180),
-                      child: Transform.rotate(
-                        angle: -0.64,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[40]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 25,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 82, bottom: 50),
-                      child: Transform.rotate(
-                        angle: -0.42,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[45]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 65,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 122, top: 40),
-                      child: Transform.rotate(
-                        angle: -0.42,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[21]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 50,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 120, top: 224),
-                      child: Transform.rotate(
-                        angle: 0.55,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[20]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 123,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 242, top: 328),
-                      child: Transform.rotate(
-                        angle: 0.55,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[57]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 115,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 121, top: 188),
-                      child: Transform.rotate(
-                        angle: -0.55,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[35]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 123,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 246, top: 290),
-                      child: Transform.rotate(
-                        angle: -0.55,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[36]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 123,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 121, top: 215),
-                      child: Transform.rotate(
-                        angle: -0.55,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[12]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 123,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 239, top: 315),
-                      child: Transform.rotate(
-                        angle: -0.55,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[22]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 115,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 208, bottom: 98),
-                      child: Transform.rotate(
-                        angle: -1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[32]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 70,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 211, bottom: 84),
-                      child: Transform.rotate(
-                        angle: -1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[28]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 70,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 229, bottom: 69),
-                      child: Transform.rotate(
-                        angle: -1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[18]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 80,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 100, bottom: 62),
-                      child: Transform.rotate(
-                        angle: -1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[54]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 80,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 100, bottom: 47),
-                      child: Transform.rotate(
-                        angle: -1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[38]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 80,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 100, bottom: 32),
-                      child: Transform.rotate(
-                        angle: -1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[58]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 80,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 104, bottom: 59),
-                      child: Transform.rotate(
-                        angle: 1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[19]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 75,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 104, bottom: 44),
-                      child: Transform.rotate(
-                        angle: 1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[39]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 75,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 104, bottom: 29),
-                      child: Transform.rotate(
-                        angle: 1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[41]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 75,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 235, bottom: 94),
-                      child: Transform.rotate(
-                        angle: 1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[49]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 80,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 235, bottom: 79),
-                      child: Transform.rotate(
-                        angle: 1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[55]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 80,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 235, bottom: 64),
-                      child: Transform.rotate(
-                        angle: 1.05,
-                        child: CustomPaint(
-                          foregroundPainter:
-                              VerticalGatePainter(gatestate: gatestatelist[30]),
-                          willChange: true,
-                          child: const SizedBox(
-                            height: 80,
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: Transform.rotate(
-                          angle: 0.1,
+                    PositionedDirectional(
+                      end: 5,
+                      top: 190,
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: InkWell(
                           child: Container(
-                            margin:
-                                const EdgeInsets.only(top: 110.0, left: 155.0),
-                            child: CustomPaint(
-                              foregroundPainter: HeartPainter(
-                                  centerstate: heartstate,
-                                  pickcolor: pickedColor),
-                              willChange: true,
-                              child: const SizedBox(
-                                height: 50,
-                                width: 72,
-                              ),
+                            height: 80,
+                            width: 80,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                    'assets/camog/elephantclock.png',
+                                    //'assets/camog/dogstwogrey.gif',
+                                  ),
+                                  opacity: 1.0),
                             ),
                           ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 137, top: 105),
-                          child: ClipOval(
-                            child: Text(
-                              '21',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[21]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[21]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 103, top: 152),
-                          child: ClipOval(
-                            child: Text(
-                              '26',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[26]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[26]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 124, top: 130),
-                          child: ClipOval(
-                            child: Text(
-                              '51',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[51]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[51]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 170, top: 158),
-                          child: ClipOval(
-                            child: Text(
-                              '40',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[40]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[40]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  // solar
+                          onTap: () {
+                            setState(() {
+                              setChartState();
 
-                  Flex(
-                    direction: Axis.vertical,
-                    children: [
-                      const SizedBox(height: 10),
-                      Stack(
-                        children: [
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: SizedBox(
+                              if (cardstate == 'zb') {
+                                //print ('hd card state');
+
+                                zbheadstate = headstate;
+                                zbajnastate = ajnastate;
+                                zbthroatstate = throatstate;
+                                zbgstate = gstate;
+                                zbsacralstate = sacralstate;
+                                zbrootstate = rootstate;
+                                zbheartstate = heartstate;
+                                zbspleenstate = spleenstate;
+                                zbsolarstate = solarstate;
+                                cardstate = 'hd';
+
+                                if (headstate == 3) {
+                                  headstate = 5;
+                                } else {
+                                  headstate = 2;
+                                }
+
+                                if (ajnastate == 3) {
+                                  ajnastate = 5;
+                                } else {
+                                  ajnastate = 3;
+                                }
+
+                                if (throatstate == 3) {
+                                  throatstate = 5;
+                                } else {
+                                  throatstate = 6;
+                                }
+
+                                if (gstate == 3) {
+                                  gstate = 5;
+                                } else {
+                                  gstate = 2;
+                                }
+
+                                if (rootstate == 3) {
+                                  rootstate = 5;
+                                } else {
+                                  rootstate = 6;
+                                }
+
+                                if (heartstate == 3) {
+                                  heartstate = 5;
+                                } else {
+                                  heartstate = 1;
+                                }
+
+                                if (sacralstate == 3) {
+                                  sacralstate = 5;
+                                } else {
+                                  sacralstate = 1;
+                                }
+
+                                if (spleenstate == 3) {
+                                  spleenstate = 5;
+                                } else {
+                                  spleenstate = 6;
+                                }
+
+                                if (solarstate == 3) {
+                                  solarstate = 5;
+                                } else {
+                                  solarstate = 6;
+                                }
+                              } else {
+                                //print ('zb card state');
+                                headstate = zbheadstate;
+                                ajnastate = zbajnastate;
+                                throatstate = zbthroatstate;
+                                gstate = zbgstate;
+                                sacralstate = zbsacralstate;
+                                rootstate = zbrootstate;
+                                heartstate = zbheartstate;
+                                spleenstate = zbspleenstate;
+                                solarstate = zbsolarstate;
+                                cardstate = 'zb';
+                              }
+                              for (int i = 0; gatestatelist.length > i; i++) {
+                                //_isBoldList[i] = !_isBoldList[i];
+
+                                switch (gatestatelist[i]) {
+                                  case 0:
+                                    gatestatelist[i] = 6;
+                                    break;
+                                  case 1:
+                                    break;
+                                  case 2:
+                                    gatestatelist[i] = 5;
+                                    break;
+                                  case 3:
+                                    gatestatelist[i] = 8;
+                                    break;
+                                  case 4:
+                                    break;
+                                  case 5:
+                                    gatestatelist[i] = 2;
+                                    break;
+                                  case 6:
+                                    gatestatelist[i] = 0;
+                                    break;
+                                  case 7:
+                                    break;
+                                  case 8:
+                                    gatestatelist[i] = 3;
+                                    break;
+                                  default:
+                                    gatestatelist[i] = 0;
+                                    break;
+                                }
+                              }
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+
+                    // animals
+                    PositionedDirectional(
+                      start: 60,
+                      top: 10,
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: InkWell(
+                          child: Container(
+                            height: 70,
+                            width: 70,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                    'assets/camog/zbgreencamel.png',
+                                  ),
+                                  opacity: 1.0),
+                            ),
+                          ),
+                          onTap: () {
+                            setState(() {
+                              setComplexOnly();
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    PositionedDirectional(
+                      start: 60,
+                      top: 100,
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: InkWell(
+                          child: Container(
+                            height: 70,
+                            width: 70,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                    'assets/camog/greendog.png',
+                                    //'assets/camog/dogstwogrey.gif',
+                                  ),
+                                  opacity: 1.0),
+                            ),
+                          ),
+                          onTap: () {
+                            setState(() {
+                              setSilenceOnly();
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+
+                    // coins
+                    PositionedDirectional(
+                      start: 10,
+                      top: 200,
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          child: CarouselSlider(
+                              items: complexSlider,
+                              carouselController: _controlComplexSlider,
+                              options: CarouselOptions(
+                                  scrollDirection: Axis.horizontal,
+                                  autoPlay: false,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 1.0)),
+                        ),
+                      ),
+                    ),
+                    PositionedDirectional(
+                      start: 10,
+                      top: 30,
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          child: CarouselSlider(
+                              items: simpleSlider,
+                              carouselController: _controlSimpleSlider,
+                              options: CarouselOptions(
+                                  scrollDirection: Axis.horizontal,
+                                  autoPlay: false,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 1.0)),
+                        ),
+                      ),
+                    ),
+                    PositionedDirectional(
+                      start: 10,
+                      top: 110,
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          child: CarouselSlider(
+                              items: breathSlider,
+                              carouselController: _controlBreathSlider,
+                              options: CarouselOptions(
+                                  scrollDirection: Axis.horizontal,
+                                  autoPlay: false,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 1.0)),
+                        ),
+                      ),
+                    ),
+                    PositionedDirectional(
+                      start: 10,
+                      bottom: 30,
+                      child: Opacity(
+                        opacity: opacityLevel,
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          child: CarouselSlider(
+                              items: silenceSlider,
+                              carouselController: _controlSilenceSlider,
+                              options: CarouselOptions(
+                                  scrollDirection: Axis.horizontal,
+                                  autoPlay: false,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 1.0)),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 100, top: 80),
+                        child: RotationTransition(
+                          turns: const AlwaysStoppedAnimation(90 / 360),
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[10]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 85,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 100, bottom: 135),
+                        child: Transform.rotate(
+                          angle: -0.60,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[34]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 140,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 35, top: 168),
+                        child: Transform.rotate(
+                          angle: -1.81,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[26]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 110,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 166, top: 217),
+                        child: Transform.rotate(
+                          angle: -1.81,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[44]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 110,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 115, top: 192),
+                        child: Transform.rotate(
+                          angle: 0.55,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[16]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 123,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 243, top: 295),
+                        child: Transform.rotate(
+                          angle: 0.55,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[48]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 125,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 78, top: 87),
+                        child: Transform.rotate(
+                          angle: -0.8,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[25]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 20,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 105, top: 113),
+                        child: Transform.rotate(
+                          angle: -0.8,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[51]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 20,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 234, top: 215),
+                        child: Transform.rotate(
+                          angle: -0.64,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[37]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 25,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 208, top: 180),
+                        child: Transform.rotate(
+                          angle: -0.64,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[40]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 25,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 82, bottom: 50),
+                        child: Transform.rotate(
+                          angle: -0.42,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[45]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 65,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 122, top: 40),
+                        child: Transform.rotate(
+                          angle: -0.42,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[21]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 50,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 120, top: 224),
+                        child: Transform.rotate(
+                          angle: 0.55,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[20]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 123,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 242, top: 328),
+                        child: Transform.rotate(
+                          angle: 0.55,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[57]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 115,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 121, top: 188),
+                        child: Transform.rotate(
+                          angle: -0.55,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[35]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 123,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 246, top: 290),
+                        child: Transform.rotate(
+                          angle: -0.55,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[36]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 123,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 121, top: 215),
+                        child: Transform.rotate(
+                          angle: -0.55,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[12]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 123,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 239, top: 315),
+                        child: Transform.rotate(
+                          angle: -0.55,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[22]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 115,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 208, bottom: 98),
+                        child: Transform.rotate(
+                          angle: -1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[32]),
+                            willChange: true,
+                            child: const SizedBox(
                               height: 70,
-                              width: 80,
-                              child: Stack(
-                                children: [
-                                  CustomPaint(
-                                    foregroundPainter: HeadPainter(
-                                        centerstate: headstate,
-                                        pickcolor: pickedColor),
-                                    //centercolorstate: headcolorstate),
-                                    willChange: true,
-                                    child: const SizedBox(
-                                      height: 70,
-                                      width: 80,
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: SizedBox(
-                                      width: 50,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          ClipOval(
-                                            child: Text(
-                                              '64',
-                                              style: TextStyle(
-                                                  backgroundColor:
-                                                      _isBoldList[64]
-                                                          ? Colors.white
-                                                          : Colors.transparent,
-                                                  fontSize: 11, // gatefont
-                                                  fontWeight: _isBoldList[64]
-                                                      ? FontWeight.bold
-                                                      : FontWeight.normal),
-                                            ),
-                                          ),
-                                          ClipOval(
-                                            child: Text(
-                                              '61',
-                                              style: TextStyle(
-                                                  backgroundColor:
-                                                      _isBoldList[61]
-                                                          ? Colors.white
-                                                          : Colors.transparent,
-                                                  fontSize: 11, // gatefont
-                                                  fontWeight: _isBoldList[61]
-                                                      ? FontWeight.bold
-                                                      : FontWeight.normal),
-                                            ),
-                                          ),
-                                          ClipOval(
-                                            child: Text(
-                                              '63',
-                                              style: TextStyle(
-                                                  backgroundColor:
-                                                      _isBoldList[63]
-                                                          ? Colors.white
-                                                          : Colors.transparent,
-                                                  fontSize: 11, // gatefont
-                                                  fontWeight: _isBoldList[63]
-                                                      ? FontWeight.bold
-                                                      : FontWeight.normal),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              width: 5,
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                      // head gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 6,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[64]),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 211, bottom: 84),
+                        child: Transform.rotate(
+                          angle: -1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[28]),
                             willChange: true,
                             child: const SizedBox(
-                              height: 10,
+                              height: 70,
                               width: 5,
                             ),
                           ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[61]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 5,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[63]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 5,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                      //ajna gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 6,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[47]),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 229, bottom: 69),
+                        child: Transform.rotate(
+                          angle: -1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[18]),
                             willChange: true,
                             child: const SizedBox(
-                              height: 10,
+                              height: 80,
                               width: 5,
                             ),
                           ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[24]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 5,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[4]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 5,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                      // ajna
-                      SizedBox(
-                        height: 80,
-                        child: Stack(
-                          children: [
-                            //ajna gates
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0, 20, 0, 0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  CustomPaint(
-                                    foregroundPainter: VerticalGatePainter(
-                                        gatestate: gatestatelist[17]),
-                                    willChange: true,
-                                    child: const SizedBox(
-                                      height: 60,
-                                      width: 5,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 12,
-                                  ),
-                                  CustomPaint(
-                                    foregroundPainter: VerticalGatePainter(
-                                        gatestate: gatestatelist[43]),
-                                    willChange: true,
-                                    child: const SizedBox(
-                                      height: 60,
-                                      width: 5,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 12,
-                                  ),
-                                  CustomPaint(
-                                    foregroundPainter: VerticalGatePainter(
-                                        gatestate: gatestatelist[11]),
-                                    willChange: true,
-                                    child: const SizedBox(
-                                      height: 60,
-                                      width: 5,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 100, bottom: 62),
+                        child: Transform.rotate(
+                          angle: -1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[54]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 80,
+                              width: 5,
                             ),
-                            Align(
-                              alignment: Alignment.topCenter,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 100, bottom: 47),
+                        child: Transform.rotate(
+                          angle: -1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[38]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 80,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 100, bottom: 32),
+                        child: Transform.rotate(
+                          angle: -1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[58]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 80,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 104, bottom: 59),
+                        child: Transform.rotate(
+                          angle: 1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[19]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 75,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 104, bottom: 44),
+                        child: Transform.rotate(
+                          angle: 1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[39]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 75,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 104, bottom: 29),
+                        child: Transform.rotate(
+                          angle: 1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[41]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 75,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 235, bottom: 94),
+                        child: Transform.rotate(
+                          angle: 1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[49]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 80,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 235, bottom: 79),
+                        child: Transform.rotate(
+                          angle: 1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[55]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 80,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 235, bottom: 64),
+                        child: Transform.rotate(
+                          angle: 1.05,
+                          child: CustomPaint(
+                            foregroundPainter:
+                                VerticalGatePainter(gatestate: gatestatelist[30]),
+                            willChange: true,
+                            child: const SizedBox(
+                              height: 80,
+                              width: 5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.center,
+                          child: Transform.rotate(
+                            angle: 0.1,
+                            child: Container(
+                              margin:
+                                  const EdgeInsets.only(top: 110.0, left: 155.0),
                               child: CustomPaint(
-                                foregroundPainter: AjnaPainter(
-                                    centerstate: ajnastate,
+                                foregroundPainter: HeartPainter(
+                                    centerstate: heartstate,
                                     pickcolor: pickedColor),
                                 willChange: true,
                                 child: const SizedBox(
-                                  height: 70,
-                                  width: 80,
+                                  height: 50,
+                                  width: 72,
                                 ),
                               ),
                             ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 137, top: 105),
+                            child: ClipOval(
+                              child: Text(
+                                '21',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[21]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[21]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 103, top: 152),
+                            child: ClipOval(
+                              child: Text(
+                                '26',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[26]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[26]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 124, top: 130),
+                            child: ClipOval(
+                              child: Text(
+                                '51',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[51]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[51]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 170, top: 158),
+                            child: ClipOval(
+                              child: Text(
+                                '40',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[40]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[40]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    // solar
 
-                            Center(
+                    Flex(
+                      direction: Axis.vertical,
+                      children: [
+                        const SizedBox(height: 10),
+                        Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.topCenter,
                               child: SizedBox(
-                                width: 50,
-                                child: Align(
-                                  alignment: Alignment.topCenter,
+                                height: 70,
+                                width: 80,
+                                child: Stack(
+                                  children: [
+                                    CustomPaint(
+                                      foregroundPainter: HeadPainter(
+                                          centerstate: headstate,
+                                          pickcolor: pickedColor),
+                                      //centercolorstate: headcolorstate),
+                                      willChange: true,
+                                      child: const SizedBox(
+                                        height: 70,
+                                        width: 80,
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: SizedBox(
+                                        width: 50,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            ClipOval(
+                                              child: Text(
+                                                '64',
+                                                style: TextStyle(
+                                                    backgroundColor:
+                                                        _isBoldList[64]
+                                                            ? Colors.white
+                                                            : Colors.transparent,
+                                                    fontSize: 11, // gatefont
+                                                    fontWeight: _isBoldList[64]
+                                                        ? FontWeight.bold
+                                                        : FontWeight.normal),
+                                              ),
+                                            ),
+                                            ClipOval(
+                                              child: Text(
+                                                '61',
+                                                style: TextStyle(
+                                                    backgroundColor:
+                                                        _isBoldList[61]
+                                                            ? Colors.white
+                                                            : Colors.transparent,
+                                                    fontSize: 11, // gatefont
+                                                    fontWeight: _isBoldList[61]
+                                                        ? FontWeight.bold
+                                                        : FontWeight.normal),
+                                              ),
+                                            ),
+                                            ClipOval(
+                                              child: Text(
+                                                '63',
+                                                style: TextStyle(
+                                                    backgroundColor:
+                                                        _isBoldList[63]
+                                                            ? Colors.white
+                                                            : Colors.transparent,
+                                                    fontSize: 11, // gatefont
+                                                    fontWeight: _isBoldList[63]
+                                                        ? FontWeight.bold
+                                                        : FontWeight.normal),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        // head gates
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              width: 6,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[64]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[61]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[63]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                          ],
+                        ),
+                        //ajna gates
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              width: 6,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[47]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[24]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[4]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                          ],
+                        ),
+                        // ajna
+                        SizedBox(
+                          height: 80,
+                          child: Stack(
+                            children: [
+                              //ajna gates
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 20, 0, 0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    CustomPaint(
+                                      foregroundPainter: VerticalGatePainter(
+                                          gatestate: gatestatelist[17]),
+                                      willChange: true,
+                                      child: const SizedBox(
+                                        height: 60,
+                                        width: 5,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    CustomPaint(
+                                      foregroundPainter: VerticalGatePainter(
+                                          gatestate: gatestatelist[43]),
+                                      willChange: true,
+                                      child: const SizedBox(
+                                        height: 60,
+                                        width: 5,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    CustomPaint(
+                                      foregroundPainter: VerticalGatePainter(
+                                          gatestate: gatestatelist[11]),
+                                      willChange: true,
+                                      child: const SizedBox(
+                                        height: 60,
+                                        width: 5,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: CustomPaint(
+                                  foregroundPainter: AjnaPainter(
+                                      centerstate: ajnastate,
+                                      pickcolor: pickedColor),
+                                  willChange: true,
+                                  child: const SizedBox(
+                                    height: 70,
+                                    width: 80,
+                                  ),
+                                ),
+                              ),
+
+                              Center(
+                                child: SizedBox(
+                                  width: 50,
+                                  child: Align(
+                                    alignment: Alignment.topCenter,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        ClipOval(
+                                          child: Text(
+                                            '47',
+                                            style: TextStyle(
+                                                backgroundColor: _isBoldList[47]
+                                                    ? Colors.white
+                                                    : Colors.transparent,
+                                                fontSize: 11, // gatefont
+                                                fontWeight: _isBoldList[47]
+                                                    ? FontWeight.bold
+                                                    : FontWeight.normal),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 4),
+                                          child: ClipOval(
+                                            child: Text(
+                                              '24',
+                                              style: TextStyle(
+                                                  backgroundColor: _isBoldList[24]
+                                                      ? Colors.white
+                                                      : Colors.transparent,
+                                                  fontSize: 11, // gatefont
+                                                  fontWeight: _isBoldList[24]
+                                                      ? FontWeight.bold
+                                                      : FontWeight.normal),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 2.0),
+                                          child: ClipOval(
+                                            child: Text(
+                                              '4',
+                                              style: TextStyle(
+                                                  backgroundColor: _isBoldList[4]
+                                                      ? Colors.white
+                                                      : Colors.transparent,
+                                                  fontSize: 11, // gatefont
+                                                  fontWeight: _isBoldList[4]
+                                                      ? FontWeight.bold
+                                                      : FontWeight.normal),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: Container(
+                                  width: 90,
+                                  margin: const EdgeInsets.all(15),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
                                       ClipOval(
                                         child: Text(
-                                          '47',
+                                          '17',
                                           style: TextStyle(
-                                              backgroundColor: _isBoldList[47]
+                                              backgroundColor: _isBoldList[17]
                                                   ? Colors.white
                                                   : Colors.transparent,
                                               fontSize: 11, // gatefont
-                                              fontWeight: _isBoldList[47]
+                                              fontWeight: _isBoldList[17]
                                                   ? FontWeight.bold
                                                   : FontWeight.normal),
                                         ),
                                       ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 4),
-                                        child: ClipOval(
-                                          child: Text(
-                                            '24',
-                                            style: TextStyle(
-                                                backgroundColor: _isBoldList[24]
-                                                    ? Colors.white
-                                                    : Colors.transparent,
-                                                fontSize: 11, // gatefont
-                                                fontWeight: _isBoldList[24]
-                                                    ? FontWeight.bold
-                                                    : FontWeight.normal),
-                                          ),
+                                      ClipOval(
+                                        child: Text(
+                                          '11',
+                                          style: TextStyle(
+                                              backgroundColor: _isBoldList[11]
+                                                  ? Colors.white
+                                                  : Colors.transparent,
+                                              fontSize: 11, // gatefont
+                                              fontWeight: _isBoldList[11]
+                                                  ? FontWeight.bold
+                                                  : FontWeight.normal),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 2.0),
-                                        child: ClipOval(
-                                          child: Text(
-                                            '4',
-                                            style: TextStyle(
-                                                backgroundColor: _isBoldList[4]
-                                                    ? Colors.white
-                                                    : Colors.transparent,
-                                                fontSize: 11, // gatefont
-                                                fontWeight: _isBoldList[4]
-                                                    ? FontWeight.bold
-                                                    : FontWeight.normal),
-                                          ),
-                                        ),
-                                      ),
+                                      )
                                     ],
                                   ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  //width: 11,
+                                  margin: const EdgeInsets.fromLTRB(0, 0, 2, 20),
+                                  child: ClipOval(
+                                    child: Text(
+                                      '43',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[43]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[43]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        //throat gates
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[62]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 15,
+                                width: 5,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[23]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 15,
+                                width: 5,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[56]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 15,
+                                width: 5,
+                              ),
+                            ),
+                          ],
+                        ),
+                        // throat
+                        Stack(
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional.center,
+                              child: CustomPaint(
+                                foregroundPainter: ThroatPainter(
+                                    centerstate: throatstate,
+                                    pickcolor: pickedColor),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 72,
+                                  width: 72,
                                 ),
                               ),
                             ),
                             Align(
                               alignment: Alignment.topCenter,
-                              child: Container(
-                                width: 90,
-                                margin: const EdgeInsets.all(15),
+                              child: SizedBox(
+                                width: 50,
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceAround,
                                   children: [
                                     ClipOval(
                                       child: Text(
-                                        '17',
+                                        '62',
                                         style: TextStyle(
-                                            backgroundColor: _isBoldList[17]
+                                            backgroundColor: _isBoldList[62]
                                                 ? Colors.white
                                                 : Colors.transparent,
                                             fontSize: 11, // gatefont
-                                            fontWeight: _isBoldList[17]
+                                            fontWeight: _isBoldList[62]
                                                 ? FontWeight.bold
                                                 : FontWeight.normal),
                                       ),
                                     ),
                                     ClipOval(
                                       child: Text(
-                                        '11',
+                                        '23',
                                         style: TextStyle(
-                                            backgroundColor: _isBoldList[11]
+                                            backgroundColor: _isBoldList[23]
                                                 ? Colors.white
                                                 : Colors.transparent,
                                             fontSize: 11, // gatefont
-                                            fontWeight: _isBoldList[11]
+                                            fontWeight: _isBoldList[23]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                    ClipOval(
+                                      child: Text(
+                                        '56',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[56]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[56]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: Container(
+                                width: 63,
+                                margin: const EdgeInsets.fromLTRB(0, 12, 1, 0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ClipOval(
+                                      child: Text(
+                                        '16',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[16]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[16]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                    ClipOval(
+                                      child: Text(
+                                        '35',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[35]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[35]
                                                 ? FontWeight.bold
                                                 : FontWeight.normal),
                                       ),
@@ -2634,17 +2807,109 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
+                                width: 63,
+                                //margin: const EdgeInsets.only(top: 30),
+                                margin: const EdgeInsets.fromLTRB(0, 28, 1, 0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ClipOval(
+                                      child: Text(
+                                        '20',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[20]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[20]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                    ClipOval(
+                                      child: Text(
+                                        '12',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[12]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[12]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                width: 45,
+                                margin: const EdgeInsets.fromLTRB(0, 55, 0, 0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ClipOval(
+                                      child: Text(
+                                        '31',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[31]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[31]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                    ClipOval(
+                                      child: Text(
+                                        '8',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[8]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[8]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                    ClipOval(
+                                      child: Text(
+                                        '33',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[33]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[33]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
                                 //width: 11,
-                                margin: const EdgeInsets.fromLTRB(0, 0, 2, 20),
+                                margin: const EdgeInsets.only(top: 43, left: 51),
                                 child: ClipOval(
                                   child: Text(
-                                    '43',
+                                    '45',
                                     style: TextStyle(
-                                        backgroundColor: _isBoldList[43]
+                                        backgroundColor: _isBoldList[45]
                                             ? Colors.white
                                             : Colors.transparent,
                                         fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[43]
+                                        fontWeight: _isBoldList[45]
                                             ? FontWeight.bold
                                             : FontWeight.normal),
                                   ),
@@ -2653,742 +2918,184 @@ class _RotateComplexState extends State<RotateComplex> {
                             ),
                           ],
                         ),
-                      ),
-                      //throat gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[62]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 15,
+                        // throat gates
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
                               width: 5,
                             ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[23]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 15,
-                              width: 5,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[56]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 15,
-                              width: 5,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // throat
-                      Stack(
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional.center,
-                            child: CustomPaint(
-                              foregroundPainter: ThroatPainter(
-                                  centerstate: throatstate,
-                                  pickcolor: pickedColor),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[31]),
                               willChange: true,
                               child: const SizedBox(
-                                height: 72,
-                                width: 72,
+                                height: 20,
+                                width: 5,
                               ),
                             ),
-                          ),
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: SizedBox(
-                              width: 50,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  ClipOval(
-                                    child: Text(
-                                      '62',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[62]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[62]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                  ),
-                                  ClipOval(
-                                    child: Text(
-                                      '23',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[23]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[23]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                  ),
-                                  ClipOval(
-                                    child: Text(
-                                      '56',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[56]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[56]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                  )
-                                ],
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[8]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 20,
+                                width: 5,
                               ),
                             ),
-                          ),
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: Container(
-                              width: 63,
-                              margin: const EdgeInsets.fromLTRB(0, 12, 1, 0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ClipOval(
-                                    child: Text(
-                                      '16',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[16]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[16]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                  ),
-                                  ClipOval(
-                                    child: Text(
-                                      '35',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[35]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[35]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                  )
-                                ],
-                              ),
+                            const SizedBox(
+                              width: 12,
                             ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              width: 63,
-                              //margin: const EdgeInsets.only(top: 30),
-                              margin: const EdgeInsets.fromLTRB(0, 28, 1, 0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ClipOval(
-                                    child: Text(
-                                      '20',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[20]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[20]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                  ),
-                                  ClipOval(
-                                    child: Text(
-                                      '12',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[12]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[12]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              width: 45,
-                              margin: const EdgeInsets.fromLTRB(0, 55, 0, 0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ClipOval(
-                                    child: Text(
-                                      '31',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[31]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[31]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                  ),
-                                  ClipOval(
-                                    child: Text(
-                                      '8',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[8]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[8]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                  ),
-                                  ClipOval(
-                                    child: Text(
-                                      '33',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[33]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[33]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              //width: 11,
-                              margin: const EdgeInsets.only(top: 43, left: 51),
-                              child: ClipOval(
-                                child: Text(
-                                  '45',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[45]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[45]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      // throat gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[31]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 20,
-                              width: 5,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[8]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 20,
-                              width: 5,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[33]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 20,
-                              width: 5,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // g gates
-
-                      SizedBox(
-                        height: 100,
-                        child: Stack(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[7]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 40,
-                                    width: 5,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 12,
-                                ),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[1]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 40,
-                                    width: 5,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 12,
-                                ),
-                                CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[13]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 40,
-                                    width: 5,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    height: 40,
-                                    margin: const EdgeInsets.only(top: 70),
-                                    child: CustomPaint(
-                                      foregroundPainter: VerticalGatePainter(
-                                          gatestate: gatestatelist[15]),
-                                      willChange: true,
-                                      child: const SizedBox(
-                                        height: 40,
-                                        width: 5,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 12,
-                                ),
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    height: 30,
-                                    margin: const EdgeInsets.only(top: 80),
-                                    child: CustomPaint(
-                                      foregroundPainter: VerticalGatePainter(
-                                          gatestate: gatestatelist[2]),
-                                      willChange: true,
-                                      child: const SizedBox(
-                                        height: 30,
-                                        width: 5,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 12,
-                                ),
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    height: 40,
-                                    margin: const EdgeInsets.only(top: 70),
-                                    child: CustomPaint(
-                                      foregroundPainter: VerticalGatePainter(
-                                          gatestate: gatestatelist[46]),
-                                      willChange: true,
-                                      child: const SizedBox(
-                                        height: 40,
-                                        width: 5,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: CustomPaint(
-                                foregroundPainter: GPainter(
-                                    centerstate: gstate,
-                                    pickcolor: pickedColor),
-                                willChange: true,
-                                child: const SizedBox(
-                                  height: 84,
-                                  width: 84,
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: Container(
-                                margin:
-                                    const EdgeInsets.only(right: 30, top: 29),
-                                child: ClipOval(
-                                  child: Text(
-                                    '7',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[7]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[7]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: Container(
-                                margin: const EdgeInsets.only(top: 13),
-                                child: ClipOval(
-                                  child: Text(
-                                    '1',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[1]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[1]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: Container(
-                                margin:
-                                    const EdgeInsets.only(left: 30, top: 29),
-                                child: ClipOval(
-                                  child: Text(
-                                    '13',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[13]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[13]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                margin:
-                                    const EdgeInsets.only(left: 30, bottom: 29),
-                                child: ClipOval(
-                                  child: Text(
-                                    '46',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[46]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[46]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                margin: const EdgeInsets.only(bottom: 13),
-                                child: ClipOval(
-                                  child: Text(
-                                    '2',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[2]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[2]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                margin: const EdgeInsets.only(
-                                    right: 30, bottom: 29),
-                                child: ClipOval(
-                                  child: Text(
-                                    '15',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[15]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[15]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                margin: const EdgeInsets.only(right: 54),
-                                child: ClipOval(
-                                  child: Text(
-                                    '10',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[10]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[10]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                margin: const EdgeInsets.only(left: 54),
-                                child: ClipOval(
-                                  child: Text(
-                                    '25',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[25]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[25]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
-                                  ),
-                                ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[33]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 20,
+                                width: 5,
                               ),
                             ),
                           ],
                         ),
-                      ),
-                      // g to sacral gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[5]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 25,
-                              width: 5,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[14]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 25,
-                              width: 5,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[29]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 25,
-                              width: 5,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Stack(
-                        children: [
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              margin: const EdgeInsets.only(top: 19, right: 78),
-                              child: RotationTransition(
-                                turns: const AlwaysStoppedAnimation(-78 / 360),
-                                child: CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[27]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 35,
-                                    width: 5,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              margin:
-                                  const EdgeInsets.only(top: 12, right: 145),
-                              child: RotationTransition(
-                                turns: const AlwaysStoppedAnimation(-78 / 360),
-                                child: CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[50]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 35,
-                                    width: 5,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                        // g gates
 
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              margin: const EdgeInsets.only(top: 23, left: 80),
-                              child: RotationTransition(
-                                turns: const AlwaysStoppedAnimation(78 / 360),
-                                child: CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[59]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 35,
-                                    width: 5,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              margin: const EdgeInsets.only(top: 16, left: 145),
-                              child: RotationTransition(
-                                turns: const AlwaysStoppedAnimation(78 / 360),
-                                child: CustomPaint(
-                                  foregroundPainter: VerticalGatePainter(
-                                      gatestate: gatestatelist[6]),
-                                  willChange: true,
-                                  child: const SizedBox(
-                                    height: 35,
-                                    width: 5,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          // sacral
-
-                          Stack(
+                        SizedBox(
+                          height: 100,
+                          child: Stack(
                             children: [
-                              Positioned(
-                                left: 138,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  CustomPaint(
+                                    foregroundPainter: VerticalGatePainter(
+                                        gatestate: gatestatelist[7]),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 40,
+                                      width: 5,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 12,
+                                  ),
+                                  CustomPaint(
+                                    foregroundPainter: VerticalGatePainter(
+                                        gatestate: gatestatelist[1]),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 40,
+                                      width: 5,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 12,
+                                  ),
+                                  CustomPaint(
+                                    foregroundPainter: VerticalGatePainter(
+                                        gatestate: gatestatelist[13]),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 40,
+                                      width: 5,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      height: 40,
+                                      margin: const EdgeInsets.only(top: 70),
+                                      child: CustomPaint(
+                                        foregroundPainter: VerticalGatePainter(
+                                            gatestate: gatestatelist[15]),
+                                        willChange: true,
+                                        child: const SizedBox(
+                                          height: 40,
+                                          width: 5,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 12,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      height: 30,
+                                      margin: const EdgeInsets.only(top: 80),
+                                      child: CustomPaint(
+                                        foregroundPainter: VerticalGatePainter(
+                                            gatestate: gatestatelist[2]),
+                                        willChange: true,
+                                        child: const SizedBox(
+                                          height: 30,
+                                          width: 5,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 12,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      height: 40,
+                                      margin: const EdgeInsets.only(top: 70),
+                                      child: CustomPaint(
+                                        foregroundPainter: VerticalGatePainter(
+                                            gatestate: gatestatelist[46]),
+                                        willChange: true,
+                                        child: const SizedBox(
+                                          height: 40,
+                                          width: 5,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Align(
+                                alignment: Alignment.center,
                                 child: CustomPaint(
-                                  foregroundPainter: SacralPainter(
-                                      centerstate: sacralstate,
+                                  foregroundPainter: GPainter(
+                                      centerstate: gstate,
                                       pickcolor: pickedColor),
                                   willChange: true,
                                   child: const SizedBox(
-                                    height: 62,
-                                    width: 65,
+                                    height: 84,
+                                    width: 84,
                                   ),
                                 ),
                               ),
                               Align(
-                                alignment: Alignment.bottomCenter,
+                                alignment: Alignment.topCenter,
                                 child: Container(
-                                  margin: const EdgeInsets.only(left: 35),
+                                  margin:
+                                      const EdgeInsets.only(right: 30, top: 29),
                                   child: ClipOval(
                                     child: Text(
-                                      '29',
+                                      '7',
                                       style: TextStyle(
-                                          backgroundColor: _isBoldList[29]
+                                          backgroundColor: _isBoldList[7]
                                               ? Colors.white
                                               : Colors.transparent,
                                           fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[29]
+                                          fontWeight: _isBoldList[7]
                                               ? FontWeight.bold
                                               : FontWeight.normal),
                                     ),
@@ -3396,34 +3103,38 @@ class _RotateComplexState extends State<RotateComplex> {
                                 ),
                               ),
                               Align(
-                                alignment: Alignment.bottomCenter,
-                                child: ClipOval(
-                                  child: Text(
-                                    '14',
-                                    style: TextStyle(
-                                        backgroundColor: _isBoldList[14]
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                        fontSize: 11, // gatefont
-                                        fontWeight: _isBoldList[14]
-                                            ? FontWeight.bold
-                                            : FontWeight.normal),
+                                alignment: Alignment.topCenter,
+                                child: Container(
+                                  margin: const EdgeInsets.only(top: 13),
+                                  child: ClipOval(
+                                    child: Text(
+                                      '1',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[1]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[1]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
                                   ),
                                 ),
                               ),
                               Align(
-                                alignment: Alignment.bottomCenter,
+                                alignment: Alignment.topCenter,
                                 child: Container(
-                                  margin: const EdgeInsets.only(right: 35),
+                                  margin:
+                                      const EdgeInsets.only(left: 30, top: 29),
                                   child: ClipOval(
                                     child: Text(
-                                      '5',
+                                      '13',
                                       style: TextStyle(
-                                          backgroundColor: _isBoldList[5]
+                                          backgroundColor: _isBoldList[13]
                                               ? Colors.white
                                               : Colors.transparent,
                                           fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[5]
+                                          fontWeight: _isBoldList[13]
                                               ? FontWeight.bold
                                               : FontWeight.normal),
                                     ),
@@ -3434,16 +3145,16 @@ class _RotateComplexState extends State<RotateComplex> {
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
                                   margin:
-                                      const EdgeInsets.only(left: 35, top: 46),
+                                      const EdgeInsets.only(left: 30, bottom: 29),
                                   child: ClipOval(
                                     child: Text(
-                                      '9',
+                                      '46',
                                       style: TextStyle(
-                                          backgroundColor: _isBoldList[9]
+                                          backgroundColor: _isBoldList[46]
                                               ? Colors.white
                                               : Colors.transparent,
                                           fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[9]
+                                          fontWeight: _isBoldList[46]
                                               ? FontWeight.bold
                                               : FontWeight.normal),
                                     ),
@@ -3453,16 +3164,16 @@ class _RotateComplexState extends State<RotateComplex> {
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
-                                  margin: const EdgeInsets.only(top: 46),
+                                  margin: const EdgeInsets.only(bottom: 13),
                                   child: ClipOval(
                                     child: Text(
-                                      '3',
+                                      '2',
                                       style: TextStyle(
-                                          backgroundColor: _isBoldList[3]
+                                          backgroundColor: _isBoldList[2]
                                               ? Colors.white
                                               : Colors.transparent,
                                           fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[3]
+                                          fontWeight: _isBoldList[2]
                                               ? FontWeight.bold
                                               : FontWeight.normal),
                                     ),
@@ -3472,17 +3183,17 @@ class _RotateComplexState extends State<RotateComplex> {
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
-                                  margin:
-                                      const EdgeInsets.only(right: 35, top: 46),
+                                  margin: const EdgeInsets.only(
+                                      right: 30, bottom: 29),
                                   child: ClipOval(
                                     child: Text(
-                                      '42',
+                                      '15',
                                       style: TextStyle(
-                                          backgroundColor: _isBoldList[42]
+                                          backgroundColor: _isBoldList[15]
                                               ? Colors.white
                                               : Colors.transparent,
                                           fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[42]
+                                          fontWeight: _isBoldList[15]
                                               ? FontWeight.bold
                                               : FontWeight.normal),
                                     ),
@@ -3490,19 +3201,18 @@ class _RotateComplexState extends State<RotateComplex> {
                                 ),
                               ),
                               Align(
-                                alignment: Alignment.bottomCenter,
+                                alignment: Alignment.center,
                                 child: Container(
-                                  margin:
-                                      const EdgeInsets.only(right: 46, top: 14),
+                                  margin: const EdgeInsets.only(right: 54),
                                   child: ClipOval(
                                     child: Text(
-                                      '34',
+                                      '10',
                                       style: TextStyle(
-                                          backgroundColor: _isBoldList[34]
+                                          backgroundColor: _isBoldList[10]
                                               ? Colors.white
                                               : Colors.transparent,
                                           fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[34]
+                                          fontWeight: _isBoldList[10]
                                               ? FontWeight.bold
                                               : FontWeight.normal),
                                     ),
@@ -3510,39 +3220,18 @@ class _RotateComplexState extends State<RotateComplex> {
                                 ),
                               ),
                               Align(
-                                alignment: Alignment.bottomCenter,
+                                alignment: Alignment.center,
                                 child: Container(
-                                  margin:
-                                      const EdgeInsets.only(left: 46, top: 30),
+                                  margin: const EdgeInsets.only(left: 54),
                                   child: ClipOval(
                                     child: Text(
-                                      '59',
+                                      '25',
                                       style: TextStyle(
-                                          backgroundColor: _isBoldList[59]
+                                          backgroundColor: _isBoldList[25]
                                               ? Colors.white
                                               : Colors.transparent,
                                           fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[59]
-                                              ? FontWeight.bold
-                                              : FontWeight.normal),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Container(
-                                  margin:
-                                      const EdgeInsets.only(right: 46, top: 30),
-                                  child: ClipOval(
-                                    child: Text(
-                                      '27',
-                                      style: TextStyle(
-                                          backgroundColor: _isBoldList[27]
-                                              ? Colors.white
-                                              : Colors.transparent,
-                                          fontSize: 11, // gatefont
-                                          fontWeight: _isBoldList[27]
+                                          fontWeight: _isBoldList[25]
                                               ? FontWeight.bold
                                               : FontWeight.normal),
                                     ),
@@ -3551,681 +3240,995 @@ class _RotateComplexState extends State<RotateComplex> {
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                      // sacral to root gates
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[42]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
+                        ),
+                        // g to sacral gates
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
                               width: 5,
                             ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[3]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 5,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[9]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 5,
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[53]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 5,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[60]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 5,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          CustomPaint(
-                            foregroundPainter: VerticalGatePainter(
-                                gatestate: gatestatelist[52]),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 10,
-                              width: 5,
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      // root
-                      Stack(
-                        children: [
-                          Align(
-                            alignment: Alignment.center,
-                            child: CustomPaint(
-                              foregroundPainter: RootPainter(
-                                  centerstate: rootstate,
-                                  pickcolor: pickedColor),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[5]),
                               willChange: true,
                               child: const SizedBox(
-                                height: 65,
-                                width: 65,
+                                height: 25,
+                                width: 5,
                               ),
                             ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 35),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[14]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 25,
+                                width: 5,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[29]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 25,
+                                width: 5,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                margin: const EdgeInsets.only(top: 19, right: 78),
+                                child: RotationTransition(
+                                  turns: const AlwaysStoppedAnimation(-78 / 360),
+                                  child: CustomPaint(
+                                    foregroundPainter: VerticalGatePainter(
+                                        gatestate: gatestatelist[27]),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 35,
+                                      width: 5,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                margin:
+                                    const EdgeInsets.only(top: 12, right: 145),
+                                child: RotationTransition(
+                                  turns: const AlwaysStoppedAnimation(-78 / 360),
+                                  child: CustomPaint(
+                                    foregroundPainter: VerticalGatePainter(
+                                        gatestate: gatestatelist[50]),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 35,
+                                      width: 5,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                margin: const EdgeInsets.only(top: 23, left: 80),
+                                child: RotationTransition(
+                                  turns: const AlwaysStoppedAnimation(78 / 360),
+                                  child: CustomPaint(
+                                    foregroundPainter: VerticalGatePainter(
+                                        gatestate: gatestatelist[59]),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 35,
+                                      width: 5,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                margin: const EdgeInsets.only(top: 16, left: 145),
+                                child: RotationTransition(
+                                  turns: const AlwaysStoppedAnimation(78 / 360),
+                                  child: CustomPaint(
+                                    foregroundPainter: VerticalGatePainter(
+                                        gatestate: gatestatelist[6]),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 35,
+                                      width: 5,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            // sacral
+
+                            Stack(
+                              children: [
+                                Positioned(
+                                  left: 138,
+                                  child: CustomPaint(
+                                    foregroundPainter: SacralPainter(
+                                        centerstate: sacralstate,
+                                        pickcolor: pickedColor),
+                                    willChange: true,
+                                    child: const SizedBox(
+                                      height: 62,
+                                      width: 65,
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    margin: const EdgeInsets.only(left: 35),
+                                    child: ClipOval(
+                                      child: Text(
+                                        '29',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[29]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[29]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: ClipOval(
+                                    child: Text(
+                                      '14',
+                                      style: TextStyle(
+                                          backgroundColor: _isBoldList[14]
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                          fontSize: 11, // gatefont
+                                          fontWeight: _isBoldList[14]
+                                              ? FontWeight.bold
+                                              : FontWeight.normal),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    margin: const EdgeInsets.only(right: 35),
+                                    child: ClipOval(
+                                      child: Text(
+                                        '5',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[5]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[5]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    margin:
+                                        const EdgeInsets.only(left: 35, top: 46),
+                                    child: ClipOval(
+                                      child: Text(
+                                        '9',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[9]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[9]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    margin: const EdgeInsets.only(top: 46),
+                                    child: ClipOval(
+                                      child: Text(
+                                        '3',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[3]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[3]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    margin:
+                                        const EdgeInsets.only(right: 35, top: 46),
+                                    child: ClipOval(
+                                      child: Text(
+                                        '42',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[42]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[42]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    margin:
+                                        const EdgeInsets.only(right: 46, top: 14),
+                                    child: ClipOval(
+                                      child: Text(
+                                        '34',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[34]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[34]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    margin:
+                                        const EdgeInsets.only(left: 46, top: 30),
+                                    child: ClipOval(
+                                      child: Text(
+                                        '59',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[59]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[59]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    margin:
+                                        const EdgeInsets.only(right: 46, top: 30),
+                                    child: ClipOval(
+                                      child: Text(
+                                        '27',
+                                        style: TextStyle(
+                                            backgroundColor: _isBoldList[27]
+                                                ? Colors.white
+                                                : Colors.transparent,
+                                            fontSize: 11, // gatefont
+                                            fontWeight: _isBoldList[27]
+                                                ? FontWeight.bold
+                                                : FontWeight.normal),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        // sacral to root gates
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[42]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[3]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[9]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[53]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[60]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            CustomPaint(
+                              foregroundPainter: VerticalGatePainter(
+                                  gatestate: gatestatelist[52]),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 10,
+                                width: 5,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        // root
+                        Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.center,
+                              child: CustomPaint(
+                                foregroundPainter: RootPainter(
+                                    centerstate: rootstate,
+                                    pickcolor: pickedColor),
+                                willChange: true,
+                                child: const SizedBox(
+                                  height: 65,
+                                  width: 65,
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: const EdgeInsets.only(left: 35),
+                                child: ClipOval(
+                                  child: Text(
+                                    '52',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[52]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[52]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
                               child: ClipOval(
                                 child: Text(
-                                  '52',
+                                  '60',
                                   style: TextStyle(
-                                      backgroundColor: _isBoldList[52]
+                                      backgroundColor: _isBoldList[60]
                                           ? Colors.white
                                           : Colors.transparent,
                                       fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[52]
+                                      fontWeight: _isBoldList[60]
                                           ? FontWeight.bold
                                           : FontWeight.normal),
                                 ),
                               ),
                             ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 35),
+                                child: ClipOval(
+                                  child: Text(
+                                    '53',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[53]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[53]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 45, top: 15),
+                                child: ClipOval(
+                                  child: Text(
+                                    '54',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[54]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[54]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 45, top: 30),
+                                child: ClipOval(
+                                  child: Text(
+                                    '38',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[38]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[38]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 45, top: 45),
+                                child: ClipOval(
+                                  child: Text(
+                                    '58',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[58]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[58]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: const EdgeInsets.only(left: 45, top: 15),
+                                child: ClipOval(
+                                  child: Text(
+                                    '19',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[19]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[19]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: const EdgeInsets.only(left: 45, top: 30),
+                                child: ClipOval(
+                                  child: Text(
+                                    '39',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[39]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[39]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: const EdgeInsets.only(left: 45, top: 45),
+                                child: ClipOval(
+                                  child: Text(
+                                    '41',
+                                    style: TextStyle(
+                                        backgroundColor: _isBoldList[41]
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                        fontSize: 11, // gatefont
+                                        fontWeight: _isBoldList[41]
+                                            ? FontWeight.bold
+                                            : FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 240, bottom: 120),
+                            child: CustomPaint(
+                              foregroundPainter: SolarPainter(
+                                  centerstate: solarstate,
+                                  pickcolor: pickedColor),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 80,
+                                width: 80,
+                              ),
+                            ),
                           ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 204, bottom: 153),
                             child: ClipOval(
                               child: Text(
-                                '60',
+                                '6',
                                 style: TextStyle(
-                                    backgroundColor: _isBoldList[60]
+                                    backgroundColor: _isBoldList[6]
                                         ? Colors.white
                                         : Colors.transparent,
                                     fontSize: 11, // gatefont
-                                    fontWeight: _isBoldList[60]
+                                    fontWeight: _isBoldList[6]
                                         ? FontWeight.bold
                                         : FontWeight.normal),
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              margin: const EdgeInsets.only(right: 35),
-                              child: ClipOval(
-                                child: Text(
-                                  '53',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[53]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[53]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              margin: const EdgeInsets.only(right: 45, top: 15),
-                              child: ClipOval(
-                                child: Text(
-                                  '54',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[54]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[54]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              margin: const EdgeInsets.only(right: 45, top: 30),
-                              child: ClipOval(
-                                child: Text(
-                                  '38',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[38]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[38]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              margin: const EdgeInsets.only(right: 45, top: 45),
-                              child: ClipOval(
-                                child: Text(
-                                  '58',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[58]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[58]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 45, top: 15),
-                              child: ClipOval(
-                                child: Text(
-                                  '19',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[19]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[19]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 45, top: 30),
-                              child: ClipOval(
-                                child: Text(
-                                  '39',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[39]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[39]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 45, top: 45),
-                              child: ClipOval(
-                                child: Text(
-                                  '41',
-                                  style: TextStyle(
-                                      backgroundColor: _isBoldList[41]
-                                          ? Colors.white
-                                          : Colors.transparent,
-                                      fontSize: 11, // gatefont
-                                      fontWeight: _isBoldList[41]
-                                          ? FontWeight.bold
-                                          : FontWeight.normal),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 240, bottom: 120),
-                          child: CustomPaint(
-                            foregroundPainter: SolarPainter(
-                                centerstate: solarstate,
-                                pickcolor: pickedColor),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 80,
-                              width: 80,
-                            ),
-                          ),
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 204, bottom: 153),
-                          child: ClipOval(
-                            child: Text(
-                              '6',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[6]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[6]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 251, bottom: 142),
-                          child: ClipOval(
-                            child: Text(
-                              '49',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[49]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[49]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 251, bottom: 164),
-                          child: ClipOval(
-                            child: Text(
-                              '37',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[37]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[37]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 303, bottom: 178),
-                          child: ClipOval(
-                            child: Text(
-                              '36',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[36]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[36]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 303, bottom: 130),
-                          child: ClipOval(
-                            child: Text(
-                              '30',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[30]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[30]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 277, bottom: 170),
-                          child: ClipOval(
-                            child: Text(
-                              '22',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[22]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[22]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 277, bottom: 136),
-                          child: ClipOval(
-                            child: Text(
-                              '55',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[55]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[55]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(right: 240, bottom: 120),
-                          child: CustomPaint(
-                            foregroundPainter: SpleenPainter(
-                                centerstate: spleenstate,
-                                pickcolor: pickedColor),
-                            willChange: true,
-                            child: const SizedBox(
-                              height: 80,
-                              width: 80,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(right: 204, bottom: 153),
-                          child: ClipOval(
-                            child: Text(
-                              '50',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[50]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[50]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(right: 251, bottom: 142),
-                          child: ClipOval(
-                            child: Text(
-                              '32',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[32]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[32]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(right: 251, bottom: 164),
-                          child: ClipOval(
-                            child: Text(
-                              '44',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[44]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[44]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(right: 303, bottom: 178),
-                          child: ClipOval(
-                            child: Text(
-                              '48',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[48]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[48]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(right: 303, bottom: 130),
-                          child: ClipOval(
-                            child: Text(
-                              '18',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[18]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[18]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(right: 277, bottom: 170),
-                          child: ClipOval(
-                            child: Text(
-                              '57',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[57]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[57]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(right: 277, bottom: 136),
-                          child: ClipOval(
-                            child: Text(
-                              '28',
-                              style: TextStyle(
-                                  backgroundColor: _isBoldList[28]
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                  fontSize: 11, // gatefont
-                                  fontWeight: _isBoldList[28]
-                                      ? FontWeight.bold
-                                      : FontWeight.normal),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 20,
-                      height: 20,
-                      margin: const EdgeInsets.only(top: 72, right: 180),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 3,
-                            color: Colors.black,
-                          ),
-                          color: Colors.orange,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: const AutoSizeText('I',
-                          textAlign: TextAlign.center,
-                          minFontSize: 6,
-                          maxFontSize: 10,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-
-                  PositionedDirectional(
-                    start: 10,
-                    bottom: 10,
-                    child: Container(
-                        height: 33,
-                        width: 320,
-                        //decoration: BoxDecoration(
-                        //color: Colors.black,
-                        //border: Border.all(color: Colors.white, width: 3),
-                        //borderRadius: BorderRadius.circular(20),
-                        //),
-                        child: Align(
+                        Align(
                           alignment: Alignment.bottomCenter,
-                          child: Flex(
-                            direction: Axis.horizontal,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              SizedBox(
-                                height: 20,
-                                width: 120,
-                                child: AutoSizeTextField(
-                                    minFontSize: 18,
-                                    readOnly: true,
-                                    decoration: InputDecoration.collapsed(
-                                        hintText: DateFormat.Hm().format(_now),
-                                        hintStyle: const TextStyle(
-                                            color: Colors.grey)),
-                                    textAlign: TextAlign.center,
-                                    controller: _controllerTimePick,
-                                    style: TextStyle(
-                                        //fontSize: 14,
-                                        color: timecolor,
-                                        fontWeight: FontWeight.bold)),
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 251, bottom: 142),
+                            child: ClipOval(
+                              child: Text(
+                                '49',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[49]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[49]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
                               ),
-                              Tooltip(
-                                message: 'dd mm yyyy',
-                                child: SizedBox(
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 251, bottom: 164),
+                            child: ClipOval(
+                              child: Text(
+                                '37',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[37]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[37]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 303, bottom: 178),
+                            child: ClipOval(
+                              child: Text(
+                                '36',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[36]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[36]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 303, bottom: 130),
+                            child: ClipOval(
+                              child: Text(
+                                '30',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[30]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[30]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 277, bottom: 170),
+                            child: ClipOval(
+                              child: Text(
+                                '22',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[22]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[22]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 277, bottom: 136),
+                            child: ClipOval(
+                              child: Text(
+                                '55',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[55]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[55]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin:
+                                const EdgeInsets.only(right: 240, bottom: 120),
+                            child: CustomPaint(
+                              foregroundPainter: SpleenPainter(
+                                  centerstate: spleenstate,
+                                  pickcolor: pickedColor),
+                              willChange: true,
+                              child: const SizedBox(
+                                height: 80,
+                                width: 80,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin:
+                                const EdgeInsets.only(right: 204, bottom: 153),
+                            child: ClipOval(
+                              child: Text(
+                                '50',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[50]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[50]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin:
+                                const EdgeInsets.only(right: 251, bottom: 142),
+                            child: ClipOval(
+                              child: Text(
+                                '32',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[32]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[32]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin:
+                                const EdgeInsets.only(right: 251, bottom: 164),
+                            child: ClipOval(
+                              child: Text(
+                                '44',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[44]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[44]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin:
+                                const EdgeInsets.only(right: 303, bottom: 178),
+                            child: ClipOval(
+                              child: Text(
+                                '48',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[48]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[48]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin:
+                                const EdgeInsets.only(right: 303, bottom: 130),
+                            child: ClipOval(
+                              child: Text(
+                                '18',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[18]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[18]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin:
+                                const EdgeInsets.only(right: 277, bottom: 170),
+                            child: ClipOval(
+                              child: Text(
+                                '57',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[57]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[57]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            margin:
+                                const EdgeInsets.only(right: 277, bottom: 136),
+                            child: ClipOval(
+                              child: Text(
+                                '28',
+                                style: TextStyle(
+                                    backgroundColor: _isBoldList[28]
+                                        ? Colors.white
+                                        : Colors.transparent,
+                                    fontSize: 11, // gatefont
+                                    fontWeight: _isBoldList[28]
+                                        ? FontWeight.bold
+                                        : FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        width: 20,
+                        height: 20,
+                        margin: const EdgeInsets.only(top: 72, right: 180),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 3,
+                              color: Colors.black,
+                            ),
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.circular(15)),
+                        child: const AutoSizeText('I',
+                            textAlign: TextAlign.center,
+                            minFontSize: 6,
+                            maxFontSize: 10,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+
+                    PositionedDirectional(
+                      start: 10,
+                      bottom: 10,
+                      child: Container(
+                          height: 33,
+                          width: 320,
+                          //decoration: BoxDecoration(
+                          //color: Colors.black,
+                          //border: Border.all(color: Colors.white, width: 3),
+                          //borderRadius: BorderRadius.circular(20),
+                          //),
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Flex(
+                              direction: Axis.horizontal,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SizedBox(
                                   height: 20,
-                                  width: 150,
+                                  width: 120,
                                   child: AutoSizeTextField(
                                       minFontSize: 18,
                                       readOnly: true,
                                       decoration: InputDecoration.collapsed(
-                                          //hintText: DateFormat('MM/dd/yyyy').format(_now),
-                                          hintText: _formatDate(_now),
+                                          hintText: DateFormat.Hm().format(_now),
                                           hintStyle: const TextStyle(
                                               color: Colors.grey)),
                                       textAlign: TextAlign.center,
-                                      controller: _controllerDatePick,
+                                      controller: _controllerTimePick,
                                       style: TextStyle(
                                           //fontSize: 14,
                                           color: timecolor,
                                           fontWeight: FontWeight.bold)),
                                 ),
-                              ),
-                            ],
-                          ),
-                        )),
-                  ),
-                ],
+                                Tooltip(
+                                  message: 'dd mm yyyy',
+                                  child: SizedBox(
+                                    height: 20,
+                                    width: 150,
+                                    child: AutoSizeTextField(
+                                        minFontSize: 18,
+                                        readOnly: true,
+                                        decoration: InputDecoration.collapsed(
+                                            //hintText: DateFormat('MM/dd/yyyy').format(_now),
+                                            hintText: _formatDate(_now),
+                                            hintStyle: const TextStyle(
+                                                color: Colors.grey)),
+                                        textAlign: TextAlign.center,
+                                        controller: _controllerDatePick,
+                                        style: TextStyle(
+                                            //fontSize: 14,
+                                            color: timecolor,
+                                            fontWeight: FontWeight.bold)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
 
@@ -4406,20 +4409,47 @@ class _RotateComplexState extends State<RotateComplex> {
               ],
             ),
 
-            Slider(
-              value: opacityLevel,
-              min: 0,
-              max: 1,
-              //divisions: values.length - 1,
-              //label: opacityLevel.toString(),
-              activeColor: Colors.blue,
-              inactiveColor: Colors.red,
-              onChanged: (double value) {
-                setState(() {
-                  opacityLevel = value;
-                });
-              },
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: screenwidth / 3,
+                  child: Slider(
+                    value: opacityMainLevel,
+                    min: 0,
+                    max: 1,
+                    //divisions: values.length - 1,
+                    //label: opacityLevel.toString(),
+                    activeColor: Colors.blue,
+                    inactiveColor: Colors.red,
+                    onChanged: (double value) {
+                      setState(() {
+                        opacityMainLevel = value;
+                      });
+                    },
+                  ),
+                ),
+                Container(
+                  width: screenwidth / 3,
+                  child: Slider(
+                    value: opacityLevel,
+                    min: 0,
+                    max: 1,
+                    //divisions: values.length - 1,
+                    //label: opacityLevel.toString(),
+                    activeColor: Colors.green,
+                    inactiveColor: Colors.yellow,
+                    onChanged: (double value) {
+                      setState(() {
+                        opacityLevel = value;
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
+
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -4434,7 +4464,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     },
                     style:
                         ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                    child: const Text('מעבר-בים',
+                    child: const Text('תנו לאיות',
                         style: TextStyle(fontSize: 13, color: Colors.white))),
                 const SizedBox(width: 20),
                 ElevatedButton(
@@ -5436,6 +5466,170 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: midcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: thirdcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinmidthirdtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: newcoinsHeb4lst[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: secondcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinmidsecondtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      minFontSize: 10,
+                      maxFontSize: 30,
+                      decoration: InputDecoration.collapsed(
+                          hintText: midcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: firstcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinmidfirsttext,
+                      readOnly: true,
+                    )),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: botcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: thirdcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinbotthirdtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: botcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: secondcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinbotsecondtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      minFontSize: 10,
+                      maxFontSize: 30,
+                      decoration: InputDecoration.collapsed(
+                          hintText: botcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: firstcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinbotfirsttext,
+                      readOnly: true,
+                    )),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: topcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: thirdcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopthirdtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: topcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: secondcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopsecondtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      minFontSize: 10,
+                      maxFontSize: 30,
+                      decoration: InputDecoration.collapsed(
+                          hintText: topcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: firstcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopfirsttext,
+                      readOnly: true,
+                    )),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
             Container(
                 width: screenwidth,
                 height: 270,
@@ -5449,15 +5643,7 @@ class _RotateComplexState extends State<RotateComplex> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border(
-                                      top: BorderSide(
-                                          width: 5, color: grampacolor),
-                                      bottom: BorderSide(
-                                          width: 5, color: papacolor)),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(20))),
+                 
                               child: ConstrainedBox(
                                 constraints: const BoxConstraints(
                                   minHeight: 10,
@@ -5625,15 +5811,6 @@ class _RotateComplexState extends State<RotateComplex> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border(
-                                      top:
-                                          BorderSide(width: 5, color: soncolor),
-                                      bottom: BorderSide(
-                                          width: 5, color: daughtercolor)),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(20))),
                               child: ConstrainedBox(
                                 constraints: const BoxConstraints(
                                   minHeight: 10,
@@ -5788,15 +5965,6 @@ class _RotateComplexState extends State<RotateComplex> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border(
-                                      top: BorderSide(
-                                          width: 5, color: mamacolor),
-                                      bottom: BorderSide(
-                                          width: 5, color: grannycolor)),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(20))),
                               child: ConstrainedBox(
                                 constraints: const BoxConstraints(
                                   minHeight: 10,
@@ -5950,174 +6118,11 @@ class _RotateComplexState extends State<RotateComplex> {
                             ),
                           ],
                         ),
+                        
                       ]),
                     ),
                   ],
                 )),
-            const Divider(
-              color: Colors.blue,
-            ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: topcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: thirdcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercointopthirdtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: topcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: secondcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercointopsecondtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      minFontSize: 10,
-                      maxFontSize: 30,
-                      decoration: InputDecoration.collapsed(
-                          hintText: topcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: firstcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercointopfirsttext,
-                      readOnly: true,
-                    )),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: midcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: thirdcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinmidthirdtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: newcoinsHeb4lst[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: secondcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinmidsecondtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      minFontSize: 10,
-                      maxFontSize: 30,
-                      decoration: InputDecoration.collapsed(
-                          hintText: midcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: firstcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinmidfirsttext,
-                      readOnly: true,
-                    )),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: botcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: thirdcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinbotthirdtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: botcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: secondcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinbotsecondtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      minFontSize: 10,
-                      maxFontSize: 30,
-                      decoration: InputDecoration.collapsed(
-                          hintText: botcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: firstcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinbotfirsttext,
-                      readOnly: true,
-                    )),
-              ],
-            ),
             const Divider(
               color: Colors.blue,
             ),
@@ -6132,7 +6137,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 fullwidth: true,
                 decoration: const InputDecoration.collapsed(
                     //hintText: LineSentenceList[0],
-                    hintText: 'ארנק בים',
+                    hintText: 'אוכל לאיות',
                     hintStyle: TextStyle(color: Colors.black)),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
@@ -6158,7 +6163,7 @@ class _RotateComplexState extends State<RotateComplex> {
                   fullwidth: true,
                   decoration: const InputDecoration.collapsed(
                       //hintText: 'Rotating Coins Story',
-                      hintText: 'סיבוב מטבעות',
+                      hintText: 'תוסף לאיות',
                       hintStyle: TextStyle(color: Colors.black)),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
@@ -6169,10 +6174,6 @@ class _RotateComplexState extends State<RotateComplex> {
                   controller: _controllergatelinestory,
                   readOnly: false,
                 )),
-            const Divider(
-              color: Colors.blue,
-            ),
-
             const Divider(
               color: Colors.blue,
             ),
@@ -8216,7 +8217,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   Widget _buildChannelsPopUp(BuildContext context) {
     return AlertDialog(
-      title: const Text('מעבר-בים'),
+      title: const Text('תנו לאיות'),
       content: SingleChildScrollView(
         child: SizedBox(
           width: screenwidth,
@@ -8401,7 +8402,7 @@ class _RotateComplexState extends State<RotateComplex> {
                     );
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: const Text('מעבר-בים',
+                  child: const Text('תנו לאיות',
                       style: TextStyle(fontSize: 13, color: Colors.white))),
             ],
           ),
