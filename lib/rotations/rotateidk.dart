@@ -131,23 +131,61 @@ class _RotateIDKState extends State<RotateIDK> {
                       ),
                     ),
                   ),
-
-
+                  PositionedDirectional(
+                    start: 95,
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      //margin: const EdgeInsets.only(right: 235, top: 35),
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/mink/minkhead.webp'),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.rectangle,
+                      ),
+                    ),
+                  ),
 
                 ],
               ),
             ),
-            Container(
-              height: 150,
-              width: 150,
-              //margin: const EdgeInsets.only(right: 235, top: 35),
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/camog/dogdownapp.png'),
-                  fit: BoxFit.scaleDown,
+            Stack(
+              children: [
+                Align(alignment: Alignment.center,
+                  child: Container(
+                    height: 150,
+                    width: 150,
+                    //margin: const EdgeInsets.only(right: 235, top: 35),
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/camog/dogdownapp.png'),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.rectangle,
+                    ),
+                  ),
                 ),
-                shape: BoxShape.rectangle,
-              ),
+                PositionedDirectional(
+                  start: 1, end: 1,
+                  child: Transform.rotate(
+                    angle: 0.45,
+                    child: Container(
+                      height: 80,
+                      width: 80,
+                      //margin: const EdgeInsets.only(right: 235, top: 35),
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/mink/minkhead.webp'),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.rectangle,
+                      ),
+                    ),
+                  ),
+                ),
+
+              ],
             ),
             const Divider(thickness: 5, color: Colors.black),
             AutoSizeTextField(
@@ -339,7 +377,7 @@ class _RotateIDKState extends State<RotateIDK> {
               width: MediaQuery.of(context).size.width / 2,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/camog/dognamewink.png'),
+                  image: AssetImage('assets/mink/minkhead.webp'),
                   fit: BoxFit.scaleDown,
                 ),
                 shape: BoxShape.rectangle,

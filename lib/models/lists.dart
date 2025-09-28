@@ -209,6 +209,28 @@ final List<String> rtimages = [
 
   'assets/coins/quex.png',
   'assets/coins/quexblack.png',
+
+  // mink pink
+  'assets/mink/minkaha.webp',
+  'assets/mink/minkbrain.webp',
+  'assets/mink/minkdanes.webp',
+  'assets/mink/minkhead.webp',
+  'assets/mink/minkleaf.webp',
+  'assets/mink/minkluzluz.webp',
+  'assets/mink/minkmensacword.webp',
+  'assets/mink/minkmentalword.webp',
+  'assets/mink/minkmmm.webp',
+  'assets/mink/minkmmmdot.webp',
+  'assets/mink/minknmadlik.webp',
+  'assets/mink/minkragilmagil.webp',
+  'assets/mink/minksacralword.webp',
+  'assets/mink/minkunun.webp',
+  'assets/mink/minkununew.webp',
+  'assets/mink/minkupempty.webp',
+  'assets/mink/minkupfull.webp',
+  'assets/mink/minknewblack.webp',
+  'assets/mink/minkupblack.webp',
+  'assets/mink/minkpinklok.png',
 ];
 
 final List familyList = [
@@ -3494,6 +3516,13 @@ final List<String> hexBasicMixList = [
   'assets/coins/silence.png',
 ];
 
+final List<String> pinkMixList = [
+  'assets/mink/minksacralword.webp',
+  'assets/mink/minkaha.webp',
+  'assets/mink/minkmmmdot.webp',
+  'assets/mink/minkununew.webp',
+];
+
 final List<String> basicKitheList = [
   'assets/kithe/blkithe.png',
   'assets/kithe/grkithe.png',
@@ -3532,10 +3561,10 @@ final List<String> titlesname_heb = [
 ];
 
 final List<String> circle_tips = [
-  'לא יודעת מדיטציה',
   '.שתיקה',
   ',נשימה',
   ';פשוט',
+  'לא יודעת מדיטציה',
   '\"מורכב\"',
 ];
 
@@ -3638,7 +3667,6 @@ final List<String> pdftitle = [
   'From IT to Guruji and Mata G',
   'מילים Lyrics',
   'בחיפוש אחר מפות',
-
 ];
 
 final List<double> titlesangle = [
@@ -3721,7 +3749,6 @@ final List<String> hexNamesList = [
   'נשימה',
   'שתיקה',
 ];
-
 
 final List<String> hexNamesEngList = [
   'COMPLEX',
@@ -3829,6 +3856,18 @@ final List<Widget> mixHexagramSlidersNew = hexBasicMixList
         minRadius: 100.0,
         maxRadius: 100.0,
         backgroundImage: AssetImage(hexagrambasicmix)))
+    .toList();
+
+final List<Widget> mixPinkSlider = pinkMixList
+    .map((pinkmix) => Container(
+  //height: 80,
+  //width: 80,
+  decoration: BoxDecoration(
+    image: DecorationImage(
+        image: AssetImage(pinkmix,
+        ),),
+  ),
+),)
     .toList();
 
 final List<Widget> miximageslider = rtimages

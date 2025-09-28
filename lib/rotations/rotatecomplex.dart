@@ -2,11 +2,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:circle_list/circle_list.dart';
-import 'package:country_state_city_pro/country_state_city_pro.dart';
 import 'package:finallyicanlearn/logic/calculatehdchart.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/hdlist.dart';
-import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:finallyicanlearn/services/datetime.dart';
@@ -17,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:sweph/sweph.dart';
+
 
 class RotateComplex extends StatefulWidget {
   const RotateComplex({Key? key}) : super(key: key);
@@ -370,9 +369,11 @@ class _RotateComplexState extends State<RotateComplex> {
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
-    await Sweph.init(epheAssets: [
-      "packages/sweph/assets/ephe/seas_18.se1",
-    ]);
+    await Sweph.init(
+        //modulePath: 'sweph', // where to load module from.
+        epheAssets: [
+        //'packages/sweph/assets/ephe/seas_18.se1']);
+        'packages/sweph/assets/ephe/seas_18.se1']);
     super.setState(() {}); // to update widget data
   }
 
@@ -403,7 +404,7 @@ class _RotateComplexState extends State<RotateComplex> {
           onPressed: () => Navigator.of(context).pop(),
           //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
         ),
-        //backgroundColor: Colors.lightBlue.withOpacity(0.2),
+        //backgroundColor: Colors.lightBlue.withValues(alpha:0.2),
         backgroundColor: Colors.transparent,
         actions: const [
           SizedBox(
@@ -416,54 +417,51 @@ class _RotateComplexState extends State<RotateComplex> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const SizedBox(height: 50),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
+            Stack(
               children: [
-                Container(
-                  //height: MediaQuery.of(context).size.height / 2.2,
-                  height: 150,
-                  width: 150,
-                  //width: MediaQuery.of(context).size.width / 2.2,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        'assets/camog/zbluedog.png',
-                      ),
-                      fit: BoxFit.scaleDown,
-                    ),
-                    shape: BoxShape.circle,
-                      color: Colors.red.withOpacity(0.5)
-                  ),
-                ),
-                SizedBox(width: 5),
-                ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.elliptical(90,50),
-                      bottomRight: Radius.circular(30),
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.zero,
-                    ),
+                Align(
+                  alignment: AlignmentGeometry.center,
                   child: Container(
                     //height: MediaQuery.of(context).size.height / 2.2,
-                    height: 150,
-                    width: 150,
+                    height: 200,
+                    width: 200,
                     //width: MediaQuery.of(context).size.width / 2.2,
                     decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/camog/zbwhitecamel.png',
+                        image: DecorationImage(
+                          image: AssetImage(
+                            //'assets/mink/minkluzluz.webp',
+                            'assets/mink/minkpinklok.png',
+                          ),
+                          fit: BoxFit.scaleDown,
                         ),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
-                        color: Colors.black
+                        shape: BoxShape.circle,
+                        color: Colors.transparent
+                    ),
+                  ),
+                ),
+                PositionedDirectional(
+                  start: 0, end: 0,
+                  top: 50,
+                  child: Container(
+                    //height: MediaQuery.of(context).size.height / 2.2,
+                    height: 110,
+                    width: 110,
+                    //width: MediaQuery.of(context).size.width / 2.2,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(
+                            'assets/mink/minkluzluz.webp',
+                            //'assets/mink/minkpinklok.png',
+                          ),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.circle,
+                        color: Colors.transparent
                     ),
                   ),
                 ),
               ],
             ),
-
 
             Flex(
               direction: Axis.horizontal,
@@ -4942,9 +4940,9 @@ class _RotateComplexState extends State<RotateComplex> {
                           width: 20,
                           margin: const EdgeInsets.all(1),
                           decoration: BoxDecoration(
-                              //color: reversedtopcoincolor[index].withOpacity(wheelgateopacity),
+                              //color: reversedtopcoincolor[index].withValues(alpha:wheelgateopacity),
                               color: wheelgatescolor[index],
-                              //color: wheelgatescolor[index].withOpacity(wheelgateopacity),
+                              //color: wheelgatescolor[index].withValues(alpha:wheelgateopacity),
                               //color: revwheelgatescolor[index],
                               shape: BoxShape.circle,
                               border: Border.all(
@@ -6184,7 +6182,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 minHeight: 10,
                 minWidth: 10,
                 maxHeight: screenheight * 0.25,
-                maxWidth: screenwidth * 0.5,
+                maxWidth: screenwidth,
               ),
               //child: EvolutionContainer(colorinsilence: Colors.red, colorinbreath: Colors.yellow,
               child: Flex(
@@ -6192,7 +6190,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 40,
+                    width: 60,
                     height: 40,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -6206,7 +6204,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             //image: AssetImage(newminmaxcoins[index]),
                             image: AssetImage('assets/camog/zbredog.png'),
                             colorFilter: ColorFilter.mode(
-                              Colors.white.withOpacity(1.0),
+                              Colors.white.withValues(alpha:1.0),
                               BlendMode.modulate,
                             ))),
                   ),
@@ -6221,7 +6219,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       icon: Icon(_inpersonicon, color: _inpersoncolor),
                       onPressed: () {}),
                   Container(
-                    width: 40,
+                    width: 60,
                     height: 40,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -6235,7 +6233,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             //image: AssetImage(newminmaxcoins[index]),
                             image: AssetImage('assets/camog/zbluedog.png'),
                             colorFilter: ColorFilter.mode(
-                              Colors.white.withOpacity(1.0),
+                              Colors.white.withValues(alpha:1.0),
                               BlendMode.modulate,
                             ))),
                   ),
@@ -6248,7 +6246,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 minHeight: 10,
                 minWidth: 10,
                 maxHeight: screenheight * 0.25,
-                maxWidth: screenwidth * 0.5,
+                maxWidth: screenwidth,
               ),
               //child: EvolutionContainer(colorinsilence: Colors.red, colorinbreath: Colors.yellow,
               child: Flex(
@@ -6256,7 +6254,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 40,
+                    width: 60,
                     height: 40,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -6271,7 +6269,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             image: AssetImage(
                                 'assets/camog/zbyellowoctopussy.png'),
                             colorFilter: ColorFilter.mode(
-                              Colors.white.withOpacity(1.0),
+                              Colors.white.withValues(alpha:1.0),
                               BlendMode.modulate,
                             ))),
                   ),
@@ -6288,7 +6286,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
                       ),
                   Container(
-                    width: 40,
+                    width: 60,
                     height: 40,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -6303,7 +6301,7 @@ class _RotateComplexState extends State<RotateComplex> {
                             image:
                                 AssetImage('assets/camog/zbgreenoctopus.png'),
                             colorFilter: ColorFilter.mode(
-                              Colors.white.withOpacity(1.0),
+                              Colors.white.withValues(alpha:1.0),
                               BlendMode.modulate,
                             ))),
                   ),
@@ -7616,7 +7614,7 @@ class _RotateComplexState extends State<RotateComplex> {
                         image: DecorationImage(
                             image: AssetImage(rtimgcoins[index]),
                             colorFilter: ColorFilter.mode(
-                              Colors.white.withOpacity(1.0),
+                              Colors.white.withValues(alpha:1.0),
                               BlendMode.modulate,
                             ))),
                   );
@@ -8575,7 +8573,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   void setChartState() {
     cardcolor = cardcolor == Colors.black
-        ? Colors.black.withOpacity(0.2)
+        ? Colors.black.withValues(alpha:0.2)
         : Colors.black;
 
     timecolor = timecolor == Colors.white ? Colors.black : Colors.white;
@@ -8712,9 +8710,9 @@ class _RotateComplexState extends State<RotateComplex> {
         //revwheelgatescolor[tempdesigngate] = reversedtopcoincolor[tempdesigngate];
         tempcolorgatewheel = reversedHexagramsWheel.indexOf(tempdesigngate);
       setState(() {
-        wheelgatescolor[tempcolorgatewheel] = complexrevtopcoincolor[tempcolorgatewheel].withOpacity(1);
+        wheelgatescolor[tempcolorgatewheel] = complexrevtopcoincolor[tempcolorgatewheel].withValues(alpha:1);
         //wheelgatescolor[tempcolorgatewheel] = reversedtopcoincolor[tempcolorgatewheel];
-        //wheelgatescolor[tempcolorgatewheel] = wheelgatescolor[tempcolorgatewheel].withOpacity(1);
+        //wheelgatescolor[tempcolorgatewheel] = wheelgatescolor[tempcolorgatewheel].withValues(alpha:1);
       });
       }
     }
@@ -8726,9 +8724,9 @@ class _RotateComplexState extends State<RotateComplex> {
       tempcolorgatewheel = reversedHexagramsWheel.indexOf(temppersongate);
       //wheelgateopacity = 1.0;
       setState(() {
-        wheelgatescolor[tempcolorgatewheel] = complexrevtopcoincolor[tempcolorgatewheel].withOpacity(1);
+        wheelgatescolor[tempcolorgatewheel] = complexrevtopcoincolor[tempcolorgatewheel].withValues(alpha:1);
         //wheelgatescolor[tempcolorgatewheel] = reversedtopcoincolor[tempcolorgatewheel];
-        //wheelgatescolor[tempcolorgatewheel] = wheelgatescolor[tempcolorgatewheel].withOpacity(1);
+        //wheelgatescolor[tempcolorgatewheel] = wheelgatescolor[tempcolorgatewheel].withValues(alpha:1);
       });
 
 
@@ -8761,9 +8759,9 @@ class _RotateComplexState extends State<RotateComplex> {
 
       setState(() {
         for (var i = 0; i < wheelgatescolor.length; i++) {
-          //wheelgatescolor[i] = reversedtopcoincolor[i].withOpacity(0.1);
+          //wheelgatescolor[i] = reversedtopcoincolor[i].withValues(alpha:0.1);
           wheelgatescolor[i] = complexrevtopcoincolor[i];
-          wheelgatescolor[i] = wheelgatescolor[i].withOpacity(0.1);
+          wheelgatescolor[i] = wheelgatescolor[i].withValues(alpha:0.1);
         }
       });
 

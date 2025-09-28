@@ -356,7 +356,7 @@ Widget build36PopUp(BuildContext context) {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) =>
-                        _buildManifestChl(context, hdchannelcomplexList),
+                        _buildManifestChl(context, hdchlimpactList_he),
                   );
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
@@ -370,7 +370,7 @@ Widget build36PopUp(BuildContext context) {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) =>
-                        _buildProjectedChl(context, hdchannelbreathList),
+                        _buildProjectedChl(context, hdchlProjectList_he),
                   );
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
@@ -384,7 +384,7 @@ Widget build36PopUp(BuildContext context) {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) =>
-                        _buildGenerateChl(context, hdchannelsilenceList),
+                        _buildGenerateChl(context, hdchlgenerateList_he),
                   );
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
@@ -396,7 +396,7 @@ Widget build36PopUp(BuildContext context) {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) =>
-                        _buildManifestChl(context, hdchannelcomplexList),
+                        _buildManifestChl(context, hdchlimpactList),
                   );
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
@@ -410,7 +410,7 @@ Widget build36PopUp(BuildContext context) {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) =>
-                        _buildProjectedChl(context, hdchannelbreathList),
+                        _buildProjectedChl(context, hdchlProjectList),
                   );
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
@@ -424,7 +424,7 @@ Widget build36PopUp(BuildContext context) {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) =>
-                        _buildGenerateChl(context, hdchannelsilenceList),
+                        _buildGenerateChl(context, hdchlgenerateList),
                   );
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),

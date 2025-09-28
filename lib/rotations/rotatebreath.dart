@@ -42,7 +42,7 @@ class _RotateBreathState extends State<RotateBreath> {
             icon: const Icon(Icons.close, color: Colors.black),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.yellow.withOpacity(0.5)),
+          backgroundColor: Colors.yellow.withValues(alpha:0.5)),
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Column(
@@ -68,108 +68,6 @@ class _RotateBreathState extends State<RotateBreath> {
                 shape: BoxShape.rectangle,
               ),
             ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height / 2.2,
-                  width: MediaQuery.of(context).size.width / 2.2,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(mplantspos[1]),
-                      fit: BoxFit.scaleDown,
-                    ),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
-                Transform.scale(
-                  scaleX: -1,
-                  scaleY: -1,
-                  child: Container(
-                    height: MediaQuery.of(context).size.height / 2.2,
-                    width: MediaQuery.of(context).size.width / 2.2,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(mplantsneg[1]),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height / 5,
-                  width: MediaQuery.of(context).size.width / 3.2,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/camog/mcamelyellow.png'),
-                      fit: BoxFit.scaleDown,
-                    ),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height / 5,
-                  width: MediaQuery.of(context).size.width / 3.2,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/camog/mcamelyellow.png'),
-                      fit: BoxFit.scaleDown,
-                    ),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height / 5,
-                  width: MediaQuery.of(context).size.width / 3.2,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/camog/mcamelyellow.png'),
-                      fit: BoxFit.scaleDown,
-                    ),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
-              ],
-            ),
-            Center(
-              child: AutoSizeTextField(
-                  minFontSize: 10,
-                  readOnly: false,
-                  decoration: const InputDecoration.collapsed(
-                      hintStyle: TextStyle(color: Colors.yellow),
-                      hintText: ''),
-                  textAlign: TextAlign.center,
-                  controller: _controllerComplexText,
-                  style: const TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal)),
-            ),
-            const SizedBox(
-              height: 30.0,
-            ),
-
-            Container(
-              height: MediaQuery.of(context).size.height / 5,
-              width: MediaQuery.of(context).size.width / 3.2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(titlesicon[2]),
-                  fit: BoxFit.scaleDown,
-                ),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-            const Divider(thickness: 5,indent: 5, endIndent: 5,color: Colors.yellow),
-            const SizedBox(height: 10,),
             AutoSizeTextField(
                 minFontSize: 10,
                 maxLines: 1,
@@ -180,10 +78,38 @@ class _RotateBreathState extends State<RotateBreath> {
                 controller: _controllerSimpleText,
                 style: const TextStyle(
                     fontFamily: 'iChing',
-                    fontSize: 30,
+                    fontSize: 80,
                     color: Colors.white,
                     fontWeight: FontWeight.normal)),
-            const Divider(thickness: 5,indent: 5, endIndent: 5,color: Colors.yellow),
+            AutoSizeText(',נשימה',
+                textAlign: TextAlign.center,
+                minFontSize: 65,
+                maxFontSize: 75,
+                style: TextStyle(color: Colors.yellow)),
+            Container(
+              height: MediaQuery.of(context).size.height / 4.5,
+              width: MediaQuery.of(context).size.width / 1.5,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/mink/minkmmmdot.webp',
+                  ),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 4.5,
+              width: MediaQuery.of(context).size.width / 1.5,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(  'assets/mink/minkupempty.webp',
+                  ),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
             const SizedBox(height: 10)
           ],
         ),

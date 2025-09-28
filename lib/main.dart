@@ -21,13 +21,14 @@ import 'package:finallyicanlearn/services/rotatewidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sweph/sweph.dart' hide Visibility;
 import 'package:url_launcher/url_launcher.dart';
 
 // github project link
 // https://www.github.com/ynvgib/rotationtime
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  //WidgetsFlutterBinding.ensureInitialized();
 
   //await Sweph.init(epheAssets: [
   //  "packages/sweph/assets/ephe/seas_18.se1",
@@ -68,7 +69,6 @@ class RotateMain extends StatelessWidget {
         mainroutes[0]: (ctx) => const RotateSilence(),
       },
       theme: ThemeData(
-        dialogBackgroundColor: Colors.white,
         hoverColor: Colors.grey,
       ),
     );
@@ -106,11 +106,16 @@ class _RotateHomeState extends State<RotateHome> {
 
   int _currenttop = 0, _currentmid = 0, _currentbot = 0;
 
-  String mainTitle = "זמן סיבוב", subTitle = "זמנסי בוב";
+  String mainTitle = "זמן סיבוב", subTitle = "זמנסי גמלבן בוב";
   bool isMainTitle = true, isSubTitle = true, isFullScreen = true;
 
-  final List<BoxShape> bordershapelist = [BoxShape.circle, BoxShape.circle, BoxShape.rectangle,
-    BoxShape.circle, BoxShape.rectangle];
+  final List<BoxShape> bordershapelist = [
+    BoxShape.circle,
+    BoxShape.circle,
+    BoxShape.rectangle,
+    BoxShape.circle,
+    BoxShape.rectangle
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +139,7 @@ class _RotateHomeState extends State<RotateHome> {
                   width: MediaQuery.of(context).size.width / 5,
                   margin: const EdgeInsets.all(1.0),
                   decoration: BoxDecoration(
-                    color: Colors.transparent,
+                    color: Colors.white70,
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: IconButton(
@@ -151,7 +156,7 @@ class _RotateHomeState extends State<RotateHome> {
                   width: MediaQuery.of(context).size.width / 5,
                   margin: const EdgeInsets.all(1.0),
                   decoration: BoxDecoration(
-                    color: Colors.transparent,
+                    color: Colors.white70,
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: IconButton(
@@ -165,474 +170,629 @@ class _RotateHomeState extends State<RotateHome> {
                 ),
               ],
             )),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         body: SingleChildScrollView(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(height: 30),
-                InkWell(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.elliptical(50,20),
-                      bottomRight: Radius.circular(10),
-                      topLeft: Radius.circular(5),
-                      topRight: Radius.zero,
-                    ),
-                    child: Container(
-                      height: 60,
-                      width: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        image: DecorationImage(
-                          image: AssetImage(
-                            'assets/camog/zbwhitecamel.png',
-                          ),
-                          fit: BoxFit.scaleDown,
-                        ),
-                        shape: BoxShape.rectangle,
-                      ),
-                    ),
-                  ),
-                  onDoubleTap: () {
-                    //setState(() {
-                    //appBarHeight = 35; // After status bar hidden, make AppBar height smaller
-                    //});
-                    isFullScreen = !isFullScreen;
-                    isFullScreen == true
-                        ? SystemChrome.setEnabledSystemUIMode(
-                            SystemUiMode.manual,
-                            overlays: [SystemUiOverlay.bottom])
-                        : SystemChrome.setEnabledSystemUIMode(
-                            SystemUiMode.immersive);
-                    setState(() {});
-                  },
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  height: 35,
-                  width: MediaQuery.of(context).size.width / 1.5,
-                  margin: const EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      //borderRadius: BorderRadius.circular(25),
-                      shape: BoxShape.rectangle,
-                      boxShadow: const [
-                        BoxShadow(
-                            color: Colors.green,
-                            offset: Offset(4, 4),
-                            blurRadius: 20,
-                            blurStyle: BlurStyle.solid,
-                            spreadRadius: 4),
-                        BoxShadow(
-                            color: Colors.blue,
-                            offset: Offset(-4, -4),
-                            blurRadius: 20,
-                            blurStyle: BlurStyle.solid,
-                            spreadRadius: 5),
-                      ]),
-                  child: FittedBox(
-                    fit: BoxFit.fitHeight,
-                    child: InkWell(
-                      child: AutoSizeText(
-                        //'זמן סיבוב',
-                        mainTitle,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                            height: 1.5),
-                      ),
-                      onTap: () {
-                        isMainTitle = !isMainTitle;
-                        setState(() {
-                          isMainTitle == true
-                              ? mainTitle = "סיבוביצוב"
-                              : mainTitle = "Rotation Time";
-                        });
-                      },
-                    ),
-                  ),
-                ),
-                SizedBox(height: 15),
-                Container(
-                  height: 35,
-                  width: MediaQuery.of(context).size.width / 1.5,
-                  margin: const EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
-                      color: Colors.black87,
-                      borderRadius: BorderRadius.circular(25),
-                      boxShadow: const [
-                        BoxShadow(
-                            color: Colors.red,
-                            offset: Offset(4, 4),
-                            blurRadius: 20,
-                            blurStyle: BlurStyle.solid,
-                            spreadRadius: 2),
-                        BoxShadow(
-                            color: Colors.yellow,
-                            offset: Offset(-4, -4),
-                            blurRadius: 15,
-                            blurStyle: BlurStyle.solid,
-                            spreadRadius: 3),
-                      ]),
-                  child: FittedBox(
-                    fit: BoxFit.fitHeight,
-                    child: InkWell(
-                      child: AutoSizeText(
-                        subTitle,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            height: 2.0),
-                      ),
-                      onTap: () {
-                        isSubTitle = !isSubTitle;
-                        setState(() {
-                          isSubTitle == true
-                              ? subTitle = "זמנסי גנחיוט בוב"
-                              : subTitle = "ZB ZOO BE";
-                        });
-                      },
-                    ),
-                  ),
-                ),
-                const Divider(
-                  color: Colors.transparent,
-                  thickness: 5,
-                ),
-                CircleList(
-                  innerRadius: 35,
-                  childrenPadding: 1,
-                  initialAngle: 1,
-                  origin: const Offset(0, 0),
-                  centerWidget: Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                          border: Border.all(
-                            color: Colors
-                                .black, //                   <--- border color
-                            width: 1.0,
-                          ),
-                          image: DecorationImage(
-                              //image: AssetImage(newminmaxcoins[index]),
-                              image: AssetImage('assets/camog/zblackcat2.png'),
-                              colorFilter: ColorFilter.mode(
-                                Colors.white.withOpacity(1.0),
-                                BlendMode.modulate,
-                              ))),
-                    ),
-                  ),
-                  children: List.generate(5, (index) {
-                    return InkWell(
-                      customBorder: const CircleBorder(),
-                      child: Container(
-                        width: 100,
-                        height: 100,
-                        margin: const EdgeInsets.all(1),
+          child: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+              //colors: [Colors.white, Colors.blue,Colors.green, Colors.yellow,Colors.red, Colors.black,],
+              colors: [Colors.white,Colors.pink,],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            )),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(height: 30),
+                  Flex(direction: Axis.horizontal,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
                         decoration: BoxDecoration(
-                          color: Colors.transparent,
+                            shape: BoxShape.circle,
+                            color: Colors.transparent,
+                            border: Border.all(
+                              color: Colors
+                                  .transparent, //                   <--- border color
+                              width: 1.0,
+                            ),
+                            image: DecorationImage(
+                              //image: AssetImage(newminmaxcoins[index]),
+                                image:
+                                AssetImage('assets/mink/minkupblack.webp',
+                                ),
+                                colorFilter: ColorFilter.mode(
+                                  Colors.white.withValues(alpha:1.0),
+                                  BlendMode.modulate,
+                                ))),
+                      ),
+                      SizedBox(width: 20),
+                      InkWell(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.elliptical(50, 20),
+                            bottomRight: Radius.circular(10),
+                            topLeft: Radius.circular(5),
+                            topRight: Radius.zero,
+                          ),
+                          child: Container(
+                            height: 60,
+                            width: 60,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                //colors: [Colors.white, Colors.blue,Colors.green, Colors.yellow,Colors.red, Colors.black,],
+                                colors: [Colors.white,Colors.white,Colors.white,Colors.pink,Colors.pink,Colors.pink,],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
+                              //color: Colors.pink,
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/camog/mcameline.png',
+                                ),
+                                fit: BoxFit.scaleDown,
+                              ),
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
                         ),
-                        child: Stack(
-                          alignment: Alignment.center,
-                          fit: StackFit.loose,
-                          children: [
-                            Tooltip(
-                              message: circle_tips[index],
-                              textStyle: const TextStyle(
-                                  fontSize: 14, color: Colors.white),
-                              child: Container(
+                        onDoubleTap: () {
+                          //setState(() {
+                          //appBarHeight = 35; // After status bar hidden, make AppBar height smaller
+                          //});
+                          isFullScreen = !isFullScreen;
+                          isFullScreen == true
+                              ? SystemChrome.setEnabledSystemUIMode(
+                                  SystemUiMode.manual,
+                                  overlays: [SystemUiOverlay.bottom])
+                              : SystemChrome.setEnabledSystemUIMode(
+                                  SystemUiMode.immersive);
+                          setState(() {});
+                        },
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    height: 35,
+                    width: MediaQuery.of(context).size.width / 1.5,
+                    margin: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        //borderRadius: BorderRadius.circular(25),
+                        shape: BoxShape.rectangle,
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.green,
+                              offset: Offset(4, 4),
+                              blurRadius: 20,
+                              blurStyle: BlurStyle.solid,
+                              spreadRadius: 4),
+                          BoxShadow(
+                              color: Colors.blue,
+                              offset: Offset(-4, -4),
+                              blurRadius: 20,
+                              blurStyle: BlurStyle.solid,
+                              spreadRadius: 5),
+                        ]),
+                    child: FittedBox(
+                      fit: BoxFit.fitHeight,
+                      child: InkWell(
+                        child: AutoSizeText(
+                          //'זמן סיבוב',
+                          mainTitle,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                              height: 1.5),
+                        ),
+                        onTap: () {
+                          isMainTitle = !isMainTitle;
+                          setState(() {
+                            isMainTitle == true
+                                ? mainTitle = "זמן סיבוב"
+                                : mainTitle = "ZB";
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  Container(
+                    height: 35,
+                    width: MediaQuery.of(context).size.width / 1.5,
+                    margin: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                        color: Colors.black87,
+                        borderRadius: BorderRadius.circular(25),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.red,
+                              offset: Offset(4, 4),
+                              blurRadius: 20,
+                              blurStyle: BlurStyle.solid,
+                              spreadRadius: 2),
+                          BoxShadow(
+                              color: Colors.yellow,
+                              offset: Offset(-4, -4),
+                              blurRadius: 15,
+                              blurStyle: BlurStyle.solid,
+                              spreadRadius: 3),
+                        ]),
+                    child: FittedBox(
+                      fit: BoxFit.fitHeight,
+                      child: InkWell(
+                        child: AutoSizeText(
+                          subTitle,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              height: 2.0),
+                        ),
+                        onTap: () {
+                          isSubTitle = !isSubTitle;
+                          setState(() {
+                            isSubTitle == true
+                                ? subTitle = "זמנסי גמלורוד בוב"
+                                : subTitle = "zmansi PINK CAMEL bob";
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  const Divider(
+                    color: Colors.pink,
+                    thickness: 5,
+                  ),
+                  Stack(
+                    children: [
+                      CircleList(
+                        innerRadius: 45,
+                        childrenPadding: 1,
+                        initialAngle: 1,
+                        origin: const Offset(0, 0),
+                        centerWidget: Center(
+                          child: Stack(
+                            children: [
+                              Container(
                                 decoration: BoxDecoration(
-                                    shape: bordershapelist[index],
+                                    shape: BoxShape.circle,
+                                    color: Colors.black,
                                     border: Border.all(
-                                      color: colors5lst[
-                                          index], //                   <--- border color
-                                      width: 5.0,
+                                      color: Colors
+                                          .black, //                   <--- border color
+                                      width: 1.0,
                                     ),
                                     image: DecorationImage(
-                                        //image: AssetImage(newminmaxcoins[index]),
-                                        image: AssetImage(rotatelst[index]),
+                                      //image: AssetImage(newminmaxcoins[index]),
+                                        image:
+                                        AssetImage( 'assets/mink/minkdanes.webp',
+                                        ),
                                         colorFilter: ColorFilter.mode(
-                                          Colors.white.withOpacity(0.2),
+                                          Colors.white.withValues(alpha:1.0),
                                           BlendMode.modulate,
                                         ))),
                               ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      //image: AssetImage(newminmaxcoins[index]),
-                                      image: AssetImage(zoonewrotatelst[index]),
-                                      colorFilter: ColorFilter.mode(
-                                        Colors.white.withOpacity(1.0),
-                                        BlendMode.modulate,
-                                      ))),
-                            ),
-                          ],
+                              Visibility(
+                                visible: true,
+                                child: PositionedDirectional(
+                                  top: 23,
+                                  end: 18,
+                                  child: Container(
+                                    height: 55,
+                                    width: 55,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: Colors
+                                              .transparent, //                   <--- border color
+                                          width: 1.0,
+                                        ),
+                                        image: DecorationImage(
+                                          //image: AssetImage(newminmaxcoins[index]),
+                                            image:
+                                            AssetImage('assets/camog/zblackcat.png'),
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.white.withValues(alpha:1.0),
+                                              BlendMode.modulate,
+                                            ))),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
+                        children: List.generate(5, (index) {
+                          return Tooltip(
+                            message: circle_tips[index],
+                            textStyle: const TextStyle(
+                                fontSize: 14, color: Colors.white),
+                            child: InkWell(
+                              customBorder: const CircleBorder(),
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                margin: const EdgeInsets.all(1),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors
+                                        .black, //                   <--- border color
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  fit: StackFit.loose,
+                                  children: [
+                                    Visibility(
+                                      visible: false,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            shape: bordershapelist[index],
+                                            border: Border.all(
+                                              //color: colors5lst[index], //                   <--- border color
+                                              color: Colors.pinkAccent, //                   <--- border color
+                                              width: 5.0,
+                                            ),
+                                            image: DecorationImage(
+                                              //image: AssetImage(newminmaxcoins[index]),
+                                                image: AssetImage(rotatelst[index]),
+                                                colorFilter: ColorFilter.mode(
+                                                  Colors.white.withValues(alpha:0.2),
+                                                  BlendMode.modulate,
+                                                ))),
+                                      ),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            //image: AssetImage(newminmaxcoins[index]),
+                                              image:
+                                              AssetImage(pinkrotatelst[index]),
+                                              colorFilter: ColorFilter.mode(
+                                                Colors.white.withValues(alpha:1.0),
+                                                BlendMode.modulate,
+                                              ))),
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                              onTap: () {
+                                Navigator.pushNamed(context, mainroutes[index]);
+                              },
+                            ),
+                          );
+                        }),
                       ),
+                      CircleList(
+                        innerRadius: 45,
+                        childrenPadding: 1,
+                        initialAngle: 1,
+                        origin: const Offset(0, 0),
+                        children: List.generate(5, (index) {
+                          return Tooltip(
+                            message: circle_tips[index],
+                            textStyle: const TextStyle(
+                                fontSize: 14, color: Colors.white),
+                            child: InkWell(
+                              //customBorder: const Border(),
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                margin: const EdgeInsets.all(1),
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  shape: BoxShape.rectangle,
+                                  border: Border.all(
+                                    color: Colors
+                                        .transparent, //                   <--- border color
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  fit: StackFit.loose,
+                                  children: [
+                                    Visibility(
+                                      visible: true,
+                                      child: PositionedDirectional(
+                                        bottom: 20,
+                                        //start: 1,
+                                        child: Container(
+                                          height: 75,
+                                          width: 75,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                //image: AssetImage(newminmaxcoins[index]),
+                                                  image:
+                                                  AssetImage(zoonewrotatelst[index]),
+                                                  colorFilter: ColorFilter.mode(
+                                                    Colors.white.withValues(alpha:1.0),
+                                                    BlendMode.modulate,
+                                                  ))),
+                                        ),
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                              onTap: () {
+                                Navigator.pushNamed(context, mainroutes[index]);
+                              },
+                            ),
+                          );
+                        }),
+                      ),
+
+
+                    ],
+                  ),
+
+                  const Divider(
+                    color: Colors.white,
+                    thickness: 5,
+                  ),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: 10,
+                      minWidth: 10,
+                      maxHeight: screenheight / 7.5,
+                      //maxWidth: screenwidth * 0.5,
+                    ),
+                    child: CarouselSlider(
+                      //items: mixHexagramSlidersNew,
+                      items: sixSlider,
+                      carouselController: _controllersix,
+                      options: CarouselOptions(
+                          initialPage: 5,
+                          autoPlay: false,
+                          enlargeCenterPage: true,
+                          aspectRatio: 3,
+                          onPageChanged: (indextop, reason) {
+                            setState(() {
+                              _currenttop = indextop;
+                            });
+                          }),
+                    ),
+                  ),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: 10,
+                      minWidth: 10,
+                      maxHeight: screenheight / 7.5,
+                      //maxWidth: screenwidth * 0.5,
+                    ),
+                    child: CarouselSlider(
+                      //items: mixHexagramSlidersNew,
+                      items: sixSlider,
+                      carouselController: _controllerfive,
+                      options: CarouselOptions(
+                          initialPage: 4,
+                          autoPlay: false,
+                          enlargeCenterPage: true,
+                          aspectRatio: 3,
+                          onPageChanged: (indexmid, reason) {
+                            setState(() {
+                              _currentmid = indexmid;
+                            });
+                          }),
+                    ),
+                  ),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: 10,
+                      minWidth: 10,
+                      maxHeight: screenheight / 7.5,
+                      //maxWidth: screenwidth * 0.5,
+                    ),
+                    child: CarouselSlider(
+                      //items: mixHexagramSlidersNew,
+                      items: sixSlider,
+                      carouselController: _controllerfour,
+                      options: CarouselOptions(
+                          initialPage: 3,
+                          autoPlay: false,
+                          enlargeCenterPage: true,
+                          aspectRatio: 3,
+                          onPageChanged: (indexbot, reason) {
+                            setState(() {
+                              _currentbot = indexbot;
+                            });
+                          }),
+                    ),
+                  ),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: 10,
+                      minWidth: 10,
+                      maxHeight: screenheight / 7.5,
+                      //maxWidth: screenwidth * 0.5,
+                    ),
+                    child: CarouselSlider(
+                      //items: mixHexagramSlidersNew,
+                      items: sixSlider,
+                      carouselController: _controllerthree,
+                      options: CarouselOptions(
+                          initialPage: 8,
+                          autoPlay: false,
+                          enlargeCenterPage: true,
+                          aspectRatio: 3,
+                          onPageChanged: (indextop, reason) {
+                            setState(() {
+                              _currenttop = indextop;
+                            });
+                          }),
+                    ),
+                  ),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: 10,
+                      minWidth: 10,
+                      maxHeight: screenheight / 7.5,
+                      //maxWidth: screenwidth * 0.5,
+                    ),
+                    child: CarouselSlider(
+                      //items: mixHexagramSlidersNew,
+                      items: sixSlider,
+                      carouselController: _controllertwo,
+                      options: CarouselOptions(
+                          initialPage: 7,
+                          autoPlay: false,
+                          enlargeCenterPage: true,
+                          aspectRatio: 3,
+                          onPageChanged: (indexmid, reason) {
+                            setState(() {
+                              _currentmid = indexmid;
+                            });
+                          }),
+                    ),
+                  ),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: 10,
+                      minWidth: 10,
+                      maxHeight: screenheight / 7.5,
+                      //maxWidth: screenwidth * 0.5,
+                    ),
+                    child: CarouselSlider(
+                      //items: mixHexagramSlidersNew,
+                      items: sixSlider,
+                      carouselController: _controllerone,
+                      options: CarouselOptions(
+                          initialPage: 6,
+                          autoPlay: false,
+                          enlargeCenterPage: true,
+                          aspectRatio: 3,
+                          onPageChanged: (indexbot, reason) {
+                            setState(() {
+                              _currentbot = indexbot;
+                            });
+                          }),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  const Divider(
+                    color: Colors.transparent,
+                    thickness: 5,
+                  ),
+                  InkWell(
+                      hoverColor: Colors.black12,
+                      child: Container(
+                          height: MediaQuery.of(context).size.height / 4,
+                          width: MediaQuery.of(context).size.width / 3,
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: Stack(
+                            children: [
+                              PositionedDirectional(
+                                end: 5,
+                                bottom: 0,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 6,
+                                  width: MediaQuery.of(context).size.width / 5,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/camog/dogatapp.gif'),
+                                      fit: BoxFit.scaleDown,
+                                    ),
+                                    shape: BoxShape.rectangle,
+                                  ),
+                                ),
+                              ),
+                              PositionedDirectional(
+                                start: 5,
+                                top: 0,
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 8,
+                                  width: MediaQuery.of(context).size.width / 6,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image:
+                                          AssetImage('assets/coins/camel.png'),
+                                      fit: BoxFit.scaleDown,
+                                    ),
+                                    shape: BoxShape.rectangle,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )),
                       onTap: () {
-                        Navigator.pushNamed(context, mainroutes[index]);
-                      },
-                    );
-                  }),
-                ),
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              buildBookPopUp(context),
+                        );
+                      }),
+                  const Divider(
+                    color: Colors.transparent,
+                    thickness: 5,
+                  ),
+                  //new cube
+                  const SizedBox(height: 35),
 
-                const Divider(
-                  color: Colors.transparent,
-                  thickness: 5,
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 10,
-                    minWidth: 10,
-                    maxHeight: screenheight / 7.5,
-                    //maxWidth: screenwidth * 0.5,
+                  Container(
+                    height: 150,
+                    width: 150,
+                    alignment: Alignment.center,
+                    child: Transform(
+                        transform: Matrix4.identity()
+                          ..setEntry(3, 2, 0.001)
+                          ..rotateX(_offset.dy * pi / 180)
+                          ..rotateY(_offset.dx * pi / 180)
+                          ..rotateZ(_offset.dx * pi / 180),
+                        child: const ZBCube()),
                   ),
-                  child: CarouselSlider(
-                    //items: mixHexagramSlidersNew,
-                    items: sixSlider,
-                    carouselController: _controllersix,
-                    options: CarouselOptions(
-                        initialPage: 5,
-                        autoPlay: false,
-                        enlargeCenterPage: true,
-                        aspectRatio: 3,
-                        onPageChanged: (indextop, reason) {
-                          setState(() {
-                            _currenttop = indextop;
-                          });
-                        }),
-                  ),
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 10,
-                    minWidth: 10,
-                    maxHeight: screenheight / 7.5,
-                    //maxWidth: screenwidth * 0.5,
-                  ),
-                  child: CarouselSlider(
-                    //items: mixHexagramSlidersNew,
-                    items: sixSlider,
-                    carouselController: _controllerfive,
-                    options: CarouselOptions(
-                        initialPage: 4,
-                        autoPlay: false,
-                        enlargeCenterPage: true,
-                        aspectRatio: 3,
-                        onPageChanged: (indexmid, reason) {
-                          setState(() {
-                            _currentmid = indexmid;
-                          });
-                        }),
-                  ),
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 10,
-                    minWidth: 10,
-                    maxHeight: screenheight / 7.5,
-                    //maxWidth: screenwidth * 0.5,
-                  ),
-                  child: CarouselSlider(
-                    //items: mixHexagramSlidersNew,
-                    items: sixSlider,
-                    carouselController: _controllerfour,
-                    options: CarouselOptions(
-                        initialPage: 3,
-                        autoPlay: false,
-                        enlargeCenterPage: true,
-                        aspectRatio: 3,
-                        onPageChanged: (indexbot, reason) {
-                          setState(() {
-                            _currentbot = indexbot;
-                          });
-                        }),
-                  ),
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 10,
-                    minWidth: 10,
-                    maxHeight: screenheight / 7.5,
-                    //maxWidth: screenwidth * 0.5,
-                  ),
-                  child: CarouselSlider(
-                    //items: mixHexagramSlidersNew,
-                    items: sixSlider,
-                    carouselController: _controllerthree,
-                    options: CarouselOptions(
-                        initialPage: 8,
-                        autoPlay: false,
-                        enlargeCenterPage: true,
-                        aspectRatio: 3,
-                        onPageChanged: (indextop, reason) {
-                          setState(() {
-                            _currenttop = indextop;
-                          });
-                        }),
-                  ),
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 10,
-                    minWidth: 10,
-                    maxHeight: screenheight / 7.5,
-                    //maxWidth: screenwidth * 0.5,
-                  ),
-                  child: CarouselSlider(
-                    //items: mixHexagramSlidersNew,
-                    items: sixSlider,
-                    carouselController: _controllertwo,
-                    options: CarouselOptions(
-                        initialPage: 7,
-                        autoPlay: false,
-                        enlargeCenterPage: true,
-                        aspectRatio: 3,
-                        onPageChanged: (indexmid, reason) {
-                          setState(() {
-                            _currentmid = indexmid;
-                          });
-                        }),
-                  ),
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 10,
-                    minWidth: 10,
-                    maxHeight: screenheight / 7.5,
-                    //maxWidth: screenwidth * 0.5,
-                  ),
-                  child: CarouselSlider(
-                    //items: mixHexagramSlidersNew,
-                    items: sixSlider,
-                    carouselController: _controllerone,
-                    options: CarouselOptions(
-                        initialPage: 6,
-                        autoPlay: false,
-                        enlargeCenterPage: true,
-                        aspectRatio: 3,
-                        onPageChanged: (indexbot, reason) {
-                          setState(() {
-                            _currentbot = indexbot;
-                          });
-                        }),
-                  ),
-                ),
-                SizedBox(height: 10),
-                const Divider(
-                  color: Colors.transparent,
-                  thickness: 5,
-                ),
-                InkWell(
-                    hoverColor: Colors.black12,
-                    child: Container(
-                        height: MediaQuery.of(context).size.height / 4,
-                        width: MediaQuery.of(context).size.width / 3,
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: Stack(
-                          children: [
-                            PositionedDirectional(
-                              end: 5,
-                              bottom: 0,
-                              child: Container(
-                                height: MediaQuery.of(context).size.height / 6,
-                                width: MediaQuery.of(context).size.width / 5,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/camog/dogatapp.gif'),
-                                    fit: BoxFit.scaleDown,
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                ),
-                              ),
-                            ),
-                            PositionedDirectional(
-                              start: 5,
-                              top: 0,
-                              child: Container(
-                                height: MediaQuery.of(context).size.height / 8,
-                                width: MediaQuery.of(context).size.width / 6,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage('assets/coins/camel.png'),
-                                    fit: BoxFit.scaleDown,
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                ),
-                              ),
-                            ),
-                          ],
-                        )),
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) =>
-                            buildBookPopUp(context),
-                      );
-                    }),
-                const Divider(
-                  color: Colors.transparent,
-                  thickness: 5,
-                ),
-                //new cube
-                const SizedBox(height: 35),
+                  const SizedBox(height: 75),
 
-                Container(
-                  height: 150,
-                  width: 150,
-                  alignment: Alignment.center,
-                  child: Transform(
-                      transform: Matrix4.identity()
-                        ..setEntry(3, 2, 0.001)
-                        ..rotateX(_offset.dy * pi / 180)
-                        ..rotateY(_offset.dx * pi / 180)
-                        ..rotateZ(_offset.dx * pi / 180),
-                      child: const ZBCube()),
-                ),
-                const SizedBox(height: 75),
-
-                Container(
-                  height: 150,
-                  width: 150,
-                  alignment: Alignment.center,
-                  child: Transform(
-                      transform: Matrix4.identity()
-                        ..setEntry(3, 2, 0.001)
-                        ..rotateX(_offset.dy * pi / 180)
-                        ..rotateY(_offset.dx * pi / 180)
-                        ..rotateZ(_offset.dx * pi / 180),
-                      child: const Cube()),
-                ),
-                // end new cube
-                const SizedBox(height: 50),
-                const Divider(
-                  color: Colors.black,
-                  thickness: 5,
-                ),
-                const AutoSizeText(
-                  'a@#OP',
-                  minFontSize: 25,
-                  maxFontSize: 50,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontFamily: 'iChing',
+                  Container(
+                    height: 150,
+                    width: 150,
+                    alignment: Alignment.center,
+                    child: Transform(
+                        transform: Matrix4.identity()
+                          ..setEntry(3, 2, 0.001)
+                          ..rotateX(_offset.dy * pi / 180)
+                          ..rotateY(_offset.dx * pi / 180)
+                          ..rotateZ(_offset.dx * pi / 180),
+                        child: const Cube()),
                   ),
-                ),
-                const SizedBox(height: 5),
-              ]),
+                  // end new cube
+                  const SizedBox(height: 50),
+                  const Divider(
+                    color: Colors.black,
+                    thickness: 5,
+                  ),
+                  const AutoSizeText(
+                    'a@#OP',
+                    minFontSize: 25,
+                    maxFontSize: 50,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'iChing',
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                ]),
+          ),
         ),
       ),
     );

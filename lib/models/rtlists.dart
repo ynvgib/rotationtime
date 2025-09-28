@@ -57,11 +57,20 @@ final List<String> zoorotatelst = [
 
 final List<String> zoonewrotatelst = [
   //'assets/camog/zblackcat2.png',
-  'assets/camog/zbredog2.png',
-  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbredog.png',
+  'assets/camog/zbyellowoctopussy.png',
   'assets/camog/zbgreenoctopus.png',
-  'assets/camog/mcameline.png',
+  'assets/camog/zbwhitecamel.png',
   'assets/camog/zbluedog.png',
+];
+
+final List<String> pinkrotatelst = [
+  //'assets/camog/zblackcat2.png',
+  'assets/mink/minkbrain.webp',
+  'assets/mink/minkupempty.webp',
+  'assets/mink/minkmentalword.webp',
+  'assets/mink/minkhead.webp',
+  'assets/mink/minkluzluz.webp',
 ];
 
 final List<String> zoo4lst = [
@@ -222,6 +231,13 @@ final List<String> russianamelist = [
   'простой зеленый осьминог;',
   'желтый дыхание осьминога,',
   'тишина красныйа сука.',
+];
+
+final List<String> sacralnamelist = [
+  '\"אוהם\"',
+  ';אהה',
+  ',מממ',
+  '.אה.אה',
 ];
 
 final List<Widget> sixSlider = coins12lst
@@ -545,6 +561,12 @@ final List<String> hdType4lst = [
       'פשוט',
       'נשימה',
       'שתיקה',
+    ],
+    coinsHebMark4lst = [
+      '\"מורכב\"',
+      ';פשוט',
+      ',נשימה',
+      '.שתיקה',
     ],
     newcoinsEng4lst = [
       'NEGLECT',
