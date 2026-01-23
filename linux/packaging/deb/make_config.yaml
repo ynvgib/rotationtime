@@ -1,0 +1,35 @@
+display_name: zWCb
+package_name: zmansiwhitecamelbob
+
+maintainer:
+  name: zmansi WHITE CAMEL bob
+  email: zmansiwhitecamelbob@tutamail.com
+
+priority: optional
+
+section: x11
+
+installed_size: 84000
+
+dependencies:
+
+essential: false
+
+icon: linux/files/zbicon.png
+
+postuninstall_scripts:
+  - echo "zmansi WHITE CAMEL bob install now."
+
+keywords:
+  - ZB
+  - RT
+  - WC
+
+generic_name: zmansi WHITE CAMEL bob
+
+categories:
+  - Rotation
+  - Time Management
+  - Productivity
+
+startup_notify: true

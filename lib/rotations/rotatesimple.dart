@@ -24,8 +24,8 @@ class RotateSimple extends StatefulWidget {
 }
 
 //class _RotateSimpleState extends State<RotateSimple> {
-class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderStateMixin {
-
+class _RotateSimpleState extends State<RotateSimple>
+    with SingleTickerProviderStateMixin {
   // added tree
 
   double _progress = 0.01;
@@ -87,7 +87,13 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
   final CarouselSliderController _controllertop = CarouselSliderController(),
       _controllermid = CarouselSliderController(),
       _controllerbot = CarouselSliderController(),
-      _controlEvolutionContainerSlider = CarouselSliderController();
+      _controlEvolutionContainerSlider = CarouselSliderController(),
+      _controllercamel = CarouselSliderController(),
+      _controllerdog = CarouselSliderController(),
+      _controlleroctopus = CarouselSliderController(),
+      _controlleroctopussy = CarouselSliderController(),
+      _controllerbitch = CarouselSliderController(),
+      _controllerpussycat = CarouselSliderController();
 
   var _dropdownvalue = hexagramslist[1],
       //_dropdowichingvalue = fontHexOrderList[0],
@@ -110,7 +116,10 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
       solarstate = 3,
       wallet = 1;
 
-  double screenwidth = 1, screenheight = 1, opacityLevel = 1.0, opacityLevelFigures = 1.0;
+  double screenwidth = 1,
+      screenheight = 1,
+      opacityLevel = 1.0,
+      opacityLevelFigures = 1.0;
   Offset _offset = Offset.zero;
 
   //String mainText = ';זה לא אני תמנונירוק', chartText = 'מפה רואים בחוץ ובפנים';
@@ -118,8 +127,19 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
   bool isMainText = true, isChartText = true;
 
   @override
+  void dispose() {
+    // Dispose of all controllers specific to this screen
+    // Example: _controllerone.dispose(); _controllertoptext.dispose(); etc.
+    _controllertoptext.dispose();
+    _controllerbottomtext.dispose();
+    _controllerichingtext.dispose();
+    _controllerlettext.dispose();
+    _controllernumtext.dispose();
+    _controllercointext.dispose();
+    _controllercoinnumber.dispose();
+    _controllerfibo.dispose();
 
-  void initState() {
+    super.dispose();
   }
 
   Widget build(BuildContext context) {
@@ -158,60 +178,13 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 50),
-                Stack(
-                  children: [
-                    Align(alignment: AlignmentGeometry.center,
-                      child: Container(
-                        height: MediaQuery.of(context).size.height / 2.5,
-                        width: MediaQuery.of(context).size.width / 1.5,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/mink/minkmentalword.webp',
-                            ),
-                            fit: BoxFit.scaleDown,
-                          ),
-                          shape: BoxShape.rectangle,
-                        ),
-                      ),
-                    ),
-                    PositionedDirectional(
-                      start: 1, end: 1,
-                      top: 80,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        maxRadius: 70.0,
-                        child: CarouselSlider(
-                          items: mixPinkSlider,
-                          carouselController: _controllernew,
-                          options: CarouselOptions(
-                              initialPage: 1,
-                              autoPlay: false,
-                              enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                              enlargeCenterPage: true,
-                              aspectRatio: 1.3,
-                              onPageChanged: (indextop, reason) {
-                                setState(() {
-                                  //_currenttop = indextop;
-                                  //_controllertoptext.text = bimboxlist[indextop];
-                                  //_controllerbottomtext.text = hexNamesList[indextop];
-                                  //_controllerbottomtext.text = russianamelist[indextop];
-                                  //mainText = puncNamesList[indextop];
-                                  //maintextcolor = coincolors4lst[indextop];
-                                  //controlbottxtcolor = coincolors4lst[indextop];
-                                });
-                              }),
-                        ),
-                      ),
-                    ),
-
-                  ],
-                ),
                 Container(
                   height: MediaQuery.of(context).size.height / 2.5,
                   width: MediaQuery.of(context).size.width / 1.5,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/camog/zbgreenoctopus.png',
+                      image: AssetImage(
+                        'assets/camog/zbgreenoctopus.png',
                       ),
                       fit: BoxFit.scaleDown,
                     ),
@@ -252,7 +225,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                             _currenttop = indextop;
                             //_controllertoptext.text = bimboxlist[indextop];
                             //_controllerbottomtext.text = hexNamesList[indextop];
-                            _controllerbottomtext.text = sacralnamelist[indextop];
+                            _controllerbottomtext.text =
+                                sacralnamelist[indextop];
                             mainText = coinsHebMark4lst[indextop];
                             maintextcolor = coincolors4lst[indextop];
                             controlbottxtcolor = coincolors4lst[indextop];
@@ -282,7 +256,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                     )),
                 const SizedBox(height: 20),
 
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Flex(
                     direction: Axis.horizontal,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -502,6 +476,149 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                   color: Colors.green,
                   thickness: 5,
                 ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: sixSlider,
+                    carouselController: _controllercamel,
+                    options: CarouselOptions(
+                        initialPage: 5,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 3,
+                        onPageChanged: (indextop, reason) {
+                          setState(() {
+                            _currenttop = indextop;
+                          });
+                        }),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: sixSlider,
+                    carouselController: _controllerdog,
+                    options: CarouselOptions(
+                        initialPage: 4,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 3,
+                        onPageChanged: (indexmid, reason) {
+                          setState(() {
+                            _currentmid = indexmid;
+                          });
+                        }),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: sixSlider,
+                    carouselController: _controlleroctopus,
+                    options: CarouselOptions(
+                        initialPage: 3,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 3,
+                        onPageChanged: (indexbot, reason) {
+                          setState(() {
+                            _currentbot = indexbot;
+                          });
+                        }),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: sixSlider,
+                    carouselController: _controlleroctopussy,
+                    options: CarouselOptions(
+                        initialPage: 8,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 3,
+                        onPageChanged: (indextop, reason) {
+                          setState(() {
+                            _currenttop = indextop;
+                          });
+                        }),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: sixSlider,
+                    carouselController: _controllerbitch,
+                    options: CarouselOptions(
+                        initialPage: 7,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 3,
+                        onPageChanged: (indexmid, reason) {
+                          setState(() {
+                            _currentmid = indexmid;
+                          });
+                        }),
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: 10,
+                    minWidth: 10,
+                    maxHeight: screenheight / 7.5,
+                    //maxWidth: screenwidth * 0.5,
+                  ),
+                  child: CarouselSlider(
+                    //items: mixHexagramSlidersNew,
+                    items: sixSlider,
+                    carouselController: _controllerpussycat,
+                    options: CarouselOptions(
+                        initialPage: 6,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 3,
+                        onPageChanged: (indexbot, reason) {
+                          setState(() {
+                            _currentbot = indexbot;
+                          });
+                        }),
+                  ),
+                ),
+
+                const Divider(
+                  color: Colors.green,
+                  thickness: 5,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -621,7 +738,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                   onTap: () {
                     setState(() {
                       cardcolor = cardcolor == Colors.black
-                          ? Colors.black.withValues(alpha:0.2)
+                          ? Colors.black.withValues(alpha: 0.2)
                           : Colors.black;
 
                       //timecolor = timecolor == Colors.white ?
@@ -644,11 +761,11 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                       opacity: opacityLevel,
                       child: Stack(
                         children: [
-
                           Align(
                             alignment: Alignment.center,
                             child: Container(
-                              margin: const EdgeInsets.only(right: 100, top: 80),
+                              margin:
+                                  const EdgeInsets.only(right: 100, top: 80),
                               child: RotationTransition(
                                 turns: const AlwaysStoppedAnimation(90 / 360),
                                 child: CustomPaint(
@@ -666,8 +783,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.bottomCenter,
                             child: Container(
-                              margin:
-                                  const EdgeInsets.only(right: 100, bottom: 135),
+                              margin: const EdgeInsets.only(
+                                  right: 100, bottom: 135),
                               child: Transform.rotate(
                                 angle: -0.60,
                                 child: CustomPaint(
@@ -704,7 +821,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.center,
                             child: Container(
-                              margin: const EdgeInsets.only(right: 166, top: 217),
+                              margin:
+                                  const EdgeInsets.only(right: 166, top: 217),
                               child: Transform.rotate(
                                 angle: -1.81,
                                 child: CustomPaint(
@@ -723,7 +841,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.topCenter,
                             child: Container(
-                              margin: const EdgeInsets.only(right: 115, top: 192),
+                              margin:
+                                  const EdgeInsets.only(right: 115, top: 192),
                               child: Transform.rotate(
                                 angle: 0.55,
                                 child: CustomPaint(
@@ -741,7 +860,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.topCenter,
                             child: Container(
-                              margin: const EdgeInsets.only(right: 243, top: 295),
+                              margin:
+                                  const EdgeInsets.only(right: 243, top: 295),
                               child: Transform.rotate(
                                 angle: 0.55,
                                 child: CustomPaint(
@@ -778,7 +898,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.center,
                             child: Container(
-                              margin: const EdgeInsets.only(left: 105, top: 113),
+                              margin:
+                                  const EdgeInsets.only(left: 105, top: 113),
                               child: Transform.rotate(
                                 angle: -0.8,
                                 child: CustomPaint(
@@ -797,7 +918,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.center,
                             child: Container(
-                              margin: const EdgeInsets.only(left: 234, top: 215),
+                              margin:
+                                  const EdgeInsets.only(left: 234, top: 215),
                               child: Transform.rotate(
                                 angle: -0.64,
                                 child: CustomPaint(
@@ -815,7 +937,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.center,
                             child: Container(
-                              margin: const EdgeInsets.only(left: 208, top: 180),
+                              margin:
+                                  const EdgeInsets.only(left: 208, top: 180),
                               child: Transform.rotate(
                                 angle: -0.64,
                                 child: CustomPaint(
@@ -834,7 +957,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.center,
                             child: Container(
-                              margin: const EdgeInsets.only(left: 82, bottom: 50),
+                              margin:
+                                  const EdgeInsets.only(left: 82, bottom: 50),
                               child: Transform.rotate(
                                 angle: -0.42,
                                 child: CustomPaint(
@@ -871,7 +995,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.topCenter,
                             child: Container(
-                              margin: const EdgeInsets.only(right: 120, top: 224),
+                              margin:
+                                  const EdgeInsets.only(right: 120, top: 224),
                               child: Transform.rotate(
                                 angle: 0.55,
                                 child: CustomPaint(
@@ -889,7 +1014,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.topCenter,
                             child: Container(
-                              margin: const EdgeInsets.only(right: 242, top: 328),
+                              margin:
+                                  const EdgeInsets.only(right: 242, top: 328),
                               child: Transform.rotate(
                                 angle: 0.55,
                                 child: CustomPaint(
@@ -908,7 +1034,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.topCenter,
                             child: Container(
-                              margin: const EdgeInsets.only(left: 121, top: 188),
+                              margin:
+                                  const EdgeInsets.only(left: 121, top: 188),
                               child: Transform.rotate(
                                 angle: -0.55,
                                 child: CustomPaint(
@@ -926,7 +1053,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.topCenter,
                             child: Container(
-                              margin: const EdgeInsets.only(left: 246, top: 290),
+                              margin:
+                                  const EdgeInsets.only(left: 246, top: 290),
                               child: Transform.rotate(
                                 angle: -0.55,
                                 child: CustomPaint(
@@ -945,7 +1073,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.topCenter,
                             child: Container(
-                              margin: const EdgeInsets.only(left: 121, top: 215),
+                              margin:
+                                  const EdgeInsets.only(left: 121, top: 215),
                               child: Transform.rotate(
                                 angle: -0.55,
                                 child: CustomPaint(
@@ -963,7 +1092,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           Align(
                             alignment: Alignment.topCenter,
                             child: Container(
-                              margin: const EdgeInsets.only(left: 239, top: 315),
+                              margin:
+                                  const EdgeInsets.only(left: 239, top: 315),
                               child: Transform.rotate(
                                 angle: -0.55,
                                 child: CustomPaint(
@@ -1247,8 +1377,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                               Align(
                                 alignment: Alignment.center,
                                 child: Container(
-                                  margin:
-                                      const EdgeInsets.only(left: 137, top: 105),
+                                  margin: const EdgeInsets.only(
+                                      left: 137, top: 105),
                                   child: Text(
                                     '21',
                                     style: TextStyle(
@@ -1265,8 +1395,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                               Align(
                                 alignment: Alignment.center,
                                 child: Container(
-                                  margin:
-                                      const EdgeInsets.only(left: 103, top: 152),
+                                  margin: const EdgeInsets.only(
+                                      left: 103, top: 152),
                                   child: Text(
                                     '26',
                                     style: TextStyle(
@@ -1283,8 +1413,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                               Align(
                                 alignment: Alignment.center,
                                 child: Container(
-                                  margin:
-                                      const EdgeInsets.only(left: 124, top: 130),
+                                  margin: const EdgeInsets.only(
+                                      left: 124, top: 130),
                                   child: Text(
                                     '51',
                                     style: TextStyle(
@@ -1301,8 +1431,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                               Align(
                                 alignment: Alignment.center,
                                 child: Container(
-                                  margin:
-                                      const EdgeInsets.only(left: 170, top: 158),
+                                  margin: const EdgeInsets.only(
+                                      left: 170, top: 158),
                                   child: Text(
                                     '40',
                                     style: TextStyle(
@@ -1363,7 +1493,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                               width: 50,
                                               child: Row(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.spaceAround,
+                                                    MainAxisAlignment
+                                                        .spaceAround,
                                                 children: [
                                                   Text(
                                                     '64',
@@ -1373,10 +1504,12 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                                                 ? Colors.white
                                                                 : Colors
                                                                     .transparent,
-                                                        fontSize: 11, // gatefont
+                                                        fontSize:
+                                                            11, // gatefont
                                                         fontWeight:
                                                             _isBoldList[64]
-                                                                ? FontWeight.bold
+                                                                ? FontWeight
+                                                                    .bold
                                                                 : FontWeight
                                                                     .normal),
                                                   ),
@@ -1388,10 +1521,12 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                                                 ? Colors.white
                                                                 : Colors
                                                                     .transparent,
-                                                        fontSize: 11, // gatefont
+                                                        fontSize:
+                                                            11, // gatefont
                                                         fontWeight:
                                                             _isBoldList[61]
-                                                                ? FontWeight.bold
+                                                                ? FontWeight
+                                                                    .bold
                                                                 : FontWeight
                                                                     .normal),
                                                   ),
@@ -1403,10 +1538,12 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                                                 ? Colors.white
                                                                 : Colors
                                                                     .transparent,
-                                                        fontSize: 11, // gatefont
+                                                        fontSize:
+                                                            11, // gatefont
                                                         fontWeight:
                                                             _isBoldList[63]
-                                                                ? FontWeight.bold
+                                                                ? FontWeight
+                                                                    .bold
                                                                 : FontWeight
                                                                     .normal),
                                                   ),
@@ -1414,12 +1551,10 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                               ),
                                             ),
                                           ),
-
                                         ],
                                       ),
                                     ),
                                   ),
-
                                   PositionedDirectional(
                                     start: 40,
                                     child: Container(
@@ -1451,10 +1586,6 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                       },
                                     ),
                                   ),
-
-
-
-
                                 ],
                               ),
 
@@ -1562,7 +1693,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                           CustomPaint(
                                             foregroundPainter:
                                                 VerticalGatePainter(
-                                                    gatestate: gatestatelist[17]),
+                                                    gatestate:
+                                                        gatestatelist[17]),
                                             willChange: true,
                                             child: const SizedBox(
                                               height: 60,
@@ -1575,7 +1707,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                           CustomPaint(
                                             foregroundPainter:
                                                 VerticalGatePainter(
-                                                    gatestate: gatestatelist[43]),
+                                                    gatestate:
+                                                        gatestatelist[43]),
                                             willChange: true,
                                             child: const SizedBox(
                                               height: 60,
@@ -1588,7 +1721,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                           CustomPaint(
                                             foregroundPainter:
                                                 VerticalGatePainter(
-                                                    gatestate: gatestatelist[11]),
+                                                    gatestate:
+                                                        gatestatelist[11]),
                                             willChange: true,
                                             child: const SizedBox(
                                               height: 60,
@@ -1615,7 +1749,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                           setState(() {
                                             ajnacolor = pickedcolor;
                                             //if (ajnastate < 7) {
-                                            if (ajnastate! < 7) {
+                                            if (ajnastate < 7) {
                                               ajnastate = 7;
                                             } else {
                                               ajnastate = 3;
@@ -1671,7 +1805,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                                     backgroundColor:
                                                         _isBoldList[47]
                                                             ? Colors.white
-                                                            : Colors.transparent,
+                                                            : Colors
+                                                                .transparent,
                                                     fontSize: 11, // gatefont
                                                     fontWeight: _isBoldList[47]
                                                         ? FontWeight.bold
@@ -1689,9 +1824,11 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                                               : Colors
                                                                   .transparent,
                                                       fontSize: 11, // gatefont
-                                                      fontWeight: _isBoldList[24]
-                                                          ? FontWeight.bold
-                                                          : FontWeight.normal),
+                                                      fontWeight:
+                                                          _isBoldList[24]
+                                                              ? FontWeight.bold
+                                                              : FontWeight
+                                                                  .normal),
                                                 ),
                                               ),
                                               Padding(
@@ -1728,9 +1865,10 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                             Text(
                                               '17',
                                               style: TextStyle(
-                                                  backgroundColor: _isBoldList[17]
-                                                      ? Colors.white
-                                                      : Colors.transparent,
+                                                  backgroundColor:
+                                                      _isBoldList[17]
+                                                          ? Colors.white
+                                                          : Colors.transparent,
                                                   fontSize: 11, // gatefont
                                                   fontWeight: _isBoldList[17]
                                                       ? FontWeight.bold
@@ -1739,9 +1877,10 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                             Text(
                                               '11',
                                               style: TextStyle(
-                                                  backgroundColor: _isBoldList[11]
-                                                      ? Colors.white
-                                                      : Colors.transparent,
+                                                  backgroundColor:
+                                                      _isBoldList[11]
+                                                          ? Colors.white
+                                                          : Colors.transparent,
                                                   fontSize: 11, // gatefont
                                                   fontWeight: _isBoldList[11]
                                                       ? FontWeight.bold
@@ -1892,8 +2031,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                     alignment: Alignment.topCenter,
                                     child: Container(
                                       width: 63,
-                                      margin:
-                                          const EdgeInsets.fromLTRB(0, 12, 1, 0),
+                                      margin: const EdgeInsets.fromLTRB(
+                                          0, 12, 1, 0),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -1929,8 +2068,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                     child: Container(
                                       width: 63,
                                       //margin: const EdgeInsets.only(top: 30),
-                                      margin:
-                                          const EdgeInsets.fromLTRB(0, 28, 1, 0),
+                                      margin: const EdgeInsets.fromLTRB(
+                                          0, 28, 1, 0),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -1965,8 +2104,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                     alignment: Alignment.bottomCenter,
                                     child: Container(
                                       width: 45,
-                                      margin:
-                                          const EdgeInsets.fromLTRB(0, 55, 0, 0),
+                                      margin: const EdgeInsets.fromLTRB(
+                                          0, 55, 0, 0),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -2078,14 +2217,16 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                 child: Stack(
                                   children: [
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         const SizedBox(
                                           width: 5,
                                         ),
                                         CustomPaint(
-                                          foregroundPainter: VerticalGatePainter(
-                                              gatestate: gatestatelist[7]),
+                                          foregroundPainter:
+                                              VerticalGatePainter(
+                                                  gatestate: gatestatelist[7]),
                                           willChange: true,
                                           child: const SizedBox(
                                             height: 40,
@@ -2096,8 +2237,9 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                           width: 12,
                                         ),
                                         CustomPaint(
-                                          foregroundPainter: VerticalGatePainter(
-                                              gatestate: gatestatelist[1]),
+                                          foregroundPainter:
+                                              VerticalGatePainter(
+                                                  gatestate: gatestatelist[1]),
                                           willChange: true,
                                           child: const SizedBox(
                                             height: 40,
@@ -2108,8 +2250,9 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                           width: 12,
                                         ),
                                         CustomPaint(
-                                          foregroundPainter: VerticalGatePainter(
-                                              gatestate: gatestatelist[13]),
+                                          foregroundPainter:
+                                              VerticalGatePainter(
+                                                  gatestate: gatestatelist[13]),
                                           willChange: true,
                                           child: const SizedBox(
                                             height: 40,
@@ -2119,7 +2262,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                       ],
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         const SizedBox(
                                           width: 5,
@@ -2289,7 +2433,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                     Align(
                                       alignment: Alignment.bottomCenter,
                                       child: Container(
-                                        margin: const EdgeInsets.only(bottom: 13),
+                                        margin:
+                                            const EdgeInsets.only(bottom: 13),
                                         child: Text(
                                           '2',
                                           style: TextStyle(
@@ -2324,7 +2469,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                     Align(
                                       alignment: Alignment.center,
                                       child: Container(
-                                        margin: const EdgeInsets.only(right: 54),
+                                        margin:
+                                            const EdgeInsets.only(right: 54),
                                         child: Text(
                                           '10',
                                           style: TextStyle(
@@ -2411,8 +2557,9 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                         turns: const AlwaysStoppedAnimation(
                                             -78 / 360),
                                         child: CustomPaint(
-                                          foregroundPainter: VerticalGatePainter(
-                                              gatestate: gatestatelist[27]),
+                                          foregroundPainter:
+                                              VerticalGatePainter(
+                                                  gatestate: gatestatelist[27]),
                                           willChange: true,
                                           child: const SizedBox(
                                             height: 35,
@@ -2431,8 +2578,9 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                         turns: const AlwaysStoppedAnimation(
                                             -78 / 360),
                                         child: CustomPaint(
-                                          foregroundPainter: VerticalGatePainter(
-                                              gatestate: gatestatelist[50]),
+                                          foregroundPainter:
+                                              VerticalGatePainter(
+                                                  gatestate: gatestatelist[50]),
                                           willChange: true,
                                           child: const SizedBox(
                                             height: 35,
@@ -2452,8 +2600,9 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                         turns: const AlwaysStoppedAnimation(
                                             78 / 360),
                                         child: CustomPaint(
-                                          foregroundPainter: VerticalGatePainter(
-                                              gatestate: gatestatelist[59]),
+                                          foregroundPainter:
+                                              VerticalGatePainter(
+                                                  gatestate: gatestatelist[59]),
                                           willChange: true,
                                           child: const SizedBox(
                                             height: 35,
@@ -2473,8 +2622,9 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                         turns: const AlwaysStoppedAnimation(
                                             78 / 360),
                                         child: CustomPaint(
-                                          foregroundPainter: VerticalGatePainter(
-                                              gatestate: gatestatelist[6]),
+                                          foregroundPainter:
+                                              VerticalGatePainter(
+                                                  gatestate: gatestatelist[6]),
                                           willChange: true,
                                           child: const SizedBox(
                                             height: 35,
@@ -2517,7 +2667,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                       Align(
                                         alignment: Alignment.bottomCenter,
                                         child: Container(
-                                          margin: const EdgeInsets.only(left: 35),
+                                          margin:
+                                              const EdgeInsets.only(left: 35),
                                           child: Text(
                                             '29',
                                             style: TextStyle(
@@ -2584,7 +2735,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                       Align(
                                         alignment: Alignment.bottomCenter,
                                         child: Container(
-                                          margin: const EdgeInsets.only(top: 46),
+                                          margin:
+                                              const EdgeInsets.only(top: 46),
                                           child: Text(
                                             '3',
                                             style: TextStyle(
@@ -2972,7 +3124,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                   icon: CircleAvatar(
                                       //minRadius: 5,
                                       maxRadius: 20,
-                                      foregroundImage: AssetImage(coins4lst[0])),
+                                      foregroundImage:
+                                          AssetImage(coins4lst[0])),
                                   tooltip: 'מורכב',
                                   onPressed: () {
                                     setState(() {
@@ -3303,7 +3456,8 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                             child: Container(
                               width: 20,
                               height: 20,
-                              margin: const EdgeInsets.only(top: 72, right: 180),
+                              margin:
+                                  const EdgeInsets.only(top: 72, right: 180),
                               decoration: BoxDecoration(
                                   border: Border.all(
                                     width: 3,
@@ -3324,11 +3478,11 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                             start: 10,
                             bottom: 40,
                             child: IconButton(
-                                icon: CircleAvatar(
+                                icon: const CircleAvatar(
                                     //minRadius: 5,
                                     maxRadius: 20,
-                                    foregroundImage:
-                                        AssetImage('assets/coins/fullcoins.png')),
+                                    foregroundImage: AssetImage(
+                                        'assets/coins/fullcoins.png')),
                                 tooltip: 'צבע לבחור',
                                 onPressed: () {
                                   showDialog(
@@ -3357,7 +3511,6 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                   );
                                 }),
                           ),
-
 
                           Opacity(
                             opacity: opacityLevelFigures,
@@ -3504,8 +3657,6 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                             ),
                           ),
 
-
-
                           PositionedDirectional(
                             start: 10,
                             bottom: 4,
@@ -3523,7 +3674,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                 child: AutoSizeText(
                                   chartText,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.bold,
@@ -3546,13 +3697,11 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                   ),
                 ),
 
-
-
                 SizedBox(
                   height: 300,
                   width: 300,
                   child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       childAspectRatio: 1,
@@ -3608,10 +3757,10 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                 ),
 
                 SizedBox(
-                  height: 220,
-                  width: 220,
+                  height: 250,
+                  width: 250,
                   child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       childAspectRatio: 1,
@@ -3631,7 +3780,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                             message:
                                 designform.name! + "\n" + designform.orient!,
                             child: Container(
-                              width: 35,
+                              width: 55,
                               margin: const EdgeInsets.all(1),
                               decoration: BoxDecoration(
                                   color: Colors.black,
@@ -3641,7 +3790,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                               child: Center(
                                 //child: Text((hdZBCodonName[index]),
                                 child: Text((designform.zbname!),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold)),
@@ -3680,7 +3829,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                   height: 300,
                   width: 300,
                   child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       childAspectRatio: 1,
@@ -3695,7 +3844,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                       Codon codon =
                           codonLst.firstWhere((cd) => cd.id == index + 1);
                       List<int> codongates = codon.gates!;
-                      var codonslist =  codongates.join(', ');
+                      var codonslist = codongates.join(', ');
                       return InkWell(
                           child: Tooltip(
                             message: codon.name! + ': ' + codonslist,
@@ -3710,7 +3859,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                               child: Center(
                                 //child: Text((hdZBCodonName[index]),
                                 child: Text((codon.zbname!),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold)),
@@ -3872,7 +4021,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                               width: 20,
                               margin: const EdgeInsets.all(1),
                               decoration: BoxDecoration(
-                                //color: reversedtopcoincolor[index],
+                                  //color: reversedtopcoincolor[index],
                                   color: simplewgscolor[index],
                                   shape: BoxShape.circle,
                                   border: Border.all(
@@ -4021,12 +4170,12 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                       initialAngle: -0.8,
                       childrenPadding: 0.1,
                       origin: const Offset(0, 0),
-                      centerWidget: Container(width: 100,
+                      centerWidget: Container(
+                        width: 100,
                         child: ClipRRect(
                             borderRadius:
-                            const BorderRadius.all(Radius.circular(1)),
-                            child:
-                            Image.asset(zoo4lst[0])),
+                                const BorderRadius.all(Radius.circular(1)),
+                            child: Image.asset(zoo4lst[0])),
                       ),
                       children: List.generate(16, (index) {
                         return InkWell(
@@ -4102,12 +4251,12 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                       initialAngle: -0.8,
                       childrenPadding: 0.1,
                       origin: const Offset(0, 0),
-                      centerWidget: Container(width: 100,
+                      centerWidget: Container(
+                        width: 100,
                         child: ClipRRect(
                             borderRadius:
-                            const BorderRadius.all(Radius.circular(1)),
-                            child:
-                            Image.asset(zoo4lst[1])),
+                                const BorderRadius.all(Radius.circular(1)),
+                            child: Image.asset(zoo4lst[1])),
                       ),
                       children: List.generate(16, (index) {
                         return InkWell(
@@ -4183,12 +4332,12 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                       initialAngle: -0.8,
                       childrenPadding: 0.1,
                       origin: const Offset(0, 0),
-                      centerWidget: Container(width: 100,
+                      centerWidget: Container(
+                        width: 100,
                         child: ClipRRect(
                             borderRadius:
-                            const BorderRadius.all(Radius.circular(1)),
-                            child:
-                            Image.asset(zoo4lst[2])),
+                                const BorderRadius.all(Radius.circular(1)),
+                            child: Image.asset(zoo4lst[2])),
                       ),
                       children: List.generate(16, (index) {
                         return InkWell(
@@ -4264,12 +4413,12 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                       initialAngle: -0.8,
                       childrenPadding: 0.1,
                       origin: const Offset(0, 0),
-                      centerWidget: Container(width: 100,
+                      centerWidget: Container(
+                        width: 100,
                         child: ClipRRect(
                             borderRadius:
-                            const BorderRadius.all(Radius.circular(1)),
-                            child:
-                            Image.asset(zoo4lst[3])),
+                                const BorderRadius.all(Radius.circular(1)),
+                            child: Image.asset(zoo4lst[3])),
                       ),
                       children: List.generate(16, (index) {
                         return InkWell(
@@ -4513,10 +4662,10 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                               Image.asset("assets/coins/fullrotateicon.png")),
                       children: List.generate(16, (index) {
                         return Container(
-                          width: 30,
+                          width: 50,
                           margin: const EdgeInsets.all(1),
                           decoration: BoxDecoration(
-                              image: DecorationImage(
+                            image: DecorationImage(
                               image: AssetImage(revbotfourzoonimal[index]),
                               fit: BoxFit.scaleDown,
                             ),
@@ -4537,7 +4686,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                       children: List.generate(16, (index) {
                         return InkWell(
                           child: Container(
-                            width: 30,
+                            width: 55,
                             margin: const EdgeInsets.all(1),
                             decoration: BoxDecoration(
                               image: DecorationImage(
@@ -4570,7 +4719,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                     Container(
                       height: screenheight / 5,
                       width: screenwidth / 3.2,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('assets/camog/zbgreencamel.png'),
                           fit: BoxFit.scaleDown,
@@ -4581,7 +4730,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                     Container(
                       height: screenheight / 5,
                       width: screenwidth / 3.2,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('assets/camog/zbgreencamel.png'),
                           fit: BoxFit.scaleDown,
@@ -4592,7 +4741,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                     Container(
                       height: screenheight / 5,
                       width: screenwidth / 3.2,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('assets/camog/zbgreencamel.png'),
                           fit: BoxFit.scaleDown,
@@ -4645,7 +4794,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           });
                         }),
                   ),
-                  ),
+                ),
                 const SizedBox(height: 10),
                 // rt evolution
                 Container(
@@ -4717,7 +4866,7 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                                 image: DecorationImage(
                                     image: AssetImage(rtimages[index]),
                                     colorFilter: ColorFilter.mode(
-                                      Colors.white.withValues(alpha:1.0),
+                                      Colors.white.withValues(alpha: 1.0),
                                       BlendMode.modulate,
                                     ))),
                           ),
@@ -4726,6 +4875,61 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
                           });
                     },
                   ),
+                ),
+                const Divider(
+                  color: Colors.green,
+                  thickness: 5,
+                ),
+
+                Stack(
+                  children: [
+                    Align(
+                      alignment: AlignmentGeometry.center,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height / 2.5,
+                        width: MediaQuery.of(context).size.width / 1.5,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                              'assets/mink/minkmentalword.webp',
+                            ),
+                            fit: BoxFit.scaleDown,
+                          ),
+                          shape: BoxShape.rectangle,
+                        ),
+                      ),
+                    ),
+                    PositionedDirectional(
+                      start: 1,
+                      end: 1,
+                      top: 80,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        maxRadius: 70.0,
+                        child: CarouselSlider(
+                          items: mixPinkSlider,
+                          carouselController: _controllernew,
+                          options: CarouselOptions(
+                              initialPage: 1,
+                              autoPlay: false,
+                              enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                              enlargeCenterPage: true,
+                              aspectRatio: 1.3,
+                              onPageChanged: (indextop, reason) {
+                                setState(() {
+                                  //_currenttop = indextop;
+                                  //_controllertoptext.text = bimboxlist[indextop];
+                                  //_controllerbottomtext.text = hexNamesList[indextop];
+                                  //_controllerbottomtext.text = russianamelist[indextop];
+                                  //mainText = puncNamesList[indextop];
+                                  //maintextcolor = coincolors4lst[indextop];
+                                  //controlbottxtcolor = coincolors4lst[indextop];
+                                });
+                              }),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const Divider(
                   color: Colors.green,
@@ -5336,7 +5540,6 @@ class _RotateSimpleState extends State<RotateSimple> with SingleTickerProviderSt
       _progress = progress;
     });
   }
-
 }
 
 class TreePainter extends CustomPainter {
@@ -5368,21 +5571,24 @@ class TreePainter extends CustomPainter {
       canvas.drawLine(Offset(x1, y1), Offset(x2, y2), _paint);
       _drawTree(canvas, x2, y2, angle - offset, offset, depth - 1, lineLength);
       _drawTree(canvas, x2, y2, angle + offset, offset, depth - 1, lineLength);
-      _drawTree(canvas, x2, y2, angle + offset + 45, offset, depth - 1, lineLength);
-      _drawTree(canvas, x2, y2, angle + offset - 65, offset, depth - 1, lineLength);
-      _drawTree(canvas, x2, y2, angle + offset - 85, offset, depth - 1, lineLength);
-      _drawTree(canvas, x2, y2, angle + offset + 105, offset, depth - 1, lineLength);
+      _drawTree(
+          canvas, x2, y2, angle + offset + 45, offset, depth - 1, lineLength);
+      _drawTree(
+          canvas, x2, y2, angle + offset - 65, offset, depth - 1, lineLength);
+      _drawTree(
+          canvas, x2, y2, angle + offset - 85, offset, depth - 1, lineLength);
+      _drawTree(
+          canvas, x2, y2, angle + offset + 105, offset, depth - 1, lineLength);
     }
   }
 
   final _colors = [
-    Color(0xff000000),
-    Color(0xffa19e9e),
-    Color(0xff3a86ff),
-    Color(0xff39ff14),
-    Color(0xfffdfd15),
-    Color(0xffff0000),
-
+    const Color(0xff000000),
+    const Color(0xffa19e9e),
+    const Color(0xff3a86ff),
+    const Color(0xff39ff14),
+    const Color(0xfffdfd15),
+    const Color(0xffff0000),
   ];
 
   @override

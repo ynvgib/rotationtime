@@ -16,7 +16,6 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:sweph/sweph.dart';
 
-
 class RotateComplex extends StatefulWidget {
   const RotateComplex({Key? key}) : super(key: key);
 
@@ -26,7 +25,8 @@ class RotateComplex extends StatefulWidget {
   }
 }
 
-class _RotateComplexState extends State<RotateComplex> {
+class _RotateComplexState extends State<RotateComplex>
+    with SingleTickerProviderStateMixin {
   // human design
   Color headcolor = Colors.green,
       ajnacolor = Colors.green,
@@ -319,12 +319,11 @@ class _RotateComplexState extends State<RotateComplex> {
       _expersoncolor = Colors.green,
       pickedColor = Colors.green;
 
-  List<Color> wheelgatescolor = List<Color>.filled(64, Colors.black26, growable: false);
+  List<Color> wheelgatescolor =
+      List<Color>.filled(64, Colors.black26, growable: false);
   List<Color> complexrevtopcoincolor = reversedtopcoincolor;
   //List<Color> wheelgatescolor = complexrevtopcoincolor;
   //List<Color> revwheelgatescolor = List<Color>.filled(65, Colors.black26, growable: false);
-
-
 
   double screenwidth = 1, screenheight = 1, wheelgateopacity = 0.3;
 
@@ -372,9 +371,114 @@ class _RotateComplexState extends State<RotateComplex> {
     await Sweph.init(
         //modulePath: 'sweph', // where to load module from.
         epheAssets: [
-        //'packages/sweph/assets/ephe/seas_18.se1']);
-        'packages/sweph/assets/ephe/seas_18.se1']);
+          //'packages/sweph/assets/ephe/seas_18.se1']);
+          //'packages/sweph/assets/ephe/seas_18.se1'
+          'assets/ephe/seas_18.se1',
+          'assets/ephe/seas_12.se1',
+          'assets/ephe/sepl_12.se1',
+          'assets/ephe/sepl_18.se1'
+        ]);
     super.setState(() {}); // to update widget data
+  }
+
+  @override
+  void dispose() {
+    // Dispose of all controllers specific to this screen
+    // Example: _controllerone.dispose(); _controllertoptext.dispose(); etc.
+    _controllerType.dispose();
+    _controllerAuthority.dispose();
+    _controllerStrategy.dispose();
+    _controllerSentence.dispose();
+    _controllerFinalLine.dispose();
+    //_controllerTime.dispose();
+    _controllerSetTime.dispose();
+    _controllerPersonTime.dispose();
+    _controllerDesignTime.dispose();
+    _controllerTimePick.dispose();
+    _controllerDatePick.dispose();
+    _controllermaintext.dispose();
+    _controllergatelinestory.dispose();
+    _controllergatetext.dispose();
+    _controllerlinetext.dispose();
+    _controllercoinsttext.dispose();
+    _controllercointopfirsttext.dispose();
+    _controllercointopsecondtext.dispose();
+    _controllercointopthirdtext.dispose();
+    _controllercoinmidfirsttext.dispose();
+    _controllercoinmidsecondtext.dispose();
+    _controllercoinmidthirdtext.dispose();
+    _controllercoinbotfirsttext.dispose();
+    _controllercoinbotsecondtext.dispose();
+    _controllercoinbotthirdtext.dispose();
+    _controllerNorthNodeHex.dispose();
+    _controllerNorthNodeText.dispose();
+    _controllerNorthNodeGate.dispose();
+    _controllerDesignNorthNodeGate.dispose();
+    _controllerSunHex.dispose();
+    _controllerSunText.dispose();
+    _controllerSunGate.dispose();
+    _controllerDesignSunGate.dispose();
+    _controllerMoonHex.dispose();
+    _controllerMoonText.dispose();
+    _controllerMoonGate.dispose();
+    _controllerDesignMoonGate.dispose();
+    _controllerMarsHex.dispose();
+    _controllerMarsText.dispose();
+    _controllerMarsGate.dispose();
+    _controllerDesignMarsGate.dispose();
+    _controllerVenusHex.dispose();
+    _controllerVenusText.dispose();
+    _controllerVenusGate.dispose();
+    _controllerDesignVenusGate.dispose();
+    _controllerMercuryHex.dispose();
+    _controllerMercuryText.dispose();
+    _controllerMercuryGate.dispose();
+    _controllerDesignMercuryGate.dispose();
+    _controllerJupiterHex.dispose();
+    _controllerJupiterText.dispose();
+    _controllerJupiterGate.dispose();
+    _controllerDesignJupiterGate.dispose();
+    _controllerSaturnHex.dispose();
+    _controllerSaturnText.dispose();
+    _controllerSaturnGate.dispose();
+    _controllerDesignSaturnGate.dispose();
+    _controllerUranusHex.dispose();
+    _controllerUranusText.dispose();
+    _controllerUranusGate.dispose();
+    _controllerDesignUranusGate.dispose();
+    _controllerNeptuneHex.dispose();
+    _controllerNeptuneText.dispose();
+    _controllerNeptuneGate.dispose();
+    _controllerDesignNeptuneGate.dispose();
+    _controllerPlutoHex.dispose();
+    _controllerPlutoText.dispose();
+    _controllerPlutoGate.dispose();
+    _controllerDesignPlutoGate.dispose();
+    _controllerChironGate.dispose();
+    _controllerDesignChironGate.dispose();
+    _controllerEarthHex.dispose();
+    _controllerEarthText.dispose();
+    _controllerEarthGate.dispose();
+    _controllerDesignEarthGate.dispose();
+    _controllerSouthNodeHex.dispose();
+    _controllerSouthNodeText.dispose();
+    _controllerSouthNodeGate.dispose();
+    _controllerDesignSouthNodeGate.dispose();
+    _controllerPlanetType.dispose();
+    _controllerPlanetSubType.dispose();
+    _controllergrampatxt.dispose();
+    _controllerpapaptxt.dispose();
+    _controllersontxt.dispose();
+    _controllerdaughtertxt.dispose();
+    _controllermamatxt.dispose();
+    _controllergrannytxt.dispose();
+    _controllersavetxt.dispose();
+    _controllerchartname.dispose();
+    country.dispose();
+    state.dispose();
+    city.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -417,51 +521,6 @@ class _RotateComplexState extends State<RotateComplex> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const SizedBox(height: 50),
-            Stack(
-              children: [
-                Align(
-                  alignment: AlignmentGeometry.center,
-                  child: Container(
-                    //height: MediaQuery.of(context).size.height / 2.2,
-                    height: 200,
-                    width: 200,
-                    //width: MediaQuery.of(context).size.width / 2.2,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                            //'assets/mink/minkluzluz.webp',
-                            'assets/mink/minkpinklok.png',
-                          ),
-                          fit: BoxFit.scaleDown,
-                        ),
-                        shape: BoxShape.circle,
-                        color: Colors.transparent
-                    ),
-                  ),
-                ),
-                PositionedDirectional(
-                  start: 0, end: 0,
-                  top: 50,
-                  child: Container(
-                    //height: MediaQuery.of(context).size.height / 2.2,
-                    height: 110,
-                    width: 110,
-                    //width: MediaQuery.of(context).size.width / 2.2,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                            'assets/mink/minkluzluz.webp',
-                            //'assets/mink/minkpinklok.png',
-                          ),
-                          fit: BoxFit.scaleDown,
-                        ),
-                        shape: BoxShape.circle,
-                        color: Colors.transparent
-                    ),
-                  ),
-                ),
-              ],
-            ),
 
             Flex(
               direction: Axis.horizontal,
@@ -513,7 +572,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -521,12 +580,12 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 4,
-                  margin: EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
+                  margin: const EdgeInsets.all(5.0),
+                  decoration: const BoxDecoration(
                       color: Colors.blue,
                       //borderRadius: BorderRadius.circular(25),
                       shape: BoxShape.rectangle,
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
                             color: Colors.blueGrey,
                             offset: Offset(4, 4),
@@ -541,16 +600,15 @@ class _RotateComplexState extends State<RotateComplex> {
                   child: InkWell(
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
-                        child: AutoSizeText(
-                          dogText,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              height: 1.7),
-                        ),
-
+                      child: AutoSizeText(
+                        dogText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            height: 1.7),
+                      ),
                     ),
                     onTap: () {
                       isDogText = !isDogText;
@@ -565,12 +623,12 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 4.5,
-                  margin: EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
+                  margin: const EdgeInsets.all(5.0),
+                  decoration: const BoxDecoration(
                       color: Colors.green,
                       //borderRadius: BorderRadius.circular(25),
                       shape: BoxShape.rectangle,
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
                             color: Colors.blueGrey,
                             offset: Offset(4, 4),
@@ -585,15 +643,15 @@ class _RotateComplexState extends State<RotateComplex> {
                   child: InkWell(
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
-                        child: AutoSizeText(
-                          octocaText,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              height: 1.7),
-                        ),
+                      child: AutoSizeText(
+                        octocaText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            height: 1.7),
+                      ),
                     ),
                     onTap: () {
                       isOctocatText = !isOctocatText;
@@ -608,7 +666,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 5,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.yellow,
                       borderRadius: BorderRadius.circular(25),
@@ -628,21 +686,21 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: AutoSizeText(
-                          octopussyText,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              height: 1.7),
-                        ),
+                        octopussyText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            height: 1.7),
+                      ),
                     ),
                     onTap: () {
                       isOctopussyText = !isOctopussyText;
                       setState(() {
                         isOctopussyText == true
                             ? octopussyText = "octopussy,"
-                            : octopussyText =  ",ג'ולייטה";
+                            : octopussyText = ",ג'ולייטה";
                       });
                     },
                   ),
@@ -650,7 +708,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 5.5,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(25),
@@ -670,14 +728,14 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: AutoSizeText(
-                          bitchText,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              height: 1.7),
-                        ),
+                        bitchText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            height: 1.7),
+                      ),
                     ),
                     onTap: () {
                       isBitchText = !isBitchText;
@@ -699,12 +757,12 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 4,
-                  margin: EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
+                  margin: const EdgeInsets.all(5.0),
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       //borderRadius: BorderRadius.circular(15),
                       shape: BoxShape.rectangle,
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
                             color: Colors.blueGrey,
                             offset: Offset(4, 4),
@@ -720,14 +778,14 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: AutoSizeText(
-                          complexText,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              height: 1.7),
-                        ),
+                        complexText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.blue,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            height: 1.7),
+                      ),
                     ),
                     onTap: () {
                       isComplexText = !isComplexText;
@@ -742,12 +800,12 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 4.5,
-                  margin: EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
+                  margin: const EdgeInsets.all(5.0),
+                  decoration: const BoxDecoration(
                       color: Colors.transparent,
                       //borderRadius: BorderRadius.circular(25),
                       shape: BoxShape.rectangle,
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
                             color: Colors.blueGrey,
                             offset: Offset(4, 4),
@@ -763,14 +821,14 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: AutoSizeText(
-                          simpleText,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              height: 1.8),
-                        ),
+                        simpleText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.green,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            height: 1.8),
+                      ),
                     ),
                     onTap: () {
                       isSimpleText = !isSimpleText;
@@ -785,7 +843,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 5,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(25),
@@ -805,14 +863,14 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: AutoSizeText(
-                          breathText,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.yellow,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              height: 1.9),
-                        ),
+                        breathText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.yellow,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            height: 1.9),
+                      ),
                     ),
                     onTap: () {
                       isBreathText = !isBreathText;
@@ -827,7 +885,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 5.5,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(25),
@@ -847,14 +905,14 @@ class _RotateComplexState extends State<RotateComplex> {
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: AutoSizeText(
-                          silenceText,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              height: 2.0),
-                        ),
+                        silenceText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.red,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            height: 2.0),
+                      ),
                     ),
                     onTap: () {
                       isSilenceText = !isSilenceText;
@@ -1210,10 +1268,10 @@ class _RotateComplexState extends State<RotateComplex> {
                 minFontSize: 15,
                 maxFontSize: 25,
                 fullwidth: false,
-                decoration: InputDecoration.collapsed(
+                decoration: const InputDecoration.collapsed(
                     //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
-                    hintText: 'טיהור אשם',
-                    hintStyle: const TextStyle(color: Colors.grey)),
+                    hintText: 'סיפור בתוך דיאני',
+                    hintStyle: TextStyle(color: Colors.grey)),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.black,
@@ -1275,7 +1333,8 @@ class _RotateComplexState extends State<RotateComplex> {
                               Center(
                                 child: Icon(
                                     IconData(
-                                        rt6iconshex[_planetsdesignList[1].line!],
+                                        rt6iconshex[
+                                            _planetsdesignList[1].line!],
                                         fontFamily: 'MaterialIcons'),
                                     color: Colors.red,
                                     size: 55),
@@ -1308,7 +1367,8 @@ class _RotateComplexState extends State<RotateComplex> {
                               Center(
                                 child: Icon(
                                     IconData(
-                                        rt6iconshex[_planetspersonList[1].line!],
+                                        rt6iconshex[
+                                            _planetspersonList[1].line!],
                                         fontFamily: 'MaterialIcons'),
                                     color: Colors.blue,
                                     size: 55),
@@ -1650,8 +1710,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: RotationTransition(
                           turns: const AlwaysStoppedAnimation(90 / 360),
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[10]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[10]),
                             willChange: true,
                             child: const SizedBox(
                               height: 85,
@@ -1668,8 +1728,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -0.60,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[34]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[34]),
                             willChange: true,
                             child: const SizedBox(
                               height: 140,
@@ -1687,8 +1747,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -1.81,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[26]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[26]),
                             willChange: true,
                             child: const SizedBox(
                               height: 110,
@@ -1705,8 +1765,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -1.81,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[44]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[44]),
                             willChange: true,
                             child: const SizedBox(
                               height: 110,
@@ -1724,8 +1784,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: 0.55,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[16]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[16]),
                             willChange: true,
                             child: const SizedBox(
                               height: 123,
@@ -1742,8 +1802,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: 0.55,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[48]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[48]),
                             willChange: true,
                             child: const SizedBox(
                               height: 125,
@@ -1761,8 +1821,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -0.8,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[25]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[25]),
                             willChange: true,
                             child: const SizedBox(
                               height: 20,
@@ -1779,8 +1839,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -0.8,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[51]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[51]),
                             willChange: true,
                             child: const SizedBox(
                               height: 20,
@@ -1798,8 +1858,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -0.64,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[37]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[37]),
                             willChange: true,
                             child: const SizedBox(
                               height: 25,
@@ -1816,8 +1876,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -0.64,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[40]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[40]),
                             willChange: true,
                             child: const SizedBox(
                               height: 25,
@@ -1835,8 +1895,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -0.42,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[45]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[45]),
                             willChange: true,
                             child: const SizedBox(
                               height: 65,
@@ -1853,8 +1913,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -0.42,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[21]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[21]),
                             willChange: true,
                             child: const SizedBox(
                               height: 50,
@@ -1872,8 +1932,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: 0.55,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[20]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[20]),
                             willChange: true,
                             child: const SizedBox(
                               height: 123,
@@ -1890,8 +1950,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: 0.55,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[57]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[57]),
                             willChange: true,
                             child: const SizedBox(
                               height: 115,
@@ -1909,8 +1969,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -0.55,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[35]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[35]),
                             willChange: true,
                             child: const SizedBox(
                               height: 123,
@@ -1927,8 +1987,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -0.55,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[36]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[36]),
                             willChange: true,
                             child: const SizedBox(
                               height: 123,
@@ -1946,8 +2006,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -0.55,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[12]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[12]),
                             willChange: true,
                             child: const SizedBox(
                               height: 123,
@@ -1964,8 +2024,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -0.55,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[22]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[22]),
                             willChange: true,
                             child: const SizedBox(
                               height: 115,
@@ -1983,8 +2043,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[32]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[32]),
                             willChange: true,
                             child: const SizedBox(
                               height: 70,
@@ -2001,8 +2061,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[28]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[28]),
                             willChange: true,
                             child: const SizedBox(
                               height: 70,
@@ -2019,8 +2079,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[18]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[18]),
                             willChange: true,
                             child: const SizedBox(
                               height: 80,
@@ -2038,8 +2098,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[54]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[54]),
                             willChange: true,
                             child: const SizedBox(
                               height: 80,
@@ -2056,8 +2116,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[38]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[38]),
                             willChange: true,
                             child: const SizedBox(
                               height: 80,
@@ -2074,8 +2134,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: -1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[58]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[58]),
                             willChange: true,
                             child: const SizedBox(
                               height: 80,
@@ -2093,8 +2153,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: 1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[19]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[19]),
                             willChange: true,
                             child: const SizedBox(
                               height: 75,
@@ -2111,8 +2171,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: 1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[39]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[39]),
                             willChange: true,
                             child: const SizedBox(
                               height: 75,
@@ -2129,8 +2189,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: 1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[41]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[41]),
                             willChange: true,
                             child: const SizedBox(
                               height: 75,
@@ -2148,8 +2208,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: 1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[49]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[49]),
                             willChange: true,
                             child: const SizedBox(
                               height: 80,
@@ -2166,8 +2226,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: 1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[55]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[55]),
                             willChange: true,
                             child: const SizedBox(
                               height: 80,
@@ -2184,8 +2244,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         child: Transform.rotate(
                           angle: 1.05,
                           child: CustomPaint(
-                            foregroundPainter:
-                                VerticalGatePainter(gatestate: gatestatelist[30]),
+                            foregroundPainter: VerticalGatePainter(
+                                gatestate: gatestatelist[30]),
                             willChange: true,
                             child: const SizedBox(
                               height: 80,
@@ -2203,8 +2263,8 @@ class _RotateComplexState extends State<RotateComplex> {
                           child: Transform.rotate(
                             angle: 0.1,
                             child: Container(
-                              margin:
-                                  const EdgeInsets.only(top: 110.0, left: 155.0),
+                              margin: const EdgeInsets.only(
+                                  top: 110.0, left: 155.0),
                               child: CustomPaint(
                                 foregroundPainter: HeartPainter(
                                     centerstate: heartstate,
@@ -2337,7 +2397,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                                     backgroundColor:
                                                         _isBoldList[64]
                                                             ? Colors.white
-                                                            : Colors.transparent,
+                                                            : Colors
+                                                                .transparent,
                                                     fontSize: 11, // gatefont
                                                     fontWeight: _isBoldList[64]
                                                         ? FontWeight.bold
@@ -2351,7 +2412,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                                     backgroundColor:
                                                         _isBoldList[61]
                                                             ? Colors.white
-                                                            : Colors.transparent,
+                                                            : Colors
+                                                                .transparent,
                                                     fontSize: 11, // gatefont
                                                     fontWeight: _isBoldList[61]
                                                         ? FontWeight.bold
@@ -2365,7 +2427,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                                     backgroundColor:
                                                         _isBoldList[63]
                                                             ? Colors.white
-                                                            : Colors.transparent,
+                                                            : Colors
+                                                                .transparent,
                                                     fontSize: 11, // gatefont
                                                     fontWeight: _isBoldList[63]
                                                         ? FontWeight.bold
@@ -2560,9 +2623,10 @@ class _RotateComplexState extends State<RotateComplex> {
                                             child: Text(
                                               '24',
                                               style: TextStyle(
-                                                  backgroundColor: _isBoldList[24]
-                                                      ? Colors.white
-                                                      : Colors.transparent,
+                                                  backgroundColor:
+                                                      _isBoldList[24]
+                                                          ? Colors.white
+                                                          : Colors.transparent,
                                                   fontSize: 11, // gatefont
                                                   fontWeight: _isBoldList[24]
                                                       ? FontWeight.bold
@@ -2577,9 +2641,10 @@ class _RotateComplexState extends State<RotateComplex> {
                                             child: Text(
                                               '4',
                                               style: TextStyle(
-                                                  backgroundColor: _isBoldList[4]
-                                                      ? Colors.white
-                                                      : Colors.transparent,
+                                                  backgroundColor:
+                                                      _isBoldList[4]
+                                                          ? Colors.white
+                                                          : Colors.transparent,
                                                   fontSize: 11, // gatefont
                                                   fontWeight: _isBoldList[4]
                                                       ? FontWeight.bold
@@ -2635,7 +2700,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
                                   //width: 11,
-                                  margin: const EdgeInsets.fromLTRB(0, 0, 2, 20),
+                                  margin:
+                                      const EdgeInsets.fromLTRB(0, 0, 2, 20),
                                   child: ClipOval(
                                     child: Text(
                                       '43',
@@ -2898,7 +2964,8 @@ class _RotateComplexState extends State<RotateComplex> {
                               alignment: Alignment.center,
                               child: Container(
                                 //width: 11,
-                                margin: const EdgeInsets.only(top: 43, left: 51),
+                                margin:
+                                    const EdgeInsets.only(top: 43, left: 51),
                                 child: ClipOval(
                                   child: Text(
                                     '45',
@@ -3142,8 +3209,8 @@ class _RotateComplexState extends State<RotateComplex> {
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
-                                  margin:
-                                      const EdgeInsets.only(left: 30, bottom: 29),
+                                  margin: const EdgeInsets.only(
+                                      left: 30, bottom: 29),
                                   child: ClipOval(
                                     child: Text(
                                       '46',
@@ -3286,9 +3353,11 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.center,
                               child: Container(
-                                margin: const EdgeInsets.only(top: 19, right: 78),
+                                margin:
+                                    const EdgeInsets.only(top: 19, right: 78),
                                 child: RotationTransition(
-                                  turns: const AlwaysStoppedAnimation(-78 / 360),
+                                  turns:
+                                      const AlwaysStoppedAnimation(-78 / 360),
                                   child: CustomPaint(
                                     foregroundPainter: VerticalGatePainter(
                                         gatestate: gatestatelist[27]),
@@ -3307,7 +3376,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                 margin:
                                     const EdgeInsets.only(top: 12, right: 145),
                                 child: RotationTransition(
-                                  turns: const AlwaysStoppedAnimation(-78 / 360),
+                                  turns:
+                                      const AlwaysStoppedAnimation(-78 / 360),
                                   child: CustomPaint(
                                     foregroundPainter: VerticalGatePainter(
                                         gatestate: gatestatelist[50]),
@@ -3324,7 +3394,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.center,
                               child: Container(
-                                margin: const EdgeInsets.only(top: 23, left: 80),
+                                margin:
+                                    const EdgeInsets.only(top: 23, left: 80),
                                 child: RotationTransition(
                                   turns: const AlwaysStoppedAnimation(78 / 360),
                                   child: CustomPaint(
@@ -3343,7 +3414,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.center,
                               child: Container(
-                                margin: const EdgeInsets.only(top: 16, left: 145),
+                                margin:
+                                    const EdgeInsets.only(top: 16, left: 145),
                                 child: RotationTransition(
                                   turns: const AlwaysStoppedAnimation(78 / 360),
                                   child: CustomPaint(
@@ -3433,8 +3505,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                 Align(
                                   alignment: Alignment.bottomCenter,
                                   child: Container(
-                                    margin:
-                                        const EdgeInsets.only(left: 35, top: 46),
+                                    margin: const EdgeInsets.only(
+                                        left: 35, top: 46),
                                     child: ClipOval(
                                       child: Text(
                                         '9',
@@ -3472,8 +3544,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                 Align(
                                   alignment: Alignment.bottomCenter,
                                   child: Container(
-                                    margin:
-                                        const EdgeInsets.only(right: 35, top: 46),
+                                    margin: const EdgeInsets.only(
+                                        right: 35, top: 46),
                                     child: ClipOval(
                                       child: Text(
                                         '42',
@@ -3492,8 +3564,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                 Align(
                                   alignment: Alignment.bottomCenter,
                                   child: Container(
-                                    margin:
-                                        const EdgeInsets.only(right: 46, top: 14),
+                                    margin: const EdgeInsets.only(
+                                        right: 46, top: 14),
                                     child: ClipOval(
                                       child: Text(
                                         '34',
@@ -3512,8 +3584,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                 Align(
                                   alignment: Alignment.bottomCenter,
                                   child: Container(
-                                    margin:
-                                        const EdgeInsets.only(left: 46, top: 30),
+                                    margin: const EdgeInsets.only(
+                                        left: 46, top: 30),
                                     child: ClipOval(
                                       child: Text(
                                         '59',
@@ -3532,8 +3604,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                 Align(
                                   alignment: Alignment.bottomCenter,
                                   child: Container(
-                                    margin:
-                                        const EdgeInsets.only(right: 46, top: 30),
+                                    margin: const EdgeInsets.only(
+                                        right: 46, top: 30),
                                     child: ClipOval(
                                       child: Text(
                                         '27',
@@ -3711,7 +3783,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                margin: const EdgeInsets.only(right: 45, top: 15),
+                                margin:
+                                    const EdgeInsets.only(right: 45, top: 15),
                                 child: ClipOval(
                                   child: Text(
                                     '54',
@@ -3730,7 +3803,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                margin: const EdgeInsets.only(right: 45, top: 30),
+                                margin:
+                                    const EdgeInsets.only(right: 45, top: 30),
                                 child: ClipOval(
                                   child: Text(
                                     '38',
@@ -3749,7 +3823,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                margin: const EdgeInsets.only(right: 45, top: 45),
+                                margin:
+                                    const EdgeInsets.only(right: 45, top: 45),
                                 child: ClipOval(
                                   child: Text(
                                     '58',
@@ -3768,7 +3843,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                margin: const EdgeInsets.only(left: 45, top: 15),
+                                margin:
+                                    const EdgeInsets.only(left: 45, top: 15),
                                 child: ClipOval(
                                   child: Text(
                                     '19',
@@ -3787,7 +3863,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                margin: const EdgeInsets.only(left: 45, top: 30),
+                                margin:
+                                    const EdgeInsets.only(left: 45, top: 30),
                                 child: ClipOval(
                                   child: Text(
                                     '39',
@@ -3806,7 +3883,8 @@ class _RotateComplexState extends State<RotateComplex> {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                margin: const EdgeInsets.only(left: 45, top: 45),
+                                margin:
+                                    const EdgeInsets.only(left: 45, top: 45),
                                 child: ClipOval(
                                   child: Text(
                                     '41',
@@ -3831,7 +3909,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            margin: const EdgeInsets.only(left: 240, bottom: 120),
+                            margin:
+                                const EdgeInsets.only(left: 240, bottom: 120),
                             child: CustomPaint(
                               foregroundPainter: SolarPainter(
                                   centerstate: solarstate,
@@ -3847,7 +3926,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            margin: const EdgeInsets.only(left: 204, bottom: 153),
+                            margin:
+                                const EdgeInsets.only(left: 204, bottom: 153),
                             child: ClipOval(
                               child: Text(
                                 '6',
@@ -3866,7 +3946,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            margin: const EdgeInsets.only(left: 251, bottom: 142),
+                            margin:
+                                const EdgeInsets.only(left: 251, bottom: 142),
                             child: ClipOval(
                               child: Text(
                                 '49',
@@ -3885,7 +3966,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            margin: const EdgeInsets.only(left: 251, bottom: 164),
+                            margin:
+                                const EdgeInsets.only(left: 251, bottom: 164),
                             child: ClipOval(
                               child: Text(
                                 '37',
@@ -3904,7 +3986,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            margin: const EdgeInsets.only(left: 303, bottom: 178),
+                            margin:
+                                const EdgeInsets.only(left: 303, bottom: 178),
                             child: ClipOval(
                               child: Text(
                                 '36',
@@ -3923,7 +4006,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            margin: const EdgeInsets.only(left: 303, bottom: 130),
+                            margin:
+                                const EdgeInsets.only(left: 303, bottom: 130),
                             child: ClipOval(
                               child: Text(
                                 '30',
@@ -3942,7 +4026,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            margin: const EdgeInsets.only(left: 277, bottom: 170),
+                            margin:
+                                const EdgeInsets.only(left: 277, bottom: 170),
                             child: ClipOval(
                               child: Text(
                                 '22',
@@ -3961,7 +4046,8 @@ class _RotateComplexState extends State<RotateComplex> {
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
-                            margin: const EdgeInsets.only(left: 277, bottom: 136),
+                            margin:
+                                const EdgeInsets.only(left: 277, bottom: 136),
                             child: ClipOval(
                               child: Text(
                                 '55',
@@ -4190,7 +4276,8 @@ class _RotateComplexState extends State<RotateComplex> {
                                       minFontSize: 18,
                                       readOnly: true,
                                       decoration: InputDecoration.collapsed(
-                                          hintText: DateFormat.Hm().format(_now),
+                                          hintText:
+                                              DateFormat.Hm().format(_now),
                                           hintStyle: const TextStyle(
                                               color: Colors.grey)),
                                       textAlign: TextAlign.center,
@@ -4236,7 +4323,7 @@ class _RotateComplexState extends State<RotateComplex> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  icon: CircleAvatar(
+                  icon: const CircleAvatar(
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
@@ -4348,7 +4435,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
                 const SizedBox(width: 5),
                 IconButton(
-                  icon: CircleAvatar(
+                  icon: const CircleAvatar(
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
@@ -4361,7 +4448,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
                 const SizedBox(width: 5),
                 IconButton(
-                  icon: CircleAvatar(
+                  icon: const CircleAvatar(
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
@@ -4610,7 +4697,7 @@ class _RotateComplexState extends State<RotateComplex> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  icon: CircleAvatar(
+                  icon: const CircleAvatar(
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
@@ -4722,7 +4809,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
                 const SizedBox(width: 5),
                 IconButton(
-                  icon: CircleAvatar(
+                  icon: const CircleAvatar(
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
@@ -4735,7 +4822,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
                 const SizedBox(width: 5),
                 IconButton(
-                  icon: CircleAvatar(
+                  icon: const CircleAvatar(
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
@@ -4934,8 +5021,8 @@ class _RotateComplexState extends State<RotateComplex> {
                     return InkWell(
                       child: Tooltip(
                         message: reversedHexagramsWheel[index].toString(),
-                        textStyle: const TextStyle(
-                            fontSize: 15, color: Colors.white),
+                        textStyle:
+                            const TextStyle(fontSize: 15, color: Colors.white),
                         child: Container(
                           width: 20,
                           margin: const EdgeInsets.all(1),
@@ -4945,9 +5032,9 @@ class _RotateComplexState extends State<RotateComplex> {
                               //color: wheelgatescolor[index].withValues(alpha:wheelgateopacity),
                               //color: revwheelgatescolor[index],
                               shape: BoxShape.circle,
-                              border: Border.all(
-                                  width: 0.5, color: Colors.black)),
-                                  //width: 0.5, color: reversedtopcoincolor[index])),
+                              border:
+                                  Border.all(width: 0.5, color: Colors.black)),
+                          //width: 0.5, color: reversedtopcoincolor[index])),
                           child: AutoSizeText(
                               reversedHexagramsWheel[index].toString(),
                               minFontSize: 8,
@@ -5641,7 +5728,6 @@ class _RotateComplexState extends State<RotateComplex> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                 
                               child: ConstrainedBox(
                                 constraints: const BoxConstraints(
                                   minHeight: 10,
@@ -6116,7 +6202,6 @@ class _RotateComplexState extends State<RotateComplex> {
                             ),
                           ],
                         ),
-                        
                       ]),
                     ),
                   ],
@@ -6202,9 +6287,9 @@ class _RotateComplexState extends State<RotateComplex> {
                         ),
                         image: DecorationImage(
                             //image: AssetImage(newminmaxcoins[index]),
-                            image: AssetImage('assets/camog/zbredog.png'),
+                            image: const AssetImage('assets/camog/zbredog.png'),
                             colorFilter: ColorFilter.mode(
-                              Colors.white.withValues(alpha:1.0),
+                              Colors.white.withValues(alpha: 1.0),
                               BlendMode.modulate,
                             ))),
                   ),
@@ -6225,15 +6310,16 @@ class _RotateComplexState extends State<RotateComplex> {
                         shape: BoxShape.circle,
                         color: Colors.transparent,
                         border: Border.all(
-                          color:
-                              Colors.blue, //                   <--- border color
+                          color: Colors
+                              .blue, //                   <--- border color
                           width: 4.0,
                         ),
                         image: DecorationImage(
                             //image: AssetImage(newminmaxcoins[index]),
-                            image: AssetImage('assets/camog/zbluedog.png'),
+                            image:
+                                const AssetImage('assets/camog/zbluedog.png'),
                             colorFilter: ColorFilter.mode(
-                              Colors.white.withValues(alpha:1.0),
+                              Colors.white.withValues(alpha: 1.0),
                               BlendMode.modulate,
                             ))),
                   ),
@@ -6266,10 +6352,10 @@ class _RotateComplexState extends State<RotateComplex> {
                         ),
                         image: DecorationImage(
                             //image: AssetImage(newminmaxcoins[index]),
-                            image: AssetImage(
+                            image: const AssetImage(
                                 'assets/camog/zbyellowoctopussy.png'),
                             colorFilter: ColorFilter.mode(
-                              Colors.white.withValues(alpha:1.0),
+                              Colors.white.withValues(alpha: 1.0),
                               BlendMode.modulate,
                             ))),
                   ),
@@ -6298,10 +6384,10 @@ class _RotateComplexState extends State<RotateComplex> {
                         ),
                         image: DecorationImage(
                             //image: AssetImage(newminmaxcoins[index]),
-                            image:
-                                AssetImage('assets/camog/zbgreenoctopus.png'),
+                            image: const AssetImage(
+                                'assets/camog/zbgreenoctopus.png'),
                             colorFilter: ColorFilter.mode(
-                              Colors.white.withValues(alpha:1.0),
+                              Colors.white.withValues(alpha: 1.0),
                               BlendMode.modulate,
                             ))),
                   ),
@@ -6353,7 +6439,7 @@ class _RotateComplexState extends State<RotateComplex> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  icon: CircleAvatar(
+                  icon: const CircleAvatar(
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
@@ -6465,7 +6551,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
                 const SizedBox(width: 5),
                 IconButton(
-                  icon: CircleAvatar(
+                  icon: const CircleAvatar(
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
@@ -6478,7 +6564,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 ),
                 const SizedBox(width: 5),
                 IconButton(
-                  icon: CircleAvatar(
+                  icon: const CircleAvatar(
                       backgroundColor: Colors.transparent,
                       //minRadius: 5,
                       maxRadius: 20,
@@ -7599,22 +7685,22 @@ class _RotateComplexState extends State<RotateComplex> {
               height: 300,
               width: 350,
               child: GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   childAspectRatio: 1.2,
-                  crossAxisCount: 4, // number of items in each row
+                  crossAxisCount: 5, // number of items in each row
                   mainAxisSpacing: 8.0, // spacing between rows
                   crossAxisSpacing: 8.0, // spacing between columns
                 ),
                 padding: const EdgeInsets.all(4.0), // padding around the grid
-                itemCount: 16, // total number of items
+                itemCount: 20, // total number of items
                 itemBuilder: (context, index) {
                   return Container(
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(rtimgcoins[index]),
                             colorFilter: ColorFilter.mode(
-                              Colors.white.withValues(alpha:1.0),
+                              Colors.white.withValues(alpha: 1.0),
                               BlendMode.modulate,
                             ))),
                   );
@@ -7681,7 +7767,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 4,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(25),
@@ -7713,7 +7799,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 4.5,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(25),
@@ -7745,7 +7831,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 5,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.yellow,
                       borderRadius: BorderRadius.circular(25),
@@ -7777,7 +7863,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 5.5,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(25),
@@ -7816,7 +7902,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 4,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(15),
@@ -7838,7 +7924,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       child: AutoSizeText(
                         complexBottomText,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 35,
                             fontWeight: FontWeight.bold,
@@ -7858,7 +7944,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 4.5,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(25),
@@ -7880,7 +7966,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       child: AutoSizeText(
                         simpleBottomText,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 35,
                             fontWeight: FontWeight.bold,
@@ -7900,7 +7986,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 5,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.yellow,
                       borderRadius: BorderRadius.circular(25),
@@ -7922,7 +8008,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       child: AutoSizeText(
                         breathBottomText,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 35,
                             fontWeight: FontWeight.bold,
@@ -7942,7 +8028,7 @@ class _RotateComplexState extends State<RotateComplex> {
                 Container(
                   height: 35,
                   width: MediaQuery.of(context).size.width / 5.5,
-                  margin: EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(25),
@@ -7964,7 +8050,7 @@ class _RotateComplexState extends State<RotateComplex> {
                       child: AutoSizeText(
                         silenceBottomText,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 35,
                             fontWeight: FontWeight.bold,
@@ -7986,6 +8072,55 @@ class _RotateComplexState extends State<RotateComplex> {
             const Divider(
               color: Colors.blue,
             ),
+
+            Stack(
+              children: [
+                Align(
+                  alignment: AlignmentGeometry.center,
+                  child: Container(
+                    //height: MediaQuery.of(context).size.height / 2.2,
+                    height: 200,
+                    width: 200,
+                    //width: MediaQuery.of(context).size.width / 2.2,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(
+                            //'assets/mink/minkluzluz.webp',
+                            'assets/mink/minkpinklok.png',
+                          ),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.circle,
+                        color: Colors.transparent),
+                  ),
+                ),
+                PositionedDirectional(
+                  start: 0,
+                  end: 0,
+                  top: 50,
+                  child: Container(
+                    //height: MediaQuery.of(context).size.height / 2.2,
+                    height: 110,
+                    width: 110,
+                    //width: MediaQuery.of(context).size.width / 2.2,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(
+                            'assets/mink/minkluzluz.webp',
+                            //'assets/mink/minkpinklok.png',
+                          ),
+                          fit: BoxFit.scaleDown,
+                        ),
+                        shape: BoxShape.circle,
+                        color: Colors.transparent),
+                  ),
+                ),
+              ],
+            ),
+            const Divider(
+              color: Colors.blue,
+            ),
+
             const SizedBox(
               width: 50,
               child: AutoSizeText(
@@ -8573,7 +8708,7 @@ class _RotateComplexState extends State<RotateComplex> {
 
   void setChartState() {
     cardcolor = cardcolor == Colors.black
-        ? Colors.black.withValues(alpha:0.2)
+        ? Colors.black.withValues(alpha: 0.2)
         : Colors.black;
 
     timecolor = timecolor == Colors.white ? Colors.black : Colors.white;
@@ -8582,7 +8717,7 @@ class _RotateComplexState extends State<RotateComplex> {
   void setSilenceOnly() {
     int tempdesigngate = 0, temppersongate = 0;
     for (var g in gatestatelist) {
-     g = 0;
+      g = 0;
     }
 
     if (cardstate == 'zb') {
@@ -8697,7 +8832,6 @@ class _RotateComplexState extends State<RotateComplex> {
 
     //reversedHexagramsWheel
 
-
     for (var i = 0; i < _planetsdesignList.length; i++) {
       tempdesigngate = _planetsdesignList[i].gate!;
       if (gatestatelist[tempdesigngate] == 0) {
@@ -8709,11 +8843,12 @@ class _RotateComplexState extends State<RotateComplex> {
         //(coins384List.indexOf(_planethex.gate!) + _planethex.line!)];
         //revwheelgatescolor[tempdesigngate] = reversedtopcoincolor[tempdesigngate];
         tempcolorgatewheel = reversedHexagramsWheel.indexOf(tempdesigngate);
-      setState(() {
-        wheelgatescolor[tempcolorgatewheel] = complexrevtopcoincolor[tempcolorgatewheel].withValues(alpha:1);
-        //wheelgatescolor[tempcolorgatewheel] = reversedtopcoincolor[tempcolorgatewheel];
-        //wheelgatescolor[tempcolorgatewheel] = wheelgatescolor[tempcolorgatewheel].withValues(alpha:1);
-      });
+        setState(() {
+          wheelgatescolor[tempcolorgatewheel] =
+              complexrevtopcoincolor[tempcolorgatewheel].withValues(alpha: 1);
+          //wheelgatescolor[tempcolorgatewheel] = reversedtopcoincolor[tempcolorgatewheel];
+          //wheelgatescolor[tempcolorgatewheel] = wheelgatescolor[tempcolorgatewheel].withValues(alpha:1);
+        });
       }
     }
 
@@ -8724,11 +8859,11 @@ class _RotateComplexState extends State<RotateComplex> {
       tempcolorgatewheel = reversedHexagramsWheel.indexOf(temppersongate);
       //wheelgateopacity = 1.0;
       setState(() {
-        wheelgatescolor[tempcolorgatewheel] = complexrevtopcoincolor[tempcolorgatewheel].withValues(alpha:1);
+        wheelgatescolor[tempcolorgatewheel] =
+            complexrevtopcoincolor[tempcolorgatewheel].withValues(alpha: 1);
         //wheelgatescolor[tempcolorgatewheel] = reversedtopcoincolor[tempcolorgatewheel];
         //wheelgatescolor[tempcolorgatewheel] = wheelgatescolor[tempcolorgatewheel].withValues(alpha:1);
       });
-
 
       if (gatestatelist[temppersongate] == 0) {
         gatestatelist[temppersongate] = 2;
@@ -8761,10 +8896,9 @@ class _RotateComplexState extends State<RotateComplex> {
         for (var i = 0; i < wheelgatescolor.length; i++) {
           //wheelgatescolor[i] = reversedtopcoincolor[i].withValues(alpha:0.1);
           wheelgatescolor[i] = complexrevtopcoincolor[i];
-          wheelgatescolor[i] = wheelgatescolor[i].withValues(alpha:0.1);
+          wheelgatescolor[i] = wheelgatescolor[i].withValues(alpha: 0.1);
         }
       });
-
     }
   }
 
@@ -9319,7 +9453,6 @@ class _RotateComplexState extends State<RotateComplex> {
     sacralstate = updatecenters[6].state!;
     solarstate = updatecenters[7].state!;
     rootstate = updatecenters[8].state!;
-
   }
 
   void _setEvolutionCoin() {

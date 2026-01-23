@@ -1,4 +1,3 @@
-import 'package:decimal/decimal.dart';
 import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/hebrew/lists_he.dart';

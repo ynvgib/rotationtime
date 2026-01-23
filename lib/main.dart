@@ -28,10 +28,12 @@ import 'package:url_launcher/url_launcher.dart';
 // https://www.github.com/ynvgib/rotationtime
 
 Future<void> main() async {
-  //WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
   //await Sweph.init(epheAssets: [
-  //  "packages/sweph/assets/ephe/seas_18.se1",
+  //  "assets/ephe/seas_18.se1",
+  //  "assets/ephe/sepl_12.se1",
+  //  "assets/ephe/sepl_18.se1",
   //]);
 
   //teledart
@@ -42,7 +44,7 @@ Future<void> main() async {
 }
 
 class RotateMain extends StatelessWidget {
-  const RotateMain({Key? key}) : super(key: key);
+  const RotateMain({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -76,13 +78,20 @@ class RotateMain extends StatelessWidget {
 }
 
 class RotateHome extends StatefulWidget {
-  const RotateHome({Key? key}) : super(key: key);
+  const RotateHome({super.key});
 
   @override
   State<RotateHome> createState() => _RotateHomeState();
 }
 
 class _RotateHomeState extends State<RotateHome> {
+  @override
+  void dispose() {
+    // Dispose of CarouselSliderControllers
+
+    super.dispose();
+  }
+
   final String _title = 'כותרת',
       beidontknowsite = 'rotation-time.web.app',
       githubrotatesite = 'www.github.com/ynvgib/rotationtime',
@@ -93,16 +102,15 @@ class _RotateHomeState extends State<RotateHome> {
       githubrotateurl = Uri.parse('https://www.github.com/ynvgib/rotationtime');
 
   Offset _offset = Offset.zero;
+  // Add throttle variables
+
+  DateTime? _lastOffsetUpdate;
+  Duration _throttleDuration = Duration(milliseconds: 16); // ~60 FPS
+
   double screenwidth = 1, screenheight = 1;
   final CarouselSliderController _controllertop = CarouselSliderController(),
       _controllermid = CarouselSliderController(),
-      _controllerbot = CarouselSliderController(),
-      _controllersix = CarouselSliderController(),
-      _controllerfive = CarouselSliderController(),
-      _controllerfour = CarouselSliderController(),
-      _controllerthree = CarouselSliderController(),
-      _controllertwo = CarouselSliderController(),
-      _controllerone = CarouselSliderController();
+      _controllerbot = CarouselSliderController();
 
   int _currenttop = 0, _currentmid = 0, _currentbot = 0;
 
@@ -114,16 +122,25 @@ class _RotateHomeState extends State<RotateHome> {
     BoxShape.circle,
     BoxShape.rectangle,
     BoxShape.circle,
-    BoxShape.rectangle
+    BoxShape.circle,
   ];
 
   @override
   Widget build(BuildContext context) {
     screenwidth = MediaQuery.of(context).size.width;
     screenheight = MediaQuery.of(context).size.height;
+    //return GestureDetector(
+    //  onPanUpdate: (details) {
+    //   setState(() => _offset += details.delta);
+    // },
     return GestureDetector(
       onPanUpdate: (details) {
-        setState(() => _offset += details.delta);
+        final now = DateTime.now();
+        if (_lastOffsetUpdate == null ||
+            now.difference(_lastOffsetUpdate!) > _throttleDuration) {
+          setState(() => _offset += details.delta);
+          _lastOffsetUpdate = now;
+        }
       },
       child: Scaffold(
         bottomNavigationBar: BottomAppBar(
@@ -173,10 +190,14 @@ class _RotateHomeState extends State<RotateHome> {
         backgroundColor: Colors.black,
         body: SingleChildScrollView(
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 gradient: LinearGradient(
               //colors: [Colors.white, Colors.blue,Colors.green, Colors.yellow,Colors.red, Colors.black,],
-              colors: [Colors.white,Colors.pink,],
+              colors: [
+                Colors.white,
+                Colors.black,
+                // Colors.pink,
+              ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             )),
@@ -185,34 +206,40 @@ class _RotateHomeState extends State<RotateHome> {
                 //mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 30),
-                  Flex(direction: Axis.horizontal,
+                  Flex(
+                    direction: Axis.horizontal,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.transparent,
-                            border: Border.all(
-                              color: Colors
-                                  .transparent, //                   <--- border color
-                              width: 1.0,
-                            ),
-                            image: DecorationImage(
-                              //image: AssetImage(newminmaxcoins[index]),
-                                image:
-                                AssetImage('assets/mink/minkupblack.webp',
-                                ),
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white.withValues(alpha:1.0),
-                                  BlendMode.modulate,
-                                ))),
+                      Transform(
+                        alignment: Alignment.center,
+                        transform: Matrix4.rotationY(pi),
+                        child: Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.transparent,
+                              border: Border.all(
+                                color: Colors
+                                    .transparent, //                   <--- border color
+                                width: 1.0,
+                              ),
+                              image: DecorationImage(
+                                  //image: AssetImage(newminmaxcoins[index]),
+                                  image: const AssetImage(
+                                    // 'assets/mink/minkupblack.webp',
+                                    'assets/camog/zblackcat.png',
+                                  ),
+                                  colorFilter: ColorFilter.mode(
+                                    Colors.white.withValues(alpha: 1.0),
+                                    BlendMode.modulate,
+                                  ))),
+                        ),
                       ),
-                      SizedBox(width: 20),
+                      const SizedBox(width: 20),
                       InkWell(
                         child: ClipRRect(
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.elliptical(50, 20),
                             bottomRight: Radius.circular(10),
                             topLeft: Radius.circular(5),
@@ -221,10 +248,22 @@ class _RotateHomeState extends State<RotateHome> {
                           child: Container(
                             height: 60,
                             width: 60,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               gradient: LinearGradient(
                                 //colors: [Colors.white, Colors.blue,Colors.green, Colors.yellow,Colors.red, Colors.black,],
-                                colors: [Colors.white,Colors.white,Colors.white,Colors.pink,Colors.pink,Colors.pink,],
+                                colors: [
+                                  Colors.white,
+                                  Colors.white,
+                                  Colors.white,
+                                  Colors.white,
+                                  Colors.white,
+                                  Colors.white,
+                                  Colors.blue,
+                                  Colors.green,
+                                  Colors.yellow,
+                                  Colors.red,
+                                  Colors.black,
+                                ],
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                               ),
@@ -260,11 +299,11 @@ class _RotateHomeState extends State<RotateHome> {
                     height: 35,
                     width: MediaQuery.of(context).size.width / 1.5,
                     margin: const EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: Colors.white,
                         //borderRadius: BorderRadius.circular(25),
                         shape: BoxShape.rectangle,
-                        boxShadow: const [
+                        boxShadow: [
                           BoxShadow(
                               color: Colors.green,
                               offset: Offset(4, 4),
@@ -285,7 +324,7 @@ class _RotateHomeState extends State<RotateHome> {
                           //'זמן סיבוב',
                           mainTitle,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 35,
                               fontWeight: FontWeight.bold,
@@ -302,7 +341,7 @@ class _RotateHomeState extends State<RotateHome> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Container(
                     height: 35,
                     width: MediaQuery.of(context).size.width / 1.5,
@@ -330,7 +369,7 @@ class _RotateHomeState extends State<RotateHome> {
                         child: AutoSizeText(
                           subTitle,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -348,7 +387,7 @@ class _RotateHomeState extends State<RotateHome> {
                     ),
                   ),
                   const Divider(
-                    color: Colors.pink,
+                    color: Colors.white,
                     thickness: 5,
                   ),
                   Stack(
@@ -367,16 +406,17 @@ class _RotateHomeState extends State<RotateHome> {
                                     color: Colors.black,
                                     border: Border.all(
                                       color: Colors
-                                          .black, //                   <--- border color
-                                      width: 1.0,
+                                          .white, //                   <--- border color
+                                      width: 3.0,
                                     ),
                                     image: DecorationImage(
-                                      //image: AssetImage(newminmaxcoins[index]),
-                                        image:
-                                        AssetImage( 'assets/mink/minkdanes.webp',
+                                        //image: AssetImage(newminmaxcoins[index]),
+                                        image: const AssetImage(
+                                          // 'assets/mink/minkdanes.webp',
+                                          'assets/camog/zblackcat.png',
                                         ),
                                         colorFilter: ColorFilter.mode(
-                                          Colors.white.withValues(alpha:1.0),
+                                          Colors.white.withValues(alpha: 0.0),
                                           BlendMode.modulate,
                                         ))),
                               ),
@@ -397,11 +437,12 @@ class _RotateHomeState extends State<RotateHome> {
                                           width: 1.0,
                                         ),
                                         image: DecorationImage(
-                                          //image: AssetImage(newminmaxcoins[index]),
-                                            image:
-                                            AssetImage('assets/camog/zblackcat.png'),
+                                            //image: AssetImage(newminmaxcoins[index]),
+                                            image: const AssetImage(
+                                                'assets/camog/zblackcat.png'),
                                             colorFilter: ColorFilter.mode(
-                                              Colors.white.withValues(alpha:1.0),
+                                              Colors.white
+                                                  .withValues(alpha: 1.0),
                                               BlendMode.modulate,
                                             ))),
                                   ),
@@ -435,36 +476,42 @@ class _RotateHomeState extends State<RotateHome> {
                                   fit: StackFit.loose,
                                   children: [
                                     Visibility(
-                                      visible: false,
+                                      visible: true,
                                       child: Container(
                                         decoration: BoxDecoration(
                                             shape: bordershapelist[index],
                                             border: Border.all(
                                               //color: colors5lst[index], //                   <--- border color
-                                              color: Colors.pinkAccent, //                   <--- border color
+                                              color: coin6newcolors[
+                                                  index], //                   <--- border color
                                               width: 5.0,
                                             ),
                                             image: DecorationImage(
-                                              //image: AssetImage(newminmaxcoins[index]),
-                                                image: AssetImage(rotatelst[index]),
+                                                //image: AssetImage(newminmaxcoins[index]),
+                                                image: AssetImage(
+                                                    rotatelst[index]),
                                                 colorFilter: ColorFilter.mode(
-                                                  Colors.white.withValues(alpha:0.2),
+                                                  Colors.white
+                                                      .withValues(alpha: 0.3),
                                                   BlendMode.modulate,
                                                 ))),
                                       ),
                                     ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            //image: AssetImage(newminmaxcoins[index]),
-                                              image:
-                                              AssetImage(pinkrotatelst[index]),
-                                              colorFilter: ColorFilter.mode(
-                                                Colors.white.withValues(alpha:1.0),
-                                                BlendMode.modulate,
-                                              ))),
+                                    Visibility(
+                                      visible: false,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                //image: AssetImage(newminmaxcoins[index]),
+                                                image: AssetImage(
+                                                    pinkrotatelst[index]),
+                                                colorFilter: ColorFilter.mode(
+                                                  Colors.white
+                                                      .withValues(alpha: 1.0),
+                                                  BlendMode.modulate,
+                                                ))),
+                                      ),
                                     ),
-
                                   ],
                                 ),
                               ),
@@ -514,17 +561,17 @@ class _RotateHomeState extends State<RotateHome> {
                                           width: 75,
                                           decoration: BoxDecoration(
                                               image: DecorationImage(
-                                                //image: AssetImage(newminmaxcoins[index]),
-                                                  image:
-                                                  AssetImage(zoonewrotatelst[index]),
+                                                  //image: AssetImage(newminmaxcoins[index]),
+                                                  image: AssetImage(
+                                                      zoonewrotatelst[index]),
                                                   colorFilter: ColorFilter.mode(
-                                                    Colors.white.withValues(alpha:1.0),
+                                                    Colors.white
+                                                        .withValues(alpha: 1.0),
                                                     BlendMode.modulate,
                                                   ))),
                                         ),
                                       ),
                                     ),
-
                                   ],
                                 ),
                               ),
@@ -535,154 +582,14 @@ class _RotateHomeState extends State<RotateHome> {
                           );
                         }),
                       ),
-
-
                     ],
                   ),
 
                   const Divider(
-                    color: Colors.white,
+                    color: Colors.black,
                     thickness: 5,
                   ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: 10,
-                      minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
-                    ),
-                    child: CarouselSlider(
-                      //items: mixHexagramSlidersNew,
-                      items: sixSlider,
-                      carouselController: _controllersix,
-                      options: CarouselOptions(
-                          initialPage: 5,
-                          autoPlay: false,
-                          enlargeCenterPage: true,
-                          aspectRatio: 3,
-                          onPageChanged: (indextop, reason) {
-                            setState(() {
-                              _currenttop = indextop;
-                            });
-                          }),
-                    ),
-                  ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: 10,
-                      minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
-                    ),
-                    child: CarouselSlider(
-                      //items: mixHexagramSlidersNew,
-                      items: sixSlider,
-                      carouselController: _controllerfive,
-                      options: CarouselOptions(
-                          initialPage: 4,
-                          autoPlay: false,
-                          enlargeCenterPage: true,
-                          aspectRatio: 3,
-                          onPageChanged: (indexmid, reason) {
-                            setState(() {
-                              _currentmid = indexmid;
-                            });
-                          }),
-                    ),
-                  ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: 10,
-                      minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
-                    ),
-                    child: CarouselSlider(
-                      //items: mixHexagramSlidersNew,
-                      items: sixSlider,
-                      carouselController: _controllerfour,
-                      options: CarouselOptions(
-                          initialPage: 3,
-                          autoPlay: false,
-                          enlargeCenterPage: true,
-                          aspectRatio: 3,
-                          onPageChanged: (indexbot, reason) {
-                            setState(() {
-                              _currentbot = indexbot;
-                            });
-                          }),
-                    ),
-                  ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: 10,
-                      minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
-                    ),
-                    child: CarouselSlider(
-                      //items: mixHexagramSlidersNew,
-                      items: sixSlider,
-                      carouselController: _controllerthree,
-                      options: CarouselOptions(
-                          initialPage: 8,
-                          autoPlay: false,
-                          enlargeCenterPage: true,
-                          aspectRatio: 3,
-                          onPageChanged: (indextop, reason) {
-                            setState(() {
-                              _currenttop = indextop;
-                            });
-                          }),
-                    ),
-                  ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: 10,
-                      minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
-                    ),
-                    child: CarouselSlider(
-                      //items: mixHexagramSlidersNew,
-                      items: sixSlider,
-                      carouselController: _controllertwo,
-                      options: CarouselOptions(
-                          initialPage: 7,
-                          autoPlay: false,
-                          enlargeCenterPage: true,
-                          aspectRatio: 3,
-                          onPageChanged: (indexmid, reason) {
-                            setState(() {
-                              _currentmid = indexmid;
-                            });
-                          }),
-                    ),
-                  ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: 10,
-                      minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
-                    ),
-                    child: CarouselSlider(
-                      //items: mixHexagramSlidersNew,
-                      items: sixSlider,
-                      carouselController: _controllerone,
-                      options: CarouselOptions(
-                          initialPage: 6,
-                          autoPlay: false,
-                          enlargeCenterPage: true,
-                          aspectRatio: 3,
-                          onPageChanged: (indexbot, reason) {
-                            setState(() {
-                              _currentbot = indexbot;
-                            });
-                          }),
-                    ),
-                  ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   const Divider(
                     color: Colors.transparent,
                     thickness: 5,
@@ -705,7 +612,7 @@ class _RotateHomeState extends State<RotateHome> {
                                   height:
                                       MediaQuery.of(context).size.height / 6,
                                   width: MediaQuery.of(context).size.width / 5,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     image: DecorationImage(
                                       image: AssetImage(
                                           'assets/camog/dogatapp.gif'),
@@ -722,7 +629,7 @@ class _RotateHomeState extends State<RotateHome> {
                                   height:
                                       MediaQuery.of(context).size.height / 8,
                                   width: MediaQuery.of(context).size.width / 6,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     image: DecorationImage(
                                       image:
                                           AssetImage('assets/coins/camel.png'),

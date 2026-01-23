@@ -1,9 +1,19 @@
 flutter build apk --split-per-abi --no-tree-shake-icons
 
+/home/ken/Documents/vs/projects/rotationtime/build/app/outputs/flutter-apk
+
 flutter build web --no-tree-shake-icons
 firebase deploy
 
 flutter build windows
+
+flutter build linux
+
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+flutter_distributor release --name=dev --jobs=release-dev-linux-deb
+
+
 
 
 // old APK build (no 64 bit split)

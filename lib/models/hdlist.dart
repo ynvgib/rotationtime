@@ -2554,65 +2554,103 @@ final List hdiching_heb = [
 ];
 
 final hdgodheads = [
-  'hades',
-  'prometheus',
-  'vishnu',
-  'keepers of the wheel',
-  'kali',
-  'mitra',
-  'michael',
-  'janus',
-  'maia',
-  'lakshmi',
-  'parvati',
-  'maat',
-  'toth',
-  'harmonia',
-  'christ',
-  'minerva',
-];
+      'hades',
+      'prometheus',
+      'vishnu',
+      'keepers of the wheel',
+      'kali',
+      'mitra',
+      'michael',
+      'janus',
+      'maia',
+      'lakshmi',
+      'parvati',
+      'maat',
+      'toth',
+      'harmonia',
+      'christ',
+      'minerva',
+    ],
+    hdgodheadsnew = [
+      'ᾍδης',
+      'Προμηθεύς',
+      'विष्‍णु',
+      'למד-וו-כינויים',
+      'काली',
+      'मित्र',
+      'מי כאל',
+      'Iānus',
+      'Μαῖα',
+      'लक्ष्मी',
+      'पार्वती',
+      'ⲙⲉⲓ',
+      '𐤈𐤇𐤅𐤕',
+      'Ἁρμονία',
+      'christ',
+      'mɪ\ˈnɛru̯ä',
+    ];
 
-List revgodheads = hdgodheads.reversed.toList();
-List revhebgodheads = hdhebgodheads.reversed.toList();
-List revrtgodheads = rtgodheads.reversed.toList();
+List revgodheads = hdgodheads.reversed.toList(),
+    revhebgodheads = hdhebgodheads.reversed.toList(),
+    revrtgodheads = rtgodheads.reversed.toList(),
+    revzbgodheads = zbgodheads.reversed.toList(),
+    revhdgodheadsnew = hdgodheadsnew.reversed.toList();
 
 final hdhebgodheads = [
-  'אליל אתרוג',
-  'אליל הבטחה מקצועית',
-  'אליל ניגוב נוזף',
-  'אליל שומר זמן סיבוב',
-  'אליל קל לי',
-  'אליל מי תר גמל רע',
-  'אליל מי כרטיס כאל',
-  'אליל בורח למחשב',
-  'האלילה מאי ה',
-  'אלילת מי חברת הקש',
-  'אלילה ואיתה הפרה',
-  'אלילת מעט זה הרבה',
-  'תות האלילה',
-  'אלילת הר הכסף',
-  'אלילת יש שעועית',
-  'אלילת מינית רווה'
+  'אתה אתרוג',
+  'אתה הבטחה מקצועית',
+  'אתה ניגוב נוזף',
+  'אתה שומר זמן סיבוב',
+  'אתה קל לי',
+  'אתה מי תר גמל רע',
+  'אתה מי כרטיס כאל',
+  'אתה בורח למחשב',
+  'האה מאי ה',
+  'את מי חברת הקש',
+  'אה ואיתה הפרה',
+  'את מעט זה הרבה',
+  'תות האה',
+  'את הר הכסף',
+  'את יש שעועית',
+  'את מינית רווה'
 ];
 
 final rtgodheads = [
-  'אליל מורכב מורכב',
-  'אליל מורכב פשוט',
-  'אליל מורכב נשימה',
-  'אליל מורכב שתיקה',
-  'אליל פשוט מורכב',
-  'אליל פשוט פשוט',
-  'אליל פשוט נשימה',
-  'אליל פשוט שתיקה',
-  'אלילה שתיקה שתיקה',
-  'אלילה שתיקה נשימה',
-  'אלילה שתיקה פשוט',
-  'אלילה שתיקה מורכב',
-  'אלילה נשימה שתיקה',
-  'אלילה נשימה נשימה',
-  'אלילה נשימה פשוט',
-  'אלילה נשימה מורכב'
-];
+      'א מורכב מורכב',
+      'א מורכב פשוט',
+      'א מורכב נשימה',
+      'א מורכב שתיקה',
+      'א פשוט מורכב',
+      'א פשוט פשוט',
+      'א פשוט נשימה',
+      'א פשוט שתיקה',
+      'אה שתיקה שתיקה',
+      'אה שתיקה נשימה',
+      'אה שתיקה פשוט',
+      'אה שתיקה מורכב',
+      'אה נשימה שתיקה',
+      'אה נשימה נשימה',
+      'אה נשימה פשוט',
+      'אה נשימה מורכב'
+    ],
+    zbgodheads = [
+      'אליל כלב מורכב',
+      'אליל כלב תמנון',
+      'אליל כלב תמנונה',
+      'אליל כלב כלבה',
+      'אליל תמנון כלב',
+      'אליל תמנון פשוט',
+      'אליל תמנון תמנונה',
+      'אליל תמנון כלבה',
+      'אלילה כלבה שתיקה',
+      'אלילה כלבה תמנונה',
+      'אלילה כלבה תמנון',
+      'אלילה כלבה כלב',
+      'אלילה תמנונה כלבה',
+      'אלילה תמנונה נשימה',
+      'אלילה תמנונה תמנון',
+      'אלילה תמנונה כלב'
+    ];
 
 List<String> hdlinesplanet = [
   //int idxline = index*3;
@@ -3837,61 +3875,117 @@ List<String> hdlinesplanet = [
   'assets/family/fgrampa6nbg.png',
 ];
 
-final int hdInAnimateGate = 25;
-final String hdInAnimateCenter = 'self';
-final int hdInAnimateLayout = 0;
+const int hdInAnimateGate = 25;
+const String hdInAnimateCenter = 'self';
+const int hdInAnimateLayout = 0;
 
 final List<int> hdCellGates = [15, 5];
-final int hdCElltoHumanGate = 3;
+const int hdCElltoHumanGate = 3;
 final List<String> hdCellCenters = [
   'self',
   'sacral',
 ];
-final int hdSingleCellLayout = 0;
+const int hdSingleCellLayout = 0;
 
 final List<int> hdPlantGates = [34, 57, 10];
-final int hdPlanttoHumanGate = 15;
+const int hdPlanttoHumanGate = 15;
 final List<String> hdPlantCenters = ['sacral', 'spleen', 'self'];
-final int hdPlantLayout = 180;
+const int hdPlantLayout = 180;
 
 final List<int> hdInsectGates = [34, 57, 5, 15, 10, 20];
 //final int hdInsectstoHumanGate = 0;
 final List<String> hdInsectCenters = ['throat', 'self', 'sacral', 'spleen'];
-final int hdInsectLayout = 0;
+const int hdInsectLayout = 0;
 
 final List<int> hdBirdFishReptileGates = [8, 1, 15, 5, 34, 57];
-final int hdBirdFishReptiletoHumanGate = 44;
+const int hdBirdFishReptiletoHumanGate = 44;
 final List<String> hdBirdFishReptileCenters = [
   'throat',
   'self',
   'sacral',
   'spleen'
 ];
-final int hdBirdFishReptileLayout = 90;
+const int hdBirdFishReptileLayout = 90;
 
 final List<int> hdMammalGates = [8, 1, 15, 5, 27, 50, 20, 57, 28, 38];
 final List<int> hdMammaltoHumanGate = [19, 12, 62];
 final List<String> hdMammalCenters = ['throat', 'self', 'sacral', 'spleen'];
-final int hdBirdsFishReptileLayout = 270;
-
+const int hdBirdsFishReptileLayout = 270;
 
 // Design of Forms
 
-final List<DesignForm> designFormsList =
-    [
-      DesignForm(id: 0, name: 'form', gates: [0], centers: ['none'], zbname: 'zbform', orient: 'updown'),
-      DesignForm(id: 1, name: 'inanimate', gates: [25], centers: ['none'], zbname: 'פשומם', orient: 'updown'),
-      DesignForm(id: 2, name: 'cell', gates: [3,5,15], centers: ['sacral','self'], zbname: 'אתא', orient: 'updown'),
-      DesignForm(id: 3, name: 'plant', gates: [10,34,57,15], centers: ['sacral','self','spleen'], zbname: 'צומח', orient: 'downup'),
-      DesignForm(id: 4, name: 'insect', gates: [5,10,15,20,34,57], centers: ['sacral','self','spleen','throat'], zbname: 'חרק', orient: 'updown'),
-      DesignForm(id: 5, name: 'birdReptileFish', gates: [1,8,5,15,34,44,57], centers: ['sacral','self','spleen','throat'], zbname: 'עופזוחלדג', orient: 'leftright'),
-      DesignForm(id: 6, name: 'mammal', gates: [1,5,8,12,15,19,20,27,28,38,42,50,53,57,62], centers: ['sacral','self','spleen','throat','root'], zbname: 'יונקלודם', orient: 'rightleft'),
-      DesignForm(id: 7, name: 'penta', gates: [1,2,5,7,8,13,14,15,29,31,33], centers: ['sacral','self','throat'], zbname: 'סלט קטן', orient: 'none'),
-      DesignForm(id: 8, name: 'wa', gates: [2,3,6,14,21,25,27,45,51,50,59,60], centers: ['sacral','self','spleen','solar','ego','throat','root'], zbname: 'סלט גדול', orient: 'none'),
-      DesignForm(id: 9, name: 'human', gates: numbers64, centers: ['none'], zbname: 'הואדם', orient: 'updown'),
-    ];
-
-
+final List<DesignForm> designFormsList = [
+  DesignForm(
+      id: 0,
+      name: 'form',
+      gates: [0],
+      centers: ['none'],
+      zbname: 'zbform',
+      orient: 'updown'),
+  DesignForm(
+      id: 1,
+      name: 'inanimate',
+      gates: [25],
+      centers: ['none'],
+      zbname: 'פשומם',
+      orient: 'updown'),
+  DesignForm(
+      id: 2,
+      name: 'cell',
+      gates: [3, 5, 15],
+      centers: ['sacral', 'self'],
+      zbname: 'אתא',
+      orient: 'updown'),
+  DesignForm(
+      id: 3,
+      name: 'plant',
+      gates: [10, 34, 57, 15],
+      centers: ['sacral', 'self', 'spleen'],
+      zbname: 'צומח',
+      orient: 'downup'),
+  DesignForm(
+      id: 4,
+      name: 'insect',
+      gates: [5, 10, 15, 20, 34, 57],
+      centers: ['sacral', 'self', 'spleen', 'throat'],
+      zbname: 'חרק',
+      orient: 'updown'),
+  DesignForm(
+      id: 5,
+      name: 'birdReptileFish',
+      gates: [1, 8, 5, 15, 34, 44, 57],
+      centers: ['sacral', 'self', 'spleen', 'throat'],
+      zbname: 'עופזוחלדג',
+      orient: 'leftright'),
+  DesignForm(
+      id: 6,
+      name: 'mammal',
+      gates: [1, 5, 8, 12, 15, 19, 20, 27, 28, 38, 42, 50, 53, 57, 62],
+      centers: ['sacral', 'self', 'spleen', 'throat', 'root'],
+      zbname: 'יונקלודם',
+      orient: 'rightleft'),
+  DesignForm(
+      id: 7,
+      name: 'penta',
+      gates: [1, 2, 5, 7, 8, 13, 14, 15, 29, 31, 33, 46],
+      centers: ['sacral', 'self', 'throat'],
+      zbname: 'קיבוץ קטן',
+      orient: 'none'),
+  DesignForm(
+      id: 8,
+      name: 'wa',
+      gates: [2, 3, 6, 14, 21, 25, 27, 45, 51, 50, 59, 60],
+      centers: ['sacral', 'self', 'spleen', 'solar', 'ego', 'throat', 'root'],
+      zbname: 'קיבוץ גדול',
+      orient: 'none'),
+  DesignForm(
+      id: 9,
+      name: 'human',
+      gates: numbers64,
+      centers: ['none'],
+      zbname: 'הואדם',
+      orient: 'updown'),
+];
 
 // Codon
 
@@ -3974,7 +4068,7 @@ final List<Codon> codonLst = [
         44,
         50,
       ],
-      zbname: 'גלו'),
+      zbname: 'גלא'),
   Codon(
     id: 9,
     name: 'Apsaraginic Acid',
@@ -4284,3 +4378,113 @@ final List hdZBCodonName = [
   //'Stop Codon',
   'גמל',
 ];
+
+final List finhd6DesignTones = [
+      'determined envrionmental tones',
+      'smell',
+      'taste',
+      'outer vision',
+      'inner vision',
+      'feeling',
+      'touch',
+    ],
+    finhd6PersonalityTones = [
+      'perspective tone',
+      'security',
+      'uncertainty',
+      'action',
+      'meditation',
+      'judgement',
+      'acceptance',
+    ],
+    finhd6DesignColorPHS = [
+      'determined PHS color',
+      'appetite',
+      'taste',
+      'thirst',
+      'touch',
+      'sound',
+      'light',
+    ],
+    finhd6DesignColorENV = [
+      'environmental color',
+      'caves',
+      'markets',
+      'kitchens',
+      'mountains',
+      'valleys',
+      'shores',
+    ],
+    finhd6PersonalityColorPER = [
+      'perspective color',
+      'survival',
+      'possibility',
+      'power',
+      'wanting',
+      'probability',
+      'personal',
+    ],
+    finhd6PersonalityColorMOT = [
+      'motivational color',
+      'fear',
+      'hope',
+      'desire',
+      'need',
+      'guilt',
+      'innocence',
+    ],
+    // left right Design Person
+    finhd6DesignLeftFixedColorPHS = [
+      'left fixed PHS color',
+      'conseuctive',
+      'open',
+      'hot',
+      'calm',
+      'high',
+      'direct',
+    ],
+    finhd6DesignRightFixedColorPHS = [
+      'right fixed PHS color',
+      'alternating',
+      'closed',
+      'cold',
+      'nervous',
+      'low',
+      'indirect',
+    ],
+    finhd6DesLeftFixedColorEnv = [
+      'left fixed ENV color',
+      'selective',
+      'internal',
+      'wet',
+      'active',
+      'narrow',
+      'natural',
+    ],
+    finhd6DesRightFixedColorEnv = [
+      'right fixed ENV color',
+      'blending',
+      'external',
+      'dry',
+      'passive',
+      'wide',
+      'artificial',
+    ],
+    finhd6PerLeftColorTrajectory = [
+      'personality left color trajectory',
+      'communalist',
+      'theist',
+      'leader',
+      'master',
+      'conditioner',
+      'observer',
+    ],
+    finhd6PerRightColorTrajectory = [
+      'personality right color trajectory',
+      'separativist',
+      'anti-theist',
+      'follower',
+      'novice',
+      'conditioned',
+      'observed',
+    ];

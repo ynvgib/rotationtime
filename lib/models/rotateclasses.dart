@@ -147,7 +147,7 @@ class hdCenter {
 }
 
 class ZBCube extends StatelessWidget {
-  const ZBCube({Key? key}) : super(key: key);
+  const ZBCube({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -252,7 +252,7 @@ class ZBCube extends StatelessWidget {
 }
 
 class Cube extends StatelessWidget {
-  const Cube({Key? key}) : super(key: key);
+  const Cube({super.key});
 
   @override
   Widget build(BuildContext context) {

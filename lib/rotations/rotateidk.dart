@@ -16,15 +16,31 @@ class RotateIDK extends StatefulWidget {
   }
 }
 
-class _RotateIDKState extends State<RotateIDK> {
+//class _RotateIDKState extends State<RotateIDK> {
+class _RotateIDKState extends State<RotateIDK>
+    with SingleTickerProviderStateMixin {
   final TextEditingController _controlleriDogText = TextEditingController(),
       _controllerCamelText = TextEditingController();
   //final String _title = subtitles[0];
   final String _title = subtitles_heb[0];
 
-  String meditationText = "מדיטציה", camogText = '!?חתולאיודעת';
+  String meditationText = "!?מדיטציה", camogText = '.לא יודעת';
   bool isMeditationText = true, isCamogText = true;
 
+  @override
+  void initState() {
+    super.initState();
+    // Initialize any controllers if needed
+  }
+
+  @override
+  void dispose() {
+    // Dispose of all controllers specific to this screen
+    // Example: _controllerone.dispose(); _controllertoptext.dispose(); etc.
+    _controlleriDogText.dispose();
+    _controllerCamelText.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +52,16 @@ class _RotateIDKState extends State<RotateIDK> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AutoSizeText(
-                'I do not know', textAlign: TextAlign.left,
+                'I do not know',
+                textAlign: TextAlign.left,
                 minFontSize: 10,
                 maxFontSize: 15,
                 style: TextStyle(color: Colors.white),
               ),
               SizedBox(width: 10),
               AutoSizeText(
-                '?  אני לא יודעת', textAlign: TextAlign.left,
+                '?  אני לא יודעת',
+                textAlign: TextAlign.left,
                 minFontSize: 10,
                 maxFontSize: 15,
                 style: TextStyle(color: Colors.white),
@@ -62,12 +80,14 @@ class _RotateIDKState extends State<RotateIDK> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
+
             SizedBox(
               height: 200,
               width: 200,
               child: Stack(
                 children: [
-                  Align(alignment: Alignment.center,
+                  Align(
+                    alignment: Alignment.center,
                     child: Transform(
                       transform: Matrix4.rotationX(0.0),
                       child: Container(
@@ -83,7 +103,9 @@ class _RotateIDKState extends State<RotateIDK> {
                       ),
                     ),
                   ),
-                  PositionedDirectional(bottom: 10, start: 100,
+                  PositionedDirectional(
+                    bottom: 10,
+                    start: 100,
                     child: Transform(
                       transform: Matrix4.rotationY(math.pi),
                       child: Container(
@@ -99,7 +121,9 @@ class _RotateIDKState extends State<RotateIDK> {
                       ),
                     ),
                   ),
-                  PositionedDirectional(bottom: 40, start: 150,
+                  PositionedDirectional(
+                    bottom: 40,
+                    start: 150,
                     child: Transform(
                       transform: Matrix4.rotationY(math.pi),
                       child: Container(
@@ -115,7 +139,9 @@ class _RotateIDKState extends State<RotateIDK> {
                       ),
                     ),
                   ),
-                  PositionedDirectional(bottom: 10, end: -100,
+                  PositionedDirectional(
+                    bottom: 10,
+                    end: -100,
                     child: Transform(
                       transform: Matrix4.rotationY(math.pi),
                       child: Container(
@@ -146,45 +172,75 @@ class _RotateIDKState extends State<RotateIDK> {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
-            Stack(
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Align(alignment: Alignment.center,
-                  child: Container(
-                    height: 150,
-                    width: 150,
-                    //margin: const EdgeInsets.only(right: 235, top: 35),
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/camog/dogdownapp.png'),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
+                Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.black,
+                            offset: Offset(4, 4),
+                            blurRadius: 20,
+                            spreadRadius: 1),
+                        BoxShadow(
+                            color: Colors.black,
+                            offset: Offset(-4, -4),
+                            blurRadius: 15,
+                            spreadRadius: 1),
+                      ]),
+                  child: const AutoSizeText('@',
+                      textAlign: TextAlign.center,
+                      minFontSize: 65,
+                      maxFontSize: 75,
+                      style: TextStyle(color: Colors.white)),
                 ),
-                PositionedDirectional(
-                  start: 1, end: 1,
-                  child: Transform.rotate(
-                    angle: 0.45,
-                    child: Container(
-                      height: 80,
-                      width: 80,
-                      //margin: const EdgeInsets.only(right: 235, top: 35),
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/mink/minkhead.webp'),
-                          fit: BoxFit.scaleDown,
+                Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        height: 150,
+                        width: 150,
+                        //margin: const EdgeInsets.only(right: 235, top: 35),
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/camog/dogdownapp.png'),
+                            fit: BoxFit.scaleDown,
+                          ),
+                          shape: BoxShape.rectangle,
                         ),
-                        shape: BoxShape.rectangle,
                       ),
                     ),
-                  ),
+                    PositionedDirectional(
+                      start: 1,
+                      end: 1,
+                      child: Transform.rotate(
+                        angle: 0.45,
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          //margin: const EdgeInsets.only(right: 235, top: 35),
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/mink/minkhead.webp'),
+                              fit: BoxFit.scaleDown,
+                            ),
+                            shape: BoxShape.rectangle,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-
               ],
             ),
             const Divider(thickness: 5, color: Colors.black),
@@ -204,8 +260,7 @@ class _RotateIDKState extends State<RotateIDK> {
             AutoSizeTextField(
                 maxFontSize: 30,
                 readOnly: false,
-                decoration: const InputDecoration.collapsed(
-                    hintText: '!'),
+                decoration: const InputDecoration.collapsed(hintText: '!'),
                 textAlign: TextAlign.center,
                 controller: _controlleriDogText,
                 style: const TextStyle(
@@ -321,8 +376,8 @@ class _RotateIDKState extends State<RotateIDK> {
                     isCamogText = !isCamogText;
                     setState(() {
                       isCamogText == true
-                          ? camogText = "!?אני לא יודעת"
-                          : camogText = "Camog?!";
+                          ? camogText = "?אני לא יודעת"
+                          : camogText = "I do not know?";
                     });
                   },
                 ),
@@ -365,16 +420,16 @@ class _RotateIDKState extends State<RotateIDK> {
                     isMeditationText = !isMeditationText;
                     setState(() {
                       isMeditationText == true
-                          ? meditationText = ".מאידיטציה"
-                          : meditationText = "Myditation.";
+                          ? meditationText = "!מדיטציה"
+                          : meditationText = "meditation!";
                     });
                   },
                 ),
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height / 2,
-              width: MediaQuery.of(context).size.width / 2,
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 3,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/mink/minkhead.webp'),

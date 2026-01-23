@@ -9992,103 +9992,103 @@ final List<String> rtmoneytimetitleheb = [
 
 final List<EvolutionContainer> evolutionContainerList = [
   //0
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.red,
       colorinbreath: Colors.yellow,
       colorinsimple: Colors.green,
       colorincomplex: Colors.blue),
   //1
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.blue,
       colorinbreath: Colors.blue,
       colorinsimple: Colors.blue,
       colorincomplex: Colors.blue),
   //2
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.blue,
       colorinbreath: Colors.green,
       colorinsimple: Colors.blue,
       colorincomplex: Colors.yellow),
   //3
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.blue,
       colorinbreath: Colors.blue,
       colorinsimple: Colors.green,
       colorincomplex: Colors.green),
   //4
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.blue,
       colorinbreath: Colors.green,
       colorinsimple: Colors.green,
       colorincomplex: Colors.red),
   //5
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.yellow,
       colorinbreath: Colors.yellow,
       colorinsimple: Colors.blue,
       colorincomplex: Colors.blue),
   //6
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.yellow,
       colorinbreath: Colors.red,
       colorinsimple: Colors.blue,
       colorincomplex: Colors.yellow),
   //7
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.yellow,
       colorinbreath: Colors.yellow,
       colorinsimple: Colors.green,
       colorincomplex: Colors.green),
   //8
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.yellow,
       colorinbreath: Colors.red,
       colorinsimple: Colors.green,
       colorincomplex: Colors.red),
   //9
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.green,
       colorinbreath: Colors.blue,
       colorinsimple: Colors.yellow,
       colorincomplex: Colors.blue),
   //10
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.green,
       colorinbreath: Colors.green,
       colorinsimple: Colors.yellow,
       colorincomplex: Colors.yellow),
   //11
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.green,
       colorinbreath: Colors.blue,
       colorinsimple: Colors.red,
       colorincomplex: Colors.green),
   //12
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.green,
       colorinbreath: Colors.green,
       colorinsimple: Colors.red,
       colorincomplex: Colors.red),
   //13
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.red,
       colorinbreath: Colors.yellow,
       colorinsimple: Colors.yellow,
       colorincomplex: Colors.blue),
   //14
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.red,
       colorinbreath: Colors.red,
       colorinsimple: Colors.yellow,
       colorincomplex: Colors.yellow),
   //15
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.red,
       colorinbreath: Colors.yellow,
       colorinsimple: Colors.red,
       colorincomplex: Colors.green),
   //16
-  EvolutionContainer(
+  const EvolutionContainer(
       colorinsilence: Colors.red,
       colorinbreath: Colors.red,
       colorinsimple: Colors.red,

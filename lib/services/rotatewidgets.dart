@@ -234,7 +234,7 @@ Widget buildDogPopUp(BuildContext context) {
               //image: AssetImage(newminmaxcoins[index]),
               image: AssetImage('assets/camog/dogdownapp.png'),
               colorFilter: ColorFilter.mode(
-                Colors.white.withOpacity(1.0),
+                Colors.white.withValues(alpha: 1.0),
                 BlendMode.modulate,
               )),
         ),
@@ -430,7 +430,6 @@ Widget build36PopUp(BuildContext context) {
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                 child: const Text('Generate',
                     style: TextStyle(color: Colors.black, fontSize: 25))),
-
           ],
         ),
       ),
@@ -745,7 +744,6 @@ Widget build384PopUp(BuildContext context) {
             const SizedBox(
               height: 10,
             ),
-
           ],
         ),
       ),
@@ -825,8 +823,10 @@ Widget buildBookPopUp(BuildContext context) {
   ];
   return AlertDialog(
     //title: const Text('36 Transactions'),
-    title: const Text('Ido Not Now עידו לא כעט', textAlign: TextAlign.center,
-        style: TextStyle(fontWeight: FontWeight.normal, color: Colors.black, fontSize: 15)),
+    title: const Text('Ido Not Now עידו לא כעט',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontWeight: FontWeight.normal, color: Colors.black, fontSize: 15)),
     content: SingleChildScrollView(
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
@@ -1301,7 +1301,7 @@ Widget _buildManifestChl(BuildContext context, List<String> complexlst) {
         itemBuilder: (context, index) {
           return Container(
             decoration: BoxDecoration(
-              //color: Colors.blue[100],
+                //color: Colors.blue[100],
                 color: Colors.blue,
                 border: Border.all(
                   width: 3,
@@ -1506,7 +1506,8 @@ Widget buildGodheadPopUp(BuildContext context, int ghidx) {
   return AlertDialog(
     title: Center(
       //child: Text('Wallet: $wallet\n'
-      child: Text(revrtgodheads[ghidx]),
+      // child: Text(revrtgodheads[ghidx]),
+      child: Text(revzbgodheads[ghidx]),
     ),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.4,
@@ -1514,9 +1515,13 @@ Widget buildGodheadPopUp(BuildContext context, int ghidx) {
         child: Flex(
           direction: Axis.vertical,
           children: [
+            Text(revrtgodheads[ghidx]),
+            const SizedBox(height: 5),
             Text(revhebgodheads[ghidx]),
             const SizedBox(height: 5),
             Text(revgodheads[ghidx]),
+            const SizedBox(height: 5),
+            Text(revhdgodheadsnew[ghidx]),
           ],
         )),
     actions: <Widget>[
@@ -2056,10 +2061,11 @@ class HeadPainter extends CustomPainter {
   //Color centercolor = Colors.yellow;
   //int centercolorstate = 0;
 
-  HeadPainter({
-    //required this.centerstate, required this.centercolorstate
-    required this.centerstate, required this.pickcolor
-  });
+  HeadPainter(
+      {
+      //required this.centerstate, required this.centercolorstate
+      required this.centerstate,
+      required this.pickcolor});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -2128,10 +2134,7 @@ class ThroatPainter extends CustomPainter {
   int centerstate = 1;
   Color centercolor = Colors.green, pickcolor = Colors.orange;
 
-  ThroatPainter({
-    required this.centerstate,
-    required this.pickcolor
-  });
+  ThroatPainter({required this.centerstate, required this.pickcolor});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -2176,9 +2179,7 @@ class GPainter extends CustomPainter {
 
   Color pickcolor = Colors.orange;
 
-  GPainter({
-    required this.centerstate, required this.pickcolor
-  });
+  GPainter({required this.centerstate, required this.pickcolor});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -2227,9 +2228,7 @@ class SacralPainter extends CustomPainter {
   int centerstate = 1;
   Color pickcolor = Colors.orange;
 
-  SacralPainter({
-    required this.centerstate, required this.pickcolor
-  });
+  SacralPainter({required this.centerstate, required this.pickcolor});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -2272,9 +2271,7 @@ class RootPainter extends CustomPainter {
   int centerstate = 1;
   Color pickcolor = Colors.orange;
 
-  RootPainter({
-    required this.centerstate, required this.pickcolor
-  });
+  RootPainter({required this.centerstate, required this.pickcolor});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -2355,9 +2352,7 @@ class SolarPainter extends CustomPainter {
   int centerstate = 1;
   Color pickcolor = Colors.orange;
 
-  SolarPainter({
-    required this.centerstate, required this.pickcolor
-  });
+  SolarPainter({required this.centerstate, required this.pickcolor});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -2389,10 +2384,7 @@ class HeartPainter extends CustomPainter {
   int centerstate = 1;
   Color pickcolor = Colors.orange;
 
-  HeartPainter({
-    required this.centerstate,
-    required this.pickcolor
-  });
+  HeartPainter({required this.centerstate, required this.pickcolor});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -2686,11 +2678,11 @@ class EvolutionContainer extends StatelessWidget {
                     children: [
                       OvalContainer(
                           colorout: coloroutsimple,
-                          colorin: colorinsimple.withOpacity(0.85)),
+                          colorin: colorinsimple.withValues(alpha: 1.0)),
                       SizedBox(width: 10),
                       OvalContainer(
                           colorout: coloroutbreath,
-                          colorin: colorinbreath.withOpacity(0.85)),
+                          colorin: colorinbreath.withValues(alpha: 0.85)),
                     ])),
           ),
         ],

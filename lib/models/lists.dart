@@ -1072,26 +1072,26 @@ final List<String> botfourzoonimal = [
   'assets/camog/zbredog2.png',
   'assets/camog/zbredog2.png',
   'assets/camog/zbredog2.png',
-  'assets/camog/zbyellowoctopussy2.png',
-  'assets/camog/zbyellowoctopussy2.png',
-  'assets/camog/zbyellowoctopussy2.png',
-  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbyellowoctopussy.png',
+  'assets/camog/zbyellowoctopussy.png',
+  'assets/camog/zbyellowoctopussy.png',
+  'assets/camog/zbyellowoctopussy.png',
 ];
 final List<String> topfourzoonimal = [
   'assets/camog/zbluedog.png',
   'assets/camog/zbgreenoctopus.png',
-  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbyellowoctopussy.png',
   'assets/camog/zbredog2.png',
   'assets/camog/zbluedog.png',
   'assets/camog/zbgreenoctopus.png',
-  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbyellowoctopussy.png',
   'assets/camog/zbredog2.png',
   'assets/camog/zbredog2.png',
-  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbyellowoctopussy.png',
   'assets/camog/zbgreenoctopus.png',
   'assets/camog/zbluedog.png',
   'assets/camog/zbredog2.png',
-  'assets/camog/zbyellowoctopussy2.png',
+  'assets/camog/zbyellowoctopussy.png',
   'assets/camog/zbgreenoctopus.png',
   'assets/camog/zbluedog.png',
 ];
@@ -1336,30 +1336,45 @@ List<Color> reversedmidcoincolor = midcoincolor.reversed.toList();
 List<Color> reversedtopcoincolor = topcoincolor.reversed.toList();
 
 final List<Color> coincolors = [
-  Colors.blue,
-  Colors.green,
-  Colors.yellow,
-  Colors.red
-];
-
-final List<Color> midyangcolor = [
-  Colors.blue,
-  Colors.blue,
-  Colors.blue,
-  Colors.blue,
-  Colors.green,
-  Colors.green,
-  Colors.green,
-  Colors.green,
-  Colors.yellow,
-  Colors.yellow,
-  Colors.yellow,
-  Colors.yellow,
-  Colors.red,
-  Colors.red,
-  Colors.red,
-  Colors.red,
-];
+      Colors.blue,
+      Colors.green,
+      Colors.yellow,
+      Colors.red
+    ],
+    coin6colors = [
+      Colors.white,
+      Colors.blue,
+      Colors.green,
+      Colors.yellow,
+      Colors.red,
+      Colors.black
+    ],
+    coin6newcolors = [
+      Colors.red,
+      Colors.yellow,
+      Colors.green,
+      Colors.white,
+      Colors.blue,
+      Colors.black
+    ],
+    midyangcolor = [
+      Colors.blue,
+      Colors.blue,
+      Colors.blue,
+      Colors.blue,
+      Colors.green,
+      Colors.green,
+      Colors.green,
+      Colors.green,
+      Colors.yellow,
+      Colors.yellow,
+      Colors.yellow,
+      Colors.yellow,
+      Colors.red,
+      Colors.red,
+      Colors.red,
+      Colors.red,
+    ];
 
 final List<Color> topyangcolor = [
   Colors.blue,
@@ -3467,20 +3482,29 @@ final List<int> hexCarouselWheelOrderList = [
 final List<String> rtimgcoins = [
   'assets/planets/sun.png',
   'assets/coins/complex.png',
-  'assets/camog/bluedog.png',
   'assets/camog/zbluedog.png',
+  'assets/mink/minkluzluz.webp',
+  'assets/mink/minkhead.webp',
+
+  //
   'assets/planets/northnode.png',
   'assets/coins/simple.png',
-  'assets/camog/greendog.png',
   'assets/camog/zbgreenoctopus.png',
+  'assets/mink/minkmentalword.webp',
+  'assets/mink/minkaha.webp',
+
+  //
   'assets/planets/southnode.png',
   'assets/coins/breath.png',
-  'assets/camog/yellowdog.png',
   'assets/camog/zbyellowoctopussy.png',
+  'assets/mink/minkupempty.webp',
+  'assets/mink/minkmmmdot.webp',
+  //
   'assets/planets/earth.png',
   'assets/coins/silence.png',
-  'assets/camog/reddog.png',
   'assets/camog/zbredog.png',
+  'assets/mink/minkbrain.webp',
+  'assets/mink/minkununew.webp',
 ];
 
 final List<String> rtimgcoinsold = [
@@ -3859,15 +3883,19 @@ final List<Widget> mixHexagramSlidersNew = hexBasicMixList
     .toList();
 
 final List<Widget> mixPinkSlider = pinkMixList
-    .map((pinkmix) => Container(
-  //height: 80,
-  //width: 80,
-  decoration: BoxDecoration(
-    image: DecorationImage(
-        image: AssetImage(pinkmix,
-        ),),
-  ),
-),)
+    .map(
+      (pinkmix) => Container(
+        //height: 80,
+        //width: 80,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              pinkmix,
+            ),
+          ),
+        ),
+      ),
+    )
     .toList();
 
 final List<Widget> miximageslider = rtimages

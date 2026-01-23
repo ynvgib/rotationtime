@@ -15,6 +15,9 @@ class RotateSilence extends StatefulWidget {
 class _RotateSilenceState extends State<RotateSilence> {
   final String _title = '';
 
+  String mainSilence = ".שתיקה";
+  bool isMainSilence = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,70 +40,100 @@ class _RotateSilenceState extends State<RotateSilence> {
             icon: const Icon(Icons.close, color: Colors.white),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.red.withOpacity(0.5)),
+          backgroundColor: Colors.red.withValues(alpha: 0.5)),
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(height: 50),
-                AutoSizeText('.',
-                    textAlign: TextAlign.center,
-                    minFontSize: 50,
-                    maxFontSize: 70,
-                    style: const TextStyle(color: Colors.red)),
-                Container(
-                  height: MediaQuery.of(context).size.height / 3,
-                  width: MediaQuery.of(context).size.width / 1.5,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/camog/zbredog2.png',
-                      ),
-                      fit: BoxFit.scaleDown,
-                    ),
-                    shape: BoxShape.rectangle,
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            const SizedBox(height: 50),
+            const AutoSizeText('.',
+                textAlign: TextAlign.center,
+                minFontSize: 50,
+                maxFontSize: 70,
+                style: TextStyle(color: Colors.red)),
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 1.5,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    'assets/camog/zbredog2.png',
                   ),
+                  fit: BoxFit.scaleDown,
                 ),
-                const AutoSizeText(' @',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontFamily: 'iChing',
-                        fontSize: 80,
-                        color: Colors.red,
-                        fontWeight: FontWeight.normal)),
-                Container(
-                  height: MediaQuery.of(context).size.height / 5,
-                  width: MediaQuery.of(context).size.width / 1.5,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/mink/minkbrain.webp',
+                shape: BoxShape.rectangle,
+              ),
+            ),
+            const AutoSizeText(' @',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontFamily: 'iChing',
+                    fontSize: 80,
+                    color: Colors.red,
+                    fontWeight: FontWeight.normal)),
+            // const AutoSizeText('silence .שתיקה',
+            // textAlign: TextAlign.center,
+            // minFontSize: 90,
+            // maxFontSize: 100,
+            // style: TextStyle(color: Colors.red)),
+            InkWell(
+              child: AutoSizeText(
+                //'זמן סיבוב',
+                mainSilence,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 55,
+                    fontWeight: FontWeight.bold,
+                    height: 1.5),
+              ),
+              onTap: () {
+                isMainSilence = !isMainSilence;
+                setState(() {
+                  isMainSilence == true
+                      ? mainSilence = ".שתיקה"
+                      : mainSilence = "silence.";
+                });
+              },
+            ),
+            const Divider(
+              color: Colors.black,
+              thickness: 5,
+            ),
+            SizedBox(height: 20),
+            Flex(
+                mainAxisAlignment: MainAxisAlignment.center,
+                direction: Axis.horizontal,
+                children: [
+                  Container(
+                    height: 100,
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          'assets/mink/minkbrain.webp',
+                        ),
+                        fit: BoxFit.scaleDown,
                       ),
-                      fit: BoxFit.scaleDown,
+                      shape: BoxShape.rectangle,
                     ),
-                    shape: BoxShape.rectangle,
                   ),
-                ),
-
-                Container(
-                  height: MediaQuery.of(context).size.height / 5,
-                  width: MediaQuery.of(context).size.width / 1.5,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/mink/minkunun.webp',
+                  Container(
+                    height: 100,
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          'assets/mink/minkununew.webp',
+                        ),
+                        fit: BoxFit.scaleDown,
                       ),
-                      fit: BoxFit.scaleDown,
+                      shape: BoxShape.rectangle,
                     ),
-                    shape: BoxShape.rectangle,
                   ),
-                ),
-                AutoSizeText('.שתיקה',
-                    textAlign: TextAlign.center,
-                    minFontSize: 90,
-                    maxFontSize: 100,
-                    style: const TextStyle(color: Colors.red)),
-                const SizedBox(height: 10),
-              ]),
+                ]),
+            const SizedBox(height: 30),
+          ]),
         ),
       ),
     );
