@@ -669,7 +669,7 @@ Widget build384PopUp(BuildContext context) {
                   minRadius: 30,
                   maxRadius: 30,
                   backgroundColor: Colors.white,
-                  foregroundImage: AssetImage('assets/camog/mcamog.png')),
+                  foregroundImage: AssetImage('assets/planets/sun.png')),
             ),
             const SizedBox(
               height: 10,
@@ -1691,7 +1691,7 @@ Widget build384rtPop(BuildContext context, List<String> build384lst) {
 
 Widget build384rtPlanetPop(BuildContext context) {
   return AlertDialog(
-    title: const Text('כוחה בים'),
+    title: const Text('planetExDet'),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
         child: ListView.builder(
@@ -1699,7 +1699,7 @@ Widget build384rtPlanetPop(BuildContext context) {
           padding: const EdgeInsets.all(5.0),
           itemCount: 384,
           itemBuilder: (context, index) {
-            int idxline = index * 3;
+            // int idxline = index * 3;
             return ListTile(
               title: Flex(
                 direction: Axis.vertical,
@@ -1708,9 +1708,10 @@ Widget build384rtPlanetPop(BuildContext context) {
                       minRadius: 13,
                       maxRadius: 13,
                       backgroundColor: Colors.transparent,
-                      foregroundImage: AssetImage(hdlinesplanet[idxline + 2])),
+                      // foregroundImage: AssetImage(hdlinesplanet[idxline + 2])),
+                      foregroundImage: AssetImage(hdplanetexaltimg[index])),
                   Text(
-                    hdlinesplanet[idxline],
+                    hdgateline[index],
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 15),
@@ -1719,7 +1720,7 @@ Widget build384rtPlanetPop(BuildContext context) {
                       minRadius: 13,
                       maxRadius: 13,
                       backgroundColor: Colors.transparent,
-                      foregroundImage: AssetImage(hdlinesplanet[idxline + 1])),
+                      foregroundImage: AssetImage(hdplanetdetrimentimg[index])),
                 ],
               ),
             );

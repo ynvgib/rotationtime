@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:circle_list/circle_list.dart';
+import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
@@ -213,28 +214,46 @@ class _RotateHomeState extends State<RotateHome> {
                       Transform(
                         alignment: Alignment.center,
                         transform: Matrix4.rotationY(pi),
-                        child: Container(
-                          height: 60,
-                          width: 60,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.transparent,
-                              border: Border.all(
-                                color: Colors
-                                    .transparent, //                   <--- border color
-                                width: 1.0,
-                              ),
-                              image: DecorationImage(
-                                  //image: AssetImage(newminmaxcoins[index]),
-                                  image: const AssetImage(
-                                    // 'assets/mink/minkupblack.webp',
-                                    'assets/camog/zblackcat.png',
+                        child: InkWell(
+                            child: Container(
+                              height: 60,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.transparent,
+                                  border: Border.all(
+                                    color: Colors
+                                        .transparent, //                   <--- border color
+                                    width: 1.0,
                                   ),
-                                  colorFilter: ColorFilter.mode(
-                                    Colors.white.withValues(alpha: 1.0),
-                                    BlendMode.modulate,
-                                  ))),
-                        ),
+                                  image: DecorationImage(
+                                      //image: AssetImage(newminmaxcoins[index]),
+                                      image: const AssetImage(
+                                        // 'assets/mink/minkupblack.webp',
+                                        'assets/camog/zblackcat.png',
+                                      ),
+                                      colorFilter: ColorFilter.mode(
+                                        Colors.white.withValues(alpha: 1.0),
+                                        BlendMode.modulate,
+                                      ))),
+                            ),
+                            onDoubleTap: () {
+                              // var tempset = [];
+
+                              // for (var x = 0; x < 390; x = x + 6) {
+                              // for (var i = 6; i >= 1; i--) {
+                              // print('\'${hdplanetdetrimentimg[i + x]}\',');
+
+                              // print(i);
+                              // i = i - 1;
+                            }
+                            // x = x + 6;
+                            // print('//${(x / 6).floor()}');
+                            // }
+
+                            // setState(() {});
+                            // },
+                            ),
                       ),
                       const SizedBox(width: 20),
                       InkWell(

@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "/home/ken/Documents/vs/projects/rotationtime/linux"
+    "cmake.sourceDirectory": "/home/ken/Documents/vs/projects/rotationtime/linux",
+    "git.enableCommitSigning": true
 }

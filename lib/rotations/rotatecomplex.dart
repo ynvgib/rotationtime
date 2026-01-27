@@ -294,8 +294,8 @@ class _RotateComplexState extends State<RotateComplex>
       _plutodesignhex = Hexagram(),
       _chirondesignhex = Hexagram();
 
-  Hexagram _planethex =
-      Hexagram(gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio');
+  Hexagram _planethex = Hexagram(
+      gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio');
 
   final List<bool> _isPlanetSelectedList =
       List<bool>.filled(13, false, growable: false);
@@ -5470,12 +5470,14 @@ class _RotateComplexState extends State<RotateComplex>
                       decoration: BoxDecoration(
                         //color: Colors.blue,
                         image: DecorationImage(
-                          image: AssetImage(hdlinesplanet[
-                              (hdlinesplanet.indexOf(_planethex.gateline!)) +
-                                  1]),
+                          // image: AssetImage(hdlinesplanet[
+                          // (hdlinesplanet.indexOf(_planethex.gateline!)) +
+                          // 1]),
+                          image: AssetImage(hdplanetexaltimg[
+                              (_planethex.gate!) * 6 - 7 + (_planethex.line!)]),
                           fit: BoxFit.scaleDown,
                         ),
-                        shape: BoxShape.circle,
+                        shape: BoxShape.rectangle,
                         border: Border.all(color: Colors.blue, width: 2),
                       ),
                     ),
@@ -5486,9 +5488,8 @@ class _RotateComplexState extends State<RotateComplex>
                       decoration: BoxDecoration(
                         ///color: Colors.red,
                         image: DecorationImage(
-                          image: AssetImage(hdlinesplanet[
-                              (hdlinesplanet.indexOf(_planethex.gateline!)) +
-                                  2]),
+                          image: AssetImage(hdplanetdetrimentimg[
+                              (_planethex.gate!) * 6 - 7 + (_planethex.line!)]),
                           fit: BoxFit.scaleDown,
                         ),
                         shape: BoxShape.circle,
