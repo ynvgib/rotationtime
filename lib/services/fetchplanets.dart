@@ -16,6 +16,7 @@ class PlanetsServices {
         now.year, now.month, now.day, hours, CalendarType.SE_GREG_CAL);
 
     final CoordinatesWithSpeed posSun,
+        posNorthnode,
         posMoon,
         posMercury,
         posVenus,
@@ -34,11 +35,11 @@ class PlanetsServices {
     //posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_TROPICAL);
     //pos_earth = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_EARTH, SwephFlag.SEFLG_SWIEPH);
 
-    //posNorthnode = Sweph.swe_calc_ut(
-    //    jd, HeavenlyBody.SE_TRUE_NODE, SwephFlag.SEFLG_SWIEPH);
-    moonNorthNode = Sweph.swe_nod_aps_ut(jd, HeavenlyBody.SE_MOON,
-        SwephFlag.SEFLG_SWIEPH, NodApsFlag.SE_NODBIT_OSCU);
-    longitudeNorthNode = moonNorthNode.nodesAscending[0];
+    posNorthnode = Sweph.swe_calc_ut(
+        jd, HeavenlyBody.SE_TRUE_NODE, SwephFlag.SEFLG_SWIEPH);
+    // moonNorthNode = Sweph.swe_nod_aps_ut(jd, HeavenlyBody.SE_MOON,
+    // SwephFlag.SEFLG_SWIEPH, NodApsFlag.SE_NODBIT_OSCU);
+    // longitudeNorthNode = moonNorthNode.nodesAscending[0];
 
     //print ('pos NN:');
     //print (posNorthnode.longitude);
@@ -88,7 +89,7 @@ class PlanetsServices {
     //             posUranus, posNeptune, posPluto, posChiron];
     longitudePlanets = [
       posSun.longitude,
-      longitudeNorthNode,
+      posNorthnode.longitude,
       posMoon.longitude,
       posMercury.longitude,
       posVenus.longitude,

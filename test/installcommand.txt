@@ -2,6 +2,7 @@ flutter build apk --split-per-abi --no-tree-shake-icons
 
 /home/ken/Documents/vs/projects/rotationtime/build/app/outputs/flutter-apk
 
+
 flutter build web --no-tree-shake-icons
 firebase deploy
 
@@ -13,7 +14,12 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 flutter_distributor release --name=dev --jobs=release-dev-linux-deb
 
-
+// run web
+export CHROME_EXECUTABLE="/snap/bin/brave"
+flutter run -d chrome
+    
+flutter run -d web-server --web-port 8080 --web-hostname 0.0.0.0
+// then open browser 
 
 
 // old APK build (no 64 bit split)
@@ -23,4 +29,4 @@ flutter_distributor release --name=dev --jobs=release-dev-linux-deb
 // flutter . create --platforms=windows .
 
 // ----add icons---
-// flutter pub run flutter_launcher_icons:main
+flutter pub run flutter_launcher_icons:main

@@ -4975,7 +4975,7 @@ List<String> hdplanexaltxt = [
       'assets/planets/pluto.png',
       'assets/family/fgrampa6nbg.png', // checked
       'assets/planets/sun.png', // checked
-      'assets/family/saturn.png', // checked
+      'assets/planets/saturn.png', // checked
       'assets/planets/jupiter.png',
       'assets/planets/venus.png',
       'assets/planets/saturn.png',

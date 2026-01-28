@@ -35,7 +35,10 @@ class _RotateBreathState extends State<RotateBreath>
       _controllerComplexText = TextEditingController();
   //final String _title = subtitles[2];
   //final String _title = subtitles_heb[2];
-  final String _title = ',גופוף';
+  // final String _title = ',גופוף';
+
+  String mainBreath = ".נשימה";
+  bool isMainBreath = true;
 
   @override
   Widget build(BuildContext context) {
@@ -99,11 +102,26 @@ class _RotateBreathState extends State<RotateBreath>
                     fontSize: 80,
                     color: Colors.white,
                     fontWeight: FontWeight.normal)),
-            const AutoSizeText(',נשימה',
+            InkWell(
+              child: AutoSizeText(
+                //'זמן סיבוב',
+                mainBreath,
                 textAlign: TextAlign.center,
-                minFontSize: 65,
-                maxFontSize: 75,
-                style: TextStyle(color: Colors.yellow)),
+                style: const TextStyle(
+                    color: Colors.yellow,
+                    fontSize: 55,
+                    fontWeight: FontWeight.bold,
+                    height: 1.5),
+              ),
+              onTap: () {
+                isMainBreath = !isMainBreath;
+                setState(() {
+                  isMainBreath == true
+                      ? mainBreath = ",נשימה"
+                      : mainBreath = "Breath,";
+                });
+              },
+            ),
             const Divider(
               color: Colors.black,
               thickness: 5,

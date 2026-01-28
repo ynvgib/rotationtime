@@ -368,15 +368,21 @@ class _RotateComplexState extends State<RotateComplex>
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
+    WidgetsFlutterBinding.ensureInitialized();
     await Sweph.init(
-        //modulePath: 'sweph', // where to load module from.
+        // modulePath: 'sweph', // where to load module from.
         epheAssets: [
           //'packages/sweph/assets/ephe/seas_18.se1']);
-          //'packages/sweph/assets/ephe/seas_18.se1'
+          // 'packages/sweph/assets/ephe/seas_18.se1',
+          // 'packages/sweph/assets/ephe/seas_12.se1',
+          // 'packages/sweph/assets/ephe/sepl_12.se1',
+          // 'packages/sweph/assets/ephe/sepl_18.se1'
           'assets/ephe/seas_18.se1',
           'assets/ephe/seas_12.se1',
           'assets/ephe/sepl_12.se1',
-          'assets/ephe/sepl_18.se1'
+          'assets/ephe/sepl_18.se1',
+          'assets/ephe/semo_12.se1',
+          'assets/ephe/semo_18.se1',
         ]);
     super.setState(() {}); // to update widget data
   }
@@ -1089,6 +1095,8 @@ class _RotateComplexState extends State<RotateComplex>
                         await PlanetsServices.getDesignTime(_personTime);
                     _planetsfulldesignList =
                         await PlanetsServices.getCurrentData(_designTime);
+
+                    print('in waiting mode');
 
                     _chironhex = _planetsfullpersonList.last;
                     _chirondesignhex = _planetsfulldesignList.last;
