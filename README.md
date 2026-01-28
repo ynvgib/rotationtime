@@ -1,10 +1,10 @@
 # finallyicanlearn
 
-Rotation Tme 
+zmansi WHITECAMEL bob
+Rotation Time 
 Finally I Can Learn
 
-Flutter APP by Mr. Ido Not Know and Mr. Ota Tion Time
-BE.BREATH.EARN.I.Don't.Know.Meditation
+Mr. Ido Not Know & zmansi WHITECAMEL bob
 
 ## Getting Started
 
@@ -12,23 +12,22 @@ This project is a point and a line and a circle and a square for Lingual Time Ro
 - I Don't know
 - iChing 
 - Human Design 
+- zmansi WHITECAMEL bob
 
-project installed on Windows, Android, Web
+project installed on Windows, Android, Web, Linux
 
 Windwos:
 used inno Setup with to create EXE (windows) 
 iss is in: \versions\RotationTime\install\RotationTimeScript.iss
 exe is in: \versions\RotationTime\install\rotateSetupTime.exe
-note: they may note be the latest...
+note: they may note be the latest... (as windows has changed here to Ubuntu Linux)
 
 Android: 
 Apk can be self created and installed.
+(installations)
 
 Web:
 using firebase
-
-A few resources to get you started if this is your first breath:
-[BE: Breath.Earn.I.don't.know.Meditation](https://www.beidontknow.com)
 
 #Play RotationTime App Online
 App can be played in this link:
@@ -36,10 +35,28 @@ App can be played in this link:
 * firebase hosting
 
 Astrology Integration:
-For the Complex data (blue themes)
-integration to present Human Design (rotate iChing around the Zodiac).
+For the "COMPLEX BLUE DOG DATA" (Human Design)
+integration to present zmansi@WHITECAMEL.dog
+[zmansiwhitecamelbob@tutamail.com](zmansiwhitecamelbob@tutamail.com)
+
+["COMPLEX"](https://rotation-time.web.app/#/rotatecomplex)
+
 Swiss Ephemeris Now integrated for Planets Data
 [Swiss Ephemeris](https://pub.dev/packages/sweph)
 
-BE.BREATH.EARN.I.Don't.Know.Meditation
-[BE: Breath.Earn.I.don't.know.Meditation](https://www.beidontknow.com)
+it is pretty 
+[Simple;](https://rotation-time.web.app/#/rotatesimple)
+eventually;
+
+Vipassana comes somewhere into
+[Breath,](https://rotation-time.web.app/#/rotatebreath)
+
+[silence.](https://rotation-time.web.app/#/rotatesilence)
+she is for all.
+
+[I don't know?! Meditation.](https://rotation-time.web.app/#/rotateidk)
+
+
+[zIDKb Lyrics](https://rotation-time.web.app/#/rotatepdf)
+
+for now...
