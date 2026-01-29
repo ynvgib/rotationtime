@@ -1,12 +1,7 @@
-# finallyicanlearn
+# zmansi@WHITECAMEL.bob
+zmansi WHITE CAMEL bob
 
-zmansi WHITECAMEL bob
-Rotation Time 
-Finally I Can Learn
-
-Mr. Ido Not Know & zmansi WHITECAMEL bob
-
-## Getting Started
+## "COMPLEX"
 
 This project is a point and a line and a circle and a square for Lingual Time Rotation
 - I Don't know
@@ -15,6 +10,8 @@ This project is a point and a line and a circle and a square for Lingual Time Ro
 - zmansi WHITECAMEL bob
 
 project installed on Windows, Android, Web, Linux
+
+- Windows version is not updated due to swith to linux dev
 
 Windwos:
 used inno Setup with to create EXE (windows) 
@@ -56,7 +53,17 @@ she is for all.
 
 [I don't know?! Meditation.](https://rotation-time.web.app/#/rotateidk)
 
+### Simple;
+
+for now;
 
 [zIDKb Lyrics](https://rotation-time.web.app/#/rotatepdf)
 
-for now...
+#### Breath,
+,
+
+##### silence.
+.
+
+###### mr. Ido Not Know. Meditation.
+I don't know Meditation
