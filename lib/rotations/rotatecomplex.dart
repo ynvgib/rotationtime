@@ -192,6 +192,7 @@ class _RotateComplexState extends State<RotateComplex>
       city = TextEditingController();
 
   final CarouselSliderController _controllercoin = CarouselSliderController(),
+      _controllersubcoin = CarouselSliderController(),
       _controllerconstate = CarouselSliderController(),
       _controllerrotationstate = CarouselSliderController(),
       _controllertop = CarouselSliderController(),
@@ -247,6 +248,7 @@ class _RotateComplexState extends State<RotateComplex>
       _designchannelsList = [];
 
   int _currentmain = 0,
+      _currentsub = 0,
       _currenttop = 0,
       _currentmid = 0,
       _currentbot = 0,
@@ -1223,50 +1225,70 @@ class _RotateComplexState extends State<RotateComplex>
               color: Colors.transparent,
               thickness: 5,
             ),
-            Container(
-              width: 150.0,
-              height: 150.0,
-              child: CarouselSlider(
-                items: zooslider,
-                carouselController: _controllercoin,
-                options: CarouselOptions(
-                    height: 95,
-                    autoPlay: false,
-                    onPageChanged: (indextop, reason) {
-                      setState(() {
-                        _currentmain = indextop;
-                        _controllermaintext.text = maincoin[_currentmain];
-                      });
-                    }),
+            Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 75.0,
+                    height: 75.0,
+                    // color: Colors.black.withValues(alpha: 0.1),
+                    child: CarouselSlider(
+                      items: zbauthslider,
+                      carouselController: _controllersubcoin,
+                      options: CarouselOptions(
+                          height: 75,
+                          autoPlay: false,
+                          onPageChanged: (index, reason) {
+                            setState(() {
+                              _currentsub = index;
+                              // _controllermaintext.text = maincoin[_currentmain];
+                            });
+                          }),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  SizedBox(
+                    width: 150.0,
+                    height: 150.0,
+                    // color: Colors.black.withValues(alpha: 0.1),
+                    child: CarouselSlider(
+                      items: zooslider,
+                      carouselController: _controllercoin,
+                      options: CarouselOptions(
+                          height: 95,
+                          autoPlay: false,
+                          onPageChanged: (indextop, reason) {
+                            setState(() {
+                              _currentmain = indextop;
+                              _controllermaintext.text = maincoin[_currentmain];
+                            });
+                          }),
+                    ),
+                  ),
+                ]),
+            SizedBox(
+              width: 250,
+              height: 100,
+              child: AutoSizeTextField(
+                maxLines: 2,
+                minFontSize: 25,
+                fullwidth: false,
+                decoration: InputDecoration.collapsed(
+                    //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
+                    hintText: maincoin[0],
+                    hintStyle: const TextStyle(color: Colors.grey)),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
+                controller: _controllermaintext,
+                readOnly: false,
               ),
             ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 250,
-                  height: 100,
-                  child: AutoSizeTextField(
-                    maxLines: 2,
-                    minFontSize: 25,
-                    fullwidth: false,
-                    decoration: InputDecoration.collapsed(
-                        //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
-                        hintText: maincoin[0],
-                        hintStyle: const TextStyle(color: Colors.grey)),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    controller: _controllermaintext,
-                    readOnly: false,
-                  ),
-                ),
-              ],
-            ),
+
             // start hd chart
             SizedBox(
               width: screenwidth * 0.8,
@@ -8831,7 +8853,9 @@ class _RotateComplexState extends State<RotateComplex>
     _controllerType.text = hdbasicdata.type!;
     _controllerSentence.text = hdbasicdata.sentence!;
     //_controllercoinfirsttext.text = hdbasicdata.coinname!;
-    _controllercoin.jumpToPage(hexNamesList.indexOf(hdbasicdata.coinname!) + 1);
+    // _controllercoin.jumpToPage(hexNamesList.indexOf(hdbasicdata.coinname!) + 1);
+    _controllercoin.jumpToPage(hdbasicdata.typeid!);
+    _controllersubcoin.jumpToPage(hdbasicdata.authid!);
     //_currenttop = hexNamesList.indexOf(hdbasicdata.coinname!);
   }
 

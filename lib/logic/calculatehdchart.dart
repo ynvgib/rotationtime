@@ -165,7 +165,6 @@ class HDServices {
 
     if (channelids.isNotEmpty) {
       for (int i = 0; channelids.length > i; i++) {
-
         switch (channelids[i].coin) {
           case 'silence':
             if (channelids[i].firstcenter! == 'sacral') {
@@ -245,8 +244,7 @@ class HDServices {
                     default:
                       break;
                   }
-                }
-                else if (spleencenter.state == 3) {
+                } else if (spleencenter.state == 3) {
                   spleencenter.state = 2;
                   switch (channelids[i].secondcenter!) {
                     case 'root':
@@ -276,46 +274,42 @@ class HDServices {
                 break;
               case 'heart':
                 if (heartcenter.state == 2 || heartcenter.state == 4) {
-                  if (selfcenter.state == 3){
+                  if (selfcenter.state == 3) {
                     selfcenter.state = 2;
                   }
-                }
-                else if (heartcenter.state == 3) {
-                    heartcenter.state = 2;
-                    if (selfcenter.state == 3){
-                      selfcenter.state = 2;
-                    }
+                } else if (heartcenter.state == 3) {
+                  heartcenter.state = 2;
+                  if (selfcenter.state == 3) {
+                    selfcenter.state = 2;
+                  }
                 }
                 break;
               case 'self':
                 if (selfcenter.state == 2) {
-                  if (throatcenter.state == 3){
+                  if (throatcenter.state == 3) {
                     throatcenter.state = 2;
                   }
-                }
-                else if (selfcenter.state == 3) {
+                } else if (selfcenter.state == 3) {
                   selfcenter.state = 2;
-                  if (throatcenter.state == 3){
+                  if (throatcenter.state == 3) {
                     throatcenter.state = 2;
                   }
                 }
                 break;
               case 'throat':
                 if (throatcenter.state != 3) {
-                    ajnacenter.state = 2;
-                }
-                else if (throatcenter.state == 3) {
+                  ajnacenter.state = 2;
+                } else if (throatcenter.state == 3) {
                   throatcenter.state = 2;
-                    ajnacenter.state = 2;
+                  ajnacenter.state = 2;
                 }
                 break;
               case 'ajna':
                 if (ajnacenter.state == 2) {
-                    headcenter.state = 2;
-                }
-                else if (ajnacenter.state == 3) {
+                  headcenter.state = 2;
+                } else if (ajnacenter.state == 3) {
                   ajnacenter.state = 2;
-                    headcenter.state = 2;
+                  headcenter.state = 2;
                 }
                 break;
               default:
@@ -347,7 +341,6 @@ class HDServices {
           default:
             break;
         }
-
       }
     }
 
@@ -399,7 +392,7 @@ class HDServices {
 
     HumanDesign hddata = HumanDesign();
 
-    int typeidx = 0, typeid = 0;
+    int typeidx = 0, typeid = 0, authid = 0;
     //List<HDChannel> hdchannels = [];
     String channelid = '',
         type = '',
@@ -440,20 +433,20 @@ class HDServices {
       if (sacralcenter.state != 3) {
         type = hdtypesList[2];
       }
-    //} else if (centers.contains('sacral')) {
+      //} else if (centers.contains('sacral')) {
     } else if (sacralcenter.state != 3) {
       //authority = 'sacral';
       authority = hdauthority[1];
       type = hdtypesList[2];
-    //} else if (centers.contains('spleen')) {
+      //} else if (centers.contains('spleen')) {
     } else if (spleencenter.state != 3) {
       //authority = 'splenic';
       authority = hdauthority[2];
-    //} else if (centers.contains('heart')) {
+      //} else if (centers.contains('heart')) {
     } else if (heartcenter.state != 3) {
       //authority = 'ego';
       authority = hdauthority[3];
-    //} else if (centers.contains('self')) {
+      //} else if (centers.contains('self')) {
     } else if (selfcenter.state != 3) {
       //authority = 'self';
       authority = hdauthority[5];
@@ -566,7 +559,7 @@ class HDServices {
         //strategy = 'inform at will';
         strategy = hdstrategyList[2];
       }
-    //} else if (centers.contains('sacral')) {
+      //} else if (centers.contains('sacral')) {
     } else if (sacralcenter.state == 1) {
       //if (authority == 'emotional') {
       if (authority == hdauthority[0]) {
@@ -646,6 +639,8 @@ class HDServices {
         typeid = 0;
     }
 
+    authid = hdauthority.indexOf(authority);
+
     //print (strategy);
     //print (authority);
     //hdbasicdata = [type, authority, strategy, sentence, coinname];
@@ -659,6 +654,7 @@ class HDServices {
     hddata.coin = '';
     hddata.coinname = coinname;
     hddata.typeid = typeid;
+    hddata.authid = authid;
 
     //return hdbasicdata;
     return hddata;

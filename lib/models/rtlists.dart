@@ -47,13 +47,21 @@ final List<String> zoocoins = [
 ];
 
 final List<String> zoorotatelst = [
-  //'assets/camog/zblackcat2.png',
-  'assets/camog/mcameline.png',
-  'assets/camog/zbluedog.png',
-  'assets/camog/zbgreenoctopus.png',
-  'assets/camog/zbyellowoctopussy.png',
-  'assets/camog/zbredog.png',
-];
+      //'assets/camog/zblackcat2.png',
+      'assets/camog/mcameline.png',
+      'assets/camog/zbluedog.png',
+      'assets/camog/zbgreenoctopus.png',
+      'assets/camog/zbyellowoctopussy.png',
+      'assets/camog/zbredog.png',
+    ],
+    zbtypelist = [
+      'assets/camog/mcameline.png',
+      'assets/camog/zbredog.png',
+      'assets/camog/zbyellowoctopussy.png',
+      'assets/camog/zbgreenoctopus.png',
+      'assets/camog/zbluedog.png',
+      'assets/camog/zbblackcat.png',
+    ];
 
 final List<String> zoonewrotatelst = [
   //'assets/camog/zblackcat2.png',
@@ -274,7 +282,8 @@ final List<Widget> mainSlider = coins4lst
     )
     .toList();
 
-final List<Widget> zooslider = zoorotatelst
+// final List<Widget> zooslider = zoorotatelst
+final List<Widget> zooslider = zbtypelist
     .map(
       (zoozb) => Container(
         height: 200,
@@ -282,6 +291,22 @@ final List<Widget> zooslider = zoorotatelst
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(zoozb),
+            fit: BoxFit.scaleDown,
+          ),
+          shape: BoxShape.rectangle,
+        ),
+      ),
+    )
+    .toList();
+
+final List<Widget> zbauthslider = zbanimmalsauthority
+    .map(
+      (zbauth) => Container(
+        height: 200,
+        width: 200,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(zbauth),
             fit: BoxFit.scaleDown,
           ),
           shape: BoxShape.rectangle,
@@ -9959,6 +9984,19 @@ final List num_rtlines385lst = [
   'son exhales confusing fire to shine in the family',
   'papa inhales confusing fire to burn in the world',
   'grampa exhales fire into heaven before all is done',
+];
+
+// 7 list
+
+final List<String> zbanimmalsauthority = [
+  'assets/camog/mcameline.png',
+  'assets/camog/zbredog.png',
+  'assets/camog/zblackcat.png',
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbluedog.png',
+  'assets/camog/zbyellowoctopussy.png',
+  'assets/camog/zbgreenoctopus.png',
+  'assets/plants/bimbox.png',
 ];
 
 // 6 list

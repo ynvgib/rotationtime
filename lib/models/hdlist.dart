@@ -1433,42 +1433,47 @@ final List<String> hdchannelsListold = [
 ];
 
 final List<String> hdtypesList_org = [
-  'manifestor',
-  'manifesting generator',
-  'generator',
-  'projector',
-  'reflector',
-];
-
-final List<String> hdtypesList = [
-  'חזי מניפסטור',
-  'בטי גנרטורית מגשימה',
-  'בטי גנרטורית',
-  'ביני פרוגקטור',
-  'אבי רפקלטור',
-];
+      'manifestor',
+      'manifesting generator',
+      'generator',
+      'projector',
+      'reflector',
+    ],
+    hdtypesFarmHebList = [
+      'חזי מניפסטור',
+      'בטי גנרטורית מגשימה',
+      'בטי גנרטורית',
+      'ביני פרוגקטור',
+      'אבי רפקלטור',
+    ],
+    hdtypesList = [
+      'מגשים תור',
+      'גנטורית (משימה)',
+      'גנטורית (ללא משימה)',
+      'פרוקרינטורית',
+      'מראה תור',
+    ];
 
 final List<String> hdauthority_org = [
-  'emotional',
-  'sacral',
-  'splenic',
-  'ego manifested',
-  'ego projected',
-  'self projected',
-  'sound board',
-  'lunar'
-];
-
-final List<String> hdauthority = [
-  'רגש',
-  'בטן',
-  'טחול',
-  'רצון יוזם',
-  'הכרת רצון',
-  'עצמי',
-  'מחשבה',
-  'ירח'
-];
+      'emotional',
+      'sacral',
+      'splenic',
+      'ego manifested',
+      'ego projected',
+      'self projected',
+      'sound board',
+      'lunar'
+    ],
+    hdauthority = [
+      'רגש',
+      'בטן',
+      'טחול',
+      'רצון יוזם',
+      'הכרת רצון',
+      'עצמי',
+      'מחשבה',
+      'ירח'
+    ];
 
 final List<String> hdstrategyList_org = [
   'inform with emotional clarity',

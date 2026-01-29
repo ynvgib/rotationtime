@@ -28,8 +28,8 @@ class PlanetsServices {
         posPluto,
         posChiron;
 
-    final NodesAndAspides moonNorthNode;
-    double longitudeNorthNode;
+    // final NodesAndAspides moonNorthNode;
+    // double longitudeNorthNode;
 
     posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_SWIEPH);
     //posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_TROPICAL);

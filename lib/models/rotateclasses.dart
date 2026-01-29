@@ -50,7 +50,7 @@ class HumanDesign {
       sentence,
       coin,
       coinname;
-  int? typeid;
+  int? typeid, authid;
 
   HumanDesign({
     this.type,
@@ -63,6 +63,7 @@ class HumanDesign {
     this.coin,
     this.coinname,
     this.typeid,
+    this.authid,
   });
 }
 

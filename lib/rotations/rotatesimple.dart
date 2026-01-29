@@ -4823,18 +4823,20 @@ class _RotateSimpleState extends State<RotateSimple>
                   color: Colors.green,
                   thickness: 5,
                 ),
-                SizedBox(
-                  height: screenheight / 3,
-                  width: screenwidth / 1.5,
+                Container(
+                  height: 200,
+                  width: 350,
+                  color: Colors.black.withValues(alpha: 0.1),
                   child: CircleAvatar(
                     backgroundColor: Colors.white,
-                    maxRadius: screenheight / 4,
+                    maxRadius: 200,
                     child: CarouselSlider(
                       items: miximageslider,
                       carouselController: _controllerimages,
                       options: CarouselOptions(
                           initialPage: 1,
                           autoPlay: false,
+                          viewportFraction: 0.8,
                           enlargeStrategy: CenterPageEnlargeStrategy.scale,
                           enlargeCenterPage: true,
                           aspectRatio: 1.3,
@@ -4863,6 +4865,7 @@ class _RotateSimpleState extends State<RotateSimple>
                       return InkWell(
                           child: Container(
                             decoration: BoxDecoration(
+                                // color: Colors.black.withValues(alpha: 0.1),
                                 image: DecorationImage(
                                     image: AssetImage(rtimages[index]),
                                     colorFilter: ColorFilter.mode(
