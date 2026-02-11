@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
-import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:flutter/material.dart';
 
@@ -77,7 +76,7 @@ class _RotateBreathState extends State<RotateBreath>
                 maxFontSize: 75,
                 style: TextStyle(color: Colors.yellow)),
             Container(
-              height: MediaQuery.of(context).size.height / 2.5,
+              height: MediaQuery.of(context).size.height / 3.0,
               width: MediaQuery.of(context).size.width / 1.5,
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -99,7 +98,7 @@ class _RotateBreathState extends State<RotateBreath>
                 controller: _controllerSimpleText,
                 style: const TextStyle(
                     fontFamily: 'iChing',
-                    fontSize: 80,
+                    fontSize: 60,
                     color: Colors.white,
                     fontWeight: FontWeight.normal)),
             InkWell(
@@ -126,38 +125,20 @@ class _RotateBreathState extends State<RotateBreath>
               color: Colors.black,
               thickness: 5,
             ),
-            SizedBox(height: 20),
-            Flex(
-                mainAxisAlignment: MainAxisAlignment.center,
-                direction: Axis.horizontal,
-                children: [
-                  Container(
-                    height: 100,
-                    width: MediaQuery.of(context).size.width / 2.5,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/mink/minkupempty.webp',
-                        ),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
-                    ),
+            const SizedBox(height: 20),
+            Container(
+              height: 100,
+              width: MediaQuery.of(context).size.width / 2.5,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    coins4lst[2],
                   ),
-                  Container(
-                    height: 100,
-                    width: MediaQuery.of(context).size.width / 2.5,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/mink/minkmmmdot.webp',
-                        ),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.circle,
+              ),
+            ),
             const SizedBox(height: 30)
           ],
         ),

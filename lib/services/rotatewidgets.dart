@@ -656,24 +656,7 @@ Widget build384PopUp(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Heb
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      build384rtPlanetPop(context),
-                );
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const CircleAvatar(
-                  minRadius: 30,
-                  maxRadius: 30,
-                  backgroundColor: Colors.white,
-                  foregroundImage: AssetImage('assets/planets/sun.png')),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
+
             ElevatedButton(
               onPressed: () {
                 showDialog(
@@ -740,6 +723,42 @@ Widget build384PopUp(BuildContext context) {
               child: const Text('HD Lines',
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build384rtPlanetPop(context),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: const SizedBox(
+                width: 60,
+                height: 60,
+                child: Stack(children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: CircleAvatar(
+                        minRadius: 30,
+                        maxRadius: 30,
+                        backgroundColor: Colors.white,
+                        foregroundImage: AssetImage('assets/planets/sun.png')),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: CircleAvatar(
+                        minRadius: 15,
+                        maxRadius: 15,
+                        backgroundColor: Colors.white,
+                        foregroundImage:
+                            AssetImage('assets/planets/earth.png')),
+                  )
+                ]),
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -1691,7 +1710,7 @@ Widget build384rtPop(BuildContext context, List<String> build384lst) {
 
 Widget build384rtPlanetPop(BuildContext context) {
   return AlertDialog(
-    title: const Text('planetExDet'),
+    title: const Text(' Detriment Lines Exalted'),
     content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
         child: ListView.builder(
@@ -1710,8 +1729,22 @@ Widget build384rtPlanetPop(BuildContext context) {
                       backgroundColor: Colors.transparent,
                       // foregroundImage: AssetImage(hdlinesplanet[idxline + 2])),
                       foregroundImage: AssetImage(hdplanetexaltimg[index])),
+                  AutoSizeText(
+                    hdlinesexalted[index],
+                    softWrap: true,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
                   Text(
                     hdgateline[index],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                  AutoSizeText(
+                    hdlinesdetriment[index],
+                    softWrap: true,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 15),

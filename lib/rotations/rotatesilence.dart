@@ -45,7 +45,7 @@ class _RotateSilenceState extends State<RotateSilence> {
       body: SingleChildScrollView(
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const SizedBox(height: 50),
+            const SizedBox(height: 30),
             const AutoSizeText('.',
                 textAlign: TextAlign.center,
                 minFontSize: 50,
@@ -100,38 +100,20 @@ class _RotateSilenceState extends State<RotateSilence> {
               color: Colors.black,
               thickness: 5,
             ),
-            SizedBox(height: 20),
-            Flex(
-                mainAxisAlignment: MainAxisAlignment.center,
-                direction: Axis.horizontal,
-                children: [
-                  Container(
-                    height: 100,
-                    width: MediaQuery.of(context).size.width / 2.5,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/mink/minkbrain.webp',
-                        ),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
-                    ),
+            const SizedBox(height: 20),
+            Container(
+              height: 100,
+              width: MediaQuery.of(context).size.width / 2.5,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    coins4lst[3],
                   ),
-                  Container(
-                    height: 100,
-                    width: MediaQuery.of(context).size.width / 2.5,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/mink/minkununew.webp',
-                        ),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ]),
+                  fit: BoxFit.scaleDown,
+                ),
+                shape: BoxShape.circle,
+              ),
+            ),
             const SizedBox(height: 30),
           ]),
         ),

@@ -60,7 +60,7 @@ final List<String> zoorotatelst = [
       'assets/camog/zbyellowoctopussy.png',
       'assets/camog/zbgreenoctopus.png',
       'assets/camog/zbluedog.png',
-      'assets/camog/zbblackcat.png',
+      'assets/camog/zblackcat.png',
     ];
 
 final List<String> zoonewrotatelst = [
@@ -167,12 +167,13 @@ final List<String> minmaxnames = [
       'מיני',
       'מינימום',
     ],
-    zbzoo4names = [
+    zbzoo4namesHeb = [
       '\"כלב\"',
       ';אמנון',
       ',ג\'ולייטה',
       '.כלבה',
     ],
+    zbzoo4names = ['\"DOG\"', 'Am Noun;', 'Julie Harietta,', 'pitch.'],
     woofgoofcoinslst = [
       'assets/camog/bluedog.png',
       'assets/camog/greendog.png',
@@ -5481,8 +5482,909 @@ final List<String> rtlines384lst = [
       'Promise',
       'Victory',
       //END
+    ],
+    hdlinesexalted = [
+      // hd exalted lines
+      //1
+      'The Moon exalted as a symbol of adaption. Time is everything. Self-expression which has its special timing.', //1.1
+      'Venus exalted as a symbol of beauty. The required harmony between established values and ideals that enriches inspiration. Self-expression conditioned by ideals and values.', //1.2
+      'Mars exalted as the symbol of the profound need for self-expression. The deep need for self-expression.', //1.3
+      'The Earth exalted as the symbol of personal perspective manifested outside of in- fluence, where the potential magic of inspiration is diluted. Creativity that must de- velop outside of influence.', //1.4
+      'Mars exalted for its powerful ego endurance. The power and drive to stay with the creative process.', //1.5
+      'Clear assessment of creative value. Clarity in creative expression.', //1.6
+//2
+      'The importance of aesthetics whether inborn or acquired. Higher knowing through aesthetics.', //2.1
+      'The inner strength to focus and realize. A natural gift for unlearnable knowing.', //2.2
+      'Dedication to a lifetime of receptivity with the maturity to accept that the process never ends. When connected permanently to Gate 14 through the Beat Channel, rewards for services rendered. The recognition that receptivity is a lifelong process.', //2.3
+      'The higher goal transcends personal acclaim. The team player, acknowledged as the leader but never the captain. Where higher knowing does not have to be expressed to be recognized.', //2.4
+      'The strategist with Mercury exalted. Reasoned management of resources. Higher knowing as a gift for strategy.', //2.5
+      'With Mercury exalted, less negative, though the intellect becomes absorbed in constant rationalization. Higher knowing that is extremely narrow in its receptivity.', //2.6
+//3
+      'The understanding that confusion is natural and must always exist before clarity can be achieved. An innate knowing that order will emerge from confusion.', //3.1
+      'The unrelenting energy for growth will eventually triumph. The energy and potential for individual mutation.', //3.2
+      'In reproduction, the ability to choose the best mate. An innate knowing of what is sterile and what is fertile where the mutation is specifically biological and dependent on collaboration with others.', //3.3
+      'Physic attunement that magnetizes nurturing. A psychic energy which attracts nourishment and ensures ordering.', //3.4
+      'The courage to stand by one\'s convictions. The unique energy of individuality to withstand confusion.', //3.5
+      'As its light sustains, so life goes on. The innate acceptance that ordering is a process, not a problem.', //3.6
+//4
+      'The instinct to know the right moment and circumstances where pleasure is rewarded and not punished. The potential to recognize that there is a natural timing to the understanding process.', //4.1
+      'The glorification of feelings. The mother which always pardons the errant child. The potential to recognize that not everyone can understand.', //4.2
+      'Where art is more valued then the artist. The potential to enjoy the formulas with no regard to their practical application.', //4.3
+      'Fantasy protects and nurtures a sense of purpose and reason no matter how misguided. The potential to find or illustrate the formulas through fantasy.', //4.4
+      'Unearned reward and recognition. The potential to succeed through the understanding of others.', //4.5
+      'The development through experience of techniques to apply self-restraint. The potential in a logical process to recognize when the understanding is not complete and have the patience to wait out the process.', //4.6
+//5
+      'Courage in the face of adversity. The power to maintain one\'s own rhythm.', //5.1
+      'The gift of maintaining composure through idealizing tranquility. The power to be comfortable with one\'s rhythm.', //5.2
+      'Compulsiveness can be limited in its negative effect through flights of imagination. Though still stressful, they do not lead to action. A surrender to the limitations of a fixed rhythm through the empowerment of the imagination.', //5.3
+      'The creative genius to transform the most passive experience into active achievement. The power to make the best of one\'s fixed rhythm.', //5.4
+      'To remain calm as the ultimate aesthetic and thus recognize the inner meaning of being. The power to be calm and to find one\'s place in the flow.', //5.5
+      'The growth of awareness that comes with bending to the universal flow. Accepting that in one\'s fixed rhythm despite the pressures, growth will be empowered, and often through the unexpected. No polarity.', //5.6
+//6
+      'The power of regeneration that can embrace retreat as a phase and not a failure. The emotional stability to accept conflict.', //6.1
+      'Aesthetic sensitivity and mental detail can find the weakest point. The sensitivity to find the weakest point in a conflict and to exploit it emotionally.', //6.2
+      'The destruction of old forms through union; either mundane, as above, sexual union, or exalted as universalization. The depth of feelings that can enrich union and intimacy.', //6.3
+      'The charity and wisdom that must come with victory and the movement towards new horizons. The power of emotions to dominate a relationship.', //6.4
+      'Harmony furthered through the avoidance of direct conflict. Sensitivity to conflict can lead to the avoidance of intimacy.', //6.5
+      'The highest form of reason is that life is sacred. The emotional power to end conflict tempered by feelings and sensitivity to others.', //6.6
+//7
+      'Venus exalted, as in the basic values and rules imposed on a child. The capacity of the Self to guide with authority.', //7.1
+      'The application of universally accepted systems. When connected through the Al- pha Channel to Gate 31 Influence, the potential for widespread and revolutionary effect on society. The capacity of the Self to lead when chosen.', //7.2
+      'The constant need for change no matter what the prevailing conditions. The drive of the Self to express many roles.', //7.3
+      'The grace and wisdom to step down for the benefit of the whole. The capacity of the Self to accept the judgment of others.', //7.4
+      'The gift of attracting loyalty necessary in harmonizing the potential of society. The capacity of the Self through its role to attract loyalty.', //7.5
+      'The power to communicate the frameworks of responsibility. The capacity of the Self through its role to communicate responsibility.', //7.6
+//8
+      'The awareness that the whole is always greater than the sum of its parts. Knowing that creative expression must be honestly communicated and shared.', //8.1
+      'The highest good, to serve selflessly. The potential to be an example through unselfish expression.', //8.2
+      'The perfected and rarely detected superficial intimacy. The example as an expression through style, not substance.', //8.3
+      'The uncompromizing drive to assimilate. The drive to contribute and be an example to and for others.', //8.4
+      'The teacher. Contribution as part of a process of sharing that accepts and expects limitation, exemplified in teaching.', //8.5
+      'The awareness of patterns that ensures correct timing. The gift of knowing when to contribute creatively.', //8.6
+//9
+      'The ability to avoid frustration through the creation of new forms. The power in focusing to create new forms.', //9.1
+      'Collaboration with others to temper frustration. The power to collaborate with others in focusing.', //9.2
+      'The use of force to temporarily overcome impediments. The loss of power through the failure to focus.', //9.3
+      'Right action that leads inevitably to actualization. The power to act on the potential of the focus.', //9.4
+      'Loyalty to the letter of the law. The power to focus and bring value to concentration.', //9.5
+      'The Moon exalted, where the power of the small nourishes right perspective. The power to enjoy the concentrating process.', //9.6
+//10
+      'A valued sense of purpose no matter what the position. The ability to know one\'s place and how to act despite circumstances.', //10.1
+      'Mercury exalted, where mental functions enrich aloneness. Independent behaviour through isolation.', //10.2
+      'The martyr as an enduring example whose behaviour is ultimately enshrined. Behaviour that is ultimately challenged by others.', //10.3
+      'Transformation that is transcendence to a higher code. The maintaining of behavioural patterns until the right moment and opportunity for transformation.', //10.4
+      'The ability to succeed through the understanding and expression of higher princi- ples. Principled behaviour which directly challenges tradition.', //10.5
+      'The constant example that refocuses the complacent on the basic integrity of set behaviour. The enduring value of the expression of the Self through action rather than words.', //10.6
+//11
+      'The nourishment derived from being with those who share the same goals and aspirations. The gift of finding those who will value your ideas.', //11.1
+      'The imagination applied to ensuring the understanding of achieved values. A sense of boredom overcome through the imagination.', //11.2
+      'The internal renewal to maintain strength and alertness. The realization that ideas come and go.', //11.3
+      'The sage, that in the extreme, can teach harmony to the tone deaf. Venus is also exalted. The ability to reach out and attract the alienated. Concepts which are clear and transferable. Ideas which can attract and inform the uneducated.', //11.4
+      'The motiveless nurturing of the disenfranchised to ensure harmony. Philosophic and humanitarian ideas.', //11.5
+      'The innate awareness that all forms are transitory. The realization that ideas lead to change and are changeable.', //11.6
+//12
+      'The beauty and harmony possible beyond the reach of temptation. The expression of social withdrawal and its value when supported by others.', //12.1
+      'The discipline to maintain a pure state. The expression of disciplined social caution.', //12.2
+      'The recognition of inadequacies and the purging of unjustified vanities. The expression of inadequacies in social interaction that leads to self-analysis and caution.', //12.3
+      'The rousing of the stagnant for communal preparation. The ability to foresee and express the need for social interaction and an end to caution.', //12.4
+      'Light is always conscious of darkness. Caution as an expression of social experi- ence.', //12.5
+      'Creative transcendence that when connected to the Harmonic Gate 22, through the channel of Openness, leads to successful mutation and the emergence of a new social form. The capacity to mutate and express new social forms.', //12.6
+//13
+      'Harmony through affection. A role of openness in listening to others with affection.', //13.1
+      'Tolerance as the least offensive manifestation of bigotry. A role of openness through tolerance.', //13.2
+      'A lack of trust that can only be transformed through concrete evidence. Openness that is conditioned by suspicion and seeks evidence.', //13.3
+      'The renaissance that comes with truce and its eventual reinvigoration. Openness which leads to exhaustion and the need for silence.', //13.4
+      'The charismatic genius who can find a role for everyone. The listener that has a gift for finding a role for others.', //13.5
+      'The energy to persevere. Unlimited hope. The hope that openness will lead to better relationships.', //13.6
+//14
+      'The lust for lucre tempered by higher principles. The key to manifesting power is higher principles.', //14.1
+      'Expansion. The ability to delegate responsibility. The key to power lies in not trying to be and to do everything alone.', //14.2
+      'Selfless contribution to society. The key to power lies in selfless contribution to others.', //14.3
+      'Protection from assault. The key to power lies in developing skills to ensure a strong foundation.', //14.4
+      'Innate dignity. Innate dignity that is a key to power.', //14.5
+      'The enlightened recognition that material success is God\'s will. Spirituality as the key to acceptance and the source of power.', //14.6
+//15
+      'Harmonic relationships which give support for the fulfillment of any task. The capacity of the Self to confront any challenge through extreme and harmonic relationships.', //15.1
+      'Modesty and right action result in enduring standards. The capacity of the Self to accept its extreme nature as correct.', //15.2
+      'Where the otherwise negative contrived modesty is here reinforced by recognition and maintained as an effective strategy. The extremism of the Self as strategy to control the flow.', //15.3
+      'A genuine form that may--or may not mask inadequacies. The uncomfortableness of the Self when it is out of the flow.', //15.4
+      'The power to grow. The capacity of the Self to grow through experiencing the extremes.', //15.5
+      'Constant reexamination to weed out the weakest aspect. The power of the Self in exploring the extremes to find the weakest point.', //15.6
+//16
+      'The day dreamer. The expression of talent through daydreaming.', //16.1
+      'Self-reliance and the skill to judge objectively any claim regardless of rhetoric. The expression of the skill to judge objectively.', //16.2
+      'The proper timing to maintain rhythm and avoid deflation. The independent skill and possible talent to express proper timing and rhythm.', //16.3
+      'Enthusiasm for--and service to higher goals. The skill to recognize and support the talents of others.', //16.4
+      'The power to avoid enthusiasm for the sole purpose of being converted. As with Dickens\' Scrooge, eventual conversion leads to greater and more enduring enthusiasm. A lack of confidence in the expression of skills that needs the encouragement of others.', //16.5
+      'The ability to experience, examine and then reject misleading enthusiasm. The talent to assess the expression of others.', //16.6
+//17
+      'The energy to sustain a broad spectrum of stimuli. The possibility of having many opinions.', //17.1
+      'The successful achievement of purpose through proper alignment. The possibility to develop opinions through relationships.', //17.2
+      'The following of the best road provides the experience necessary to meet the challenge of the road\'s end. The understanding that the best opinions are grounded in detail.', //17.3
+      'The ability to probe and discover the underlying motivation and resources of those who wish to follow. The possibility of opinions based on the understanding of others.', //17.4
+      'The ultimate creative expression of interdependency, whether as God\'s will or global synthesis. Opinions that can express the value of being organized whether mundane or spiritual.', //17.5
+      'The great nurturer. The nature of this position is always positive. The possibility in understanding the nature of interdependency to express opinions of value to others.', //17.6
+//18
+      'Gradual modification to avoid eventual upheaval. The potential to correct through gradual modification of judgments.', //18.1
+      'Acceptance and strength derived from a faith in spiritual regeneration. The acceptance that there is no potential for correction.', //18.2
+      'The dissolution of old forms at an acceptable price. An obsession with correction and its critical potential.', //18.3
+      'Given this negative position, survival through suffering. The inability to correct and its potential for suffering.', //18.4
+      'The wisdom to both seek and provide guidance. The potential for correction and judgment through relationships.', //18.5
+      'The Buddha state of the eternal child and the energy to find new horizons to avoid stasis. The potential of the perfected form through correction.', //18.6
+//19
+      'The successful approach that does not loose its individual character in acceptance. The pressure of wanting without losing one\'s identity when being accepted by others.', //19.1
+      'Dedication and service to the highest values. The energy to want to be of service.', //19.2
+      'The natural ease with which communion is maintained. Sensitivity and ease fueled by acceptance by others.', //19.3
+      'The power and energy for outward activity and the ability to accept others as long as they can keep up. A driving force that can benefit the whole group. The energy to seek out and exalt in the company of others.', //19.4
+      'The self-restraint fundamental to such a nature. Energy to keep one\'s sensitivities restrained.', //19.5
+      'The fool on the hill. The sage, that if you can find him, will talk to you. The energy which generally fuels avoidance.', //19.6
+//20
+      'The raising of superficiality to an art form. The sloganeer. Superficial expression as an art form.', //20.1
+      'The limitation if personal and exclusive is less negative through ascetic withdrawal. A restrictive awareness of the now.', //20.2
+      'The proper attunement and development of the personality through self-consciousness. The expression of self-conscious awareness in the now.', //20.3
+      'The teach whose students transcend him. Where the expression of awareness can only be turned into action through others. The teacher.', //20.4
+      'Where concentration on detail results in a perfected form. The success of expressing awareness through detail.', //20.5
+      'The establishment for the benefit of society, values, ideals and their patterns and how they can be understood and applied. The ability to transform individual awareness for general application and understanding.', //20.6
+//21
+      'The fierceness to be respected without recourse to action. The will power and ego to ensure respect.', //21.1
+      'Powerful and extreme reaction. Here, the severest action will be the most successful. The legitimate rejection of interference on the material plane.', //21.2
+      'Defeat as a survivable humiliation often acceptable through the abuse of drugs and alcohol. Unless one follows one\'s own material path, the breaking of the ego by su- periors.', //21.3
+      'Success in action through clarity. The ego to succeed on the material plane and the instinct to use will power effectively in response to conditions.', //21.4
+      'A principled and legal character that ensures objectivity. The balanced ego whose will power is applied objectively.', //21.5
+      'The war of attrition. The continuance of legitimate action in the hope of eventually succeeding despite all odds and increasing disorder. Where the ego is out of touch, the display of will power leads to disorder.', //21.6
+//22
+      'The ability to accept and enjoy a subordinate position. The emotinal awareness to enjoy a subordinate position.', //22.1
+      'The ability to successfully delude oneself and others. The possibility to attract others with an emotional style.', //22.2
+      'Form as a definition and actualization of substance. The possibility for perfected openness through the alignment of emotional energy and awareness.', //22.3
+      'A mediumistic simplicity that rejects elaborate rituals. The possibility of social openness through the rejection of formality.', //22.4
+      'The power inherent in higher principles to successfully transgress behavioral codes. The possibility through emotional awareness to behave individualistically in social interaction.', //22.5
+      'Natural and evident leadership and authority. The possibility that experience in social interaction will result in a leadership capacity.', //22.6
+//23
+      'The sage, who in the extreme can defend evil as a part of the greater good. The powerful expression of an insight which will undermine established values.', //23.1
+      'The principle of preservation at its most acute. The abandonment of tolerance when individual expression is threatened.', //23.2
+      'Vitality and personal power that can engender jealousy but not threat. Individual expression which attracts attention but not threat.', //23.3
+      'Fatalism and egoism and damn the consequences. Individual expression which has no collective value.', //23.4
+      'Expansion and contribution through assimilation. The gift of communicating individual insight to the collective.', //23.5
+      'The exponential growth of energy and its power of assertion engendered by fusion. Individual knowing which brings diversity to synthesis.', //23.6
+//24
+      'The will to triumph and in this case the faith that the end justifies the means. Inspiration that demands a reassessment of past thinking before a rational concept can be established.', //24.1
+      'The proper and spontaneous adaption to new forms. The potential gift of conceptualizing spontaneously.', //24.2
+      'The ultimate though difficult triumph over regression. The difficult but possible task of overcoming irrationality.', //24.3
+      'The discipline and focus that assures renewal. Aloneness enriches the potential for rational thought.', //24.4
+      'The practical value of starting with a clean slate, symbolized by the New Moon. Rational correction that opens the way to new possibilities.', //24.5
+      'The conscious participation in a process that prepares one for easy identification of opportunity. Identification and focus with the rational thought process.', //24.6
+//25
+      'The universalization of activity. Psychic attunement that is its own reward. The potential for centering through attunement to challenges.', //25.1
+      'The perfection of the intellect through concentration and focus on what is, rather than, what could be or has been. The innocence of the Self and its protection can only be maintained in the now.', //25.2
+      'The power of the ego to withstand failure and still maintain its nature. The power of the spirit to withstand failure and shock.', //25.3
+      'The beauty of the rose in the garbage dump. Jupiter is also exalted. The highest principles even amongst the greatest decadence. The spiritual warrior; the innocence maintained regardless of circumstances. No polarity.', //25.4
+      'The ability to recognize the inner meaning of an affliction and to withdraw until it is healed. The power of the spirit to heal and be healed.', //25.5
+      'The least mild of a negative position, where inappropriate action is censured. The loss of innocence through inappropriate action.', //25.6
+//26
+      'The ability to enjoy the dreams engendered by accomplishment in order to avoid the delusion of unlikely potential. The ego which transcends limitation through dreaming.', //26.1
+      'The energy and depth of reflection to learn from the past in anticipation of the future. The power of the ego to mature through experience.', //26.2
+      'The authority to focus communal effort. The power of the ego to gather support.', //26.3
+      'The ability through censorship to save the collectivity from itself. The power of the ego maintained through forgetting.', //26.4
+      'The understanding of mechanics and the application of energy to achieve maximum potential. The power of memory which maximizes the potential of the ego to attract others.', //26.5
+      'The embodiment of reason and purpose that passes the test of time. The strong ego whose influence is justified by the correctness of its actions.', //26.6
+//27
+      'The ego-driven first law of caring for oneself which is not necessarily at the expense of others. The power to care for oneself first.', //27.1
+      'The Mother. The great nourisher. The strength to nurture and the power to care.', //27.2
+      'Here, the psychological manifestation. The obsession and dependency on knowing what is hidden. The secret policeman. The power derived in having more than one needs, whether sexually, mentally, or materially.', //27.3
+      'Magnanimous and qualitative sharing. The gift of rewarding those who are deserving. The power and strength to share generously.', //27.4
+      'Either, the gifted and principled agent of distribution or the good sense and ability to find one. The power and strength to care for the resources of others.', //27.5
+      'A practical and realistic approach to nurturing, whose appropriateness is guided by feelings and instinct. The power and strength to be realistic in one\'s capacities to care and nurture.', //27.6
+//28
+      'The desire to be effective manifested in the application of energy to detail. The intuition to potentially apply energy to detail.', //28.1
+      'A means, however unsavoury, that is justified by its end. When the game turns to a struggle, the intuitive acceptance of any alliance in order to win.', //28.2
+      'A basic conservatism that even in adventurous acts is necessarily prudent. An intuitive caution in risk taking in times of struggle.', //28.3
+      'The application of knowledge to exploit opportunities and usually for the greater good. A depth of intuition at its best in struggle and often of value to others.', //28.4
+      'The manipulation of the collective, that while pitting one faction against the other, does not directly support or reject either. The intuitive capacity of the game player to provoke struggle amongst others.', //28.5
+      'Regeneration and renewal no matter what the price. The deep intuitive drive to win no matter what the cost.', //28.6
+//29
+      'The innate nature to apply energy in times of war and peace. The power to persevere when necessary but not generally.', //29.1
+      'The power of sustainment as a guiding light. Saying yes and the power to persevere.', //29.2
+      'Despite the urge and cost of inaction the knowledge that it is sometimes better to fight another day. The power to wait.', //29.3
+      'The wisdom to use the simplest and most direct approach to solve difficulties. The power to commit oneself to the simplest and most direct process.', //29.4
+      'The Sun exalted, where the drive is in the design and not ambition driven. The uncontrollable drive to say yes.', //29.5
+      'Driving blind and given Mars\' energy and determination, often blind luck. The power to persevere that makes no sense.', //29.6
+//30
+      'The maximization of limitation in all cases. Stability through feelings, no matter what the situation.', //30.1
+      'The productive application of energy without wastage. Not wasting energy on feelings.', //30.2
+      'The awareness and manifestation of the law of regeneration. The laws of Karma, reincarnation and resurrection. The feeling to accept what is.', //30.3
+      'A compulsive and hyperactive nature that carries all the earmarks of burnout but doesn\'t necessarily arrive at it. A positive outcome is often assisted through analysis. Highly energized feelings that may lead to emotional collapse.', //30.4
+      'The strength derived from knowledge and experience that two steps forward and one step back, is still one step forward. Each new feeling brings back an old feeling before progress can take place.', //30.5
+      'The assertiveness to purge the inferior while accepting to lead the weak. The strength to eliminate negative feelings.', //30.6
+//31
+      'The Sun does not--cannot hold back its light and thus its influence on every life. The natural expresion of leadership.', //31.1
+      'The dedication to higher principles that cannot wait for consensus. Leadership that cannot wait for consensus.', //31.2
+      'The ability to carefully assess and choose the proper influence and to tailor one\'s behaviour accordingly. The capacity to lead enhanced through association with the proper influences.', //31.3
+      'Public acknowledgment of a nurturing and protective influence. External positive recognition of one\'s capacity to lead.', //31.4
+      'A natural specialization that only develops in isolation. However, when the development is complete, the extremely difficult and generally impossible task of externalizing the influence. A specialization that demands that one leads oneself.', //31.5
+      'Actions which match the words and thus guarantees success. Leadership whose expression and action must be one and the same.', //31.6
+//32
+      'A life sustaining respect and attention to all aspects of a process. The potential to develop the instinct through detailed attention to a process.', //32.1
+      'The control of power for the benefit and enhancement of harmony. The potential for transformation that may be beneficial to others.', //32.2
+      'Indecision and persistent reevaluation, that only because of its basic intelligence manages to endure. Indecision in times of transformation.', //32.3
+      'Even in times of change certain underlying principles endure. The instinct to maintain one\'s principles in times of change.', //32.4
+      'The Moon exalted, where superficiality is a valuable tool that while masking the inner light permits adaption to prevailing conditions. An instinct for adaption in times of change.', //32.5
+      'An underlying acceptance of change that may or may not lead to tranquillity. The instinctive awareness to accept change and transformation.', //32.6
+//33
+      'The wisdom in a weak position to recognize that survival demands complete withdrawal. Retreating when one realizes that they are in a weak position.', //33.1
+      'The recognition that surrender to superior forces can be an opportunity to expand one\'s own strengths and eventually triumph. Embracing powerful forces in order to lay the foundation for future success.', //33.2
+      'The responsible and principled retreat based on preservation but with the determi- nation to persevere. Privacy as a path to success.', //33.3
+      'The underlying faith in resurrection that turns retreat into an opportunity for renewal and regeneration. The healthy retreat for regeneration.', //33.4
+      'As important as the timing itself, is the ability to keep secret one\'s intentions until the appropriate moment. The ability to keep one\'s intentions secret.', //33.5
+      'The will to concentrate on revitalization and not be handicapped by persistent recriminations. The ability to let go in retreat, to enjoy privacy.', //33.6
+//34
+      'The less negative, the resort to power as a manifestation of frustration. The energy to display power as a response to frustration.', //34.1
+      'The ability, when victory is in sight, not to loose perspective. The power that grows when victory is in sight.', //34.2
+      'The great malefic, where machismo unfortunately is invariably backed up by power This is an exaltation only in that it is natural and not contrived. The display of power that defines any role.', //34.3
+      'A tendency in victory to restrain excessive power in favour of more subtle and covert styles. The inherent confidence to use power subtly.', //34.4
+      'The power to destroy completely and once this is accomplished, the ability to transfer the power to normal purposes. The resistance to release power other than when necessary.', //34.5
+      'The good sense when having bitten off more than one can chew to spit part of it out. The restriction of the release of power when one does not have the strength to maintain it.', //34.6
+//35
+      'The artist that accepts rejection as part of the process. Acceptance of change and rejection as part of the process.', //35.1
+      'Attunement with the vagaries of the muse and the recognition, creativity is energy that ebbs and flows. Creativity and the muse will always come and go.', //35.2
+      'Benefic encouragement of others that expands personal as well as communal progress. The ability to bring progressive change into other\'s lives.', //35.3
+      'Less severe. Symbolized by the phases of the Moon, the drive may be obsessive when the Moon is full, but like the fading of the Moon the obsession abates. Change for change\'s sake. The drive lessens with age.', //35.4
+      'The principles of interaction and harmony communicated successfully for the benefit of the whole. Progressive communication that can bring beneficial change to the whole.', //35.5
+      'The process of crystallization coupled with ambition that assures timely and effective correction. Progressive change that results from correction.', //35.6
+//36
+      'The energy and determination to persevere in the face of opposition. The emotional power to handle crisis.', //36.1
+      'The application of imagination to schemes which benefit others. Feelings that can benefit others in times of crisis.', //36.2
+      'The ability to establish a new order out of the ashes of the old. The emotional depth to endure crisis and embrace change.', //36.3
+      'The ability to prepare for and anticipate decline through the accumulation of secret or privileged information. The realization that knowledge both covert and esoteric is necessary, if one is to be prepared for crisis and change.', //36.4
+      'Perfected survival regardless of conditions. Immunity to crisis as both generator and survivor.', //36.5
+      'The knowledge and attendant faith that the powers of darkness eventually destroy themselves. \'Those whom the Gods wish to destroy, they first make mad.\'The correctness of crisis when it arises out of pure feelings.', //36.6
+//37
+      'Harmony is the key to the successful maintenance of relationships. It is only through harmony that the beauty and the values of the family can endure. Friendship that is rooted in sensitivity and ensures harmony. No polarity.', //37.1
+      'The understanding of the principle of individual responsibility as the foundation for successful cooperation. The possibility of friendship through individual responsibility.', //37.2
+      'The ability to judge what behaviour is appropriate and to react in a balanced manner to transgressions. The possibility to have the sensitivity to know what behaviour is appropriate in a relationship.', //37.3
+      'The manifestation of the highest principles in everyday and practical affairs. The possibility of the highest principles in all relationships resulting in a leadership role.', //37.4
+      'Natural harmony and perfected sharing. Natural harmony and sharing possible through friendship.', //37.5
+      'The gift of not only recognizing the inner meaning of the family but an appreciation for its values. The possibility of extending friendships through the appreciation of its value.', //37.6
+//38
+      'A psychic attunement that guarantees proper action. The psychic gift of knowing when and how to fight.', //38.1
+      'The value of discretion. The energy for the intuitive awareness for discretion.', //38.2
+      'The ability to sustain through integration with similar forces, thus ensuring the vitality to persevere. The energy to integrate with others in times of struggle.', //38.3
+      'The detective who develops or the insider who accepts a joint opposition whose success can only be based on trust. The energy to recognize who can be of value in times of struggle.', //38.4
+      'The ambition and concentration to endure. The energy to stubbornly fight alone.', //38.5
+      'Eventual crystallization which clears up misunderstandings. Energy which attracts misunderstanding, and the stubbornness to face opposition.', //38.6
+//39
+      'The determination when confronted by obstacles to withdraw but only temporarily. The energy to provoke by refusing to confront obstacles.', //39.1
+      'The instinctual and direct assault of obstacles. The energy to provoke through direct assault.', //39.2
+      'The great benefic whose first consideration is for the larger framework. The energy to provoke through self-sacrifice.', //39.3
+      'The values of feelings and instincts in establishing the proper timing. The energy to provoke at exactly the right time.', //39.4
+      'The imagination to establish new patterns that make the obstacles irrelevant. The imaginative energy to provoke through bypassing obstacles.', //39.5
+      'Practicality and the ability to guide and nurture others. The energy to provoke others by attempting to solve their problems.', //39.6
+//40
+      'The ability to relax and enjoy the fruits of one\'s labours. The ego strength to enjoy being alone.', //40.1
+      'The power and authority in deliverance to shed forever the qualities which hampered liberation. The power through aloneness to recognize the importance and the potential disruptive effect of others.', //40.2
+      'The subtlety to enjoy deliverance without having to flaunt it. The capacity of the ego to avoid negative forces even if it means being alone.', //40.3
+      'The power to transform and the intuitive intellect to select and organize for the purpose of maintaining deliverance. The power of the ego when organized and active, to maintain seperateness.', //40.4
+      'The revolutionary that demands absolute victory. The power of the ego is maintained in the rejection of negative relationships.', //40.5
+      'The authority, coupled with the magnanimity to remove from power only those which deserve such drastic treatment. The power and authority of the ego to eject individuals in legitimate defense of the group.', //40.6
+//41
+      'The imagination to make the very best out of very little. Coolness, where the energy to release feelings is selective.', //41.1
+      'A conservative nature that does not risk its own security in aiding others. Energy for one\'s own feelings but not for others.', //41.2
+      'Material ambition and the discipline to go at it alone. The energy that fuels the feeling for personal ambition.', //41.3
+      'Survival of the fittest and its eventual flourishing. The energy for adaption and a deep feeling for survival.', //41.4
+      'The value of energy when properly channelled. The fuel for properly channelled feel- ings despite limitations.', //41.5
+      'The maximization of the potential of form. The father whose success will benefit his children. The fuel for recognition through feelings.', //41.6
+//42
+      'The ability when surplus resources are available to extend one\'s activities beyond their normal scope. Growth through expansion particularly when defined to the root.', //42.1
+      'Recognition and acute capitalization of trends. Power for growth through participating in trends.', //42.2
+      'The energy and assertion to turn mistakes into advantages. The power to accept mistakes as part of growth.', //42.3
+      'The quintessential manifestation of the mediator. The maturity to bring growth through mediation.', //42.4
+      'The fulfillment and actualization of purpose as a natural path whose reward is a healthy sense of self, rather than the power and influence that naturally follow. Growth that is self-fulfilling and naturally leads to influence.', //42.5
+      'A natural and instinctive nurturing of others. The power to share the process of growth with others.', //42.6
+//43
+      'The recognition that new forms cannot be established until resistance has been eliminated. The depth necessary to bring into form an individual insight.', //43.1
+      'The maintenance of specialized attitudes which promote breakthrough. Unique mental habits and thought processes which promote insight.', //43.2
+      'The powerful drive for regeneration that will, when breakthrough is threatened, use any means, align with any force and endure any condemnation to achieve the goal. A certainty in knowing which can withstand condemnation.', //43.3
+      'The overreliance and stubborn obsession with one\'s mental abilities in the face of recurring obstacles. This design, given Mercurial mental gifts, may though rarely succeed. A stubborn reliance on one\'s unique insights that demands focused mental ability to be properly conceptualized.', //43.4
+      'The step by step adaptation to relationships which hinder breakthrough through practical actions which will not jeopardize eventual success. The gift of knowing when an unique insight can be shared with effectively with others.', //43.5
+      'Actualization and centering, that in breakthrough naturally establish both internally and externally a new order. Unique knowing that is both personally and collectively of value.', //43.6
+//44
+      'A mastery of the collective that can establish restrictive conditions for inferior com- ponents and with the ability to enforce them. An alertness to patterns than can lead to mastery of the collective.', //44.1
+      'The development and management of a proper collective structure which restricts inferior elements by creating cooperative modes that integrates these forces with progressive and superior forces. The possibility that alertness to patterns will result in management capability.', //44.2
+      'The ability to recognize the threat of interference and to prepare for its effects. The alertness and instinct to handle the ego of others.', //44.3
+      'Indifference at its most logical and cutting. The indifference possible when guided by the instinctive memory.', //44.4
+      'The ability to transform interaction with inferior elements into the energizing of progressive process with the additional benefit, that in tapping the inferior elements they remain weak. Where the instinctive recognition of the patterns leads to the possible manipulation of others.', //44.5
+      'A perfected renewal in which the establishment of a new form inures one to the condemnation of the rejected. The awareness of patterns which ensures one\'s instinctive well-being.', //44.6
+//45
+      'The ability to promote and develop gathering together through the education of the uncommitted. The material direction lies in education.', //45.1
+      'The inventiveness to establish techniques by which common ground can be assessed. A material direction through the expression of techniques for the benefit of others.', //45.2
+      'The ability when excluded to take whatever measures are necessary to dissolve the antiquated form and to accept even humiliation to achieve inclusion. The instinct to find a way to be included in a material process.', //45.3
+      'The ability to focus the opportunity of gathering together for the service of higher principles. The expression of higher principles on the material plane.', //45.4
+      'The intuitive intellect and gift for innovation that enhance the group effort and ensure continuity through respect of the center. The gift for expressing leadership on the material plane.', //45.5
+      'An innate empathy with the outsider mentality and its eccentric and often misunderstood logic. A material direction which serves the outsider.', //45.6
+//46
+      'Art for art\'s sake. Any creative endeavour that is self-fulfilling sooner or later is recognized. The potential for creative success through dedication.', //46.1
+      'A difficult and demanding nature that succeeds despite its behaviour because of the depth of its talents. The determination to succeed that may offend others.', //46.2
+      'A practical approach to good fortune, that maintains the same patterns and attitudes that brought success and does not get sidetracked by indulging in further expectations. The determination to stay with what brings success.', //46.3
+      'The ability, once recognized, to move rapidly from a position of obscurity to influence. The good luck which comes from being determined that eventually, in the right place at the right time, leads to recognition.', //46.4
+      'The maintenance of proper rhythm that in its instinctive practicality avoids radical divergence from successful patterns. The determination to stay with the rhythm which brings success.', //46.5
+      'The wisdom to secure one\'s identity through careful consideration of the restrictive potential of commitments. The determination to say no to restrictive commitments.', //46.6
+//47
+      'The ability in times of hardship to concentrating on eradicating the negative factors that have led to oppression. Realizing that negative thoughts have to be eradicated.', //47.1
+      'The ambition and drive to overcome personal oppression in order to achieve security. Realizing that to be busy is mentally healthy.', //47.2
+      'The conscious and well integrated being whose natural right action will eventually come to see the unfoundedness of its oppression. The eventual realization that one is really o.k.', //47.3
+      'The strength of identity that even in times of the most powerful oppression can maintain its resources and to some extent ensure their survival for the benefit of others. A sense of identity that can be maintained despite external conditioning.', //47.4
+      'The gift in times of oppression to maintain without hypocrisy a harmonic relationship with one\'s oppressors, while providing aid and succour to the oppressed. Realization at its most exalted. Acceptance of the weight of the abstract process and the grace that naturally follows. No polarity.', //47.5
+      'No polarity.', //47.6
+//48
+      'An instinctive recognition of what is practical and deserves attention. A taste for recognizing what is practical and deserves attention.', //48.1
+      'The awareness that to successfully establish a new form one cannot neglect the most positive attributes just to accommodate inferior elements. This would lead to deterioration. A confidence in awareness to resist inferior influences.', //48.2
+      'Symbolized by the \'no Moon\' phase, where the potential of light is unrecognized, unavailable and unknowable. The redeeming value is in the transience of such a stage which can give strength to those so afflicted. Where the development of taste and depth is a long term process.', //48.3
+      'The good sense to take advantage of restriction on short term activity to assess the situation and restructure for long term goals that will facilitate development when activity resumes. The awareness that depth and its possible expression will face restrictions with a resulting taste for short term projects.', //48.4
+      'The natural urge to apply energy to action. A taste for action.', //48.5
+      'The valued center, that as it gives, it receives and thus can continue to give. A depth and potential talent that is of value to others.', //48.6
+//49
+      'The understanding and application of this law to maximize expansion of support and thereby ensure viability. The awareness that the potential of a principle is based on it being accepted as viable.', //49.1
+      'The determination to exhaust every possible peaceful avenue for change and then when satisfied that no other course is possible, to plan in detail before revolution is attempted. The potential to explore every possibility before rejecting.', //49.2
+      'The ability to destroy antiquated forms once the restrictions have been removed. The potential in sensitivity to reject failed principles or relationships.', //49.3
+      'A political and social agenda, embodied in guarantees to human rights that ensures a just and valued replacement of the old order. A potential sensitivity to the needs of society.', //49.4
+      'Practical provisions for the needs of others in revolutionary times which ensures support and continued understanding. A potential sensitivity to the practical needs of others.', //49.5
+      'An innate impressionability that transforms the fence-sitter into the committed. The sensitivity and potential to embrace and transform others.', //49.6
+//50
+      'The desire to be effective and successful that builds on the most fundamental strengths while it refines its nature. The awareness that the growth and refinement of values will benefit destiny.', //50.1
+      'The strength of purpose that can enjoy overcoming adversity to achieve its goals. The strength derived from maintaining one\'s values in the face of opposition or conditioning.', //50.2
+      'The Moon exalted, that when unable to make it alone will naturally align itself with nurturing and protective forces. The awareness that to maintain one\'s principles and values the support of others is necessary.', //50.3
+      'The malefic gift of turning inferior values into material success. Given this difficult position, Saturn\'s exaltation is, that its actions are limited to selfishness and unsa- vouriness rather than criminality. The capacity to maintain one\'s strength despite inferior values.', //50.4
+      'The disciplined and natural conservatism to avoid unnecessary change. The conservative awareness that basic principles should not be abandoned casually.', //50.5
+      'The gift in a position of power to maintain harmony even in severity. The strength to maintain one\'s values with vigour and continue to have harmonic relationships with others.', //50.6
+//51
+      'The gift of re-examination that is the foundation of preparedness. The power of the ego conditioned by experience.', //51.1
+      'The recognition of the mechanics of shock that indicates when withdrawal is the only logical action. The instinctive withdrawal when the power of the ego is threat- ened.', //51.2
+      'The life-sustaining awareness that thinks on its feet and thus creates opportunities. The power of spontaneity in times of challenge.', //51.3
+      'A pure inventiveness and sometimes genius to find some opportunity even in the midst of the most devastating shocks. The warrior ego that will find some way to answer the challenge.', //51.4
+      'Perfected illumination that in grasping the nature of the shock, can transform its normal patterns into a symmetrical adaptation that rides the shock and avoids its devastation. The perfection of the warrior ego through instinctive adaptation.', //51.5
+      'In times of crisis when all those around are confused and in disorder, the ability not to succumb to the panic but to have the will and vitality to survive it alone. The power of the ego to meet challenges alone.', //51.6
+//52
+      'The pause that is so profound that it leads to silence. The pacification of energy that leads to stillness.', //52.1
+      'The pause that is initiated to benefit others. The pressure to restrain energy for the benefit of others.', //52.2
+      'The ability by its very nature to understand restraint with the potential in acceptance, to use the period to redefine strategies. The energy for acceptance in inaction.', //52.3
+      'Perfected self-discipline and restraint that deals easily and wisely with impulsive temptations. The energy for restraint which recognizes the value of stillness and focus.', //52.4
+      'The often terse but exceedingly accurate statement. Where inaction and focus can lead to detail.', //52.5
+      'A harmonic and balanced attunement that is at ease regardless of the situation. The lack of pressure in times of stillness.', //52.6
+//53
+      'The dissolution of old forms but not at the expense of valued components that will be retained and transformed. The pressure to begin something new, not from scratch but based on the foundation of the old.', //53.1
+      'The protection of early success nurtures further achievement. The pressure to start something new based on past success.', //53.2
+      'In its most natural position, the concentration on avoiding conflict to ensure protection and continued development. The pressure to eliminate conflict in order to develop.', //53.3
+      'The ability to maintain the strength of one\'s individuality in complex and often awk- ward situations, that ensure continued security and development. The pressure to maintain one\'s individuality in confused beginnings.', //53.4
+      'The underlying and often psychic recognition of the intrinsic values of development, that even in periods of isolation, has the assertiveness to maintain direction. Its very power garners continued support even from those who are basically opposed. The pressure to recognize the value of development and the energy for beginnings regardless of circumstances.', //53.5
+      'The successful utilization of the completion of a stage in development, that by its evident success and value can be used as an example to attract support for the next stage. The energy to attract support for beginnings based on the success of the past.', //53.6
+//54
+      'The ability to achieve influence through secret relationships, anywhere from the private adviser to the Satanist. Ambition energized through secret relationships which fuel influence.', //54.1
+      'The wisdom once a relationship is formally recognized to restrain the temptation to take advantage of past informal interactions. The energy of restraint fuels ambition.', //54.2
+      'The ability when stymied in formal relationships to use secret or purely informal channels, when it is the only resort. The drive when blocked to use secret means to fuel ambition.', //54.3
+      'The Alpha and Omega. The end and the beginning. There is no description possible. Each planet will manifest this energy uniquely with absolutely no guarantee that its effects will even be perceived. However, the potential is always there. The fuel for transformation at its purest level. No polarity. No specific planetary accent.', //54.4
+      'The natural authority and actualizing spirit, that in a position of power, can have genuine and fruitful relationships with the less advantaged. (As long as they are in service and make no demands.) The energy for actualizing that despite this power fuels fruitful relationships with others. No polarity.', //54.5
+      'The ingrained responsibility, in terms of maintaining security and personal identity that will naturally restrict its relationships to ones that are mutually beneficial. The energy to restrict relationships that hinder ambition.', //54.6
+//55
+      'The expansion of activity through cooperation with powerful forces through princi- pled actions that guarantee continued support and engender prosperity. The potential to find the spirit through cooperation with powerful forces.', //55.1
+      'The gift of being able to penetrate to the center that may demonstrate effectively through its relating talents, that its trustfullness is genuine. Emotional stability and the strength of the spirit is dependent on being trusted by others.', //55.2
+      'When the form is correct and attempts at actualization have been disciplined and within guidelines, failure cannot be personally attributed. The emotional possibilty to recognize that despite one\'s best efforts, failure is possible and does not need to affect the spirit.', //55.3
+      'The establishment of a framework that balances principles with energy and leads inevitably to expansion and prosperity. The possible spirit that comes when emotional awareness and energy are balanced and principled.', //55.4
+      'The unusual ability in a position of power to accept advice and transform it innovatively. This gift in a position of power allows one to continue to lead rather than being perceived as being led. The emotional strength and spirit derived from positions of power.', //55.5
+      'Acquisition obsession that though alienating, is still indirectly beneficial materially to others. The possibility of finding the spirit through materialism.', //55.6
+//56
+      'The practical sense that even short term activities should be of value. Expression of practical ideas that have value.', //56.1
+      'Isolated genius that will eventually find continuity through recognition and support. A genius for stimulating expression that will take time to mature and will need others to recognize it.', //56.2
+      'A will and egoism that often proves overbearing and guarantees continued isolation. Here, this is acceptable given the Sun\'s intrinsic vitality. The drive to control and be the focus of expression.', //56.3
+      'The perfection of the superficial personality, that can mask, when essential, its true feelings to secure protection. The gift for stimulation as a role and for protection.', //56.4
+      'Unusualness, innovation and sometimes genius as guarantees of eventually attracting attention and support. Stimulation at its most innovative and unusual.', //56.5
+      'The prudence, when linkage has been achieved, to honour its new commitments in order to secure its footing. Honesty in expression. Living by one\'s word.', //56.6
+//57
+      'The gift of penetrating to the inner meaning that ensures timely action. The possibility of the intuition penetrating to the inner meaning.', //57.1
+      'Perfected cleansing through inner realization. The possibility for proper values and ideals through intuition.', //57.2
+      'The perfected intelligence, where clarity eliminates doubt and ensures manifestation. The possibility of perfected intuition. No polarity.', //57.3
+      'The mastery of relationships that through clarity can maximize productivity while the sensitivity to interrelationships will ensure harmony. The possible intuitive clarity to master relationships.', //57.4
+      'The natural ability to establish new forms while maintaining the powers of re- evaluation and reexamination. This provides the clarity to examine the data and assess the process. The possible intuitive gift for evaluation.', //57.5
+      'The acceptance that clarity is a double-edged sword. There are situations where understanding cannot lead to rectification. Here, Uranus\' innovative quality can generally make the best out of an otherwise difficult but rarely permanent situation. Where there is no answer, only the possibilities of the intuition can make the best out of a difficult situation.', //57.6
+//58
+      'The very stimulation of the world is the basis of an aesthetic appreciation of its beauty and wonder. Alone or shared with others this profound inner realization is the key for a joyous harmony with the process of being. The energy which fuels the love of life.', //58.1
+      'No polarity. No exaltation.', //58.2
+      'The individual whose electric vitality creates its own stimulation and is not dependent on others. The energy to fuel independent stimulation.', //58.3
+      'A natural specializiation that when confronted with a multiplicity of stimulations will have no inner difficulty in focusing on the appropriate influence. The energy to fuel recognition of which stimulation is of value.', //58.4
+      'The natural and practical instinct to protect oneself regardless of temptations. The fuel for self-defense regardless of stimulations.', //58.5
+      'The tendency to practicality that while thoroughly enjoying external stimulation has the instinct to draw back when its independent integrity is threatened. The energy to fuel independent integrity that will maintain its identity in times of stimulation.', //58.6
+//59
+      'The authority and vitality that in understanding purpose and direction can recognize and eliminate barriers before they become impregnable. The power of fertility to impregnate.', //59.1
+      'A preferred and natural separateness that protects against the inevitable instability engendered by union. The restriction of the sex drive to maintain separateness.', //59.2
+      'Saturn exalted, where the search for identity and security can only be achieved through the dropping of barriers, in order to define oneself through union. Where one is empowered through union and intimacy with others.', //59.3
+      'The dropping of barriers to union to establish a universal union. The power derived from non-sexual intimacy.', //59.4
+      'The power to use love to break down any barrier. Given the Sun\'s \'lightness\' there is no negative connotation inherent in this description. The power of sexuality to attract others.', //59.5
+      'The perfected relationship whether for a moment or an eternity. The power for intimacy regardless of conditions.', //59.6
+//60
+      'The ability to maintain inner harmony when confronted by external limitations. Harmonic energy that can deal with external limitations.', //60.1
+      'The understanding of the nature of limitation, to accept its restraints when neces- sary and thus be able to take advantage of opportunities when they arise. Energy which can adapt to restraint.', //60.2
+      'Enlightened self-interest, that naturally handles restrictions and limitations ensuring identity and security. The energy to maintain identity and security despite limitations.', //60.3
+      'The reasoned and intelligent maximization of potential within limitations. The maximization of potential within limitation.', //60.4
+      'The awareness that the destruction of the old limitations simply creates new ones. This results in behavioural patterns that demonstrate this understanding through actions and enhances leadership potential. The energy to handle a lifelong process of dealing with limitations.', //60.5
+      'The intuitive intellect to recognize when absolute rigidity is essential but with innovative applications to lessen its severity. A fixed energy that is unusual in its capacity for restraint.', //60.6
+//61
+      'A natural psychic awareness that empowers principles of universalization. The pressure to know the mysteries through esoterics.', //61.1
+      'The Moon exalted, and so gifted by this position a far-reaching, a nourishing influ- ence, free of guile and powerfully attractive. A gift for inspiration that is both attractive and beneficial to others.', //61.2
+      'The ability to establish relationships for the actualization of truths, and through their nurturing and protective power to ensure a stable environment in which they can continue to grow. The pressure to know enhanced through collaboration.', //61.3
+      'The capacity of concentration to explore the depths of inner truth and maximize its application to fundamental principles. The pressure to know the fundamental principles.', //61.4
+      'The enlightened Father figure whose recognized wisdom and powerful assertion can mold a generation by its influence. The pressure to know that may result in influence and wisdom.', //61.5
+      'The profound attunement to the collectivity that can lure the public to a truth. Inspiration that can bring clarity to the collective.', //61.6
+//62
+      'The ability to transcend the boredom of routine through a rich and daring fantasy life. The ability to organize the detail through fantasy.', //62.1
+      'The innate restrictiveness and discipline to comply with and exalt restraint. The discipline necessary for detail work.', //62.2
+      'A genius for the unusual. The ability to discover valuable information in detail work and to find innovative applications for this knowledge. The unusual gift of finding and expressing valuable details.', //62.3
+      'The perfected ascetic withdrawal in the pursuit of harmony and simplicity, where outside dangers do not exist, and there is time to pursue inner meaning in detail. Detail that can only be expressed after periods of isolation and reflection.', //62.4
+      'The reaching out to others to share, symbolized by the Moon\'s phases as it moves from darkness to eventually sharing fully its light. The understanding that only when the details are complete can action or expression be initiated.', //62.5
+      'A penny saved is a penny earned. Detail as the path to material success. The understanding that material success depends on the expression of detail.', //62.6
+//63
+      'The quality of personality where achievement is accepted with equanimity and where continued development is allowed to take its natural course. Acceptance of achievement but doubt whether continued development will take place.', //63.1
+      'The establishing of a large framework through which achievement can be expanded and shared; compensating others for their contributions while maintaining control of direction. The pressure to share one\'s doubts with others while still maintaining control.', //63.2
+      'The dedication to the new beginning that insists on maintaining its achieved principles despite having to interact with those who have not attained such a state. Doubts that one can maintain one\'s principles when interacting with others.', //63.3
+      'The detailed accounting of the achievement process whose information base can prepare a new order for the future. The pressure to explore the doubt in detail as a foundation for eventual formulizing.', //63.4
+      'The authority and sincerity of purpose to pursue the same values in the new beginning that had allowed it to transcend the old. The understanding that doubts are necessary and of value.', //63.5
+      'The good sense to avoid turning the previous struggle into an obsession. The logic of leaving old doubts behind.', //63.6
+//64
+      'In penetrating to the center, the understanding that instills the necessary harmony to survive disorder. Amongst the confusion, the difficulty in finding the point.', //64.1
+      'An inner development which recognizes what qualities are essential for transcendence and the awareness that without them, action will fail. Inner development that can end the confusion over what makes sense.', //64.2
+      'The wisdom to recognize when one has not the necessary resources to complete transition. Such timely awareness may give it a chance to seek assistance. The wisdom to accept confusion as a temporary state, that will be resolved in time or through others.', //64.3
+      'Symbolized by its phases, the Moon is assured of transition convinced by its very process that it will triumph. The assuredness that confusion is a process that results in realization.', //64.4
+      'The values promised in any new order are demonstrated through harmonic interactions with others. This strengthens the justification for the struggle. Confusion over which values and relationships can bring harmony.', //64.5
+      'The mental assuredness, that knew that victory was inevitable, thus making triumph sweet but not reason for excess. The mental gift of enjoying the confusion and its diversity of data.', //64.6
+    ],
+    hdlinesdetriment = [
+      //detriment
+      //1
+      'Instability leads to distortion. Here, patience is a virtue and revolution a vice. Creative instability unless there is patience.', //1.1
+      'Desires and passions have their place but not at the expense of Creation. Self-expression limited by desires and passions.', //1.2
+      'Material forces can disrupt creativity and lead to overambition. Materialism disrupts creativity.', //1.3
+      'Where the potential magic of inspiration is diluted. The need to influence that abandons aloneness and limits creativity.', //1.4
+      'Uranus in detriment, where eccentricity can handicap endurance. Eccentricity that though attractive will limit the drive.', //1.5
+      'The risk that subjective appraisal will result in disappointment and creative frustration. Subjectivity in self-expression that may lead to creative frustration.', //1.6
+//2
+      'The assertion of ego in spite of wisdom. The urge for action that will ignore the wisdom of the Higher Self.', //2.1
+      'Genius as madness. Knowledge exclusively as power for the enhancement of the ego. The delusion that knowledge is power.', //2.2
+      'For the revolutionary patience is a vice. Higher knowing that cannot wait and demands expression.', //2.3
+      'Loose lips sink ships. The unquenchable fire of the ego engenders enmity. The inability to keep silent when the opportunity arises for expression.', //2.4
+      'The inability to share responsibility or recognize the abilities of others. Higher knowing as an exclusively individual and selfish process.', //2.5
+      'The need for security may distort awareness to its ultimate perversion, destructiveness. The Higher Self absorbed with the mundane and the need for security.', //2.6
+//3
+      'The reliance on intellect at the expense of intuition can lead to unnecessary frustration. The inability to know that order will emerge and the drive to find this knowing elsewhere.', //3.1
+      'Internal instability which both accepts and rejects authority simultaneously. Energy and potential that is conditioned by others leading to instability.', //3.2
+      'The perverse denial of evolutionary standards. An innate contrariness which refuses to mutate.', //3.3
+      'Mars in detriment, where the demands of ego lead to rejection. Confused energy that needs nourishment but is generally rejected.', //3.4
+      'The Earth in detriment, where victimization leads to appeasement and suffering. Confused energy which is dominated by the ordering power of others.', //3.5
+      'As darkness overwhelms, life can seem worthless leading to depression and the sense of hopelessness. The overwhelming power of confused energy can lead to depression.', //3.6
+//4
+      'Timing is not a product of discipline. Exaggerated self-discipline leads to the abuse of pleasure. The potential to recognize but the urge to force the timing.', //4.1
+      'The assertion of the ego at the expense of others\' failures. The potential to take advantage of the lack of understanding in others.', //4.2
+      'The rationalization of irresponsibility as an act of refocalization. The potential to justify such a process in order to maintain it.', //4.3
+      'Time always brings humiliation. The potential danger to see the fantasy as fact.', //4.4
+      'A life of lip service to antiquated and unsatisfying values. Cynicism. The potential for cynicism that comes with always having to acknowledge the understanding of others.', //4.5
+      'The gall to accept punishment as the price of excess. Despite recognizing the incompleteness a lack of patience with the process.', //4.6
+//5
+      'The premature and often disastrous urge to cut one\'s losses. Weakness in maintaining one\'s rhythm when challenged.', //5.1
+      'Inner peace experienced as stagnation. The drive for power that is constrained by the fixed rhythm.', //5.2
+      'The Moon cannot stand still. Unable to surrender and at odds with one\'s own rhythm.', //5.3
+      'The vanity of a personality so strong that unwilling to hide behind a blind, threatens its very survival. The drive to deny one\'s own rhythms with predictable costs.', //5.4
+      'Joy dismissed as an illusion, waiting as a failure. Disillusionment with recognizing one\'s place in the flow.', //5.5
+      'There is no planet in detriment; each in its way, given the power of this position, will yield to the inevitable. No planet in detriment.', //5.6
+//6
+      'The inferiority complex, where retreat is experienced as personal weakness. Emotional instability in times of conflict.', //6.1
+      'The kamikaze, striking but moot. A lack of sensitivity that blunders into conflicts.', //6.2
+      'The rejection of allegiance as submission to established order. Sensitivity to controls which may eventually reject intimacy.', //6.3
+      'The conqueror and purger. The lack of emotional control that is destructive in relationships.', //6.4
+      'Where a party to arbitration sees itself as the best possible judge and will only accept judgment if it is the victor. Insensitivity to the concerns of others in a conflict.', //6.5
+      'The peacemaker whose actions are just but whose terms are unacceptable. The emotional power to end conflict but only after one\'s conditions have been satisfied.', //6.6
+//7
+      'The distorted intellect that believes only it knows best. The capacity of the Self to insist that its authority is best.', //7.1
+      'Elitism and denegation by democrats of democracy. The capacity of the Self once chosen to feel superior to those who chose them.', //7.2
+      'The nihilist. The capacity of the Self to deny value in any role.', //7.3
+      'One who must be forced from power by overwhelming opposition. The refusal of the Self to accept the judgement of others.', //7.4
+      'The commander isolated from his troops and obsessed with victory at any price. The lack of loyalty when the Self insists on isolation.', //7.5
+      'The bureaucrat whose lust for power eventually destabilizes the organisation. The role of the Self to seek power through the communication of responsibility.', //7.6
+//8
+      'Withdrawal. The fear of losing individuality in a group environment. The design to share creativity at the expense of individuality.', //8.1
+      'The earth in detriment, where reward is a prerequisite of service. The willingness to be an example for a price.', //8.2
+      'A shallowness that underestimates others and overestimates its own ability to continue its deception without detection. An overreliance and unfounded confidence in style.', //8.3
+      'In a group where limitation is transcended, reason alone cannot predict individual worth. As an example, the acknowledged leader of an athletic team is not necessarily the most talented. A gift for contribution that is not conditioned by limitations.', //8.4
+      'The parent that cannot let go of the child, understanding only, that its authority is being challenged. Contribution as an end in itself that neither accepts nor expects limitation, exemplified by the parent that cannot let go of the child.', //8.5
+      'Doubt, which may engender regret even in the most ideal circumstances. Uncertainty in timing and regret despite circumstances.', //8.6
+//9
+      'After a hasty and frustrating search the urge to kick in the door when the key is in your pocket. The power to generate that will lose its focus.', //9.1
+      'The overwhelming need for expansion can lead to errors in judgment, missed opportunities and depression. The drive to collaborate that will miss the focus.', //9.2
+      'Persistent force that saps vitality and turns molehills into mountains. The power to turn a focus into an obsession.', //9.3
+      'The persistent urge to want to skip essential steps. The drive for action that ignores the details.', //9.4
+      'Like the mystery of God, doubt engendered through the perceived illogic of a process. Where the lack of power to concentrate leads to doubt.', //9.5
+      'No single step is of value until the journey is over. The energy for expression that cannot find joy in the process until it is complete.', //9.6
+//10
+      'The affliction of oversensitivity and hurt feeling. Oversensitivity to external conditioning of behaviour.', //10.1
+      'The angry exile. Isolation to preserve independent behaviour in the face of conditioning.', //10.2
+      'The martyr complex. The active pursuit of martyrdom for personal aggrandizement. Behaviour as a way to attract attention.', //10.3
+      'Oportunism as a game and/or mental exercise. Altering one\'s behavioural patterns in order to take advantage of opportunities.', //10.4
+      'The burning at the stake. Behaviour which directly challenges behaviour and is eventually punished.', //10.5
+      'The hypocrite. Do as I say, not as I do. Behaviour restricted to words rather than action.', //10.6
+//11
+      'The fear of anonymity. The sense that no one will value their ideas.', //11.1
+      'The resorting to factionalism to satisfy the ego\'s need for action. Provoking with ideas to escape boredom.', //11.2
+      'The tendency to appreciate harmony to the point of delusion. The belief that beauty is eternal. Fiddling while Rome burns. A pleasure in ideas that have no real application.', //11.3
+      'The Guru, whose most valued wisdom is intentionally limited to a few. Ideas which can only be grasped by the few.', //11.4
+      'The withdrawing from direct contact, where giving is a form of defence. Giving away ideas out of a sense of insecurity.', //11.5
+      'Adaptability in its most negative manifestation. The speculator who profits at the expense of others in times of peace or war. The realization of what idea is of value in any situation.', //11.6
+//12
+      'Simon the Stylite, total and often absurd withdrawal. The absurd expression of social caution and extreme withdrawal from emotional contact.', //12.1
+      'The boredom that arises out of lack of stimulation. Caution that manifests boredom and the expressed desire for stimulus.', //12.2
+      'A perverse and often exaggerated self-hatred. Inadequacies in social interaction that lead to the expression of self-hatred.', //12.3
+      'The voice in the wilderness. The expressed need for social interaction that falls on deaf ears.', //12.4
+      'The tendency to remember only the most painful lessons learnt. Caution which is conditioned by the most painful social experiences.', //12.5
+      'A retrograde metamorphosis that has evolved a perfected adaption to standstill. The perfected adaption to caution that can accept social limitations.', //12.6
+//13
+      'The politician kissing babies. An openness that is never free of motives.', //13.1
+      'The obsessive belief that the highest ideals cannot be embraced by the lowest forms. An extremely difficult position, where even the highest ideals provide rationalization for hatred. A role of openness so narrow that there is practically no one worth listening to.', //13.2
+      'Pessimism exalted to an art form, where as art, it may have the opposite effect. Satire. Where the rightness of suspicion can inspire satire.', //13.3
+      'Emotional exhaustion. Appeasement and withdrawal. A role where openness is a vulnerability.', //13.4
+      'The able administrator. Given the extreme positive nature of this position, mundane application is rare. The listener whose gift for finding a role for others is practical and suited to administration.', //13.5
+      'Naivete. The translation of mutual interest into universality. The belief that mutual interests can be projected on others.', //13.6
+//14
+      'The delusion that you can throw money at problems. Energy alone can never be the key.', //14.1
+      'The vanity to be one\'s own best expert. The key to power is doing everything individually.', //14.2
+      'Greed and the self-destruction of moral fibre. The power of selfishness to fuel greed.', //14.3
+      'Overconfidence in meeting the challenge of competition that may threaten the very basis of security. Without the proper skills the inability to guarantee security.', //14.4
+      'A dissatisfaction with the gifts of others that creates feelings of superiority. Innate recognition of those without power fueling the illusion of superiority.', //14.5
+      'All manifestations of this position are essentially positive. The Earth represents the existentialist recognition that material success was unavoidable and the humility engendered by such serendipity. Existentialism as the key to acceptance and the source of power.', //14.6
+//15
+      'Alienation engendered through exaggerated claims. The capacity of the Self to alienate others through extremes.', //15.1
+      'Where the Sun\'s actions are natural, the Earth\'s are contrived, though given the power of this position, the same effect can be expected. The capacity to use the extreme nature of the Self to influence others.', //15.2
+      'The \'I told you so\' mentality. The capacity of the Self to point out the extremes of others.', //15.3
+      'An ultimately weak defense leading to exposure and humiliation. Extremism that keeps the Self out of the flow.', //15.4
+      'The tendency to overcompensate. The drive of the Self to overcompensate and disturb the flow.', //15.5
+      'A tendency to use harmony as a weapon in problem situations rather than focusing on the root causes. The power of the Self to ignore the weakest point in favour of harmony.', //15.6
+//16
+      'The public communication of inevitably unrealized claims. The tendency to express fantasy as fact.', //16.1
+      'The compulsive cynic, whose very cynicism is a source of enthusiasm. Objectivity expressed through cynicism.', //16.2
+      'The child whose overconfidence may lead to frustration and the ensuing depend- ence on others to regenerate enthusiasm; thus creating an unnecessary reliance. The need to have others confirm one\'s skills or talent.', //16.3
+      'The demagogue. The refusal to support or recognize the talents of others.', //16.4
+      'The perverse feeling that sharing in enthusiasm hampers individual development. Why should I be happy when ... etc. A lack of confidence in the value of encouraging others.', //16.5
+      'The same principle but where Neptune will destroy and then seek new forms, Jupiter will painfully withdraw. Its enthusiasm for social structures permanently prejudiced. The failure to assess the expression of others.', //16.6
+//17
+      'A tendency to limit openness to aesthetically pleasing stimuli. The possibility to limit opinions to what is pleasing.', //17.1
+      'An overactive discrimination that leaves one virtually alone. The possibility of being opinionated at the expense of relationships.', //17.2
+      'The taking of short cuts. One may get to the end quicker, but essential experience will be missing. The possibility of skipping details and limiting the value of the opinion.', //17.3
+      'The overgenerous and often misguided acceptance of would-be followers, often with disastrous results. The possibility of opinions attracting others.', //17.4
+      'The arrogance, despite all the evidence to claim, that the buck stops here! The possibility of opinions that refuse to see the value of being organized.', //17.5
+      'The tendency on the perfected path it is a straight line that ends rather than a circle. Where understanding is achieved, the possibility of having the opinion that there is nothing else to learn.', //17.6
+//18
+      'The Patriarch whose rigidity guarantees deterioration. The potential to refuse to correct.', //18.1
+      'The futile raging against the wind. The refusal to accept that there is no potential for correction.', //18.2
+      'Rigid judgmentation that creates as many problems as it solves. An obsession with correction that does not bring satisfaction.', //18.3
+      'Indecision and anxiety and no escape from misfortune. The demands of correction and its potential to generate anxiety.', //18.4
+      'The mental patient. Chronic instability and potential madness. Where relationships cannot assist in correction the potential of mental instability.', //18.5
+      'The mundane application of the above. The ability to tap public opinion and share methodology. The potential to share the values of the correction with others.', //18.6
+//19
+      'The tendency once an approach is accepted to get stuck in continued reflection at the expense of continued development. The pressure for acceptance which fears eventual rejection.', //19.1
+      'Protracted indecision, but given the nature of this position, eventual compliance. The need to be wanted that will eventually turn its energy to service.', //19.2
+      'A tendency to moodiness that may lead to carelessness. The need to be wanted hampered by oversensitivity.', //19.3
+      'Attractive and cooperative but a tendency to dissatisfaction with the contribution of others. A sensitivity energized by the limitation of others.', //19.4
+      'A tendency in sacrifice to condescend. Sacrifice can fuel a lack of sensitivity.', //19.5
+      'The sulking child. The self-imposed exile that will only end when it attracts appropri- ate and soothing reaction. Oversensitivity to rejection that fuels avoidance.', //19.6
+//20
+      'The superficial expression of the personality. The expression of the superficial personality.', //20.1
+      'The power to lead others down a narrow path. The gift through expression of leading others down a narrow and restrictive path.', //20.2
+      'Self-consciousness in the extreme that hampers development. The expression of self-consciousness in the extreme.', //20.3
+      'A tendency to prefer theory to application. The expression of the awareness as theory with little interest in its application.', //20.4
+      'Where reality creates dissatisfaction and adds to instability. The expression of awareness in the now through dissatisfaction with the reality one sees.', //20.5
+      'The same as above but motivated by the self-satisfying mental challenge rather than altruism. The ability to transform individual awareness for general application for the mental challenge.', //20.6
+//21
+      'An inherent peacefulness that all too often turns a necessary warning into a plea. A lack of will power that is forced to ask for respect.', //21.1
+      'A tendency to regret severity, no matter how legitimate. The ego uncomfortable with severity.', //21.2
+      'Total withdrawal. A lack of will for the material path in order to protect the ego.', //21.3
+      'A tendency, when in the right to misjudge the power of one\'s opponents. The drive when in the right to follow one\'s ego rather than one\'s instincts.', //21.4
+      'The drive for elimination is so powerful that objectivity is related purely to cause and not effect. The ego whose will power is applied subjectively.', //21.5
+      'Withdrawal and reliance on inner order in a chaotic situation. Where the material direction is chaotic, the ego will withdraw and use its power to find an inner order.', //21.6
+//22
+      'The inevitable humiliation that comes with claiming a first class seat with a second class ticket. Where the emotional energy challenges the awareness and can result in humiliation socially.', //22.1
+      'The legalization of form over substance. Where the style is energized at the expense of awareness.', //22.2
+      'Unconscious grace. An innate openness.', //22.3
+      'An over-reliance on the mechanics of style that can abort potentially significant relationships. The limitation of social openness through the need for formality.', //22.4
+      'A tendency to create embarrassing situations, and though invariably successful, the often resulting reputation for crudity and impudence. The possibility that individual behaviour in social interaction will generate negative projections from others.', //22.5
+      'The alignment tends to express itself in nonconformist modes. The possibility that experience in social interaction will result in a non-conformist expression of openness.', //22.6
+//23
+      'The missionary whose very light will bring darkness. The powerful expression of an insight which will produce negative effects.', //23.1
+      'Where Jupiter will strike out to preserve its integrity, the Moon is often satisfied with just protecting itself by fending off hostility. The defense of individual expression in the face of hostility.', //23.2
+      'An individual mysteriousness that attracts active suspicion and threat. The freak. Individual expression that attracts suspicion and threat.', //23.3
+      'Atheism and paranoia. Individual expression which engenders isolation and fear.', //23.4
+      'Motive driven assimilation from an inferior position, i.e. for protection or nourishment. Motive driven assimilation for acceptance and protection from the collective.', //23.5
+      'The principled but futile withdrawal from fusion that leads to atrophy. Individual knowing that holds on to diversity and loses its power in expression.', //23.6
+//24
+      'Self-delusion which unnaturally justifies periods of retrogression. Inspiration that leads to an irrational focus on what is past.', //24.1
+      'The vanity to see transformation as a personal achievement rather than a socially supported or natural phenomenon. The mental vanity that the gift of conceptualizing spontaneously can produce.', //24.2
+      'Addiction and regression legitimized by success. Irrationality maintained and legitimized by success.', //24.3
+      'The tendency in isolation to live in a fantasy world. Aloneness encourages the potential of illusion or delusion.', //24.4
+      'The tendency to try to minimalize past mistakes through rationalization; turning confession into justification. Irrational justification of past mistakes.', //24.5
+      'Innate suspicion which leads inevitably to lost opportunities. Often irrational suspicion that distorts the focus and can lead to missed opportunities.', //24.6
+//25
+      'A tendency to publicize one\'s selflessness. The insecurity of the Self manifested in times of challenge.', //25.1
+      'A dedication that can never be free of personal motivation and its attendant projections. A lack of innocence in the now that risks protection through projection.', //25.2
+      'The potential loss of innocence through misfortune that in the extreme can manifest from crime to suicide. The potential loss of spirit through failure or shock.', //25.3
+      'No planet in detriment.', //25.4
+      'Hypochondria and the need to be healed by others. The weakness of the spirit which requires healing from others.', //25.5
+      'Constant inappropriate and destabilizing actions whose very counterproductiveness strips away the facade of innocence. Constant inappropriate action in times of challenges that can break the spirit.', //25.6
+//26
+      'Accomplishment as a licence for foolhardy risk taking. The refusal of the ego to be satisfied.', //26.1
+      'The urge to take action despite the evidence of history. The failure of the ego to respect experience.', //26.2
+      'The leadership, while gathering support will underestimate potential challenges. The egoist unable to recognize the potential challenges in others.', //26.3
+      'The use of censorship to maintain the status quo; selective memory in fear of unrestrained consequences. The power of the ego maintained through selective memory.', //26.4
+      'A resistance and dissatisfaction when basic changes to nature are necessary. The resistence of the egoist to adaption.', //26.5
+      'Authority as a symbol and focus but not necessarily as a true embodiment. The constitutional monarch, stripped of real power but still the symbol of the continuity of authority. The expression of the ego as a role whose influence is symbolic and lacks authority.', //26.6
+//27
+      'Envy and its attendant misfortunes. The power of selfishness that is manifested through envy.', //27.1
+      'The child depleting the resources of others. Weakness that can sap the strength and power of others.', //27.2
+      'Mundane and wholly without redeeming value, greed, a lust that inevitably cripples and addicts. The lust for power to get more than one needs.', //27.3
+      'Indiscriminate sharing. The potential loss of power and strength through indiscriminate sharing.', //27.4
+      'A restrictive nature that hampers distribution or the seeking of advice and assistance. Weakness and the risk of loss of power restrict caring.', //27.5
+      'A tendency to oversuspiciousness. The power of suspicion in limiting the expression of caring.', //27.6
+//28
+      'The aesthetic appreciation of planning that may have no real application. An intuition for detail without the potential for application.', //28.1
+      'The anxiety engendered by sacrificing higher principles when there is no guarantee of success. The risk in sacrificing principles when there is no guarantee of victory.', //28.2
+      'Here a perverse manifestation of Jupiter\'s expansiveness where risk taking is rationalized and failure ensured. Intuitive rationalizing of risk taking in times of struggle.', //28.3
+      'The application of intelligence to hold on, exclusively out of self-interest. A depth of intuition that is stubbornly selfish in its capacity to hold on.', //28.4
+      'The breaking of alliances with trusted forces to align with more powerful forces and its attendant destabilization of the whole. The intuitive recognition in times of struggle to know when alliances must be broken and its destabilizing effect on others.', //28.5
+      'Self-destruction. The deep intuitive fear of defeat and a potentially profound hopelessness in times of struggle.', //28.6
+//29
+      'A deep impressionability whose mark from times of struggle may make a return to normal conditions extremely difficult. Hesitation in making commitments based on past experience.', //29.1
+      'A tendency to overcautiousness when persistence is perceived as adding to rather than ending disharmony. Caution in saying yes, when perseverance leads to disharmony.', //29.2
+      'A preference for withdrawal in principle with little regard for effect. The inability to make commitments. The power of caution.', //29.3
+      'Simplicity and directness all too often seen as inharmonic and aesthetically crude. The power of directness often offends others.', //29.4
+      'Failed ambition. Saying yes, overextending one\'s resources, and failing to persevere.', //29.5
+      'A tendency in confusion to withdraw rather than accept the condition and continue to persevere. The power in confusion to caution rather than saying yes.', //29.6
+//30
+      'The ability to maintain composure but at the expense of progress. Balanced through feelings but unable to let go of them.', //30.1
+      'Overaggressiveness that chafes against limitations. Feelings which demand energy.', //30.2
+      'The tendency by its very knowledge to encourage or avoid despair. The positive or negative feelings which come with acceptance of what is.', //30.3
+      'Uncontrollable expansion with the inevitable bursting of the bubble. Uncontrollable feelings and accompanying emotional outbursts.', //30.4
+      'The anger engendered by the irony, frustration with its limitations and a desire to eliminate the entire process. Frustration and anger with the old feelings brought into the emotional awareness with each new experience.', //30.5
+      'An inherent peacefulness that all too often will abide the presence of inferior forces. A lack of strength in eliminating negative feelings.', //30.6
+//31
+      'The absorption of light, that in darkness can only promise manifestation. The unnatural expression of leadership.', //31.1
+      'A reasoned arrogance that out of nervous tension jumps the gun and often misfires. The drive for expression that cannot wait and may cost leadership.', //31.2
+      'Qualitative selectivity with the risk of a runaway enthusiasm that may lead to humiliation. The drive to lead that will accept any follower and the risks.', //31.3
+      'Perceived ego aggrandizement and attempted manipulation. External negative projection of one\'s capacity to lead.', //31.4
+      'A deep focus on personal experience that is self-fulfilling and has no external ambitions. A lack of ambition where one is content to lead oneself.', //31.5
+      'A superficiality in application that borders on hypocrisy and is justifiably treated accordingly. The hypocrisy according to leading in words but not action.', //31.6
+//32
+      'The uncontrollable urge to bypass essentials which inevitably leads to the disruption of continuity. The fear of lack of potential, and the corresponding lack of attention.', //32.1
+      'A tendency in frustration, particularly from a position of strength, to social withdrawal rather than persistent control. The frustration with controls or being controlled.', //32.2
+      'An overreliance on traditionally legitimized standards that in times of change can be totally out of step and suffer unexpected humiliation. A lack of instinct in times of transformation.', //32.3
+      'Where Jupiter will establish right action in the larger social realm, Saturn\'s will lead to inner strength and endurance as long as it is not threatened from the outside. The instinct to maintain one\'s principles as long as one\'s security is not threatened.', //32.4
+      'The urge to express oneself in direct and often violent rejection of conformity. The potential of the instinct to reject adaption and conformity in times of change.', //32.5
+      'Impermanence as proof of meaninglessness with its attendant manifestations, depression, delusion, and in the extreme, self-destruction. The fear engendered when change is experienced as impermanence, and the potential for depression.', //32.6
+//33
+      'Where courage is just plain foolishness. Unable to retreat when overwhelmed by stimulation.', //33.1
+      'Unlike the reasoned and calculated surrender above, the deeper and personal surrender. The feeling that one\'s original position was a delusion and the impressionability that makes might right. A public embrace of powerful forces, and a private resentment of their power.', //33.2
+      'A lack of responsibility in retreat. The bridge burner. A drive for privacy that will cut off its relationships, often abruptly.', //33.3
+      'Without the guiding light of resurrection, the inevitable dissolution that leads to degeneration. Forced to retreat, and unable to see its regenerative qualities.', //33.4
+      'The tendency to want others to participate in the selection of the timing, which can lead to confusion. Without a sense of timing, letting others in on the secret prematurely with resulting confusion.', //33.5
+      'The ability to shed the larger framework that precipitated the retreat, leaving nagging doubts that hamper revitalization. The inability to completely let go.', //33.6
+//34
+      'The comeuppance that is the inevitable destiny of the bully. The ever present risk of retaliation to power displays.', //34.1
+      'A tendency to be emotionally carried away by the smell of victory. The power for growth limited by impatience.', //34.2
+      'A reasoned and calculated display. The communication of disinformation. The calculated display of power in order to define the role.', //34.3
+      'Ego gratification in the unrestrained use of power with impunity, inevitably leading to abuse. A lack of confidence that can lead to abuse of power.', //34.4
+      'A difficulty in shedding the patterns established to deal with resistance. Symbolized by its phases, the feeling that nothing is permanently annihilated. The discomfort with the need to always release power.', //34.5
+      'Enthusiasm overriding better judgment, invariably leads to complications. The lack of restrictions that can sap one\'s strength.', //34.6
+//35
+      'A self-destructive reaction to rejection. Loss of worth. Change and rejection as humiliation.', //35.1
+      'The need to take action, however mundane, to overcome the feeling of emptiness. The actions being uninspired do not further progress. The need for change and the fear of stasis.', //35.2
+      'The need to be the center that ignores the importance of others. The need to be the center for progress.', //35.3
+      'The abuse of position to accumulate perks with the inevitable retribution from those unfairly deprived. The drive for progress that will ultimately step on toes and lead to recrimination.', //35.4
+      'Jupiter in detriment, though altruistic and cooperative in general, a personal regret that in interaction a greater personal expansion had been lost. Progressive communication, but always the sense that personal progress has been sacrificed.', //35.5
+      'A destructive tendency that in its personal application may be the necessary severity to ensure correction but when applied generally, it will meet with resistance and tend to reinforce rather than rectify situations. Correction which brings change through severity and even destruction, and will always meet resistance.', //35.6
+//36
+      'An over-principled resistance that rather than being selective in resistance and thus less at risk, will maintain normal patterns and incur opposition. A resistance to change that will always bring crisis.', //36.1
+      'The more practical and individual assistance but only when unavoidable and not as a general principle. Selective assistance in times of crisis.', //36.2
+      'The tendency in renewal to try to assimilate the remains of the old order into the new with the risk that it may rise against the new order once it has regained its strengths. The embrace of the change, but with feelings that will not let go of the past.', //36.3
+      'The tendency in recognizing the strengths of the opposition to accept the inevitability of decline and rather than resist, to offer one\'s services to guarantee survival. The double agent. Crisis knowledge that is available to others for a price.', //36.4
+      'A nervousness that can lead to self-betrayal. Self-betraying nervousness in times of crisis.', //36.5
+      'A profound sorrow and cynicism, that is not diminished by the understanding, that darkness is self-annihilating. The sorrow or cynicism that comes with seeing that despite the correctness of the feelings, there is always crisis.', //36.6
+//37
+      'No planet in detriment.', //37.1
+      'A tendency to point out the responsibility of others. The possibility that friendship will lead to pointing out the responsibilities of others.', //37.2
+      'An ironic tendency to either test incessantly the borders of acceptability or to respond to the very same tendency in others with severity. The possible lack of sensitivity to what behaviour is appropriate.', //37.3
+      'A conservatism that generally only accepts the leadership of the father, who may or may not be a valued role model. The possibility of being insensitive to the leadership of anyone other than those accepted by tradition.', //37.4
+      'Emotional dependency that often turns love into hatred. The possibility of dependency turning love into hate.', //37.5
+      'A need for diversity that may ignore the achievements of the family in favour of withdrawal. The need for diversity that despite appreciation will prefer casual friendships.', //37.6
+//38
+      'The tendency to oppose as a general rule. The drive to fight as a general rule.', //38.1
+      'An over-politeness that is both servile and obviously superficial and defeats its very purpose. The energy for over-politeness in times of struggle.', //38.2
+      'Selfish alliance which saps the energy of one\'s partners, in order to ensure personal vitality. The energy to selfishly use others in times of struggle.', //38.3
+      'The aggressiveness in opposition that prejudices investigation and limits trustworthiness. The power of adrenalin to provoke aggressiveness.', //38.4
+      'Alienation experienced as painful confinement that by its very nature blinds one to the possibility that there are those at some point who may come to one\'s aid. The energy for stubbornness is so strong that it is difficult to recognize, that there are others that can help in times of struggle.', //38.5
+      'The recognition that misunderstanding is at the root of opposition but the insistence, that it is the misunderstanding of the opposing forces. Where misunderstanding is at the root of struggle, the energy of stubbornness to insist and maintain one\'s position.', //38.6
+//39
+      'Disengagement, with an accompanying indecision as to when to reengage. The refusal to confront obstacles without the capacity to know when to engage. The indecision is also a provocation.', //39.1
+      'The principle of preservation that tempts one to go around an obstacle that should be tackled head-on. An emotional discomfort when direct assault is essential.', //39.2
+      'The often disastrous assumption that others are more at risk if an obstacle is not confronted. The energy to provoke through the failure to make sacrifices.', //39.3
+      'The faulty belief that willpower alone can overcome any obstacle regardless of circumstances. The energy to provoke that ignores circumstances.', //39.4
+      'Simple hardheadedness. Though less exalted, it can often result in success and gather support by its very determination. The energy to provoke through hardheadedness.', //39.5
+      'Ego dominance that generally abuses this gift for self-aggrandizement and personal ambition rather than for the benefit of others. The emotional drive to dominate that provokes others.', //39.6
+//40
+      'The Moon cannot stand still. The ego uncomfortable with being alone too long.', //40.1
+      ' A natural peacefulness that in deliverance may sympathize with and attempt to nurture the forces which hampered liberation. The power of loneliness to blind the ego to the possible disruptive effect of others.', //40.2
+      'The ego arrogance that demands attention and gets it. The capacity of the ego to demand attention.', //40.3
+      'An uncontrollable zeal that ignores the quality of support in preference for the quantity which in the long run may destabilize deliverance. The empowering of the ego through the capacity to organize others.', //40.4
+      'A tendency in revolution to accept a certain amount of necessary deviation on the assumption that it can be successfully purged later. The weakness of the ego in its loneliness to maintain and not reject negative relationships.', //40.5
+      'Exemplified by the terror of the French Revolution, where the idea of who was deserving of punishment was cruelly extended to an entire class. The distortion of the ego through power and authority.', //40.6
+//41
+      'A tendency in understanding, to assume capability, leading to strain. The hothead, the urge to release feelings.', //41.1
+      'A desire for recognition that throws caution to the wind, depleting valuable resources for only temporary gain. The energy for the display of feelings for recognition.', //41.2
+      'Instinctive assistance, admirable but in this position misguided, where two will use up resources twice as fast as one. The energy that fuels the feeling to share.', //41.3
+      'The expenditure of energy on maintaining relationships rather than on correction. In times of decrease weak associations are shunned as costly, no matter how attractive. The energy which fuels holding on to feelings rather than adapt.', //41.4
+      'A persistent dissatisfaction with limitation which hampers development even when supported. Limitations initiate the fuel for negative feelings.', //41.5
+      'The tendency in transcendence to keep it a secret in fear of being deprived of its special advantages. The fuel for secret or repressed feelings.', //41.6
+//42
+      'A tendency when surplus resources are available to centrifugal application. Decadence. Too much expansion can lead to decadence.', //42.1
+      'An ascetically motivated withdrawal in times of progressive change. Growth which stops in reaction to trends or change.', //42.2
+      'A moodiness, that in error may succumb to brooding and unnecessary caution. Mistakes give power to moodiness and caution.', //42.3
+      'Where the gift to establish and maintain relationships is ill-suited in this position to act in mediation where harmony must take a back seat to pragmatism. A lack of maturity where the power to harmonize distorts mediation and limits growth.', //42.4
+      'Self-actualization as a strictly inner experience that may demand or result in a reclusive nature. Inner growth that empowers reclusiveness.', //42.5
+      'A restrictive and malefic materialism that is self-alienating and encourages aggression. The refusal to share the benefits of growth with others.', //42.6
+//43
+      'An impatience to enjoy the sweets of accomplishment that inevitably leaves a sour taste in the mouth. A delight in the insight but a lack of depth to establish it.', //43.1
+      'A dedication to action, that when actualization is in sight may become incautious. The urge for expression that will abandon its normal processes when an opportunity arises.', //43.2
+      'An oversensitivity to condemnation, that may preclude justified expediency and result in failure. Individual insight abandoned in the face of condemnation.', //43.3
+      'A belief in inherent right action based on limited knowledge that shuns advice. The vanity to attempt expression without depth.', //43.4
+      'A tendency to concentrate on harmonizing relationships that tends to strengthen the position of restrictive forces rather than benefiting breakthrough. An over-reliance on the receptivity of others that turns harmony into the conditioner of individual expression.', //43.5
+      'An ego tendency that in breakthrough sees justification of its lesser attributes and carries them over into the new order. Where the value of knowing is more important then other aspects of the life.', //43.6
+//44
+      'An attractive nature that will interact with inferior forces and will fail to apply restric- tions resulting in a risk to continued harmony. The failure of the instinct out of the need for harmony.', //44.1
+      'A tendency in management to concentrate exclusively on goals, ignoring inferior elements which leads inevitably to quantitative success and qualitative failure. The instinctive memory for the patterns that bypasses the development of managerial capability.', //44.2
+      'A deluded response to interference that gets stuck in projection and as a result is unrealistic in appraisal and error prone. The possibility that the instinct cannot handle the ego of others.', //44.3
+      'The Sun in detriment, that in extreme situations, in cases of self-sustainment, will expect assistance from forces it has totally rejected. Here the honesty is the genuine need. The sacrifice of indifference for survival.', //44.4
+      'The tendency in this form of manipulation to become abusive and degenerate to their level. The possibility that the instinctive recognition of the patterns could lead to the abuse of others.', //44.5
+      'Intolerance and arrogance for lesser mortals. The awareness of patterns which can bolster the ego at the expense of the well-being of others.', //44.6
+//45
+      'An overzealousness that turns canvassing into proselytization and tends to alienate rather than gather support. The drive for material that leads to aggressive education.', //45.1
+      'An innate rebellion against conformity. The refusal to accept the material techniques of others.', //45.2
+      'An aggressive and often violent reaction to exclusion. The expression of frustration when not included in a material process.', //45.3
+      'The tendency to try to influence the direction of a group action for personal benefit. The lack of expression of higher principles on the material plane.', //45.4
+      'A sense of right action that assumes a respect that may not as yet have been earned. The drive for leadership that may not have yet earned the right.', //45.5
+      'Where Uranus will innovate to find a place for an outsider, Jupiter will demand that it conforms. A material direction that is focused on conditioning the outsider to conform.', //45.6
+//46
+      'The ability to judge the potential of those in obscurity but often solely to benefit one\'s own success. The determination to recognize and benefit from the success of others.', //46.1
+      'Unrealistic demands and offensive nature of egocentric mediocrity. The determination to be treated as a success before it has been realized.', //46.2
+      'A tendency through projection to treat a potential future as the present, leading to unjustified egoism and the loss of momentum and support. The determination to treat a projected success as a reality.', //46.3
+      'A reaction in achievement that tends to bite off the hand that fed it. The determination in success to ignore those who helped create it.', //46.4
+      'An irrational rejection of the very patterns that have proven successful. Determined to say no to the very rhythm that brings success.', //46.5
+      'Deceiving oneself and others by overextending one\'s resources and eventually being in the position of having to break promises. A drive for success that will not say no, and will end up breaking promises.', //46.6
+//47
+      'The delusion of seeing oppression as an exclusively external phenomenon with often disastrous results. The sense that the world is against you.', //47.1
+      'An indecisiveness in times of personal oppression, whether to apply intelligence to recovery or accept its weight to take advantage of other prevailing conditions that may only be temporary. The inability to sense when and which activity is healthy.', //47.2
+      'A self-oppression so highly energized that it may prove irreversible and destructive. Extreme difficulty in realizing one\'s self-worth.', //47.3
+      'When robbed of its light, the Moon is lost in darkness; barely able to nourish itself, let alone others. The identity overwhelmed by external conditioning.', //47.4
+      'No planet in detriment.', //47.5
+      'The Sun in detriment, where the strength of will alone may find a way to adapt and survive, but without hope of ever overcoming the oppression. Life as an ordeal stripped of realization.', //47.6
+//48
+      'An ego tendency to apply energy to trivial considerations. A taste for trivia.', //48.1
+      'The misguided urge for harmony that degenerates when associated with inferior values into decadence. A lack of confidence in awareness that invites interference and decadence.', //48.2
+      'The profound anxiety when a profound intelligence is forgotten in the wilderness. The tendency in a long term process (development of taste and depth) to anxiety.', //48.3
+      'A resistance to restructuring on speculation, with the tendency when activity resumes to have to do so anyway. A taste for long term projects that will be frustrated in restraint.', //48.4
+      'An overreliance on the need for protection that in times of social renewal is ob- sessed with the details of planning at the expense of action. Insecurity with one\'s depth that can fail to take action.', //48.5
+      'A tendency to superficiality, that though generous and nurturing, will lack the inspi- rational quality that can transform its gift into a common currency. Where the depth is limited the taste will be superficial and affect the quality of the possible talent.', //48.6
+//49
+      'The misuse of influence, to insist that necessity can be created out of action. The \'Helter Skelter\' syndrome. To commit acts of disorder as proof that disorder exists. Oversensitivity to rejection that can turn a principle into a crusade.', //49.1
+      'The overwhelming revolutionary urge that is impatient with accommodation and negotiation. The tendency here is the coup d\'etat that has little general support. Impatience with accomodation.', //49.2
+      'Pluto in detriment, with general support, a savageness in eliminating the old order that may permanently scar the new. An insensitivity in rejection and rejecting.', //49.3
+      'Promises, promises, promises and only to guarantee support with little possibility of implementation. A potential to insensitively take advantage of the needs of society.', //49.4
+      'A concentration on the organization of power to clearly define authority often at the expense of higher principles. A rejection of higher principles in seeking to organize others.', //49.5
+      'Stubborn, and often fatal, rejectionism. Oversensitivity that leads to rejection of principles and others as a rule.', //49.6
+//50
+      'A dissatisfaction with/or embarrassment with origins, that makes an obsession of refinement. A dissatisfaction with original values that demands refinement.', //50.1
+      'A discomfort with adversity that may lead to determined withdrawal. A lack of strength, where values are threatened by opposition or conditioning.', //50.2
+      'A resentment when its natural mental gifts are ignored and is forced to curry favour in order to survive. Discomfort with the awareness that one cannot stand alone by one\'s principles.', //50.3
+      'With such energy and no traditional values, the worst can be expected. The potential disregard of values that may lead to corruption or the breakdown of the defense system.', //50.4
+      'A perverse reaction to rebel against the methodology of one\'s very success. When effectively stimulated, the drive to rebel against basic principles.', //50.5
+      'An inherent moodiness, that in a position of power may at times alienate or offend and effect overall efficiency. The strength to mainrtain one\'s values but at the expense of harmonic relationships.', //50.6
+//51
+      'A tendency to emotional withdrawal after a shock. The weakness of the ego in times of challenge.', //51.1
+      'Being too smart for one\'s own good and rejecting withdrawal in the vain belief that one can outsmart natural forces. The egoism to reject withdrawal and face possible defeat.', //51.2
+      'The destabilization that occurs when one\'s field of normal activity is radically and unpredictably disturbed, where the tendency is withdrawal rather than adaptation. The ego that may be destabilized in times of challenge.', //51.3
+      'A reasoned make-do mentality that is ineffectual in times of severe shock. The superficial ego that lacks the resources and depth to answer challenges.', //51.4
+      'A tendency in seeking the core, to harmonize with one shock only to be overwhelmed by the next. The egoism to indulge in victory and lose vigilance.', //51.5
+      'Curiously, the same gift, but one by its attitude that invites disapproval that in the extreme may even prevent a successful separation. The egoism to meet the challenge alone that may provoke and empower the challengers.', //51.6
+//52
+      'Speaking first and living with the consequences afterwards. Energy that cannot be stilled.', //52.1
+      'A selfish and abrupt pause that may endanger others unnecessarily. The pressure to selfishly restrain energy at the expense of others.', //52.2
+      'A deep dissatisfaction with controls that disturb tranquillity, leads to emotional withdrawal and affects vision. The pressure of restraint disturbs tranquillity.', //52.3
+      'Though responsive to the need of a principled control based on the understanding of conditions, there is a tendency due to its natural expansiveness, to doubt and restlessness. Restless energy and doubt in the face of restraint.', //52.4
+      'A convolution whose enigmatic nature is normally misunderstood with unpredictable circumstances. Where too much inaction can lead to a loss of focus, and not to detail.', //52.5
+      'Delusion as a substitute for genuine tranquillity. Given the positive nature of this position, the delusion may be just as effective as the \'real thing\'. Where the pacification of the energy is extreme, pressure real or imagined does not disturb the stillness.', //52.6
+//53
+      'Development hampered by criticism and the tendency to withdraw rather than make use of these experiences. The difficulty in starting something new because of the criticism that accompanied the old.', //53.1
+      'A tendency with early success to haste and imprudent action. The pressure based on success to be impatient for something new.', //53.2
+      'The unconscious provoking of conflict that logically threatens security and development. Energy which provokes conflict and threatens development.', //53.3
+      'The persistent difficulty with embarrassing or awkward situations where normal emotional reactions may prove detrimental. Individual pressure for beginnings that creates awkward and sometimes embarrassing situations.', //53.4
+      'An over-assertiveness, that rather than applied to maintaining support in the face of opposition and isolation, may actually strengthen the opposing forces by its attitude. Where the energy for beginnings attracts the very forces that can abort them.', //53.5
+      'A tendency in this position, to hide success, in the perverse fear that the success will either create excessive demands or supporters of the original process will end their support upon completion. The pressure to hide beginnings in fear of losing past support.', //53.6
+//54
+      'A socially misguided insistence on formal recognition of a relationship, that in terms of influence, will diminish its power. Ambition which demands formal recognition limiting influence.', //54.1
+      'Recognition, in the formal sense, seen as a licence to take advantage of informal knowledge. A lack of loyalty. Ambition energy which can fuel disloyalty.', //54.2
+      'The insistence that formal channels, no matter how frustrating, can be overcome by the power of attraction. The energy of ambition when blocked will fuel the power of attraction to overcome the obstacle.', //54.3
+      'The Alpha and Omega. The end and the beginning. There is no description possible. Each planet will manifest this energy uniquely with absolutely no guarantee that its effects will even be perceived. However, the potential is always there. The fuel for transformation at its purest level. No polarity. No specific planetary accent.', //54.4
+      'No detriment.', //54.5
+      'A generally benefic and expansive nature that assumes that it can instill, what is otherwise missing in its partners. A waste of energy. The waste of energy in maintaining relationships which hinder ambition.', //54.6
+//55
+      'The concentration on harmonic relationships with powerful forces that provide for continuity but not necessarily advancement. The potential to harmonize with powerful forces but not necessarily for the benefit of the spirit.', //55.1
+      'The direct challenge to the slanderers who will always have the advantage of quot- ing the Bard: \'Methinks he doth protest too much.\' Only continued example can overcome distrust. The emotional drive to insist on trustworthiness that does not guarantee its acceptance by others or benefits the spirit.', //55.2
+      'Mars in detriment, where a struggle against conformity or individual initiative can bring a superior to ruin while safely hiding behind his shield. The energy to selfishly protect one\'s spirit at the expense of others.', //55.3
+      'Boundless energy that knows no restraint. Boundless energy that ignores awareness at the risk of the spirit.', //55.4
+      'An integrative openness that in its broad acceptance of advice may be eventually eclipsed. An emotional openness where the spirit is at risk from conditioning.', //55.5
+      'Where the material abundance exists, but no one gets to share its light. The \'no Moon\' phase. The possibility that materialism becomes obsessive with a \'mean\' spirit that will not share.', //55.6
+//56
+      'The ego drive to make an impression that will misuse energy in trivial pursuits. The drive to stimulate that will express any idea, no matter how trivial.', //56.1
+      'A superficiality which collapses under recognition and is eventually forced to move on. A gift for communicating but not enough depth.', //56.2
+      'The reversed aesthetic that offends others, ensures isolation, and eliminates support. The drive to control the expression at the expense of stimulation.', //56.3
+      'Expedient behaviour whose price is a constant stressful alertness and nervous anxiety in fear of losing what has been gained. The role as reality. The fear of silence and of being uncovered.', //56.4
+      'All too often the tendency to attract attention that is self-defeating in its effects. The power of stimulation to provoke and disturb.', //56.5
+      'The profound unconscious wanderer, where external yearning for acceptance will unconsciously release the exact energy that creates rejection. A difficult role, where the self is unknown and not recognized with predictable results. Wandering throughout the life from one expression to the next unable to find the stimulation that one could live by.', //56.6
+//57
+      'The Moon in detriment, where feelings are no substitute for clarity and can lead to indecision. The possibility that confusion will overpower the intuition.', //57.1
+      'A superficial cleansing that tends to hide the dirt underneath the carpet. The possibility that the depth of the intuition will be treated superficially.', //57.2
+      'No planet in detriment.', //57.3
+      'A tendency given this position to be dictatorial rather than directorial. With the gift of clarity to master relationships, the possibility of being intuitively dictatorial.', //57.4
+      'The tendency to keep on keeping on, that can end up as a misguided missile. When in action, the intuition may become overwhelmed and unable to assess and evaluate its progress.', //57.5
+      'When clarity points to a problem one is unable because of circumstances to solve, a tendency to anger and frustration that provokes inevitably futile action. The possibility that when the intuition cannot solve a problem, a tendency to frustration and anger.', //57.6
+//58
+      'The Moon has its phases, its moods, that will limit joy to an intermittent and cyclical experience. A cyclical energy which intermittently fuels the love of life.', //58.1
+      'A genius for perverse stimulation that afflicts oneself and others by promoting degeneracy and reducing joy to indulgence and decadence. The energy which fuels the drive for perverse stimulation.', //58.2
+      'The quality of fire is dependent on its fuel and subject to its influence, good or bad. The energy for aliveness that is dependent on others for stimulation.', //58.3
+      'An impressionability that becomes confused when confronted with a multiplicity of stimulations and in trying to accommodate all of it, becomes unstable. Energy which becomes unstable when overstimulated.', //58.4
+      'The assumption that the best defense is a good offense, that might allow strength of character to enjoy questionable stimulus without succumbing to it. The energy for aliveness which forsakes self-defense and will embrace questionable stimulations.', //58.5
+      'When its basic intelligence is effectively stimulated, its natural desire for attunement will lead it to identify so strongly with the stimulation that it is at risk of losing its identity. The energy which fuels loss of identity in times of stimulation.', //58.6
+//59
+      'In this position, the ability and intelligence to recognize, but a deep indecisiveness about how and when to act. The potential of fertility limited by uncertainty.', //59.1
+      'A calculated shyness, rooted in deep psychological barriers, that even in dynamic individuals will always restrict interaction. Infertility, rooted psychologically or biologically, that conditions the drive for separateness.', //59.2
+      'Where openness is transformed into promiscuity and its attendant problems. Where the drive for empowerment, through union and intimacy, can lead to promiscuity.', //59.3
+      'An intellectual understanding that is rarely put into action. Where the idea cannot restrain the sex drive.', //59.4
+      'Uranus in detriment, where the negative potential of this power becomes evident. The Gigolo, the adventuress. The power of sexuality expressed as sexual power.', //59.5
+      'The basic drive to move on, that seeks impermanency as a matter of course and not in response to circumstances. The drive for sexual and intimate diversity.', //59.6
+//60
+      'The drive for diversity, that when limited can become restless and agitated. Restless energy when confronted with external limitations.', //60.1
+      'An adaptation to restraint that becomes habitual and maintains the nature of the limitation even when it no longer exists. The energy for adaptation that can get stuck without eventual mutation.', //60.2
+      'Ego gratifying self-interest that ignores limitations and suffers predictably. Energy which ignores limitations and pays the price.', //60.3
+      'A tendency in times of limitation to seek the inner meaning of the restriction rather than using its gifts to find a harmonic application within the limitation. The former leads to withdrawal and the latter to transcendence. The energy to know rather than accept limitation at the expense of possible mutation, leading to depression.', //60.4
+      'Where the natural desire for expansion, when limitations are essential, creates confusion from the top. Expansive energy that cannot handle limitations.', //60.5
+      'The dogmatic, principled and carefully reasoned understanding that is uncom- promizing in its severity and often coldly brutal in operation. An uncompromizing and severe acceptance of restraint. So uncompromizing that the restraint may become unbearable and lead to chronic depression.', //60.6
+//61
+      'Where a reliance on secret knowledge increasingly demands ascetic withdrawal and leads eventually to obscurity. Where the pressure to know the mysteries can be so strong that one can be eventually incapable of handling exoteric realities.', //61.1
+      'That in early recognition of its influence becomes ego obsessed with maximizing its effects. A delusion that any inspiration deserves recognition.', //61.2
+      'With an abundance of energy and in possession of a truth, the tendency to leave others behind or be crushed by their resistance. Impatience with others and the forsaking of relationships.', //61.3
+      'Where the tendency to expansion and integration leads to involving others in the research and may end in a diversity of confusing applications. The illusion that collaboration will enhance inspiration.', //61.4
+      'A tendency in power to want to enforce compliance to ensure lasting influence. The pressure in knowing to resent challenges and demand acceptance.', //61.5
+      'A reliance on shop-worn cliches and slogans that may be new in their level of energy but inevitably fall on deaf ears. The delusion that inspiration can bring clarity to the collective.', //61.6
+//62
+      'Rebellion and its enormous waste of energy. The need for expression which ignores the details.', //62.1
+      'The intellect stymied by severe restraints tends to anxiety and restlessness. The expression of anxiety and restlessness when faced with detail work.', //62.2
+      'A dissatisfaction with the monotony of detail work, where what is missed may be of great importance and value. The expression of dissatisfaction and boredom in detail work.', //62.3
+      'The urge to take action against established values that when restrained by circum- stances, leads to withdrawal that waits for opportunity. Where the detail is organized, isolation as a strategy waiting for the right opportunity for expression.', //62.4
+      'A tendency in metamorphosis to seek acclaim through dramatic presentation. When the details are organized, the need for attention demands expression.', //62.5
+      'The skills but not the discipline to succeed. The gift for, but not the discipline, to do the necessary detail work to succeed.', //62.6
+//63
+      'The tendency in achievement to immediately seek new goals at the risk of destabilizing what has already been accomplished. The pressure in achievement to still doubt one\'s capacities and to immediately seek new goals.', //63.1
+      'Instability in achievement that when in positions of authority leads to arrogance and the desire to keep others away from the center of power. Doubts in achievement that can lead to suspicion of others.', //63.2
+      'Success at any price. The pressure to eliminate the doubt at any cost.', //63.3
+      'A willingness to forget in the glow of victory, with a possible price to be paid later. The pressure and risk to forget the details when the doubts have been answered.', //63.4
+      'A tendency in triumph to pay lip service to such values, and given such leadership, these values will be reduced to nothing more than empty rituals. Doubting one\'s very process despite understanding.', //63.5
+      'Revolutionary nostalgia. Illogic and the potential obsession with old suspicions and doubt.', //63.6
+//64
+      'The powerful temptation when having transition in sight, to hasty action. An urge to act when you think you have made sense of the confusion.', //64.1
+      'Constantly in action, it wastes the very qualities and resources that it will need. Getting lost in the confusion and burdening the psyche.', //64.2
+      'The risk of a superficially confident personality that when transition collapses, there is no one to turn to. Overconfidence that the Fates will be kind on demand.', //64.3
+      'Where force and energy alone cannot overcome doubt. Where the confusion is so energized, assuredness brings no relief.', //64.4
+      'A tendency in trying to justify the struggle by focusing exclusively on the failure of the old order that cannot demonstrate the quality of the new. Focusing on the past confusions about values and relationships.', //64.5
+      'Like the story of the Trojan Horse, it can be dangerous to get carried away in celebration, least one looses vigilance and perspective. With all the diversity of data, it is easy to lose perspective.', //64.6
     ];
-
 // 385
 
 //final

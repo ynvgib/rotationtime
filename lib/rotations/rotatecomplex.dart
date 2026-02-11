@@ -87,9 +87,9 @@ class _RotateComplexState extends State<RotateComplex>
   //List<String> coinsHeb4lst = hexNamesList,
   //List<String> newcoinsHeb4lst = newcoinsHeb4lst,
   List<String> coins64List = rtminmic65List,
-      topcoinnamelist = zbzoo4names,
-      midcoinnamelist = newcoinsHeb4lst,
-      botcoinnamelist = coinsHeb4lst,
+      topcoinnamelist = zbzoo4namesHeb, // zbzoo4name
+      midcoinnamelist = newcoinsHeb4lst, // newcoinsEng4lst
+      botcoinnamelist = coinsHeb4lst, // coinsEng4lst
       maincoin = zbrussianames;
 
   List<hdCenter> _centers = [];
@@ -205,7 +205,7 @@ class _RotateComplexState extends State<RotateComplex>
       _controlSilenceSlider = CarouselSliderController();
 
   //final String _title = subtitles[4];
-  final String _title = subtitles_heb[4];
+  //final String _title = subtitles_heb[4];
 
   String _textlevel = '',
       _planettext = '',
@@ -1223,7 +1223,7 @@ class _RotateComplexState extends State<RotateComplex>
             ),
             const Divider(
               color: Colors.transparent,
-              thickness: 5,
+              thickness: 6,
             ),
             Flex(
                 direction: Axis.horizontal,
@@ -5087,6 +5087,7 @@ class _RotateComplexState extends State<RotateComplex>
 
             const Divider(
               color: Colors.blue,
+              thickness: 7,
             ),
             Flex(
               direction: Axis.horizontal,
@@ -5217,6 +5218,7 @@ class _RotateComplexState extends State<RotateComplex>
             ),
             const Divider(
               color: Colors.blue,
+              thickness: 8,
             ),
             ToggleButtons(
               direction: Axis.horizontal,
@@ -5402,240 +5404,193 @@ class _RotateComplexState extends State<RotateComplex>
             const Divider(
               color: Colors.blue,
             ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 40,
-                  width: 40,
-                  child: CarouselSlider(
-                    items: mixHexagramSlidersBol,
-                    carouselController: _controllerconstate,
-                    options: CarouselOptions(
-                        scrollDirection: Axis.horizontal,
-                        autoPlay: false,
-                        enlargeCenterPage: true,
-                        aspectRatio: 1.3,
-                        onPageChanged: (indexconstate, reason) {
-                          setState(() {
-                            _currentconstate = indexconstate;
+            InkWell(
+              onTap: () {},
+              child: Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 40,
+                    width: 40,
+                    child: CarouselSlider(
+                      items: mixHexagramSlidersBol,
+                      carouselController: _controllerconstate,
+                      options: CarouselOptions(
+                          scrollDirection: Axis.horizontal,
+                          autoPlay: false,
+                          enlargeCenterPage: true,
+                          aspectRatio: 1.3,
+                          onPageChanged: (indexconstate, reason) {
+                            setState(() {
+                              _currentconstate = indexconstate;
 
-                            switch (_currentconstate) {
-                              case 0:
-                                _planetsfulldisplayList =
-                                    _planetsfullpersonList;
+                              switch (_currentconstate) {
+                                case 0:
+                                  _planetsfulldisplayList =
+                                      _planetsfullpersonList;
 
-                                _controlPlanetHexagramData(
-                                    _planetsfulldisplayList);
+                                  _controlPlanetHexagramData(
+                                      _planetsfulldisplayList);
 
-                                _setDateTime(_personTime);
+                                  _setDateTime(_personTime);
 
-                                _controllerPlanetType.text = 'אחר כך לחשוב';
+                                  _controllerPlanetType.text = 'אחר כך לחשוב';
 
-                                _controllerrotationstate.jumpToPage(0);
-                                break;
-                              case 1:
-                                _planetsfulldisplayList =
-                                    _planetsfulldesignList;
-                                _controlPlanetHexagramData(
-                                    _planetsfulldisplayList);
+                                  _controllerrotationstate.jumpToPage(0);
+                                  break;
+                                case 1:
+                                  _planetsfulldisplayList =
+                                      _planetsfulldesignList;
+                                  _controlPlanetHexagramData(
+                                      _planetsfulldisplayList);
 
-                                _setDateTime(_designTime);
+                                  _setDateTime(_designTime);
 
-                                _controllerPlanetType.text = 'קודם לחיות';
+                                  _controllerPlanetType.text = 'קודם לחיות';
 
-                                _controllerrotationstate.jumpToPage(3);
-                                break;
-                              default:
-                                //_planetsList = _planetspersonList;
+                                  _controllerrotationstate.jumpToPage(3);
+                                  break;
+                                default:
+                                  //_planetsList = _planetspersonList;
 
-                                _controlPlanetHexagramData(
-                                    _planetsfullpersonList);
-                                _setDateTime(_personTime);
+                                  _controlPlanetHexagramData(
+                                      _planetsfullpersonList);
+                                  _setDateTime(_personTime);
 
-                                break;
-                            }
-                          });
-                        }),
-                  ),
-                ),
-                const SizedBox(width: 20),
-                Tooltip(
-                  message: zodiacSwephNameHeblist[_planethex.zodiacid!],
-                  child: Container(
-                    width: 80,
-                    height: 80,
-                    //margin: const EdgeInsets.only(top: 70),
-                    decoration: BoxDecoration(
-                      //color: Colors.blue,
-                      image: DecorationImage(
-                        image: AssetImage(
-                            zodiacSwephImagelist[_planethex.zodiacid!]),
-                        fit: BoxFit.scaleDown,
-                      ),
-                      shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          //Colors.purple.shade900,
-                          //Colors.purple.shade100,
-                          zodiacSwephGradeColorlist[_planethex.zodiacid! * 2],
-                          zodiacSwephGradeColorlist[
-                              _planethex.zodiacid! * 2 + 1],
-                        ],
-                      ),
+                                  break;
+                              }
+                            });
+                          }),
                     ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                Flex(
-                  direction: Axis.vertical,
-                  children: [
-                    Container(
-                      width: 35,
-                      height: 35,
-                      margin: const EdgeInsets.all(2),
+                  const SizedBox(width: 20),
+                  Tooltip(
+                    message: zodiacSwephNameHeblist[_planethex.zodiacid!],
+                    child: Container(
+                      width: 80,
+                      height: 80,
+                      //margin: const EdgeInsets.only(top: 70),
                       decoration: BoxDecoration(
                         //color: Colors.blue,
                         image: DecorationImage(
-                          // image: AssetImage(hdlinesplanet[
-                          // (hdlinesplanet.indexOf(_planethex.gateline!)) +
-                          // 1]),
-                          image: AssetImage(hdplanetexaltimg[
-                              (_planethex.gate!) * 6 - 7 + (_planethex.line!)]),
-                          fit: BoxFit.scaleDown,
-                        ),
-                        shape: BoxShape.rectangle,
-                        border: Border.all(color: Colors.blue, width: 2),
-                      ),
-                    ),
-                    Container(
-                      width: 35,
-                      height: 35,
-                      margin: const EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                        ///color: Colors.red,
-                        image: DecorationImage(
-                          image: AssetImage(hdplanetdetrimentimg[
-                              (_planethex.gate!) * 6 - 7 + (_planethex.line!)]),
+                          image: AssetImage(
+                              zodiacSwephImagelist[_planethex.zodiacid!]),
                           fit: BoxFit.scaleDown,
                         ),
                         shape: BoxShape.circle,
-                        border: Border.all(color: Colors.red, width: 2),
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            //Colors.purple.shade900,
+                            //Colors.purple.shade100,
+                            zodiacSwephGradeColorlist[_planethex.zodiacid! * 2],
+                            zodiacSwephGradeColorlist[
+                                _planethex.zodiacid! * 2 + 1],
+                          ],
+                        ),
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(width: 10),
-                Container(
-                    width: 35,
-                    height: 35,
-                    //margin: const EdgeInsets.only(top: 20, left: 40),
-                    child: AutoSizeTextField(
-                      fullwidth: false,
-                      minFontSize: 30,
-                      maxFontSize: 35,
-                      decoration: const InputDecoration.collapsed(
-                          hintText: '1',
-                          hintStyle: TextStyle(color: Colors.black)),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        //fontSize: 35.0,
-                        fontWeight: FontWeight.bold,
+                  ),
+                  const SizedBox(width: 10),
+                  Flex(
+                    direction: Axis.vertical,
+                    children: [
+                      Container(
+                        width: 35,
+                        height: 35,
+                        margin: const EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          //color: Colors.blue,
+                          image: DecorationImage(
+                            // image: AssetImage(hdlinesplanet[
+                            // (hdlinesplanet.indexOf(_planethex.gateline!)) +
+                            // 1]),
+                            image: AssetImage(hdplanetexaltimg[
+                                (_planethex.gate!) * 6 -
+                                    7 +
+                                    (_planethex.line!)]),
+                            fit: BoxFit.scaleDown,
+                          ),
+                          shape: BoxShape.rectangle,
+                          border: Border.all(color: Colors.blue, width: 2),
+                        ),
                       ),
-                      controller: _controllergatetext,
-                      readOnly: true,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                    )),
-                Container(
-                    width: 35,
-                    height: 35,
-                    //margin: const EdgeInsets.only(top: 20, left: 70),
-                    child: AutoSizeTextField(
-                      fullwidth: false,
-                      minFontSize: 20,
-                      maxFontSize: 25,
-                      decoration: const InputDecoration.collapsed(
-                          hintText: '1',
-                          hintStyle: TextStyle(color: Colors.black)),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        //fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
+                      Container(
+                        width: 35,
+                        height: 35,
+                        margin: const EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          ///color: Colors.red,
+                          image: DecorationImage(
+                            image: AssetImage(hdplanetdetrimentimg[
+                                (_planethex.gate!) * 6 -
+                                    7 +
+                                    (_planethex.line!)]),
+                            fit: BoxFit.scaleDown,
+                          ),
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.red, width: 2),
+                        ),
                       ),
-                      controller: _controllerlinetext,
-                      readOnly: true,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                    )),
-              ],
+                    ],
+                  ),
+                  const SizedBox(width: 10),
+                  Container(
+                      width: 35,
+                      height: 35,
+                      //margin: const EdgeInsets.only(top: 20, left: 40),
+                      child: AutoSizeTextField(
+                        fullwidth: false,
+                        minFontSize: 30,
+                        maxFontSize: 35,
+                        decoration: const InputDecoration.collapsed(
+                            hintText: '1',
+                            hintStyle: TextStyle(color: Colors.black)),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          //fontSize: 35.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        controller: _controllergatetext,
+                        readOnly: true,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                      )),
+                  Container(
+                      width: 35,
+                      height: 35,
+                      //margin: const EdgeInsets.only(top: 20, left: 70),
+                      child: AutoSizeTextField(
+                        fullwidth: false,
+                        minFontSize: 20,
+                        maxFontSize: 25,
+                        decoration: const InputDecoration.collapsed(
+                            hintText: '1',
+                            hintStyle: TextStyle(color: Colors.black)),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          //fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        controller: _controllerlinetext,
+                        readOnly: true,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                      )),
+                ],
+              ),
             ),
             const Divider(
               color: Colors.blue,
             ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: midcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: thirdcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinmidthirdtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: newcoinsHeb4lst[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: secondcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinmidsecondtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      minFontSize: 10,
-                      maxFontSize: 30,
-                      decoration: InputDecoration.collapsed(
-                          hintText: midcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: firstcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinmidfirsttext,
-                      readOnly: true,
-                    )),
-              ],
-            ),
-            const SizedBox(height: 5),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -5698,6 +5653,60 @@ class _RotateComplexState extends State<RotateComplex>
                     width: screenwidth * 0.33,
                     child: AutoSizeTextField(
                       decoration: InputDecoration.collapsed(
+                          hintText: midcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: thirdcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinmidthirdtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: newcoinsHeb4lst[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: secondcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinmidsecondtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      minFontSize: 10,
+                      maxFontSize: 30,
+                      decoration: InputDecoration.collapsed(
+                          hintText: midcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: firstcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinmidfirsttext,
+                      readOnly: true,
+                    )),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
                           hintText: topcoinnamelist[0],
                           hintStyle: const TextStyle(color: Colors.blue)),
                       textAlign: TextAlign.center,
@@ -5746,7 +5755,7 @@ class _RotateComplexState extends State<RotateComplex>
             const Divider(
               color: Colors.blue,
             ),
-            Container(
+            SizedBox(
                 width: screenwidth,
                 height: 270,
                 child: Stack(

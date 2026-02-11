@@ -62,6 +62,10 @@ gtk_window_set_icon_from_file(GTK_WINDOW(window), iconPath.c_str(), NULL);
   }
 
   gtk_window_set_default_size(window, 1280, 720);
+  
+  // zb full screen linux
+  // gtk_window_fullscreen(GTK_WINDOW(window));
+
 
   g_autoptr(FlDartProject) project = fl_dart_project_new();
   fl_dart_project_set_dart_entrypoint_arguments(

@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:circle_list/circle_list.dart';
@@ -238,17 +237,23 @@ class _RotateHomeState extends State<RotateHome> {
                                       ))),
                             ),
                             onDoubleTap: () {
-                              // var tempset = [];
-
-                              // for (var x = 0; x < 390; x = x + 6) {
-                              // for (var i = 6; i >= 1; i--) {
-                              // print('\'${hdplanetdetrimentimg[i + x]}\',');
+                              //var tempset = [];
+                              //var y = 0;
+                              //var g = 0;
+                              //for (var x = 0; x < 384; x = x + 6) {
+                              // print('//${(x / 6).floor() + 1}');
+                              // g = 0;
+                              // y = ((x + 6) / 6).toInt();
+                              // for (var i = 6; i > 0; i--) {
+                              // g++;
+                              //print('$y.$g: \'${hdlinesexalted[i + x]}\',');
+                              // print(
+                              // '\'${hdlinesdetriment[i + x]}\', \/\/$y.$g ');
 
                               // print(i);
-                              // i = i - 1;
+                              //i = i - 1;
                             }
-                            // x = x + 6;
-                            // print('//${(x / 6).floor()}');
+                            //x = x + 6;
                             // }
 
                             // setState(() {});
@@ -605,7 +610,7 @@ class _RotateHomeState extends State<RotateHome> {
                   ),
 
                   const Divider(
-                    color: Colors.black,
+                    color: Colors.grey,
                     thickness: 5,
                   ),
                   const SizedBox(height: 10),
@@ -624,40 +629,45 @@ class _RotateHomeState extends State<RotateHome> {
                           ),
                           child: Stack(
                             children: [
-                              PositionedDirectional(
-                                end: 5,
-                                bottom: 0,
+                              Align(
+                                alignment: AlignmentGeometry.center,
+                                //start: 5,
+                                //top: 0,
                                 child: Container(
                                   height:
-                                      MediaQuery.of(context).size.height / 6,
-                                  width: MediaQuery.of(context).size.width / 5,
+                                      MediaQuery.of(context).size.height / 3,
+                                  width: MediaQuery.of(context).size.width / 3,
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/camog/dogatapp.gif'),
+                                          'assets/camog/mcameline.png'),
                                       fit: BoxFit.scaleDown,
                                     ),
                                     shape: BoxShape.rectangle,
                                   ),
                                 ),
                               ),
-                              PositionedDirectional(
-                                start: 5,
-                                top: 0,
+                              // PositionedDirectional(
+                              Align(
+                                alignment: AlignmentGeometry.bottomCenter,
+                                //end: 5,
+                                //bottom: 0,
                                 child: Container(
                                   height:
-                                      MediaQuery.of(context).size.height / 8,
-                                  width: MediaQuery.of(context).size.width / 6,
+                                      MediaQuery.of(context).size.height / 4.5,
+                                  width:
+                                      MediaQuery.of(context).size.width / 4.0,
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
-                                      image:
-                                          AssetImage('assets/coins/camel.png'),
+                                      image: AssetImage(
+                                          'assets/camog/dogstwo.gif'),
                                       fit: BoxFit.scaleDown,
                                     ),
                                     shape: BoxShape.rectangle,
                                   ),
                                 ),
                               ),
+                              // PositionedDirectional(
                             ],
                           )),
                       onTap: () {
@@ -702,10 +712,6 @@ class _RotateHomeState extends State<RotateHome> {
                   ),
                   // end new cube
                   const SizedBox(height: 50),
-                  const Divider(
-                    color: Colors.black,
-                    thickness: 5,
-                  ),
                   const AutoSizeText(
                     'a@#OP',
                     minFontSize: 25,
@@ -715,6 +721,10 @@ class _RotateHomeState extends State<RotateHome> {
                       color: Colors.white,
                       fontFamily: 'iChing',
                     ),
+                  ),
+                  const Divider(
+                    color: Colors.black,
+                    thickness: 5,
                   ),
                   const SizedBox(height: 5),
                 ]),

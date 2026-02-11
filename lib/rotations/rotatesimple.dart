@@ -203,8 +203,8 @@ class _RotateSimpleState extends State<RotateSimple>
                     isMainText = !isMainText;
                     setState(() {
                       isMainText == true
-                          ? mainText = "חרדה חדרה"
-                          : mainText = "men tall";
+                          ? mainText = ";עיוורית"
+                          : mainText = "Inglitch;";
                     });
                   },
                 ),
@@ -617,7 +617,7 @@ class _RotateSimpleState extends State<RotateSimple>
 
                 const Divider(
                   color: Colors.green,
-                  thickness: 5,
+                  thickness: 6,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -690,7 +690,7 @@ class _RotateSimpleState extends State<RotateSimple>
                 ),
                 const Divider(
                   color: Colors.green,
-                  thickness: 5,
+                  thickness: 7,
                 ),
                 // HD CHART
                 Flex(
@@ -3893,7 +3893,7 @@ class _RotateSimpleState extends State<RotateSimple>
                 ),
                 const Divider(
                   color: Colors.green,
-                  thickness: 5,
+                  thickness: 8,
                 ),
 
                 Flex(
