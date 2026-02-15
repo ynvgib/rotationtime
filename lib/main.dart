@@ -358,7 +358,7 @@ class _RotateHomeState extends State<RotateHome> {
                           isMainTitle = !isMainTitle;
                           setState(() {
                             isMainTitle == true
-                                ? mainTitle = "זמן סיבוב"
+                                ? mainTitle = "זיבי"
                                 : mainTitle = "ZB";
                           });
                         },
@@ -403,8 +403,8 @@ class _RotateHomeState extends State<RotateHome> {
                           isSubTitle = !isSubTitle;
                           setState(() {
                             isSubTitle == true
-                                ? subTitle = "זמנסי גמלורוד בוב"
-                                : subTitle = "zmansi PINK CAMEL bob";
+                                ? subTitle = "זמנסי גמלבן בוב"
+                                : subTitle = "zmansi WHY TEA CAME EL bob";
                           });
                         },
                       ),

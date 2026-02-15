@@ -24,7 +24,7 @@ class _RotateIDKState extends State<RotateIDK>
   //final String _title = subtitles[0];
   final String _title = subtitles_heb[0];
 
-  String meditationText = "!?מדיטציה", camogText = '.לא יודעת';
+  String meditationText = ".מדיטציה", camogText = '!?לא יודעת';
   bool isMeditationText = true, isCamogText = true;
 
   @override
@@ -165,7 +165,7 @@ class _RotateIDKState extends State<RotateIDK>
                       //margin: const EdgeInsets.only(right: 235, top: 35),
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/mink/minkhead.webp'),
+                          image: AssetImage('assets/coins/rtevolutionnobg.png'),
                           fit: BoxFit.scaleDown,
                         ),
                         shape: BoxShape.rectangle,
@@ -231,7 +231,8 @@ class _RotateIDKState extends State<RotateIDK>
                           //margin: const EdgeInsets.only(right: 235, top: 35),
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage('assets/mink/minkhead.webp'),
+                              image: AssetImage(
+                                  'assets/coins/rtevolutionnobg.png'),
                               fit: BoxFit.scaleDown,
                             ),
                             shape: BoxShape.rectangle,
@@ -294,47 +295,47 @@ class _RotateIDKState extends State<RotateIDK>
                     width: MediaQuery.of(context).size.width / 6,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(fullkitheimglst[9]),
+                        image: AssetImage('assets/camog/mcameline.png'),
                         fit: BoxFit.scaleDown,
                       ),
                       shape: BoxShape.rectangle,
                     ),
                   ),
                   onTap: () {
-                    _controlleriDogText.text = '!כלב נובח';
+                    _controllerCamelText.text = 'Gamal ? קאמל';
                   },
                 ),
                 InkWell(
                   child: Container(
                     height: MediaQuery.of(context).size.height / 6,
                     width: MediaQuery.of(context).size.width / 6,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(fullkitheimglst[8]),
+                        image: AssetImage('assets/camog/dogswoofgoof.gif'),
                         fit: BoxFit.scaleDown,
                       ),
                       shape: BoxShape.rectangle,
                     ),
                   ),
                   onTap: () {
-                    _controllerCamelText.text = '?גמל מחרחר';
+                    _controlleriDogText.text = 'Kelev ! דוג';
                   },
                 ),
                 InkWell(
                   child: Container(
                     height: MediaQuery.of(context).size.height / 6,
                     width: MediaQuery.of(context).size.width / 4.5,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(mcameldog[0]),
+                        image: AssetImage('assets/camog/zblackcat.png'),
                         fit: BoxFit.fitHeight,
                       ),
                       shape: BoxShape.rectangle,
                     ),
                   ),
                   onTap: () {
-                    _controllerCamelText.text = 'Camel Questions Why?';
-                    _controlleriDogText.text = 'Dog Replies Woof!';
+                    _controllerCamelText.text = 'Black Pussy Cat?';
+                    _controlleriDogText.text = 'Ido Not Know ! מדיטציה';
                   },
                 ),
               ],
@@ -349,12 +350,12 @@ class _RotateIDKState extends State<RotateIDK>
                   borderRadius: BorderRadius.circular(25),
                   boxShadow: const [
                     BoxShadow(
-                        color: Colors.pink,
+                        color: Colors.blue,
                         offset: Offset(4, 4),
                         blurRadius: 20,
                         spreadRadius: 1),
                     BoxShadow(
-                        color: Colors.black,
+                        color: Colors.green,
                         offset: Offset(-4, -4),
                         blurRadius: 15,
                         spreadRadius: 1),
@@ -376,8 +377,8 @@ class _RotateIDKState extends State<RotateIDK>
                     isCamogText = !isCamogText;
                     setState(() {
                       isCamogText == true
-                          ? camogText = "?אני לא יודעת"
-                          : camogText = "I do not know?";
+                          ? camogText = "?עידו לא יודע"
+                          : camogText = "Ido Not Know?";
                     });
                   },
                 ),
@@ -393,12 +394,12 @@ class _RotateIDKState extends State<RotateIDK>
                   borderRadius: BorderRadius.circular(25),
                   boxShadow: const [
                     BoxShadow(
-                        color: Colors.pink,
+                        color: Colors.red,
                         offset: Offset(4, 4),
                         blurRadius: 20,
                         spreadRadius: 1),
                     BoxShadow(
-                        color: Colors.black,
+                        color: Colors.yellow,
                         offset: Offset(-4, -4),
                         blurRadius: 15,
                         spreadRadius: 1),
@@ -428,19 +429,19 @@ class _RotateIDKState extends State<RotateIDK>
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height / 3,
-              width: MediaQuery.of(context).size.width / 3,
+              height: MediaQuery.of(context).size.height / 3.5,
+              width: MediaQuery.of(context).size.width / 3.5,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/mink/minkhead.webp'),
+                  image: AssetImage('assets/coins/rtevolutionnobg.png'),
                   fit: BoxFit.scaleDown,
                 ),
                 shape: BoxShape.rectangle,
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height / 2,
-              width: MediaQuery.of(context).size.width / 2,
+              height: MediaQuery.of(context).size.height / 3.5,
+              width: MediaQuery.of(context).size.width / 3.5,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/camog/zblackcat.png'),

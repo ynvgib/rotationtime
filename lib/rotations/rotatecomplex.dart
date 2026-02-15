@@ -1154,7 +1154,6 @@ class _RotateComplexState extends State<RotateComplex>
                         break;
                     }
 
-                    // idk
                     resetChartColor();
 
                     _resetgatesState();
@@ -5404,100 +5403,99 @@ class _RotateComplexState extends State<RotateComplex>
             const Divider(
               color: Colors.blue,
             ),
-            InkWell(
-              onTap: () {},
-              child: Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 40,
-                    width: 40,
-                    child: CarouselSlider(
-                      items: mixHexagramSlidersBol,
-                      carouselController: _controllerconstate,
-                      options: CarouselOptions(
-                          scrollDirection: Axis.horizontal,
-                          autoPlay: false,
-                          enlargeCenterPage: true,
-                          aspectRatio: 1.3,
-                          onPageChanged: (indexconstate, reason) {
-                            setState(() {
-                              _currentconstate = indexconstate;
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: CarouselSlider(
+                    items: mixHexagramSlidersBol,
+                    carouselController: _controllerconstate,
+                    options: CarouselOptions(
+                        scrollDirection: Axis.horizontal,
+                        autoPlay: false,
+                        enlargeCenterPage: true,
+                        aspectRatio: 1.3,
+                        onPageChanged: (indexconstate, reason) {
+                          setState(() {
+                            _currentconstate = indexconstate;
 
-                              switch (_currentconstate) {
-                                case 0:
-                                  _planetsfulldisplayList =
-                                      _planetsfullpersonList;
+                            switch (_currentconstate) {
+                              case 0:
+                                _planetsfulldisplayList =
+                                    _planetsfullpersonList;
 
-                                  _controlPlanetHexagramData(
-                                      _planetsfulldisplayList);
+                                _controlPlanetHexagramData(
+                                    _planetsfulldisplayList);
 
-                                  _setDateTime(_personTime);
+                                _setDateTime(_personTime);
 
-                                  _controllerPlanetType.text = 'אחר כך לחשוב';
+                                _controllerPlanetType.text = 'אחר כך לחשוב';
 
-                                  _controllerrotationstate.jumpToPage(0);
-                                  break;
-                                case 1:
-                                  _planetsfulldisplayList =
-                                      _planetsfulldesignList;
-                                  _controlPlanetHexagramData(
-                                      _planetsfulldisplayList);
+                                _controllerrotationstate.jumpToPage(0);
+                                break;
+                              case 1:
+                                _planetsfulldisplayList =
+                                    _planetsfulldesignList;
+                                _controlPlanetHexagramData(
+                                    _planetsfulldisplayList);
 
-                                  _setDateTime(_designTime);
+                                _setDateTime(_designTime);
 
-                                  _controllerPlanetType.text = 'קודם לחיות';
+                                _controllerPlanetType.text = 'קודם לחיות';
 
-                                  _controllerrotationstate.jumpToPage(3);
-                                  break;
-                                default:
-                                  //_planetsList = _planetspersonList;
+                                _controllerrotationstate.jumpToPage(3);
+                                break;
+                              default:
+                                //_planetsList = _planetspersonList;
 
-                                  _controlPlanetHexagramData(
-                                      _planetsfullpersonList);
-                                  _setDateTime(_personTime);
+                                _controlPlanetHexagramData(
+                                    _planetsfullpersonList);
+                                _setDateTime(_personTime);
 
-                                  break;
-                              }
-                            });
-                          }),
-                    ),
+                                break;
+                            }
+                          });
+                        }),
                   ),
-                  const SizedBox(width: 20),
-                  Tooltip(
-                    message: zodiacSwephNameHeblist[_planethex.zodiacid!],
-                    child: Container(
-                      width: 80,
-                      height: 80,
-                      //margin: const EdgeInsets.only(top: 70),
-                      decoration: BoxDecoration(
-                        //color: Colors.blue,
-                        image: DecorationImage(
-                          image: AssetImage(
-                              zodiacSwephImagelist[_planethex.zodiacid!]),
-                          fit: BoxFit.scaleDown,
-                        ),
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            //Colors.purple.shade900,
-                            //Colors.purple.shade100,
-                            zodiacSwephGradeColorlist[_planethex.zodiacid! * 2],
-                            zodiacSwephGradeColorlist[
-                                _planethex.zodiacid! * 2 + 1],
-                          ],
-                        ),
+                ),
+                const SizedBox(width: 20),
+                Tooltip(
+                  message: zodiacSwephNameHeblist[_planethex.zodiacid!],
+                  child: Container(
+                    width: 80,
+                    height: 80,
+                    //margin: const EdgeInsets.only(top: 70),
+                    decoration: BoxDecoration(
+                      //color: Colors.blue,
+                      image: DecorationImage(
+                        image: AssetImage(
+                            zodiacSwephImagelist[_planethex.zodiacid!]),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      shape: BoxShape.circle,
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          //Colors.purple.shade900,
+                          //Colors.purple.shade100,
+                          zodiacSwephGradeColorlist[_planethex.zodiacid! * 2],
+                          zodiacSwephGradeColorlist[
+                              _planethex.zodiacid! * 2 + 1],
+                        ],
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
-                  Flex(
-                    direction: Axis.vertical,
-                    children: [
-                      Container(
+                ),
+                const SizedBox(width: 10),
+                Flex(
+                  direction: Axis.vertical,
+                  children: [
+                    InkWell(
+                      child: Container(
                         width: 35,
                         height: 35,
                         margin: const EdgeInsets.all(2),
@@ -5517,7 +5515,18 @@ class _RotateComplexState extends State<RotateComplex>
                           border: Border.all(color: Colors.blue, width: 2),
                         ),
                       ),
-                      Container(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              _buildPlanetUpDownDialog(context, 1),
+                        );
+                        //setState(() {
+                        //});
+                      },
+                    ),
+                    InkWell(
+                      child: Container(
                         width: 35,
                         height: 35,
                         margin: const EdgeInsets.all(2),
@@ -5534,221 +5543,67 @@ class _RotateComplexState extends State<RotateComplex>
                           border: Border.all(color: Colors.red, width: 2),
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(width: 10),
-                  Container(
-                      width: 35,
-                      height: 35,
-                      //margin: const EdgeInsets.only(top: 20, left: 40),
-                      child: AutoSizeTextField(
-                        fullwidth: false,
-                        minFontSize: 30,
-                        maxFontSize: 35,
-                        decoration: const InputDecoration.collapsed(
-                            hintText: '1',
-                            hintStyle: TextStyle(color: Colors.black)),
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          //fontSize: 35.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        controller: _controllergatetext,
-                        readOnly: true,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: <TextInputFormatter>[
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                      )),
-                  Container(
-                      width: 35,
-                      height: 35,
-                      //margin: const EdgeInsets.only(top: 20, left: 70),
-                      child: AutoSizeTextField(
-                        fullwidth: false,
-                        minFontSize: 20,
-                        maxFontSize: 25,
-                        decoration: const InputDecoration.collapsed(
-                            hintText: '1',
-                            hintStyle: TextStyle(color: Colors.black)),
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          //fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        controller: _controllerlinetext,
-                        readOnly: true,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: <TextInputFormatter>[
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                      )),
-                ],
-              ),
-            ),
-            const Divider(
-              color: Colors.blue,
-            ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              _buildPlanetUpDownDialog(context, 0),
+                        );
+                        //_buildPlanetUpDownDialog(context, 0);
+                        //setState(() {
+                        //});
+                      },
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 10),
                 SizedBox(
-                    width: screenwidth * 0.33,
+                    width: 35,
+                    height: 35,
+                    //margin: const EdgeInsets.only(top: 20, left: 40),
                     child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: botcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
+                      fullwidth: false,
+                      minFontSize: 30,
+                      maxFontSize: 35,
+                      decoration: const InputDecoration.collapsed(
+                          hintText: '1',
+                          hintStyle: TextStyle(color: Colors.black)),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: thirdcolor,
-                        fontSize: 16.0,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        //fontSize: 35.0,
                         fontWeight: FontWeight.bold,
                       ),
-                      controller: _controllercoinbotthirdtext,
+                      controller: _controllergatetext,
                       readOnly: true,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
                     )),
                 SizedBox(
-                    width: screenwidth * 0.33,
+                    width: 35,
+                    height: 35,
+                    //margin: const EdgeInsets.only(top: 20, left: 70),
                     child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: botcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
+                      fullwidth: false,
+                      minFontSize: 20,
+                      maxFontSize: 25,
+                      decoration: const InputDecoration.collapsed(
+                          hintText: '1',
+                          hintStyle: TextStyle(color: Colors.black)),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: secondcolor,
-                        fontSize: 16.0,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        //fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
-                      controller: _controllercoinbotsecondtext,
+                      controller: _controllerlinetext,
                       readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      minFontSize: 10,
-                      maxFontSize: 30,
-                      decoration: InputDecoration.collapsed(
-                          hintText: botcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: firstcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinbotfirsttext,
-                      readOnly: true,
-                    )),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: midcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: thirdcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinmidthirdtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: newcoinsHeb4lst[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: secondcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinmidsecondtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      minFontSize: 10,
-                      maxFontSize: 30,
-                      decoration: InputDecoration.collapsed(
-                          hintText: midcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: firstcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercoinmidfirsttext,
-                      readOnly: true,
-                    )),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: topcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: thirdcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercointopthirdtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      decoration: InputDecoration.collapsed(
-                          hintText: topcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: secondcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercointopsecondtext,
-                      readOnly: true,
-                    )),
-                SizedBox(
-                    width: screenwidth * 0.33,
-                    child: AutoSizeTextField(
-                      minFontSize: 10,
-                      maxFontSize: 30,
-                      decoration: InputDecoration.collapsed(
-                          hintText: topcoinnamelist[0],
-                          hintStyle: const TextStyle(color: Colors.blue)),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: firstcolor,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      controller: _controllercointopfirsttext,
-                      readOnly: true,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
                     )),
               ],
             ),
@@ -6248,6 +6103,7 @@ class _RotateComplexState extends State<RotateComplex>
                 )),
             const Divider(
               color: Colors.blue,
+              //thickness: 20,
             ),
             SizedBox(
               //width: screenwidth / 1.7,
@@ -6300,7 +6156,171 @@ class _RotateComplexState extends State<RotateComplex>
             const Divider(
               color: Colors.blue,
             ),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: botcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: thirdcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinbotthirdtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: botcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: secondcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinbotsecondtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      minFontSize: 10,
+                      maxFontSize: 30,
+                      decoration: InputDecoration.collapsed(
+                          hintText: botcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: firstcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinbotfirsttext,
+                      readOnly: true,
+                    )),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: midcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: thirdcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinmidthirdtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: newcoinsHeb4lst[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: secondcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinmidsecondtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      minFontSize: 10,
+                      maxFontSize: 30,
+                      decoration: InputDecoration.collapsed(
+                          hintText: midcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: firstcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercoinmidfirsttext,
+                      readOnly: true,
+                    )),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: topcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: thirdcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopthirdtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: topcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: secondcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopsecondtext,
+                      readOnly: true,
+                    )),
+                SizedBox(
+                    width: screenwidth * 0.33,
+                    child: AutoSizeTextField(
+                      minFontSize: 10,
+                      maxFontSize: 30,
+                      decoration: InputDecoration.collapsed(
+                          hintText: topcoinnamelist[0],
+                          hintStyle: const TextStyle(color: Colors.blue)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: firstcolor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      controller: _controllercointopfirsttext,
+                      readOnly: true,
+                    )),
+              ],
+            ),
 
+            const Divider(
+              color: Colors.blue,
+            ),
             // rt evolution
             ConstrainedBox(
               constraints: BoxConstraints(
@@ -8181,8 +8201,6 @@ class _RotateComplexState extends State<RotateComplex>
     );
   }
 
-  // idk
-
   Widget _buildCentersPopUp(BuildContext context) {
     return AlertDialog(
       title: const Text('טחן-אות'),
@@ -9261,6 +9279,54 @@ class _RotateComplexState extends State<RotateComplex>
               ),
             ),
           )),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Icon(Icons.close, color: Colors.black),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPlanetUpDownDialog(BuildContext context, int exaltORdeter) {
+    String planetString = '';
+    int planetLinePos = 1;
+    planetLinePos = (_planethex.gate! * 6 - 7 + _planethex.line!);
+
+    switch (exaltORdeter) {
+      case 1:
+        planetString = hdlinesexalted[planetLinePos];
+        break;
+      case 0:
+        planetString = hdlinesdetriment[planetLinePos];
+        break;
+      default:
+        planetString = hdlinesexalted[planetLinePos];
+        break;
+    }
+    return AlertDialog(
+      title: const Text('deep in wallet עמוק בארנק'),
+      content: SizedBox(
+        width: screenwidth,
+        height: screenheight / 4,
+        child: Flex(
+            direction: Axis.vertical,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(planetString,
+                  style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal)),
+              //const SizedBox(height: 10),
+              const Divider(color: Colors.black),
+              const Text('כוכב עדיין חופשי ולא מקובע'),
+              const SizedBox(height: 10),
+              const Text('Planet is still free and not fixed'),
+            ]),
+      ),
       actions: [
         TextButton(
           onPressed: () {
