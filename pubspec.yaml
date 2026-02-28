@@ -116,6 +116,10 @@ flutter:
    - assets/gen/
    - assets/mink/
    - assets/fonts/
+   - lib/models/hdlist.dart
+   - lib/models/lists.dart
+   - lib/models/rtlists.dart
+   
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

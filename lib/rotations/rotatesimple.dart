@@ -697,7 +697,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   direction: Axis.horizontal,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 150,
                       child: Slider(
                         value: opacityLevel,
@@ -3891,6 +3891,28 @@ class _RotateSimpleState extends State<RotateSimple>
                     },
                   ),
                 ),
+
+                const Divider(
+                  color: Colors.green,
+                  thickness: 8,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            buildListsPopUp(context),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                        textStyle: const TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold)),
+                    child: const Text('ראשים אות',
+                        style: TextStyle(color: Colors.white))),
+
                 const Divider(
                   color: Colors.green,
                   thickness: 8,
@@ -3940,117 +3962,131 @@ class _RotateSimpleState extends State<RotateSimple>
                   ],
                 ),
                 // new wheel
+
                 Stack(
                   children: [
-                    CircleList(
-                      innerRadius: screenwidth / 60,
-                      initialAngle: 3.85,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(12, (index) {
-                        return Container(
-                          width: 65,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            //color: revZodiacColorList[index],
-                            gradient: LinearGradient(
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                              colors: [
-                                //Colors.purple.shade900,
-                                //Colors.purple.shade100,
-                                revzodiacGradeColorlist[index * 2],
-                                revzodiacGradeColorlist[index * 2 + 1],
-                              ],
+                    Align(
+                      alignment: Alignment.center,
+                      child: CircleList(
+                        innerRadius: screenwidth / 60,
+                        initialAngle: 3.85,
+                        childrenPadding: 0.1,
+                        origin: const Offset(0, 0),
+                        children: List.generate(12, (index) {
+                          return Container(
+                            width: 65,
+                            margin: const EdgeInsets.all(1),
+                            decoration: BoxDecoration(
+                              //color: revZodiacColorList[index],
+                              gradient: LinearGradient(
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  //Colors.purple.shade900,
+                                  //Colors.purple.shade100,
+                                  revzodiacGradeColorlist[index * 2],
+                                  revzodiacGradeColorlist[index * 2 + 1],
+                                ],
+                              ),
+                              image: DecorationImage(
+                                image: AssetImage(revZodiacList[index]),
+                                fit: BoxFit.scaleDown,
+                              ),
+                              shape: BoxShape.circle,
                             ),
-                            image: DecorationImage(
-                              image: AssetImage(revZodiacList[index]),
-                              fit: BoxFit.scaleDown,
+                          );
+                        }),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: CircleList(
+                        innerRadius: screenwidth / 60 + 80,
+                        initialAngle: -0.8,
+                        childrenPadding: 0.1,
+                        origin: const Offset(0, 0),
+                        children: List.generate(64, (index) {
+                          return Container(
+                            width: 35,
+                            margin: const EdgeInsets.all(1),
+                            decoration: BoxDecoration(
+                              color: reversedbotcoincolor[index],
+                              shape: BoxShape.circle,
                             ),
-                            shape: BoxShape.circle,
-                          ),
-                        );
-                      }),
+                          );
+                        }),
+                      ),
                     ),
-                    CircleList(
-                      innerRadius: screenwidth / 60 + 80,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(64, (index) {
-                        return Container(
-                          width: 35,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: reversedbotcoincolor[index],
-                            shape: BoxShape.circle,
-                          ),
-                        );
-                      }),
-                    ),
-                    CircleList(
-                      innerRadius: screenwidth / 60 + 110,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(64, (index) {
-                        return Container(
-                          width: 35,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: reversedmidcoincolor[index],
-                            shape: BoxShape.circle,
-                          ),
-                        );
-                      }),
-                    ),
-                    //external wheel
-                    CircleList(
-                      rotateMode: RotateMode.stopRotate,
-                      innerRadius: screenwidth / 60 + 145,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(64, (index) {
-                        return InkWell(
-                          child: Tooltip(
-                            message: reversedHexagramsWheel[index].toString(),
-                            textStyle: const TextStyle(
-                                fontSize: 15, color: Colors.white),
-                            child: Container(
-                              width: 20,
-                              margin: const EdgeInsets.all(1),
-                              decoration: BoxDecoration(
-                                  //color: reversedtopcoincolor[index],
-                                  color: simplewgscolor[index],
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width: 0.5, color: Colors.black)),
-                              child: AutoSizeText(
-                                  reversedHexagramsWheel[index].toString(),
-                                  minFontSize: 8,
-                                  maxFontSize: 12,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold)),
+                    Align(
+                      alignment: Alignment.center,
+                      child: CircleList(
+                        innerRadius: screenwidth / 60 + 110,
+                        initialAngle: -0.8,
+                        childrenPadding: 0.1,
+                        origin: const Offset(0, 0),
+                        children: List.generate(64, (index) {
+                          return Container(
+                            width: 35,
+                            margin: const EdgeInsets.all(1),
+                            decoration: BoxDecoration(
+                              color: reversedmidcoincolor[index],
+                              shape: BoxShape.circle,
                             ),
-                          ),
-                          onTap: () {
-                            wallet = reversedHexagramsWheel[index];
-                            _controllercoinnumber.text = wallet.toString();
-                            _controllerfibo.text =
-                                Fibonacci.printSeries(size: wallet).toString();
-                            setState(() {
-                              _chosenhex = wallet;
-                              _hexalignedList = hexagramAlignment(_chosenhex);
-                              _controllertop.jumpToPage(_hexalignedList[0]);
-                              _controllermid.jumpToPage(_hexalignedList[1]);
-                              _controllerbot.jumpToPage(_hexalignedList[2]);
-                            });
-                          },
-                        );
-                      }),
+                          );
+                        }),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: //external wheel
+                          CircleList(
+                        rotateMode: RotateMode.stopRotate,
+                        innerRadius: screenwidth / 60 + 145,
+                        initialAngle: -0.8,
+                        childrenPadding: 0.1,
+                        origin: const Offset(0, 0),
+                        children: List.generate(64, (index) {
+                          return InkWell(
+                            child: Tooltip(
+                              message: reversedHexagramsWheel[index].toString(),
+                              textStyle: const TextStyle(
+                                  fontSize: 15, color: Colors.white),
+                              child: Container(
+                                width: 20,
+                                margin: const EdgeInsets.all(1),
+                                decoration: BoxDecoration(
+                                    //color: reversedtopcoincolor[index],
+                                    color: simplewgscolor[index],
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        width: 0.5, color: Colors.black)),
+                                child: AutoSizeText(
+                                    reversedHexagramsWheel[index].toString(),
+                                    minFontSize: 8,
+                                    maxFontSize: 12,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ),
+                            onTap: () {
+                              wallet = reversedHexagramsWheel[index];
+                              _controllercoinnumber.text = wallet.toString();
+                              _controllerfibo.text =
+                                  Fibonacci.printSeries(size: wallet)
+                                      .toString();
+                              setState(() {
+                                _chosenhex = wallet;
+                                _hexalignedList = hexagramAlignment(_chosenhex);
+                                _controllertop.jumpToPage(_hexalignedList[0]);
+                                _controllermid.jumpToPage(_hexalignedList[1]);
+                                _controllerbot.jumpToPage(_hexalignedList[2]);
+                              });
+                            },
+                          );
+                        }),
+                      ),
                     ),
                   ],
                 ),
@@ -4933,6 +4969,19 @@ class _RotateSimpleState extends State<RotateSimple>
                       ),
                     ),
                   ],
+                ),
+                const Divider(
+                  color: Colors.green,
+                  thickness: 5,
+                ),
+
+                const SizedBox(height: 100),
+                const ColorWheel(size: 350),
+                const SizedBox(height: 50),
+                const Center(
+                  child: SpokeWheel(
+                    size: 150,
+                  ),
                 ),
                 const Divider(
                   color: Colors.green,

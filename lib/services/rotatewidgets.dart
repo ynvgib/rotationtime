@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/models/hdlist.dart';
-import 'package:finallyicanlearn/models/hexlineslist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
@@ -8,7 +7,83 @@ import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
 
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+Widget buildListsPopUp(BuildContext context) {
+  List<String> titles4 = [
+    'LIST',
+    'HD',
+    'ZB',
+  ];
+  return AlertDialog(
+    //title: const Text('36 Transactions'),
+    title: const Text('LIST'),
+    content: SingleChildScrollView(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.6,
+        child: Flex(
+          direction: Axis.vertical,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, hdType4lst, titles4[0]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[0],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, hdType4Heblst, titles4[1]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[1],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      build4rtPop(context, minmax4lst, titles4[2]),
+                );
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              child: Text(titles4[2],
+                  style: const TextStyle(color: Colors.white, fontSize: 20)),
+              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+            ),
+          ],
+        ),
+      ),
+    ),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
 
 Widget build4PopUp(BuildContext context) {
   List<String> titles4 = [
@@ -1605,6 +1680,54 @@ Widget build4rtPop(
   );
 }
 
+Widget buildGeneralListsPop(
+    BuildContext context, List<String> build4lst, String title4) {
+  return AlertDialog(
+    title: Text("List: $title4"),
+    content: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.6,
+        height: 300,
+        child: ListView.builder(
+          reverse: false,
+          padding: const EdgeInsets.all(5.0),
+          itemCount: 4,
+          itemBuilder: (context, index) => ListTile(
+            title: Flex(
+              direction: Axis.vertical,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  (build4lst.length - index).toString(),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                const SizedBox(width: 5),
+                Text(
+                  //LineSentenceList[index],
+                  build4lst[index],
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 15),
+                )
+              ],
+            ),
+          ),
+        )),
+    actions: <Widget>[
+      TextButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text(
+          'X',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ],
+  );
+}
+
 Widget build64rtPop(
     BuildContext context, List<String> build64lst, String title64) {
   return AlertDialog(
@@ -2726,3 +2849,462 @@ class EvolutionContainer extends StatelessWidget {
 }
 
 // zodiac
+
+// wheel spokes
+
+// from AI code
+// AI ZB
+class SpokeWheel extends StatelessWidget {
+  final int spokeCount;
+  final Color color;
+  final double size;
+
+  const SpokeWheel({
+    super.key,
+    this.spokeCount = 64,
+    this.color = Colors.black,
+    this.size = 200,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      size: Size(size, size),
+      painter: WheelPainter(spokeCount: spokeCount),
+    );
+  }
+}
+
+class WheelPainter extends CustomPainter {
+  final int spokeCount;
+
+  WheelPainter({required this.spokeCount});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = size.width / 2;
+
+    final Paint rimPaint = Paint()
+      ..color = Colors.black
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 5;
+
+    final Paint spokePaint = Paint()
+      ..color = Colors.grey
+      ..strokeWidth = 2;
+
+    // 1. Draw the Rim
+    canvas.drawCircle(center, radius, rimPaint);
+
+    // 2. Draw the Hub (Center point)
+    canvas.drawCircle(
+        center, radius * 0.1, rimPaint..style = PaintingStyle.fill);
+
+    // 3. Draw the Spokes
+    for (int i = 0; i < spokeCount; i++) {
+      // Calculate angle for each spoke (in radians)
+      double angle = (2 * math.pi / spokeCount) * i;
+
+      // Calculate the end point of the spoke on the rim
+      Offset outerPoint = Offset(
+        center.dx + radius * math.cos(angle),
+        center.dy + radius * math.sin(angle),
+      );
+
+      canvas.drawLine(center, outerPoint, spokePaint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+class ColorWheel extends StatelessWidget {
+  final int spokeCount;
+  final Color color;
+  final double size;
+
+  const ColorWheel({
+    super.key,
+    this.spokeCount = 64,
+    this.color = Colors.black,
+    this.size = 200,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      size: Size(size, size),
+      painter: ZFullWheelPainter(orderHexagramsWheel),
+    );
+  }
+}
+
+class ZFullWheelPainterOld extends CustomPainter {
+  final List<int> orderHexagramsOnWheel; // The 64-spoke order from lists.dart
+
+  ZFullWheelPainterOld(this.orderHexagramsOnWheel);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = size.width / 2;
+    // Counter-Clockwise step for 64 spokes
+    const double angleStep = -(2 * math.pi / 64);
+
+    // The 4 Base Frequencies
+    const Color blue = Colors.blue; // "COMPLEX"
+    const Color green = Colors.green; // Simple;
+    const Color red = Colors.red; // silence.
+    const Color yellow = Colors.yellow; // Breath,
+    final List<Color> palette = [blue, green, red, yellow];
+
+    for (int i = 0; i < 64; i++) {
+      // 1. Calculate the 3-Coin Wallet (Triple Gradient)
+      // Bottom coin: changes every 16 spokes (The 4 Quarters)
+      int bottomIdx = (i ~/ 16) % 4;
+      // Middle coin: changes every 8 spokes
+      int middleIdx = (i ~/ 8) % 4;
+      // Top coin: changes every 1 spoke (The Fast Gear)
+      int topIdx = i % 4;
+
+      // 2. Mix the colors for the Spoke
+      Color spokeColor = _mixThreeColors(
+          palette[bottomIdx], palette[middleIdx], palette[topIdx]);
+
+      // 3. Draw the Spoke on the 2D Light Form
+      double angle = i * angleStep;
+      final p2 = Offset(center.dx + radius * math.cos(angle),
+          center.dy + radius * math.sin(angle));
+
+      final paint = Paint()
+        ..color = spokeColor
+        ..strokeWidth = 2.5
+        ..strokeCap = StrokeCap.round;
+
+      canvas.drawLine(center, p2, paint);
+
+      // 4. Optional: Label with Hexagram Number from the list
+      // _drawHexLabel(canvas, center, angle, radius, orderHexagramsWheel[i]);
+    }
+
+    // The GIM (Ghost In Machine) - The 17th Camel at the Center
+    canvas.drawCircle(center, 6, Paint()..color = Colors.white);
+  }
+
+  Color _mixThreeColors(Color b, Color m, Color t) {
+    // Blending the 3 layers into a single gradient spoke
+    return Color.lerp(Color.lerp(b, m, 0.5), t, 0.33)!;
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+class ZFullWheelPainter extends CustomPainter {
+  final List<int> orderHexagramsOnWheel;
+  ZFullWheelPainter(this.orderHexagramsOnWheel);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = size.width / 2;
+    const double angleStep = -(2 * math.pi / 64);
+    const double offsetTo12 = -(math.pi / 2);
+
+    const List<Color> bottomPalette = [
+      Colors.blue,
+      Colors.green,
+      Colors.red,
+      Colors.yellow
+    ];
+    const List<Color> standardPalette = [
+      Colors.red,
+      Colors.yellow,
+      Colors.green,
+      Colors.blue
+    ];
+    const List<Color> reversedPalette = [
+      Colors.blue,
+      Colors.green,
+      Colors.yellow,
+      Colors.red
+    ];
+
+    for (int i = 0; i < 64; i++) {
+      int next = (i + 1) % 64;
+      final double startAngle = i * angleStep + offsetTo12;
+
+      int bIdx = (i ~/ 16) % 4;
+      int nextBIdx = (next ~/ 16) % 4;
+
+      List<Color> currentP = (bIdx <= 1) ? reversedPalette : standardPalette;
+      List<Color> nextP = (nextBIdx <= 1) ? reversedPalette : standardPalette;
+
+      _drawGradientRing(canvas, center, radius * 0.4, 0.0, startAngle,
+          angleStep, bottomPalette[bIdx], bottomPalette[nextBIdx]);
+
+      _drawGradientRing(canvas, center, radius * 0.7, radius * 0.4, startAngle,
+          angleStep, currentP[(i ~/ 4) % 4], nextP[(next ~/ 4) % 4]);
+
+      _drawGradientRing(canvas, center, radius, radius * 0.7, startAngle,
+          angleStep, currentP[i % 4], nextP[next % 4]);
+
+      // --- NUMBERS (At the Edge) - FIXED: Pulled 2 Steps Clockwise ---
+      if (i < orderHexagramsOnWheel.length) {
+        // We subtract angleStep twice to move Clockwise against the CCW flow
+        // effectively jumping from 'i+1' back to 'i-1'
+        double correctedAngle = startAngle + (angleStep / 2) - angleStep;
+
+        _drawNumber(canvas, center, radius + 10, correctedAngle,
+            orderHexagramsOnWheel[i].toString());
+      }
+    }
+
+    canvas.drawCircle(
+        center,
+        radius,
+        Paint()
+          ..color = Colors.white
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.5);
+    canvas.drawCircle(center, 5, Paint()..color = Colors.black);
+  }
+
+  void _drawGradientRing(Canvas canvas, Offset center, double outerRad,
+      double innerRad, double startAngle, double sweep, Color c1, Color c2) {
+    final rect = Rect.fromCircle(center: center, radius: outerRad);
+    final paint = Paint()
+      ..shader = SweepGradient(
+              center: Alignment.center,
+              colors: [c1, c2],
+              transform: GradientRotation(startAngle))
+          .createShader(rect);
+    Path path = Path()
+      ..moveTo(center.dx + innerRad * math.cos(startAngle),
+          center.dy + innerRad * math.sin(startAngle))
+      ..lineTo(center.dx + outerRad * math.cos(startAngle),
+          center.dy + outerRad * math.sin(startAngle))
+      ..arcTo(rect, startAngle, sweep, false)
+      ..lineTo(center.dx + innerRad * math.cos(startAngle + sweep),
+          center.dy + innerRad * math.sin(startAngle + sweep))
+      ..arcTo(Rect.fromCircle(center: center, radius: innerRad),
+          startAngle + sweep, -sweep, false)
+      ..close();
+    canvas.drawPath(path, paint);
+  }
+
+  void _drawNumber(
+      Canvas canvas, Offset center, double rad, double angle, String text) {
+    final tp = TextPainter(
+        text: TextSpan(
+            text: text,
+            style: const TextStyle(
+                color: Colors.black,
+                fontSize: 10,
+                fontWeight: FontWeight.bold)),
+        textDirection: TextDirection.ltr)
+      ..layout();
+    canvas.save();
+    canvas.translate(
+        center.dx + rad * math.cos(angle), center.dy + rad * math.sin(angle));
+    canvas.rotate(angle + (math.pi / 2));
+    tp.paint(canvas, Offset(-tp.width / 2, -tp.height / 2));
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+// AI generated
+
+// lib/models/zb_matrix.dart
+
+class ZBMatrix {
+  final int level;
+  final String keynote;
+  final String punctuation;
+  final Color color;
+  final String animal;
+  final String form;
+  final String logic;
+  final String? type; // Human Design Type
+  final String? authority; // Inner Authority
+
+  ZBMatrix({
+    required this.level,
+    required this.keynote,
+    required this.punctuation,
+    required this.color,
+    required this.animal,
+    required this.form,
+    required this.logic,
+    this.type,
+    this.authority,
+  });
+
+  static final List<ZBMatrix> base6 = [
+    ZBMatrix(
+      level: 1,
+      keynote: "idk",
+      punctuation: "",
+      color: Colors.black,
+      animal: "pussycat",
+      form: "dot (pixel)",
+      logic: "Source (Meditation)",
+      authority: "spleen", // Base 6 + 1 logic
+    ),
+    ZBMatrix(
+      level: 2,
+      keynote: "silence",
+      punctuation: ".",
+      color: Colors.red,
+      animal: "bitch",
+      form: "line",
+      logic: "build",
+      type: "generator",
+      authority: "sacral",
+    ),
+    ZBMatrix(
+      level: 3,
+      keynote: "Breath",
+      punctuation: ",",
+      color: Colors.yellow,
+      animal: "Octopussy",
+      form: "Triangle",
+      logic: "use",
+      type: "Projector",
+      authority: "g(self)",
+    ),
+    ZBMatrix(
+      level: 4,
+      keynote: "Simple",
+      punctuation: ";",
+      color: Colors.green,
+      animal: "Octopus",
+      form: "Square",
+      logic: "Think",
+      type: "Reflector",
+      authority: "Ajna (mind)",
+    ),
+    ZBMatrix(
+      level: 5,
+      keynote: "COMPLEX",
+      punctuation: "\"",
+      color: Colors.blue,
+      animal: "DOG",
+      form: "Pentacle",
+      logic: "NEGLECT",
+      type: "Manifestor",
+      authority: "HEART(EGO)",
+    ),
+    ZBMatrix(
+      level: 6,
+      keynote: "zmansi",
+      punctuation: "@",
+      color: Colors.white,
+      animal: "Camel",
+      form: "Puddle (sign)",
+      logic: "The Beyond",
+      authority: "SOLARPLEXUS@EMOTIONS",
+    ),
+  ];
+}
+
+class ZBGeometryPainter {
+  static void drawShape(
+      Canvas canvas, Offset center, double size, int level, Color color) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 2.0
+      ..strokeCap = StrokeCap.round;
+
+    switch (level) {
+      case 1: // dot (pixel) - pussycat
+        canvas.drawCircle(center, size * 0.2, paint);
+        break;
+
+      case 2: // line - bitch
+        canvas.drawLine(
+          Offset(center.dx - size * 0.5, center.dy),
+          Offset(center.dx + size * 0.5, center.dy),
+          paint..style = PaintingStyle.stroke,
+        );
+        break;
+
+      case 3: // Triangle - Octopussy
+        _drawPath(canvas, center, size, 3, paint);
+        break;
+
+      case 4: // Square - Octopus
+        _drawPath(canvas, center, size, 4, paint);
+        break;
+
+      case 5: // Pentacle - DOG
+        _drawStar(canvas, center, size, 5, paint);
+        break;
+
+      case 6: // Puddle (sign) - Camel
+        _drawPuddle(canvas, center, size, paint);
+        break;
+    }
+  }
+
+  static void _drawPath(
+      Canvas canvas, Offset center, double size, int sides, Paint paint) {
+    final path = Path();
+    final double angle = (2 * math.pi) / sides;
+    // Offset by -pi/2 to point the Triangle/Square upwards
+    const double rotation = -math.pi / 2;
+
+    path.moveTo(center.dx + size * math.cos(rotation),
+        center.dy + size * math.sin(rotation));
+    for (int i = 1; i <= sides; i++) {
+      path.lineTo(
+        center.dx + size * math.cos(i * angle + rotation),
+        center.dy + size * math.sin(i * angle + rotation),
+      );
+    }
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  static void _drawStar(
+      Canvas canvas, Offset center, double size, int points, Paint paint) {
+    final path = Path();
+    final double angle = math.pi / points;
+    for (int i = 0; i < 2 * points; i++) {
+      double r = (i % 2 == 0) ? size : size * 0.45;
+      double x = center.dx + r * math.cos(i * angle - math.pi / 2);
+      double y = center.dy + r * math.sin(i * angle - math.pi / 2);
+      if (i == 0)
+        path.moveTo(x, y);
+      else
+        path.lineTo(x, y);
+    }
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  static void _drawPuddle(
+      Canvas canvas, Offset center, double size, Paint paint) {
+    final path = Path();
+    const int segments = 8;
+    for (int i = 0; i < segments; i++) {
+      double angle = i * (2 * math.pi / segments);
+      // Fluid logic: varying the radius slightly per segment
+      double r = size * (0.7 + 0.3 * math.sin(i * 1.5));
+      double x = center.dx + r * math.cos(angle);
+      double y = center.dy + r * math.sin(angle);
+      if (i == 0)
+        path.moveTo(x, y);
+      else
+        path.quadraticBezierTo(center.dx, center.dy, x, y);
+    }
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+}

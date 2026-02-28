@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:finallyicanlearn/logic/hdsubstructure.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
+import 'package:finallyicanlearn/models/lists.dart';
+
 import 'package:sweph/sweph.dart';
 
 class PlanetsServices {
@@ -30,6 +32,27 @@ class PlanetsServices {
 
     // final NodesAndAspides moonNorthNode;
     // double longitudeNorthNode;
+
+    // zb idk
+    // Sweph.swe_set_sid_mode(
+    //     SiderealMode.SE_SIDM_LAHIRI, SiderealModeFlag.SE_SIDBIT_NONE, 0);
+    // double ayanamsa =
+    //     Sweph.swe_get_ayanamsa_ex_ut(jd, SwephFlag.SEFLG_SIDEREAL);
+    // double mandalaLongitude = (360 - ayanamsa) % 360;
+
+    // mandalaLongitude += 58;
+
+    // if (mandalaLongitude > 360) {
+    //   mandalaLongitude -= 360;
+    // }
+
+    // int tempGate = (mandalaLongitude / 5.625).floor();
+
+    // print('ayanamsa: $mandalaLongitude');
+    // print('mandalaLongitude: $mandalaLongitude');
+    // print('tempGate: ${orderHexagramsToCalulateWheel[tempGate]}');
+
+    // end zb idk
 
     posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_SWIEPH);
     //posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_TROPICAL);
@@ -70,9 +93,12 @@ class PlanetsServices {
     posChiron =
         Sweph.swe_calc_ut(jd, HeavenlyBody.SE_CHIRON, SwephFlag.SEFLG_SWIEPH);
 
-    //DegreeSplitData planetDSP;
-    //planetDSP = Sweph.swe_split_deg(posNorthnode.longitude, SplitDegFlags.SE_SPLIT_DEG_ZODIACAL);
-    //print (planetDSP);
+    // DegreeSplitData planetDSP;
+    // planetDSP = Sweph.swe_split_deg(
+    // posSun.longitude, SplitDegFlags.SE_SPLIT_DEG_ZODIACAL);
+    // print('zodsun: $planetDSP');
+    // print('lonsun: ${posSun.longitude}');
+    //swe_get_ayanamsha_ut(jd, SwephFlag.SEFLG_SWIEPH);
 
     //final starALH = 'AL HECKA';
     //final starSAI = 'SAIPH';
