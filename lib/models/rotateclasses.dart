@@ -454,4 +454,58 @@ class PuddleClip extends CustomClipper<Path> {
   }
 }
 
+class Base384Line {
+  final String id; // e.g., "38.1"
+  final String baseText; // Neutral line description
+  final String exaltText; // (+) Text
+  final String detrimText; // (-) Text
+  final String exaltImg; // (+) Planet Path
+  final String detrimImg; // (-) Planet Path
 
+  Base384Line({
+    required this.id,
+    required this.baseText,
+    required this.exaltText,
+    required this.detrimText,
+    required this.exaltImg,
+    required this.detrimImg,
+  });
+}
+
+String getZBState(String binary) {
+  // We split the 6 bits into three 2-bit pairs
+  // Assuming the rightmost bits are the Bottom Ring
+  String ring1 = binary.substring(4, 6); // Bottom
+  String ring2 = binary.substring(2, 4); // Middle
+  String ring3 = binary.substring(0, 2); // Top
+
+  String translate(String bits) {
+    if (bits == '11') return "COMPLEX";
+    if (bits == '10') return "Simple;";
+    if (bits == '01') return "Breath,";
+    return "silence."; // '00'
+  }
+
+  return "${translate(ring3)} ${translate(ring2)} ${translate(ring1)}";
+}
+
+Color getBase4Color(int index) {
+  switch (index) {
+    case 0:
+      return Colors.blue; // 1. "COMPLEX"
+    case 1:
+      return Colors.green; // 2. Simple;
+    case 2:
+      return Colors.yellow; // 3. Breath,
+    case 3:
+      return Colors.red; // 4. silence.
+    default:
+      return Colors.black;
+  }
+}
+
+Color getBase4TextColor(int index) {
+  // Yellow and Green often need darker text for "Aliveness" (58)
+  if (index == 1 || index == 2) return Colors.black54;
+  return Colors.white;
+}

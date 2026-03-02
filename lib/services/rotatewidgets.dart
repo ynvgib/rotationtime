@@ -512,7 +512,9 @@ Widget build36PopUp(BuildContext context) {
     actions: <Widget>[
       TextButton(
         onPressed: () {
-          Navigator.of(context).pop();
+          if (Navigator.of(context).canPop()) {
+            Navigator.of(context).pop();
+          }
         },
         child: const Text(
           'X',
@@ -721,138 +723,141 @@ Widget build64PopUp(BuildContext context) {
 }
 
 Widget build384PopUp(BuildContext context) {
-  return AlertDialog(
-    title: const Text('384'),
-    content: SingleChildScrollView(
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.6,
-        child: Flex(
-          direction: Axis.vertical,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Heb
+  return SelectionArea(
+    child: AlertDialog(
+      title: const Text('384'),
+      content: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.6,
+          child: Flex(
+            direction: Axis.vertical,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Heb
 
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      //build384rtPop(context, rtlines390lst_heb),
-                      build384rtPop(context, rtlines384lst_heb),
-                );
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('סיבוב קווים',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
-              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      build384rtPop(context, hdlines384lstHeb),
-                );
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('קווי עיצוב',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
-              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Divider(color: Colors.black, thickness: 5),
-            // Eng
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      build384rtPop(context, rtlines384lst),
-                );
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('Rotating Lines',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
-              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      build384rtPop(context, hdlines384lst),
-                );
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const Text('HD Lines',
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
-              //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      build384rtPlanetPop(context),
-                );
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-              child: const SizedBox(
-                width: 60,
-                height: 60,
-                child: Stack(children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: CircleAvatar(
-                        minRadius: 30,
-                        maxRadius: 30,
-                        backgroundColor: Colors.white,
-                        foregroundImage: AssetImage('assets/planets/sun.png')),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: CircleAvatar(
-                        minRadius: 15,
-                        maxRadius: 15,
-                        backgroundColor: Colors.white,
-                        foregroundImage:
-                            AssetImage('assets/planets/earth.png')),
-                  )
-                ]),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        //build384rtPop(context, rtlines390lst_heb),
+                        build384rtPop(context, rtlines384lst_heb),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                child: const Text('סיבוב קווים',
+                    style: TextStyle(color: Colors.white, fontSize: 20)),
+                //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-          ],
+              const SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => SelectionArea(
+                        child: build384rtPop(context, hdlines384lstHeb)),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                child: const Text('קווי עיצוב',
+                    style: TextStyle(color: Colors.white, fontSize: 20)),
+                //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Divider(color: Colors.black, thickness: 5),
+              // Eng
+              const SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        build384rtPop(context, rtlines384lst),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                child: const Text('Rotating Lines',
+                    style: TextStyle(color: Colors.white, fontSize: 20)),
+                //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        build384rtPop(context, hdlines384lst),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                child: const Text('HD Lines',
+                    style: TextStyle(color: Colors.white, fontSize: 20)),
+                //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        build384rtPlanetPop(context),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                child: const SizedBox(
+                  width: 60,
+                  height: 60,
+                  child: Stack(children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: CircleAvatar(
+                          minRadius: 30,
+                          maxRadius: 30,
+                          backgroundColor: Colors.white,
+                          foregroundImage:
+                              AssetImage('assets/planets/sun.png')),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: CircleAvatar(
+                          minRadius: 15,
+                          maxRadius: 15,
+                          backgroundColor: Colors.white,
+                          foregroundImage:
+                              AssetImage('assets/planets/earth.png')),
+                    )
+                  ]),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
         ),
       ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            if (Navigator.canPop(context)) Navigator.pop(context);
+          },
+          child: const Text(
+            'X',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
     ),
-    actions: <Widget>[
-      TextButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        child: const Text(
-          'X',
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
-    ],
   );
 }
 
@@ -1846,31 +1851,46 @@ Widget build384rtPlanetPop(BuildContext context) {
               title: Flex(
                 direction: Axis.vertical,
                 children: [
+                  SelectableText(
+                    hdgateline[index],
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                  SelectableText(
+                    // zbchange
+                    hdlines384lst[index],
+                    // softWrap: true,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
                   CircleAvatar(
                       minRadius: 13,
                       maxRadius: 13,
                       backgroundColor: Colors.transparent,
                       // foregroundImage: AssetImage(hdlinesplanet[idxline + 2])),
                       foregroundImage: AssetImage(hdplanetexaltimg[index])),
-                  AutoSizeText(
+                  SelectableText(
                     hdlinesexalted[index],
-                    softWrap: true,
+                    // softWrap: true,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 15),
+                        fontWeight: FontWeight.normal, fontSize: 15),
                   ),
-                  Text(
-                    hdgateline[index],
+                  const SelectableText(
+                    '+\n-',
+                    // softWrap: true,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 15),
+                    style:
+                        TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
                   ),
-                  AutoSizeText(
+                  SelectableText(
                     hdlinesdetriment[index],
-                    softWrap: true,
+                    // softWrap: true,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 15),
+                        fontWeight: FontWeight.normal, fontSize: 15),
                   ),
                   CircleAvatar(
                       minRadius: 13,
@@ -3503,4 +3523,391 @@ class ZBGeometryPainter {
     path.close();
     canvas.drawPath(path, paint);
   }
+}
+
+Widget buildSelectionButton(
+    BuildContext context, String label, Widget dialogContent) {
+  return ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (context) => SelectionArea(child: dialogContent),
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.black,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+      textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+    ),
+    child: Text(label, style: const TextStyle(color: Colors.white)),
+  );
+}
+
+// One function to rule them all (4, 36, 64, 384)
+Widget buildBasePopUp(
+    BuildContext context, String baseName, Map<String, List<String>> listsMap) {
+  // Use a Builder to get a fresh local context for the Navigator
+  return Builder(builder: (dialogContext) {
+    return SelectionArea(
+      child: AlertDialog(
+        title: Text('Base $baseName - Choose Category'),
+        content: SizedBox(
+          width: MediaQuery.of(dialogContext).size.width * 0.7,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: listsMap.keys.map((String title) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                    onPressed: () {
+                      showDialog(
+                        context: dialogContext, // Use dialogContext here
+                        builder: (innerContext) => buildBaseDataList(
+                            innerContext, title, listsMap[title]!),
+                      );
+                    },
+                    child: Text(title,
+                        style: const TextStyle(color: Colors.white)),
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            // Use dialogContext to ensure it pops the current AlertDialog
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: const Text('X', style: TextStyle(color: Colors.black)),
+          )
+        ],
+      ),
+    );
+  });
+}
+
+Widget buildBaseDataList(
+    BuildContext context, String title, List<String> data) {
+  return SelectionArea(
+    child: AlertDialog(
+      title: Text(title),
+      content: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.8,
+        height: MediaQuery.of(context).size.height * 0.4, // Shorter for Base 4
+        child: ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            bool isBase4 = data.length == 4; // Only apply if it's the 4-list
+            return Card(
+              color: isBase4 ? getBase4Color(index) : Colors.white,
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: Colors.white24,
+                  child: Text('${index + 1}',
+                      style: TextStyle(
+                          color: isBase4
+                              ? getBase4TextColor(index)
+                              : Colors.black)),
+                ),
+                title: Text(
+                  data[index],
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: isBase4 ? getBase4TextColor(index) : Colors.black,
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            if (Navigator.of(context).canPop()) Navigator.of(context).pop();
+          },
+          child: const Text('X'),
+        )
+      ],
+    ),
+  );
+}
+
+// In rotatewidgets.dart (No underscore = Global/Public)
+Widget zbChannelBtn({
+  required BuildContext context,
+  required String label,
+  required Color bg,
+  required Color textCol,
+  required Widget destination,
+  double fontSize = 25,
+}) {
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 10),
+    child: ElevatedButton(
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (innerCtx) => SelectionArea(child: destination),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: bg,
+        minimumSize: const Size(double.infinity, 55),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+            color: textCol, fontSize: fontSize, fontWeight: FontWeight.bold),
+      ),
+    ),
+  );
+}
+
+Widget zbTriadRow({
+  required BuildContext context,
+  required String label1,
+  required Widget dest1,
+  required String label2,
+  required Widget dest2,
+  required String label3,
+  required Widget dest3,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        // Blue / Complex
+        _zbMiniBtn(context, label1, Colors.blue, Colors.white, dest1),
+        // Yellow / Breath
+        _zbMiniBtn(context, label2, Colors.yellow, Colors.grey[800]!, dest2),
+        // Red / Silence
+        _zbMiniBtn(context, label3, Colors.red, Colors.black, dest3),
+      ],
+    ),
+  );
+}
+
+// Compact button for the grid
+Widget _zbMiniBtn(
+    BuildContext context, String label, Color bg, Color textCol, Widget dest) {
+  return Expanded(
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: bg,
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+        onPressed: () => showDialog(
+          context: context,
+          builder: (ctx) => SelectionArea(child: dest),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+              color: textCol, fontSize: 16, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget zbbuild36PopUp(BuildContext context) {
+  return SelectionArea(
+    child: AlertDialog(
+      title: const Text('36 Transactions', textAlign: TextAlign.center),
+      content: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.9, // Wider for the grid
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Text("Time States (Hebrew)",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              zbTriadRow(
+                  context: context,
+                  label1: 'מורכב',
+                  dest1: _buildComplexTS(context, hdchannelcomplexList_heb),
+                  label2: 'נשימה',
+                  dest2: _buildBreathTS(context, hdchannelbreathList_heb),
+                  label3: 'שתיקה',
+                  dest3: _buildSilenceTS(context, hdchannelsilenceList_heb)),
+              zbTriadRow(
+                  context: context,
+                  label1: 'Complex',
+                  dest1: _buildComplexTS(context, hdchannelcomplexList),
+                  label2: 'Breath',
+                  dest2: _buildBreathTS(context, hdchannelbreathList),
+                  label3: 'silence',
+                  dest3: _buildSilenceTS(context, hdchannelsilenceList)),
+              const Divider(thickness: 2),
+              const Text("HD Types",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              zbTriadRow(
+                  context: context,
+                  label1: 'הגשמה',
+                  dest1: _buildManifestChl(context, hdchlimpactList_he),
+                  label2: 'הקרנה',
+                  dest2: _buildProjectedChl(context, hdchlProjectList_he),
+                  label3: 'מחול אל',
+                  dest3: _buildGenerateChl(context, hdchlgenerateList_he)),
+              zbTriadRow(
+                  context: context,
+                  label1: 'Manifest',
+                  dest1: _buildManifestChl(context, hdchlimpactList),
+                  label2: 'Project',
+                  dest2: _buildProjectedChl(context, hdchlProjectList),
+                  label3: 'Generate',
+                  dest3: _buildGenerateChl(context, hdchlgenerateList)),
+            ],
+          ),
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            if (Navigator.canPop(context)) Navigator.pop(context);
+          },
+          child: const Text('X'),
+        )
+      ],
+    ),
+  );
+}
+
+Widget zbbuild384PopUp(BuildContext context) {
+  return Builder(builder: (dialogContext) {
+    return SelectionArea(
+      child: AlertDialog(
+        title: const Text('Base 384'),
+        content: SingleChildScrollView(
+          child: SizedBox(
+            width: MediaQuery.of(dialogContext).size.width * 0.7,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // 1. DYNAMIC: Using the global 'base384' Map from rtlists.dart
+                ...base384.entries.map((entry) => Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: zbChannelBtn(
+                        context: dialogContext,
+                        label: entry.key,
+                        bg: Colors.black,
+                        textCol: Colors.white,
+                        fontSize: 18,
+                        destination: build384rtPop(dialogContext, entry.value),
+                      ),
+                    )),
+
+                const Divider(color: Colors.black, thickness: 3, height: 30),
+
+                // 2. THE COMPLEX GENIUS: Using the Sun/Earth Stack Helper
+                ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: dialogContext,
+                      builder: (innerCtx) => SelectionArea(
+                        child: build384rtPlanetPop(innerCtx),
+                      ),
+                    );
+                  },
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                  child: _buildSunEarthStack(), // The Reflected Helper
+                ),
+              ],
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              if (Navigator.of(dialogContext).canPop()) {
+                Navigator.of(dialogContext).pop();
+              }
+            },
+            child: const Text('X',
+                style: TextStyle(color: Colors.black, fontSize: 18)),
+          ),
+        ],
+      ),
+    );
+  });
+}
+
+Widget _buildSunEarthStack() {
+  return const SizedBox(
+    width: 60,
+    height: 60,
+    child: Stack(
+      children: [
+        Align(
+          alignment: Alignment.center,
+          child: CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.white,
+              foregroundImage: AssetImage('assets/planets/sun.png')),
+        ),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: CircleAvatar(
+              radius: 15,
+              backgroundColor: Colors.white,
+              foregroundImage: AssetImage('assets/planets/earth.png')),
+        )
+      ],
+    ),
+  );
+}
+
+Widget zbbuildBasePopUp(
+    BuildContext context, String title, Map<String, List<String>> dataMap) {
+  return Builder(builder: (dialogContext) {
+    return SelectionArea(
+      child: AlertDialog(
+        title: Text('Base $title'),
+        content: SingleChildScrollView(
+          child: SizedBox(
+            width: MediaQuery.of(dialogContext).size.width * 0.7,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // THE REPLICATED DESIGN: All buttons from the Map
+                ...dataMap.entries.map((entry) => Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: zbChannelBtn(
+                        context: dialogContext,
+                        label: entry.key,
+                        bg: Colors.black,
+                        textCol: Colors.white,
+                        fontSize: 18,
+                        // Generic list displayer for all bases
+                        destination: buildBaseDataList(
+                            dialogContext, entry.key, entry.value),
+                      ),
+                    )),
+              ],
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              if (Navigator.of(dialogContext).canPop())
+                Navigator.of(dialogContext).pop();
+            },
+            child: const Text('X',
+                style: TextStyle(color: Colors.black, fontSize: 18)),
+          ),
+        ],
+      ),
+    );
+  });
 }
