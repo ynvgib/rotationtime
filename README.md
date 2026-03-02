@@ -67,30 +67,3 @@ for now;
 
 ###### mr. Ido Not Know. Meditation.
 I don't know Meditation
-
-####### TEMP AI GENERATED ZB LANGUAGE
-
-# ZB-Language / Rotation Time System Architecture
-
-### 1. The ZB Base 6 Matrix
-The system is built on a 6-level hierarchy mapping Space (mother-body) and Time (CHILD+MIND).
-
-
-| Level | Keynote | Color | Animal | Form | Logic | ZB-Prefix |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **1** | **idk** | **Black** | **pussycat** | **dot (pixel)** | **Source** | **ZBMatrix.1** |
-| **2** | **silence** | **Red** | **bitch** | **line** | **build** | **ZBMatrix.2** |
-| **3** | **Breath** | **Yellow** | **Octopussy** | **use** | **use** | **ZBMatrix.3** |
-| **4** | **Simple** | **Green** | **Octopus** | **Square** | **Think** | **ZBMatrix.4** |
-| **5** | **COMPLEX** | **Blue** | **DOG** | **Pentacle** | **NEGLECT** | **ZBMatrix.5** |
-| **6/@** | **zmansi** | **White** | **Camel** | **Puddle (sign)** | **Beyond** | **ZBMatrix.6** |
-
-### 2. The ZB Spoke Wheel (Space / mother-body)
-A Counter-Clockwise (CCW) 2D light form of 64 wallets (Hexagrams).
-*   **The 16/4/1 Pulse**: Tiered into 3 concentric rings via `ZBFullWheelPainter`.
-*   **The GIM (Ghost In Machine)**: The 17th Camel / Black pussycat (1) center dot.
-
-### 3. The ZB Integration (Time / CHILD+MIND)
-*   **ZB-Simple;**: The mental projection of the wheel.
-*   **ZB-COMPLEX"**: The injection of Time-Data (hh:mm MM:YYYY).
-*   **ZB-Result;**: Collapses COMPLEX data into Simple Animals (e.g., bitch generator).

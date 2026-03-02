@@ -2856,13 +2856,13 @@ class EvolutionContainer extends StatelessWidget {
 // AI ZB
 class SpokeWheel extends StatelessWidget {
   final int spokeCount;
-  final Color color;
+  final Color wheelColor;
   final double size;
 
   const SpokeWheel({
     super.key,
     this.spokeCount = 64,
-    this.color = Colors.black,
+    this.wheelColor = Colors.green,
     this.size = 200,
   });
 
@@ -2870,15 +2870,16 @@ class SpokeWheel extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       size: Size(size, size),
-      painter: WheelPainter(spokeCount: spokeCount),
+      painter: WheelPainter(spokeCount: spokeCount, wheelColor: wheelColor),
     );
   }
 }
 
 class WheelPainter extends CustomPainter {
   final int spokeCount;
+  Color? wheelColor = Colors.black;
 
-  WheelPainter({required this.spokeCount});
+  WheelPainter({required this.spokeCount, this.wheelColor = Colors.black});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -2886,12 +2887,12 @@ class WheelPainter extends CustomPainter {
     final radius = size.width / 2;
 
     final Paint rimPaint = Paint()
-      ..color = Colors.black
+      ..color = wheelColor!
       ..style = PaintingStyle.stroke
       ..strokeWidth = 5;
 
     final Paint spokePaint = Paint()
-      ..color = Colors.grey
+      ..color = wheelColor!
       ..strokeWidth = 2;
 
     // 1. Draw the Rim
@@ -2924,92 +2925,172 @@ class ColorWheel extends StatelessWidget {
   final int spokeCount;
   final Color color;
   final double size;
+  final double rotationAngle; // New: Controls the spin/tilt
+  final int? centerDisplayNumber; // New: Shows the landed wallet number
 
   const ColorWheel({
     super.key,
     this.spokeCount = 64,
     this.color = Colors.black,
     this.size = 200,
+    this.rotationAngle = math.pi / 4, // Default stable 45-degree tilt
+    this.centerDisplayNumber,
   });
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       size: Size(size, size),
-      painter: ZFullWheelPainter(orderHexagramsWheel),
+      painter: ZBFullWheelPainter(
+        orderHexagramsWheel,
+        rotationAngle: rotationAngle,
+        centerDisplayNumber: centerDisplayNumber,
+        baseColor: color,
+      ),
     );
   }
 }
 
-class ZFullWheelPainterOld extends CustomPainter {
-  final List<int> orderHexagramsOnWheel; // The 64-spoke order from lists.dart
-
-  ZFullWheelPainterOld(this.orderHexagramsOnWheel);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height / 2);
-    final radius = size.width / 2;
-    // Counter-Clockwise step for 64 spokes
-    const double angleStep = -(2 * math.pi / 64);
-
-    // The 4 Base Frequencies
-    const Color blue = Colors.blue; // "COMPLEX"
-    const Color green = Colors.green; // Simple;
-    const Color red = Colors.red; // silence.
-    const Color yellow = Colors.yellow; // Breath,
-    final List<Color> palette = [blue, green, red, yellow];
-
-    for (int i = 0; i < 64; i++) {
-      // 1. Calculate the 3-Coin Wallet (Triple Gradient)
-      // Bottom coin: changes every 16 spokes (The 4 Quarters)
-      int bottomIdx = (i ~/ 16) % 4;
-      // Middle coin: changes every 8 spokes
-      int middleIdx = (i ~/ 8) % 4;
-      // Top coin: changes every 1 spoke (The Fast Gear)
-      int topIdx = i % 4;
-
-      // 2. Mix the colors for the Spoke
-      Color spokeColor = _mixThreeColors(
-          palette[bottomIdx], palette[middleIdx], palette[topIdx]);
-
-      // 3. Draw the Spoke on the 2D Light Form
-      double angle = i * angleStep;
-      final p2 = Offset(center.dx + radius * math.cos(angle),
-          center.dy + radius * math.sin(angle));
-
-      final paint = Paint()
-        ..color = spokeColor
-        ..strokeWidth = 2.5
-        ..strokeCap = StrokeCap.round;
-
-      canvas.drawLine(center, p2, paint);
-
-      // 4. Optional: Label with Hexagram Number from the list
-      // _drawHexLabel(canvas, center, angle, radius, orderHexagramsWheel[i]);
-    }
-
-    // The GIM (Ghost In Machine) - The 17th Camel at the Center
-    canvas.drawCircle(center, 6, Paint()..color = Colors.white);
-  }
-
-  Color _mixThreeColors(Color b, Color m, Color t) {
-    // Blending the 3 layers into a single gradient spoke
-    return Color.lerp(Color.lerp(b, m, 0.5), t, 0.33)!;
-  }
+class SpinWheel extends StatefulWidget {
+  final double size;
+  const SpinWheel({super.key, this.size = 350});
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
+  // Change _SpinWheelState to SpinWheelState
+  State<SpinWheel> createState() => SpinWheelState();
 }
 
-class ZFullWheelPainter extends CustomPainter {
+// REMOVE the underscore so it is public: SpinWheelState
+class SpinWheelState extends State<SpinWheel>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  // double _currentAngle = math.pi / 4; // Initial 45° tilt
+  double _currentAngle = 0.0; // no tils
+  int? _chosenWallet;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 5),
+    );
+  }
+
+  /// RESETS the wheel to its original 45-degree tilt
+  void resetWheel() {
+    if (_controller.isAnimating) _controller.stop();
+    const double segmentAngle = (2 * math.pi / 64);
+
+    // Animate back to the start over 1 second
+    final resetAnim = Tween<double>(
+            begin: _currentAngle, end: -(2 * math.pi / 64) / 2)
+        .animate(
+            CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
+
+    _controller.duration = const Duration(seconds: 1);
+    _controller.forward(from: 0).then((_) {
+      setState(() {
+        // _currentAngle = -(2 * math.pi / 64) / 2;
+        _currentAngle = (segmentAngle / 2 - 0.08);
+
+        _chosenWallet = reversedHexagramsWheel.last;
+        _controller.duration =
+            const Duration(seconds: 2); // Set back to spin speed
+      });
+    });
+  }
+
+  void startSpin(int walletPosition) {
+    if (_controller.isAnimating) return;
+
+    // 1. Map Wallet (1-64) to the physical slice (Index 0-63)
+    int listIndex = (walletPosition - 1).clamp(0, 63);
+
+    // 2. GET THE VALUE FROM THE REVERSED LIST
+    // We use the reversed list to see if the alignment "snaps" into place
+    int hexagramValue = reversedHexagramsWheel[listIndex];
+
+    setState(() => _chosenWallet = null);
+
+    const double segmentAngle = (2 * math.pi / 64);
+
+    // 3. CCW TARGETING:
+    // To pull Index N to the Arrow (12 o'clock), we rotate NEGATIVELY.
+    // We subtract (segmentAngle / 2) to hit the CENTER of the slice.
+    double targetInCircle =
+        -(listIndex * segmentAngle) - (segmentAngle / 2) - 0.08;
+
+    // 4. ODOMETER CALCULATION:
+    double currentInCircle = _currentAngle % (2 * math.pi);
+    if (currentInCircle > 0) currentInCircle -= (2 * math.pi);
+
+    double distanceToMove = currentInCircle - targetInCircle;
+    if (distanceToMove < 0) distanceToMove += (2 * math.pi);
+
+    double totalSpinTarget = _currentAngle - (10 * math.pi) - distanceToMove;
+
+    print("--- REVERSED TEST SPIN ---");
+    print("Targeting Physical Slice: $listIndex");
+    print("Hexagram Value (Reversed): $hexagramValue");
+
+    final animation = Tween<double>(
+      begin: _currentAngle,
+      end: totalSpinTarget,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutQuart));
+
+    animation.addListener(() {
+      setState(() => _currentAngle = animation.value);
+    });
+
+    _controller.forward(from: 0).then((_) {
+      setState(() {
+        _currentAngle = totalSpinTarget;
+        _chosenWallet = hexagramValue; // Show the reversed hexagram value
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ColorWheel(
+      size: widget.size,
+      rotationAngle: _currentAngle,
+      centerDisplayNumber: _chosenWallet,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+}
+
+class ZBFullWheelPainter extends CustomPainter {
   final List<int> orderHexagramsOnWheel;
-  ZFullWheelPainter(this.orderHexagramsOnWheel);
+  final double rotationAngle;
+  final int? centerDisplayNumber;
+  final Color baseColor;
+
+  ZBFullWheelPainter(
+    this.orderHexagramsOnWheel, {
+    this.rotationAngle = 0.0,
+    this.centerDisplayNumber,
+    this.baseColor = Colors.black,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
     final radius = size.width / 2;
+
+    // wheel tilt
+    canvas.save();
+    canvas.translate(center.dx, center.dy);
+    canvas.rotate(rotationAngle);
+    canvas.translate(-center.dx, -center.dy);
+
     const double angleStep = -(2 * math.pi / 64);
     const double offsetTo12 = -(math.pi / 2);
 
@@ -3069,7 +3150,50 @@ class ZFullWheelPainter extends CustomPainter {
           ..color = Colors.white
           ..style = PaintingStyle.stroke
           ..strokeWidth = 1.5);
+
+    _drawInnerDashboard(canvas, center, radius);
+
     canvas.drawCircle(center, 5, Paint()..color = Colors.black);
+    canvas.restore();
+
+    // 4. USE centerDisplayNumber HERE
+    if (centerDisplayNumber != null) {
+      _drawCenterNumber(canvas, center, centerDisplayNumber.toString());
+    }
+  }
+
+  // Add this helper method to draw the number in the middle
+  void _drawCenterNumber(Canvas canvas, Offset center, String text) {
+    // 1. Shadow with modern 'withValues'
+    final Paint shadowPaint = Paint()
+      ..color = Colors.black.withValues(alpha: 0.3) // Modern syntax
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5);
+
+    canvas.drawCircle(center + const Offset(2, 2), 30, shadowPaint);
+
+    // 2. Main White Circle
+    canvas.drawCircle(center, 30, Paint()..color = Colors.white);
+
+    // 3. Subtle Green Border
+    canvas.drawCircle(
+        center,
+        30,
+        Paint()
+          ..color = Colors.green.withValues(alpha: 0.5) // Modern syntax
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2);
+
+    // 4. The Number
+    final tp = TextPainter(
+      text: TextSpan(
+        text: text,
+        style: const TextStyle(
+            color: Colors.black, fontSize: 32, fontWeight: FontWeight.bold),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+
+    tp.paint(canvas, center - Offset(tp.width / 2, tp.height / 2));
   }
 
   void _drawGradientRing(Canvas canvas, Offset center, double outerRad,
@@ -3114,8 +3238,80 @@ class ZFullWheelPainter extends CustomPainter {
     canvas.restore();
   }
 
+  // --- ZB INNER DASHBOARD LOGIC ---
+
+  void _drawInnerDashboard(Canvas canvas, Offset center, double radius) {
+    const List<String> dna = ["A", "C", "T", "G"];
+    const List<String> keynotes = [
+      "\"COMPLEX\"",
+      "Simple;",
+      "silence.",
+      "Breath,"
+    ];
+    const double sweep = -(2 * math.pi / 4);
+    const double offset = -(math.pi / 2);
+
+    for (int i = 0; i < 4; i++) {
+      double startAngle = i * sweep + offset;
+      double midAngle = startAngle + (sweep / 2);
+
+      _drawStackedLetter(canvas, center, radius * 0.25, midAngle, dna[i]);
+      _drawCurvedText(
+          canvas, center, radius * 0.35, startAngle, sweep, keynotes[i]);
+
+      // REMOVED: canvas.restore(); <--- This was the error!
+    }
+  }
+
+  void _drawStackedLetter(
+      Canvas canvas, Offset center, double rad, double angle, String text) {
+    final tp = TextPainter(
+      text: TextSpan(
+          text: text,
+          style: const TextStyle(
+              color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold)),
+      textDirection: TextDirection.ltr,
+    )..layout();
+
+    canvas.save();
+    canvas.translate(
+        center.dx + rad * math.cos(angle), center.dy + rad * math.sin(angle));
+    tp.paint(canvas, Offset(-tp.width / 2, -tp.height / 2));
+    canvas.restore();
+  }
+
+  void _drawCurvedText(Canvas canvas, Offset center, double rad, double start,
+      double sweep, String text) {
+    final double charAngleStep = sweep / (text.length + 1);
+
+    for (int i = 0; i < text.length; i++) {
+      double angle = start + (text.length - i) * charAngleStep;
+
+      final tp = TextPainter(
+        text: TextSpan(
+            text: text[i],
+            style: const TextStyle(
+                color: Colors.black,
+                fontSize: 12,
+                fontWeight: FontWeight.w600)),
+        textDirection: TextDirection.ltr,
+      )..layout();
+
+      canvas.save(); // Checkpoint for this specific letter
+      canvas.translate(
+          center.dx + rad * math.cos(angle), center.dy + rad * math.sin(angle));
+      canvas.rotate(angle + (math.pi / 2));
+      tp.paint(canvas, Offset(-tp.width / 2, -tp.height / 2));
+      canvas.restore(); // Reset for the next letter
+    }
+  }
+
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant ZBFullWheelPainter oldDelegate) {
+    return oldDelegate.rotationAngle != rotationAngle ||
+        oldDelegate.centerDisplayNumber != centerDisplayNumber ||
+        oldDelegate.baseColor != baseColor;
+  }
 }
 
 // AI generated

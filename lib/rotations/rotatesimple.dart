@@ -27,6 +27,7 @@ class RotateSimple extends StatefulWidget {
 class _RotateSimpleState extends State<RotateSimple>
     with SingleTickerProviderStateMixin {
   // added tree
+  final GlobalKey<SpinWheelState> _wheelKey = GlobalKey<SpinWheelState>();
 
   double _progress = 0.01;
   late Animation<double> animation;
@@ -4975,14 +4976,44 @@ class _RotateSimpleState extends State<RotateSimple>
                   thickness: 5,
                 ),
 
-                const SizedBox(height: 100),
-                const ColorWheel(size: 350),
+                const SizedBox(height: 50),
+
+                InkWell(
+                  onTap: () {
+                    // Generate random 1-64 and tell the wheel to spin
+                    int randomWallet = math.Random().nextInt(64) + 1;
+                    _wheelKey.currentState?.startSpin(randomWallet);
+                  },
+                  child: Image.asset(
+                    'assets/camog/zbgreenoctopus.png', // Corrected your typo 'zbgreenoctopus'
+                    width: 80,
+                    height: 80,
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.arrow_drop_down_circle,
+                      size: 40, color: Colors.green),
+                  onPressed: () {
+                    _wheelKey.currentState
+                        ?.resetWheel(); // Resets the wheel on click
+                  },
+                ),
+                const SizedBox(height: 50),
+                SpinWheel(
+                  key: _wheelKey,
+                  size: 350,
+                ),
+
+                // const ColorWheel(size: 350),
                 const SizedBox(height: 50),
                 const Center(
                   child: SpokeWheel(
-                    size: 150,
+                    size: 200,
+                    wheelColor: Colors.green,
                   ),
                 ),
+                const SizedBox(height: 20),
+
                 const Divider(
                   color: Colors.green,
                   thickness: 5,
@@ -5591,6 +5622,21 @@ class _RotateSimpleState extends State<RotateSimple>
     setState(() {
       _progress = progress;
     });
+  }
+
+  void _syncCarouselsToWallet(int hexagramNumber) {
+    // 1. Get the binary string for the hexagram (e.g., "111111" for 1, "000000" for 2)
+    // Logic: 1 = YANG (Page 0), 0 = yin (Page 1)
+    String binary = getHexBinary(hexagramNumber);
+
+    // 2. Command the 6 Drivers to their specific "Animal State"
+    // Assuming index 5 is Line 6 (Camel) and index 0 is Line 1 (pussycat)
+    _controllercamel.animateToPage(binary[5] == '1' ? 0 : 1);
+    _controllerdog.animateToPage(binary[4] == '1' ? 0 : 1);
+    _controlleroctopus.animateToPage(binary[3] == '1' ? 0 : 1);
+    _controlleroctopussy.animateToPage(binary[2] == '1' ? 0 : 1);
+    _controllerbitch.animateToPage(binary[1] == '1' ? 0 : 1);
+    _controllerpussycat.animateToPage(binary[0] == '1' ? 0 : 1);
   }
 }
 
