@@ -10,36 +10,40 @@ Hexagram getGateStructure(double planetlongitude) {
       hex = '',
       gatename = '',
       linename = '',
-  gateline = '',
-  gatelinecolor = '',
-  gatelinecolortone = '',
-  gatelinecolortonebase = '',
-  zodiacsign = '';
+      gateline = '',
+      gatelinecolor = '',
+      gatelinecolortone = '',
+      gatelinecolortonebase = '',
+      zodiacsign = '';
 
   int gate = 1,
       line = 1,
       color = 1,
       tone = 1,
       base = 1,
-  zodiacid = 1,
+      zodiacid = 1,
       degrees = 0,
       minutes = 0,
       seconds = 0,
       hexfontindex = 0,
-  lineindex;
-  
+      lineindex;
+
   double secondsOfArc = 0.0;
 
   DegreeSplitData planetDSP;
 
   //double _decimalDegrees = 0.0;
 
-  double exactLine = 0.0, exactColor = 0.0, exactTone = 0.0, exactBase = 0.0,
-  gatelongitude = 0.0;
+  double exactLine = 0.0,
+      exactColor = 0.0,
+      exactTone = 0.0,
+      exactBase = 0.0,
+      gatelongitude = 0.0;
 
   Hexagram gateStructure = Hexagram();
 
-  planetDSP = Sweph.swe_split_deg(planetlongitude, SplitDegFlags.SE_SPLIT_DEG_ZODIACAL);
+  planetDSP =
+      Sweph.swe_split_deg(planetlongitude, SplitDegFlags.SE_SPLIT_DEG_ZODIACAL);
   //print (planetDSP);
   zodiacid = planetDSP.sign;
   degrees = planetDSP.degrees;
@@ -106,8 +110,6 @@ Hexagram getGateStructure(double planetlongitude) {
   // set longitude
   gatelongitude = planetlongitude;
 
-
-
   gateStructure.name = name;
   gateStructure.hex = hex;
   gateStructure.gate = gate;
@@ -152,19 +154,16 @@ HexagramSentence getGateSentence(int gate, String language) {
   }
 
   gateindex = hexchosensentenceList.indexOf(gate);
-  for (var i = 0; i < 4; i++) {
-    adjective = hexchosensentenceList[gateindex + 1];
-    subject = hexchosensentenceList[gateindex + 2];
-    verb = hexchosensentenceList[gateindex + 3];
-    adverb = hexchosensentenceList[gateindex + 4];
-  }
+  adjective = hexchosensentenceList[gateindex + 1];
+  subject = hexchosensentenceList[gateindex + 2];
+  verb = hexchosensentenceList[gateindex + 3];
+  adverb = hexchosensentenceList[gateindex + 4];
 
   hexSentence.adjective = adjective;
   hexSentence.subject = subject;
   hexSentence.verb = verb;
   hexSentence.adverb = adverb;
   hexSentence.sentence = '${adjective!} ${subject!} ${verb!} ${adverb!}';
-
 
   return hexSentence;
 }

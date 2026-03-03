@@ -3911,3 +3911,18 @@ Widget zbbuildBasePopUp(
     );
   });
 }
+
+Widget zbGateLine(
+    {required int gateIndex,
+    required List<int> gatestatelist,
+    double height = 10,
+    double width = 5}) {
+  return CustomPaint(
+    foregroundPainter: VerticalGatePainter(gatestate: gatestatelist[gateIndex]),
+    willChange: true,
+    child: SizedBox(
+      height: height,
+      width: 5,
+    ),
+  );
+}

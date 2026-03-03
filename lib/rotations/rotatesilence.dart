@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:flutter/material.dart';
+import 'package:finallyicanlearn/models/rotateclasses.dart';
 
 class RotateSilence extends StatefulWidget {
   const RotateSilence({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class _RotateSilenceState extends State<RotateSilence> {
           leading: IconButton(
             iconSize: 25,
             icon: const Icon(Icons.close, color: Colors.white),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => zbPop(context),
           ),
           backgroundColor: Colors.red.withValues(alpha: 0.5)),
       backgroundColor: Colors.black,

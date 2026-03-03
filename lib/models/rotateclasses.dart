@@ -509,3 +509,9 @@ Color getBase4TextColor(int index) {
   if (index == 1 || index == 2) return Colors.black54;
   return Colors.white;
 }
+
+void zbPop(BuildContext context) {
+  if (Navigator.of(context).canPop()) {
+    Navigator.of(context).pop();
+  }
+}

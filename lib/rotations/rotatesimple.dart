@@ -168,7 +168,7 @@ class _RotateSimpleState extends State<RotateSimple>
               leading: IconButton(
                 iconSize: 25,
                 icon: const Icon(Icons.close, color: Colors.green),
-                onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => zbPop(context),
               ),
               //backgroundColor: Colors.green.withValues(alpha:0.3)
               backgroundColor: Colors.transparent),
@@ -2215,17 +2215,22 @@ class _RotateSimpleState extends State<RotateSimple>
                                           const SizedBox(
                                             width: 12,
                                           ),
-                                          CustomPaint(
-                                            foregroundPainter:
-                                                VerticalGatePainter(
-                                                    gatestate:
-                                                        gatestatelist[1]),
-                                            willChange: true,
-                                            child: const SizedBox(
+                                          // CustomPaint(
+                                          //   foregroundPainter:
+                                          //       VerticalGatePainter(
+                                          //           gatestate:
+                                          //               gatestatelist[1]),
+                                          //   willChange: true,
+                                          //   child: const SizedBox(
+                                          //     height: 40,
+                                          //     width: 5,
+                                          //   ),
+                                          // ),
+                                          zbGateLine(
+                                              gateIndex: 1,
+                                              gatestatelist: gatestatelist,
                                               height: 40,
-                                              width: 5,
-                                            ),
-                                          ),
+                                              width: 5),
                                           const SizedBox(
                                             width: 12,
                                           ),

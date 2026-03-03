@@ -4,7 +4,7 @@ import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
-
+import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class RotateIDK extends StatefulWidget {
@@ -71,7 +71,7 @@ class _RotateIDKState extends State<RotateIDK>
           leading: IconButton(
             iconSize: 20,
             icon: const Icon(Icons.close, color: Colors.white),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => zbPop(context),
           ),
           backgroundColor: Colors.black),
       backgroundColor: Colors.white,

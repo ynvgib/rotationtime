@@ -513,7 +513,7 @@ class _RotateComplexState extends State<RotateComplex>
         leading: IconButton(
           iconSize: 25,
           icon: const Icon(Icons.close, color: Colors.lightBlue),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => zbPop(context),
           //onPressed: () => Navigator.pushNamed(context, mainroutes[0]),
         ),
         //backgroundColor: Colors.lightBlue.withValues(alpha:0.2),
@@ -8398,7 +8398,7 @@ class _RotateComplexState extends State<RotateComplex>
       actions: <Widget>[
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            zbPop(context);
           },
           child: const Icon(Icons.close, color: Colors.black),
         ),
@@ -8451,7 +8451,7 @@ class _RotateComplexState extends State<RotateComplex>
       actions: <Widget>[
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            zbPop(context);
           },
           child: const Icon(Icons.close, color: Colors.black),
         ),
@@ -8602,7 +8602,7 @@ class _RotateComplexState extends State<RotateComplex>
       actions: <Widget>[
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            zbPop(context);
           },
           child: const Icon(Icons.close, color: Colors.white),
         ),
@@ -8750,7 +8750,7 @@ class _RotateComplexState extends State<RotateComplex>
       actions: <Widget>[
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            zbPop(context);
           },
           child: const Icon(Icons.close, color: Colors.black),
         ),
@@ -9235,7 +9235,7 @@ class _RotateComplexState extends State<RotateComplex>
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            zbPop(context);
           },
           child: const Icon(Icons.close, color: Colors.black),
         ),
@@ -9282,7 +9282,7 @@ class _RotateComplexState extends State<RotateComplex>
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            zbPop(context);
           },
           child: const Icon(Icons.close, color: Colors.black),
         ),
@@ -9330,7 +9330,7 @@ class _RotateComplexState extends State<RotateComplex>
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            zbPop(context);
           },
           child: const Icon(Icons.close, color: Colors.black),
         ),
@@ -9353,7 +9353,7 @@ class _RotateComplexState extends State<RotateComplex>
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            zbPop(context);
           },
           child: const Icon(Icons.close, color: Colors.black),
         ),

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
+import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:flutter/material.dart';
 
 class RotateBreath extends StatefulWidget {
@@ -59,7 +60,7 @@ class _RotateBreathState extends State<RotateBreath>
           leading: IconButton(
             iconSize: 25,
             icon: const Icon(Icons.close, color: Colors.black),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => zbPop(context),
           ),
           backgroundColor: Colors.yellow.withValues(alpha: 0.5)),
       backgroundColor: Colors.black,

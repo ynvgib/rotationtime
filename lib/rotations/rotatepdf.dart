@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
@@ -36,7 +37,7 @@ class _RotatePDF extends State<RotatePDF> {
             leading: IconButton(
               iconSize: 20,
               icon: const Icon(Icons.close, color: Colors.white),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => zbPop(context),
             ),
             backgroundColor: Colors.black87),
         backgroundColor: Colors.white,
