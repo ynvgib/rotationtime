@@ -103,6 +103,7 @@ final Map<String, List<String>> base4Data = {
   'Bimbox': bimboxHeb4lst,
   'Kit He': kithe4lst,
   'Woof Goof': zbwoofgoofheb,
+  'DNA': zbdna
 };
 
 final List<String> coins4lst = [
@@ -638,7 +639,9 @@ final List<String> hdType4lst = [
       'ווף',
       'גופוף',
       'גוף',
-    ];
+    ],
+    zbdna = ['A', 'C', 'G', 'T'],
+    zbwheeldna = ['A', 'C', 'T', 'G'];
 
 //6
 
@@ -2544,7 +2547,7 @@ final List<String> hexNames64lst = [
       'Confusion',
     ],
     hexVerb64lst = [
-      'Zero',
+      // 'Zero',
       'Creates',
       'Responds',
       'Mutates',

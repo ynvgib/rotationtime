@@ -2959,13 +2959,19 @@ class ColorWheel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      size: Size(size, size),
-      painter: ZBFullWheelPainter(
-        orderHexagramsWheel,
-        rotationAngle: rotationAngle,
-        centerDisplayNumber: centerDisplayNumber,
-        baseColor: color,
+    return SizedBox(
+      height: size,
+      width: size,
+      child: ClipOval(
+        child: CustomPaint(
+          size: Size(size, size),
+          painter: ZBFullWheelPainter(
+            orderHexagramsWheel,
+            rotationAngle: rotationAngle,
+            centerDisplayNumber: centerDisplayNumber,
+            baseColor: color,
+          ),
+        ),
       ),
     );
   }
@@ -3001,22 +3007,26 @@ class SpinWheelState extends State<SpinWheel>
   void resetWheel() {
     if (_controller.isAnimating) _controller.stop();
     const double segmentAngle = (2 * math.pi / 64);
+    const double targetAngle = (segmentAngle / 2 - 0.08);
 
-    // Animate back to the start over 1 second
-    final resetAnim = Tween<double>(
-            begin: _currentAngle, end: -(2 * math.pi / 64) / 2)
-        .animate(
+    // 1. Create the Tween
+    final Animation<double> resetAnim =
+        Tween<double>(begin: _currentAngle, end: targetAngle).animate(
             CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
+
+    // 2. ADD THE LISTENER (This makes the 'resetAnim' USED)
+    resetAnim.addListener(() {
+      setState(() {
+        _currentAngle = resetAnim.value; // The wheel moves smoothly here
+      });
+    });
 
     _controller.duration = const Duration(seconds: 1);
     _controller.forward(from: 0).then((_) {
       setState(() {
-        // _currentAngle = -(2 * math.pi / 64) / 2;
-        _currentAngle = (segmentAngle / 2 - 0.08);
-
+        _currentAngle = targetAngle;
         _chosenWallet = reversedHexagramsWheel.last;
-        _controller.duration =
-            const Duration(seconds: 2); // Set back to spin speed
+        _controller.duration = const Duration(seconds: 2);
       });
     });
   }
@@ -3050,9 +3060,9 @@ class SpinWheelState extends State<SpinWheel>
 
     double totalSpinTarget = _currentAngle - (10 * math.pi) - distanceToMove;
 
-    print("--- REVERSED TEST SPIN ---");
-    print("Targeting Physical Slice: $listIndex");
-    print("Hexagram Value (Reversed): $hexagramValue");
+    // print("--- REVERSED TEST SPIN ---");
+    // print("Targeting Physical Slice: $listIndex");
+    // print("Hexagram Value (Reversed): $hexagramValue");
 
     final animation = Tween<double>(
       begin: _currentAngle,
@@ -3105,15 +3115,6 @@ class ZBFullWheelPainter extends CustomPainter {
     final center = Offset(size.width / 2, size.height / 2);
     final radius = size.width / 2;
 
-    // wheel tilt
-    canvas.save();
-    canvas.translate(center.dx, center.dy);
-    canvas.rotate(rotationAngle);
-    canvas.translate(-center.dx, -center.dy);
-
-    const double angleStep = -(2 * math.pi / 64);
-    const double offsetTo12 = -(math.pi / 2);
-
     const List<Color> bottomPalette = [
       Colors.blue,
       Colors.green,
@@ -3133,36 +3134,39 @@ class ZBFullWheelPainter extends CustomPainter {
       Colors.red
     ];
 
+    canvas.save();
+    canvas.translate(center.dx, center.dy);
+    canvas.rotate(rotationAngle);
+    canvas.translate(-center.dx, -center.dy);
+
+    const double angleStep = -(2 * math.pi / 64);
+    const double offsetTo12 = -(math.pi / 2);
+
+    // 1. DRAW ALL RINGS FIRST
     for (int i = 0; i < 64; i++) {
       int next = (i + 1) % 64;
       final double startAngle = i * angleStep + offsetTo12;
-
       int bIdx = (i ~/ 16) % 4;
       int nextBIdx = (next ~/ 16) % 4;
-
       List<Color> currentP = (bIdx <= 1) ? reversedPalette : standardPalette;
       List<Color> nextP = (nextBIdx <= 1) ? reversedPalette : standardPalette;
 
-      _drawGradientRing(canvas, center, radius * 0.4, 0.0, startAngle,
+      _drawGradientRing(canvas, center, radius * 0.35, 0.0, startAngle,
           angleStep, bottomPalette[bIdx], bottomPalette[nextBIdx]);
-
-      _drawGradientRing(canvas, center, radius * 0.7, radius * 0.4, startAngle,
-          angleStep, currentP[(i ~/ 4) % 4], nextP[(next ~/ 4) % 4]);
-
-      _drawGradientRing(canvas, center, radius, radius * 0.7, startAngle,
-          angleStep, currentP[i % 4], nextP[next % 4]);
-
-      // --- NUMBERS (At the Edge) - FIXED: Pulled 2 Steps Clockwise ---
-      if (i < orderHexagramsOnWheel.length) {
-        // We subtract angleStep twice to move Clockwise against the CCW flow
-        // effectively jumping from 'i+1' back to 'i-1'
-        double correctedAngle = startAngle + (angleStep / 2) - angleStep;
-
-        _drawNumber(canvas, center, radius + 10, correctedAngle,
-            orderHexagramsOnWheel[i].toString());
-      }
+      _drawGradientRing(
+          canvas,
+          center,
+          radius * 0.65,
+          radius * 0.35,
+          startAngle,
+          angleStep,
+          currentP[(i ~/ 4) % 4],
+          nextP[(next ~/ 4) % 4]);
+      _drawGradientRing(canvas, center, radius * 0.95, radius * 0.65,
+          startAngle, angleStep, currentP[i % 4], nextP[next % 4]);
     }
 
+    // 2. DRAW THE DECORATION AND DASHBOARD (Under the numbers)
     canvas.drawCircle(
         center,
         radius,
@@ -3170,13 +3174,23 @@ class ZBFullWheelPainter extends CustomPainter {
           ..color = Colors.white
           ..style = PaintingStyle.stroke
           ..strokeWidth = 1.5);
-
     _drawInnerDashboard(canvas, center, radius);
+
+    // 3. DRAW THE NUMBERS LAST (Highest Layer)
+    for (int i = 0; i < 64; i++) {
+      if (i < orderHexagramsOnWheel.length) {
+        final double startAngle = i * angleStep + offsetTo12;
+        double correctedAngle = startAngle + (angleStep / 2) - angleStep;
+
+        // NOW 0.88 or 0.90 will be perfectly visible and safe from clipping
+        _drawNumber(canvas, center, radius * 0.95, correctedAngle,
+            orderHexagramsOnWheel[i].toString());
+      }
+    }
 
     canvas.drawCircle(center, 5, Paint()..color = Colors.black);
     canvas.restore();
 
-    // 4. USE centerDisplayNumber HERE
     if (centerDisplayNumber != null) {
       _drawCenterNumber(canvas, center, centerDisplayNumber.toString());
     }
@@ -3242,44 +3256,75 @@ class ZBFullWheelPainter extends CustomPainter {
   void _drawNumber(
       Canvas canvas, Offset center, double rad, double angle, String text) {
     final tp = TextPainter(
-        text: TextSpan(
-            text: text,
-            style: const TextStyle(
-                color: Colors.black,
-                fontSize: 10,
-                fontWeight: FontWeight.bold)),
-        textDirection: TextDirection.ltr)
-      ..layout();
+      text: TextSpan(
+        text: text,
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 10,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+
+    // 1. Calculate the Target (Singularity)
+    double x = center.dx + rad * math.cos(angle);
+    double y = center.dy + rad * math.sin(angle);
+    Offset pos = Offset(x, y);
+
     canvas.save();
-    canvas.translate(
-        center.dx + rad * math.cos(angle), center.dy + rad * math.sin(angle));
+    canvas.translate(pos.dx, pos.dy);
     canvas.rotate(angle + (math.pi / 2));
+
+    // 2. DRAW THE BUBBLE (The "Home" 444)
+    // White Background (silence.)
+    canvas.drawCircle(Offset.zero, 7, Paint()..color = Colors.white);
+    // Black Border (Structure)
+    canvas.drawCircle(
+      Offset.zero,
+      7.5,
+      Paint()
+        ..color = Colors.black
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 0.8,
+    );
+
+    // 3. PAINT THE TEXT (The Breath,)
     tp.paint(canvas, Offset(-tp.width / 2, -tp.height / 2));
+
     canvas.restore();
   }
 
   // --- ZB INNER DASHBOARD LOGIC ---
-
   void _drawInnerDashboard(Canvas canvas, Offset center, double radius) {
-    const List<String> dna = ["A", "C", "T", "G"];
-    const List<String> keynotes = [
-      "\"COMPLEX\"",
-      "Simple;",
-      "silence.",
-      "Breath,"
+    // 1. Explicit selection from ZBMatrix.base6
+    // index 4: COMPLEX (Blue), index 3: Simple (Green),
+    // index 1: silence (Red), index 2: Breath (Yellow)
+    final List<ZBMatrix> activeMatrix = [
+      ZBMatrix.base6[4], // Top (12 to 9) -> "COMPLEX"
+      ZBMatrix.base6[3], // Left (9 to 6) -> Simple;
+      ZBMatrix.base6[1], // Bottom (6 to 3) -> silence.
+      ZBMatrix.base6[2], // Right (3 to 12) -> Breath,
     ];
+
     const double sweep = -(2 * math.pi / 4);
-    const double offset = -(math.pi / 2);
+    const double offset = -(math.pi / 2); // Start at 12 o'clock
 
     for (int i = 0; i < 4; i++) {
       double startAngle = i * sweep + offset;
       double midAngle = startAngle + (sweep / 2);
+      ZBMatrix current = activeMatrix[i];
+      // String dna = zbdna[i];
 
-      _drawStackedLetter(canvas, center, radius * 0.25, midAngle, dna[i]);
-      _drawCurvedText(
-          canvas, center, radius * 0.35, startAngle, sweep, keynotes[i]);
+      // 2. The Archetype Letter (radius * 0.20)
+      // Extracts the first letter: D(og), O(ctopus), B(itch), O(ctopussy)
+      _drawStackedLetter(
+          canvas, center, radius * 0.20, midAngle, zbwheeldna[i]);
 
-      // REMOVED: canvas.restore(); <--- This was the error!
+      // 3. The Keynote Text (radius * 0.50)
+      // Curves the word: "COMPLEX", Simple;, silence., Breath,
+      _drawCurvedText(canvas, center, radius * 0.30, startAngle, sweep,
+          current.keynote, current.color);
     }
   }
 
@@ -3288,8 +3333,10 @@ class ZBFullWheelPainter extends CustomPainter {
     final tp = TextPainter(
       text: TextSpan(
           text: text,
-          style: const TextStyle(
-              color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold)),
+          style: TextStyle(
+              color: Colors.black, // Inhaling the Matrix Color
+              fontSize: 22,
+              fontWeight: FontWeight.bold)),
       textDirection: TextDirection.ltr,
     )..layout();
 
@@ -3301,7 +3348,7 @@ class ZBFullWheelPainter extends CustomPainter {
   }
 
   void _drawCurvedText(Canvas canvas, Offset center, double rad, double start,
-      double sweep, String text) {
+      double sweep, String text, Color textColor) {
     final double charAngleStep = sweep / (text.length + 1);
 
     for (int i = 0; i < text.length; i++) {
@@ -3310,19 +3357,21 @@ class ZBFullWheelPainter extends CustomPainter {
       final tp = TextPainter(
         text: TextSpan(
             text: text[i],
-            style: const TextStyle(
-                color: Colors.black,
+            style: TextStyle(
+                color: Colors.black, // Font remains Black for contrast
+                backgroundColor:
+                    textColor.withValues(alpha: 0.2), // The Matrix Color "Aura"
                 fontSize: 12,
                 fontWeight: FontWeight.w600)),
         textDirection: TextDirection.ltr,
       )..layout();
 
-      canvas.save(); // Checkpoint for this specific letter
+      canvas.save();
       canvas.translate(
           center.dx + rad * math.cos(angle), center.dy + rad * math.sin(angle));
       canvas.rotate(angle + (math.pi / 2));
       tp.paint(canvas, Offset(-tp.width / 2, -tp.height / 2));
-      canvas.restore(); // Reset for the next letter
+      canvas.restore();
     }
   }
 
@@ -3347,7 +3396,8 @@ class ZBMatrix {
   final String form;
   final String logic;
   final String? type; // Human Design Type
-  final String? authority; // Inner Authority
+  final String? authority;
+  final String? dnakey; // Inner Authority
 
   ZBMatrix({
     required this.level,
@@ -3359,6 +3409,7 @@ class ZBMatrix {
     required this.logic,
     this.type,
     this.authority,
+    this.dnakey,
   });
 
   static final List<ZBMatrix> base6 = [
@@ -3370,7 +3421,8 @@ class ZBMatrix {
       animal: "pussycat",
       form: "dot (pixel)",
       logic: "Source (Meditation)",
-      authority: "spleen", // Base 6 + 1 logic
+      authority: "spleen",
+      dnakey: "X",
     ),
     ZBMatrix(
       level: 2,
@@ -3382,6 +3434,7 @@ class ZBMatrix {
       logic: "build",
       type: "generator",
       authority: "sacral",
+      dnakey: "T",
     ),
     ZBMatrix(
       level: 3,
@@ -3393,6 +3446,7 @@ class ZBMatrix {
       logic: "use",
       type: "Projector",
       authority: "g(self)",
+      dnakey: "G",
     ),
     ZBMatrix(
       level: 4,
@@ -3404,6 +3458,7 @@ class ZBMatrix {
       logic: "Think",
       type: "Reflector",
       authority: "Ajna (mind)",
+      dnakey: "C",
     ),
     ZBMatrix(
       level: 5,
@@ -3415,6 +3470,7 @@ class ZBMatrix {
       logic: "NEGLECT",
       type: "Manifestor",
       authority: "HEART(EGO)",
+      dnakey: "A",
     ),
     ZBMatrix(
       level: 6,
@@ -3425,6 +3481,7 @@ class ZBMatrix {
       form: "Puddle (sign)",
       logic: "The Beyond",
       authority: "SOLARPLEXUS@EMOTIONS",
+      dnakey: "X",
     ),
   ];
 }

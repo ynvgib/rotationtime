@@ -117,8 +117,8 @@ class _RotateSimpleState extends State<RotateSimple>
       solarstate = 3,
       wallet = 1;
 
-  double screenwidth = 1,
-      screenheight = 1,
+  double screenWidth = 1,
+      screenHeight = 1,
       opacityLevel = 1.0,
       opacityLevelFigures = 1.0;
   Offset _offset = Offset.zero;
@@ -144,8 +144,10 @@ class _RotateSimpleState extends State<RotateSimple>
   }
 
   Widget build(BuildContext context) {
-    screenwidth = MediaQuery.of(context).size.width;
-    screenheight = MediaQuery.of(context).size.height;
+    screenWidth = MediaQuery.of(context).size.width;
+    screenHeight = MediaQuery.of(context).size.height;
+// Use 90% of screen width if it's narrower than 350
+    double responsiveSize = screenWidth < 450 ? screenWidth * 0.9 : 450;
 
     return SelectionArea(
       child: GestureDetector(
@@ -237,7 +239,7 @@ class _RotateSimpleState extends State<RotateSimple>
                     ),
                   ),
                   SizedBox(
-                      width: screenwidth / 0.8,
+                      width: screenWidth / 0.8,
                       child: AutoSizeTextField(
                         minLines: 1,
                         maxLines: 2,
@@ -412,8 +414,8 @@ class _RotateSimpleState extends State<RotateSimple>
                     constraints: BoxConstraints(
                       minHeight: 10,
                       minWidth: 10,
-                      maxHeight: screenheight * 0.2,
-                      maxWidth: screenwidth * 0.5,
+                      maxHeight: screenHeight * 0.2,
+                      maxWidth: screenWidth * 0.5,
                     ),
                     child: CarouselSlider(
                       //items: mixHexagramSlidersNew,
@@ -435,8 +437,8 @@ class _RotateSimpleState extends State<RotateSimple>
                     constraints: BoxConstraints(
                       minHeight: 10,
                       minWidth: 10,
-                      maxHeight: screenheight * 0.2,
-                      maxWidth: screenwidth * 0.5,
+                      maxHeight: screenHeight * 0.2,
+                      maxWidth: screenWidth * 0.5,
                     ),
                     child: CarouselSlider(
                       //items: mixHexagramSlidersNew,
@@ -458,8 +460,8 @@ class _RotateSimpleState extends State<RotateSimple>
                     constraints: BoxConstraints(
                       minHeight: 10,
                       minWidth: 10,
-                      maxHeight: screenheight * 0.2,
-                      maxWidth: screenwidth * 0.5,
+                      maxHeight: screenHeight * 0.2,
+                      maxWidth: screenWidth * 0.5,
                     ),
                     child: CarouselSlider(
                       //items: mixHexagramSlidersNew,
@@ -486,8 +488,8 @@ class _RotateSimpleState extends State<RotateSimple>
                     constraints: BoxConstraints(
                       minHeight: 10,
                       minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
+                      maxHeight: screenHeight / 7.5,
+                      //maxWidth: screenWidth * 0.5,
                     ),
                     child: CarouselSlider(
                       //items: mixHexagramSlidersNew,
@@ -509,8 +511,8 @@ class _RotateSimpleState extends State<RotateSimple>
                     constraints: BoxConstraints(
                       minHeight: 10,
                       minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
+                      maxHeight: screenHeight / 7.5,
+                      //maxWidth: screenWidth * 0.5,
                     ),
                     child: CarouselSlider(
                       //items: mixHexagramSlidersNew,
@@ -532,8 +534,8 @@ class _RotateSimpleState extends State<RotateSimple>
                     constraints: BoxConstraints(
                       minHeight: 10,
                       minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
+                      maxHeight: screenHeight / 7.5,
+                      //maxWidth: screenWidth * 0.5,
                     ),
                     child: CarouselSlider(
                       //items: mixHexagramSlidersNew,
@@ -555,8 +557,8 @@ class _RotateSimpleState extends State<RotateSimple>
                     constraints: BoxConstraints(
                       minHeight: 10,
                       minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
+                      maxHeight: screenHeight / 7.5,
+                      //maxWidth: screenWidth * 0.5,
                     ),
                     child: CarouselSlider(
                       //items: mixHexagramSlidersNew,
@@ -578,8 +580,8 @@ class _RotateSimpleState extends State<RotateSimple>
                     constraints: BoxConstraints(
                       minHeight: 10,
                       minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
+                      maxHeight: screenHeight / 7.5,
+                      //maxWidth: screenWidth * 0.5,
                     ),
                     child: CarouselSlider(
                       //items: mixHexagramSlidersNew,
@@ -601,8 +603,8 @@ class _RotateSimpleState extends State<RotateSimple>
                     constraints: BoxConstraints(
                       minHeight: 10,
                       minWidth: 10,
-                      maxHeight: screenheight / 7.5,
-                      //maxWidth: screenwidth * 0.5,
+                      maxHeight: screenHeight / 7.5,
+                      //maxWidth: screenWidth * 0.5,
                     ),
                     child: CarouselSlider(
                       //items: mixHexagramSlidersNew,
@@ -3899,28 +3901,6 @@ class _RotateSimpleState extends State<RotateSimple>
                     color: Colors.green,
                     thickness: 8,
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              buildListsPopUp(context),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50)),
-                          textStyle: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold)),
-                      child: const Text('ראשים אות',
-                          style: TextStyle(color: Colors.white))),
-
-                  const Divider(
-                    color: Colors.green,
-                    thickness: 8,
-                  ),
-
                   Flex(
                     direction: Axis.horizontal,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -3971,7 +3951,7 @@ class _RotateSimpleState extends State<RotateSimple>
                       Align(
                         alignment: Alignment.center,
                         child: CircleList(
-                          innerRadius: screenwidth / 60,
+                          innerRadius: screenWidth / 60,
                           initialAngle: 3.85,
                           childrenPadding: 0.1,
                           origin: const Offset(0, 0),
@@ -4004,7 +3984,7 @@ class _RotateSimpleState extends State<RotateSimple>
                       Align(
                         alignment: Alignment.center,
                         child: CircleList(
-                          innerRadius: screenwidth / 60 + 80,
+                          innerRadius: screenWidth / 60 + 80,
                           initialAngle: -0.8,
                           childrenPadding: 0.1,
                           origin: const Offset(0, 0),
@@ -4023,7 +4003,7 @@ class _RotateSimpleState extends State<RotateSimple>
                       Align(
                         alignment: Alignment.center,
                         child: CircleList(
-                          innerRadius: screenwidth / 60 + 110,
+                          innerRadius: screenWidth / 60 + 110,
                           initialAngle: -0.8,
                           childrenPadding: 0.1,
                           origin: const Offset(0, 0),
@@ -4044,7 +4024,7 @@ class _RotateSimpleState extends State<RotateSimple>
                         child: //external wheel
                             CircleList(
                           rotateMode: RotateMode.stopRotate,
-                          innerRadius: screenwidth / 60 + 145,
+                          innerRadius: screenWidth / 60 + 145,
                           initialAngle: -0.8,
                           childrenPadding: 0.1,
                           origin: const Offset(0, 0),
@@ -4124,7 +4104,7 @@ class _RotateSimpleState extends State<RotateSimple>
                     ],
                   ),
                   CircleList(
-                    innerRadius: screenwidth / 10,
+                    innerRadius: screenWidth / 10,
                     initialAngle: 3.85,
                     childrenPadding: 0.1,
                     origin: const Offset(0, 0),
@@ -4171,7 +4151,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   Stack(
                     children: [
                       CircleList(
-                        innerRadius: screenwidth / 60,
+                        innerRadius: screenWidth / 60,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4188,7 +4168,7 @@ class _RotateSimpleState extends State<RotateSimple>
                         }),
                       ),
                       CircleList(
-                        innerRadius: screenwidth / 12 + 10,
+                        innerRadius: screenWidth / 12 + 10,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4207,7 +4187,7 @@ class _RotateSimpleState extends State<RotateSimple>
                       //external wheel
                       CircleList(
                         rotateMode: RotateMode.stopRotate,
-                        innerRadius: screenwidth / 7 + 20,
+                        innerRadius: screenWidth / 7 + 20,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4252,7 +4232,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   Stack(
                     children: [
                       CircleList(
-                        innerRadius: screenwidth / 60,
+                        innerRadius: screenWidth / 60,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4269,7 +4249,7 @@ class _RotateSimpleState extends State<RotateSimple>
                         }),
                       ),
                       CircleList(
-                        innerRadius: screenwidth / 12 + 10,
+                        innerRadius: screenWidth / 12 + 10,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4288,7 +4268,7 @@ class _RotateSimpleState extends State<RotateSimple>
                       //external wheel
                       CircleList(
                         rotateMode: RotateMode.stopRotate,
-                        innerRadius: screenwidth / 7 + 20,
+                        innerRadius: screenWidth / 7 + 20,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4333,7 +4313,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   Stack(
                     children: [
                       CircleList(
-                        innerRadius: screenwidth / 60,
+                        innerRadius: screenWidth / 60,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4350,7 +4330,7 @@ class _RotateSimpleState extends State<RotateSimple>
                         }),
                       ),
                       CircleList(
-                        innerRadius: screenwidth / 12 + 10,
+                        innerRadius: screenWidth / 12 + 10,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4369,7 +4349,7 @@ class _RotateSimpleState extends State<RotateSimple>
                       //external wheel
                       CircleList(
                         rotateMode: RotateMode.stopRotate,
-                        innerRadius: screenwidth / 7 + 20,
+                        innerRadius: screenWidth / 7 + 20,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4414,7 +4394,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   Stack(
                     children: [
                       CircleList(
-                        innerRadius: screenwidth / 60,
+                        innerRadius: screenWidth / 60,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4431,7 +4411,7 @@ class _RotateSimpleState extends State<RotateSimple>
                         }),
                       ),
                       CircleList(
-                        innerRadius: screenwidth / 12 + 10,
+                        innerRadius: screenWidth / 12 + 10,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4450,7 +4430,7 @@ class _RotateSimpleState extends State<RotateSimple>
                       //external wheel
                       CircleList(
                         rotateMode: RotateMode.stopRotate,
-                        innerRadius: screenwidth / 7 + 20,
+                        innerRadius: screenWidth / 7 + 20,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4501,10 +4481,10 @@ class _RotateSimpleState extends State<RotateSimple>
                   Stack(
                     children: [
                       Positioned(
-                        top: screenheight / 4,
-                        bottom: screenheight / 4,
-                        left: screenwidth / 20,
-                        right: screenwidth / 20,
+                        top: screenHeight / 4,
+                        bottom: screenHeight / 4,
+                        left: screenWidth / 20,
+                        right: screenWidth / 20,
                         child: Center(
                           child: TextField(
                             decoration: const InputDecoration(
@@ -4526,7 +4506,7 @@ class _RotateSimpleState extends State<RotateSimple>
                         ),
                       ),
                       CircleList(
-                        innerRadius: screenwidth / 60 + 40,
+                        innerRadius: screenWidth / 60 + 40,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4554,7 +4534,7 @@ class _RotateSimpleState extends State<RotateSimple>
                       ),
                       CircleList(
                         rotateMode: RotateMode.stopRotate,
-                        innerRadius: screenwidth / 12 + 60,
+                        innerRadius: screenWidth / 12 + 60,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4579,7 +4559,7 @@ class _RotateSimpleState extends State<RotateSimple>
                         }),
                       ),
                       CircleList(
-                        innerRadius: screenwidth / 7 + 80,
+                        innerRadius: screenWidth / 7 + 80,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4692,7 +4672,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   Stack(
                     children: [
                       CircleList(
-                        innerRadius: screenwidth / 16,
+                        innerRadius: screenWidth / 16,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4720,7 +4700,7 @@ class _RotateSimpleState extends State<RotateSimple>
                       ),
                       CircleList(
                         rotateMode: RotateMode.stopRotate,
-                        innerRadius: screenwidth / 5.5,
+                        innerRadius: screenWidth / 5.5,
                         initialAngle: -0.8,
                         childrenPadding: 0.1,
                         origin: const Offset(0, 0),
@@ -4761,8 +4741,8 @@ class _RotateSimpleState extends State<RotateSimple>
                     direction: Axis.horizontal,
                     children: [
                       Container(
-                        height: screenheight / 5,
-                        width: screenwidth / 3.2,
+                        height: screenHeight / 5,
+                        width: screenWidth / 3.2,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/camog/zbgreencamel.png'),
@@ -4772,8 +4752,8 @@ class _RotateSimpleState extends State<RotateSimple>
                         ),
                       ),
                       Container(
-                        height: screenheight / 5,
-                        width: screenwidth / 3.2,
+                        height: screenHeight / 5,
+                        width: screenWidth / 3.2,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/camog/zbgreencamel.png'),
@@ -4783,8 +4763,8 @@ class _RotateSimpleState extends State<RotateSimple>
                         ),
                       ),
                       Container(
-                        height: screenheight / 5,
-                        width: screenwidth / 3.2,
+                        height: screenHeight / 5,
+                        width: screenWidth / 3.2,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/camog/zbgreencamel.png'),
@@ -4844,9 +4824,9 @@ class _RotateSimpleState extends State<RotateSimple>
                   const SizedBox(height: 10),
                   // rt evolution
                   Container(
-                    //height: screenheight * 0.9,
+                    //height: screenHeight * 0.9,
                     height: 400,
-                    //width: screenwidth,
+                    //width: screenWidth,
                     width: 400,
                     decoration: BoxDecoration(
                         //shape: BoxShape.circle,
@@ -4894,7 +4874,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   ),
                   const SizedBox(height: 40),
                   SizedBox(
-                    height: screenheight / 2,
+                    height: screenHeight / 2,
                     width: 350,
                     child: GridView.builder(
                       gridDelegate:
@@ -5009,11 +4989,10 @@ class _RotateSimpleState extends State<RotateSimple>
                     },
                   ),
                   const SizedBox(height: 50),
-                  SpinWheel(
-                    key: _wheelKey,
-                    size: 350,
-                  ),
-
+                  SizedBox(
+                      width: responsiveSize,
+                      height: responsiveSize,
+                      child: SpinWheel(key: _wheelKey, size: responsiveSize)),
                   // const ColorWheel(size: 350),
                   const SizedBox(height: 50),
                   const Center(

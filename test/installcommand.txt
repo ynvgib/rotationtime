@@ -10,7 +10,6 @@ flutter build linux
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 flutter_distributor release --name=dev --jobs=release-dev-linux-deb
-/home/ken/Documents/vs/projects/rotationtime/dist/
 
 installation location:
 apk 
