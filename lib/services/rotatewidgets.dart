@@ -3983,3 +3983,38 @@ Widget zbGateLine(
     ),
   );
 }
+
+// Inside rotatehelpers.dart
+Widget buildResetDropdown({
+  required int currentValue,
+  required ValueChanged<int?> onChanged,
+  required List<int> items, // Added missing items parameter
+}) {
+  return DropdownButtonHideUnderline(
+    // Removes the line for 'Grace'
+    child: DropdownButton<int>(
+      value: currentValue,
+      // L4: Simple; - The Icon becomes the only visible 'Degree'
+      icon: const Icon(Icons.timer, color: Colors.grey, size: 24),
+      // This hides the '30 sec' text when the menu is closed
+      selectedItemBuilder: (BuildContext context) {
+        return items.map((int value) {
+          return const SizedBox.shrink(); // silence. (No text shown)
+        }).toList();
+      },
+      onChanged: onChanged,
+      items: items.map((int value) {
+        return DropdownMenuItem<int>(
+          value: value,
+          child: Text(
+            textAlign: TextAlign.center,
+            value == 0 ? "ביטול איטחתול" : "ששש... $value",
+            style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold), // Visible in menu
+          ),
+        );
+      }).toList(),
+    ),
+  );
+}

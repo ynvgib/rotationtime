@@ -54,11 +54,12 @@ gtk_window_set_icon_from_file(GTK_WINDOW(window), iconPath.c_str(), NULL);
   if (use_header_bar) {
     GtkHeaderBar* header_bar = GTK_HEADER_BAR(gtk_header_bar_new());
     gtk_widget_show(GTK_WIDGET(header_bar));
-    gtk_header_bar_set_title(header_bar, "finallyicanlearn");
+    gtk_header_bar_set_title(header_bar, "zWCb");
     gtk_header_bar_set_show_close_button(header_bar, TRUE);
     gtk_window_set_titlebar(window, GTK_WIDGET(header_bar));
   } else {
-    gtk_window_set_title(window, "finallyicanlearn");
+    // gtk_window_set_title(window, "finallyicanlearn");
+    gtk_window_set_title(window, "zmansi WHITE CAMEL bob");
   }
 
   gtk_window_set_default_size(window, 1280, 720);
