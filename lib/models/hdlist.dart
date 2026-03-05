@@ -1452,6 +1452,20 @@ final List<String> hdtypesList_org = [
       'גנטורית (ללא משימה)',
       'פרוקרינטורית',
       'מראה תור',
+    ],
+    hddefinition = [
+      'נטול',
+      'יחיד',
+      'פיצול',
+      'פיצול משולש',
+      'פיצול מרובע',
+    ],
+    hddefinitionEng = [
+      'None',
+      'Single Definition',
+      'Split Definition',
+      'Triple Split',
+      'Quad Split',
     ];
 
 final List<String> hdauthority_org = [

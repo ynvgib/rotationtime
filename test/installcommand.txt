@@ -9,6 +9,7 @@ flutter build linux
 
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
+linux build:
 flutter_distributor release --name=dev --jobs=release-dev-linux-deb
 
 installation location:

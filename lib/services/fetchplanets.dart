@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:finallyicanlearn/logic/hdsubstructure.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
-import 'package:finallyicanlearn/models/lists.dart';
 
 import 'package:sweph/sweph.dart';
 

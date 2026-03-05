@@ -103,6 +103,7 @@ class _RotateComplexState extends State<RotateComplex>
       _controllerStrategy = TextEditingController(),
       _controllerSentence = TextEditingController(),
       _controllerFinalLine = TextEditingController(),
+      _controllerDefinition = TextEditingController(),
       //_controllerTime = TextEditingController(),
       _controllerSetTime = TextEditingController(),
       _controllerPersonTime = TextEditingController(),
@@ -397,6 +398,7 @@ class _RotateComplexState extends State<RotateComplex>
     _controllerAuthority.dispose();
     _controllerStrategy.dispose();
     _controllerSentence.dispose();
+    _controllerDefinition.dispose();
     _controllerFinalLine.dispose();
     //_controllerTime.dispose();
     _controllerSetTime.dispose();
@@ -947,15 +949,8 @@ class _RotateComplexState extends State<RotateComplex>
                     _now = DateTime.now();
                     _personTime = _now;
 
-                    //_planetsfullpersonList =
-                    //_planetstransitList =
                     _planetsfulltransitList =
                         await PlanetsServices.getCurrentData(_now);
-
-                    //_designTime = await AstrologyServices.getDesignTime(_now);
-                    //emulate design time to now time to prevent blank
-                    //_planetsfulldesignList =
-                    //   await PlanetsServices.getCurrentData(_now);
 
                     _chironhex = _planetsfulltransitList.last;
                     _chirondesignhex = _chironhex;
@@ -1098,7 +1093,7 @@ class _RotateComplexState extends State<RotateComplex>
                     _planetsfulldesignList =
                         await PlanetsServices.getCurrentData(_designTime);
 
-                    print('in waiting mode');
+                    // print('in waiting mode');
 
                     _chironhex = _planetsfullpersonList.last;
                     _chirondesignhex = _planetsfulldesignList.last;
@@ -8523,7 +8518,7 @@ class _RotateComplexState extends State<RotateComplex>
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  color: Colors.blue)),
+                  color: Colors.white)),
           TextField(
               textAlign: TextAlign.center,
               readOnly: true,
@@ -8534,7 +8529,7 @@ class _RotateComplexState extends State<RotateComplex>
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  color: Colors.green)),
+                  color: Colors.white)),
           TextField(
               textAlign: TextAlign.center,
               readOnly: true,
@@ -8545,7 +8540,19 @@ class _RotateComplexState extends State<RotateComplex>
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  color: Colors.yellow)),
+                  color: Colors.white)),
+          TextField(
+              textAlign: TextAlign.center,
+              readOnly: true,
+              minLines: 1,
+              maxLines: 2,
+              decoration:
+                  const InputDecoration.collapsed(hintText: 'Definition'),
+              controller: _controllerDefinition,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  color: Colors.white)),
           TextField(
               textAlign: TextAlign.center,
               readOnly: true,
@@ -8557,7 +8564,7 @@ class _RotateComplexState extends State<RotateComplex>
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
-                  color: Colors.red)),
+                  color: Colors.white)),
           Flex(
             direction: Axis.vertical,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -8876,6 +8883,7 @@ class _RotateComplexState extends State<RotateComplex>
     _controllerFinalLine.text = 'XIO I don\'t know';
 
     _controllerStrategy.text = hdbasicdata.strategy!;
+    // _controllerStrategy.text = "TEST: ${hdbasicdata.definition}";
     _controllerAuthority.text = hdbasicdata.authority!;
     _controllerType.text = hdbasicdata.type!;
     _controllerSentence.text = hdbasicdata.sentence!;
@@ -8884,6 +8892,9 @@ class _RotateComplexState extends State<RotateComplex>
     _controllercoin.jumpToPage(hdbasicdata.typeid!);
     _controllersubcoin.jumpToPage(hdbasicdata.authid!);
     //_currenttop = hexNamesList.indexOf(hdbasicdata.coinname!);
+    _controllerDefinition.text = hdbasicdata.definition!;
+    // print("Definition Result: ${hdfinaldata.definition}");
+    // debugPrint("Definition: ${hdbasicdata.definition}");
   }
 
   void _setgatesState() {

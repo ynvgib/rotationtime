@@ -1,6 +1,7 @@
 import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
+import 'package:flutter/foundation.dart';
 
 class HDServices {
   static List<HDChannel> getHDChannels(List<Hexagram> combinedPlanetsList) {
@@ -414,6 +415,21 @@ class HDServices {
     solarcenter = centers[7];
     rootcenter = centers[8];
 
+    int islandCount = _calculateIslandCount(hdchannels);
+
+    String calculatedDefinition = "None";
+    if (islandCount >= 0 && islandCount < hddefinition.length) {
+      calculatedDefinition = hddefinition[islandCount];
+    }
+
+    if (islandCount >= 0 && islandCount < hddefinition.length) {
+      // CORRECT: Returns one string (e.g., "Triple Split")
+      hddata.definition = hddefinition[islandCount];
+    } else {
+      // CORRECT: Returns the first item ("None") instead of the whole list
+      hddata.definition = hddefinition[0];
+    }
+
     for (int i = 0; hdchannels.length > i; i++) {
       channelid = hdchannels[i].id!;
       channelsList.add(channelid);
@@ -655,9 +671,41 @@ class HDServices {
     hddata.coinname = coinname;
     hddata.typeid = typeid;
     hddata.authid = authid;
+    hddata.definition = calculatedDefinition;
+    // islandCount: islandCount,
 
     //return hdbasicdata;
     return hddata;
+  }
+
+  // Private helper to keep the 'Breath' clean
+  static int _calculateIslandCount(List<HDChannel> channels) {
+    if (channels.isEmpty) return 0;
+
+    Map<String, List<String>> graph = {};
+    Set<String> definedCenters = {};
+
+    for (var ch in channels) {
+      String c1 = ch.firstcenter ?? '';
+      String c2 = ch.secondcenter ?? '';
+
+      if (c1.isNotEmpty && c2.isNotEmpty) {
+        definedCenters.add(c1);
+        definedCenters.add(c2);
+        graph.putIfAbsent(c1, () => []).add(c2);
+        graph.putIfAbsent(c2, () => []).add(c1);
+      }
+    }
+
+    int islandCount = 0;
+    Set<String> visited = {};
+    for (var center in definedCenters) {
+      if (!visited.contains(center)) {
+        islandCount++;
+        _dfs<String>(center, graph, visited); // Specify <String>
+      }
+    }
+    return islandCount;
   }
 
   static HDChannel mapHDChannel(String channelid) {
@@ -680,5 +728,65 @@ class HDServices {
     hdchannel.sentence = hdchannelsentenceList[hdchannelsentenceidx + 1];
 
     return hdchannel;
+  }
+
+  static String getDefinition(List<List<int>> activeChannels) {
+    if (activeChannels.isEmpty) return hddefinition[0];
+
+    Map<int, List<int>> graph = {};
+    Set<int> definedCenters = {};
+
+    for (var channel in activeChannels) {
+      int c1 = channel[0];
+      int c2 = channel[1];
+      definedCenters.add(c1);
+      definedCenters.add(c2);
+      graph.putIfAbsent(c1, () => []).add(c2);
+      graph.putIfAbsent(c2, () => []).add(c1);
+    }
+
+    int islandCount = 0;
+    Set<int> visited = {};
+
+    for (var center in definedCenters) {
+      if (!visited.contains(center)) {
+        islandCount++;
+        _dfs<int>(center, graph, visited); // Specify <int>
+      }
+    }
+
+    if (islandCount >= 0 && islandCount < hddefinition.length) {
+      return hddefinition[islandCount];
+    }
+    return hddefinition[0];
+  }
+
+  static void _dfsInt(int node, Map<int, List<int>> graph, Set<int> visited) {
+    visited.add(node);
+    for (var neighbor in graph[node] ?? []) {
+      if (!visited.contains(neighbor)) {
+        _dfsInt(neighbor, graph, visited);
+      }
+    }
+  }
+
+  static void _dfs<T>(T node, Map<T, List<T>> graph, Set<T> visited) {
+    visited.add(node);
+    final neighbors = graph[node];
+    if (neighbors != null) {
+      for (var neighbor in neighbors) {
+        if (!visited.contains(neighbor)) {
+          _dfs<T>(neighbor, graph, visited);
+        }
+      }
+    }
+  }
+
+  String getDefinitionResult(int islandCount) {
+    // Safety check: The 'Breath' must stay within the 'Body' (0-4)
+    if (islandCount < 0 || islandCount >= hddefinition.length) {
+      return hddefinition[0]; // Returns "None"
+    }
+    return hddefinition[islandCount];
   }
 }

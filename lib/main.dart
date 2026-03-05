@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:circle_list/circle_list.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
@@ -30,11 +29,56 @@ import 'dart:async';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const RotateMain());
+  runApp(RotateMain());
 }
 
-class RotateMain extends StatelessWidget {
-  const RotateMain({super.key});
+class RotateMain extends StatefulWidget {
+  RotateMain() : super(key: mainStateKey);
+
+  @override
+  State<RotateMain> createState() => _RotateMainState(); // Semicolon here is OK
+}
+
+class _RotateMainState extends State<RotateMain> {
+  int _secondsRemaining = 0;
+  bool _timerActive = true;
+  Timer? _visualCountdown;
+
+  @override
+  void initState() {
+    super.initState();
+    _secondsRemaining = userDefinedSeconds;
+    _startVisualTimer();
+  }
+
+  void _startVisualTimer() {
+    _visualCountdown?.cancel();
+    if (userDefinedSeconds == 0) {
+      setState(() {
+        _secondsRemaining = 0;
+        _timerActive = false;
+      });
+      return;
+    }
+
+    setState(() {
+      _secondsRemaining = userDefinedSeconds;
+      _timerActive = true;
+    });
+
+    _visualCountdown = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (userDefinedSeconds == 0) {
+        timer.cancel();
+        return;
+      }
+      if (_timerActive && _secondsRemaining > 0) {
+        setState(() => _secondsRemaining--);
+      } else if (_secondsRemaining <= 0) {
+        hibernateEngine();
+        setState(() => _secondsRemaining = userDefinedSeconds);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +93,70 @@ class RotateMain extends StatelessWidget {
           return KeyEventResult.ignored;
         },
         child: MaterialApp(
+          navigatorKey: navigatorKey,
+          navigatorObservers: [
+            // L4: Simple; - The Initiation of the callback
+            MyRouteObserver(onNavigation: () {
+              // 1. (Time is Neglecting Self expression) - Waiting for the frame to finish
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (mounted) {
+                  setState(() {
+                    // L6: WHITE@ - Pulling the Global Stability (640)
+                    _secondsRemaining = userDefinedSeconds;
+                  });
+                }
+              });
+            }),
+          ],
+          builder: (context, child) {
+            return Scaffold(
+              // Set global background to transparent to allow image to breathe
+              backgroundColor: Colors.transparent,
+              body: NotificationListener<ScrollNotification>(
+                onNotification: (notification) {
+                  if (mounted)
+                    setState(() => _secondsRemaining = userDefinedSeconds);
+                  return false;
+                },
+                child: Listener(
+                  behavior: HitTestBehavior.translucent,
+                  onPointerHover: (_) {
+                    if (mounted) {
+                      setState(() {
+                        _secondsRemaining = userDefinedSeconds; // Reset to 640
+                      });
+                    }
+                  },
+                  onPointerDown: (_) {
+                    if (mounted) {
+                      setState(() {
+                        _secondsRemaining = userDefinedSeconds; // Reset to 640
+                      });
+                    }
+                  },
+                  child: Stack(children: [
+                    if (child != null) child,
+                    if (userDefinedSeconds > 0)
+                      SizedBox(
+                        width: 50,
+                        child: LinearProgressIndicator(
+                          // L4: Simple; - THE FIX: If it's 0, we show 0 (empty).
+                          // This prevents the 'Half-Size' (0.5) glitch.
+                          value: (userDefinedSeconds == 0)
+                              ? 0
+                              : (_secondsRemaining / userDefinedSeconds),
+                          backgroundColor: Colors.white10,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.grey.withValues(alpha: 0.0),
+                          ),
+                          minHeight: 12,
+                        ),
+                      ),
+                  ]),
+                ),
+              ),
+            );
+          },
           localizationsDelegates: const [GlobalMaterialLocalizations.delegate],
           supportedLocales: const [Locale('en'), Locale('he')],
           shortcuts: {
@@ -86,41 +194,7 @@ class RotateHome extends StatefulWidget {
   State<RotateHome> createState() => _RotateHomeState();
 }
 
-class _RotateHomeState extends State<RotateHome> with WidgetsBindingObserver {
-// ai zb reflected generation
-  Timer? _hibernateTimer;
-  bool _isResetEnabled = true; // L2: silence. (Initial State)
-  int _userDefinedSeconds = 64; // L4: Simple; (Default Rotation)
-
-  @override
-  void initState() {
-    super.initState();
-    // zmansi WHITE CAMEL starts watching
-    WidgetsBinding.instance.addObserver(this);
-  }
-
-  @override
-  void dispose() {
-    // Dispose of CarouselSliderControllers
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (!mounted) return;
-
-    if (state == AppLifecycleState.resumed) {
-      // 1. (Time is Neglecting Self expression) - Cancel the death!
-      forceResetTimer?.cancel();
-
-      // L4: Simple; - Close the dialog automatically
-      if (Navigator.canPop(context)) {
-        Navigator.of(context).pop();
-      }
-    }
-  }
-
+class _RotateHomeState extends State<RotateHome> {
   final String _title = 'כותרת',
       beidontknowsite = 'rotation-time.web.app',
       githubrotatesite = 'www.github.com/ynvgib/rotationtime',
@@ -134,14 +208,9 @@ class _RotateHomeState extends State<RotateHome> with WidgetsBindingObserver {
   // Add throttle variables
 
   DateTime? _lastOffsetUpdate;
-  Duration _throttleDuration = Duration(milliseconds: 16); // ~60 FPS
+  final Duration _throttleDuration = Duration(milliseconds: 16); // ~60 FPS
 
   double screenwidth = 1, screenheight = 1;
-  final CarouselSliderController _controllertop = CarouselSliderController(),
-      _controllermid = CarouselSliderController(),
-      _controllerbot = CarouselSliderController();
-
-  int _currenttop = 0, _currentmid = 0, _currentbot = 0;
 
   String mainTitle = "זמן סיבוב", subTitle = "זמנסי גמלבן בוב";
   bool isMainTitle = true, isSubTitle = true, isFullScreen = true;
@@ -241,18 +310,21 @@ class _RotateHomeState extends State<RotateHome> with WidgetsBindingObserver {
                         direction: Axis.horizontal,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // Inside your Scaffold / AppBar / Body:
-
                           SizedBox(
                             height: 30,
                             width: 120,
                             child: buildResetDropdown(
-                              currentValue: _userDefinedSeconds,
+                              currentValue: userDefinedSeconds,
                               items: [0, 12, 30, 64, 640],
                               onChanged: (newValue) {
-                                setState(() {
-                                  _userDefinedSeconds = newValue!;
-                                });
+                                if (newValue != null) {
+                                  setState(() {
+                                    userDefinedSeconds = newValue;
+                                  });
+                                  // L3: Breath, - Re-initiating the ONLY timer in main.dart
+                                  (mainStateKey.currentState as dynamic)
+                                      ?._startVisualTimer();
+                                }
                               },
                             ),
                           ),
