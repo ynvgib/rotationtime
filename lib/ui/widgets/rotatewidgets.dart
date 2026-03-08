@@ -4037,7 +4037,12 @@ class SearchResultTile extends StatelessWidget {
           overflow: TextOverflow.ellipsis, // 💡 Adds "..." if it's too long
           softWrap: false, // 💡 Prevents it from trying to wrap
         ),
-        subtitle: Text(result.snippet),
+        subtitle: Text(
+          result.snippet
+              .replaceAll('\n', ' '), // Ensure no line breaks in snippet
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
         onTap: () {
           Navigator.push(
             context,
