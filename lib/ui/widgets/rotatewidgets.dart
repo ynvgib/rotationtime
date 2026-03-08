@@ -2,10 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
+import 'package:finallyicanlearn/models/rotatehelpers.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'dart:math' as math;
+
+import 'package:flutter/services.dart';
 
 Widget buildListsPopUp(BuildContext context) {
   List<String> titles4 = [
@@ -733,11 +736,17 @@ Widget buildBookPopUp(BuildContext context) {
           direction: Axis.vertical,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: 120,
               width: 120,
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  // We will define this Search Delegate next
+                  showSearch(
+                    context: context,
+                    delegate: TextFileSearchDelegate(),
+                  );
+                },
                 icon: Image.asset(
                   'assets/camog/dogatapp.gif',
                 ),
@@ -4008,4 +4017,88 @@ Widget buildResetDropdown({
       }).toList(),
     ),
   );
+}
+
+class SearchResultTile extends StatelessWidget {
+  final SearchResult result;
+
+  const SearchResultTile({super.key, required this.result});
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      // 💡 This flips the UI for Hebrew files
+      textDirection: result.isHebrew ? TextDirection.rtl : TextDirection.ltr,
+      child: ListTile(
+        title: Text(
+          result.fileTitle,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+          maxLines: 1, // 💡 Forces it to stay on one line
+          overflow: TextOverflow.ellipsis, // 💡 Adds "..." if it's too long
+          softWrap: false, // 💡 Prevents it from trying to wrap
+        ),
+        subtitle: Text(result.snippet),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FileViewScreen(
+                assetPath:
+                    'assets/txt/${result.isHebrew ? 'heb' : 'eng'}/${result.fileName}',
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class FileViewScreen extends StatelessWidget {
+  final String assetPath;
+
+  const FileViewScreen({super.key, required this.assetPath});
+
+  @override
+  Widget build(BuildContext context) {
+    // 💡 Detect if this is a Hebrew file based on the folder path
+    final bool isHebrew = assetPath.contains('/heb/');
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(assetPath.split('/').last),
+      ),
+      body: FutureBuilder<String>(
+        future: rootBundle.loadString(assetPath),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          }
+
+          return SingleChildScrollView(
+            padding: const EdgeInsets.all(20.0),
+            child: Directionality(
+              // 💡 This forces the text to start from the Right for Hebrew
+              textDirection: isHebrew ? TextDirection.rtl : TextDirection.ltr,
+              child: SizedBox(
+                width: double
+                    .infinity, // 💡 Important: Ensures the RTL alignment has room to move
+                child: SelectableText(
+                  snapshot.data ?? '',
+                  style: const TextStyle(
+                    fontSize: 19,
+                    height: 1.5, // Better line spacing for reading poems
+                    fontFamily: 'Roboto',
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
 }

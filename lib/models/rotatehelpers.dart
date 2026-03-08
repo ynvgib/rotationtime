@@ -3,11 +3,13 @@ import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:finallyicanlearn/services/fetchplanets.dart';
+import 'package:finallyicanlearn/ui/widgets/rotatewidgets.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:finallyicanlearn/main.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter/services.dart';
 
 bool _isFullScreen = false;
 int userDefinedSeconds = 640;
@@ -341,4 +343,161 @@ class RotateHelpers {
       isJustNow: isNow,
     );
   }
+}
+
+// --- SEARCH ENGINE LOGIC ---
+// --- DATA HOLDER ---
+// import 'rtlists.dart'; // Ensure your script-generated lists are accessible
+
+class TextFileSearchDelegate extends SearchDelegate {
+  // 1. Point these to your script-generated lists in rtlists.dart
+  final List<String> hebtxtFiles = TxtFilesList.hebFiles;
+  final List<String> engtxtFiles = TxtFilesList.engFiles;
+
+  // 💡 ADD THESE TWO LINES HERE:
+  Future<List<SearchResult>>? _lastSearch;
+  String? _lastQuery;
+
+  @override
+  String get searchFieldLabel => 'חיפוש... / Search...';
+
+  // --- REQUIRED OVERRIDES ---
+
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: const Icon(Icons.clear),
+        onPressed: () => query = '', // Clears the search bar
+      ),
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.arrow_back),
+      onPressed: () => close(context, null), // Closes the search
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) => _searchInFiles();
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // 💡 REMOVED: The manual if (query.isEmpty) block that was showing filenames.
+    // 🎯 NOW: Both states use the same engine that handles titles and RTL.
+    return _searchInFiles();
+  }
+
+  // 💡 Add this variable to your TextFileSearchDelegate class to cache the initial list
+  Future<List<SearchResult>>? _browseFuture;
+
+  Widget _searchInFiles() {
+    // 1. Define which "Future" to use
+    // If the query is empty, we use (or create) the cached _browseFuture.
+    // If the user is typing, we create a fresh search Future.
+    final Future<List<SearchResult>> activeFuture = query.isEmpty
+        ? (_browseFuture ??= _performSearch(""))
+        : _performSearch(query);
+
+    return FutureBuilder<List<SearchResult>>(
+      future: activeFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting &&
+            !snapshot.hasData) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        final results = snapshot.data ?? [];
+
+        return ListView.builder(
+          itemCount: results.length,
+          itemBuilder: (context, index) {
+            final result = results[index];
+            // This uses your custom tile with the 'fileTitle' (currently "כותרת בדיקה 123")
+            return SearchResultTile(result: result);
+          },
+        );
+      },
+    );
+  }
+
+  Future<List<SearchResult>> _performSearch(String searchTerm) async {
+    List<SearchResult> hits = [];
+    final bool isInitialBrowse = searchTerm.isEmpty;
+
+    final allFiles = [
+      ...hebtxtFiles.map((f) => 'assets/txt/heb/$f'),
+      ...engtxtFiles.map((f) => 'assets/txt/eng/$f')
+    ];
+
+    for (String path in allFiles) {
+      try {
+        // 1. Load the actual file content
+        String content = await rootBundle.loadString(path);
+
+        // 2. Use your getTitle logic (First non-empty line)
+        String realTitle = content
+            .split('\n')
+            .firstWhere((line) => line.trim().isNotEmpty, orElse: () => "")
+            .trim();
+
+        // 3. Fallback: If the file is somehow empty, use the filename
+        if (realTitle.isEmpty) {
+          realTitle = path.split('/').last;
+        }
+
+        // 4. Filter Logic
+        if (isInitialBrowse ||
+            content.toLowerCase().contains(searchTerm.toLowerCase())) {
+          bool isHeb = path.contains('/heb/');
+
+          hits.add(SearchResult(
+            fileName: path.split('/').last,
+            fileTitle: realTitle, // 🎯 Dynamic Title achieved!
+            snippet: isInitialBrowse ? "" : _getSnippet(content, searchTerm),
+            query: searchTerm,
+            isHebrew: isHeb,
+          ));
+        }
+      } catch (e) {
+        debugPrint("Error reading $path: $e");
+      }
+    }
+    return hits;
+  }
+}
+
+String getTitle(String content) {
+  // 💡 Finds the first line that actually contains text
+  return content
+      .split('\n')
+      .firstWhere((l) => l.trim().isNotEmpty, orElse: () => "")
+      .trim();
+}
+
+String _getSnippet(String content, String query) {
+  if (query.isEmpty) return "";
+
+  final String lowercaseContent = content.toLowerCase();
+  final String lowercaseQuery = query.toLowerCase();
+  final int matchIndex = lowercaseContent.indexOf(lowercaseQuery);
+
+  if (matchIndex == -1) return "";
+
+  // 💡 Determine how much text to show around the match
+  const int contextWindow = 30;
+  final int start = (matchIndex - contextWindow).clamp(0, content.length);
+  final int end =
+      (matchIndex + query.length + contextWindow).clamp(0, content.length);
+
+  String snippet = content.substring(start, end).replaceAll('\n', ' ');
+
+  // Add ellipses if we've cut the text
+  if (start > 0) snippet = "...$snippet";
+  if (end < content.length) snippet = "$snippet...";
+
+  return snippet;
 }

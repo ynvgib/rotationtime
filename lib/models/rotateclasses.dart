@@ -576,3 +576,19 @@ class HDCenter {
 
   HDCenter({this.id, this.name, this.adaptname, this.state});
 }
+
+class SearchResult {
+  final String fileName;
+  final String fileTitle; // 💡 The first line of the file
+  final String snippet;
+  final String query;
+  final bool isHebrew;
+
+  SearchResult({
+    required this.fileName,
+    required this.fileTitle,
+    required this.snippet,
+    required this.query,
+    required this.isHebrew,
+  });
+}

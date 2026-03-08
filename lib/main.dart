@@ -117,8 +117,13 @@ class _RotateMainState extends State<RotateMain> {
               backgroundColor: Colors.transparent,
               body: NotificationListener<ScrollNotification>(
                 onNotification: (notification) {
-                  if (mounted)
-                    setState(() => _secondsRemaining = userDefinedSeconds);
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    if (mounted) {
+                      setState(() {
+                        _secondsRemaining = userDefinedSeconds;
+                      });
+                    }
+                  });
                   return false;
                 },
                 child: Listener(
