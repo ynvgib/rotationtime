@@ -16,7 +16,7 @@ import 'package:finallyicanlearn/rotations/rotatesimple.dart';
 import 'package:finallyicanlearn/rotations/rotateidk.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
 import 'package:finallyicanlearn/rotations/rotatebreath.dart';
-import 'package:finallyicanlearn/services/rotatewidgets.dart';
+import 'package:finallyicanlearn/ui/widgets/rotatewidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -28,6 +28,9 @@ import 'dart:async';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Call once to generate the new map in the Debug Console, then comment out.
+  // performOneTimeConsolidation();
 
   runApp(RotateMain());
 }
@@ -356,28 +359,9 @@ class _RotateHomeState extends State<RotateHome> {
                                           ))),
                                 ),
                                 onDoubleTap: () {
-                                  //var tempset = [];
-                                  //var y = 0;
-                                  //var g = 0;
-                                  //for (var x = 0; x < 384; x = x + 6) {
-                                  // print('//${(x / 6).floor() + 1}');
-                                  // g = 0;
-                                  // y = ((x + 6) / 6).toInt();
-                                  // for (var i = 6; i > 0; i--) {
-                                  // g++;
-                                  //print('$y.$g: \'${hdlinesexalted[i + x]}\',');
-                                  // print(
-                                  // '\'${hdlinesdetriment[i + x]}\', \/\/$y.$g ');
-
-                                  // print(i);
-                                  //i = i - 1;
-                                }
-                                //x = x + 6;
-                                // }
-
-                                // setState(() {});
-                                // },
-                                ),
+                                  // renameFiles();
+                                  performFinalBilingualStitch();
+                                }),
                           ),
                           const SizedBox(width: 20),
                           InkWell(

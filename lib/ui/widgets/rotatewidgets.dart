@@ -14,7 +14,6 @@ Widget buildListsPopUp(BuildContext context) {
     'ZB',
   ];
   return AlertDialog(
-    //title: const Text('36 Transactions'),
     title: const Text('LIST'),
     content: SingleChildScrollView(
       child: SizedBox(
@@ -102,7 +101,6 @@ Widget build4PopUp(BuildContext context) {
     //'ווף ווף גוף גוף'
   ];
   return AlertDialog(
-    //title: const Text('36 Transactions'),
     title: const Text('4'),
     content: SingleChildScrollView(
       child: SizedBox(
@@ -329,202 +327,6 @@ Widget buildDogPopUp(BuildContext context) {
   );
 }
 
-Widget build36PopUp(BuildContext context) {
-  return AlertDialog(
-    //title: const Text('36 Transactions'),
-    title: const Text('36'),
-    content: SingleChildScrollView(
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.6,
-        child: Flex(
-          direction: Axis.vertical,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            //heb
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildComplexTS(context, hdchannelcomplexList_heb),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                child: const Text('מורכב',
-                    style: TextStyle(color: Colors.white, fontSize: 25))),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildBreathTS(context, hdchannelbreathList_heb),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
-                child: const Text('נשימה',
-                    style: TextStyle(color: Colors.grey, fontSize: 25))),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildSilenceTS(context, hdchannelsilenceList_heb),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                child: const Text('שתיקה',
-                    style: TextStyle(color: Colors.black, fontSize: 25))),
-            const Divider(color: Colors.black, thickness: 5),
-            //eng
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildComplexTS(context, hdchannelcomplexList),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                child: const Text('Complex',
-                    style: TextStyle(color: Colors.white, fontSize: 25))),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildBreathTS(context, hdchannelbreathList),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
-                child: const Text('Breath',
-                    style: TextStyle(color: Colors.grey, fontSize: 25))),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildSilenceTS(context, hdchannelsilenceList),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                child: const Text('silence',
-                    style: TextStyle(color: Colors.black, fontSize: 25))),
-            const SizedBox(
-              height: 10,
-            ),
-            //hd
-            const Divider(color: Colors.black, thickness: 5),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildManifestChl(context, hdchlimpactList_he),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                child: const Text('הגשמה',
-                    style: TextStyle(color: Colors.white, fontSize: 25))),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildProjectedChl(context, hdchlProjectList_he),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
-                child: const Text('הקרנה',
-                    style: TextStyle(color: Colors.grey, fontSize: 25))),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildGenerateChl(context, hdchlgenerateList_he),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                child: const Text('מחול אל',
-                    style: TextStyle(color: Colors.black, fontSize: 25))),
-            const Divider(color: Colors.black, thickness: 5),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildManifestChl(context, hdchlimpactList),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                child: const Text('Manifest',
-                    style: TextStyle(color: Colors.white, fontSize: 25))),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildProjectedChl(context, hdchlProjectList),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
-                child: const Text('Project',
-                    style: TextStyle(color: Colors.grey, fontSize: 25))),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildGenerateChl(context, hdchlgenerateList),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                child: const Text('Generate',
-                    style: TextStyle(color: Colors.black, fontSize: 25))),
-          ],
-        ),
-      ),
-    ),
-    actions: <Widget>[
-      TextButton(
-        onPressed: () {
-          if (Navigator.of(context).canPop()) {
-            Navigator.of(context).pop();
-          }
-        },
-        child: const Text(
-          'X',
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
-    ],
-  );
-}
-
 Widget build64PopUp(BuildContext context) {
   List<String> titles64 = [
     'ארנקים',
@@ -539,7 +341,6 @@ Widget build64PopUp(BuildContext context) {
     'iJudgement'
   ];
   return AlertDialog(
-    //title: const Text('36 Transactions'),
     title: const Text('64'),
     content: SingleChildScrollView(
       child: SizedBox(
@@ -921,7 +722,6 @@ Widget buildBookPopUp(BuildContext context) {
     'בחיפוש אחר מפות',
   ];
   return AlertDialog(
-    //title: const Text('36 Transactions'),
     title: const Text('Ido Not Now עידו לא כעט',
         textAlign: TextAlign.center,
         style: TextStyle(
@@ -1551,6 +1351,104 @@ Widget _buildGenerateChl(BuildContext context, List<String> silencelst) {
   );
 }
 
+Widget _buildWallet36Popup({
+  required BuildContext context,
+  required String title,
+  required String filterKey,
+  required String filterValue,
+  required List<Map<String, dynamic>> dataList,
+}) {
+  // Logic to filter the master list based on your specific case-sensitive tag
+  final filteredWallets = dataList.where((item) {
+    return item[filterKey] == filterValue;
+  }).toList();
+
+  return AlertDialog(
+    title: Text(title, textAlign: TextAlign.center),
+    content: SizedBox(
+      width: MediaQuery.of(context).size.width * 0.6,
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: filteredWallets.length,
+        itemBuilder: (context, index) {
+          final item = filteredWallets[index];
+
+          // --- DYNAMIC CONTRAST LOGIC ---
+          final Color bgColor = item['color'] ?? Colors.grey;
+          // If background is Blue, use White text. Otherwise, use White.
+          final Color textColor =
+              (bgColor == Colors.blue) ? Colors.white : Colors.black;
+          final Color subTextColor =
+              (bgColor == Colors.blue) ? Colors.white : Colors.black;
+
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 4),
+            decoration: BoxDecoration(
+                color: bgColor,
+                border: Border.all(width: 3, color: Colors.black),
+                borderRadius: BorderRadius.circular(15)),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // Inside itemBuilder of _buildWallet36Popup
+                children: [
+                  // --- THE NEW STANDARD HEADER ---
+                  AutoSizeText(
+                    "${item['id']} - ${item['channel']}",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: textColor,
+                        fontSize: 16),
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  // --- SECONDARY: The Hebrew Research (Single Source of Truth) ---
+                  Text(
+                    item['sentence_he'] ?? '',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontWeight:
+                            FontWeight.w500, // Medium weight for contrast
+                        color: textColor,
+                        fontSize: 15),
+                  ),
+
+                  const Divider(
+                      height: 20, thickness: 1, color: Colors.black26),
+
+                  // --- METADATA: BG5 Role & Rotation Note ---
+                  Text(
+                    "${item['bg']} | ${item['rotation_note']}",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontWeight: FontWeight
+                            .w600, // Solid weight to avoid "greyed out" look
+                        color: textColor,
+                        fontSize: 14),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    ),
+    actions: [
+      TextButton(
+        onPressed: () {
+          if (Navigator.of(context).canPop()) {
+            Navigator.of(context).pop();
+          }
+        },
+        child: const Text('X',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+      ),
+    ],
+  );
+}
+
 Widget buildWalletPopUp(BuildContext context, int walletindex) {
   return AlertDialog(
     title: Center(
@@ -1590,7 +1488,9 @@ Widget buildWalletPopUp(BuildContext context, int walletindex) {
     actions: <Widget>[
       TextButton(
         onPressed: () {
-          Navigator.of(context).pop();
+          if (Navigator.of(context).canPop()) {
+            Navigator.of(context).pop();
+          }
         },
         child: const Text(
           'X',
@@ -3572,10 +3472,11 @@ class ZBGeometryPainter {
       double r = size * (0.7 + 0.3 * math.sin(i * 1.5));
       double x = center.dx + r * math.cos(angle);
       double y = center.dy + r * math.sin(angle);
-      if (i == 0)
+      if (i == 0) {
         path.moveTo(x, y);
-      else
+      } else {
         path.quadraticBezierTo(center.dx, center.dy, x, y);
+      }
     }
     path.close();
     canvas.drawPath(path, paint);
@@ -3725,33 +3626,155 @@ Widget zbChannelBtn({
   );
 }
 
-Widget zbTriadRow({
+Widget zbTriadRow(
+    {required BuildContext context,
+    required List<Map<String, dynamic>> dataList}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: dataList.map((item) {
+      return Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: item['color'] ?? Colors.grey,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Hebrew Label (e.g., מורכב משמות עצם)
+                Text(
+                  item['sentence_he'] ?? '',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 11, // Smaller to fit long Hebrew strings
+                  ),
+                ),
+                const SizedBox(height: 4),
+                // English Label (e.g., COMPLEX)
+                Text(
+                  item['zbcoin'] ?? '',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }).toList(),
+  );
+}
+
+// Use Wrap to handle all 36 transactions without crushing them
+Widget zbBuild36Grid(BuildContext context) {
+  return Wrap(
+    spacing: 8.0,
+    runSpacing: 8.0,
+    alignment: WrapAlignment.center,
+    children: transaction36.map((item) {
+      return SizedBox(
+        width: MediaQuery.of(context).size.width * 0.28, // 3 columns
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: item['color'],
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          ),
+          onPressed: () {},
+          child: Column(
+            children: [
+              Text(
+                item['sentence_he'] ?? '',
+                style: const TextStyle(fontSize: 10, color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                item['zbcoin'] ?? '',
+                style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+      );
+    }).toList(),
+  );
+}
+
+Widget zbTriadRow_old({
   required BuildContext context,
-  required String label1,
-  required Widget dest1,
-  required String label2,
-  required Widget dest2,
-  required String label3,
-  required Widget dest3,
+  required List<Map<String, dynamic>> dataList,
 }) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 8.0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        // Blue / Complex
-        _zbMiniBtn(context, label1, Colors.blue, Colors.white, dest1),
-        // Yellow / Breath
-        _zbMiniBtn(context, label2, Colors.yellow, Colors.grey[800]!, dest2),
-        // Red / Silence
-        _zbMiniBtn(context, label3, Colors.red, Colors.black, dest3),
+        // COMPLEX - Blue
+
+        // --- COMPLEX (Blue) ---
+        zbMiniBtn(
+          context,
+          'COMPLEX',
+          Colors.blue,
+          Colors.white,
+          _buildWallet36Popup(
+            context: context,
+            title: 'COMPLEX מורכב',
+            filterKey: 'zbcoin',
+            filterValue: 'COMPLEX',
+            dataList: dataList,
+          ),
+        ),
+
+// --- Breath (Yellow) ---
+        zbMiniBtn(
+          context,
+          'Breath',
+          Colors.yellow,
+          Colors.black, // Correct: Black on Yellow
+          _buildWallet36Popup(
+            context: context,
+            title: 'Breath נשימה',
+            filterKey: 'zbcoin',
+            filterValue: 'Breath',
+            dataList: dataList,
+          ),
+        ),
+
+// --- silence (Red) ---
+        zbMiniBtn(
+          context,
+          'silence',
+          Colors.red,
+          Colors.white, // FIX: Changed from black to white for contrast
+          _buildWallet36Popup(
+            context: context,
+            title: 'silence שתיקה',
+            filterKey: 'zbcoin',
+            filterValue: 'silence',
+            dataList: dataList,
+          ),
+        ),
       ],
     ),
   );
 }
 
 // Compact button for the grid
-Widget _zbMiniBtn(
+Widget zbMiniBtn(
     BuildContext context, String label, Color bg, Color textCol, Widget dest) {
   return Expanded(
     child: Padding(
@@ -3782,47 +3805,15 @@ Widget zbbuild36PopUp(BuildContext context) {
     child: AlertDialog(
       title: const Text('36 Transactions', textAlign: TextAlign.center),
       content: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.9, // Wider for the grid
+        width: MediaQuery.of(context).size.width * 0.9,
         child: SingleChildScrollView(
           child: Column(
+            // <--- Add this Column
+            mainAxisSize: MainAxisSize.min, // Constrain height
             children: [
-              const Text("Time States (Hebrew)",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              zbTriadRow(
-                  context: context,
-                  label1: 'מורכב',
-                  dest1: _buildComplexTS(context, hdchannelcomplexList_heb),
-                  label2: 'נשימה',
-                  dest2: _buildBreathTS(context, hdchannelbreathList_heb),
-                  label3: 'שתיקה',
-                  dest3: _buildSilenceTS(context, hdchannelsilenceList_heb)),
-              zbTriadRow(
-                  context: context,
-                  label1: 'Complex',
-                  dest1: _buildComplexTS(context, hdchannelcomplexList),
-                  label2: 'Breath',
-                  dest2: _buildBreathTS(context, hdchannelbreathList),
-                  label3: 'silence',
-                  dest3: _buildSilenceTS(context, hdchannelsilenceList)),
-              const Divider(thickness: 2),
-              const Text("HD Types",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              zbTriadRow(
-                  context: context,
-                  label1: 'הגשמה',
-                  dest1: _buildManifestChl(context, hdchlimpactList_he),
-                  label2: 'הקרנה',
-                  dest2: _buildProjectedChl(context, hdchlProjectList_he),
-                  label3: 'מחול אל',
-                  dest3: _buildGenerateChl(context, hdchlgenerateList_he)),
-              zbTriadRow(
-                  context: context,
-                  label1: 'Manifest',
-                  dest1: _buildManifestChl(context, hdchlimpactList),
-                  label2: 'Project',
-                  dest2: _buildProjectedChl(context, hdchlProjectList),
-                  label3: 'Generate',
-                  dest3: _buildGenerateChl(context, hdchlgenerateList)),
+              zbTriadRow(context: context, dataList: transaction36),
+              // You can add more rows here easily:
+              // const Divider(thickness: 2),
             ],
           ),
         ),
@@ -3830,10 +3821,10 @@ Widget zbbuild36PopUp(BuildContext context) {
       actions: [
         TextButton(
           onPressed: () {
-            if (Navigator.canPop(context)) Navigator.pop(context);
+            if (Navigator.of(context).canPop()) Navigator.of(context).pop();
           },
-          child: const Text('X'),
-        )
+          child: const Text('X', style: TextStyle(color: Colors.black)),
+        ),
       ],
     ),
   );

@@ -127,18 +127,18 @@ class HDServices {
     return hdchannels;
   }
 
-  static List<hdCenter> getHDCenters(List<HDChannel> channelids) {
-    List<hdCenter> centers = [];
+  static List<HDCenter> getHDCenters(List<HDChannel> channelids) {
+    List<HDCenter> centers = [];
 
-    hdCenter headcenter = hdCenter(),
-        ajnacenter = hdCenter(),
-        throatcenter = hdCenter(),
-        selfcenter = hdCenter(),
-        heartcenter = hdCenter(),
-        spleencenter = hdCenter(),
-        sacralcenter = hdCenter(),
-        solarcenter = hdCenter(),
-        rootcenter = hdCenter();
+    HDCenter headcenter = HDCenter(),
+        ajnacenter = HDCenter(),
+        throatcenter = HDCenter(),
+        selfcenter = HDCenter(),
+        heartcenter = HDCenter(),
+        spleencenter = HDCenter(),
+        sacralcenter = HDCenter(),
+        solarcenter = HDCenter(),
+        rootcenter = HDCenter();
     //List<bool> centerslist = List.filled(9, false, growable: false);;
     //head 0, ajna 1, throat 2, self 3, heart 4 , spleen 5, sacral 6, solar 7, root 8
     //int _channelidx;
@@ -380,16 +380,16 @@ class HDServices {
 
   static HumanDesign getHDBasicData(List<HDChannel> hdchannels) {
     List<String> hdbasicdata = [], channelsList = [];
-    List<hdCenter> centers = [];
-    hdCenter headcenter = hdCenter(),
-        ajnacenter = hdCenter(),
-        throatcenter = hdCenter(),
-        selfcenter = hdCenter(),
-        heartcenter = hdCenter(),
-        spleencenter = hdCenter(),
-        sacralcenter = hdCenter(),
-        solarcenter = hdCenter(),
-        rootcenter = hdCenter();
+    List<HDCenter> centers = [];
+    HDCenter headcenter = HDCenter(),
+        ajnacenter = HDCenter(),
+        throatcenter = HDCenter(),
+        selfcenter = HDCenter(),
+        heartcenter = HDCenter(),
+        spleencenter = HDCenter(),
+        sacralcenter = HDCenter(),
+        solarcenter = HDCenter(),
+        rootcenter = HDCenter();
 
     HumanDesign hddata = HumanDesign();
 

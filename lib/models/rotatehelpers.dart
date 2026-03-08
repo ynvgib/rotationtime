@@ -1,7 +1,13 @@
+import 'package:finallyicanlearn/logic/calculatehdchart.dart';
+import 'package:finallyicanlearn/models/hdlist.dart';
+import 'package:finallyicanlearn/models/rotateclasses.dart';
+import 'package:finallyicanlearn/models/rtlists.dart';
+import 'package:finallyicanlearn/services/fetchplanets.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:finallyicanlearn/main.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:io';
 
 bool _isFullScreen = false;
 int userDefinedSeconds = 640;
@@ -76,5 +82,263 @@ class MyRouteObserver extends NavigatorObserver {
   void didPop(Route route, Route? previousRoute) {
     super.didPop(route, previousRoute);
     onNavigation(); // Triggers the reset when going back
+  }
+}
+
+// code consolidation
+
+void consolidateWalletsToConsole() {
+  // 1. Create a local copy of your base map to work on
+  /// Pass any of your old List<String> and the name of the new key you want in the map.
+  List<Map<String, dynamic>> mergeListIntoMap({
+    required List<Map<String, dynamic>> targetMap,
+    required List<String> sourceList,
+    required String newKeyName,
+  }) {
+    // We create a copy to avoid mutating the original until we are ready
+    List<Map<String, dynamic>> updatedMap = List.from(targetMap);
+
+    for (int i = 0; i < sourceList.length; i += 2) {
+      // Ensure we don't go out of bounds if a list has an odd number of items
+      if (i + 1 < sourceList.length) {
+        String id = sourceList[i];
+        String value = sourceList[i + 1];
+
+        for (var entry in updatedMap) {
+          if (entry['id'] == id) {
+            entry[newKeyName] = value;
+          }
+        }
+      }
+    }
+
+    // Optional: Print the result to console so you can copy the new Map code
+    debugPrint("--- UPDATED MAP WITH KEY: $newKeyName ---");
+    for (var entry in updatedMap) {
+      debugPrint("  $entry,");
+    }
+
+    return updatedMap;
+  }
+}
+
+/// Consolidated Utility to merge fragmented lists into wallets36
+void performOneTimeConsolidation() {
+  // We use a local copy to avoid mutating the original
+  List<Map<String, dynamic>> master = List.from(transaction36);
+
+  void merge(List<String> source, String newKey) {
+    for (int i = 0; i < source.length; i += 2) {
+      if (i + 1 < source.length) {
+        String id = source[i];
+        String rawValue = source[i + 1];
+
+        // 1. Clean the ID prefix
+        String cleanValue =
+            rawValue.contains(': ') ? rawValue.split(': ').last : rawValue;
+
+        // 2. Escape single quotes for Dart code generation
+        // This turns "One's" into "One\'s"
+        String escapedValue = cleanValue.replaceAll("'", "\\'");
+
+        for (var entry in master) {
+          if (entry['id'] == id) {
+            entry[newKey] = escapedValue.trim();
+          }
+        }
+      }
+    }
+  }
+
+  // --- MERGING ALL YOUR SOURCE LISTS ---
+  merge(hdchannelRotationList, 'rotation_note');
+  merge(hdchannelsilenceList, 'silence_en');
+  merge(hdchlgenerateList, 'generate_en');
+  merge(hdchlgenerateList_he, 'generate_he');
+  merge(hdchannelsilenceList_heb, 'silence_he');
+  merge(hdchannelsentenceList_eng, 'sentence_en');
+  merge(hdchannelsentenceList, 'sentence_he');
+  merge(hdchannelsentenceList_temp, 'sentence_temp');
+
+  // --- OUTPUT TO VS CODE DEBUG CONSOLE ---
+  debugPrint("/// COPY START ///");
+  debugPrint("final List<Map<String, dynamic>> wallets36 = [");
+
+  for (var entry in master) {
+    // We convert the Color object to a string so it doesn't require an import
+    String colorStr = "Colors.grey";
+    if (entry['color'] == Colors.red) colorStr = "Colors.red";
+    if (entry['color'] == Colors.blue) colorStr = "Colors.blue";
+    if (entry['color'] == Colors.yellow) colorStr = "Colors.yellow";
+    if (entry['color'] == Colors.green) colorStr = "Colors.green";
+
+    // Build the string manually to ensure it looks like clean Dart code
+    String mapString = "  {\n"
+        "    'id': '${entry['id']}',\n"
+        "    'type': '${entry['type']}',\n"
+        "    'zbcoin': '${entry['zbcoin']}',\n"
+        "    'color': $colorStr,\n"
+        "    'channel': '${entry['channel']}',\n"
+        "    'design': '${entry['design']}',\n"
+        "    'bg': '${entry['bg']}',\n"
+        "    'verb': '${entry['verb']}',\n"
+        "    'maincenter': '${entry['maincenter']}',\n"
+        "    'subcenter': '${entry['subcenter']}',\n"
+        "    'rotation_note': '${entry['rotation_note'] ?? ''}',\n"
+        "    'generate_he': '${entry['generate_he'] ?? ''}',\n"
+        "    'silence_he': '${entry['silence_he'] ?? ''}',\n"
+        "    'sentence_en': '${entry['sentence_en'] ?? ''}',\n"
+        "    'sentence_he': '${entry['sentence_he'] ?? ''}',\n"
+        "  },";
+
+    debugPrint(mapString);
+  }
+
+  debugPrint("];");
+  debugPrint("/// COPY END ///");
+}
+
+void autoStandardizeFiles() async {
+  // Update this to the exact folder path on your computer
+  final directory = Directory('assets/txt/heb');
+
+  if (!await directory.exists()) {
+    print('❌ Directory not found!');
+    return;
+  }
+
+  final List<FileSystemEntity> files = await directory.list().toList();
+
+  for (var entity in files) {
+    if (entity is File && entity.path.endsWith('.txt')) {
+      String oldFullPath = entity.path;
+      String oldFileName = oldFullPath.split(Platform.pathSeparator).last;
+
+      // 1. Identify Language
+      bool isHeb = RegExp(r'[\u0590-\u05FF]').hasMatch(oldFileName);
+      String suffix = isHeb ? '_he' : '_en';
+
+      // 2. Clean Name: Remove .txt, replace spaces/special chars with underscores
+      String cleanBase = oldFileName
+          .replaceAll('.txt', '')
+          .trim()
+          .replaceAll(RegExp(r'[^\u0590-\u05FFa-zA-Z0-9]'),
+              '_') // Replace non-alphanumeric with _
+          .replaceAll(RegExp(r'_+'), '_'); // Collapse multiple underscores
+
+      // 3. Final Name: title_lang.txt
+      String newFileName = '${cleanBase}$suffix.txt';
+      String newFullPath =
+          '${directory.path}${Platform.pathSeparator}$newFileName';
+
+      // 4. Rename on Disk
+      if (oldFullPath != newFullPath) {
+        await entity.rename(newFullPath);
+        print('✅ Renamed: $oldFileName -> $newFileName');
+      }
+    }
+  }
+  print('✨ 206+ files standardized!');
+}
+
+void performFinalBilingualStitch() {
+  List<Map<String, dynamic>> master = List.from(transaction36);
+
+  String findAndClean(List<String> list, String id) {
+    int idx = list.indexOf(id);
+    if (idx != -1 && idx + 1 < list.length) {
+      String raw = list[idx + 1];
+      String cleaned = raw.contains(': ') ? raw.split(': ').last : raw;
+      return cleaned.trim().replaceAll("'", "\\'");
+    }
+    return "";
+  }
+
+  debugPrint("/// COPY START ///");
+  debugPrint("final List<Map<String, dynamic>> transaction36_new = [");
+
+  for (var entry in master) {
+    String id = entry['id'];
+
+    // 1. Prepare safe strings with manual quotes
+    String sEn = findAndClean(new_rtransaction36Englst, id);
+    String sHe = findAndClean(rtransaction36Heblst, id);
+    String rEn = findAndClean(upd_rtransaction36Englst, id);
+    String rHe = (entry['silence_he'] ?? "").replaceAll("'", "\\'");
+
+    // 2. Map ZB-Coin Pair
+    Map<String, String> coinMap = {
+      'silence': 'שתיקה',
+      'breath': 'נשימה',
+      'COMPLEX': 'מורכב'
+    };
+    String zEn = entry['zbcoin'] ?? 'silence';
+    String zHe = coinMap[zEn] ?? '';
+
+    // 3. Simple Color Mapping (to avoid that long MaterialColor string)
+    String colorName = "Colors.blue";
+    if (entry['color'] == Colors.red) colorName = "Colors.red";
+    if (entry['color'] == Colors.yellow) colorName = "Colors.yellow";
+    if (entry['color'] == Colors.green) colorName = "Colors.green";
+
+    // 4. Build the Output with explicit quotes ''
+    debugPrint("  {");
+    debugPrint("    'id': '$id',");
+    debugPrint("    'color': $colorName,");
+    debugPrint("    'zbcoin': ['$zEn', '$zHe'],");
+    debugPrint("    'sentence': ['$sEn', '$sHe'],");
+    debugPrint("    'rotation': ['$rEn', '$rHe'],");
+    debugPrint("    'channel': '${entry['channel']}',");
+    debugPrint("  },");
+  }
+
+  debugPrint("];");
+  debugPrint("/// COPY END ///");
+}
+
+String _getColorName(dynamic color) {
+  if (color == Colors.blue) return 'blue';
+  if (color == Colors.yellow) return 'yellow';
+  if (color == Colors.red) return 'red';
+  return 'grey';
+}
+
+class RotateHelpers {
+  static Future<ZBAccount> generateAccount(DateTime targetTime,
+      {bool isNow = false}) async {
+    DateTime calculationTime = isNow ? DateTime.now() : targetTime;
+
+    // 1. Fetch 14-Planet Personality Data
+    var pFull = await PlanetsServices.getCurrentData(calculationTime);
+
+    // 2. Handle Design Logic
+    // We calculate dTime here, which is the exact 88-degree retrograde moment
+    DateTime dTime =
+        isNow ? targetTime : await PlanetsServices.getDesignTime(targetTime);
+    var dFull = isNow ? pFull : await PlanetsServices.getCurrentData(dTime);
+
+    // 3. Extract Full Lists for UI (14 items)
+    var pListUI = List<Hexagram>.from(pFull);
+    var dListUI = List<Hexagram>.from(dFull);
+
+    // 4. Calculate HD Metrics using only 13 planets (No Chiron for logic)
+    var pCalc = pListUI.sublist(0, 13);
+    var dCalc = dListUI.sublist(0, 13);
+
+    var combined = pCalc + dCalc; // 26 items total
+    var channels = HDServices.getHDChannels(combined);
+    var centers = HDServices.getHDCenters(channels);
+
+    // 💡 THE FIX: Add the designtimestamp argument here
+    return ZBAccount(
+      personality: pListUI,
+      design: dListUI,
+      channels: channels,
+      centers: centers,
+      timestamp: targetTime,
+      designtimestamp:
+          dTime, // <--- This provides the missing required argument
+      isJustNow: isNow,
+    );
   }
 }

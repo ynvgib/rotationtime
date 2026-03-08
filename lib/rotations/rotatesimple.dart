@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -6,11 +7,11 @@ import 'package:circle_list/circle_list.dart';
 import 'package:fibonacci/fibonacci.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/hdlist.dart';
+import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
-import 'package:finallyicanlearn/services/rotatewidgets.dart';
+import 'package:finallyicanlearn/ui/widgets/rotatewidgets.dart';
 import 'package:flutter/material.dart';
-import 'package:finallyicanlearn/models/lists.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
@@ -627,20 +628,23 @@ class _RotateSimpleState extends State<RotateSimple>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // Base 4
-                      buildSelectionButton(context, '4',
+                      zbMiniBtn(context, '4', Colors.black, Colors.white,
                           zbbuildBasePopUp(context, '4', base4Data)),
 
-                      // Base 36
-                      buildSelectionButton(
-                          context, '36', zbbuild36PopUp(context)),
+                      const SizedBox(height: 10), // Spacing between buttons
+                      // Base 36 (The New 600-line Consolidated Map)
+                      zbMiniBtn(context, '36', Colors.black, Colors.white,
+                          zbbuild36PopUp(context)),
 
+                      const SizedBox(height: 10),
                       // Base 64
-                      buildSelectionButton(context, '64',
+                      zbMiniBtn(context, '64', Colors.black, Colors.white,
                           zbbuildBasePopUp(context, '64', base64Data)),
 
-                      // Base 384 (Keep its custom logic for the Sun/Earth button)
-                      buildSelectionButton(
-                          context, '384', zbbuild384PopUp(context)),
+                      const SizedBox(height: 10),
+                      // Base 384
+                      zbMiniBtn(context, '384', Colors.black, Colors.white,
+                          zbbuild384PopUp(context)),
                     ],
                   ),
 

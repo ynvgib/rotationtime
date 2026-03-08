@@ -141,12 +141,6 @@ class HDChannel {
       this.color});
 }
 
-class hdCenter {
-  String? id, name, adaptname;
-  int? state;
-  hdCenter({this.id, this.name, this.adaptname, this.state});
-}
-
 class ZBCube extends StatelessWidget {
   const ZBCube({super.key});
 
@@ -514,4 +508,71 @@ void zbPop(BuildContext context) {
   if (Navigator.of(context).canPop()) {
     Navigator.of(context).pop();
   }
+}
+
+class ZbDataModel {
+  final int? id;
+  final String category; // e.g., 'Human Design', 'English', 'Lyrics'
+  final String subCategory; // e.g., 'Gate 64', 'Vocabulary', 'Song Title'
+
+  // The 5 Layers of Depth
+  final String idk;
+  final String silence;
+  final String breath;
+  final String simple;
+  final String complex;
+
+  ZbDataModel({
+    this.id,
+    required this.category,
+    this.subCategory = '',
+    this.idk = '',
+    this.silence = '',
+    this.breath = '',
+    this.simple = '',
+    this.complex = '',
+  });
+
+  // Database Bridge (The "Stitcher")
+  factory ZbDataModel.fromMap(Map<String, dynamic> map) {
+    return ZbDataModel(
+      id: map['id'],
+      category: map['category'] ?? '',
+      subCategory: map['sub_category'] ?? '',
+      idk: map['idk'] ?? '',
+      silence: map['silence'] ?? '',
+      breath: map['breath'] ?? '',
+      simple: map['simple'] ?? '',
+      complex: map['complex'] ?? '',
+    );
+  }
+}
+
+// The Universal Account (The "Receipt")
+class ZBAccount {
+  final List<Hexagram> personality;
+  final List<Hexagram> design;
+  final List<HDChannel> channels;
+  final List<HDCenter> centers;
+  final DateTime timestamp;
+  final DateTime designtimestamp; // 💡 Added this for the 88° time
+  final bool isJustNow;
+
+  ZBAccount({
+    required this.personality,
+    this.design = const [],
+    required this.channels,
+    required this.centers,
+    required this.timestamp,
+    required this.designtimestamp, // 💡 Now required
+    this.isJustNow = false,
+  });
+}
+
+// The Unified Center Model
+class HDCenter {
+  String? id, name, adaptname;
+  int? state; // 0: Open, 1: Simple, 2: Complex
+
+  HDCenter({this.id, this.name, this.adaptname, this.state});
 }

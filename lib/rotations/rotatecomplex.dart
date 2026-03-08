@@ -6,18 +6,19 @@ import 'package:finallyicanlearn/logic/calculatehdchart.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/lists.dart';
+import 'package:finallyicanlearn/models/rotatehelpers.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:finallyicanlearn/services/datetime.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/services/fetchplanets.dart';
-import 'package:finallyicanlearn/services/rotatewidgets.dart';
+import 'package:finallyicanlearn/ui/widgets/rotatewidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:sweph/sweph.dart';
 
 class RotateComplex extends StatefulWidget {
-  const RotateComplex({Key? key}) : super(key: key);
+  const RotateComplex({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -92,11 +93,12 @@ class _RotateComplexState extends State<RotateComplex>
       botcoinnamelist = coinsHeb4lst, // coinsEng4lst
       maincoin = zbrussianames;
 
-  List<hdCenter> _centers = [];
+  List<HDCenter> _centers = [];
 
   List coins384List = rtmix390lstHeb, coinssidenamelist = rt6HEbcoins;
 
   HumanDesign hdfinaldata = HumanDesign(typeid: 0);
+  // late HumanDesign hdfinaldata;
 
   final TextEditingController _controllerType = TextEditingController(),
       _controllerAuthority = TextEditingController(),
@@ -301,7 +303,7 @@ class _RotateComplexState extends State<RotateComplex>
       gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio');
 
   final List<bool> _isPlanetSelectedList =
-      List<bool>.filled(13, false, growable: false);
+      List<bool>.filled(14, false, growable: false);
   final List<bool> _isBoldList = List<bool>.filled(65, false, growable: false);
 
   List<int> _hexalignedList = [0, 0, 0];
@@ -946,85 +948,13 @@ class _RotateComplexState extends State<RotateComplex>
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    _now = DateTime.now();
-                    _personTime = _now;
+                    // 1. Generate the account data using the helper
+                    ZBAccount currentMoment =
+                        await RotateHelpers.generateAccount(DateTime.now(),
+                            isNow: true);
 
-                    _planetsfulltransitList =
-                        await PlanetsServices.getCurrentData(_now);
-
-                    _chironhex = _planetsfulltransitList.last;
-                    _chirondesignhex = _chironhex;
-
-                    _planetsfullpersonList = _planetsfulltransitList;
-                    _planetsfulldesignList = _planetsfulltransitList;
-
-                    for (int i = 0;
-                        _planetsfulltransitList.length - 1 > i;
-                        i++) {
-                      _planetstransitList[i] = _planetsfulltransitList[i];
-                      _planetspersonList[i] = _planetsfulltransitList[i];
-                      _planetsdesignList[i] = _planetsfulltransitList[i];
-                    }
-
-                    _channelsList =
-                        HDServices.getHDChannelsJustNow(_planetspersonList);
-
-                    _personchannelsList = [];
-                    _designchannelsList = [];
-
-                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
-                    //_controlHDData(hdbasicdata);
-                    _controlHDData(hdfinaldata);
-
-                    //_centers = HDServices.getHDCenters(_channelsList);
-                    _centers = HDServices.getHDCenters(_channelsList);
-
-                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                    //_selfreminderSentence = HDServices.getSelfReminder();
-                    _setDateTime(_now);
-
-                    _planetsfulldisplayList = _planetstransitList;
-                    _planethex = _planetsfulldisplayList[0];
-
-                    _setCoins();
-
-                    _controllerlinetext.text = _planethex.line!.toString();
-                    _controllergatelinestory.text = coins384List[
-                        (coins384List.indexOf(_planethex.gate!) +
-                            _planethex.line!)];
-
-                    switch (_previousPlanetIndex) {
-                      case -1:
-                        _previousPlanetIndex = 0;
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        break;
-                      default:
-                        _isPlanetSelectedList[_previousPlanetIndex] =
-                            !_isPlanetSelectedList[_previousPlanetIndex];
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        _previousPlanetIndex = 0;
-                    }
-
-                    switch (_currentconstate) {
-                      case 0:
-                        _controllerconstate.jumpToPage(1);
-                        _controllerconstate.jumpToPage(0);
-                        _controllerrotationstate.jumpToPage(0);
-                        break;
-                      case 1:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                      default:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                    }
-
-                    resetChartColor;
-                    _resetgatesState();
-                    _settransitgatesState();
-                    _setChart(_centers);
-                    _setgatesState();
-                    _setEvolutionCoin();
+                    // 2. Sync the UI with the new data
+                    _syncUIWithAccount(currentMoment);
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
@@ -1081,87 +1011,22 @@ class _RotateComplexState extends State<RotateComplex>
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    // _selectedDate by user pick
-                    //_now = _selectedDate.applied(_selectedtime);
-                    _personTime = _selectedDate.applied(_selectedtime);
+                    // 1. Determine the target birth time
+                    DateTime personTime = _selectedDate.applied(_selectedtime);
 
-                    _planetsfullpersonList =
-                        await PlanetsServices.getCurrentData(_personTime);
-
+                    // 💡 2. Calculate the exact 88° Design Time BEFORE syncing
+                    // This ensures the astronomical precision we discussed is captured.
                     _designTime =
-                        await PlanetsServices.getDesignTime(_personTime);
-                    _planetsfulldesignList =
-                        await PlanetsServices.getCurrentData(_designTime);
+                        await PlanetsServices.getDesignTime(personTime);
+                    _personTime = personTime;
 
-                    // print('in waiting mode');
+                    // 3. Generate the full birth account (Personality + Design)
+                    ZBAccount birthAccount =
+                        await RotateHelpers.generateAccount(personTime,
+                            isNow: false);
 
-                    _chironhex = _planetsfullpersonList.last;
-                    _chirondesignhex = _planetsfulldesignList.last;
-
-                    for (int i = 0;
-                        _planetsfullpersonList.length - 1 > i;
-                        i++) {
-                      _planetspersonList[i] = _planetsfullpersonList[i];
-                      _planetsdesignList[i] = _planetsfulldesignList[i];
-                    }
-
-                    _allplanetsList = _planetspersonList + _planetsdesignList;
-                    _channelsList = HDServices.getHDChannels(_allplanetsList);
-                    _personchannelsList =
-                        HDServices.getHDChannels(_planetspersonList);
-                    _designchannelsList =
-                        HDServices.getHDChannels(_planetsdesignList);
-
-                    hdfinaldata = HDServices.getHDBasicData(_channelsList);
-
-                    _centers = HDServices.getHDCenters(_channelsList);
-
-                    _controlHDData(hdfinaldata);
-
-                    _setDateTime(_personTime);
-
-                    _planetsfulldisplayList = _planetspersonList;
-                    _planethex = _planetsfulldisplayList[0];
-
-                    switch (_previousPlanetIndex) {
-                      case -1:
-                        _previousPlanetIndex = 0;
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        break;
-                      default:
-                        _isPlanetSelectedList[_previousPlanetIndex] =
-                            !_isPlanetSelectedList[_previousPlanetIndex];
-                        _isPlanetSelectedList[0] = !_isPlanetSelectedList[0];
-                        _previousPlanetIndex = 0;
-                    }
-
-                    switch (_currentconstate) {
-                      case 0:
-                        _controllerconstate.jumpToPage(1);
-                        _controllerconstate.jumpToPage(0);
-                        _controllerrotationstate.jumpToPage(0);
-                        break;
-                      case 1:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                      default:
-                        _controllerconstate.jumpToPage(0);
-                        break;
-                    }
-
-                    resetChartColor();
-
-                    _resetgatesState();
-                    _setgatesState();
-                    _setChart(_centers);
-                    _setCoins();
-
-                    _controllergatelinestory.text =
-                        coins384List[(_planethex.gate! * 7) + _planethex.line!];
-
-                    _controllerlinetext.text = _planethex.line.toString();
-
-                    _setEvolutionCoin();
+                    // 4. Sync all controllers and charts
+                    _syncUIWithAccount(birthAccount);
                   },
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.purple),
@@ -1250,7 +1115,7 @@ class _RotateComplexState extends State<RotateComplex>
                       items: zooslider,
                       carouselController: _controllercoin,
                       options: CarouselOptions(
-                          height: 95,
+                          height: 120,
                           autoPlay: false,
                           onPageChanged: (indextop, reason) {
                             setState(() {
@@ -4492,7 +4357,7 @@ class _RotateComplexState extends State<RotateComplex>
                   items: timecoinsDropDownLst,
                   onChanged: (String? newsettimestamp) {
                     setState(() {
-                      _settimestamp = newsettimestamp!;
+                      _settimestamp = newsettimestamp ?? "";
                     });
                   },
                 ),
@@ -5223,7 +5088,8 @@ class _RotateComplexState extends State<RotateComplex>
               hoverColor: Colors.black,
               //borderRadius: BorderRadius.circular(20),
               fillColor: Colors.blue,
-              isSelected: _isPlanetSelectedList,
+              // isSelected: _isPlanetSelectedList,
+              isSelected: _isPlanetSelectedList.sublist(0, 13),
               onPressed: (int index) async {
                 setState(() {
                   switch (_previousPlanetIndex) {
@@ -5255,7 +5121,7 @@ class _RotateComplexState extends State<RotateComplex>
                   //_controllerbot.jumpToPage(_hexalignedList[2]);
 
                   _controllerlinetext.text = _planethex.line!.toString();
-                  _currentline = _planethex.line!;
+                  _currentline = _planethex.line ?? 0;
 
                   _controllergatelinestory.text = coins384List[
                       (coins384List.indexOf(_planethex.gate!) +
@@ -5417,41 +5283,53 @@ class _RotateComplexState extends State<RotateComplex>
                           setState(() {
                             _currentconstate = indexconstate;
 
-                            switch (_currentconstate) {
-                              case 0:
-                                _planetsfulldisplayList =
-                                    _planetsfullpersonList;
+                            if (_currentconstate == 0) {
+                              // --- 🔵 BLUE (Personality) ---
+                              _planetsfulldisplayList = _planetsfullpersonList;
 
-                                _controlPlanetHexagramData(
-                                    _planetsfulldisplayList);
+                              // 1. Restore the Person Time
+                              _setDateTime(_personTime);
 
-                                _setDateTime(_personTime);
+                              _controllerPlanetType.text = 'אחר כך לחשוב';
 
-                                _controllerPlanetType.text = 'אחר כך לחשוב';
+                              // 2. Force Level Slider to 'Complex' (Index 0)
+                              _textlevel = 'complex';
+                              _currentrotationstate =
+                                  0; // Keep internal index in sync
+                              _controllerrotationstate.jumpToPage(0);
+                              _changeTextLevels(_textlevel);
+                            } else {
+                              // --- 🔴 RED (Design) ---
+                              _planetsfulldisplayList = _planetsfulldesignList;
 
-                                _controllerrotationstate.jumpToPage(0);
-                                break;
-                              case 1:
-                                _planetsfulldisplayList =
-                                    _planetsfulldesignList;
-                                _controlPlanetHexagramData(
-                                    _planetsfulldisplayList);
+                              // 1. Set the Design Time
+                              _setDateTime(_designTime);
 
-                                _setDateTime(_designTime);
+                              _controllerPlanetType.text = 'קודם לחיות';
 
-                                _controllerPlanetType.text = 'קודם לחיות';
-
-                                _controllerrotationstate.jumpToPage(3);
-                                break;
-                              default:
-                                //_planetsList = _planetspersonList;
-
-                                _controlPlanetHexagramData(
-                                    _planetsfullpersonList);
-                                _setDateTime(_personTime);
-
-                                break;
+                              // 2. Force Level Slider to 'Silence' (Index 3)
+                              _textlevel = 'silence';
+                              _currentrotationstate =
+                                  3; // Keep internal index in sync
+                              _controllerrotationstate.jumpToPage(3);
+                              _changeTextLevels(_textlevel);
                             }
+
+                            // 💡 REFRESH ACTIVE PLANET DATA
+                            // Grab the current selected planet from the new list (Red or Blue)
+                            _planethex =
+                                _planetsfulldisplayList[_previousPlanetIndex];
+
+                            _currentline = _planethex.line ?? 0;
+                            _controllerlinetext.text = _currentline.toString();
+
+                            int gate = _planethex.gate ?? 0;
+                            int line = _planethex.line ?? 0;
+                            _controllergatelinestory.text =
+                                coins384List[(gate * 7) + line];
+
+                            _setCoins();
+                            _controlPlanetHexagramData(_planetsfulldisplayList);
                           });
                         }),
                   ),
@@ -5661,7 +5539,7 @@ class _RotateComplexState extends State<RotateComplex>
                                           //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
                                           //_hexsentence = LineSentenceList[_planethex.gate!];
 
-                                          //_controllertopfirsttext.text = _hexsentence.adjective!;
+                                          //_controllertopfirsttext.text = _hexsentence.adjective ?? "";
 
                                           _controllercoinsttext.text =
                                               coins64List[_chosenhex];
@@ -5823,7 +5701,7 @@ class _RotateComplexState extends State<RotateComplex>
                                           _controllercoinsttext.text =
                                               coins64List[_chosenhex];
 
-                                          //_controllertopfirsttext.text = _hexsentence.adjective!;
+                                          //_controllertopfirsttext.text = _hexsentence.adjective ?? "";
                                           //_controllertopsecondtext.text = _hexsentence.subject!;
                                           //_controllertopthirdtext.text = _hexsentence.verb!;
                                           //_controllertopfourthtext.text = _hexsentence.adverb!;
@@ -5975,7 +5853,7 @@ class _RotateComplexState extends State<RotateComplex>
 
                                           _controllercoinsttext.text =
                                               coins64List[_chosenhex];
-                                          //_controllertopfirsttext.text = _hexsentence.adjective!;
+                                          //_controllertopfirsttext.text = _hexsentence.adjective ?? "";
                                           //_controllertopsecondtext.text = _hexsentence.subject!;
                                           //_controllertopthirdtext.text = _hexsentence.verb!;
                                           //_controllertopfourthtext.text = _hexsentence.adverb!;
@@ -6639,7 +6517,7 @@ class _RotateComplexState extends State<RotateComplex>
                   items: timecoinsDropDownLst,
                   onChanged: (String? newsettimestamp) {
                     setState(() {
-                      _settimestamp = newsettimestamp!;
+                      _settimestamp = newsettimestamp ?? "";
                     });
                   },
                 ),
@@ -6685,7 +6563,7 @@ class _RotateComplexState extends State<RotateComplex>
                   onPressed: () {
                     switch (_currentrotationstate) {
                       case 0:
-                        //_planettext = _sunhex.linename!;
+                        //_planettext = _sunhex.linename ?? "";
                         _planettext =
                             '1 year of COMPLEX PersonReality and Reality shining';
                         break;
@@ -6757,7 +6635,7 @@ class _RotateComplexState extends State<RotateComplex>
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _earthhex.linename!;
+                          //_planettext = _earthhex.linename ?? "";
                           _planettext =
                               '1 year of silence PersonReality and Reality grounded';
                           break;
@@ -6825,7 +6703,7 @@ class _RotateComplexState extends State<RotateComplex>
                   onPressed: () {
                     switch (_currentrotationstate) {
                       case 0:
-                        //_planettext = _northnodehex.linename!;
+                        //_planettext = _northnodehex.linename ?? "";
                         _planettext =
                             '18.6 years of COMPLEX PersonReality and Reality moving forward';
                         break;
@@ -6898,7 +6776,7 @@ class _RotateComplexState extends State<RotateComplex>
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _southnodehex.linename!;
+                          //_planettext = _southnodehex.linename ?? "";
                           _planettext =
                               '18.6 years of silence PersonReality and Reality leaving behind';
                           break;
@@ -6967,7 +6845,7 @@ class _RotateComplexState extends State<RotateComplex>
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _moonhex.linename!;
+                          //_planettext = _moonhex.linename ?? "";
                           _planettext =
                               '27 days of Simple PersonReality and Reality driven to rise';
                           break;
@@ -7035,7 +6913,7 @@ class _RotateComplexState extends State<RotateComplex>
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _mercuryhex.linename!;
+                          //_planettext = _mercuryhex.linename ?? "";
                           _planettext =
                               '88 days of Simple PersonReality and Reality communicating';
                           break;
@@ -7104,7 +6982,7 @@ class _RotateComplexState extends State<RotateComplex>
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _venushex.linename!;                          break;
+                          //_planettext = _venushex.linename ?? "";                          break;
                           _planettext =
                               '225 days of Simple PersonReality and Reality values';
                           break;
@@ -7173,7 +7051,7 @@ class _RotateComplexState extends State<RotateComplex>
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _marshex.linename!;
+                          //_planettext = _marshex.linename ?? "";
                           _planettext =
                               '687 days of Simple PersonReality and Reality Like Children';
                           break;
@@ -7241,7 +7119,7 @@ class _RotateComplexState extends State<RotateComplex>
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _jupiterhex.linename!;
+                          //_planettext = _jupiterhex.linename ?? "";
                           _planettext =
                               '12 years of Breath PersonReality and Reality Justice';
                           break;
@@ -7310,7 +7188,7 @@ class _RotateComplexState extends State<RotateComplex>
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _saturnhex.linename!;
+                          //_planettext = _saturnhex.linename ?? "";
                           _planettext =
                               '29 years of Breath PersonReality and Reality Discipline';
                           break;
@@ -7378,7 +7256,7 @@ class _RotateComplexState extends State<RotateComplex>
                   onPressed: () {
                     switch (_currentrotationstate) {
                       case 0:
-                        //_planettext = _uranushex.linename!;
+                        //_planettext = _uranushex.linename ?? "";
                         _planettext =
                             '84 years of Breath PersonReality and Reality Unusual';
                         break;
@@ -7446,7 +7324,7 @@ class _RotateComplexState extends State<RotateComplex>
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _neptunehex.linename!;
+                          //_planettext = _neptunehex.linename ?? "";
                           _planettext =
                               '165 years of Silence PersonReality and Reality Hidden';
                           break;
@@ -7515,7 +7393,7 @@ class _RotateComplexState extends State<RotateComplex>
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _plutohex.linename!;
+                          //_planettext = _plutohex.linename ?? "";
                           _planettext =
                               '248 years of Silence PersonReality and Reality Truth';
                           break;
@@ -7670,7 +7548,7 @@ class _RotateComplexState extends State<RotateComplex>
                     onPressed: () {
                       switch (_currentrotationstate) {
                         case 0:
-                          //_planettext = _plutohex.linename!;
+                          //_planettext = _plutohex.linename ?? "";
                           _planettext =
                               '50.7 years of Silence PersonReality and Reality Cycle';
                           break;
@@ -8787,7 +8665,7 @@ class _RotateComplexState extends State<RotateComplex>
 
     if (cardstate == 'zb') {
       for (var i = 0; i < _planetsdesignList.length; i++) {
-        tempdesigngate = _planetsdesignList[i].gate!;
+        tempdesigngate = _planetsdesignList[i].gate ?? 0;
         if (gatestatelist[tempdesigngate] == 3) {
           gatestatelist[tempdesigngate] = 1;
           _isBoldList[tempdesigngate] = true;
@@ -8799,7 +8677,7 @@ class _RotateComplexState extends State<RotateComplex>
       }
 
       for (var i = 0; i < _planetspersonList.length; i++) {
-        temppersongate = _planetspersonList[i].gate!;
+        temppersongate = _planetspersonList[i].gate ?? 0;
         _isBoldList[temppersongate] = false;
 
         if (gatestatelist[temppersongate] == 2) {
@@ -8810,7 +8688,7 @@ class _RotateComplexState extends State<RotateComplex>
       }
     } else {
       for (var i = 0; i < _planetsdesignList.length; i++) {
-        tempdesigngate = _planetsdesignList[i].gate!;
+        tempdesigngate = _planetsdesignList[i].gate ?? 0;
         if (gatestatelist[tempdesigngate] == 8) {
           gatestatelist[tempdesigngate] = 1;
           _isBoldList[tempdesigngate] = true;
@@ -8821,7 +8699,7 @@ class _RotateComplexState extends State<RotateComplex>
         }
       }
       for (var i = 0; i < _planetspersonList.length; i++) {
-        temppersongate = _planetspersonList[i].gate!;
+        temppersongate = _planetspersonList[i].gate ?? 0;
         _isBoldList[temppersongate] = false;
 
         if (gatestatelist[temppersongate] == 5) {
@@ -8838,7 +8716,7 @@ class _RotateComplexState extends State<RotateComplex>
 
     if (cardstate == 'zb') {
       for (var i = 0; i < _planetsdesignList.length; i++) {
-        tempdesigngate = _planetsdesignList[i].gate!;
+        tempdesigngate = _planetsdesignList[i].gate ?? 0;
         if (gatestatelist[tempdesigngate] == 1) {
           gatestatelist[tempdesigngate] = 0;
           _isBoldList[tempdesigngate] = false;
@@ -8849,7 +8727,7 @@ class _RotateComplexState extends State<RotateComplex>
       }
 
       //for (var i = 0; i < _planetspersonList.length; i++) {
-      // temppersongate = _planetspersonList[i].gate!;
+      // temppersongate = _planetspersonList[i].gate ?? 0;
       //_isBoldList[temppersongate] = true;
 
       //if (gatestatelist[temppersongate] == 3) {
@@ -8858,7 +8736,7 @@ class _RotateComplexState extends State<RotateComplex>
       //}
     } else {
       for (var i = 0; i < _planetsdesignList.length; i++) {
-        tempdesigngate = _planetsdesignList[i].gate!;
+        tempdesigngate = _planetsdesignList[i].gate ?? 0;
         if (gatestatelist[tempdesigngate] == 1) {
           gatestatelist[tempdesigngate] = 6;
           _isBoldList[tempdesigngate] = false;
@@ -8869,7 +8747,7 @@ class _RotateComplexState extends State<RotateComplex>
       }
 
       //for (var i = 0; i < _planetspersonList.length; i++) {
-      // temppersongate = _planetspersonList[i].gate!;
+      // temppersongate = _planetspersonList[i].gate ?? 0;
       // _isBoldList[temppersongate] = true;
 
       // if (gatestatelist[temppersongate] == 3) {
@@ -8882,12 +8760,12 @@ class _RotateComplexState extends State<RotateComplex>
   void _controlHDData(HumanDesign hdbasicdata) {
     _controllerFinalLine.text = 'XIO I don\'t know';
 
-    _controllerStrategy.text = hdbasicdata.strategy!;
+    _controllerStrategy.text = hdbasicdata.strategy ?? "";
     // _controllerStrategy.text = "TEST: ${hdbasicdata.definition}";
-    _controllerAuthority.text = hdbasicdata.authority!;
-    _controllerType.text = hdbasicdata.type!;
-    _controllerSentence.text = hdbasicdata.sentence!;
-    //_controllercoinfirsttext.text = hdbasicdata.coinname!;
+    _controllerAuthority.text = hdbasicdata.authority ?? "";
+    _controllerType.text = hdbasicdata.type ?? "";
+    _controllerSentence.text = hdbasicdata.sentence ?? "";
+    //_controllercoinfirsttext.text = hdbasicdata.coinname ?? "";
     // _controllercoin.jumpToPage(hexNamesList.indexOf(hdbasicdata.coinname!) + 1);
     _controllercoin.jumpToPage(hdbasicdata.typeid!);
     _controllersubcoin.jumpToPage(hdbasicdata.authid!);
@@ -8903,8 +8781,9 @@ class _RotateComplexState extends State<RotateComplex>
 
     //reversedHexagramsWheel
 
-    for (var i = 0; i < _planetsdesignList.length; i++) {
-      tempdesigngate = _planetsdesignList[i].gate!;
+    // for (var i = 0; i < _planetsdesignList.length; i++) {
+    for (var i = 0; i < 13; i++) {
+      tempdesigngate = _planetsdesignList[i].gate ?? 0;
       if (gatestatelist[tempdesigngate] == 0) {
         gatestatelist[tempdesigngate] = 1;
         _isBoldList[tempdesigngate] = true;
@@ -8923,8 +8802,9 @@ class _RotateComplexState extends State<RotateComplex>
       }
     }
 
-    for (var i = 0; i < _planetspersonList.length; i++) {
-      temppersongate = _planetspersonList[i].gate!;
+    // for (var i = 0; i < _planetspersonList.length; i++) {
+    for (var i = 0; i < 13; i++) {
+      temppersongate = _planetspersonList[i].gate ?? 0;
       _isBoldList[temppersongate] = true;
 
       tempcolorgatewheel = reversedHexagramsWheel.indexOf(temppersongate);
@@ -8952,7 +8832,7 @@ class _RotateComplexState extends State<RotateComplex>
     //_planetsdesignList[0].
 
     for (var i = 0; i < _planetspersonList.length; i++) {
-      temppersongate = _planetspersonList[i].gate!;
+      temppersongate = _planetspersonList[i].gate ?? 0;
       gatestatelist[temppersongate] = 2;
       _isBoldList[temppersongate] = true;
     }
@@ -9403,51 +9283,52 @@ class _RotateComplexState extends State<RotateComplex>
     _plutodesignhex = _planetsdesignList[12];
     _chirondesignhex = _planetsfulldesignList[13];
 
-    _controllerSunText.text = _sunhex.linename!;
-    _controllerEarthText.text = _earthhex.linename!;
-    _controllerNorthNodeText.text = _northnodehex.linename!;
-    _controllerSouthNodeText.text = _southnodehex.linename!;
-    _controllerMoonText.text = _moonhex.linename!;
-    _controllerMercuryText.text = _mercuryhex.linename!;
-    _controllerVenusText.text = _venushex.linename!;
-    _controllerMarsText.text = _marshex.linename!;
-    _controllerJupiterText.text = _jupiterhex.linename!;
-    _controllerSaturnText.text = _saturnhex.linename!;
-    _controllerUranusText.text = _uranushex.linename!;
-    _controllerNeptuneText.text = _neptunehex.linename!;
-    _controllerPlutoText.text = _plutohex.linename!;
+    _controllerSunText.text = _sunhex.linename ?? "";
+    _controllerEarthText.text = _earthhex.linename ?? "";
+    _controllerNorthNodeText.text = _northnodehex.linename ?? "";
+    _controllerSouthNodeText.text = _southnodehex.linename ?? "";
+    _controllerMoonText.text = _moonhex.linename ?? "";
+    _controllerMercuryText.text = _mercuryhex.linename ?? "";
+    _controllerVenusText.text = _venushex.linename ?? "";
+    _controllerMarsText.text = _marshex.linename ?? "";
+    _controllerJupiterText.text = _jupiterhex.linename ?? "";
+    _controllerSaturnText.text = _saturnhex.linename ?? "";
+    _controllerUranusText.text = _uranushex.linename ?? "";
+    _controllerNeptuneText.text = _neptunehex.linename ?? "";
+    _controllerPlutoText.text = _plutohex.linename ?? "";
 
-    _controllerSunGate.text = _sunhex.gatelinecolortonebase!;
-    _controllerEarthGate.text = _earthhex.gatelinecolortonebase!;
-    _controllerNorthNodeGate.text = _northnodehex.gatelinecolortonebase!;
-    _controllerSouthNodeGate.text = _southnodehex.gatelinecolortonebase!;
-    _controllerMoonGate.text = _moonhex.gatelinecolor!;
-    _controllerMercuryGate.text = _mercuryhex.gatelinecolor!;
-    _controllerVenusGate.text = _venushex.gatelinecolor!;
-    _controllerMarsGate.text = _marshex.gatelinecolor!;
-    _controllerJupiterGate.text = _jupiterhex.gatelinecolor!;
-    _controllerSaturnGate.text = _saturnhex.gatelinecolor!;
-    _controllerUranusGate.text = _uranushex.gatelinecolor!;
-    _controllerNeptuneGate.text = _neptunehex.gatelinecolor!;
-    _controllerPlutoGate.text = _plutohex.gatelinecolor!;
-    _controllerChironGate.text = _chironhex.gatelinecolor!;
+    _controllerSunGate.text = _sunhex.gatelinecolortonebase ?? "";
+    _controllerEarthGate.text = _earthhex.gatelinecolortonebase ?? "";
+    _controllerNorthNodeGate.text = _northnodehex.gatelinecolortonebase ?? "";
+    _controllerSouthNodeGate.text = _southnodehex.gatelinecolortonebase ?? "";
+    _controllerMoonGate.text = _moonhex.gatelinecolor ?? "";
+    _controllerMercuryGate.text = _mercuryhex.gatelinecolor ?? "";
+    _controllerVenusGate.text = _venushex.gatelinecolor ?? "";
+    _controllerMarsGate.text = _marshex.gatelinecolor ?? "";
+    _controllerJupiterGate.text = _jupiterhex.gatelinecolor ?? "";
+    _controllerSaturnGate.text = _saturnhex.gatelinecolor ?? "";
+    _controllerUranusGate.text = _uranushex.gatelinecolor ?? "";
+    _controllerNeptuneGate.text = _neptunehex.gatelinecolor ?? "";
+    _controllerPlutoGate.text = _plutohex.gatelinecolor ?? "";
+    _controllerChironGate.text = _chironhex.gatelinecolor ?? "";
 
-    _controllerDesignSunGate.text = _sundesignhex.gatelinecolortonebase!;
-    _controllerDesignEarthGate.text = _earthdesignhex.gatelinecolortonebase!;
+    _controllerDesignSunGate.text = _sundesignhex.gatelinecolortonebase ?? "";
+    _controllerDesignEarthGate.text =
+        _earthdesignhex.gatelinecolortonebase ?? "";
     _controllerDesignNorthNodeGate.text =
-        _northnodedesignhex.gatelinecolortonebase!;
+        _northnodedesignhex.gatelinecolortonebase ?? "";
     _controllerDesignSouthNodeGate.text =
-        _southnodedesignhex.gatelinecolortonebase!;
-    _controllerDesignMoonGate.text = _moondesignhex.gatelinecolor!;
-    _controllerDesignMercuryGate.text = _mercurydesignhex.gatelinecolor!;
-    _controllerDesignVenusGate.text = _venusdesignhex.gatelinecolor!;
-    _controllerDesignMarsGate.text = _marsdesignhex.gatelinecolor!;
-    _controllerDesignJupiterGate.text = _jupiterdesignhex.gatelinecolor!;
-    _controllerDesignSaturnGate.text = _saturndesignhex.gatelinecolor!;
-    _controllerDesignUranusGate.text = _uranusdesignhex.gatelinecolor!;
-    _controllerDesignNeptuneGate.text = _neptunedesignhex.gatelinecolor!;
-    _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor!;
-    _controllerDesignChironGate.text = _chirondesignhex.gatelinecolor!;
+        _southnodedesignhex.gatelinecolortonebase ?? "";
+    _controllerDesignMoonGate.text = _moondesignhex.gatelinecolor ?? "";
+    _controllerDesignMercuryGate.text = _mercurydesignhex.gatelinecolor ?? "";
+    _controllerDesignVenusGate.text = _venusdesignhex.gatelinecolor ?? "";
+    _controllerDesignMarsGate.text = _marsdesignhex.gatelinecolor ?? "";
+    _controllerDesignJupiterGate.text = _jupiterdesignhex.gatelinecolor ?? "";
+    _controllerDesignSaturnGate.text = _saturndesignhex.gatelinecolor ?? "";
+    _controllerDesignUranusGate.text = _uranusdesignhex.gatelinecolor ?? "";
+    _controllerDesignNeptuneGate.text = _neptunedesignhex.gatelinecolor ?? "";
+    _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor ?? "";
+    _controllerDesignChironGate.text = _chirondesignhex.gatelinecolor ?? "";
 
     // set tonal values
     tonallist = [
@@ -9552,7 +9433,7 @@ class _RotateComplexState extends State<RotateComplex>
     _controllerbot.jumpToPage(_hexalignedList[2]);
   }
 
-  void _setChart(List<hdCenter> updatecenters) {
+  void _setChart(List<HDCenter> updatecenters) {
     headstate = 3;
     ajnastate = 3;
     throatstate = 3;
@@ -9563,24 +9444,24 @@ class _RotateComplexState extends State<RotateComplex>
     spleenstate = 3;
     solarstate = 3;
 
-    headstate = updatecenters[0].state!;
-    ajnastate = updatecenters[1].state!;
-    throatstate = updatecenters[2].state!;
-    gstate = updatecenters[3].state!;
-    heartstate = updatecenters[4].state!;
-    spleenstate = updatecenters[5].state!;
-    sacralstate = updatecenters[6].state!;
-    solarstate = updatecenters[7].state!;
-    rootstate = updatecenters[8].state!;
+    headstate = updatecenters[0].state ?? 0;
+    ajnastate = updatecenters[1].state ?? 0;
+    throatstate = updatecenters[2].state ?? 0;
+    gstate = updatecenters[3].state ?? 0;
+    heartstate = updatecenters[4].state ?? 0;
+    spleenstate = updatecenters[5].state ?? 0;
+    sacralstate = updatecenters[6].state ?? 0;
+    solarstate = updatecenters[7].state ?? 0;
+    rootstate = updatecenters[8].state ?? 0;
   }
 
   void _setEvolutionCoin() {
     // sun earth nodes design
-    if (_planetsdesignList[0].tone! > 3) {
+    if ((_planetsdesignList[0].tone ?? 0) > 3) {
       //_inbodyalign = 'right';
       //_inbodycolor = Colors.red;
       _inbodyicon = Icons.arrow_circle_right;
-      if (_planetsdesignList[2].tone! > 3) {
+      if ((_planetsdesignList[2].tone ?? 0) > 3) {
         _colorinsilence = Colors.red;
         //_exbodyalign = 'right';
         //_exbodycolor = Colors.yellow;
@@ -9595,7 +9476,7 @@ class _RotateComplexState extends State<RotateComplex>
       //_inbodyalign = 'left';
       //_inbodycolor = Colors.blue;
       _inbodyicon = Icons.arrow_circle_left;
-      if (_planetsdesignList[2].tone! > 3) {
+      if ((_planetsdesignList[2].tone ?? 0) > 3) {
         _colorinsilence = Colors.yellow;
         //_exbodyalign = 'right';
         //_exbodycolor = Colors.yellow;
@@ -9609,11 +9490,11 @@ class _RotateComplexState extends State<RotateComplex>
     }
 
     // sun earth nodes person
-    if (_planetspersonList[0].tone! > 3) {
+    if ((_planetsdesignList[2].tone ?? 0) > 3) {
       //_inpersonalign = 'right';
       //_inpersoncolor = Colors.blue;
       _inpersonicon = Icons.arrow_circle_right;
-      if (_planetspersonList[2].tone! > 3) {
+      if ((_planetspersonList[2].tone ?? 0) > 3) {
         _colorincomplex = Colors.red;
         //_expersonalign = 'right';
         //_expersoncolor = Colors.yellow;
@@ -9628,7 +9509,7 @@ class _RotateComplexState extends State<RotateComplex>
       //_inpersonalign = 'left';
       //_inpersoncolor = Colors.blue;
       _inpersonicon = Icons.arrow_circle_left;
-      if (_planetspersonList[2].tone! > 3) {
+      if ((_planetspersonList[2].tone ?? 0) > 3) {
         _colorincomplex = Colors.yellow;
         //_expersonalign = 'right';
         //_expersoncolor = Colors.yellow;
@@ -9642,14 +9523,14 @@ class _RotateComplexState extends State<RotateComplex>
     }
 
     // nodes person design
-    if (_planetsdesignList[2].tone! > 3) {
-      if (_planetspersonList[2].tone! > 3) {
+    if ((_planetsdesignList[2].tone ?? 0) > 3) {
+      if ((_planetspersonList[2].tone ?? 0) > 3) {
         _colorinbreath = Colors.red;
       } else {
         _colorinbreath = Colors.yellow;
       }
     } else {
-      if (_planetspersonList[2].tone! > 3) {
+      if ((_planetspersonList[2].tone ?? 0) > 3) {
         _colorinbreath = Colors.green;
       } else {
         _colorinbreath = Colors.blue;
@@ -9657,14 +9538,14 @@ class _RotateComplexState extends State<RotateComplex>
     }
 
     //sun earth person design
-    if (_planetsdesignList[0].tone! > 3) {
-      if (_planetspersonList[0].tone! > 3) {
+    if ((_planetsdesignList[0].tone ?? 0) > 3) {
+      if ((_planetspersonList[0].tone ?? 0) > 3) {
         _colorinsimple = Colors.red;
       } else {
         _colorinsimple = Colors.yellow;
       }
     } else {
-      if (_planetspersonList[0].tone! > 3) {
+      if ((_planetspersonList[0].tone ?? 0) > 3) {
         _colorinsimple = Colors.green;
       } else {
         _colorinsimple = Colors.blue;
@@ -9678,106 +9559,114 @@ class _RotateComplexState extends State<RotateComplex>
         //_controllerPlanetSubType.text = 'COMPLEX';
         _controllerPlanetSubType.text = 'מורכב';
 
-        _controllerSunGate.text = _sunhex.gatelinecolortonebase!;
-        _controllerEarthGate.text = _earthhex.gatelinecolortonebase!;
-        _controllerNorthNodeGate.text = _northnodehex.gatelinecolortonebase!;
-        _controllerSouthNodeGate.text = _southnodehex.gatelinecolortonebase!;
-        _controllerMoonGate.text = _moonhex.gatelinecolor!;
-        _controllerMercuryGate.text = _mercuryhex.gatelinecolor!;
-        _controllerVenusGate.text = _venushex.gatelinecolor!;
-        _controllerMarsGate.text = _marshex.gatelinecolor!;
-        _controllerJupiterGate.text = _jupiterhex.gatelinecolor!;
-        _controllerSaturnGate.text = _saturnhex.gatelinecolor!;
-        _controllerUranusGate.text = _uranushex.gatelinecolor!;
-        _controllerNeptuneGate.text = _neptunehex.gatelinecolor!;
-        _controllerPlutoGate.text = _plutohex.gatelinecolor!;
-        _controllerChironGate.text = _chironhex.gatelinecolor!;
+        _controllerSunGate.text = _sunhex.gatelinecolortonebase ?? "";
+        _controllerEarthGate.text = _earthhex.gatelinecolortonebase ?? "";
+        _controllerNorthNodeGate.text =
+            _northnodehex.gatelinecolortonebase ?? "";
+        _controllerSouthNodeGate.text =
+            _southnodehex.gatelinecolortonebase ?? "";
+        _controllerMoonGate.text = _moonhex.gatelinecolor ?? "";
+        _controllerMercuryGate.text = _mercuryhex.gatelinecolor ?? "";
+        _controllerVenusGate.text = _venushex.gatelinecolor ?? "";
+        _controllerMarsGate.text = _marshex.gatelinecolor ?? "";
+        _controllerJupiterGate.text = _jupiterhex.gatelinecolor ?? "";
+        _controllerSaturnGate.text = _saturnhex.gatelinecolor ?? "";
+        _controllerUranusGate.text = _uranushex.gatelinecolor ?? "";
+        _controllerNeptuneGate.text = _neptunehex.gatelinecolor ?? "";
+        _controllerPlutoGate.text = _plutohex.gatelinecolor ?? "";
+        _controllerChironGate.text = _chironhex.gatelinecolor ?? "";
 
-        _controllerDesignSunGate.text = _sundesignhex.gatelinecolortonebase!;
+        _controllerDesignSunGate.text =
+            _sundesignhex.gatelinecolortonebase ?? "";
         _controllerDesignEarthGate.text =
-            _earthdesignhex.gatelinecolortonebase!;
+            _earthdesignhex.gatelinecolortonebase ?? "";
         _controllerDesignNorthNodeGate.text =
-            _northnodedesignhex.gatelinecolortonebase!;
+            _northnodedesignhex.gatelinecolortonebase ?? "";
         _controllerDesignSouthNodeGate.text =
-            _southnodedesignhex.gatelinecolortonebase!;
-        _controllerDesignMoonGate.text = _moondesignhex.gatelinecolor!;
-        _controllerDesignMercuryGate.text = _mercurydesignhex.gatelinecolor!;
-        _controllerDesignVenusGate.text = _venusdesignhex.gatelinecolor!;
-        _controllerDesignMarsGate.text = _marsdesignhex.gatelinecolor!;
-        _controllerDesignJupiterGate.text = _jupiterdesignhex.gatelinecolor!;
-        _controllerDesignSaturnGate.text = _saturndesignhex.gatelinecolor!;
-        _controllerDesignUranusGate.text = _uranusdesignhex.gatelinecolor!;
-        _controllerDesignNeptuneGate.text = _neptunedesignhex.gatelinecolor!;
-        _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor!;
-        _controllerDesignChironGate.text = _chirondesignhex.gatelinecolor!;
+            _southnodedesignhex.gatelinecolortonebase ?? "";
+        _controllerDesignMoonGate.text = _moondesignhex.gatelinecolor ?? "";
+        _controllerDesignMercuryGate.text =
+            _mercurydesignhex.gatelinecolor ?? "";
+        _controllerDesignVenusGate.text = _venusdesignhex.gatelinecolor ?? "";
+        _controllerDesignMarsGate.text = _marsdesignhex.gatelinecolor ?? "";
+        _controllerDesignJupiterGate.text =
+            _jupiterdesignhex.gatelinecolor ?? "";
+        _controllerDesignSaturnGate.text = _saturndesignhex.gatelinecolor ?? "";
+        _controllerDesignUranusGate.text = _uranusdesignhex.gatelinecolor ?? "";
+        _controllerDesignNeptuneGate.text =
+            _neptunedesignhex.gatelinecolor ?? "";
+        _controllerDesignPlutoGate.text = _plutodesignhex.gatelinecolor ?? "";
+        _controllerDesignChironGate.text = _chirondesignhex.gatelinecolor ?? "";
 
         break;
       case 'simple':
         _controllerPlanetSubType.text = 'פשוט';
 
-        _controllerSunGate.text = _sunhex.gateline!;
-        _controllerEarthGate.text = _earthhex.gateline!;
-        _controllerNorthNodeGate.text = _northnodehex.gateline!;
-        _controllerSouthNodeGate.text = _southnodehex.gateline!;
-        _controllerMoonGate.text = _moonhex.gateline!;
-        _controllerMercuryGate.text = _mercuryhex.gateline!;
-        _controllerVenusGate.text = _venushex.gateline!;
-        _controllerMarsGate.text = _marshex.gateline!;
-        _controllerJupiterGate.text = _jupiterhex.gateline!;
-        _controllerSaturnGate.text = _saturnhex.gateline!;
-        _controllerUranusGate.text = _uranushex.gateline!;
-        _controllerNeptuneGate.text = _neptunehex.gateline!;
-        _controllerPlutoGate.text = _plutohex.gateline!;
-        _controllerChironGate.text = _chironhex.gateline!;
+        _controllerSunGate.text = _sunhex.gateline ?? "";
+        _controllerEarthGate.text = _earthhex.gateline ?? "";
+        _controllerNorthNodeGate.text = _northnodehex.gateline ?? "";
+        _controllerSouthNodeGate.text = _southnodehex.gateline ?? "";
+        _controllerMoonGate.text = _moonhex.gateline ?? "";
+        _controllerMercuryGate.text = _mercuryhex.gateline ?? "";
+        _controllerVenusGate.text = _venushex.gateline ?? "";
+        _controllerMarsGate.text = _marshex.gateline ?? "";
+        _controllerJupiterGate.text = _jupiterhex.gateline ?? "";
+        _controllerSaturnGate.text = _saturnhex.gateline ?? "";
+        _controllerUranusGate.text = _uranushex.gateline ?? "";
+        _controllerNeptuneGate.text = _neptunehex.gateline ?? "";
+        _controllerPlutoGate.text = _plutohex.gateline ?? "";
+        _controllerChironGate.text = _chironhex.gateline ?? "";
 
-        _controllerDesignSunGate.text = _sundesignhex.gateline!;
-        _controllerDesignEarthGate.text = _earthdesignhex.gateline!;
-        _controllerDesignNorthNodeGate.text = _northnodedesignhex.gateline!;
-        _controllerDesignSouthNodeGate.text = _southnodedesignhex.gateline!;
-        _controllerDesignMoonGate.text = _moondesignhex.gateline!;
-        _controllerDesignMercuryGate.text = _mercurydesignhex.gateline!;
-        _controllerDesignVenusGate.text = _venusdesignhex.gateline!;
-        _controllerDesignMarsGate.text = _marsdesignhex.gateline!;
-        _controllerDesignJupiterGate.text = _jupiterdesignhex.gateline!;
-        _controllerDesignSaturnGate.text = _saturndesignhex.gateline!;
-        _controllerDesignUranusGate.text = _uranusdesignhex.gateline!;
-        _controllerDesignNeptuneGate.text = _neptunedesignhex.gateline!;
-        _controllerDesignPlutoGate.text = _plutodesignhex.gateline!;
-        _controllerDesignChironGate.text = _chirondesignhex.gateline!;
+        _controllerDesignSunGate.text = _sundesignhex.gateline ?? "";
+        _controllerDesignEarthGate.text = _earthdesignhex.gateline ?? "";
+        _controllerDesignNorthNodeGate.text =
+            _northnodedesignhex.gateline ?? "";
+        _controllerDesignSouthNodeGate.text =
+            _southnodedesignhex.gateline ?? "";
+        _controllerDesignMoonGate.text = _moondesignhex.gateline ?? "";
+        _controllerDesignMercuryGate.text = _mercurydesignhex.gateline ?? "";
+        _controllerDesignVenusGate.text = _venusdesignhex.gateline ?? "";
+        _controllerDesignMarsGate.text = _marsdesignhex.gateline ?? "";
+        _controllerDesignJupiterGate.text = _jupiterdesignhex.gateline ?? "";
+        _controllerDesignSaturnGate.text = _saturndesignhex.gateline ?? "";
+        _controllerDesignUranusGate.text = _uranusdesignhex.gateline ?? "";
+        _controllerDesignNeptuneGate.text = _neptunedesignhex.gateline ?? "";
+        _controllerDesignPlutoGate.text = _plutodesignhex.gateline ?? "";
+        _controllerDesignChironGate.text = _chirondesignhex.gateline ?? "";
 
         break;
       case 'breath':
         _controllerPlanetSubType.text = 'נשימה';
 
-        _controllerSunGate.text = 'Exhale';
-        _controllerEarthGate.text = 'Inhale';
-        _controllerNorthNodeGate.text = 'BREATHE';
-        _controllerSouthNodeGate.text = 'BREATH';
-        _controllerMoonGate.text = 'Exhale';
-        _controllerMercuryGate.text = 'Exhale';
-        _controllerVenusGate.text = 'Exhale';
-        _controllerMarsGate.text = 'Exhale';
-        _controllerJupiterGate.text = 'Inhale';
-        _controllerSaturnGate.text = 'Inhale';
-        _controllerUranusGate.text = 'Inhale';
-        _controllerNeptuneGate.text = 'Inhale';
-        _controllerPlutoGate.text = 'Inhale';
-        _controllerChironGate.text = 'Inhale';
+        _controllerSunGate.text = 'לנשוף';
+        _controllerEarthGate.text = 'לשאוף';
+        _controllerNorthNodeGate.text = 'נשימה';
+        _controllerSouthNodeGate.text = 'נשימה';
+        _controllerMoonGate.text = 'לנשוף';
+        _controllerMercuryGate.text = 'לנשוף';
+        _controllerVenusGate.text = 'לנשוף';
+        _controllerMarsGate.text = 'לנשוף';
+        _controllerJupiterGate.text = 'לשאוף';
+        _controllerSaturnGate.text = 'לשאוף';
+        _controllerUranusGate.text = 'לשאוף';
+        _controllerNeptuneGate.text = 'לשאוף';
+        _controllerPlutoGate.text = 'לשאוף';
+        _controllerChironGate.text = 'לשאוף';
 
-        _controllerDesignSunGate.text = 'Exhale';
-        _controllerDesignEarthGate.text = 'Inhale';
-        _controllerDesignNorthNodeGate.text = 'BREATHE';
-        _controllerDesignSouthNodeGate.text = 'BREATH';
-        _controllerDesignMoonGate.text = 'Exhale';
-        _controllerDesignMercuryGate.text = 'Exhale';
-        _controllerDesignVenusGate.text = 'Exhale';
-        _controllerDesignMarsGate.text = 'Exhale';
-        _controllerDesignJupiterGate.text = 'Inhale';
-        _controllerDesignSaturnGate.text = 'Inhale';
-        _controllerDesignUranusGate.text = 'Inhale';
-        _controllerDesignNeptuneGate.text = 'Inhale';
-        _controllerDesignPlutoGate.text = 'Inhale';
-        _controllerDesignChironGate.text = 'Inhale';
+        _controllerDesignSunGate.text = 'לנשוף';
+        _controllerDesignEarthGate.text = 'לשאוף';
+        _controllerDesignNorthNodeGate.text = 'נשימה';
+        _controllerDesignSouthNodeGate.text = 'נשימה';
+        _controllerDesignMoonGate.text = 'לנשוף';
+        _controllerDesignMercuryGate.text = 'לנשוף';
+        _controllerDesignVenusGate.text = 'לנשוף';
+        _controllerDesignMarsGate.text = 'לנשוף';
+        _controllerDesignJupiterGate.text = 'לשאוף';
+        _controllerDesignSaturnGate.text = 'לשאוף';
+        _controllerDesignUranusGate.text = 'לשאוף';
+        _controllerDesignNeptuneGate.text = 'לשאוף';
+        _controllerDesignPlutoGate.text = 'לשאוף';
+        _controllerDesignChironGate.text = 'לשאוף';
 
         break;
       case 'silence':
@@ -9817,5 +9706,79 @@ class _RotateComplexState extends State<RotateComplex>
       default:
         break;
     }
+  }
+
+  void _syncUIWithAccount(ZBAccount account) {
+    setState(() {
+      // 1. Capture the times directly from the account
+      _personTime = account.timestamp;
+      _designTime = account.designtimestamp;
+
+      // 2. Set initial display (Personality)
+      _setDateTime(_personTime);
+      // 1. DATA ASSIGNMENT (Critical first step)
+      _planetspersonList = account.personality;
+      _planetsdesignList = account.design;
+      _centers = account.centers;
+      _channelsList = account.channels;
+
+      _personTime = account.timestamp; // The Birth Time
+      _designTime = account
+          .designtimestamp; // The 88-degree Time (ensure your account model has this)
+
+      // 2. THE ORDER MATTERS: RESET then SET
+      _resetgatesState(); // Clear the old gates (sets gatestatelist to 0)
+      _setgatesState(); // Calculate the new gates (sets gatestatelist to 1, 2, or 3)
+      _setChart(_centers); // Paint the colors based on the new gatestatelist
+
+      // 3. PLANETARY MAPPING (28 Hexagrams)
+      _sunhex = account.personality[0];
+      // ... (Rest of your mapping _earthhex, _moonhex, etc.) ...
+      _chirondesignhex = account.design[13];
+
+      // 4. METRICS & POPUPS
+      hdfinaldata = HDServices.getHDBasicData(account.channels);
+      _controlHDData(hdfinaldata);
+
+      _planetsfullpersonList = List<Hexagram>.from(account.personality);
+      _planetsfulldesignList = List<Hexagram>.from(account.design);
+      _planetsfulldisplayList = account.personality;
+
+      _personchannelsList = account.channels
+          .where((c) => c.coin == 'breath' || c.coin == 'complex')
+          .toList();
+      _designchannelsList = account.channels
+          .where((c) => c.coin == 'silence' || c.coin == 'simple')
+          .toList();
+
+      // 5. CAROUSEL & LEVEL RESET
+      _currentconstate = 0;
+      _controllerconstate.jumpToPage(0);
+
+      _textlevel = 'complex'; // Default new charts to complex
+      _currentrotationstate = 0;
+      _controllerrotationstate.jumpToPage(0);
+      _changeTextLevels(_textlevel);
+
+      // 6. SELECTION RESET (Sun/Index 0)
+      _planethex = account.personality[0];
+      _currentline = _planethex.line ?? 0;
+      _controllerlinetext.text = _currentline.toString();
+
+      int gate = _planethex.gate ?? 0;
+      int line = _planethex.line ?? 0;
+      _controllergatelinestory.text = coins384List[(gate * 7) + line];
+
+      for (int i = 0; i < _isPlanetSelectedList.length; i++) {
+        _isPlanetSelectedList[i] = (i == 0);
+      }
+      _previousPlanetIndex = 0;
+
+      // 7. FINAL UPDATES
+      _setDateTime(account.timestamp);
+      resetChartColor();
+      _setEvolutionCoin();
+      _setCoins();
+    });
   }
 }
