@@ -628,26 +628,25 @@ class _RotateSimpleState extends State<RotateSimple>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // Base 4
-                      zbMiniBtn(context, '4', Colors.black, Colors.white,
+                      buildSelectionButton(context, '4',
                           zbbuildBasePopUp(context, '4', base4Data)),
 
-                      const SizedBox(height: 10), // Spacing between buttons
-                      // Base 36 (The New 600-line Consolidated Map)
-                      zbMiniBtn(context, '36', Colors.black, Colors.white,
-                          zbbuild36PopUp(context)),
+                      // Base 36
+                      buildSelectionButton(
+                        context,
+                        '36',
+                        zbbuild36PopUp(context), // Added the missing argument
+                      ),
 
-                      const SizedBox(height: 10),
                       // Base 64
-                      zbMiniBtn(context, '64', Colors.black, Colors.white,
+                      buildSelectionButton(context, '64',
                           zbbuildBasePopUp(context, '64', base64Data)),
 
-                      const SizedBox(height: 10),
-                      // Base 384
-                      zbMiniBtn(context, '384', Colors.black, Colors.white,
-                          zbbuild384PopUp(context)),
+                      // Base 384 (Keep its custom logic for the Sun/Earth button)
+                      buildSelectionButton(
+                          context, '384', zbbuild384PopUp(context)),
                     ],
                   ),
-
                   const Divider(
                     color: Colors.green,
                     thickness: 7,

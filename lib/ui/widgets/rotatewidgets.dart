@@ -3810,32 +3810,175 @@ Widget zbMiniBtn(
 }
 
 Widget zbbuild36PopUp(BuildContext context) {
-  return SelectionArea(
-    child: AlertDialog(
-      title: const Text('36 Transactions', textAlign: TextAlign.center),
-      content: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.9,
-        child: SingleChildScrollView(
-          child: Column(
-            // <--- Add this Column
-            mainAxisSize: MainAxisSize.min, // Constrain height
-            children: [
-              zbTriadRow(context: context, dataList: transaction36),
-              // You can add more rows here easily:
-              // const Divider(thickness: 2),
-            ],
+  return AlertDialog(
+    title: const Text('36 Transactions', textAlign: TextAlign.center),
+    content: SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // COMPLEX - BLUE
+          zbChannelBtn(
+            context: context,
+            label: 'COMPLEX BLUE',
+            bg: Colors.blue,
+            textCol: Colors.transparent,
+            fontSize: 18,
+            destination: // 1. COMPLEX BLUE
+                _buildTriadDialogContent(
+                    context,
+                    'COMPLEX BLUE',
+                    ['Complex', 'מורכב', 'Manifest', 'הגשמה'],
+                    Colors.white,
+                    Colors.blue),
+          ),
+
+          // BREATH - YELLOW
+          zbChannelBtn(
+            context: context,
+            label: 'Breath Yellow',
+            bg: Colors.yellow,
+            textCol: Colors.transparent,
+            fontSize: 18,
+            destination: // 2. BREATH YELLOW
+                _buildTriadDialogContent(
+                    context,
+                    'BREATH YELLOW',
+                    ['Breath', 'נשימה', 'Project', 'הקרנה'],
+                    Colors.black,
+                    Colors.yellow),
+          ),
+
+          // SILENCE - RED
+          zbChannelBtn(
+            context: context,
+            label: 'Silence Red',
+            bg: Colors.red,
+            textCol: Colors.transparent,
+            fontSize: 18,
+            destination: // 3. SILENCE RED
+                _buildTriadDialogContent(
+                    context,
+                    'SILENCE RED',
+                    ['silence', 'שתיקה', 'Generate', 'מחול אלה'],
+                    Colors.black,
+                    Colors.red),
+          ),
+        ],
+      ),
+    ),
+    actions: [
+      TextButton(
+        onPressed: () => Navigator.of(context).pop(),
+        child: const Text('X',
+            style: TextStyle(color: Colors.black, fontSize: 18)),
+      ),
+    ],
+  );
+}
+
+// Update the signature to include a color
+Widget _buildTriadDialogContent(BuildContext context, String title,
+    List<String> keys, Color themeColor, Color bgColor) {
+  // 1. Get raw lists
+  final List<String> enZBList = base36Data[keys[0]] ?? [];
+  final List<String> heZBList = base36Data[keys[1]] ?? [];
+  final List<String> enHDList = base36Data[keys[2]] ?? [];
+  final List<String> heHDList = base36Data[keys[3]] ?? [];
+
+  // 2. Consolidate
+  final List<Map<String, dynamic>> mergedData = consolidateTriadData(
+    enZB: enZBList,
+    heZB: heZBList,
+    enHD: enHDList,
+    heHD: heHDList,
+  );
+
+  final TextStyle style16 = TextStyle(
+    backgroundColor: bgColor,
+    color: themeColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+  );
+
+  return AlertDialog(
+    title: Text(title, textAlign: TextAlign.center, style: style16),
+    content: SizedBox(
+      width: 500,
+      height: 450,
+      child: ListView.builder(
+        itemCount: mergedData.length,
+        itemBuilder: (ctx, i) {
+          final item = mergedData[i];
+
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 8),
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              // color: themeColor.withValues(alpha: 0.05),
+              color: bgColor,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: themeColor.withValues(alpha: 0.2)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // --- THE SINGLE HEADER (Trimmed to 1) ---
+                Center(
+                  child:
+                      Text(item['id'], style: style16.copyWith(fontSize: 20)),
+                ),
+                const Divider(height: 24),
+
+                // --- THE DATA LINES (English & Hebrew) ---
+                ...List.generate(item['enLines'].length, (idx) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          item['heLines'][idx],
+                          style: style16,
+                          textAlign: TextAlign.right,
+                          textDirection: TextDirection.rtl,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          item['enLines'][idx],
+                          style: style16,
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+              ],
+            ),
+          );
+        },
+      ),
+    ),
+    actions: [
+      Padding(
+        padding: const EdgeInsets.only(right: 8.0, bottom: 8.0),
+        child: TextButton(
+          onPressed: () {
+            // Safety check to ensure the dialog exists before popping
+            if (Navigator.of(context).canPop()) {
+              Navigator.of(context).pop();
+            }
+          },
+          // Simple; "X" design
+          child: const Text(
+            'X',
+            style: TextStyle(
+                color: Colors.black54,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
           ),
         ),
       ),
-      actions: [
-        TextButton(
-          onPressed: () {
-            if (Navigator.of(context).canPop()) Navigator.of(context).pop();
-          },
-          child: const Text('X', style: TextStyle(color: Colors.black)),
-        ),
-      ],
-    ),
+    ],
   );
 }
 
@@ -3957,8 +4100,9 @@ Widget zbbuildBasePopUp(
         actions: [
           TextButton(
             onPressed: () {
-              if (Navigator.of(dialogContext).canPop())
+              if (Navigator.of(dialogContext).canPop()) {
                 Navigator.of(dialogContext).pop();
+              }
             },
             child: const Text('X',
                 style: TextStyle(color: Colors.black, fontSize: 18)),
@@ -4104,6 +4248,70 @@ class FileViewScreen extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class WalletSearchDelegate extends SearchDelegate {
+  // Mapping the bases to your existing data lists
+  final Map<String, List<String>> allWallets = {
+    // '4': base4Data,   // Your existing Base 4 list
+    // '36': base36Data, // Your new 600-line consolidated map
+    // '64': base64Data, // Your existing Base 64 list
+    // '384': base384Data, // Your existing Base 384 list
+  };
+
+  @override
+  String get searchFieldLabel => 'חפש ארנק... / Search Wallet...';
+
+  @override
+  List<Widget>? buildActions(BuildContext context) => [
+        IconButton(icon: const Icon(Icons.clear), onPressed: () => query = ''),
+      ];
+
+  @override
+  Widget? buildLeading(BuildContext context) => IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () => close(context, null),
+      );
+
+  @override
+  Widget buildResults(BuildContext context) => _buildWalletList();
+
+  @override
+  Widget buildSuggestions(BuildContext context) => _buildWalletList();
+
+  Widget _buildWalletList() {
+    List<WalletSearchResult> matches = [];
+
+    // Search through all bases simultaneously
+    allWallets.forEach((baseKey, items) {
+      for (var item in items) {
+        if (query.isEmpty || item.toLowerCase().contains(query.toLowerCase())) {
+          matches.add(WalletSearchResult(base: baseKey, value: item));
+        }
+      }
+    });
+
+    return ListView.builder(
+      itemCount: matches.length,
+      itemBuilder: (context, index) {
+        final result = matches[index];
+        return ListTile(
+          // Display the Base (4, 36, etc) as a leading 'coin'
+          leading: CircleAvatar(
+            backgroundColor: Colors.black,
+            child: Text(result.base,
+                style: const TextStyle(color: Colors.white, fontSize: 12)),
+          ),
+          title:
+              Text(result.value, style: const TextStyle(fontFamily: 'Courier')),
+          onTap: () {
+            // Logic for selecting this specific wallet rotation point
+            close(context, result);
+          },
+        );
+      },
     );
   }
 }

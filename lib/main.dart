@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'dart:io';
+import 'package:flutter/foundation.dart'; // This defines kIsWeb
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circle_list/circle_list.dart';
 import 'package:finallyicanlearn/models/lists.dart';
@@ -17,20 +19,44 @@ import 'package:finallyicanlearn/rotations/rotateidk.dart';
 import 'package:finallyicanlearn/rotations/rotatesilence.dart';
 import 'package:finallyicanlearn/rotations/rotatebreath.dart';
 import 'package:finallyicanlearn/ui/widgets/rotatewidgets.dart';
+import 'package:finallyicanlearn/zb/data/providers/zb_db_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart'; // Ensure this is in pubspec.yaml
 
 // github project link
 // https://www.github.com/ynvgib/rotationtime
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Call once to generate the new map in the Debug Console, then comment out.
-  // performOneTimeConsolidation();
+  // 1. Platform Setup (Ubuntu/Linux/Android)
+  // if (Platform.isLinux || Platform.isWindows) {
+  //   sqfliteFfiInit();
+  //   databaseFactory = databaseFactoryFfi;
+  // }
+
+  // final zbProvider = ZmansiDbProvider.db;
+
+  // 2. THE RESET (Run this once to apply the new UNIQUE schema)
+  // You can comment out 'deleteFullDatabase' after the first successful run
+  // await zbProvider.deleteFullDatabase();
+
+  // 3. THE MIGRATION (Swallowing the "Whale")
+  // await zbProvider.migrateLegacyLists();
+
+  // inside main() after WidgetsFlutterBinding...
+  // await ZmansiDbProvider.db.migrateLegacyLists();
+
+  // if (kDebugMode) {
+  //   await DebugHelper.printMigrationReport();
+  // }
+
+  // 4. THE VERIFICATION
+  // await ZmansiDbProvider.checkDatabaseStatus();
+  // await ZmansiDbProvider.testBreathLayer();
 
   runApp(RotateMain());
 }
@@ -363,9 +389,27 @@ class _RotateHomeState extends State<RotateHome> {
                                             BlendMode.modulate,
                                           ))),
                                 ),
-                                onDoubleTap: () {
-                                  // renameFiles();
-                                  performFinalBilingualStitch();
+                                onDoubleTap: () async {
+                                  // Grab a random item or the next one in the sequence
+                                  final item = await ZmansiDbProvider.db
+                                      .getNextRotationItem();
+
+                                  switch (item['layer_state']) {
+                                    case 'switch':
+                                      debugPrint(
+                                          "🚀 COMMAND TRIGGERED: ${item['val_he']}");
+                                      // Execute the rotation logic (e.g., change the UI theme)
+                                      break;
+                                    case 'breath':
+                                      debugPrint(
+                                          "🎨 ASSET LOADED: ${item['val_he']}");
+                                      // Update the Image widget path
+                                      break;
+                                    default:
+                                      debugPrint(
+                                          "📖 TEXT READ: ${item['val_he']}");
+                                    // Display Hebrew text
+                                  }
                                 }),
                           ),
                           const SizedBox(width: 20),

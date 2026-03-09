@@ -4,8 +4,9 @@ import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:finallyicanlearn/services/fetchplanets.dart';
 import 'package:finallyicanlearn/ui/widgets/rotatewidgets.dart';
+import 'package:finallyicanlearn/zb/data/providers/zb_db_providers.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:finallyicanlearn/main.dart';
+// import 'package:finallyicanlearn/main.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:io';
@@ -63,7 +64,7 @@ void hibernateEngine() {
   // We use the 'navigatorKey' to sail back to the Home Screen
   navigatorKey.currentState?.pushNamedAndRemoveUntil('/', (route) => false);
 
-  print("The White Camel has returned to the 'silence.' of the Beginning.");
+  // print("The White Camel has returned to the 'silence.' of the Beginning.");
 }
 
 // L3: Breath, - The Global Listener for every screen 'Rotation'
@@ -500,4 +501,42 @@ String _getSnippet(String content, String query) {
   if (end < content.length) snippet = "$snippet...";
 
   return snippet;
+}
+
+// Simple helper class for results
+class WalletSearchResult {
+  final String base;
+  final String value;
+  WalletSearchResult({required this.base, required this.value});
+}
+
+class DebugHelper {
+  /// Pulls the stats from the ZmansiDbProvider singleton and prints them
+  static Future<void> printMigrationReport() async {
+    // We access the .db singleton you defined in your provider
+    // Note: You will still need one import at the top for ZmansiDbProvider
+    // so the compiler knows where the class is located!
+    final stats = await ZmansiDbProvider.db.getDatabaseStats();
+
+    debugPrint("═══ DATABASE MIGRATION REPORT ═══");
+
+    if (stats.isEmpty) {
+      debugPrint("❌ Table is EMPTY. Migration failed or didn't run.");
+      return;
+    }
+
+    int totalItems = 0;
+
+    for (var row in stats) {
+      final count = row['record_count'] as int;
+      totalItems += count;
+
+      debugPrint(
+          "📍 Group: ${row['source_group'].toString().padRight(12)} | Count: ${count.toString().padLeft(5)} | Type: ${row['layer_state']}");
+    }
+
+    debugPrint("─────────────────────────────────");
+    debugPrint("📊 TOTAL RECORDS MIGRATED: $totalItems");
+    debugPrint("═════════════════════════════════");
+  }
 }
