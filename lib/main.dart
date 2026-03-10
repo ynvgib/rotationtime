@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'dart:io';
-import 'package:flutter/foundation.dart'; // This defines kIsWeb
+// import 'package:flutter/foundation.dart'; // This defines kIsWeb
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circle_list/circle_list.dart';
 import 'package:finallyicanlearn/models/lists.dart';
@@ -58,6 +58,9 @@ Future<void> main() async {
   // await ZmansiDbProvider.checkDatabaseStatus();
   // await ZmansiDbProvider.testBreathLayer();
 
+// Load the 30k lines into the 11GB Swap/RAM immediately
+  SearchHelper.initializeCache();
+
   runApp(RotateMain());
 }
 
@@ -70,7 +73,7 @@ class RotateMain extends StatefulWidget {
 
 class _RotateMainState extends State<RotateMain> {
   int _secondsRemaining = 0;
-  bool _timerActive = true;
+  bool _timerActive = false;
   Timer? _visualCountdown;
 
   @override
@@ -389,27 +392,17 @@ class _RotateHomeState extends State<RotateHome> {
                                             BlendMode.modulate,
                                           ))),
                                 ),
-                                onDoubleTap: () async {
-                                  // Grab a random item or the next one in the sequence
-                                  final item = await ZmansiDbProvider.db
-                                      .getNextRotationItem();
-
-                                  switch (item['layer_state']) {
-                                    case 'switch':
-                                      debugPrint(
-                                          "🚀 COMMAND TRIGGERED: ${item['val_he']}");
-                                      // Execute the rotation logic (e.g., change the UI theme)
-                                      break;
-                                    case 'breath':
-                                      debugPrint(
-                                          "🎨 ASSET LOADED: ${item['val_he']}");
-                                      // Update the Image widget path
-                                      break;
-                                    default:
-                                      debugPrint(
-                                          "📖 TEXT READ: ${item['val_he']}");
-                                    // Display Hebrew text
-                                  }
+                                onTap: () {
+                                  setState(() {
+                                    mainTitle = "לא יודעת מדיטציה";
+                                    subTitle = "עידו לא יודע";
+                                  });
+                                },
+                                onDoubleTap: () {
+                                  setState(() {
+                                    mainTitle = "I don't know Meditation";
+                                    subTitle = "Ido Not Know";
+                                  });
                                 }),
                           ),
                           const SizedBox(width: 20),

@@ -14571,6 +14571,8 @@ class TxtFilesList {
     'be_en.txt',
     'appropriate_representation_en.txt',
   ];
+
+  static final Map<String, String> cache = {};
 }
 
 final List<List<dynamic>> allLegacyLists = [

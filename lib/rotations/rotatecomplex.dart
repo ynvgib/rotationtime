@@ -28,23 +28,72 @@ class RotateComplex extends StatefulWidget {
 
 class _RotateComplexState extends State<RotateComplex>
     with SingleTickerProviderStateMixin {
-  // human design
-  Color headcolor = Colors.green,
-      ajnacolor = Colors.green,
-      throatcolor = Colors.green,
-      gcolor = Colors.green,
-      sacralcolor = Colors.green,
-      rootcolor = Colors.green,
-      heartcolor = Colors.green,
-      spleencolor = Colors.green,
-      solarcolor = Colors.green,
-      grampacolor = Colors.black,
-      papacolor = Colors.black,
-      soncolor = Colors.black,
-      daughtercolor = Colors.black,
-      mamacolor = Colors.black,
-      grannycolor = Colors.black;
+  // 1. GLOBAL UI & SEMANTIC STRINGS
+  String _textlevel = '',
+      _planettext = '',
+      _formattedDate = '',
+      _formattedTime = '',
+      _settimestamp = 'דקות',
+      cardstate = 'zb',
+      silenceText = 'שתיקה',
+      breathText = 'נשימה',
+      simpleText = 'פשוט',
+      complexText = 'מורכב',
+      silenceBottomText = 'גוף',
+      breathBottomText = 'גופוף',
+      simpleBottomText = 'ווף',
+      complexBottomText = 'ניגוף',
+      bitchText = '.',
+      octopussyText = ',',
+      octocaText = ';',
+      dogText = '\"';
 
+  // 2. VISIBILITY, LAYOUT & TOGGLES
+  bool _setupdown = true,
+      isSilenceText = true,
+      isBreathText = true,
+      isSimpleText = true,
+      isComplexText = true,
+      isSilenceBotText = true,
+      isBreathBotText = true,
+      isSimpleBotText = true,
+      isComplexBotText = true,
+      isFamilyText = true,
+      isBitchText = true,
+      isOctopussyText = true,
+      isOctocatText = true,
+      isDogText = true;
+
+  double screenwidth = 1.0,
+      screenheight = 1.0,
+      wheelgateopacity = 0.3,
+      opacityLevel = 1.0,
+      opacityMainLevel = 1.0;
+
+  // 3. LOGIC, CALCULATION & TIME STATE
+  int _currentmain = 0,
+      _currentsub = 0,
+      _currenttop = 0,
+      _currentmid = 0,
+      _currentbot = 0,
+      _currentconstate = 0,
+      _currentrotationstate = 0,
+      _chosenhex = 1,
+      _hexagramVal = 0,
+      _carouselvalueindex = 0,
+      _previousPlanetIndex = -1,
+      _currentline = 1,
+      _newts = 1,
+      _linesListplace = 0,
+      _gatesListplace = 0;
+
+  final DateTime _now = DateTime.now();
+  DateTime _personTime = DateTime.now(),
+      _designTime = DateTime.now(),
+      _selectedDate = DateTime.now();
+  TimeOfDay _selectedtime = const TimeOfDay(hour: 0, minute: 0);
+
+  // 4. HUMAN DESIGN CENTERS & COLOR LOGIC
   int headstate = 3,
       ajnastate = 3,
       throatstate = 3,
@@ -74,201 +123,40 @@ class _RotateComplexState extends State<RotateComplex>
       spleencolorstate = 0,
       solarcolorstate = 0;
 
-  // gate state
-  // 0-undefined, 1-personality, 2-design, 3-both, 4 - transit
+  Color headcolor = Colors.green,
+      ajnacolor = Colors.green,
+      throatcolor = Colors.green,
+      gcolor = Colors.green,
+      sacralcolor = Colors.green,
+      rootcolor = Colors.green,
+      heartcolor = Colors.green,
+      spleencolor = Colors.green,
+      solarcolor = Colors.green,
+      grampacolor = Colors.black,
+      papacolor = Colors.black,
+      soncolor = Colors.black,
+      daughtercolor = Colors.black,
+      mamacolor = Colors.black,
+      grannycolor = Colors.black,
+      colorindex = Colors.blue,
+      cardcolor = Colors.black,
+      timecolor = Colors.white,
+      pickedColor = Colors.green;
 
-  List<int> gatestatelist = List.filled(65, 0, growable: false),
-      tonallist = List.filled(4, 1, growable: false);
-  //listdesigngates = List.generate(13, (index) => index++),
-  //listpersonalitygates = List.generate(13, (index) => index++);
-
-  /// end hd
-
-  //List<String> _centers = [],
-  //List<String> coinsHeb4lst = hexNamesList,
-  //List<String> newcoinsHeb4lst = newcoinsHeb4lst,
-  List<String> coins64List = rtminmic65List,
-      topcoinnamelist = zbzoo4namesHeb, // zbzoo4name
-      midcoinnamelist = newcoinsHeb4lst, // newcoinsEng4lst
-      botcoinnamelist = coinsHeb4lst, // coinsEng4lst
-      maincoin = zbrussianames;
-
-  List<HDCenter> _centers = [];
-
-  List coins384List = rtmix390lstHeb, coinssidenamelist = rt6HEbcoins;
-
+  // 5. DATA MODELS & PLANETARY HEXAGRAMS
   HumanDesign hdfinaldata = HumanDesign(typeid: 0);
-  // late HumanDesign hdfinaldata;
-
-  final TextEditingController _controllerType = TextEditingController(),
-      _controllerAuthority = TextEditingController(),
-      _controllerStrategy = TextEditingController(),
-      _controllerSentence = TextEditingController(),
-      _controllerFinalLine = TextEditingController(),
-      _controllerDefinition = TextEditingController(),
-      //_controllerTime = TextEditingController(),
-      _controllerSetTime = TextEditingController(),
-      _controllerPersonTime = TextEditingController(),
-      _controllerDesignTime = TextEditingController(),
-      _controllerTimePick = TextEditingController(),
-      _controllerDatePick = TextEditingController(),
-      _controllermaintext = TextEditingController(),
-      _controllergatelinestory = TextEditingController(),
-      _controllergatetext = TextEditingController(),
-      _controllerlinetext = TextEditingController(),
-      _controllercoinsttext = TextEditingController(),
-      _controllercointopfirsttext = TextEditingController(),
-      _controllercointopsecondtext = TextEditingController(),
-      _controllercointopthirdtext = TextEditingController(),
-      _controllercoinmidfirsttext = TextEditingController(),
-      _controllercoinmidsecondtext = TextEditingController(),
-      _controllercoinmidthirdtext = TextEditingController(),
-      _controllercoinbotfirsttext = TextEditingController(),
-      _controllercoinbotsecondtext = TextEditingController(),
-      _controllercoinbotthirdtext = TextEditingController(),
-      _controllerNorthNodeHex = TextEditingController(),
-      _controllerNorthNodeText = TextEditingController(),
-      _controllerNorthNodeGate = TextEditingController(),
-      _controllerDesignNorthNodeGate = TextEditingController(),
-      _controllerSunHex = TextEditingController(),
-      _controllerSunText = TextEditingController(),
-      _controllerSunGate = TextEditingController(),
-      _controllerDesignSunGate = TextEditingController(),
-      _controllerMoonHex = TextEditingController(),
-      _controllerMoonText = TextEditingController(),
-      _controllerMoonGate = TextEditingController(),
-      _controllerDesignMoonGate = TextEditingController(),
-      _controllerMarsHex = TextEditingController(),
-      _controllerMarsText = TextEditingController(),
-      _controllerMarsGate = TextEditingController(),
-      _controllerDesignMarsGate = TextEditingController(),
-      _controllerVenusHex = TextEditingController(),
-      _controllerVenusText = TextEditingController(),
-      _controllerVenusGate = TextEditingController(),
-      _controllerDesignVenusGate = TextEditingController(),
-      _controllerMercuryHex = TextEditingController(),
-      _controllerMercuryText = TextEditingController(),
-      _controllerMercuryGate = TextEditingController(),
-      _controllerDesignMercuryGate = TextEditingController(),
-      _controllerJupiterHex = TextEditingController(),
-      _controllerJupiterText = TextEditingController(),
-      _controllerJupiterGate = TextEditingController(),
-      _controllerDesignJupiterGate = TextEditingController(),
-      _controllerSaturnHex = TextEditingController(),
-      _controllerSaturnText = TextEditingController(),
-      _controllerSaturnGate = TextEditingController(),
-      _controllerDesignSaturnGate = TextEditingController(),
-      _controllerUranusHex = TextEditingController(),
-      _controllerUranusText = TextEditingController(),
-      _controllerUranusGate = TextEditingController(),
-      _controllerDesignUranusGate = TextEditingController(),
-      _controllerNeptuneHex = TextEditingController(),
-      _controllerNeptuneText = TextEditingController(),
-      _controllerNeptuneGate = TextEditingController(),
-      _controllerDesignNeptuneGate = TextEditingController(),
-      _controllerPlutoHex = TextEditingController(),
-      _controllerPlutoText = TextEditingController(),
-      _controllerPlutoGate = TextEditingController(),
-      _controllerDesignPlutoGate = TextEditingController(),
-      _controllerChironGate = TextEditingController(),
-      _controllerDesignChironGate = TextEditingController(),
-      _controllerEarthHex = TextEditingController(),
-      _controllerEarthText = TextEditingController(),
-      _controllerEarthGate = TextEditingController(),
-      _controllerDesignEarthGate = TextEditingController(),
-      _controllerSouthNodeHex = TextEditingController(),
-      _controllerSouthNodeText = TextEditingController(),
-      _controllerSouthNodeGate = TextEditingController(),
-      _controllerDesignSouthNodeGate = TextEditingController(),
-      _controllerPlanetType = TextEditingController(),
-      _controllerPlanetSubType = TextEditingController(),
-      _controllergrampatxt = TextEditingController(),
-      _controllerpapaptxt = TextEditingController(),
-      _controllersontxt = TextEditingController(),
-      _controllerdaughtertxt = TextEditingController(),
-      _controllermamatxt = TextEditingController(),
-      _controllergrannytxt = TextEditingController(),
-      _controllersavetxt = TextEditingController(),
-      _controllerchartname = TextEditingController(),
-      country = TextEditingController(),
-      state = TextEditingController(),
-      city = TextEditingController();
-
-  final CarouselSliderController _controllercoin = CarouselSliderController(),
-      _controllersubcoin = CarouselSliderController(),
-      _controllerconstate = CarouselSliderController(),
-      _controllerrotationstate = CarouselSliderController(),
-      _controllertop = CarouselSliderController(),
-      _controllermid = CarouselSliderController(),
-      _controllerbot = CarouselSliderController(),
-      _controlEvolutionContainerSlider = CarouselSliderController(),
-      _controlComplexSlider = CarouselSliderController(),
-      _controlSimpleSlider = CarouselSliderController(),
-      _controlBreathSlider = CarouselSliderController(),
-      _controlSilenceSlider = CarouselSliderController();
-
-  //final String _title = subtitles[4];
-  //final String _title = subtitles_heb[4];
-
-  String _textlevel = '',
-      _planettext = '',
-      _formattedDate = '',
-      //_formattedDay = '',
-      //_formattedMonth = '',
-      //_formattedYear = '',
-      _formattedTime = '',
-      _settimestamp = 'דקות',
-      cardstate = 'zb';
-
-  DateTime _now = DateTime.now(),
-      _personTime = DateTime.now(),
-      _designTime = DateTime.now(),
-      _selectedDate = DateTime.now();
-
-  TimeOfDay _selectedtime = const TimeOfDay(hour: 0, minute: 0);
-
-  List<Hexagram> _planetsList = List.filled(
-          14, Hexagram(gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio'),
-          growable: false),
-      _planetsdesignList = List.filled(
-          13, Hexagram(gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio'),
-          growable: false),
-      _planetspersonList = List.filled(
-          13, Hexagram(gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio'),
-          growable: false),
-      _planetstransitList = List.filled(
-          13, Hexagram(gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio'),
-          growable: false),
-      _planetsfulldisplayList =
-          List.filled(14, Hexagram(gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio'), growable: true),
-      _allplanetsList = List.filled(14, Hexagram(gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio')),
-      _planetsfulldesignList = List.filled(14, Hexagram(gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio'), growable: true),
-      _planetsfullpersonList = List.filled(14, Hexagram(gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio'), growable: true),
-      _planetsfulltransitList = List.filled(14, Hexagram(gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio'), growable: true);
-
+  List<HDCenter> _centers = [];
   List<HDChannel> _channelsList = [],
       _personchannelsList = [],
       _designchannelsList = [];
+  List<int> gatestatelist = List.filled(65, 0, growable: false),
+      tonallist = List.filled(4, 1, growable: false);
 
-  int _currentmain = 0,
-      _currentsub = 0,
-      _currenttop = 0,
-      _currentmid = 0,
-      _currentbot = 0,
-      _currentconstate = 0,
-      _currentrotationstate = 0,
-      _chosenhex = 1,
-      _hexagramVal = 0,
-      _carouselvalueindex = 0,
-      _previousPlanetIndex = -1,
-      _currentline = 1,
-      _newts = 1,
-      _linesListplace = 0,
-      _gatesListplace = 0;
-
-  bool _setupdown = true;
-
-  List<Color> colorlst = [Colors.white, Colors.black];
+  List<String> coins64List = rtminmic65List,
+      topcoinnamelist = zbzoo4namesHeb,
+      midcoinnamelist = newcoinsHeb4lst,
+      botcoinnamelist = coinsHeb4lst,
+      maincoin = zbrussianames;
 
   Hexagram _sunhex = Hexagram(),
       _earthhex = Hexagram(),
@@ -284,7 +172,9 @@ class _RotateComplexState extends State<RotateComplex>
       _neptunehex = Hexagram(),
       _plutohex = Hexagram(),
       _chironhex = Hexagram(),
-      _sundesignhex = Hexagram(),
+      _planethex = Hexagram();
+
+  Hexagram _sundesignhex = Hexagram(),
       _earthdesignhex = Hexagram(),
       _northnodedesignhex = Hexagram(),
       _southnodedesignhex = Hexagram(),
@@ -299,19 +189,170 @@ class _RotateComplexState extends State<RotateComplex>
       _plutodesignhex = Hexagram(),
       _chirondesignhex = Hexagram();
 
-  Hexagram _planethex = Hexagram(
-      gate: 1, line: 1, gateline: '1.1', zodiacid: 7, zodiacsign: 'scorpio');
+  List<Hexagram> _planetsList = List.filled(
+          14,
+          Hexagram(
+              gate: 1,
+              line: 1,
+              gateline: '1.1',
+              zodiacid: 7,
+              zodiacsign: 'scorpio')),
+      _planetsdesignList = List.filled(
+          13,
+          Hexagram(
+              gate: 1,
+              line: 1,
+              gateline: '1.1',
+              zodiacid: 7,
+              zodiacsign: 'scorpio')),
+      _planetspersonList = List.filled(
+          13,
+          Hexagram(
+              gate: 1,
+              line: 1,
+              gateline: '1.1',
+              zodiacid: 7,
+              zodiacsign: 'scorpio')),
+      _planetsfulldisplayList = List.filled(
+          14,
+          Hexagram(
+              gate: 1,
+              line: 1,
+              gateline: '1.1',
+              zodiacid: 7,
+              zodiacsign: 'scorpio'),
+          growable: true);
 
+  // 6. LATE INITIALIZED CONTROLLERS
+  late final TextEditingController _controllerType,
+      _controllerAuthority,
+      _controllerStrategy,
+      _controllerSentence,
+      _controllerFinalLine,
+      _controllerDefinition,
+      _controllerSetTime,
+      _controllerPersonTime,
+      _controllerDesignTime,
+      _controllerTimePick,
+      _controllerDatePick,
+      _controllermaintext,
+      _controllergatelinestory,
+      _controllergatetext,
+      _controllerlinetext;
+
+  late final TextEditingController _controllerSunHex,
+      _controllerSunText,
+      _controllerSunGate,
+      _controllerEarthHex,
+      _controllerEarthText,
+      _controllerEarthGate,
+      _controllerMoonHex,
+      _controllerMoonText,
+      _controllerMoonGate,
+      _controllerNorthNodeHex,
+      _controllerNorthNodeText,
+      _controllerNorthNodeGate,
+      _controllerSouthNodeHex,
+      _controllerSouthNodeText,
+      _controllerSouthNodeGate,
+      _controllerMercuryHex,
+      _controllerMercuryText,
+      _controllerMercuryGate,
+      _controllerVenusHex,
+      _controllerVenusText,
+      _controllerVenusGate,
+      _controllerMarsHex,
+      _controllerMarsText,
+      _controllerMarsGate,
+      _controllerJupiterHex,
+      _controllerJupiterText,
+      _controllerJupiterGate,
+      _controllerSaturnHex,
+      _controllerSaturnText,
+      _controllerSaturnGate,
+      _controllerUranusHex,
+      _controllerUranusText,
+      _controllerUranusGate,
+      _controllerNeptuneHex,
+      _controllerNeptuneText,
+      _controllerNeptuneGate,
+      _controllerPlutoHex,
+      _controllerPlutoText,
+      _controllerPlutoGate,
+      _controllerChironGate;
+
+  late final TextEditingController _controllerDesignSunGate,
+      _controllerDesignEarthGate,
+      _controllerDesignMoonGate,
+      _controllerDesignNorthNodeGate,
+      _controllerDesignSouthNodeGate,
+      _controllerDesignMercuryGate,
+      _controllerDesignVenusGate,
+      _controllerDesignMarsGate,
+      _controllerDesignJupiterGate,
+      _controllerDesignSaturnGate,
+      _controllerDesignUranusGate,
+      _controllerDesignNeptuneGate,
+      _controllerDesignPlutoGate,
+      _controllerDesignChironGate;
+
+  late final TextEditingController _controllercoinsttext,
+      _controllercointopfirsttext,
+      _controllercointopsecondtext,
+      _controllercointopthirdtext,
+      _controllercoinmidfirsttext,
+      _controllercoinmidsecondtext,
+      _controllercoinmidthirdtext,
+      _controllercoinbotfirsttext,
+      _controllercoinbotsecondtext,
+      _controllercoinbotthirdtext,
+      _controllerPlanetType,
+      _controllerPlanetSubType,
+      _controllergrampatxt,
+      _controllerpapaptxt,
+      _controllersontxt,
+      _controllerdaughtertxt,
+      _controllermamatxt,
+      _controllergrannytxt,
+      _controllersavetxt,
+      _controllerchartname,
+      country,
+      state,
+      city;
+
+  late final CarouselSliderController _controllercoin,
+      _controllersubcoin,
+      _controllerconstate,
+      _controllerrotationstate,
+      _controllertop,
+      _controllermid,
+      _controllerbot,
+      _controlEvolutionContainerSlider,
+      _controlComplexSlider,
+      _controlSimpleSlider,
+      _controlBreathSlider,
+      _controlSilenceSlider;
+
+// --- 7. ADDITIONAL UI STATE & MISSING LISTS ---
   final List<bool> _isPlanetSelectedList =
       List<bool>.filled(14, false, growable: false);
   final List<bool> _isBoldList = List<bool>.filled(65, false, growable: false);
-
   List<int> _hexalignedList = [0, 0, 0];
 
-  Color colorindex = Colors.blue,
-      cardcolor = Colors.black,
-      timecolor = Colors.white,
-      firstcolor = Colors.blue,
+  List<Hexagram> _planetsfullpersonList =
+          List.filled(14, Hexagram(), growable: true),
+      _planetsfulldesignList = List.filled(14, Hexagram(), growable: true),
+      _planetsfulltransitList = List.filled(14, Hexagram(), growable: true),
+      _allplanetsList = List.filled(14, Hexagram());
+
+  List coins384List = rtmix390lstHeb;
+  List coinssidenamelist = rt6HEbcoins;
+  List<Color> wheelgatescolor =
+      List.filled(64, Colors.black26, growable: false);
+  List<Color> complexrevtopcoincolor = reversedtopcoincolor;
+
+  // --- 8. MODE COLORS & DIRECTION ICONS ---
+  Color firstcolor = Colors.blue,
       secondcolor = Colors.blue,
       thirdcolor = Colors.blue,
       _colorinsilence = Colors.red,
@@ -321,49 +362,7 @@ class _RotateComplexState extends State<RotateComplex>
       _inbodycolor = Colors.red,
       _exbodycolor = Colors.yellow,
       _inpersoncolor = Colors.blue,
-      _expersoncolor = Colors.green,
-      pickedColor = Colors.green;
-
-  List<Color> wheelgatescolor =
-      List<Color>.filled(64, Colors.black26, growable: false);
-  List<Color> complexrevtopcoincolor = reversedtopcoincolor;
-  //List<Color> wheelgatescolor = complexrevtopcoincolor;
-  //List<Color> revwheelgatescolor = List<Color>.filled(65, Colors.black26, growable: false);
-
-  double screenwidth = 1, screenheight = 1, wheelgateopacity = 0.3;
-
-  String silenceText = 'שתיקה',
-      breathText = 'נשימה',
-      simpleText = 'פשוט',
-      complexText = 'מורכב',
-      silenceBottomText = 'גוף',
-      breathBottomText = 'גופוף',
-      simpleBottomText = 'ווף',
-      complexBottomText = 'ניגוף',
-      _inbodyalign = 'left',
-      _exbodyalign = 'left',
-      _inpersonalign = 'left',
-      _expersonalign = 'left',
-      bitchText = '.',
-      octopussyText = ',',
-      octocaText = ';',
-      dogText = '\"';
-
-  bool isSilenceText = true,
-      isBreathText = true,
-      isSimpleText = true,
-      isComplexText = true,
-      isSilenceBotText = true,
-      isBreathBotText = true,
-      isSimpleBotText = true,
-      isComplexBotText = true,
-      isFamilyText = true,
-      isBitchText = true,
-      isOctopussyText = true,
-      isOctocatText = true,
-      isDogText = true;
-
-  double opacityLevel = 1.0, opacityMainLevel = 1.0;
+      _expersoncolor = Colors.green;
 
   IconData _inbodyicon = Icons.arrow_circle_right,
       _exbodyicon = Icons.arrow_circle_right,
@@ -394,103 +393,239 @@ class _RotateComplexState extends State<RotateComplex>
 
   @override
   void dispose() {
-    // Dispose of all controllers specific to this screen
-    // Example: _controllerone.dispose(); _controllertoptext.dispose(); etc.
-    _controllerType.dispose();
-    _controllerAuthority.dispose();
-    _controllerStrategy.dispose();
-    _controllerSentence.dispose();
-    _controllerDefinition.dispose();
-    _controllerFinalLine.dispose();
-    //_controllerTime.dispose();
-    _controllerSetTime.dispose();
-    _controllerPersonTime.dispose();
-    _controllerDesignTime.dispose();
-    _controllerTimePick.dispose();
-    _controllerDatePick.dispose();
-    _controllermaintext.dispose();
-    _controllergatelinestory.dispose();
-    _controllergatetext.dispose();
-    _controllerlinetext.dispose();
-    _controllercoinsttext.dispose();
-    _controllercointopfirsttext.dispose();
-    _controllercointopsecondtext.dispose();
-    _controllercointopthirdtext.dispose();
-    _controllercoinmidfirsttext.dispose();
-    _controllercoinmidsecondtext.dispose();
-    _controllercoinmidthirdtext.dispose();
-    _controllercoinbotfirsttext.dispose();
-    _controllercoinbotsecondtext.dispose();
-    _controllercoinbotthirdtext.dispose();
-    _controllerNorthNodeHex.dispose();
-    _controllerNorthNodeText.dispose();
-    _controllerNorthNodeGate.dispose();
-    _controllerDesignNorthNodeGate.dispose();
-    _controllerSunHex.dispose();
-    _controllerSunText.dispose();
-    _controllerSunGate.dispose();
-    _controllerDesignSunGate.dispose();
-    _controllerMoonHex.dispose();
-    _controllerMoonText.dispose();
-    _controllerMoonGate.dispose();
-    _controllerDesignMoonGate.dispose();
-    _controllerMarsHex.dispose();
-    _controllerMarsText.dispose();
-    _controllerMarsGate.dispose();
-    _controllerDesignMarsGate.dispose();
-    _controllerVenusHex.dispose();
-    _controllerVenusText.dispose();
-    _controllerVenusGate.dispose();
-    _controllerDesignVenusGate.dispose();
-    _controllerMercuryHex.dispose();
-    _controllerMercuryText.dispose();
-    _controllerMercuryGate.dispose();
-    _controllerDesignMercuryGate.dispose();
-    _controllerJupiterHex.dispose();
-    _controllerJupiterText.dispose();
-    _controllerJupiterGate.dispose();
-    _controllerDesignJupiterGate.dispose();
-    _controllerSaturnHex.dispose();
-    _controllerSaturnText.dispose();
-    _controllerSaturnGate.dispose();
-    _controllerDesignSaturnGate.dispose();
-    _controllerUranusHex.dispose();
-    _controllerUranusText.dispose();
-    _controllerUranusGate.dispose();
-    _controllerDesignUranusGate.dispose();
-    _controllerNeptuneHex.dispose();
-    _controllerNeptuneText.dispose();
-    _controllerNeptuneGate.dispose();
-    _controllerDesignNeptuneGate.dispose();
-    _controllerPlutoHex.dispose();
-    _controllerPlutoText.dispose();
-    _controllerPlutoGate.dispose();
-    _controllerDesignPlutoGate.dispose();
-    _controllerChironGate.dispose();
-    _controllerDesignChironGate.dispose();
-    _controllerEarthHex.dispose();
-    _controllerEarthText.dispose();
-    _controllerEarthGate.dispose();
-    _controllerDesignEarthGate.dispose();
-    _controllerSouthNodeHex.dispose();
-    _controllerSouthNodeText.dispose();
-    _controllerSouthNodeGate.dispose();
-    _controllerDesignSouthNodeGate.dispose();
-    _controllerPlanetType.dispose();
-    _controllerPlanetSubType.dispose();
-    _controllergrampatxt.dispose();
-    _controllerpapaptxt.dispose();
-    _controllersontxt.dispose();
-    _controllerdaughtertxt.dispose();
-    _controllermamatxt.dispose();
-    _controllergrannytxt.dispose();
-    _controllersavetxt.dispose();
-    _controllerchartname.dispose();
-    country.dispose();
-    state.dispose();
-    city.dispose();
+    // 4.1 Create a list of all your controllers
+    final List<TextEditingController> allControllers = [
+      _controllerType,
+      _controllerAuthority,
+      _controllerStrategy,
+      _controllerSentence,
+      _controllerDefinition,
+      _controllerFinalLine,
+      _controllerSetTime,
+      _controllerPersonTime,
+      _controllerDesignTime,
+      _controllerTimePick,
+      _controllerDatePick,
+      _controllermaintext,
+      _controllergatelinestory,
+      _controllergatetext,
+      _controllerlinetext,
+      _controllercoinsttext,
+      _controllercointopfirsttext,
+      _controllercointopsecondtext,
+      _controllercointopthirdtext,
+      _controllercoinmidfirsttext,
+      _controllercoinmidsecondtext,
+      _controllercoinmidthirdtext,
+      _controllercoinbotfirsttext,
+      _controllercoinbotsecondtext,
+      _controllercoinbotthirdtext,
+      _controllerNorthNodeHex,
+      _controllerNorthNodeText,
+      _controllerNorthNodeGate,
+      _controllerDesignNorthNodeGate,
+      _controllerSunHex,
+      _controllerSunText,
+      _controllerSunGate,
+      _controllerDesignSunGate,
+      _controllerMoonHex,
+      _controllerMoonText,
+      _controllerMoonGate,
+      _controllerDesignMoonGate,
+      _controllerMarsHex,
+      _controllerMarsText,
+      _controllerMarsGate,
+      _controllerDesignMarsGate,
+      _controllerVenusHex,
+      _controllerVenusText,
+      _controllerVenusGate,
+      _controllerDesignVenusGate,
+      _controllerMercuryHex,
+      _controllerMercuryText,
+      _controllerMercuryGate,
+      _controllerDesignMercuryGate,
+      _controllerJupiterHex,
+      _controllerJupiterText,
+      _controllerJupiterGate,
+      _controllerDesignJupiterGate,
+      _controllerSaturnHex,
+      _controllerSaturnText,
+      _controllerSaturnGate,
+      _controllerDesignSaturnGate,
+      _controllerUranusHex,
+      _controllerUranusText,
+      _controllerUranusGate,
+      _controllerDesignUranusGate,
+      _controllerNeptuneHex,
+      _controllerNeptuneText,
+      _controllerNeptuneGate,
+      _controllerDesignNeptuneGate,
+      _controllerPlutoHex,
+      _controllerPlutoText,
+      _controllerPlutoGate,
+      _controllerDesignPlutoGate,
+      _controllerChironGate,
+      _controllerDesignChironGate,
+      _controllerEarthHex,
+      _controllerEarthText,
+      _controllerEarthGate,
+      _controllerDesignEarthGate,
+      _controllerSouthNodeHex,
+      _controllerSouthNodeText,
+      _controllerSouthNodeGate,
+      _controllerDesignSouthNodeGate,
+      _controllerPlanetType,
+      _controllerPlanetSubType,
+      _controllergrampatxt,
+      _controllerpapaptxt,
+      _controllersontxt,
+      _controllerdaughtertxt,
+      _controllermamatxt,
+      _controllergrannytxt,
+      _controllersavetxt,
+      _controllerchartname,
+      country,
+      state,
+      city
+    ];
+
+    // 4.2 The "Breath" way: Loop and destroy
+    for (var controller in allControllers) {
+      controller.dispose();
+    }
 
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize everything in order
+    _initTextControllers();
+    _initCarouselControllers();
+
+    // Set initial Time to UTC Now (replaces the static 00:00)
+    final DateTime nowUtc = DateTime.now().toUtc();
+    _selectedtime = TimeOfDay(hour: nowUtc.hour, minute: nowUtc.minute);
+    _setDateTime(nowUtc);
+  }
+
+  void _initTextControllers() {
+    // 3.1 Main & Time
+    _controllerType = TextEditingController();
+    _controllerAuthority = TextEditingController();
+    _controllerStrategy = TextEditingController();
+    _controllerSentence = TextEditingController();
+    _controllerFinalLine = TextEditingController();
+    _controllerDefinition = TextEditingController();
+    _controllerSetTime = TextEditingController();
+    _controllerPersonTime = TextEditingController();
+    _controllerDesignTime = TextEditingController();
+    _controllerTimePick = TextEditingController();
+    _controllerDatePick = TextEditingController();
+    _controllermaintext = TextEditingController();
+    _controllergatelinestory = TextEditingController();
+    _controllergatetext = TextEditingController();
+    _controllerlinetext = TextEditingController();
+
+    // 3.2 Personality Mapping
+    _controllerSunHex = TextEditingController();
+    _controllerSunText = TextEditingController();
+    _controllerSunGate = TextEditingController();
+    _controllerEarthHex = TextEditingController();
+    _controllerEarthText = TextEditingController();
+    _controllerEarthGate = TextEditingController();
+    _controllerMoonHex = TextEditingController();
+    _controllerMoonText = TextEditingController();
+    _controllerMoonGate = TextEditingController();
+    _controllerNorthNodeHex = TextEditingController();
+    _controllerNorthNodeText = TextEditingController();
+    _controllerNorthNodeGate = TextEditingController();
+    _controllerSouthNodeHex = TextEditingController();
+    _controllerSouthNodeText = TextEditingController();
+    _controllerSouthNodeGate = TextEditingController();
+    _controllerMercuryHex = TextEditingController();
+    _controllerMercuryText = TextEditingController();
+    _controllerMercuryGate = TextEditingController();
+    _controllerVenusHex = TextEditingController();
+    _controllerVenusText = TextEditingController();
+    _controllerVenusGate = TextEditingController();
+    _controllerMarsHex = TextEditingController();
+    _controllerMarsText = TextEditingController();
+    _controllerMarsGate = TextEditingController();
+    _controllerJupiterHex = TextEditingController();
+    _controllerJupiterText = TextEditingController();
+    _controllerJupiterGate = TextEditingController();
+    _controllerSaturnHex = TextEditingController();
+    _controllerSaturnText = TextEditingController();
+    _controllerSaturnGate = TextEditingController();
+    _controllerUranusHex = TextEditingController();
+    _controllerUranusText = TextEditingController();
+    _controllerUranusGate = TextEditingController();
+    _controllerNeptuneHex = TextEditingController();
+    _controllerNeptuneText = TextEditingController();
+    _controllerNeptuneGate = TextEditingController();
+    _controllerPlutoHex = TextEditingController();
+    _controllerPlutoText = TextEditingController();
+    _controllerPlutoGate = TextEditingController();
+
+    // 3.3 Design Mapping
+    _controllerDesignSunGate = TextEditingController();
+    _controllerDesignEarthGate = TextEditingController();
+    _controllerDesignMoonGate = TextEditingController();
+    _controllerDesignNorthNodeGate = TextEditingController();
+    _controllerDesignSouthNodeGate = TextEditingController();
+    _controllerDesignMercuryGate = TextEditingController();
+    _controllerDesignVenusGate = TextEditingController();
+    _controllerDesignMarsGate = TextEditingController();
+    _controllerDesignJupiterGate = TextEditingController();
+    _controllerDesignSaturnGate = TextEditingController();
+    _controllerDesignUranusGate = TextEditingController();
+    _controllerDesignNeptuneGate = TextEditingController();
+    _controllerDesignPlutoGate = TextEditingController();
+    _controllerChironGate = TextEditingController();
+    _controllerDesignChironGate = TextEditingController();
+
+    // 3.4 UI & Location
+    _controllercoinsttext = TextEditingController();
+    _controllercointopfirsttext = TextEditingController();
+    _controllercointopsecondtext = TextEditingController();
+    _controllercointopthirdtext = TextEditingController();
+    _controllercoinmidfirsttext = TextEditingController();
+    _controllercoinmidsecondtext = TextEditingController();
+    _controllercoinmidthirdtext = TextEditingController();
+    _controllercoinbotfirsttext = TextEditingController();
+    _controllercoinbotsecondtext = TextEditingController();
+    _controllercoinbotthirdtext = TextEditingController();
+    _controllerPlanetType = TextEditingController();
+    _controllerPlanetSubType = TextEditingController();
+    _controllergrampatxt = TextEditingController();
+    _controllerpapaptxt = TextEditingController();
+    _controllersontxt = TextEditingController();
+    _controllerdaughtertxt = TextEditingController();
+    _controllermamatxt = TextEditingController();
+    _controllergrannytxt = TextEditingController();
+    _controllersavetxt = TextEditingController();
+    _controllerchartname = TextEditingController();
+    country = TextEditingController();
+    state = TextEditingController();
+    city = TextEditingController();
+  }
+
+  void _initCarouselControllers() {
+    _controllercoin = CarouselSliderController();
+    _controllersubcoin = CarouselSliderController();
+    _controllerconstate = CarouselSliderController();
+    _controllerrotationstate = CarouselSliderController();
+    _controllertop = CarouselSliderController();
+    _controllermid = CarouselSliderController();
+    _controllerbot = CarouselSliderController();
+    _controlEvolutionContainerSlider = CarouselSliderController();
+    _controlComplexSlider = CarouselSliderController();
+    _controlSimpleSlider = CarouselSliderController();
+    _controlBreathSlider = CarouselSliderController();
+    _controlSilenceSlider = CarouselSliderController();
   }
 
   @override
@@ -1197,8 +1332,8 @@ class _RotateComplexState extends State<RotateComplex>
                           decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                  zoocoins[hdfinaldata.typeid!],
-                                  //'assets/camog/dogstwogrey.gif',
+                                  zoocoins[(hdfinaldata.typeid ??
+                                      0)], // Line 1335                                  //'assets/camog/dogstwogrey.gif',
                                 ),
                                 opacity: 1.0),
                           ),
@@ -1223,14 +1358,14 @@ class _RotateComplexState extends State<RotateComplex>
                                 child: Icon(
                                     IconData(
                                         rt6iconshex[
-                                            _planetsdesignList[1].line!],
+                                            (_planetsdesignList[1].line ?? 1)],
                                         fontFamily: 'MaterialIcons'),
                                     color: Colors.red,
                                     size: 55),
                               ),
                               Center(
                                 child: Text(
-                                  _planetsdesignList[1].line!.toString(),
+                                  (_planetsdesignList[1].line ?? 1).toString(),
                                   style: TextStyle(
                                       fontSize: 20,
                                       color: timecolor,
@@ -1257,14 +1392,14 @@ class _RotateComplexState extends State<RotateComplex>
                                 child: Icon(
                                     IconData(
                                         rt6iconshex[
-                                            _planetspersonList[1].line!],
+                                            (_planetspersonList[1].line ?? 1)],
                                         fontFamily: 'MaterialIcons'),
                                     color: Colors.blue,
                                     size: 55),
                               ),
                               Center(
                                 child: Text(
-                                  _planetspersonList[1].line!.toString(),
+                                  (_planetspersonList[1].line ?? 1).toString(),
                                   style: TextStyle(
                                       fontSize: 20,
                                       color: timecolor,
@@ -1289,10 +1424,8 @@ class _RotateComplexState extends State<RotateComplex>
                             //color: Colors.black12,
                             image: DecorationImage(
                                 image: AssetImage(
-                                  zooprofiles[_planetspersonList[1].line!],
-                                  //familyList[_planetspersonList[1].line!],
-                                  //'assets/camog/dogstwogrey.gif',
-                                  //'assets/camog/dogstwogrey.gif',
+                                  zooprofiles[
+                                      (_planetspersonList[1].line ?? 1)],
                                 ),
                                 opacity: 1.0),
                           ),
@@ -1310,8 +1443,9 @@ class _RotateComplexState extends State<RotateComplex>
                           decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                  //familyList[_planetsdesignList[1].line!],
-                                  zooprofiles[_planetsdesignList[1].line!],
+                                  //familyList[_planetsdesignList[1].line ?? 0],
+                                  zooprofiles[
+                                      (_planetspersonList[1].line ?? 1)],
                                   //'assets/camog/dogstwogrey.gif',
                                 ),
                                 opacity: 1.0),
@@ -4143,7 +4277,7 @@ class _RotateComplexState extends State<RotateComplex>
                     PositionedDirectional(
                       start: 10,
                       bottom: 10,
-                      child: Container(
+                      child: SizedBox(
                           height: 33,
                           width: 320,
                           //decoration: BoxDecoration(
@@ -4265,26 +4399,18 @@ class _RotateComplexState extends State<RotateComplex>
                     //_setDateTime(_now);
                     _setDateTime(_personTime);
 
-                    //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
-                    //_formattedTime = DateFormat.Hms().format(_now);
-                    //_controllerTime.text = 'text $_formattedTime $_formattedDate';
-
                     _planetsfulldisplayList = _planetspersonList;
                     _planethex = _planetsfulldisplayList[0];
-                    //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
 
                     _setCoins();
 
-                    //_hexalignedList = hexagramAlignment(_planethex.gate!);
+                    // zbtest
 
-                    //_controllertop.jumpToPage(_hexalignedList[0]);
-                    //_controllermid.jumpToPage(_hexalignedList[1]);
-                    //_controllerbot.jumpToPage(_hexalignedList[2]);
-
-                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllerlinetext.text =
+                        (_planethex.line ?? 1).toString();
                     _controllergatelinestory.text = coins384List[
-                        (coins384List.indexOf(_planethex.gate!) +
-                            _planethex.line!)];
+                        (coins384List.indexOf(_planethex.gate ?? 1) +
+                            (_planethex.line ?? 1))];
 
                     switch (_previousPlanetIndex) {
                       case -1:
@@ -4463,9 +4589,12 @@ class _RotateComplexState extends State<RotateComplex>
                     )),
               ],
             ),
+
+            // BLUE WHEEL
             const SizedBox(height: 10),
             Stack(
               children: [
+                // Text('test'),
                 Center(
                   child: CircleList(
                     rotateMode: RotateMode.stopRotate,
@@ -4500,7 +4629,7 @@ class _RotateComplexState extends State<RotateComplex>
                           //color: revZodiacColorList[index],
                           image: DecorationImage(
                             image: AssetImage(zodiacSwephImagelist[
-                                _planetsfullpersonList[index].zodiacid!]),
+                                (_planetsfullpersonList[index].zodiacid ?? 0)]),
                             fit: BoxFit.scaleDown,
                           ),
                           shape: BoxShape.circle,
@@ -4527,7 +4656,8 @@ class _RotateComplexState extends State<RotateComplex>
                             border: Border.all(width: 1, color: Colors.blue)),
                         child: Center(
                           child: AutoSizeText(
-                              _planetsfullpersonList[index].gateline!,
+                              (_planetsfullpersonList[index].gateline ?? 1)
+                                  .toString(),
                               minFontSize: 10,
                               maxFontSize: 12,
                               maxLines: 1,
@@ -4628,37 +4758,19 @@ class _RotateComplexState extends State<RotateComplex>
                     hdfinaldata = HDServices.getHDBasicData(_channelsList);
 
                     _centers = HDServices.getHDCenters(_channelsList);
-                    //_fearSentence = HDServices.getHDDefinedFears(_centers);
-                    //_selfreminderSentence = HDServices.getSelfReminder();
-                    //_selfreminder = _timeselfreminder;
 
-                    //_controlHDData(hdbasicdata);
                     _controlHDData(hdfinaldata);
-                    //hdfinaldata = HDServices.getHDBasicData(_channelsList);
-
-                    //_setDateTime(_now);
                     _setDateTime(_personTime);
-
-                    //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
-                    //_formattedTime = DateFormat.Hms().format(_now);
-                    //_controllerTime.text = 'text $_formattedTime $_formattedDate';
 
                     _planetsfulldisplayList = _planetspersonList;
                     _planethex = _planetsfulldisplayList[0];
-                    //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
 
                     _setCoins();
-
-                    //_hexalignedList = hexagramAlignment(_planethex.gate!);
-
-                    //_controllertop.jumpToPage(_hexalignedList[0]);
-                    //_controllermid.jumpToPage(_hexalignedList[1]);
-                    //_controllerbot.jumpToPage(_hexalignedList[2]);
-
-                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllerlinetext.text =
+                        (_planethex.line ?? 1).toString();
                     _controllergatelinestory.text = coins384List[
-                        (coins384List.indexOf(_planethex.gate!) +
-                            _planethex.line!)];
+                        (coins384List.indexOf(_planethex.gate ?? 1) +
+                            (_planethex.line ?? 1))];
 
                     switch (_previousPlanetIndex) {
                       case -1:
@@ -4731,7 +4843,7 @@ class _RotateComplexState extends State<RotateComplex>
                   items: timecoinsDropDownLst,
                   onChanged: (String? newsettimestamp) {
                     setState(() {
-                      _settimestamp = newsettimestamp!;
+                      _settimestamp = (newsettimestamp ?? '');
                     });
                   },
                 ),
@@ -4758,6 +4870,7 @@ class _RotateComplexState extends State<RotateComplex>
             ),
             Stack(
               children: [
+                // Center(child: Text('test')),
                 Center(
                   child: CircleList(
                     rotateMode: RotateMode.stopRotate,
@@ -4792,7 +4905,7 @@ class _RotateComplexState extends State<RotateComplex>
                           //color: revZodiacColorList[index],
                           image: DecorationImage(
                             image: AssetImage(zodiacSwephImagelist[
-                                _planetsfulldesignList[index].zodiacid!]),
+                                (_planetsfulldesignList[index].zodiacid ?? 0)]),
                             fit: BoxFit.scaleDown,
                           ),
                           shape: BoxShape.circle,
@@ -4819,7 +4932,7 @@ class _RotateComplexState extends State<RotateComplex>
                             border: Border.all(width: 1, color: Colors.red)),
                         child: Center(
                           child: AutoSizeText(
-                              _planetsfulldesignList[index].gateline!,
+                              (_planetsfulldesignList[index].gateline ?? '0'),
                               minFontSize: 10,
                               maxFontSize: 12,
                               maxLines: 1,
@@ -5108,24 +5221,15 @@ class _RotateComplexState extends State<RotateComplex>
                   }
 
                   _planethex = _planetsfulldisplayList[index];
-                  //_planethex = _planetsList[index];
-                  //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
-                  //_hexsentence = LineSentenceList[_planethex.gate!];
 
                   _setCoins();
 
-                  //_hexalignedList = hexagramAlignment(_planethex.gate!);
-
-                  //_controllertop.jumpToPage(_hexalignedList[0]);
-                  //_controllermid.jumpToPage(_hexalignedList[1]);
-                  //_controllerbot.jumpToPage(_hexalignedList[2]);
-
-                  _controllerlinetext.text = _planethex.line!.toString();
-                  _currentline = _planethex.line ?? 0;
+                  _controllerlinetext.text = (_planethex.line ?? 1).toString();
+                  _currentline = (_planethex.line ?? 1);
 
                   _controllergatelinestory.text = coins384List[
-                      (coins384List.indexOf(_planethex.gate!) +
-                          _planethex.line!)];
+                      (coins384List.indexOf(_planethex.gate ?? 1) +
+                          (_planethex.line ?? 1))];
                 });
               },
               children: [
@@ -5320,11 +5424,11 @@ class _RotateComplexState extends State<RotateComplex>
                             _planethex =
                                 _planetsfulldisplayList[_previousPlanetIndex];
 
-                            _currentline = _planethex.line ?? 0;
+                            _currentline = _planethex.line ?? 1;
                             _controllerlinetext.text = _currentline.toString();
 
-                            int gate = _planethex.gate ?? 0;
-                            int line = _planethex.line ?? 0;
+                            int gate = _planethex.gate ?? 1;
+                            int line = _planethex.line ?? 1;
                             _controllergatelinestory.text =
                                 coins384List[(gate * 7) + line];
 
@@ -5336,7 +5440,7 @@ class _RotateComplexState extends State<RotateComplex>
                 ),
                 const SizedBox(width: 20),
                 Tooltip(
-                  message: zodiacSwephNameHeblist[_planethex.zodiacid!],
+                  message: zodiacSwephNameHeblist[(_planethex.zodiacid ?? 0)],
                   child: Container(
                     width: 80,
                     height: 80,
@@ -5345,7 +5449,7 @@ class _RotateComplexState extends State<RotateComplex>
                       //color: Colors.blue,
                       image: DecorationImage(
                         image: AssetImage(
-                            zodiacSwephImagelist[_planethex.zodiacid!]),
+                            zodiacSwephImagelist[(_planethex.zodiacid ?? 0)]),
                         fit: BoxFit.scaleDown,
                       ),
                       shape: BoxShape.circle,
@@ -5355,9 +5459,10 @@ class _RotateComplexState extends State<RotateComplex>
                         colors: [
                           //Colors.purple.shade900,
                           //Colors.purple.shade100,
-                          zodiacSwephGradeColorlist[_planethex.zodiacid! * 2],
                           zodiacSwephGradeColorlist[
-                              _planethex.zodiacid! * 2 + 1],
+                              (_planethex.zodiacid ?? 0) * 2],
+                          zodiacSwephGradeColorlist[
+                              (_planethex.zodiacid ?? 0) * 2 + 1],
                         ],
                       ),
                     ),
@@ -5376,12 +5481,12 @@ class _RotateComplexState extends State<RotateComplex>
                           //color: Colors.blue,
                           image: DecorationImage(
                             // image: AssetImage(hdlinesplanet[
-                            // (hdlinesplanet.indexOf(_planethex.gateline!)) +
+                            // (hdlinesplanet.indexOf(_planethex.gateline ?? 0)) +
                             // 1]),
                             image: AssetImage(hdplanetexaltimg[
-                                (_planethex.gate!) * 6 -
+                                (_planethex.gate ?? 1) * 6 -
                                     7 +
-                                    (_planethex.line!)]),
+                                    (_planethex.line ?? 1)]),
                             fit: BoxFit.scaleDown,
                           ),
                           shape: BoxShape.rectangle,
@@ -5407,9 +5512,9 @@ class _RotateComplexState extends State<RotateComplex>
                           ///color: Colors.red,
                           image: DecorationImage(
                             image: AssetImage(hdplanetdetrimentimg[
-                                (_planethex.gate!) * 6 -
+                                (_planethex.gate ?? 1) * 6 -
                                     7 +
-                                    (_planethex.line!)]),
+                                    (_planethex.line ?? 1)]),
                             fit: BoxFit.scaleDown,
                           ),
                           shape: BoxShape.circle,
@@ -5536,17 +5641,8 @@ class _RotateComplexState extends State<RotateComplex>
                                                       .indexOf(_chosenhex) +
                                                   _currentline)];
 
-                                          //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-                                          //_hexsentence = LineSentenceList[_planethex.gate!];
-
-                                          //_controllertopfirsttext.text = _hexsentence.adjective ?? "";
-
                                           _controllercoinsttext.text =
                                               coins64List[_chosenhex];
-                                          //rtminmicList[_chosenhex];
-                                          //_controllertopsecondtext.text = _hexsentence.subject!;
-                                          //_controllertopthirdtext.text = _hexsentence.verb!;
-                                          //_controllertopfourthtext.text = _hexsentence.adverb!;
 
                                           thirdcolor =
                                               //controlCollor(coinsHeb4lst[_currenttop]);
@@ -5701,11 +5797,6 @@ class _RotateComplexState extends State<RotateComplex>
                                           _controllercoinsttext.text =
                                               coins64List[_chosenhex];
 
-                                          //_controllertopfirsttext.text = _hexsentence.adjective ?? "";
-                                          //_controllertopsecondtext.text = _hexsentence.subject!;
-                                          //_controllertopthirdtext.text = _hexsentence.verb!;
-                                          //_controllertopfourthtext.text = _hexsentence.adverb!;
-
                                           _controllergatelinestory.text =
                                               coins384List[(coins384List
                                                       .indexOf(_chosenhex) +
@@ -5853,10 +5944,6 @@ class _RotateComplexState extends State<RotateComplex>
 
                                           _controllercoinsttext.text =
                                               coins64List[_chosenhex];
-                                          //_controllertopfirsttext.text = _hexsentence.adjective ?? "";
-                                          //_controllertopsecondtext.text = _hexsentence.subject!;
-                                          //_controllertopthirdtext.text = _hexsentence.verb!;
-                                          //_controllertopfourthtext.text = _hexsentence.adverb!;
 
                                           _controllergatelinestory.text =
                                               coins384List[(coins384List
@@ -6425,26 +6512,16 @@ class _RotateComplexState extends State<RotateComplex>
                     //_setDateTime(_now);
                     _setDateTime(_personTime);
 
-                    //_formattedDate = DateFormat('MM/dd/yyyy').format(_now);
-                    //_formattedTime = DateFormat.Hms().format(_now);
-                    //_controllerTime.text = 'text $_formattedTime $_formattedDate';
-
                     _planetsfulldisplayList = _planetspersonList;
                     _planethex = _planetsfulldisplayList[0];
-                    //_hexsentence = getGateSentence(_planethex.gate!, _chosenlanguage);
 
                     _setCoins();
 
-                    //_hexalignedList = hexagramAlignment(_planethex.gate!);
-
-                    //_controllertop.jumpToPage(_hexalignedList[0]);
-                    //_controllermid.jumpToPage(_hexalignedList[1]);
-                    //_controllerbot.jumpToPage(_hexalignedList[2]);
-
-                    _controllerlinetext.text = _planethex.line!.toString();
+                    _controllerlinetext.text =
+                        (_planethex.line ?? 1).toString();
                     _controllergatelinestory.text = coins384List[
-                        (coins384List.indexOf(_planethex.gate!) +
-                            _planethex.line!)];
+                        (coins384List.indexOf(_planethex.gate ?? 1) +
+                            (_planethex.line ?? 1))];
 
                     switch (_previousPlanetIndex) {
                       case -1:
@@ -8368,7 +8445,7 @@ class _RotateComplexState extends State<RotateComplex>
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                displaychannels[index].sentence!,
+                (displaychannels[index].sentence ?? ''),
                 textAlign: TextAlign.center,
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
@@ -8558,7 +8635,7 @@ class _RotateComplexState extends State<RotateComplex>
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                      rt6profile[_planetspersonList[0].line!].toString(),
+                      rt6profile[_planetspersonList[0].line ?? 0].toString(),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           color: Colors.white,
@@ -8620,7 +8697,7 @@ class _RotateComplexState extends State<RotateComplex>
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                      rt6profile[_planetsdesignList[0].line!].toString(),
+                      rt6profile[_planetsdesignList[0].line ?? 0].toString(),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           color: Colors.black,
@@ -8725,15 +8802,6 @@ class _RotateComplexState extends State<RotateComplex>
           _isBoldList[tempdesigngate] = true;
         }
       }
-
-      //for (var i = 0; i < _planetspersonList.length; i++) {
-      // temppersongate = _planetspersonList[i].gate ?? 0;
-      //_isBoldList[temppersongate] = true;
-
-      //if (gatestatelist[temppersongate] == 3) {
-      // gatestatelist[temppersongate] = 2;
-      //}
-      //}
     } else {
       for (var i = 0; i < _planetsdesignList.length; i++) {
         tempdesigngate = _planetsdesignList[i].gate ?? 0;
@@ -8745,15 +8813,6 @@ class _RotateComplexState extends State<RotateComplex>
           _isBoldList[tempdesigngate] = true;
         }
       }
-
-      //for (var i = 0; i < _planetspersonList.length; i++) {
-      // temppersongate = _planetspersonList[i].gate ?? 0;
-      // _isBoldList[temppersongate] = true;
-
-      // if (gatestatelist[temppersongate] == 3) {
-      //   gatestatelist[temppersongate] = 2;
-      // }
-      //}
     }
   }
 
@@ -8761,43 +8820,26 @@ class _RotateComplexState extends State<RotateComplex>
     _controllerFinalLine.text = 'XIO I don\'t know';
 
     _controllerStrategy.text = hdbasicdata.strategy ?? "";
-    // _controllerStrategy.text = "TEST: ${hdbasicdata.definition}";
     _controllerAuthority.text = hdbasicdata.authority ?? "";
     _controllerType.text = hdbasicdata.type ?? "";
     _controllerSentence.text = hdbasicdata.sentence ?? "";
-    //_controllercoinfirsttext.text = hdbasicdata.coinname ?? "";
-    // _controllercoin.jumpToPage(hexNamesList.indexOf(hdbasicdata.coinname!) + 1);
-    _controllercoin.jumpToPage(hdbasicdata.typeid!);
-    _controllersubcoin.jumpToPage(hdbasicdata.authid!);
-    //_currenttop = hexNamesList.indexOf(hdbasicdata.coinname!);
-    _controllerDefinition.text = hdbasicdata.definition!;
-    // print("Definition Result: ${hdfinaldata.definition}");
-    // debugPrint("Definition: ${hdbasicdata.definition}");
+    _controllercoin.jumpToPage(hdbasicdata.typeid ?? 0);
+    _controllersubcoin.jumpToPage(hdbasicdata.authid ?? 0);
+    _controllerDefinition.text = (hdbasicdata.definition ?? '');
   }
 
   void _setgatesState() {
     int tempdesigngate = 0, temppersongate = 0, tempcolorgatewheel = 0;
-    //revwheelgatescolor = wheelgatescolor.reversed.toList();
-
-    //reversedHexagramsWheel
-
-    // for (var i = 0; i < _planetsdesignList.length; i++) {
     for (var i = 0; i < 13; i++) {
       tempdesigngate = _planetsdesignList[i].gate ?? 0;
       if (gatestatelist[tempdesigngate] == 0) {
         gatestatelist[tempdesigngate] = 1;
         _isBoldList[tempdesigngate] = true;
 
-        // set color of gate on wheel
-        //coins384List[
-        //(coins384List.indexOf(_planethex.gate!) + _planethex.line!)];
-        //revwheelgatescolor[tempdesigngate] = reversedtopcoincolor[tempdesigngate];
         tempcolorgatewheel = reversedHexagramsWheel.indexOf(tempdesigngate);
         setState(() {
           wheelgatescolor[tempcolorgatewheel] =
               complexrevtopcoincolor[tempcolorgatewheel].withValues(alpha: 1);
-          //wheelgatescolor[tempcolorgatewheel] = reversedtopcoincolor[tempcolorgatewheel];
-          //wheelgatescolor[tempcolorgatewheel] = wheelgatescolor[tempcolorgatewheel].withValues(alpha:1);
         });
       }
     }
@@ -8828,8 +8870,6 @@ class _RotateComplexState extends State<RotateComplex>
 
   void _settransitgatesState() {
     int temppersongate = 0;
-    //_planetspersonList[0].
-    //_planetsdesignList[0].
 
     for (var i = 0; i < _planetspersonList.length; i++) {
       temppersongate = _planetspersonList[i].gate ?? 0;
@@ -9055,9 +9095,9 @@ class _RotateComplexState extends State<RotateComplex>
 
     _setCoins();
 
-    _controllerlinetext.text = _planethex.line!.toString();
+    _controllerlinetext.text = (_planethex.line ?? 1).toString();
     _controllergatelinestory.text = coins384List[
-        (coins384List.indexOf(_planethex.gate!) + _planethex.line!)];
+        (coins384List.indexOf(_planethex.gate ?? 1) + (_planethex.line ?? 1))];
 
     switch (_previousPlanetIndex) {
       case -1:
@@ -9107,13 +9147,13 @@ class _RotateComplexState extends State<RotateComplex>
                         backgroundColor: Colors.transparent,
                         foregroundImage: AssetImage(planetsimagelist[index])),
                     Text(
-                      _planetsfulldisplayList[index].gate!.toString(),
+                      (_planetsfulldisplayList[index].gate ?? 0).toString(),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 14),
                     ),
                     Text(
-                      coins64List[_planetsfulldisplayList[index].gate!],
+                      coins64List[_planetsfulldisplayList[index].gate ?? 0],
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 14),
@@ -9153,14 +9193,16 @@ class _RotateComplexState extends State<RotateComplex>
                         backgroundColor: Colors.transparent,
                         foregroundImage: AssetImage(planetsimagelist[index])),
                     Text(
-                      _planetsfulldisplayList[index].gateline!.toString(),
+                      _planetsfulldisplayList[index].gateline ?? '0',
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 12),
                     ),
                     Text(
-                      coins384List[(_planetsfulldisplayList[index].gate! * 7) +
-                          _planetsfulldisplayList[index].line!],
+                      coins384List[
+                          ((_planetsfulldisplayList[index].gate ?? 0 ?? 0) *
+                                  7) +
+                              (_planetsfulldisplayList[index].line ?? 0)],
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 13),
@@ -9184,7 +9226,7 @@ class _RotateComplexState extends State<RotateComplex>
   Widget _buildPlanetUpDownDialog(BuildContext context, int exaltORdeter) {
     String planetString = '';
     int planetLinePos = 1;
-    planetLinePos = (_planethex.gate! * 6 - 7 + _planethex.line!);
+    planetLinePos = ((_planethex.gate ?? 1) * 6 - 7 + (_planethex.line ?? 1));
 
     switch (exaltORdeter) {
       case 1:
@@ -9332,10 +9374,10 @@ class _RotateComplexState extends State<RotateComplex>
 
     // set tonal values
     tonallist = [
-      _sundesignhex.tone!,
-      _northnodedesignhex.tone!,
-      _sundesignhex.tone!,
-      _northnodehex.tone!
+      _sundesignhex.tone ?? 0,
+      _northnodedesignhex.tone ?? 0,
+      _sundesignhex.tone ?? 0,
+      _northnodehex.tone ?? 0
     ];
   }
 
@@ -9426,7 +9468,7 @@ class _RotateComplexState extends State<RotateComplex>
   }
 
   void _setCoins() {
-    _hexalignedList = hexagramAlignment(_planethex.gate!);
+    _hexalignedList = hexagramAlignment(_planethex.gate ?? 1);
 
     _controllertop.jumpToPage(_hexalignedList[0]);
     _controllermid.jumpToPage(_hexalignedList[1]);
@@ -9602,37 +9644,37 @@ class _RotateComplexState extends State<RotateComplex>
       case 'simple':
         _controllerPlanetSubType.text = 'פשוט';
 
-        _controllerSunGate.text = _sunhex.gateline ?? "";
-        _controllerEarthGate.text = _earthhex.gateline ?? "";
-        _controllerNorthNodeGate.text = _northnodehex.gateline ?? "";
-        _controllerSouthNodeGate.text = _southnodehex.gateline ?? "";
-        _controllerMoonGate.text = _moonhex.gateline ?? "";
-        _controllerMercuryGate.text = _mercuryhex.gateline ?? "";
-        _controllerVenusGate.text = _venushex.gateline ?? "";
-        _controllerMarsGate.text = _marshex.gateline ?? "";
-        _controllerJupiterGate.text = _jupiterhex.gateline ?? "";
-        _controllerSaturnGate.text = _saturnhex.gateline ?? "";
-        _controllerUranusGate.text = _uranushex.gateline ?? "";
-        _controllerNeptuneGate.text = _neptunehex.gateline ?? "";
-        _controllerPlutoGate.text = _plutohex.gateline ?? "";
-        _controllerChironGate.text = _chironhex.gateline ?? "";
+        _controllerSunGate.text = _sunhex.gateline ?? '0';
+        _controllerEarthGate.text = _earthhex.gateline ?? '0';
+        _controllerNorthNodeGate.text = _northnodehex.gateline ?? '0';
+        _controllerSouthNodeGate.text = _southnodehex.gateline ?? '0';
+        _controllerMoonGate.text = _moonhex.gateline ?? '0';
+        _controllerMercuryGate.text = _mercuryhex.gateline ?? '0';
+        _controllerVenusGate.text = _venushex.gateline ?? '0';
+        _controllerMarsGate.text = _marshex.gateline ?? '0';
+        _controllerJupiterGate.text = _jupiterhex.gateline ?? '0';
+        _controllerSaturnGate.text = _saturnhex.gateline ?? '0';
+        _controllerUranusGate.text = _uranushex.gateline ?? '0';
+        _controllerNeptuneGate.text = _neptunehex.gateline ?? '0';
+        _controllerPlutoGate.text = _plutohex.gateline ?? '0';
+        _controllerChironGate.text = _chironhex.gateline ?? '0';
 
-        _controllerDesignSunGate.text = _sundesignhex.gateline ?? "";
-        _controllerDesignEarthGate.text = _earthdesignhex.gateline ?? "";
+        _controllerDesignSunGate.text = _sundesignhex.gateline ?? '0';
+        _controllerDesignEarthGate.text = _earthdesignhex.gateline ?? '0';
         _controllerDesignNorthNodeGate.text =
-            _northnodedesignhex.gateline ?? "";
+            _northnodedesignhex.gateline ?? '0';
         _controllerDesignSouthNodeGate.text =
-            _southnodedesignhex.gateline ?? "";
-        _controllerDesignMoonGate.text = _moondesignhex.gateline ?? "";
-        _controllerDesignMercuryGate.text = _mercurydesignhex.gateline ?? "";
-        _controllerDesignVenusGate.text = _venusdesignhex.gateline ?? "";
-        _controllerDesignMarsGate.text = _marsdesignhex.gateline ?? "";
-        _controllerDesignJupiterGate.text = _jupiterdesignhex.gateline ?? "";
-        _controllerDesignSaturnGate.text = _saturndesignhex.gateline ?? "";
-        _controllerDesignUranusGate.text = _uranusdesignhex.gateline ?? "";
-        _controllerDesignNeptuneGate.text = _neptunedesignhex.gateline ?? "";
-        _controllerDesignPlutoGate.text = _plutodesignhex.gateline ?? "";
-        _controllerDesignChironGate.text = _chirondesignhex.gateline ?? "";
+            _southnodedesignhex.gateline ?? '0';
+        _controllerDesignMoonGate.text = _moondesignhex.gateline ?? '0';
+        _controllerDesignMercuryGate.text = _mercurydesignhex.gateline ?? '0';
+        _controllerDesignVenusGate.text = _venusdesignhex.gateline ?? '0';
+        _controllerDesignMarsGate.text = _marsdesignhex.gateline ?? '0';
+        _controllerDesignJupiterGate.text = _jupiterdesignhex.gateline ?? '0';
+        _controllerDesignSaturnGate.text = _saturndesignhex.gateline ?? '0';
+        _controllerDesignUranusGate.text = _uranusdesignhex.gateline ?? '0';
+        _controllerDesignNeptuneGate.text = _neptunedesignhex.gateline ?? '0';
+        _controllerDesignPlutoGate.text = _plutodesignhex.gateline ?? '0';
+        _controllerDesignChironGate.text = _chirondesignhex.gateline ?? '0';
 
         break;
       case 'breath':
@@ -9710,35 +9752,14 @@ class _RotateComplexState extends State<RotateComplex>
 
   void _syncUIWithAccount(ZBAccount account) {
     setState(() {
-      // 1. Capture the times directly from the account
+      // 1. DATA ASSIGNMENT (Syncing core lists and timestamps)
       _personTime = account.timestamp;
       _designTime = account.designtimestamp;
 
-      // 2. Set initial display (Personality)
-      _setDateTime(_personTime);
-      // 1. DATA ASSIGNMENT (Critical first step)
       _planetspersonList = account.personality;
       _planetsdesignList = account.design;
       _centers = account.centers;
       _channelsList = account.channels;
-
-      _personTime = account.timestamp; // The Birth Time
-      _designTime = account
-          .designtimestamp; // The 88-degree Time (ensure your account model has this)
-
-      // 2. THE ORDER MATTERS: RESET then SET
-      _resetgatesState(); // Clear the old gates (sets gatestatelist to 0)
-      _setgatesState(); // Calculate the new gates (sets gatestatelist to 1, 2, or 3)
-      _setChart(_centers); // Paint the colors based on the new gatestatelist
-
-      // 3. PLANETARY MAPPING (28 Hexagrams)
-      _sunhex = account.personality[0];
-      // ... (Rest of your mapping _earthhex, _moonhex, etc.) ...
-      _chirondesignhex = account.design[13];
-
-      // 4. METRICS & POPUPS
-      hdfinaldata = HDServices.getHDBasicData(account.channels);
-      _controlHDData(hdfinaldata);
 
       _planetsfullpersonList = List<Hexagram>.from(account.personality);
       _planetsfulldesignList = List<Hexagram>.from(account.design);
@@ -9751,30 +9772,56 @@ class _RotateComplexState extends State<RotateComplex>
           .where((c) => c.coin == 'silence' || c.coin == 'simple')
           .toList();
 
-      // 5. CAROUSEL & LEVEL RESET
+      // 2. CHART VISUALS (Resetting and re-painting the Bodygraph)
+      _resetgatesState();
+      _setgatesState();
+      _setChart(_centers);
+
+      // 3. PLANETARY MAPPING (The Fix for the 28 Hexagram Variables)
+      // This maps _sunhex, _earthhex, etc., using your established logic
+      _controlPlanetHexagramData(_planetsfullpersonList);
+
+      // Explicitly ensuring the 14th Design point (Chiron) is mapped
+      if (account.design.length > 13) {
+        _chirondesignhex = account.design[13];
+        _chironhex = account.personality[13];
+      }
+
+      // 4. METRICS & POPUPS
+      hdfinaldata = HDServices.getHDBasicData(account.channels);
+      _controlHDData(hdfinaldata);
+
+      // 5. UI REFRESH & LEVEL RESET
+      _textlevel = 'complex'; // Defaulting to complex for new account loads
+      _changeTextLevels(
+          _textlevel); // This pushes the hexagram data into the TextFields
+
+      // 6. CAROUSEL/SLIDER RESET
       _currentconstate = 0;
       _controllerconstate.jumpToPage(0);
-
-      _textlevel = 'complex'; // Default new charts to complex
       _currentrotationstate = 0;
       _controllerrotationstate.jumpToPage(0);
-      _changeTextLevels(_textlevel);
 
-      // 6. SELECTION RESET (Sun/Index 0)
+      // 7. MAIN SELECTION RESET (Sun Personality)
       _planethex = account.personality[0];
-      _currentline = _planethex.line ?? 0;
-      _controllerlinetext.text = _currentline.toString();
+      _currentline = _planethex.line ?? 1;
 
-      int gate = _planethex.gate ?? 0;
-      int line = _planethex.line ?? 0;
+      // Update the main selection text controllers
+      _controllergatetext.text = (_planethex.gate ?? 1).toString();
+      _controllerlinetext.text = (_planethex.line ?? 1).toString();
+
+      // Update the "Story" text (the 384 lines)
+      int gate = _planethex.gate ?? 1;
+      int line = _planethex.line ?? 1;
       _controllergatelinestory.text = coins384List[(gate * 7) + line];
 
+      // Reset selection indicators for the planet list
       for (int i = 0; i < _isPlanetSelectedList.length; i++) {
         _isPlanetSelectedList[i] = (i == 0);
       }
       _previousPlanetIndex = 0;
 
-      // 7. FINAL UPDATES
+      // 8. FINAL SYSTEM SYNC
       _setDateTime(account.timestamp);
       resetChartColor();
       _setEvolutionCoin();

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:finallyicanlearn/logic/calculatehdchart.dart';
 import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
@@ -538,5 +539,144 @@ class DebugHelper {
     debugPrint("─────────────────────────────────");
     debugPrint("📊 TOTAL RECORDS MIGRATED: $totalItems");
     debugPrint("═════════════════════════════════");
+  }
+}
+
+class TimeServices {
+  static Future<DateTime> selectDate(BuildContext context) async {
+    DateTime selectedDate = DateTime.now();
+    DateTime? pickedDate = DateTime.now();
+
+    pickedDate = await showDatePicker(
+        locale: const Locale("he"),
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(1781),
+        lastDate: DateTime(2222));
+
+    if (pickedDate == null) {
+      selectedDate = DateTime.now();
+    } else {
+      selectedDate = pickedDate;
+    }
+    return selectedDate;
+  }
+
+  static Future<TimeOfDay> selectTime(BuildContext context) async {
+    TimeOfDay selectedtime = TimeOfDay.now();
+    final TimeOfDay? newTime = await showTimePicker(
+        helpText: 'זמן לבחור',
+        cancelText: 'ביטול',
+        confirmText: 'אישור',
+        hourLabelText: 'שעות',
+        minuteLabelText: 'דקות',
+        context: context,
+        initialTime: selectedtime);
+
+    if (newTime == null) {
+      selectedtime = TimeOfDay.now();
+    } else {
+      selectedtime = newTime!;
+    }
+
+    return selectedtime;
+  }
+}
+
+extension DateTimeExtension on DateTime {
+  DateTime applied(TimeOfDay time) {
+    return DateTime(year, month, day, time.hour, time.minute);
+  }
+}
+
+Future<CityTime> readJsonCityTime() async {
+  var data = json.decode(json.encode('assets/json/cityMap'));
+  //List<dynamic> data = json.decode(json.encode('assets/json/cityMap.json'));
+  //List<CityTime> ct = data.map((json) => CityTime.fromJson(json)).toList();
+  CityTime ct = CityTime.fromJson(jsonDecode(data));
+  // print(ct.city);
+  return ct;
+}
+
+class TextCache {
+  static final TextCache _instance = TextCache._internal();
+  factory TextCache() => _instance;
+  TextCache._internal();
+
+  // Maps filePath -> fullFileContent
+  final Map<String, String> _storage = {};
+  bool _isLoaded = false;
+
+  bool get isLoaded => _isLoaded;
+
+  /// Loads all files into RAM. Use this once at app startup.
+  Future<void> prefetch(List<String> paths) async {
+    if (_isLoaded) return;
+
+    for (var path in paths) {
+      try {
+        // Direct RAM injection
+        _storage[path] = await rootBundle.loadString(path);
+      } catch (e) {
+        print("Error caching $path: $e");
+      }
+    }
+    _isLoaded = true;
+  }
+
+  String? get(String path) => _storage[path];
+
+  List<String> get allPaths => _storage.keys.toList();
+}
+
+class SearchHelper {
+  /// 1. The "Inhaler": Pumps all files into TxtFilesList.cache
+  static Future<void> initializeCache() async {
+    final allPaths = [...TxtFilesList.hebFiles, ...TxtFilesList.engFiles];
+
+    for (String path in allPaths) {
+      try {
+        // This is what makes the Web build instant
+        TxtFilesList.cache[path] = await rootBundle.loadString(path);
+      } catch (e) {
+        print("Error caching $path: $e");
+      }
+    }
+  }
+
+  /// 2. The "Engine": Searches the RAM instead of the disk
+  static List<Map<String, String>> search(String query) {
+    final List<Map<String, String>> matches = [];
+    final cleanQuery = query.toLowerCase().trim();
+    final allPaths = [...TxtFilesList.hebFiles, ...TxtFilesList.engFiles];
+
+    for (String path in allPaths) {
+      final content = TxtFilesList.cache[path];
+      if (content == null) continue;
+
+      if (cleanQuery.isEmpty) {
+        // Browse Mode: Grab the first non-empty line
+        String firstLine = content
+            .split('\n')
+            .firstWhere((l) => l.trim().isNotEmpty, orElse: () => "Empty");
+        matches.add({'path': path, 'title': firstLine, 'type': 'browse'});
+      } else if (content.toLowerCase().contains(cleanQuery)) {
+        // Search Mode
+        matches.add({
+          'path': path,
+          'title': path.split('/').last,
+          'snippet': _extractSnippet(content, cleanQuery),
+          'type': 'match'
+        });
+      }
+    }
+    return matches;
+  }
+
+  static String _extractSnippet(String text, String query) {
+    int idx = text.toLowerCase().indexOf(query);
+    int start = (idx - 40).clamp(0, text.length);
+    int end = (idx + query.length + 40).clamp(0, text.length);
+    return "...${text.substring(start, end)}...";
   }
 }
