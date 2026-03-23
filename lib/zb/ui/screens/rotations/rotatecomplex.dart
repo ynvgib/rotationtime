@@ -360,6 +360,7 @@ class _RotateComplexState extends State<RotateComplex>
   String _selected64Category = 'סיבוב ארנקים',
       _selected384Category = 'סיבוב קווים'; // Default
   bool _isSyncing = false;
+  ZBTheme _zbTheme = ZBTheme.zb;
 
   final Map<String, String> mstTranslator = {
     'CCG': 'Center Channel Gate',
@@ -1342,30 +1343,46 @@ class _RotateComplexState extends State<RotateComplex>
               ),
             ),
             // zb new hd chart
-            SizedBox(
-              width: Screen.width * 0.8,
-              height: 30,
-              child: AutoSizeTextField(
-                maxLines: 1,
-                minFontSize: 15,
-                maxFontSize: 25,
-                fullwidth: false,
-                decoration: const InputDecoration.collapsed(
-                  //hintText: '${newCoinNames[0]} ${hexNamesList[0]}',
-                  hintText: 'סיפור בתוך דיאני',
-                  hintStyle: TextStyle(color: Colors.grey),
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: Icon(
+                    _zbTheme == ZBTheme.zb ? Icons.adjust : Icons.adjust,
+                    color:
+                        _zbTheme == ZBTheme.zb ? Colors.amber : Colors.blueGrey,
+                    size: 28,
+                  ),
+                  tooltip: _zbTheme == ZBTheme.zb ? 'ZB' : 'HD',
+                  onPressed: () => setState(() {
+                    _zbTheme = _zbTheme == ZBTheme.zb ? ZBTheme.hd : ZBTheme.zb;
+                  }),
                 ),
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
+                SizedBox(
+                  width: 300,
+                  height: 30,
+                  child: AutoSizeTextField(
+                    maxLines: 1,
+                    minFontSize: 15,
+                    maxFontSize: 25,
+                    fullwidth: false,
+                    decoration: const InputDecoration.collapsed(
+                      hintText: 'סיפור בתוך דיאני',
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    controller: _controllerchartname,
+                    readOnly: false,
+                  ),
                 ),
-                controller: _controllerchartname,
-                readOnly: false,
-              ),
+              ],
             ),
-
             Center(
               child: Stack(
                 children: [
@@ -1374,7 +1391,10 @@ class _RotateComplexState extends State<RotateComplex>
                     height: chartHeight,
                     decoration: BoxDecoration(
                       // color: cardcolor, // Using your existing variable
-                      color: Colors.black87, // Using your existing variable
+                      color: _zbTheme == ZBTheme.zb
+                          ? Colors.black
+                          : Colors.grey.shade300,
+
                       border: Border.all(color: Colors.blue, width: 4),
                     ),
                     child: FittedBox(
@@ -1391,11 +1411,11 @@ class _RotateComplexState extends State<RotateComplex>
                                       'chart_${buildaccount?.timestamp}'),
                                   // 2. The Account (Now pulled from your class-level variable)
                                   account: buildaccount,
-
                                   // 3. The Data Repositories
                                   registry: ZBData.counterMap,
                                   walletStates: _walletstatelist,
                                   pickedcolor: pickedcolor,
+                                  zbtheme: _zbTheme,
 
                                   // 4. The Wallet Builder (The missing piece)
                                   walletBuilder: (n) {

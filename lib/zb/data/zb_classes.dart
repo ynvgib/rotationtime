@@ -6,6 +6,7 @@
 import 'dart:ui';
 import 'package:finallyicanlearn/zb/data/zb_data.dart';
 import 'package:finallyicanlearn/zb/ui/widgets/zb_cleanwidgets.dart';
+import 'package:flutter/material.dart';
 
 class ZBFrequency {
   final int zbstate;
@@ -473,4 +474,62 @@ class ZBSearchResult {
     required this.query,
     required this.isHebrew,
   });
+}
+
+class ZBGradientColor {
+  final Color first;
+  final Color second;
+  const ZBGradientColor(this.first, this.second);
+
+  List<Color> get colors => [first, second];
+  bool get isSolid => first == second;
+
+  // ROTATION TIME (The RYGB Story) — sourced from ZBFrequency via ZBStory
+  static ZBGradientColor fromZBState(int state) {
+    switch (state) {
+      case 0:
+        return ZBGradientColor(ZBStory.getfrequency(0).zbcolor,
+            ZBStory.getfrequency(0).zbcolor); // transparent
+      case 1:
+        return ZBGradientColor(ZBStory.getfrequency(1).zbcolor,
+            ZBStory.getfrequency(1).zbcolor); // black
+      case 2:
+        return ZBGradientColor(ZBStory.getfrequency(2).zbcolor,
+            ZBStory.getfrequency(2).zbcolor); // red
+      case 3:
+        return ZBGradientColor(ZBStory.getfrequency(3).zbcolor,
+            ZBStory.getfrequency(3).zbcolor); // yellow
+      case 4:
+        return ZBGradientColor(ZBStory.getfrequency(4).zbcolor,
+            ZBStory.getfrequency(4).zbcolor); // green
+      case 5:
+        return ZBGradientColor(ZBStory.getfrequency(5).zbcolor,
+            ZBStory.getfrequency(5).zbcolor); // blue
+      case 6:
+        return ZBGradientColor(ZBStory.getfrequency(6).zbcolor,
+            ZBStory.getfrequency(6).zbcolor); // white
+      case 7:
+        return ZBGradientColor(ZBStory.getfrequency(1).zbcolor,
+            ZBStory.getfrequency(2).zbcolor); // black + red
+      case 8:
+        return ZBGradientColor(ZBStory.getfrequency(1).zbcolor,
+            ZBStory.getfrequency(6).zbcolor); // black + white
+      case 9:
+        return ZBGradientColor(ZBStory.getfrequency(2).zbcolor,
+            ZBStory.getfrequency(5).zbcolor); // red + blue
+      default:
+        return ZBGradientColor(ZBStory.getfrequency(0).zbcolor,
+            ZBStory.getfrequency(0).zbcolor); // transparent
+    }
+  }
+
+  // HUMAN DESIGN (The Traditional Story)
+  static const Map<int, ZBGradientColor> hdStyles = {
+    1: ZBGradientColor(Colors.red, Colors.red),
+    2: ZBGradientColor(Colors.red, Colors.black),
+    3: ZBGradientColor(Colors.black, Colors.black),
+    4: ZBGradientColor(Colors.white, Colors.white),
+  };
+  static const ZBGradientColor hdDefault =
+      ZBGradientColor(Colors.black, Colors.white);
 }

@@ -1,12 +1,7 @@
-import 'dart:math';
 import 'dart:ui' as ui;
-
-import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
-import 'package:finallyicanlearn/zb/ui/zb_helpers.dart';
 import 'package:finallyicanlearn/zb/data/zb_classes.dart';
 import 'package:finallyicanlearn/zb/data/zb_data.dart';
-import 'package:finallyicanlearn/zb/ui/widgets/zb_widgets.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -15,6 +10,8 @@ import 'dart:math' as math;
 // ##########################################################################
 // The Universal Account (The "Receipt")
 // CALCULATION RESULT — used by RotateComplex
+enum ZBTheme { zb, hd }
+
 class ZBAccount {
   final List<ZBWallet> zbpersonality;
   final List<ZBWallet> zbdesign;
@@ -142,25 +139,14 @@ abstract class ZBStyles {
     required int state,
     required bool isManual,
     required Color pickedColor,
+    ZBTheme zbtheme = ZBTheme.zb,
   }) {
-    // if (kDebugMode) {
-    //   print('🎨 [ZB Paint] ID: $id | State: $state | Manual: $isManual');
-    // }
-
-    // 1. MANUAL OVERRIDE
-    if (isManual || state == 7) {
-      return pickedColor;
+    if (isManual || state == 7) return pickedColor;
+    if (state == 9) return Colors.grey;
+    // HD uses white/grey for defined/undefined
+    if (zbtheme == ZBTheme.hd) {
+      return state == 4 ? Colors.white : Colors.grey.shade400;
     }
-
-    // 2. EVOLUTION SAFETY (State 9)
-    // If the registry holds a 9, ensure it doesn't break the UI
-    if (state == 9) {
-      // Now that the logic above filters most collisions,
-      // State 9 can be a true "Mixed" state or just Transparent.
-      return Colors.grey; // still in test
-    }
-
-    // 3. DATA STATES (0-6)
     return ZBStory.getfrequency(state).zbcolor;
   }
 
@@ -211,11 +197,12 @@ abstract class ZBStyles {
     }
   }
 
-  static Widget buildWalletText(int n, {int state = 0}) {
-    // 0 = Transparent (Inactive)
-    // 4 = Simple/Green (Inactive in your specific design)
+  static Widget buildWalletText(int n,
+      {int state = 0, ZBTheme theme = ZBTheme.zb}) {
     final bool isActive = state != 0 && state != 4;
-
+    final Color circleColor = isActive
+        ? (theme == ZBTheme.hd ? Colors.blue : Colors.white)
+        : Colors.transparent;
     return Container(
       width: 16,
       height: 16,
@@ -240,51 +227,43 @@ abstract class ZBStyles {
     );
   }
 
-  static List<Color> setWalletColor(int state, {bool isRotationTime = true}) {
-    if (isRotationTime) {
+  static List<Color> setWalletColor(int state, {ZBTheme theme = ZBTheme.zb}) {
+    if (theme == ZBTheme.zb) {
       // ROTATION TIME (The RYGB Story)
       // if (kDebugMode) {
       //   print('🚀 [ZMANSI Wallet Color] Color State: $state');
       // }
-      switch (state) {
-        case 0:
-          return [Colors.transparent, Colors.transparent]; // Initial RT Green
-        case 1:
-          return [Colors.black, Colors.black]; // "I don't know"
-        case 2:
-          return [Colors.red, Colors.red]; // Silence
-        case 3:
-          return [Colors.yellow, Colors.yellow]; // Breath
-        case 4:
-          return [Colors.green, Colors.green]; // Simple
-        case 5:
-          return [Colors.blue, Colors.blue]; // Complex
-        case 6:
-          return [Colors.white, Colors.white]; // Zmansi
-        case 7:
-          return [Colors.black, Colors.red]; // Black/Red mix
-        case 8:
-          return [Colors.black, Colors.white]; // Black/White mix
-        case 9:
-          return [Colors.red, Colors.blue]; // Red/Blue (The RT evolution)
-        default:
-          return [Colors.transparent, Colors.transparent];
-      }
+
+      // ── ORIGINAL (kept for reference) ──────────────────────────────
+      // switch (state) {
+      //   case 0:  return [Colors.transparent, Colors.transparent]; // Initial RT Green
+      //   case 1:  return [Colors.black, Colors.black];             // "I don't know"
+      //   case 2:  return [Colors.red, Colors.red];                 // Silence
+      //   case 3:  return [Colors.yellow, Colors.yellow];           // Breath
+      //   case 4:  return [Colors.green, Colors.green];             // Simple
+      //   case 5:  return [Colors.blue, Colors.blue];               // Complex
+      //   case 6:  return [Colors.white, Colors.white];             // Zmansi
+      //   case 7:  return [Colors.black, Colors.red];               // Black/Red mix
+      //   case 8:  return [Colors.black, Colors.white];             // Black/White mix
+      //   case 9:  return [Colors.red, Colors.blue];                // Red/Blue (The RT evolution)
+      //   default: return [Colors.transparent, Colors.transparent];
+      // }
+      // ── NEW: delegates to ZBGradientColor → ZBFrequency ───────────
+      return ZBGradientColor.fromZBState(state).colors;
     } else {
       // HUMAN DESIGN (The Traditional Story)
-      switch (state) {
-        case 1:
-          return [Colors.red, Colors.red];
-        case 2:
-          return [Colors.red, Colors.black];
-        case 3:
-          return [Colors.black, Colors.black];
-        case 4:
-          return [Colors.white, Colors.white];
-        // Red/Black split
-        default:
-          return [Colors.black, Colors.white];
-      }
+
+      // ── ORIGINAL (kept for reference) ──────────────────────────────
+      // switch (state) {
+      //   case 1:  return [Colors.red, Colors.red];
+      //   case 2:  return [Colors.red, Colors.black];
+      //   case 3:  return [Colors.black, Colors.black];
+      //   case 4:  return [Colors.white, Colors.white]; // Red/Black split
+      //   default: return [Colors.black, Colors.white];
+      // }
+      // ── NEW: delegates to ZBGradientColor.hdStyles ─────────────────
+      return (ZBGradientColor.hdStyles[state] ?? ZBGradientColor.hdDefault)
+          .colors;
     }
   }
 
@@ -746,16 +725,18 @@ class ZBAccountChart extends StatelessWidget {
   final Map<String, ZBCounter> registry;
   final List<int> walletStates;
   final Color pickedcolor;
+  final ZBTheme zbtheme; // ADD
 
   const ZBAccountChart({
     super.key,
     this.account,
-    required this.walletStates, // 2. ADD THIS LINE
+    required this.walletStates,
     required this.walletBuilder,
-    required this.registry, // Add this
+    required this.registry,
     this.onCounterTap,
     this.presets = const [],
     required this.pickedcolor,
+    this.zbtheme = ZBTheme.zb, // ADD
   });
 
   @override
@@ -767,6 +748,7 @@ class ZBAccountChart extends StatelessWidget {
             painter: ZBTransactionPainter(
               registry: registry,
               walletStates: walletStates,
+              zbtheme: zbtheme, // ADD
             ),
           ),
         ),
@@ -800,11 +782,8 @@ class ZBAccountChart extends StatelessWidget {
       final counter = _BaseCounter(
         width: pos.width,
         height: pos.height,
-        // Painter is now delegated to Styles
         painter: _painterForCounter(pos.name),
         onTap: () => onCounterTap?.call(pos.name),
-
-        // Layout is now delegated to Styles
         walletLayout: ZBStyles.buildWalletLayout(
           counterId: pos.name,
           registry: registry,
@@ -812,7 +791,6 @@ class ZBAccountChart extends StatelessWidget {
         ),
       );
 
-      // Standard positioning logic stays here in the View
       if (pos.posleft != null || pos.posright != null) {
         return Positioned(
           top: pos.postop,
@@ -837,15 +815,14 @@ class ZBAccountChart extends StatelessWidget {
     final int state = counter?.state ?? 0;
     final bool manual = counter?.isManual ?? false;
 
-    // Delegate the logic to ZBStyles
     final Color color = ZBStyles.getCounterColor(
       id,
       state: state,
       isManual: manual,
       pickedColor: pickedcolor,
+      zbtheme: zbtheme, // ADD
     );
 
-    // Return the universal painter
     return ZBCounterPainter(
       id: id,
       state: state,
@@ -856,8 +833,13 @@ class ZBAccountChart extends StatelessWidget {
 
 class ZBTransactionPainter extends CustomPainter {
   final Map<String, ZBCounter> registry;
-  final List<int> walletStates; // ADD THIS
-  ZBTransactionPainter({required this.registry, required this.walletStates});
+  final List<int> walletStates;
+  final ZBTheme zbtheme;
+
+  ZBTransactionPainter(
+      {required this.registry,
+      required this.walletStates,
+      required this.zbtheme});
 
   bool _shouldSkip(ZBTransaction tx) {
     // 1. ALWAYS keep the main diagonal 57-20
@@ -955,8 +937,7 @@ class ZBTransactionPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant ZBTransactionPainter oldDelegate) {
-    // Deep check to see if states actually changed.
-    // This stops the loop from running while you are just scrolling.
+    if (oldDelegate.zbtheme != zbtheme) return true;
     if (oldDelegate.walletStates.length != walletStates.length) return true;
     for (int i = 0; i < walletStates.length; i++) {
       if (oldDelegate.walletStates[i] != walletStates[i]) return true;
@@ -973,7 +954,7 @@ class ZBTransactionPainter extends CustomPainter {
 
     // 1. GET STATE & COLORS (The Gradient Fix)
     final state = walletStates[walletId];
-    final List<Color> colors = ZBStyles.setWalletColor(state);
+    final List<Color> colors = ZBStyles.setWalletColor(state, theme: zbtheme);
 
     // 2. Get offsets to fix the "sinking" into the gate area
     final txOffsets = _pointOffsets(tx);
