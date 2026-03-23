@@ -1,0 +1,325 @@
+mindmap
+  root((לפלוט - On Emit))
+    Trigger[Function: _onZBFullEject]
+      Calculation[_rotateComplex Station]
+        Time[Person & Design Time Sync]
+        Gates[Generate 26 Planetary Gates]
+    
+    Baseline[Station: MST Initialization]
+      Action[fillRange 0, 65, 4]
+      State[State 4: Simple Green]
+      Visual[Green Background for All 64 Gates]
+
+    DataPour[Station: ZBS Data Pour]
+      Design[Design Loop: State 2]
+        Color[Red / Silence]
+      Personality[Personality Loop: State 5]
+        Color[Blue / Complex]
+      Evolution[Intersection: State 9]
+        Gradient[Red/Blue Split Mapping]
+
+    Infection[Station: CTW Counter Infection]
+      Scan[Transaction ID Check]
+      Mapping[Update State Variables]
+        Solar[zbsolarstate: Blue if 37-40]
+        Sacral[zbsacralstate: Red if 5-15]
+        Heart[zbheartstate: Gradient if Overlap]
+
+    Build[Output: ZBAccountChart]
+      Render[setWalletColor Execution]
+      Final[UI Result: image_97f4c2 Fixed]
+
+===
+
+mindmap
+  root((ZBAccountChart Flow))
+    Input[Data Entry]
+      Registry[ZBData.counterMap]
+      StateList[_walletstatelist]
+      PickedColor[pickedcolor - Manual Override]
+    
+    PainterSelector[_painterForCounter Station]
+      Manual[IF counter.isManual == true]
+        Result1[Color = pickedcolor]
+      Simple[ELSE IF state == 4]
+        Result2[Color = Colors.green]
+      Frequency[ELSE IF state != 0]
+        Result3[Color = ZBStory.getfrequency.zbcolor]
+      Ghost[ELSE]
+        Result4[Color = 5% White Ghost]
+    
+    Execution[CustomPainter Hub]
+      Shape[Select: Head/Ajna/Solar/etc.]
+      setCounterColor[Function: setCounterColor]
+        Array[ZBStory.zbColors + pickedcolor]
+        Logic[Index Lookup by centerstate]
+      Paint[Canvas DrawPath]
+
+
+===
+
+mindmap
+  root((_syncUIWithAccount))
+    Data_Assignment[1. Data Assignment]
+      Lists[Personality & Design Lists]
+      Time[Timestamps Sync]
+    
+    Chart_Visuals[2. Chart Visuals]
+      Reset[_resetWalletState]
+      Set[_setWalletsState]
+      Infection((REGISTRY INFECTION))
+        Logic[Map Channels to counterMap States]
+    
+    Planetary_Mapping[3. 28 Hexagram Mapping]
+      Control[_controlPlanetHexagramData]
+    
+    UI_Refresh[4-7. UI & Metrics]
+      Levels[_changeTextLevels]
+      Story[Line Story Update]
+    
+    Final_Sync[8. System Sync]
+      Debug[ZMANSI DEBUG LOG]
+
+===
+
+mindmap
+  root((Migration: HD -> ZB))
+    Legacy[HDChannel]
+      firstcenter[firstcenter String]
+      coin[coin String]
+      id[id String e.g. 5.15]
+    
+    Transformation[Translation Layer]
+      Map[List.map]
+      Constructor[ZBTransaction Constructor]
+    
+    New[ZBTransaction]
+      mainCounterId[get via ZBData.getcounterforwallet]
+      id[id = channel.id]
+
+
+===
+
+mindmap
+  root((ZMANSI Sync Recovery))
+    Internal_Data[1. The Data Pour]
+      Hexagrams[28 Hexagram Variables]
+      Times[Sync Person/Design Timestamps]
+    
+    Bodygraph_Logic[2. CTW Chart Visuals]
+      Wallets[State 4 -> State 2/5 -> State 9]
+      Counters[Infect Registry via ZBTransactions]
+    
+    UI_Restoration[3. External Controls]
+      TextFields[Gate/Line Text Update]
+      Wheels[Jump to Page 0]
+      Story[Line 384 Logic]
+    
+    User_Interaction[4. Future Tap]
+      Manual[Shift Red/Blue to Transaction Coin]
+
+===
+
+classDiagram
+    class ZBAccount {
+        <<Data Blueprint>>
+        +List personality
+        +List design
+        +DateTime timestamp
+    }
+    class ZBTransaction {
+        <<Data Blueprint>>
+        +String id
+        +int state
+        +String zbcoin
+    }
+    class ZBPaths {
+        <<Stateless Toolbox>>
+        +static String getIcon(id)
+    }
+    class ZBStyles {
+        <<Stateless Toolbox>>
+        +static Color setWalletColor(state)
+        +static Gradient getStripe(p1, p2)
+    }
+    class ZBLogic {
+        <<Stateless Toolbox>>
+        +static void toggleCounter(id)
+        +static int calculateTransaction(tx)
+    }
+    class ZBRegistry {
+        <<Global Storage>>
+        +static Map wallets
+        +static Map counters
+    }
+    
+    ZBAccount "1" --* "many" ZBTransaction : contains
+    ZBLogic ..> ZBRegistry : updates
+    ZBTransactionPainter ..> ZBStyles : requests colors
+
+===
+
+
+mindmap
+  root((ZB Chart Engine))
+    Logic Layer
+      Base6 Priority Mapping
+        0 Empty - Transparent
+        1 IDK - Black ::icon(fa-stop)
+        2 Silence - Red ::icon(fa-fire)
+        3 Breath - Blue ::icon(fa-wind)
+        4 Simple - Yellow ::icon(fa-sun)
+        5 Complex - Green ::icon(fa-leaf)
+        6 Zmansi - White ::icon(fa-snowflake)
+      Authority Flows
+        Solar Plexus ::icon(fa-bolt)
+          Destination: Root/Sacral/Heart/Throat
+        Sacral
+          Destination: Adjacent Counters
+        Ajna
+          Destination: Throat/Head
+    Integration Exception
+      Wallets
+        34 - Power
+        57 - Intuition
+        10 - Self
+        20 - Presence
+      Transactions
+        Dual Mode: 34.57 / 34.20 / 57.10
+        Individual: 34.10 / 57.20
+      Visual Strategy
+        Weighted Hierarchy: Smallest Int Wins
+        Future Goal: Multi-Stripe Painting
+    UI Componentization
+      ZBPaths
+        Geometries: Triangle / Square / Diamond
+      ZBCounterPainter
+        Universal Renderer
+        Data Driven by ZBStyles
+      ZBRegistry
+        Source of Truth
+        State Hydration: Emit vs Integration
+
+===
+
+mindmap
+  root((Base6 Unified Bridge))
+    State 1: Black
+      Story: IDK / Meditation
+      Animal: Pussycat
+      Motivation: Fear
+      Environment: Caves
+      PHS: Consecutive
+    State 2: Red
+      Story: Silence
+      Animal: Bitch / Red Dog
+      Motivation: Hope
+      Environment: Markets
+      PHS: Open
+    State 3: Yellow
+      Story: Breath
+      Animal: Octopussy
+      Motivation: Desire
+      Environment: Kitchens
+      PHS: Hot
+    State 4: Green
+      Story: Simple
+      Animal: Octopus
+      Motivation: Need
+      Environment: Mountains
+      PHS: Calm
+    State 5: Blue
+      Story: Complex
+      Animal: Guilt
+      Environment: Valleys
+      PHS: High
+    State 6: White
+      Story: Zmansi / Camel
+      Animal: White Camel
+      Motivation: Innocence
+      Environment: Shores
+      PHS: Direct
+    Trajectories
+      Left Fixed
+        Design: Selective / Internal / Wet
+        Personality: Communalist / Theist / Leader
+      Right Fixed
+        Design: Blending / External / Dry
+        Personality: Separatist / Anti-Theist / Follower
+
+==
+
+mindmap
+  root((ZB Painting Flow))
+    ZBAccountChart
+      _buildCounters
+        _painterForCounter(id)
+          Color Resolution Logic
+            If Manual -> pickedColor
+            If Data -> State Check
+              State 4 -> Green
+              State 2/5/9 -> Frequency Color
+              State 0 -> Ghost White
+          _getShapePainter(id, state, color)
+            ZBCounterPainter
+              ZBPaths.getPath(id)
+              canvas.drawPath
+
+
+===
+
+mindmap
+  root((ZB Style Bridge))
+    Registry Input
+      id
+      state (int)
+      isManual (bool)
+    ZBStyles.getCounterColor
+      Decision: isManual?
+        Yes: Return pickedColor
+        No: Check State
+          State 4: Green
+          State 2,5,9: ZBStory frequency
+          State 0/Other: Ghost Alpha
+    Painter Execution
+      ZBCounterPainter
+        Receives Color
+        Receives State
+        Draws Path from ZBPaths
+
+===
+
+final :
+
+===
+
+mindmap
+  root((לפלוט - On Emit))
+    Trigger[Function: _onZBFullEject]
+      Calculation[_rotateComplex Station]
+        Time[Person & Design Time Sync]
+        Gates[Generate 26 Planetary Gates]
+    
+    Baseline[Station: MST Initialization]
+      Action[fillRange 0, 65, 3]
+      State[State 3: Breath Yellow]
+      Visual[Yellow Baseline for All 64 Gates]
+
+    DataPour[Station: ZBS Data Pour]
+      Design[Design Loop: State 2]
+        Color[Red / Silence]
+      Personality[Personality Loop: State 5]
+        Color[Blue / Complex]
+      Evolution[Intersection: State 9]
+        Color[Red-Blue Split Mapping]
+
+    Infection[Station: CTW Counter Infection]
+      Scan[Transaction ID Check]
+      Mapping[Update State Variables]
+        Solar[zbsolarstate: Blue if 37-40]
+        Sacral[zbsacralstate: Red if 5-15]
+        Heart[zbheartstate: Gradient if Overlap]
+
+    Build[Output: ZBAccountChart]
+      Render[setWalletColor Execution]
+      Final[UI Result: Smooth Sync Recovery]

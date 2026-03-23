@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:finallyicanlearn/logic/calculatehdchart.dart';
-import 'package:finallyicanlearn/models/hdlist.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
-import 'package:finallyicanlearn/models/rtlists.dart';
 import 'package:finallyicanlearn/services/fetchplanets.dart';
 import 'package:finallyicanlearn/ui/widgets/rotatewidgets.dart';
+import 'package:finallyicanlearn/zb/data/bck/listdb.dart';
 import 'package:finallyicanlearn/zb/data/providers/zb_db_providers.dart';
+import 'package:finallyicanlearn/zb/ui/widgets/zb_cleanwidgets.dart';
 import 'package:window_manager/window_manager.dart';
 // import 'package:finallyicanlearn/main.dart';
 import 'package:flutter/material.dart';
@@ -335,8 +335,8 @@ class RotateHelpers {
 
     // 💡 THE FIX: Add the designtimestamp argument here
     return ZBAccount(
-      personality: pListUI,
-      design: dListUI,
+      zbpersonality: pListUI,
+      zbdesign: dListUI,
       channels: channels,
       centers: centers,
       timestamp: targetTime,

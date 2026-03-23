@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:finallyicanlearn/logic/hdsubstructure.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 
@@ -14,7 +13,12 @@ class PlanetsServices {
     final hours = now.hour + minutesInHours;
 
     final jd = Sweph.swe_julday(
-        now.year, now.month, now.day, hours, CalendarType.SE_GREG_CAL);
+      now.year,
+      now.month,
+      now.day,
+      hours,
+      CalendarType.SE_GREG_CAL,
+    );
 
     final CoordinatesWithSpeed posSun,
         posNorthnode,
@@ -29,89 +33,66 @@ class PlanetsServices {
         posPluto,
         posChiron;
 
-    // final NodesAndAspides moonNorthNode;
-    // double longitudeNorthNode;
-
-    // zb idk
-    // Sweph.swe_set_sid_mode(
-    //     SiderealMode.SE_SIDM_LAHIRI, SiderealModeFlag.SE_SIDBIT_NONE, 0);
-    // double ayanamsa =
-    //     Sweph.swe_get_ayanamsa_ex_ut(jd, SwephFlag.SEFLG_SIDEREAL);
-    // double mandalaLongitude = (360 - ayanamsa) % 360;
-
-    // mandalaLongitude += 58;
-
-    // if (mandalaLongitude > 360) {
-    //   mandalaLongitude -= 360;
-    // }
-
-    // int tempGate = (mandalaLongitude / 5.625).floor();
-
-    // print('ayanamsa: $mandalaLongitude');
-    // print('mandalaLongitude: $mandalaLongitude');
-    // print('tempGate: ${orderHexagramsToCalulateWheel[tempGate]}');
-
-    // end zb idk
-
     posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_SWIEPH);
     //posSun = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_TROPICAL);
     //pos_earth = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_EARTH, SwephFlag.SEFLG_SWIEPH);
 
     posNorthnode = Sweph.swe_calc_ut(
-        jd, HeavenlyBody.SE_TRUE_NODE, SwephFlag.SEFLG_SWIEPH);
-    // moonNorthNode = Sweph.swe_nod_aps_ut(jd, HeavenlyBody.SE_MOON,
-    // SwephFlag.SEFLG_SWIEPH, NodApsFlag.SE_NODBIT_OSCU);
-    // longitudeNorthNode = moonNorthNode.nodesAscending[0];
+      jd,
+      HeavenlyBody.SE_TRUE_NODE,
+      SwephFlag.SEFLG_SWIEPH,
+    );
+    posMoon = Sweph.swe_calc_ut(
+      jd,
+      HeavenlyBody.SE_MOON,
+      SwephFlag.SEFLG_SWIEPH,
+    );
+    posMercury = Sweph.swe_calc_ut(
+      jd,
+      HeavenlyBody.SE_MERCURY,
+      SwephFlag.SEFLG_SWIEPH,
+    );
+    posVenus = Sweph.swe_calc_ut(
+      jd,
+      HeavenlyBody.SE_VENUS,
+      SwephFlag.SEFLG_SWIEPH,
+    );
+    posMars = Sweph.swe_calc_ut(
+      jd,
+      HeavenlyBody.SE_MARS,
+      SwephFlag.SEFLG_SWIEPH,
+    );
+    posJupiter = Sweph.swe_calc_ut(
+      jd,
+      HeavenlyBody.SE_JUPITER,
+      SwephFlag.SEFLG_SWIEPH,
+    );
+    posSaturn = Sweph.swe_calc_ut(
+      jd,
+      HeavenlyBody.SE_SATURN,
+      SwephFlag.SEFLG_SWIEPH,
+    );
+    posUranus = Sweph.swe_calc_ut(
+      jd,
+      HeavenlyBody.SE_URANUS,
+      SwephFlag.SEFLG_SWIEPH,
+    );
+    posNeptune = Sweph.swe_calc_ut(
+      jd,
+      HeavenlyBody.SE_NEPTUNE,
+      SwephFlag.SEFLG_SWIEPH,
+    );
+    posPluto = Sweph.swe_calc_ut(
+      jd,
+      HeavenlyBody.SE_PLUTO,
+      SwephFlag.SEFLG_SWIEPH,
+    );
+    posChiron = Sweph.swe_calc_ut(
+      jd,
+      HeavenlyBody.SE_CHIRON,
+      SwephFlag.SEFLG_SWIEPH,
+    );
 
-    //print ('pos NN:');
-    //print (posNorthnode.longitude);
-    //print ('moon NN:');
-    //print (moonNorthNode.nodesDescending);
-    //print (moonNorthNode.nodesAscending);
-
-    //posNorthnode = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_TRUE_NODE, SwephFlag.SEFLG_JPLEPH);
-    //pos_southnode = Sweph.swe_calc_ut(jd, HeavenlyBody.SE_TRUE_NODE, SwephFlag.SEFLG_SWIEPH);
-    posMoon =
-        Sweph.swe_calc_ut(jd, HeavenlyBody.SE_MOON, SwephFlag.SEFLG_SWIEPH);
-    posMercury =
-        Sweph.swe_calc_ut(jd, HeavenlyBody.SE_MERCURY, SwephFlag.SEFLG_SWIEPH);
-    posVenus =
-        Sweph.swe_calc_ut(jd, HeavenlyBody.SE_VENUS, SwephFlag.SEFLG_SWIEPH);
-    posMars =
-        Sweph.swe_calc_ut(jd, HeavenlyBody.SE_MARS, SwephFlag.SEFLG_SWIEPH);
-    posJupiter =
-        Sweph.swe_calc_ut(jd, HeavenlyBody.SE_JUPITER, SwephFlag.SEFLG_SWIEPH);
-    posSaturn =
-        Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SATURN, SwephFlag.SEFLG_SWIEPH);
-    posUranus =
-        Sweph.swe_calc_ut(jd, HeavenlyBody.SE_URANUS, SwephFlag.SEFLG_SWIEPH);
-    posNeptune =
-        Sweph.swe_calc_ut(jd, HeavenlyBody.SE_NEPTUNE, SwephFlag.SEFLG_SWIEPH);
-    posPluto =
-        Sweph.swe_calc_ut(jd, HeavenlyBody.SE_PLUTO, SwephFlag.SEFLG_SWIEPH);
-    posChiron =
-        Sweph.swe_calc_ut(jd, HeavenlyBody.SE_CHIRON, SwephFlag.SEFLG_SWIEPH);
-
-    // DegreeSplitData planetDSP;
-    // planetDSP = Sweph.swe_split_deg(
-    // posSun.longitude, SplitDegFlags.SE_SPLIT_DEG_ZODIACAL);
-    // print('zodsun: $planetDSP');
-    // print('lonsun: ${posSun.longitude}');
-    //swe_get_ayanamsha_ut(jd, SwephFlag.SEFLG_SWIEPH);
-
-    //final starALH = 'AL HECKA';
-    //final starSAI = 'SAIPH';
-
-    //final fs = Sweph.swe_fixstar_ut(starALH, jd, SwephFlag.SEFLG_SWIEPH);
-    //final fsz = Sweph.swe_split_deg(fs.coordinates.longitude, SplitDegFlags.SE_SPLIT_DEG_KEEP_SIGN);
-
-    //print (fs);
-    //print (fsz);
-
-    //cswPlanets = [posSun, posNorthnode, posMoon,
-    //               posMercury, posVenus,
-    //              posMars, posJupiter, posSaturn,
-    //             posUranus, posNeptune, posPluto, posChiron];
     longitudePlanets = [
       posSun.longitude,
       posNorthnode.longitude,
@@ -124,7 +105,7 @@ class PlanetsServices {
       posUranus.longitude,
       posNeptune.longitude,
       posPluto.longitude,
-      posChiron.longitude
+      posChiron.longitude,
     ];
 
     //return cswPlanets;
@@ -132,14 +113,17 @@ class PlanetsServices {
   }
 
   static Future<CoordinatesWithSpeed> getSunGatesNow(DateTime now) async {
-    //final List<CoordinatesWithSpeed> cswPlanets;
-
     final secondsInMinutes = now.second / 60;
     final minutesInHours = (now.minute + secondsInMinutes) / 60;
     final hours = now.hour + minutesInHours;
 
     final jd = Sweph.swe_julday(
-        now.year, now.month, now.day, hours, CalendarType.SE_GREG_CAL);
+      now.year,
+      now.month,
+      now.day,
+      hours,
+      CalendarType.SE_GREG_CAL,
+    );
 
     final CoordinatesWithSpeed posSun;
 
@@ -148,27 +132,11 @@ class PlanetsServices {
     return posSun;
   }
 
-  //static Future<List<Hexagram>> mapPlanets(List<CoordinatesWithSpeed> mappedplanets) async {
   static Future<List<Hexagram>> mapPlanets(List<double> mappedplanets) async {
     // based Swiss ephemeris new method
 
     List<Hexagram> planetsHexagramList = [];
 
-    //CoordinatesWithSpeed cwsSun = mappedplanets [0],
-    //   cwsNorthnode = mappedplanets [1],
-    //  cwsMoon = mappedplanets [2],
-    // cwsMercury = mappedplanets [3],
-    // cwsVenus = mappedplanets [4],
-    //  cwsMars = mappedplanets [5],
-    //  cwsJupiter = mappedplanets [6],
-    //  cwsSaturn = mappedplanets [7],
-    //  cwsUranus = mappedplanets [8],
-    //  cwsNeptune = mappedplanets [9],
-    //  cwsPluto = mappedplanets [10],
-    // cwsChiron = mappedplanets [11];
-
-    //double _latitude = 0.0,
-    //   _longitude = 0.0,
     double longitudeSun = mappedplanets[0],
         longitudeNorthnode = mappedplanets[1],
         longitudeMoon = mappedplanets[2],
@@ -198,15 +166,6 @@ class PlanetsServices {
         neptuneSubStructure,
         plutoSubStructure,
         chironSubStructure;
-
-    //DegreeSplitData dsSun, dsNorthNode;
-
-    //dsSun = Sweph.swe_split_deg(cwsSun.longitude,SplitDegFlags.SE_SPLIT_DEG_ZODIACAL);
-    //dsNorthNode = Sweph.swe_split_deg(cwsNorthnode.longitude,SplitDegFlags.SE_SPLIT_DEG_ZODIACAL);
-    //print ('Zo Sun');
-    //print (dsSun);
-    // print ('Zo NN');
-    // print (dsNorthNode);
 
     try {
       sunSubStructure = getGateStructure(longitudeSun);
@@ -248,7 +207,7 @@ class PlanetsServices {
         uranusSubStructure,
         neptuneSubStructure,
         plutoSubStructure,
-        chironSubStructure
+        chironSubStructure,
       ];
     } catch (err) {
       Exception(err);
@@ -288,11 +247,6 @@ class PlanetsServices {
 
     // align in days
     do {
-      //cwsDesigndata = await PlanetsServices.getPlanetsGatesNow(designTime);
-      //cswSunDesign = cwsDesigndata[0];
-      //calculatedlongitude = cswSunDesign.longitude;
-      //gaplongitude = requiredlongitude - calculatedlongitude;
-
       cswSunDesign = await PlanetsServices.getSunGatesNow(designTime);
       calculatedlongitude = cswSunDesign.longitude;
       gaplongitude = requiredlongitude - calculatedlongitude;
@@ -327,11 +281,6 @@ class PlanetsServices {
         designTime = designTime.subtract(const Duration(hours: 1));
       }
 
-      //cwsDesigndata = await PlanetsServices.getPlanetsGatesNow(designTime);
-      //cswSunDesign = cwsDesigndata[0];
-      //calculatedlongitude = cswSunDesign.longitude;
-      //gaplongitude = requiredlongitude - calculatedlongitude;
-
       cswSunDesign = await PlanetsServices.getSunGatesNow(designTime);
       calculatedlongitude = cswSunDesign.longitude;
       gaplongitude = requiredlongitude - calculatedlongitude;
@@ -358,11 +307,6 @@ class PlanetsServices {
       } else if (gaplongitude < -0.01) {
         designTime = designTime.subtract(const Duration(minutes: 10));
       }
-
-      //cwsDesigndata = await PlanetsServices.getPlanetsGatesNow(designTime);
-      //cswSunDesign = cwsDesigndata[0];
-      //calculatedlongitude = cswSunDesign.longitude;
-      //gaplongitude = requiredlongitude - calculatedlongitude;
 
       cswSunDesign = await PlanetsServices.getSunGatesNow(designTime);
       calculatedlongitude = cswSunDesign.longitude;
@@ -391,11 +335,6 @@ class PlanetsServices {
         designTime = designTime.subtract(const Duration(minutes: 1));
       }
 
-      //cwsDesigndata = await PlanetsServices.getPlanetsGatesNow(designTime);
-      //cswSunDesign = cwsDesigndata[0];
-      //calculatedlongitude = cswSunDesign.longitude;
-      //gaplongitude = requiredlongitude - calculatedlongitude;
-
       cswSunDesign = await PlanetsServices.getSunGatesNow(designTime);
       calculatedlongitude = cswSunDesign.longitude;
       gaplongitude = requiredlongitude - calculatedlongitude;
@@ -422,11 +361,6 @@ class PlanetsServices {
       } else if (gaplongitude < -0.0001) {
         designTime = designTime.subtract(const Duration(seconds: 10));
       }
-
-      //cwsDesigndata = await PlanetsServices.getPlanetsGatesNow(designTime);
-      //cswSunDesign = cwsDesigndata[0];
-      //calculatedlongitude = cswSunDesign.longitude;
-      //gaplongitude = requiredlongitude - calculatedlongitude;
 
       cswSunDesign = await PlanetsServices.getSunGatesNow(designTime);
       calculatedlongitude = cswSunDesign.longitude;
@@ -455,11 +389,6 @@ class PlanetsServices {
         designTime = designTime.subtract(const Duration(seconds: 1));
       }
 
-      //cwsDesigndata = await PlanetsServices.getPlanetsGatesNow(designTime);
-      //cswSunDesign = cwsDesigndata[0];
-      //calculatedlongitude = cswSunDesign.longitude;
-      //gaplongitude = requiredlongitude - calculatedlongitude;
-
       cswSunDesign = await PlanetsServices.getSunGatesNow(designTime);
       calculatedlongitude = cswSunDesign.longitude;
       gaplongitude = requiredlongitude - calculatedlongitude;
@@ -486,11 +415,6 @@ class PlanetsServices {
       } else if (gaplongitude < -0.000005) {
         designTime = designTime.subtract(const Duration(milliseconds: 100));
       }
-
-      //cwsDesigndata = await PlanetsServices.getPlanetsGatesNow(designTime);
-      //cswSunDesign = cwsDesigndata[0];
-      //calculatedlongitude = cswSunDesign.longitude;
-      //gaplongitude = requiredlongitude - calculatedlongitude;
 
       cswSunDesign = await PlanetsServices.getSunGatesNow(designTime);
       calculatedlongitude = cswSunDesign.longitude;

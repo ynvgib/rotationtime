@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:finallyicanlearn/models/rtlists.dart';
+import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:flutter/foundation.dart';
@@ -15,9 +15,9 @@ class ZmansiDbProvider {
   ZmansiDbProvider._();
 
   Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await initDB();
-    return _database!;
+    // If _database exists, return it immediately.
+    // If it's null, await initDB(), assign the result to _database, and then return it.
+    return _database ??= await initDB();
   }
 
   Future<Database> initDB() async {
@@ -49,7 +49,8 @@ class ZmansiDbProvider {
 
     // 1. Gatekeeper (Keep this as is)
     var count = Sqflite.firstIntValue(
-        await dbClient.rawQuery('SELECT COUNT(*) FROM ZB_RotationData'));
+      await dbClient.rawQuery('SELECT COUNT(*) FROM ZB_RotationData'),
+    );
     if (count != null && count > 0) return;
 
     Batch batch = dbClient.batch();
@@ -83,16 +84,19 @@ class ZmansiDbProvider {
       String groupID = "src_$listIdx"; // Map back to your registry index
 
       for (int i = 0; i < currentList.length; i++) {
-        batch.rawInsert('''
+        batch.rawInsert(
+          '''
       INSERT OR IGNORE INTO ZB_RotationData 
       (source_group, item_index, val_he, layer_state) 
       VALUES (?, ?, ?, ?)
-    ''', [
-          groupID,
-          i,
-          currentList[i].toString(), // Ensures safety for int/string mix
-          'complex'
-        ]);
+    ''',
+          [
+            groupID,
+            i,
+            currentList[i].toString(), // Ensures safety for int/string mix
+            'complex',
+          ],
+        );
       }
     }
 
@@ -112,7 +116,8 @@ class ZmansiDbProvider {
 
     // Check the total count of EVERYTHING in the DB
     var total = Sqflite.firstIntValue(
-        await dbClient.rawQuery('SELECT COUNT(*) FROM ZB_RotationData'));
+      await dbClient.rawQuery('SELECT COUNT(*) FROM ZB_RotationData'),
+    );
 
     debugPrint("📊 ZB Engine Status: $total total rows detected.");
 
@@ -127,8 +132,11 @@ class ZmansiDbProvider {
 
   Future<List<Map<String, dynamic>>> getRotationByLayer(String layer) async {
     final dbClient = await database;
-    return await dbClient
-        .query('ZB_RotationData', where: 'layer_state = ?', whereArgs: [layer]);
+    return await dbClient.query(
+      'ZB_RotationData',
+      where: 'layer_state = ?',
+      whereArgs: [layer],
+    );
   }
 
   /// Completely removes the database file from the device
@@ -150,7 +158,8 @@ class ZmansiDbProvider {
 
     // 2. Count total items across all 288 lists
     var total = Sqflite.firstIntValue(
-        await dbClient.rawQuery('SELECT COUNT(*) FROM ZB_RotationData'));
+      await dbClient.rawQuery('SELECT COUNT(*) FROM ZB_RotationData'),
+    );
 
     debugPrint("""
     📋 --- ZMANSI DB STATUS ---
@@ -245,7 +254,8 @@ class ZmansiDbProvider {
     final dbClient = await database;
 
     // We are asking: "Give me every item from any list that has exactly [size] items"
-    return await dbClient.rawQuery('''
+    return await dbClient.rawQuery(
+      '''
     SELECT source_group, item_index, val_he, val_en 
     FROM ZB_RotationData 
     WHERE source_group IN (
@@ -255,7 +265,9 @@ class ZmansiDbProvider {
       HAVING COUNT(*) = ?
     )
     ORDER BY source_group, item_index
-  ''', [size]);
+  ''',
+      [size],
+    );
   }
 
   // 🏦 THE WALLET RETRIEVER
@@ -263,14 +275,17 @@ class ZmansiDbProvider {
     final dbClient = await database;
 
     // Finds the first source_group that has the exact count (e.g., 64)
-    final List<Map<String, dynamic>> results = await dbClient.rawQuery('''
+    final List<Map<String, dynamic>> results = await dbClient.rawQuery(
+      '''
     SELECT val_he FROM ZB_RotationData 
     WHERE source_group = (
       SELECT source_group FROM ZB_RotationData 
       GROUP BY source_group HAVING COUNT(*) = ? LIMIT 1
     )
     ORDER BY item_index ASC
-  ''', [size]);
+  ''',
+      [size],
+    );
 
     // Converts the SQL rows back into a standard Dart List<String>
     return results.map((row) => row['val_he'] as String).toList();
@@ -281,14 +296,17 @@ class ZmansiDbProvider {
     final dbClient = await database;
 
     // This finds the first source_group that matches the size you clicked
-    final List<Map<String, dynamic>> results = await dbClient.rawQuery('''
+    final List<Map<String, dynamic>> results = await dbClient.rawQuery(
+      '''
     SELECT val_he FROM ZB_RotationData 
     WHERE source_group = (
       SELECT source_group FROM ZB_RotationData 
       GROUP BY source_group HAVING COUNT(*) = ? LIMIT 1
     )
     ORDER BY item_index ASC
-  ''', [targetSize]);
+  ''',
+      [targetSize],
+    );
 
     // Map the SQL rows back into a standard Dart List<String>
     return results.map((row) => row['val_he'] as String).toList();

@@ -1,10 +1,9 @@
 // used for LIST mixHexagramSlidersNew
-import 'package:finallyicanlearn/models/lists.dart';
+
+import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
 
 List<int> hexagramAlignment(int mainhexagram) {
-  int maintop = 0,
-      mainmid = 0,
-      mainbot = 0;
+  int maintop = 0, mainmid = 0, mainbot = 0;
 
   switch (mainhexagram) {
     //Quarter of Mutation
@@ -341,7 +340,6 @@ List<int> hexagramAlignment(int mainhexagram) {
       break;
   }
 
-
   return [maintop, mainmid, mainbot];
 }
 
@@ -355,7 +353,7 @@ List<int> hexagramCrossAlignment(int hexagramcross) {
   hexagramindex = orderHexagramsWheel.indexOf(hexagramcross);
   hexagramquarter = (hexagramindex / 16).floor();
 
-  switch (hexagramquarter){
+  switch (hexagramquarter) {
     case 0:
       oppositehex = orderHexagramsWheel[hexagramindex + 32];
       previoushex = orderHexagramsWheel[hexagramindex + 48];

@@ -1,0 +1,19 @@
+====
+
+That's beautiful. The app *is* the answer to its own question.
+
+A meditation/breathing utility that:
+- **Opens with a question** — "What's the app's core function?"
+- **Strips down** layer by layer to silence (`W...`)
+- **Then breathes** — the actual practice begins
+- **onTap drives everything** — each tap advances the journey
+
+So the core interaction is: **tap → next state → tap → next state**, peeling away until you arrive at stillness, then guiding through the breath/meditation.
+
+The "dynamic story" refactor likely broke the **tap state machine** — the sequence of what happens when, which was probably hardcoded and working, then got abstracted into something that lost its timing or order.
+
+Now — share the first bite. I'd suggest starting with whichever file controls the **tap/state progression**, since that's where the broken buttons will trace back to. Could be `main.dart`, a screen file, or a provider.
+
+What's the first file?
+
+==

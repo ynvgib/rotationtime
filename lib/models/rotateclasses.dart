@@ -1,6 +1,5 @@
 import 'dart:math';
-
-import 'package:finallyicanlearn/models/rtlists.dart';
+import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
 import 'package:flutter/material.dart';
 
 class Hexagram {
@@ -20,24 +19,25 @@ class Hexagram {
   int? gate, line, color, tone, base, zodiacid;
   double? longitude;
 
-  Hexagram(
-      {this.name,
-      this.hex,
-      this.gate,
-      this.line,
-      this.color,
-      this.tone,
-      this.base,
-      this.gatename,
-      this.linename,
-      this.gateline,
-      this.gatelinecolor,
-      this.gatelinecolortone,
-      this.gatelinecolortonebase,
-      this.longitude,
-      this.zodiacsign,
-      this.zodiacid,
-      this.planet});
+  Hexagram({
+    this.name,
+    this.hex,
+    this.gate,
+    this.line,
+    this.color,
+    this.tone,
+    this.base,
+    this.gatename,
+    this.linename,
+    this.gateline,
+    this.gatelinecolor,
+    this.gatelinecolortone,
+    this.gatelinecolortonebase,
+    this.longitude,
+    this.zodiacsign,
+    this.zodiacid,
+    this.planet,
+  });
 }
 
 class HumanDesign {
@@ -70,8 +70,13 @@ class HumanDesign {
 class HexagramSentence {
   String? adjective, subject, verb, adverb, sentence;
 
-  HexagramSentence(
-      {this.adjective, this.subject, this.verb, this.adverb, this.sentence});
+  HexagramSentence({
+    this.adjective,
+    this.subject,
+    this.verb,
+    this.adverb,
+    this.sentence,
+  });
 }
 
 class HexBase {
@@ -114,7 +119,7 @@ class HDChannel {
       zbname,
       zbhebname,
       adaptname,
-      coin,
+      zbcoin,
       description,
       circuitry,
       circuit,
@@ -123,22 +128,23 @@ class HDChannel {
 
   Color? color;
 
-  HDChannel(
-      {this.id,
-      this.firstcenter,
-      this.secondcenter,
-      this.name,
-      this.hebname,
-      this.adaptname,
-      this.zbname,
-      this.zbhebname,
-      this.coin,
-      this.description,
-      this.circuitry,
-      this.circuit,
-      this.stream,
-      this.sentence,
-      this.color});
+  HDChannel({
+    this.id,
+    this.firstcenter,
+    this.secondcenter,
+    this.name,
+    this.hebname,
+    this.adaptname,
+    this.zbname,
+    this.zbhebname,
+    this.zbcoin,
+    this.description,
+    this.circuitry,
+    this.circuit,
+    this.stream,
+    this.sentence,
+    this.color,
+  });
 }
 
 class ZBCube extends StatelessWidget {
@@ -365,14 +371,15 @@ class DesignForm {
   List<int>? gates;
   List<String>? centers;
 
-  DesignForm(
-      {this.name,
-      this.hebname,
-      this.zbname,
-      this.id,
-      this.gates,
-      this.centers,
-      this.orient});
+  DesignForm({
+    this.name,
+    this.hebname,
+    this.zbname,
+    this.id,
+    this.gates,
+    this.centers,
+    this.orient,
+  });
 }
 
 class CityTime {
@@ -387,17 +394,18 @@ class CityTime {
   String? province;
   String? timezone;
 
-  CityTime(
-      {this.city,
-      this.cityAscii,
-      this.lat,
-      this.lng,
-      this.pop,
-      this.country,
-      this.iso2,
-      this.iso3,
-      this.province,
-      this.timezone});
+  CityTime({
+    this.city,
+    this.cityAscii,
+    this.lat,
+    this.lng,
+    this.pop,
+    this.country,
+    this.iso2,
+    this.iso3,
+    this.province,
+    this.timezone,
+  });
 
   CityTime.fromJson(Map<String, dynamic> json) {
     city = json['city'];
@@ -434,9 +442,17 @@ class PuddleClip extends CustomClipper<Path> {
     var path = Path();
     path.lineTo(0, size.height * 0.8); // Start slightly above the bottom
     path.quadraticBezierTo(
-        size.width / 4, size.height, size.width / 2, size.height * 0.8);
+      size.width / 4,
+      size.height,
+      size.width / 2,
+      size.height * 0.8,
+    );
     path.quadraticBezierTo(
-        size.width * 3 / 4, size.height * 0.6, size.width, size.height * 0.8);
+      size.width * 3 / 4,
+      size.height * 0.6,
+      size.width,
+      size.height * 0.8,
+    );
     path.lineTo(size.width, 0);
     path.close();
     return path;
@@ -504,12 +520,6 @@ Color getBase4TextColor(int index) {
   return Colors.white;
 }
 
-void zbPop(BuildContext context) {
-  if (Navigator.of(context).canPop()) {
-    Navigator.of(context).pop();
-  }
-}
-
 class ZbDataModel {
   final int? id;
   final String category; // e.g., 'Human Design', 'English', 'Lyrics'
@@ -546,27 +556,19 @@ class ZbDataModel {
       complex: map['complex'] ?? '',
     );
   }
-}
 
-// The Universal Account (The "Receipt")
-class ZBAccount {
-  final List<Hexagram> personality;
-  final List<Hexagram> design;
-  final List<HDChannel> channels;
-  final List<HDCenter> centers;
-  final DateTime timestamp;
-  final DateTime designtimestamp; // 💡 Added this for the 88° time
-  final bool isJustNow;
-
-  ZBAccount({
-    required this.personality,
-    this.design = const [],
-    required this.channels,
-    required this.centers,
-    required this.timestamp,
-    required this.designtimestamp, // 💡 Now required
-    this.isJustNow = false,
-  });
+  Map<String, dynamic> toDbMap() {
+    return {
+      'id': id,
+      'category': category,
+      'sub_category': subCategory,
+      'idk': idk,
+      'silence': silence,
+      'breath': breath,
+      'simple': simple,
+      'complex': complex,
+    };
+  }
 }
 
 // The Unified Center Model

@@ -1,8 +1,6 @@
-import 'package:finallyicanlearn/models/hexlineslist.dart';
-import 'package:finallyicanlearn/models/lists.dart';
 import 'package:finallyicanlearn/models/hebrew/lists_he.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
-import 'package:finallyicanlearn/models/rtlists.dart';
+import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
 import 'package:sweph/sweph.dart';
 
 Hexagram getGateStructure(double planetlongitude) {
@@ -42,8 +40,10 @@ Hexagram getGateStructure(double planetlongitude) {
 
   Hexagram gateStructure = Hexagram();
 
-  planetDSP =
-      Sweph.swe_split_deg(planetlongitude, SplitDegFlags.SE_SPLIT_DEG_ZODIACAL);
+  planetDSP = Sweph.swe_split_deg(
+    planetlongitude,
+    SplitDegFlags.SE_SPLIT_DEG_ZODIACAL,
+  );
   //print (planetDSP);
   zodiacid = planetDSP.sign;
   degrees = planetDSP.degrees;
@@ -66,19 +66,19 @@ Hexagram getGateStructure(double planetlongitude) {
 
   gate = orderHexagramsToCalulateWheel[(percentageThroughWheel * 64).floor()];
 
-// Line
+  // Line
   exactLine = 384 * percentageThroughWheel;
   line = ((exactLine % 6) + 1).floor();
 
-// Color
+  // Color
   exactColor = 2304 * percentageThroughWheel;
   color = ((exactColor % 6) + 1).floor();
 
-// Tone
+  // Tone
   exactTone = 13824 * percentageThroughWheel;
   tone = ((exactTone % 6) + 1).floor();
 
-// Base
+  // Base
   exactBase = 69120 * percentageThroughWheel;
   base = ((exactBase % 5) + 1).floor();
 

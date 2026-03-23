@@ -3492,24 +3492,6 @@ class ZBGeometryPainter {
   }
 }
 
-Widget buildSelectionButton(
-    BuildContext context, String label, Widget dialogContent) {
-  return ElevatedButton(
-    onPressed: () {
-      showDialog(
-        context: context,
-        builder: (context) => SelectionArea(child: dialogContent),
-      );
-    },
-    style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.black,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-      textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-    ),
-    child: Text(label, style: const TextStyle(color: Colors.white)),
-  );
-}
-
 // One function to rule them all (4, 36, 64, 384)
 Widget buildBasePopUp(
     BuildContext context, String baseName, Map<String, List<String>> listsMap) {

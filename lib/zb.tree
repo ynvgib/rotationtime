@@ -1,0 +1,47 @@
+zb
+├── data
+│   ├── clean_list_names.txt
+│   ├── list_manifest.txt
+│   ├── list_names.txt
+│   ├── models
+│   │   └── classes
+│   │       └── zb_classes.dart
+│   ├── providers
+│   │   └── zb_db_providers.dart
+│   ├── txt
+│   │   ├── zbclaude
+│   │   │   ├── zb_claude_150326.txt
+│   │   │   ├── zb_claude_170326.txt
+│   │   │   └── zb_claude_intro_140326.txt
+│   │   ├── zbgemini
+│   │   │   ├── zb_gem_180326.txt
+│   │   │   ├── zb_gem_190326.txt
+│   │   │   └── zb_gemini_170326.txt
+│   │   └── zbgeneral
+│   ├── zb_data.dart
+│   ├── zb_data_mapping.dart
+│   ├── zb_list_before_delete.dart
+│   ├── zb_listdb.dart
+│   └── zb_moderatelist.dart
+└── ui
+    ├── build
+    ├── screens
+    │   └── rotations
+    │       ├── build
+    │       ├── rotatebreath.dart
+    │       ├── rotatecomplex.dart
+    │       ├── rotatefitgam.dart
+    │       ├── rotatefitgamhe.dart
+    │       ├── rotateidk.dart
+    │       ├── rotateisogch.dart
+    │       ├── rotateisog.dart
+    │       ├── rotateisoghe.dart
+    │       ├── rotatepdf.dart
+    │       ├── rotatesilence.dart
+    │       └── rotatesimple.dart
+    └── widgets
+        ├── zb_cleanwidgets.dart
+        ├── zb_widgethelpers.dart
+        └── zb_widgets.dart
+
+15 directories, 30 files
