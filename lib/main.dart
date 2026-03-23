@@ -1,10 +1,8 @@
 import 'dart:math';
 // import 'package:flutter/foundation.dart'; // This defines kIsWeb
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/zb/ui/zb_helpers.dart';
 import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
-import 'package:finallyicanlearn/zb/data/zb_data.dart';
 import 'package:finallyicanlearn/zb/ui/screens/rotations/rotatecomplex.dart';
 import 'package:finallyicanlearn/zb/ui/screens/rotations/rotatefitgam.dart';
 import 'package:finallyicanlearn/zb/ui/screens/rotations/rotatefitgamhe.dart';
@@ -16,10 +14,8 @@ import 'package:finallyicanlearn/zb/ui/screens/rotations/rotatesimple.dart';
 import 'package:finallyicanlearn/zb/ui/screens/rotations/rotateidk.dart';
 import 'package:finallyicanlearn/zb/ui/screens/rotations/rotatesilence.dart';
 import 'package:finallyicanlearn/zb/ui/screens/rotations/rotatebreath.dart';
-import 'package:finallyicanlearn/zb/ui/widgets/zb_cleanwidgets.dart';
 import 'package:finallyicanlearn/zb/ui/widgets/zb_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -688,7 +684,7 @@ class _RotateHomeState extends State<RotateHome> {
                           ..rotateX(_offset.dy * pi / 180)
                           ..rotateY(_offset.dx * pi / 180)
                           ..rotateZ(_offset.dx * pi / 180),
-                        child: const Cube(),
+                        child: const ZBCubeTwo(),
                       ),
                     ),
                     // end new cube

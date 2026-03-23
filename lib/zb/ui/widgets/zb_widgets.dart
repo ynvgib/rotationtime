@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circle_list/circle_list.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
@@ -1391,93 +1393,6 @@ Widget build384rtPlanetPop(BuildContext context) {
           'X',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
-      ),
-    ],
-  );
-}
-
-Widget build384rtPlanetPopOld(BuildContext context) {
-  return AlertDialog(
-    title: const Text(' Detriment Lines Exalted'),
-    content: SizedBox(
-      width: MediaQuery.of(context).size.width * 0.6,
-      child: ListView.builder(
-        reverse: true,
-        padding: const EdgeInsets.all(5.0),
-        itemCount: 384,
-        itemBuilder: (context, index) {
-          // int idxline = index * 3;
-          return ListTile(
-            title: Flex(
-              direction: Axis.vertical,
-              children: [
-                SelectableText(
-                  hdgateline[index],
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                ),
-                SelectableText(
-                  // zbchange
-                  hdlines384lst[index],
-                  // softWrap: true,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                ),
-                CircleAvatar(
-                  minRadius: 13,
-                  maxRadius: 13,
-                  backgroundColor: Colors.transparent,
-                  // foregroundImage: AssetImage(hdlinesplanet[idxline + 2])),
-                  foregroundImage: AssetImage(hdplanetexaltimg[index]),
-                ),
-                SelectableText(
-                  hdlinesexalted[index],
-                  // softWrap: true,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 15,
-                  ),
-                ),
-                const SelectableText(
-                  '+\n-',
-                  // softWrap: true,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
-                ),
-                SelectableText(
-                  hdlinesdetriment[index],
-                  // softWrap: true,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 15,
-                  ),
-                ),
-                CircleAvatar(
-                  minRadius: 13,
-                  maxRadius: 13,
-                  backgroundColor: Colors.transparent,
-                  foregroundImage: AssetImage(hdplanetdetrimentimg[index]),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    ),
-    actions: <Widget>[
-      TextButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        child: const Text('X', style: TextStyle(color: Colors.black)),
       ),
     ],
   );
@@ -3295,7 +3210,7 @@ Widget buildResetDropdown({
 }
 
 class SearchResultTile extends StatelessWidget {
-  final SearchResult result;
+  final ZBSearchResult result;
 
   const SearchResultTile({super.key, required this.result});
 
@@ -3959,4 +3874,254 @@ class ZBSmartImage extends StatelessWidget {
       ),
     );
   }
+}
+
+//
+
+class ZBCube extends StatelessWidget {
+  const ZBCube({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(0.0, -75.0, 0.0)
+            ..rotateX(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            color: Colors.transparent,
+            height: 135,
+            width: 135,
+            child: CircleAvatar(
+              //radius: 75,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins6lst1[0]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()..translate(0.0, 0.0, 75.0),
+          //..rotateY(-pi / 2),
+          //alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins6lst1[1]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(75.0, 0.0, 0.0)
+            ..rotateY(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins6lst1[3]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(-75.0, 0.0, 0.0)
+            ..rotateY(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins6lst1[2]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(0.0, 75.0, 0.0)
+            ..rotateX(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.black,
+              foregroundImage: AssetImage(coins6lst1[5]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()..translate(0.0, 0.0, -75.0),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins6lst1[4]),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ZBCubeTwo extends StatelessWidget {
+  const ZBCubeTwo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(0.0, -75.0, 0.0)
+            ..rotateX(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            color: Colors.white,
+            height: 135,
+            width: 135,
+            child: const CircleAvatar(
+              //radius: 75,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage('assets/camog/dogswoofgoof.gif'),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()..translate(0.0, 0.0, 75.0),
+          //..rotateY(-pi / 2),
+          //alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              //backgroundColor: Colors.black,
+              foregroundImage: AssetImage(coins4lst[3]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(75.0, 0.0, 0.0)
+            ..rotateY(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              //backgroundColor: Colors.black,
+              foregroundImage: AssetImage(coins4lst[1]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(-75.0, 0.0, 0.0)
+            ..rotateY(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              //backgroundColor: Colors.black,
+              foregroundImage: AssetImage(coins4lst[2]),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()
+            ..translate(0.0, 75.0, 0.0)
+            ..rotateX(-pi / 2),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: const CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.black,
+              foregroundImage: AssetImage('assets/camog/snoopyq.gif'),
+            ),
+          ),
+        ),
+        Transform(
+          transform: Matrix4.identity()..translate(0.0, 0.0, -75.0),
+          alignment: Alignment.center,
+          child: Container(
+            height: 135,
+            width: 135,
+            color: Colors.transparent,
+            child: CircleAvatar(
+              //radius: 15,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(coins4lst[0]),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+String getZBState(String binary) {
+  // We split the 6 bits into three 2-bit pairs
+  // Assuming the rightmost bits are the Bottom Ring
+  String ring1 = binary.substring(4, 6); // Bottom
+  String ring2 = binary.substring(2, 4); // Middle
+  String ring3 = binary.substring(0, 2); // Top
+
+  String translate(String bits) {
+    if (bits == '11') return "COMPLEX";
+    if (bits == '10') return "Simple;";
+    if (bits == '01') return "Breath,";
+    return "silence."; // '00'
+  }
+
+  return "${translate(ring3)} ${translate(ring2)} ${translate(ring1)}";
+}
+
+Color getBase4Color(int index) {
+  switch (index) {
+    case 0:
+      return Colors.blue; // 1. "COMPLEX"
+    case 1:
+      return Colors.green; // 2. Simple;
+    case 2:
+      return Colors.yellow; // 3. Breath,
+    case 3:
+      return Colors.red; // 4. silence.
+    default:
+      return Colors.black;
+  }
+}
+
+Color getBase4TextColor(int index) {
+  // Yellow and Green often need darker text for "Aliveness" (58)
+  if (index == 1 || index == 2) return Colors.black54;
+  return Colors.white;
 }

@@ -497,17 +497,17 @@ class TextFileSearchDelegate extends SearchDelegate {
   }
 
   // 💡 Add this variable to your TextFileSearchDelegate class to cache the initial list
-  Future<List<SearchResult>>? _browseFuture;
+  Future<List<ZBSearchResult>>? _browseFuture;
 
   Widget _searchInFiles() {
     // 1. Define which "Future" to use
     // If the query is empty, we use (or create) the cached _browseFuture.
     // If the user is typing, we create a fresh search Future.
-    final Future<List<SearchResult>> activeFuture = query.isEmpty
+    final Future<List<ZBSearchResult>> activeFuture = query.isEmpty
         ? (_browseFuture ??= _performSearch(""))
         : _performSearch(query);
 
-    return FutureBuilder<List<SearchResult>>(
+    return FutureBuilder<List<ZBSearchResult>>(
       future: activeFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting &&
@@ -529,8 +529,8 @@ class TextFileSearchDelegate extends SearchDelegate {
     );
   }
 
-  Future<List<SearchResult>> _performSearch(String searchTerm) async {
-    List<SearchResult> hits = [];
+  Future<List<ZBSearchResult>> _performSearch(String searchTerm) async {
+    List<ZBSearchResult> hits = [];
     final bool isInitialBrowse = searchTerm.isEmpty;
 
     final allFiles = [
@@ -558,7 +558,7 @@ class TextFileSearchDelegate extends SearchDelegate {
           bool isHeb = path.contains('/heb/');
 
           hits.add(
-            SearchResult(
+            ZBSearchResult(
               fileName: path.split('/').last,
               fileTitle: realTitle, // 🎯 Dynamic Title achieved!
               snippet: isInitialBrowse ? "" : _getSnippet(content, searchTerm),

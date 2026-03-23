@@ -436,3 +436,41 @@ class ZBDictionarySourceLists {
     return getItem(calculatedIndex);
   }
 }
+
+// moved classes from rotateclass
+
+class Base384Line {
+  final String id; // e.g., "38.1"
+  final String baseText; // Neutral line description
+  final String exaltText; // (+) Text
+  final String detrimText; // (-) Text
+  final String exaltImg; // (+) Planet Path
+  final String detrimImg; // (-) Planet Path
+
+  Base384Line({
+    required this.id,
+    required this.baseText,
+    required this.exaltText,
+    required this.detrimText,
+    required this.exaltImg,
+    required this.detrimImg,
+  });
+}
+
+// search class
+
+class ZBSearchResult {
+  final String fileName;
+  final String fileTitle; // 💡 The first line of the file
+  final String snippet;
+  final String query;
+  final bool isHebrew;
+
+  ZBSearchResult({
+    required this.fileName,
+    required this.fileTitle,
+    required this.snippet,
+    required this.query,
+    required this.isHebrew,
+  });
+}

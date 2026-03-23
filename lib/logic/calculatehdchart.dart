@@ -12,7 +12,7 @@ class HDServices {
     hdchannel.secondcenter = hdchannelsList[hdchannelidx + 2];
     hdchannel.name = hdchannelsList[hdchannelidx + 3];
     hdchannel.adaptname = hdchannelsList[hdchannelidx + 4];
-    hdchannel.zbcoin = hdchannelsList[hdchannelidx + 5];
+    hdchannel.coin = hdchannelsList[hdchannelidx + 5];
     hdchannel.description = hdchannelsList[hdchannelidx + 6];
     hdchannel.circuitry = hdchannelsList[hdchannelidx + 7];
     hdchannel.circuit = hdchannelsList[hdchannelidx + 8];
