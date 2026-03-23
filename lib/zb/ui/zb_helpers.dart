@@ -351,17 +351,17 @@ class ZBHelpers {
     final List<ZBCounter> activeCounters =
         ZBLogic.calcActiveCounter(activeTransactions);
 
-    debugPrint('=== activeTransactions (${activeTransactions.length}) ===');
-    for (final tx in activeTransactions) {
-      debugPrint(
-          '  tx:${tx.id} state:${tx.zbstate} main:${tx.mainCounterId} sub:${tx.subCounterId}');
-    }
+    // // debugPrint('=== activeTransactions (${activeTransactions.length}) ===');
+    // for (final tx in activeTransactions) {
+    //   debugPrint(
+    //       '  tx:${tx.id} state:${tx.zbstate} main:${tx.mainCounterId} sub:${tx.subCounterId}');
+    // }
 
-    debugPrint('=== activeCounters (${activeCounters.length}) ===');
-    for (final c in activeCounters) {
-      debugPrint('  counter:${c.name} id:${c.id} state:${c.state}');
-    }
-    debugPrint('==========================================');
+    // debugPrint('=== activeCounters (${activeCounters.length}) ===');
+    // for (final c in activeCounters) {
+    //   debugPrint('  counter:${c.name} id:${c.id} state:${c.state}');
+    // }
+    // debugPrint('==========================================');
 
     // 4. STRATEGY & AUTHORITY ANALYSIS
     // Now this analysis is "Clean" because it only sees the 13 planets
@@ -382,10 +382,10 @@ class ZBHelpers {
     final String resAuth = (analysisMap['authority'] ?? '').trim();
 
     // 🕵️ DEBUG LOGS - Check your VS Code Console!
-    print("--------------------------------------------------");
-    print("📊 LOGIC RESULTS for ${targetTime.toIso8601String()}");
-    print("🔎 Raw Type from Logic: '$resType'");
-    print("🔎 Raw Auth from Logic: '$resAuth'");
+    // print("--------------------------------------------------");
+    // print("📊 LOGIC RESULTS for ${targetTime.toIso8601String()}");
+    // print("🔎 Raw Type from Logic: '$resType'");
+    // print("🔎 Raw Auth from Logic: '$resAuth'");
 
     int tId = 1; // Default fallback
     try {
@@ -395,9 +395,9 @@ class ZBHelpers {
             t.typeheb == resType,
       );
       tId = matchedType.id;
-      print("✅ Matched Type ID: $tId (${matchedType.type})");
+      // print("✅ Matched Type ID: $tId (${matchedType.type})");
     } catch (e) {
-      print("❌ TYPE MATCH FAILED: No match found for '$resType' in getTypeMap");
+      // print("❌ TYPE MATCH FAILED: No match found for '$resType' in getTypeMap");
     }
 
     int aId = 6; // Default fallback

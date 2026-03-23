@@ -1408,7 +1408,7 @@ class _RotateComplexState extends State<RotateComplex>
                               : ZBAccountChart(
                                   // 1. The Unique Key (Ensures fresh paint on swipe)
                                   key: ValueKey(
-                                      'chart_${buildaccount?.timestamp}'),
+                                      'chart_${buildaccount?.timestamp}_$_zbTheme'),
                                   // 2. The Account (Now pulled from your class-level variable)
                                   account: buildaccount,
                                   // 3. The Data Repositories
@@ -1419,11 +1419,12 @@ class _RotateComplexState extends State<RotateComplex>
 
                                   // 4. The Wallet Builder (The missing piece)
                                   walletBuilder: (n) {
-                                    // n is the index (0-25) for the 26 planets
                                     final int state = _walletstatelist[n];
                                     return ZBStyles.buildWalletText(
                                       n,
                                       state: state,
+                                      theme:
+                                          _zbTheme, // ✅ ADD THIS: Pass the current theme variable
                                     );
                                   },
 
@@ -6596,6 +6597,11 @@ class _RotateComplexState extends State<RotateComplex>
   // zb new gemini claude code
   void _syncUIWithAccount(ZBAccount account) {
     setState(() {
+      ZBLogic.currentAccount = account;
+
+      // 2. Perform the actual data restoration immediately
+      ZBLogic.restoreGlobalRegistry(account);
+
       _currentActiveAccount = account;
 
       // 1. High-Precision Mapping

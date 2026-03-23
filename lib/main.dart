@@ -1,6 +1,7 @@
 import 'dart:math';
 // import 'package:flutter/foundation.dart'; // This defines kIsWeb
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:finallyicanlearn/zb/ui/widgets/zb_cleanwidgets.dart';
 import 'package:finallyicanlearn/zb/ui/zb_helpers.dart';
 import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
 import 'package:finallyicanlearn/zb/ui/screens/rotations/rotatecomplex.dart';
@@ -108,6 +109,10 @@ class _RotateMainState extends State<RotateMain> {
                     setState(() {
                       // L6: WHITE@ - Pulling the Global Stability (640)
                       _secondsRemaining = userDefinedSeconds;
+
+                      if (ZBLogic.currentAccount != null) {
+                        ZBLogic.restoreGlobalRegistry(ZBLogic.currentAccount);
+                      }
                     });
                   }
                 });

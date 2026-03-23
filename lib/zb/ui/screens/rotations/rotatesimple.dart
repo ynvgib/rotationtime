@@ -149,6 +149,8 @@ class _RotateSimpleState extends State<RotateSimple>
   String mainText = ';פשוט', chartText = 'מפה רואים בחוץ ובפנים';
   bool isMainText = true, isChartText = true;
 
+  Map<String, ZBCounter> _sandboxRegistry = {};
+
   final _presetSimpleConfigs = [
     {'asset': coins4lst[0], 'tooltip': 'מורכב', 'state': 5},
     {'asset': coins4lst[1], 'tooltip': 'פשוט', 'state': 4},
@@ -156,70 +158,51 @@ class _RotateSimpleState extends State<RotateSimple>
     {'asset': coins4lst[3], 'tooltip': 'שתיקה', 'state': 2},
   ];
   // ZBAccount? _currentActiveAccount;
-
   @override
   void initState() {
     super.initState();
 
-    // 1. SAFETY FIRST: Initialize the list to prevent RangeErrors (0-64)
-    // Even if _walletstatelist comes from a parent, ensure it's at least 65 long.
-    if (_walletstatelist.length < 65) {
-      _walletstatelist = List.filled(65, 4);
-    }
+    // 1. Reset the local list
+    _walletstatelist = List.filled(65, 4);
 
-    // 2. Initial Counter Setup (Your existing logic)
-    final initialSetup = {
-      'head': headstate,
-      'ajna': ajnastate,
-      'throat': throatstate,
-      'self': gstate,
-      'heart': heartstate,
-      'spleen': spleenstate,
-      'solar': solarstate,
-      'sacral': sacralstate,
-      'root': rootstate,
-    };
+    // 2. DEEP CLONE the global registry into our local _sandboxRegistry
+    // We create NEW ZBCounter objects to ensure isolation
+    _sandboxRegistry = {};
 
-    initialSetup.forEach((name, value) {
-      if (ZBData.counterMap.containsKey(name)) {
-        // If it exists, just update the state
-        ZBData.counterMap[name]!.state = value;
-      } else {
-        // 💡 THE FIX: Add the missing 'id' parameter here
-        // If it's a new center not in your map, we give it a placeholder ID (e.g., 99)
-        ZBData.counterMap[name] = ZBCounter(
-          id: 99, // Required ID
-          state: value,
-          name: name,
-          wallets: [],
-          hebname: name, // Added to satisfy your new structure
-          hdname: name,
-        );
-      }
+    ZBData.counterMap.forEach((key, original) {
+      _sandboxRegistry[key] = ZBCounter(
+        id: original.id,
+        name: original.name,
+        state: 4, // Force to Simple (White)
+        isManual: false,
+        wallets: List.from(original.wallets), // Clone the wallet list
+        hebname: original.hebname,
+        hdname: original.hdname,
+      );
     });
 
-    // 3. Gates Initialization
+    // 3. Initialize any missing Gates in the local registry
     for (int i = 1; i <= 64; i++) {
-      ZBData.counterMap['g$i'] = ZBCounter(
-        id: i, // 💡 Pass the loop index as the ID
-        state: _walletstatelist[i],
-        name: 'g$i',
-        wallets: [],
-        hebname: '$i', // Optional: Add Hebrew name for the PopUp
-        hdname: '$i', // Optional: Add English name
-      );
+      final String gateId = 'g$i';
+      if (!_sandboxRegistry.containsKey(gateId)) {
+        _sandboxRegistry[gateId] = ZBCounter(
+          id: i,
+          state: 4,
+          name: gateId,
+          wallets: [],
+          hebname: '$i',
+          hdname: '$i',
+        );
+      }
     }
 
-    // 5. Animation Setup
-    animationcontroller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2))
-          ..addListener(() {
-            if (mounted) {
-              setState(() {
-                _progress = animationcontroller.value;
-              });
-            }
-          });
+    // 4. Animation Setup (Remains the same)
+    animationcontroller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..addListener(() {
+        if (mounted) setState(() => _progress = animationcontroller.value);
+      });
   }
 
   @override
@@ -793,12 +776,16 @@ class _RotateSimpleState extends State<RotateSimple>
                               child: ZBAccountChart(
                                 // No 'account' passed here. It stays a pure UI sandbox.
                                 key: const ValueKey('manual_sandbox_chart'),
-                                registry: ZBData.counterMap,
+                                registry: _sandboxRegistry, //
                                 walletStates: _walletstatelist,
                                 pickedcolor: pickedcolor,
                                 onCounterTap: (id) {
                                   setState(() {
-                                    ZBLogic.toggleCounter(id);
+                                    ZBLogic.toggleCounter(
+                                      id,
+                                      pickedcolor,
+                                      targetRegistry: _sandboxRegistry,
+                                    );
                                   });
                                 },
                                 walletBuilder: (n) {
@@ -2359,20 +2346,20 @@ class _RotateSimpleState extends State<RotateSimple>
 
   // If counterMap is in your public ZBMain class:
   void setCounters(int counterstate, [List<String>? counters]) {
-    // Use a local variable to ensure we aren't fighting nested setStates
-    setState(() {
-      // If counters is null or empty, we assume 'all'
-      if (counters == null || counters.isEmpty || counters.contains('all')) {
-        for (var counter in ZBData.counterMap.values) {
-          counter.state = counterstate;
-        }
-      } else {
-        // Update only specific targets
-        for (var id in counters) {
-          ZBData.counterMap[id]?.state = counterstate;
+    // Use _sandboxRegistry instead of ZBData.counterMap
+    if (counters == null || counters.isEmpty || counters.contains('all')) {
+      for (var counter in _sandboxRegistry.values) {
+        counter.state = counterstate;
+        counter.isManual = false; // Presets should clear manual overrides
+      }
+    } else {
+      for (var id in counters) {
+        if (_sandboxRegistry.containsKey(id)) {
+          _sandboxRegistry[id]!.state = counterstate;
+          _sandboxRegistry[id]!.isManual = false;
         }
       }
-    });
+    }
   }
 
   setformsChart(int design) {

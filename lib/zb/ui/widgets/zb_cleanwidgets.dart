@@ -133,21 +133,48 @@ abstract class ZBPaths {
 /// GROUP B: THE CIRCULATION (CHANNEL & STYLES)
 abstract class ZBStyles {
   /// The Final Index Resolver for Counter Colors
-  /// The Final Index Resolver for Counter Colors
   static Color getCounterColor(
     String id, {
     required int state,
     required bool isManual,
     required Color pickedColor,
-    ZBTheme zbtheme = ZBTheme.zb,
+    required ZBTheme zbtheme, // Pass the current state of the toggle
   }) {
+    // 1. Manual Overrides (Taps in the Sandbox)
     if (isManual || state == 7) return pickedColor;
     if (state == 9) return Colors.grey;
-    // HD uses white/grey for defined/undefined
+
+    // 2. THE THEME FORK
     if (zbtheme == ZBTheme.hd) {
-      return state == 4 ? Colors.white : Colors.grey.shade400;
+      // HD Logic: If Simple (4) or Ghost (0) -> White/Open
+      if (state == 4 || state == 0) return Colors.white;
+
+      // If Defined (Complex/Silence/Both), use HD Structural Colors
+      return _getHDIdentityColor(id);
     }
+
+    // 3. ZB Logic: Use the Frequency/Transaction Story
     return ZBStory.getfrequency(state).zbcolor;
+  }
+
+  static Color _getHDIdentityColor(String id) {
+    switch (id) {
+      case 'head':
+      case 'self':
+        return Colors.yellow;
+      case 'ajna':
+        return Colors.green;
+      case 'solar':
+      case 'throat':
+      case 'root':
+      case 'spleen':
+        return Colors.brown;
+      case 'heart':
+      case 'sacral':
+        return Colors.red;
+      default:
+        return Colors.grey.shade400;
+    }
   }
 
   static Widget buildWalletLayout({
@@ -179,48 +206,89 @@ abstract class ZBStyles {
     );
   }
 
-  static Color setCounterColor(int finalcounterstate, Color pickedcolor) {
-    // Build the palette from your story data
-    List<Color> countercolorlist = List.from(ZBStory.zbColors);
+  static Color setCounterColor(int state, Color pickedcolor,
+      {ZBTheme theme = ZBTheme.zb, String id = ''}) {
+    // If we have a theme and an ID, redirect to the new smart logic
+    if (theme == ZBTheme.hd) {
+      return getCounterColor(id,
+          state: state,
+          isManual: false,
+          pickedColor: pickedcolor,
+          zbtheme: theme);
+    }
 
-    // Append the picked color (usually for 'both' or active selection)
+    // Fallback to the old list-based logic for ZB
+    List<Color> countercolorlist = List.from(ZBStory.zbColors);
     countercolorlist.add(pickedcolor);
 
-    // Safe Access: If state is out of bounds, we show Black (your "Alert" state)
-    if (finalcounterstate >= 0 && finalcounterstate < countercolorlist.length) {
-      return countercolorlist[finalcounterstate];
-    } else {
-      // This is why your centers were turning black;
-      // the state was likely 0 or unmapped in the new logic.
-      // return Colors.black;
-      return Colors.pinkAccent;
+    if (state >= 0 && state < countercolorlist.length) {
+      return countercolorlist[state];
     }
+    return Colors.pinkAccent;
   }
 
   static Widget buildWalletText(int n,
       {int state = 0, ZBTheme theme = ZBTheme.zb}) {
-    final bool isActive = state != 0 && state != 4;
-    final Color circleColor = isActive
-        ? (theme == ZBTheme.hd ? Colors.blue : Colors.white)
-        : Colors.transparent;
+    // Logic: States 0 (Empty) and 4 (Simple/Green) are "Open"
+    final bool isOpen = (state == 0 || state == 4);
+
+    Color circleColor;
+    Color textColor;
+    double opacity = 1.0;
+
+    if (theme == ZBTheme.hd) {
+      // HD MODE
+      // If Open: Light Grey circle (to match HD Open Center style)
+      // If Active: Solid White circle
+      circleColor = isOpen
+          ? Colors.transparent
+          // : const ui.Color.fromARGB(255, 21, 7, 152);
+          : Colors.white;
+      textColor = isOpen ? Colors.black : Colors.black;
+      // opacity = 1.0; // Dim the open gate numbers slightly
+    } else {
+      // ZB MODE
+      // If Open: Transparent (it sits on the Green counter background)
+      // If Active: Solid White
+      circleColor = isOpen ? Colors.transparent : Colors.white;
+      textColor = Colors.black;
+    }
+
     return Container(
       width: 16,
       height: 16,
       decoration: BoxDecoration(
-        // White circle only for states 1, 2, 3, 5, 6
-        color: isActive ? Colors.white : Colors.transparent,
+        color: circleColor,
         shape: BoxShape.circle,
+        // MECHANICAL FIX:
+        // 1. If we are in HD and the gate is Open, return null (No border).
+        // 2. If we are in ZB and the gate is Open, return null (Floating number).
+        // 3. Otherwise, draw the appropriate border for defined states.
+        border: isOpen
+            ? null
+            : Border.all(
+                color: Colors.black,
+                width: theme == ZBTheme.hd ? 0.8 : 0.5,
+              ),
       ),
       child: Center(
-        child: Text(
-          '$n',
-          style: TextStyle(
-            fontSize: 9,
-            // Bold text for active states
-            fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
-            // Use black for high contrast on the white circle
-            // Use grey or white10 for inactive states on the dark chart
-            color: isActive ? Colors.black : Colors.black87,
+        child: Opacity(
+          opacity: opacity,
+          child: Transform.translate(
+            offset: Offset(n < 10 ? 1.0 : 0.0, 0.0),
+            child: Text(
+              '$n',
+              style: TextStyle(
+                fontSize: 9,
+                fontWeight: isOpen ? FontWeight.normal : FontWeight.bold,
+                color: textColor,
+                // ── THE CENTERING TRINITY ──
+                height: 1.0, // Removes extra space above/below the glyph
+                leadingDistribution:
+                    TextLeadingDistribution.even, // Balanced distribution
+                textBaseline: TextBaseline.alphabetic, // Stable baseline
+              ),
+            ),
           ),
         ),
       ),
@@ -229,40 +297,28 @@ abstract class ZBStyles {
 
   static List<Color> setWalletColor(int state, {ZBTheme theme = ZBTheme.zb}) {
     if (theme == ZBTheme.zb) {
-      // ROTATION TIME (The RYGB Story)
-      // if (kDebugMode) {
-      //   print('🚀 [ZMANSI Wallet Color] Color State: $state');
-      // }
-
-      // ── ORIGINAL (kept for reference) ──────────────────────────────
-      // switch (state) {
-      //   case 0:  return [Colors.transparent, Colors.transparent]; // Initial RT Green
-      //   case 1:  return [Colors.black, Colors.black];             // "I don't know"
-      //   case 2:  return [Colors.red, Colors.red];                 // Silence
-      //   case 3:  return [Colors.yellow, Colors.yellow];           // Breath
-      //   case 4:  return [Colors.green, Colors.green];             // Simple
-      //   case 5:  return [Colors.blue, Colors.blue];               // Complex
-      //   case 6:  return [Colors.white, Colors.white];             // Zmansi
-      //   case 7:  return [Colors.black, Colors.red];               // Black/Red mix
-      //   case 8:  return [Colors.black, Colors.white];             // Black/White mix
-      //   case 9:  return [Colors.red, Colors.blue];                // Red/Blue (The RT evolution)
-      //   default: return [Colors.transparent, Colors.transparent];
-      // }
-      // ── NEW: delegates to ZBGradientColor → ZBFrequency ───────────
       return ZBGradientColor.fromZBState(state).colors;
     } else {
-      // HUMAN DESIGN (The Traditional Story)
+      // ── THE BRIDGE: Map ZB States to HD Indices ─────────────────
+      int hdKey;
+      switch (state) {
+        case 2:
+          hdKey = 1;
+          break; // ZB Silence (Red) -> HD Red
+        case 5:
+          hdKey = 3;
+          break; // ZB Complex (Blue) -> HD Black
+        case 9:
+          hdKey = 2;
+          break; // ZB Red/Blue Mix -> HD Red/Black Split
+        case 4:
+          hdKey = 4;
+          break; // ZB Simple (Green) -> HD White
+        default:
+          hdKey = state; // Fallback for direct matches (1, 3, 4)
+      }
 
-      // ── ORIGINAL (kept for reference) ──────────────────────────────
-      // switch (state) {
-      //   case 1:  return [Colors.red, Colors.red];
-      //   case 2:  return [Colors.red, Colors.black];
-      //   case 3:  return [Colors.black, Colors.black];
-      //   case 4:  return [Colors.white, Colors.white]; // Red/Black split
-      //   default: return [Colors.black, Colors.white];
-      // }
-      // ── NEW: delegates to ZBGradientColor.hdStyles ─────────────────
-      return (ZBGradientColor.hdStyles[state] ?? ZBGradientColor.hdDefault)
+      return (ZBGradientColor.hdStyles[hdKey] ?? ZBGradientColor.hdDefault)
           .colors;
     }
   }
@@ -300,21 +356,82 @@ abstract class ZBAssets {
 // rotatecleanwidgets.dart
 
 abstract class ZBLogic {
-  // Inside your Logic class or main State
-  static void toggleCounter(String id) {
-    final counter = ZBData.counterMap[id];
-    if (counter != null) {
-      // Toggle the manual override flag
-      // This ensures isManual is never null after the first tap
-      counter.isManual = !(counter.isManual);
+  static ZBAccount? currentAccount;
 
-      if (counter.isManual == true) {
-        // Set the state to the index of the picked color (the 8th item in your list)
-        counter.state = 7;
-      } else {
-        // Return to Ghost/Undefined when toggled off
-        counter.state = 0;
+  /// The "Golden Sync": Restores the global counterMap from the account data.
+  /// This clears the 'Sandbox White' (state 4) residue from RotateSimple
+  /// and re-establishes the Account's planetary definition.
+  static void globalSync(ZBAccount? account) {
+    if (account == null) return;
+
+    // 1. Save as current to allow main.dart to reference it during navigation
+
+    // 2. Reset the Global Map to a neutral state (Ghost/Undefined)
+    for (var counter in ZBData.counterMap.values) {
+      counter.state = 0;
+      counter.isManual = false;
+    }
+
+    // 3. Re-apply Definition from Account Transactions (Channels)
+    // This ensures centers like Head, Ajna, etc., get their real 2, 5, or 9 states
+    for (var tx in account.zbtransactions) {
+      // Only sync active frequencies (Ignore 'Simple' 4 or 'Ghost' 0)
+      if (tx.zbstate != 4 && tx.zbstate != 0) {
+        final int state = tx.zbstate ?? 0;
+
+        // Update both ends of the channel in the global registry
+        final String mainId = tx.mainCounterId;
+        final String subId = tx.subCounterId;
+
+        if (ZBData.counterMap.containsKey(mainId)) {
+          ZBData.counterMap[mainId]!.state = state;
+        }
+        if (ZBData.counterMap.containsKey(subId)) {
+          ZBData.counterMap[subId]!.state = state;
+        }
       }
+    }
+  }
+
+  static void restoreGlobalRegistry(ZBAccount? activeAccount) {
+    if (activeAccount == null) return;
+
+    // 1. Reset all global counters to 'Ghost' (0) or 'Undefined' (4)
+    // This clears the manual painting from RotateSimple
+    for (var counter in ZBData.counterMap.values) {
+      counter.state = 0;
+      counter.isManual = false;
+    }
+
+    // 2. Re-apply definition from Account Transactions
+    for (var tx in activeAccount.zbtransactions) {
+      // A transaction (Channel) defines its connected centers
+      final String mainId = tx.mainCounterId;
+      final String subId = tx.subCounterId;
+      final int state = tx.zbstate ?? 0;
+
+      // Update the Global Map so RotateComplex can see the real data
+      if (ZBData.counterMap.containsKey(mainId)) {
+        ZBData.counterMap[mainId]!.state = state;
+      }
+      if (ZBData.counterMap.containsKey(subId)) {
+        ZBData.counterMap[subId]!.state = state;
+      }
+    }
+  }
+
+  // Inside your Logic class or main State
+  static void toggleCounter(String id, Color pickedColor,
+      {Map<String, ZBCounter>? targetRegistry}) {
+    // Use the passed registry (Sandbox) OR fall back to the global one
+    final registry = targetRegistry ?? ZBData.counterMap;
+
+    final counter = registry[id];
+    if (counter != null) {
+      counter.isManual = !counter.isManual;
+      counter.state = counter.isManual ? 7 : 4;
+      // Note: The painter will use the 'pickedColor' you passed in
+      // when it sees state 7.
     }
   }
 
@@ -622,13 +739,13 @@ abstract class ZBLogic {
       strategy = hdstrategyList[10];
     }
 
-    debugPrint('=== zbstrategyauthority ===');
-    debugPrint('type:         $type');
-    debugPrint('subtype:      $subtype');
-    debugPrint('authority:    $authority');
-    debugPrint('subauthority: $subauthority');
-    debugPrint('strategy:     $strategy');
-    debugPrint('===========================');
+    // debugPrint('=== zbstrategyauthority ===');
+    // debugPrint('type:         $type');
+    // debugPrint('subtype:      $subtype');
+    // debugPrint('authority:    $authority');
+    // debugPrint('subauthority: $subauthority');
+    // debugPrint('strategy:     $strategy');
+    // debugPrint('===========================');
 
     return {
       'type': type,
@@ -1170,10 +1287,11 @@ class ZBCounterPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // 1. Get the unified color from your existing Logic
     // This replaces the hardcoded 'Colors.yellow' or 'Colors.blue' in the old painters
-    final Color centerColor = ZBStyles.setCounterColor(state, pickColor);
+    // final Color centerColor = ZBStyles.setCounterColor(state, pickColor);
 
     final Paint paint = Paint()
-      ..color = centerColor
+      // ..color = centerColor
+      ..color = pickColor
       ..style = PaintingStyle.fill
       ..isAntiAlias = true;
 
