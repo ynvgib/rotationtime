@@ -55,7 +55,7 @@ class ZBFrequency {
 /// ZBWallet: The Asset. Stores iChing/Gate/GeneKey data.
 class ZBWallet {
   final int wallet; // gate
-  int state;
+  int walletstate;
   final bool isIntegration;
 
   // Story Headers
@@ -87,15 +87,15 @@ class ZBWallet {
   String? planet;
   String? notename; // linename
   int? note; // line
-  int? color;
-  int? tone;
-  int? base;
+  int? hdcolor;
+  int? hdtone;
+  int? hdbase;
   int? zodiacid; // 🚀 Add: Required for zodiacSwephImagelist[index]
   String? zodiacsign; // 🚀 Add: 'scorpio', etc.
 
   ZBWallet({
     required this.wallet,
-    this.state = 0,
+    this.walletstate = 0,
     this.hdname,
     this.hdnameheb,
     this.hddesc,
@@ -116,9 +116,9 @@ class ZBWallet {
     this.longitude,
     this.planet,
     this.note,
-    this.color,
-    this.tone,
-    this.base,
+    this.hdcolor,
+    this.hdtone,
+    this.hdbase,
     this.zodiacid,
     this.zodiacsign,
   });
@@ -127,15 +127,15 @@ class ZBWallet {
   String get walletNote => "$wallet.${note ?? 1}";
 
   // 2. Gate.Line.Color (3 variables)
-  String get walletNoteColor => "$wallet.${note ?? 1}.${color ?? 1}";
+  String get walletNoteColor => "$wallet.${note ?? 1}.${hdcolor ?? 1}";
 
   // 3. Gate.Line.Color.Tone (4 variables)
   String get walletNoteColorTone =>
-      "$wallet.${note ?? 1}.${color ?? 1}.${tone ?? 1}";
+      "$wallet.${note ?? 1}.${hdcolor ?? 1}.${hdtone ?? 1}";
 
   // 4. Gate.Line.Color.Tone.Base (5 variables)
   String get walletNoteColorToneBase =>
-      "$wallet.${note ?? 1}.${color ?? 1}.${tone ?? 1}.${base ?? 1}";
+      "$wallet.${note ?? 1}.${hdcolor ?? 1}.${hdtone ?? 1}.${hdbase ?? 1}";
 }
 
 /// ZBTransaction: The Bridge. Flow between two Counters.
@@ -200,22 +200,54 @@ class ZBCounter {
   final int id;
   final String name;
   final List<int> wallets;
-  int state; // Dynamic frequency
   String? hdname;
   String? zbname;
   String? hebname;
   bool isManual;
 
+  // 1. Internal private storage for the state
+  int _counterstate = 0;
+
+  // 2. The Getter: Returns the current state (0, 2, 4, etc.)
+  int get counterstate => _counterstate;
+
+  // 3. The Setter: The "Security Guard" for your Green (4) channels
+  set counterstate(int value) {
+    // 🕵️ DEBUG: Catch the flip from Green (4) or Blue (2) back to Transparent (0)
+    if (_counterstate != 0 && value == 0) {
+      debugPrint('🚨 STATE WIPE: Counter "$name" (ID: $id) reset to 0!');
+      // This prints the exact line of code in your project that triggered the reset
+      debugPrint(
+          '📍 Triggered by: ${StackTrace.current.toString().split('\n')[1]}');
+    }
+    _counterstate = value;
+  }
+
   ZBCounter({
     required this.id,
     required this.name,
     required this.wallets,
-    this.state = 0, // Default starting point is now handled here
+    int counterstate =
+        0, // Pass initial value through to initialize _counterstate
     this.hdname,
     this.zbname,
     this.hebname,
     this.isManual = false,
-  });
+  }) : _counterstate = counterstate;
+
+  // 4. Helper to clone the counter for Dialogs without losing state
+  ZBCounter clone() {
+    return ZBCounter(
+      id: id,
+      name: name,
+      wallets: List<int>.from(wallets),
+      counterstate: _counterstate,
+      hdname: hdname,
+      zbname: zbname,
+      hebname: hebname,
+      isManual: isManual,
+    );
+  }
 }
 
 class ZBWalletPos extends ZBWallet {
@@ -245,7 +277,7 @@ class ZBCounterPos extends ZBCounter {
     required super.name,
     super.wallets = const [],
     super.id = 0,
-    super.state,
+    super.counterstate,
     super.hdname,
     super.zbname,
     this.postop,
@@ -347,19 +379,6 @@ class ZBHDSentence {
     required this.typeName,
     required this.authName,
   });
-
-  /// The logic lives here in the main class
-  static ZBHDSentence findMatch(String input) {
-    return ZBData.getHDSentences.firstWhere(
-      (s) => s.sentence == input || s.sentenceheb == input,
-      orElse: () => ZBHDSentence(
-        sentence: 'unknown',
-        sentenceheb: 'לא ידוע',
-        typeName: 'I do not know Meditation',
-        authName: 'unknown',
-      ),
-    );
-  }
 }
 
 // lists
@@ -532,4 +551,51 @@ class ZBGradientColor {
   };
   static const ZBGradientColor hdDefault =
       ZBGradientColor(Colors.black, Colors.white);
+}
+
+class ZBTransformation {
+  final String id;
+  final String label;
+  final String asset;
+  final Color color;
+  final IconData arrow;
+  final int hdcolor;
+  final int hdtone;
+  final int hdbase;
+
+  ZBTransformation({
+    required this.id,
+    required this.label,
+    required this.asset,
+    required this.color,
+    required this.arrow,
+    required this.hdcolor,
+    required this.hdtone,
+    required this.hdbase,
+  });
+}
+
+class ZBPlanet {
+  final int id; // Numeric ID starting from 1
+  final String name;
+  final Color color;
+  final String asset;
+  final String orbit;
+  final String keynote;
+  final String keynoteHeb;
+  final String role;
+
+  const ZBPlanet({
+    required this.id,
+    required this.name,
+    required this.color,
+    required this.asset,
+    required this.orbit,
+    required this.keynote,
+    required this.keynoteHeb,
+    required this.role,
+  });
+
+  String get story =>
+      "ID: $id | Role: $role\nOrbit: $orbit\n$keynote\n\n$keynoteHeb";
 }

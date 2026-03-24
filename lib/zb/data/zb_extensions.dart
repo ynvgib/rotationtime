@@ -39,10 +39,10 @@ extension ZBWalletLogicExt on ZBWallet {
       longitude: lon,
       planet: planet,
       note: line,
-      color: color,
-      tone: tone,
-      base: base,
-      state: line, // Line determines the active frequency
+      hdcolor: color,
+      hdtone: tone,
+      hdbase: base,
+      walletstate: line, // Line determines the active frequency
     );
   }
 }
@@ -69,10 +69,10 @@ extension ZBWalletStoryExt on ZBWallet {
       longitude: longitude, // Keep the raw coordinates
       planet: planet, // Keep the name
       note: note, // Keep the line (1-6)
-      color: color,
-      tone: tone,
-      base: base,
-      state: state,
+      hdcolor: hdcolor,
+      hdtone: hdtone,
+      hdbase: hdbase,
+      walletstate: walletstate,
       // 🚀 INJECT THE NEW DATA FROM THE DATABASE
       hdname: template.hdname,
       hdnameheb: template.hdnameheb,

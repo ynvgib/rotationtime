@@ -176,6 +176,160 @@ abstract class ZBData {
       .map((w) => w.wallet)
       .toList();
 
+// zb planets
+
+  static List<ZBPlanet> get getzbplanets => const [
+        // --- FOUNDATION (IDs 1-4) ---
+        ZBPlanet(
+          id: 1,
+          name: 'Sun',
+          color: Colors.blue,
+          asset: 'assets/planets/sun.png',
+          orbit: '1 Year',
+          role: 'Foundation',
+          keynote: 'The Life Force. Personality expression and vitality.',
+          keynoteHeb: 'כוח החיים. ביטוי האישיות והחיוניות.',
+        ),
+        ZBPlanet(
+          id: 2,
+          name: 'Earth',
+          color: Colors.red,
+          asset: 'assets/planets/earth.png',
+          orbit: '1 Year',
+          role: 'Foundation',
+          keynote: 'Grounding. Physical form and balance on the plane.',
+          keynoteHeb: 'קרקוע. הצורה הפיזית ואיזון.',
+        ),
+        ZBPlanet(
+          id: 3,
+          name: 'North Node',
+          color: Colors.green,
+          asset: 'assets/planets/northnode.png',
+          orbit: '18.6 Years',
+          role: 'Direction',
+          keynote: 'The Future. Direction and the environment you move toward.',
+          keynoteHeb: 'העתיד. הכיוון והסביבה אליה נעים.',
+        ),
+        ZBPlanet(
+          id: 4,
+          name: 'South Node',
+          color: Colors.yellow,
+          asset: 'assets/planets/southnode.png',
+          orbit: '18.6 Years',
+          role: 'Direction',
+          keynote: 'The Past. Foundations and what you are leaving behind.',
+          keynoteHeb: 'העבר. יסודות ומה שמשאירים מאחור.',
+        ),
+
+        // --- SIMPLE (IDs 5-8: Green / Days) ---
+        ZBPlanet(
+          id: 5,
+          name: 'Moon',
+          color: Colors.green,
+          asset: 'assets/planets/moon.png',
+          orbit: '27.3 Days',
+          role: 'Simple',
+          keynote: 'The Driver. Emotional pressure and what moves you.',
+          keynoteHeb: 'הנהג. לחץ רגשי ומה שמניע אותך.',
+        ),
+        ZBPlanet(
+          id: 6,
+          name: 'Mercury',
+          color: Colors.green,
+          asset: 'assets/planets/mercury.png',
+          orbit: '88 Days',
+          role: 'Simple',
+          keynote: 'Communication. Conceptualizing and expressing truth.',
+          keynoteHeb: 'תקשורת. המשגה וביטוי האמת.',
+        ),
+        ZBPlanet(
+          id: 7,
+          name: 'Venus',
+          color: Colors.green,
+          asset: 'assets/planets/venus.png',
+          orbit: '225 Days',
+          role: 'Simple',
+          keynote: 'Values. Internal law, aesthetics, and beauty.',
+          keynoteHeb: 'ערכים. חוק פנימי, אסתטיקה ויופי.',
+        ),
+        ZBPlanet(
+          id: 8,
+          name: 'Mars',
+          color: Colors.green,
+          asset: 'assets/planets/mars.png',
+          orbit: '687 Days',
+          role: 'Simple',
+          keynote: 'Vitality. Raw energy and execution.',
+          keynoteHeb: 'חיוניות. אנרגיה גולמית וביצוע.',
+        ),
+
+        // --- BREATH (IDs 9-11: Yellow / Years) ---
+        ZBPlanet(
+          id: 9,
+          name: 'Jupiter',
+          color: Colors.yellow,
+          asset: 'assets/planets/jupiter.png',
+          orbit: '11.86 Years',
+          role: 'Breath',
+          keynote: 'Expansion. Personal law and protection.',
+          keynoteHeb: 'התפשטות. חוק אישי והגנה.',
+        ),
+        ZBPlanet(
+          id: 10,
+          name: 'Saturn',
+          color: Colors.yellow,
+          asset: 'assets/planets/saturn.png',
+          orbit: '29.5 Years',
+          role: 'Breath',
+          keynote: 'Discipline. Constraints and maturity.',
+          keynoteHeb: 'משמעת. מגבלות ובגרות.',
+        ),
+        ZBPlanet(
+          id: 11,
+          name: 'Uranus',
+          color: Colors.yellow,
+          asset: 'assets/planets/uranus.png',
+          orbit: '84 Years',
+          role: 'Breath',
+          keynote: 'Innovation. The unusual and sudden shifts.',
+          keynoteHeb: 'חדשנות. הבלתי רגיל ושינויים פתאומיים.',
+        ),
+
+        // --- SILENCE (IDs 12-13: Red / Long-Orbit Years) ---
+        ZBPlanet(
+          id: 12,
+          name: 'Neptune',
+          color: Colors.red,
+          asset: 'assets/planets/neptune.png',
+          orbit: '165 Years',
+          role: 'Silence',
+          keynote: 'Mysticism. Spirituality and dissolving of ego.',
+          keynoteHeb: 'מיסטיקה. רוחניות והתמוססות האגו.',
+        ),
+        ZBPlanet(
+          id: 13,
+          name: 'Pluto',
+          color: Colors.red,
+          asset: 'assets/planets/pluto.png',
+          orbit: '248 Years',
+          role: 'Silence',
+          keynote: 'Transformation. Deep truth and rebirth.',
+          keynoteHeb: 'טרנספורמציה. אמת עמוקה ולידה מחדש.',
+        ),
+
+        // --- CHIRON (ID 14: Yellow / Bridge) ---
+        ZBPlanet(
+          id: 14,
+          name: 'Chiron',
+          color: Colors.white,
+          asset: 'assets/planets/chiron.png',
+          orbit: '50 Years',
+          role: 'Breath',
+          keynote: 'The Bridge. Healing and integration.',
+          keynoteHeb: 'הגשר. ריפוי ואינטגרציה.',
+        ),
+      ];
+
 // zb transactions
 
   static List<ZBTransaction> get getzbtransactions => [
@@ -1563,7 +1717,7 @@ abstract class ZBData {
         authName: 'emotional'),
     ZBHDSentence(
         sentence: 'respond in the moment',
-        sentenceheb: 'להגיב',
+        sentenceheb: 'להגיב מהבטן',
         typeName: 'generator',
         authName: 'sacral'),
     ZBHDSentence(
@@ -1598,17 +1752,6 @@ abstract class ZBData {
         authName: 'lunar'),
   ];
 
-  static ZBHDSentence? findMatch(String input) {
-    return getHDSentences.firstWhere(
-      (s) => s.sentence == input || s.sentenceheb == input,
-      orElse: () => ZBHDSentence(
-          sentence: 'unknown',
-          sentenceheb: 'לא ידוע',
-          typeName: 'I do not know Meditation',
-          authName: 'unknown'),
-    );
-  }
-
   // 1. Define the specific ID 1 instance as a static constant
   static const ZBType _idkType = ZBType(
     id: 1,
@@ -1631,7 +1774,7 @@ abstract class ZBData {
   static ZBCounter get defaultCounterTemplate => ZBCounter(
         id: 0,
         name: "unknown",
-        state: 3, // 3 = Open/Undefined
+        counterstate: 3, // 3 = Open/Undefined
         wallets: const [], // 🚀 Fixes the missing argument error
       );
 

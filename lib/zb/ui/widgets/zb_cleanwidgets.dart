@@ -132,6 +132,17 @@ abstract class ZBPaths {
 
 /// GROUP B: THE CIRCULATION (CHANNEL & STYLES)
 abstract class ZBStyles {
+  static Color getEvolutionColor(
+      {required int toneDesign, required int tonePerson}) {
+    int state;
+    if (toneDesign > 3) {
+      state = (tonePerson > 3) ? 2 : 3; // Silence (Red) or Breath (Yellow)
+    } else {
+      state = (tonePerson > 3) ? 4 : 5; // Simple (Green) or COMPLEX (Blue)
+    }
+    return ZBStory.getfrequency(state).zbcolor;
+  }
+
   /// The Final Index Resolver for Counter Colors
   static Color getCounterColor(
     String id, {
@@ -323,26 +334,54 @@ abstract class ZBStyles {
     }
   }
 
-  static const Map<String, ({Color color, String asset})> planetTheme = {
-    'Sun': (color: Colors.blue, asset: 'assets/planets/sun.png'),
-    'Earth': (color: Colors.red, asset: 'assets/planets/earth.png'),
-    'North Node': (color: Colors.green, asset: 'assets/planets/northnode.png'),
-    'South Node': (color: Colors.yellow, asset: 'assets/planets/southnode.png'),
-    'Moon': (color: Colors.green, asset: 'assets/planets/moon.png'),
-    'Mercury': (color: Colors.green, asset: 'assets/planets/mercury.png'),
-    'Venus': (color: Colors.green, asset: 'assets/planets/venus.png'),
-    'Mars': (color: Colors.green, asset: 'assets/planets/mars.png'),
-    'Jupiter': (color: Colors.yellow, asset: 'assets/planets/jupiter.png'),
-    'Saturn': (color: Colors.yellow, asset: 'assets/planets/saturn.png'),
-    'Uranus': (color: Colors.yellow, asset: 'assets/planets/uranus.png'),
-    'Neptune': (color: Colors.red, asset: 'assets/planets/neptune.png'),
-    'Pluto': (color: Colors.red, asset: 'assets/planets/pluto.png'),
-    'Chiron': (color: Colors.yellow, asset: 'assets/planets/chiron.png'),
-  };
+  static List<ZBTransformation> buildTransformations(ZBAccount? account) {
+    if (account == null ||
+        account.zbdesign.isEmpty ||
+        account.zbpersonality.isEmpty) {
+      return [];
+    }
 
-  static Color getColor(String? name) =>
-      planetTheme[name]?.color ?? Colors.grey;
-  static String getAsset(String? name) => planetTheme[name]?.asset ?? '';
+    // 1. Extraction: Define the Source Wallets
+    final ZBWallet dSun = account.zbdesign[0]; // Internal Design
+    final ZBWallet pSun = account.zbpersonality[0]; // Internal Personality
+    final ZBWallet dNodes = account.zbdesign[2]; // External Design
+    final ZBWallet pNodes = account.zbpersonality[2]; // External Personality
+
+    // 2. Helper: Maps the Variable to the ZBStory Frequency State
+    ZBTransformation _mapToVar({
+      required String id,
+      required String label,
+      required int zbState, // 2, 3, 4, or 5
+      required ZBWallet source,
+    }) {
+      final freq = ZBStory.getfrequency(zbState);
+      return ZBTransformation(
+        id: id,
+        label: label,
+        // Pulling asset and color directly from the Frequency Story
+        asset: 'assets/camog/${freq.zbanimalimg}',
+        color: freq.zbcolor,
+        arrow: ZBLogic.getTransformationArrow(source.hdtone),
+        hdcolor: source.hdcolor ?? 0,
+        hdtone: source.hdtone ?? 0,
+        hdbase: source.hdbase ?? 0,
+      );
+    }
+
+    return [
+      _mapToVar(
+          id: 'determination',
+          label: "Determination",
+          zbState: 2,
+          source: dSun),
+      _mapToVar(
+          id: 'motivation', label: "Motivation", zbState: 5, source: pSun),
+      _mapToVar(
+          id: 'environment', label: "Environment", zbState: 3, source: dNodes),
+      _mapToVar(
+          id: 'perspective', label: "Perspective", zbState: 4, source: pNodes),
+    ];
+  }
 }
 
 /// GROUP D: THE SOUL (ASSET MAPPING)
@@ -357,6 +396,7 @@ abstract class ZBAssets {
 
 abstract class ZBLogic {
   static ZBAccount? currentAccount;
+  static String? _lastAccountSnapshot;
 
   /// The "Golden Sync": Restores the global counterMap from the account data.
   /// This clears the 'Sandbox White' (state 4) residue from RotateSimple
@@ -368,7 +408,8 @@ abstract class ZBLogic {
 
     // 2. Reset the Global Map to a neutral state (Ghost/Undefined)
     for (var counter in ZBData.counterMap.values) {
-      counter.state = 0;
+      counter.counterstate = 0;
+      print('counterstate set to ${counter.counterstate} in globalSync');
       counter.isManual = false;
     }
 
@@ -384,38 +425,53 @@ abstract class ZBLogic {
         final String subId = tx.subCounterId;
 
         if (ZBData.counterMap.containsKey(mainId)) {
-          ZBData.counterMap[mainId]!.state = state;
+          ZBData.counterMap[mainId]!.counterstate = state;
         }
         if (ZBData.counterMap.containsKey(subId)) {
-          ZBData.counterMap[subId]!.state = state;
+          ZBData.counterMap[subId]!.counterstate = state;
         }
       }
     }
   }
 
+  static String? _lastAccountSignature;
+
   static void restoreGlobalRegistry(ZBAccount? activeAccount) {
     if (activeAccount == null) return;
 
-    // 1. Reset all global counters to 'Ghost' (0) or 'Undefined' (4)
-    // This clears the manual painting from RotateSimple
+    // 🕵️ SIGNATURE: Unique to this specific calculation/time
+    String currentSignature =
+        "${activeAccount.timestamp.toIso8601String()}_${activeAccount.designtimestamp.toIso8601String()}";
+
+    // 🛡️ GUARD: If the key matches, DO NOT WIPE.
+    // This prevents the 'Cancel' button or minor repaints from blanking the screen.
+    if (currentSignature == _lastAccountSignature) {
+      return;
+    }
+
+    _lastAccountSignature = currentSignature;
+
+    // 1. Reset Global Registry (Only on real account changes)
     for (var counter in ZBData.counterMap.values) {
-      counter.state = 0;
+      // Silent check to prevent unnecessary console noise
+      if (counter.counterstate != 0) {
+        counter.counterstate = 0;
+      }
       counter.isManual = false;
     }
 
-    // 2. Re-apply definition from Account Transactions
+    // 2. Re-apply definition
     for (var tx in activeAccount.zbtransactions) {
-      // A transaction (Channel) defines its connected centers
       final String mainId = tx.mainCounterId;
       final String subId = tx.subCounterId;
-      final int state = tx.zbstate ?? 0;
+      // Fallback to 4 (Green) if zbstate is null
+      final int state = tx.zbstate ?? 4;
 
-      // Update the Global Map so RotateComplex can see the real data
       if (ZBData.counterMap.containsKey(mainId)) {
-        ZBData.counterMap[mainId]!.state = state;
+        ZBData.counterMap[mainId]!.counterstate = state;
       }
       if (ZBData.counterMap.containsKey(subId)) {
-        ZBData.counterMap[subId]!.state = state;
+        ZBData.counterMap[subId]!.counterstate = state;
       }
     }
   }
@@ -429,7 +485,7 @@ abstract class ZBLogic {
     final counter = registry[id];
     if (counter != null) {
       counter.isManual = !counter.isManual;
-      counter.state = counter.isManual ? 7 : 4;
+      counter.counterstate = counter.isManual ? 7 : 4;
       // Note: The painter will use the 'pickedColor' you passed in
       // when it sees state 7.
     }
@@ -437,7 +493,18 @@ abstract class ZBLogic {
 
   // Simplified helper for the UI to use
   static int getCounterState(String id) {
-    return ZBData.counterMap[id]?.state ?? 0;
+    final counter = ZBData.counterMap[id];
+
+    // 🕵️ DEBUG: Catch the transition
+    if (counter == null) {
+      print('counterstate set to $counter in getCounterState');
+    } else if (counter.counterstate == 0) {
+      // You can uncomment this to see every "Transparent" call,
+      // but the 'null' check above is usually the culprit during dialog swaps.
+      // print("🔍 INFO: Counter '$id' is currently State 0 (Transparent)");
+    }
+
+    return counter?.counterstate ?? 0;
   }
 
   // Example of fixing the initialization
@@ -457,11 +524,14 @@ abstract class ZBLogic {
 
     for (int i = 0; i < counters.length; i++) {
       String counterID = counters[i];
+
+      print('counterstate set to $counterID in initializeCounters countermap');
+
       ZBData.counterMap.putIfAbsent(
         counterID,
         () => ZBCounter(
           id: 101 + i, // 💡 IDs 101, 102, 103...
-          state: 0,
+          counterstate: 0,
           name: counterID,
           wallets: [],
         ),
@@ -473,12 +543,16 @@ abstract class ZBLogic {
       String walletId = 'g$i';
       ZBData.counterMap.putIfAbsent(
         walletId,
-        () => ZBCounter(
-          id: i, // 💡 IDs 1, 2, 3... up to 64
-          state: 0,
-          name: walletId,
-          wallets: [],
-        ),
+        () {
+          print('counterstate set 0 in initalizeCounters by Wallet');
+
+          return ZBCounter(
+            id: i, // 💡 IDs 1, 2, 3... up to 64
+            counterstate: 0,
+            name: walletId,
+            wallets: [],
+          );
+        },
       );
     }
   }
@@ -518,12 +592,14 @@ abstract class ZBLogic {
   }
 
   static List<ZBCounter> calcActiveCounter(List<ZBTransaction> activeTX) {
-    // Create a local map for this calculation
+    // ✅ FIX: Create a DEEP COPY of the counters
+    // This ensures resetting tempMap doesn't touch the Global Registry
+    Map<String, ZBCounter> tempMap = ZBData.counterMap.map(
+      (key, counter) => MapEntry(key, counter.clone()),
+    );
 
-    Map<String, ZBCounter> tempMap = Map.from(ZBData.counterMap);
-
-    // Reset states to 0 for the snapshot
-    tempMap.forEach((_, c) => c.state = 0);
+    // Now this ONLY affects the local tempMap
+    tempMap.forEach((_, c) => c.counterstate = 0);
 
     final Set<String> mappedIds = {};
 
@@ -537,7 +613,7 @@ abstract class ZBLogic {
     // Apply the Green Fill (State 4) for non-active centers
     tempMap.forEach((id, counter) {
       if (!mappedIds.contains(id.toLowerCase())) {
-        counter.state = 4;
+        counter.counterstate = 4;
       }
     });
 
@@ -556,8 +632,8 @@ abstract class ZBLogic {
 
     // Zmansi Priority Logic:
     // Only update if the new state is "higher energy" than the current one.
-    if (newState > (counter.state ?? 0)) {
-      counter.state = newState;
+    if (newState > (counter.counterstate)) {
+      counter.counterstate = newState;
     }
   }
 
@@ -595,19 +671,19 @@ abstract class ZBLogic {
       type = ZBData.getTypeMap[4]?.type ?? ''; // Reflector
       authority = ZBData.getAuthMap[7]?.authority ?? '';
     } else {
-      if (solar.state != 4) {
+      if (solar.counterstate != 4) {
         authority = ZBData.getAuthMap[1]?.authority ?? ''; // Emotional
-        if (sacral.state != 4) {
+        if (sacral.counterstate != 4) {
           type = ZBData.getTypeMap[2]?.type ?? ''; // Generator Base
         }
-      } else if (sacral.state != 4) {
+      } else if (sacral.counterstate != 4) {
         authority = ZBData.getAuthMap[2]?.authority ?? ''; // Sacral
         type = ZBData.getTypeMap[2]?.type ?? '';
-      } else if (spleen.state != 4) {
+      } else if (spleen.counterstate != 4) {
         authority = ZBData.getAuthMap[3]?.authority ?? ''; // Splenic
-      } else if (heart.state != 4) {
+      } else if (heart.counterstate != 4) {
         authority = ZBData.getAuthMap[4]?.authority ?? ''; // Ego
-      } else if (self.state != 4) {
+      } else if (self.counterstate != 4) {
         authority = ZBData.getAuthMap[5]?.authority ?? ''; // Self-Projected
         type = ZBData.getTypeMap[3]?.type ?? ''; // Projector Base
       } else {
@@ -618,8 +694,8 @@ abstract class ZBLogic {
 
     if (zbtransactions.isNotEmpty) {
       // Throat Definition Check
-      if (throat.state == 4) {
-        type = (sacral.state != 4)
+      if (throat.counterstate == 4) {
+        type = (sacral.counterstate != 4)
             ? ZBData.getTypeMap[2]?.type ?? ''
             : ZBData.getTypeMap[3]?.type ?? '';
       }
@@ -646,7 +722,7 @@ abstract class ZBLogic {
       }
 
       // --- MANIFESTING GENERATOR PATHS ---
-      if (sacral.state == 2) {
+      if (sacral.counterstate == 2) {
         if (type == ZBData.getTypeMap[5]?.type) {
           type = ZBData.getTypeMap[22]?.type ?? ''; // Manifestor becomes MG
         } else if (hasTx('34.20')) {
@@ -669,7 +745,7 @@ abstract class ZBLogic {
       }
 
       // Final Type Categorization
-      if (sacral.state == 2) {
+      if (sacral.counterstate == 2) {
         if (type != ZBData.getTypeMap[22]?.type) {
           type = ZBData.getTypeMap[2]?.type ?? ''; // Pure Generator
         }
@@ -714,7 +790,7 @@ abstract class ZBLogic {
       } else {
         strategy = hdstrategyList[2];
       }
-    } else if (sacral.state == 2) {
+    } else if (sacral.counterstate == 2) {
       // Generator / MG
       if (authority == ZBData.getAuthMap[1]?.authority) {
         strategy = hdstrategyList[3];
@@ -816,6 +892,55 @@ abstract class ZBLogic {
       }
     }
   }
+
+  static ZBHDSentence findZBStrategy(String type, String auth) {
+    // 1. Normalize Type: "Manifesting Generator" uses "Generator" sentences
+    String lookupType = type.toLowerCase().trim();
+    if (lookupType == 'manifesting generator') {
+      lookupType = 'generator';
+    }
+
+    // 2. Normalize Authority: "Ego Projected" uses "Ego" sentences
+    String lookupAuth = auth.toLowerCase().trim();
+    if (lookupAuth == 'ego projected') {
+      lookupAuth = 'ego';
+    }
+
+    return ZBData.getHDSentences.firstWhere(
+      (s) =>
+          s.typeName.toLowerCase() == lookupType &&
+          s.authName.toLowerCase() == lookupAuth,
+      // 3. The "White Camel" only appears if a real logical gap exists
+      orElse: () => ZBHDSentence(
+        sentence: 'zmansi WHITE CAMEL bob',
+        sentenceheb: 'זמנסי גמלבן בוב',
+        typeName: type,
+        authName: auth,
+      ),
+    );
+  }
+
+  /// The logic lives here in the main class
+  static ZBHDSentence findMatch(String input) {
+    return ZBData.getHDSentences.firstWhere(
+      (s) => s.sentence == input || s.sentenceheb == input,
+      orElse: () => ZBHDSentence(
+        sentence: 'unknown',
+        sentenceheb: 'לא ידוע',
+        typeName: 'I do not know Meditation',
+        authName: 'unknown',
+      ),
+    );
+  }
+
+  /// 🎯 Maps 1-6 Tone to Arrow Direction
+  /// 1,2,3 = Left (Strategic/Active) | 4,5,6 = Right (Receptive/Passive)
+  static IconData getTransformationArrow(int? tone) {
+    if (tone == null || tone == 0) return Icons.help_outline;
+    return tone > 3 ? Icons.arrow_circle_right : Icons.arrow_circle_left;
+  }
+
+  /// 🛰️ Processes the Account into UI-ready Transformation Objects
 }
 
 // ##########################################################################
@@ -929,8 +1054,12 @@ class ZBAccountChart extends StatelessWidget {
 
   CustomPainter _painterForCounter(String id) {
     final counter = registry[id];
-    final int state = counter?.state ?? 0;
+    final int state = counter?.counterstate ?? 0;
     final bool manual = counter?.isManual ?? false;
+
+    if (id == "YOUR_TARGET_ID" && state == 0) {
+      print('painter is setting Counter $id to 0 in _painterForCounter');
+    }
 
     final Color color = ZBStyles.getCounterColor(
       id,
@@ -1215,7 +1344,7 @@ abstract class ZBRegistry {
   static void resetRegistryToZB() {
     // 1. Reset the persistent Counter states
     rgcounters.forEach((id, counter) {
-      counter.state = 0;
+      counter.counterstate = 0;
       counter.isManual = false;
     });
 

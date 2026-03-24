@@ -408,18 +408,17 @@ class ZBHelpers {
             a.authheb == resAuth,
       );
       aId = matchedAuth.id;
-      print("✅ Matched Auth ID: $aId (${matchedAuth.authority})");
+      // print("✅ Matched Auth ID: $aId (${matchedAuth.authority})");
     } catch (e) {
-      print("❌ AUTH MATCH FAILED: No match found for '$resAuth' in getAuthMap");
+      // print("❌ AUTH MATCH FAILED: No match found for '$resAuth' in getAuthMap");
     }
-    print("--------------------------------------------------");
-
-    final typeData =
-        ZBData.getTypeMap[tId] ?? ZBData.getTypeMap[1] ?? ZBData.defaultType;
+    // print("--------------------------------------------------");
 
     final String resDefinition = activeTransactions.isEmpty
         ? 'None'
         : ZBLogic.getDefinition(activeTransactions);
+
+    final zbsentence = ZBLogic.findZBStrategy(resType, resAuth);
 
     // 6. FINAL RETURN (The Unified ZBAccount)
 
@@ -438,7 +437,7 @@ class ZBHelpers {
       subauthority: resSubAuth,
       strategy: resStrategy,
       definition: resDefinition,
-      sentence: typeData.zbsentenceheb ?? '',
+      sentence: zbsentence.sentenceheb,
       typeid: tId,
       authid: aId,
     );

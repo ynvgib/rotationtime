@@ -7,6 +7,7 @@ import 'package:circle_list/circle_list.dart';
 import 'package:fibonacci/fibonacci.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
+import 'package:finallyicanlearn/zb/ui/widgets/zb_widgethelpers.dart';
 import 'package:finallyicanlearn/zb/ui/zb_helpers.dart';
 import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
 import 'package:finallyicanlearn/zb/data/zb_classes.dart';
@@ -150,6 +151,7 @@ class _RotateSimpleState extends State<RotateSimple>
   bool isMainText = true, isChartText = true;
 
   Map<String, ZBCounter> _sandboxRegistry = {};
+  ZBTheme _zbTheme = ZBTheme.zb;
 
   final _presetSimpleConfigs = [
     {'asset': coins4lst[0], 'tooltip': 'מורכב', 'state': 5},
@@ -173,7 +175,7 @@ class _RotateSimpleState extends State<RotateSimple>
       _sandboxRegistry[key] = ZBCounter(
         id: original.id,
         name: original.name,
-        state: 4, // Force to Simple (White)
+        counterstate: 4, // Force to Simple (White)
         isManual: false,
         wallets: List.from(original.wallets), // Clone the wallet list
         hebname: original.hebname,
@@ -187,7 +189,7 @@ class _RotateSimpleState extends State<RotateSimple>
       if (!_sandboxRegistry.containsKey(gateId)) {
         _sandboxRegistry[gateId] = ZBCounter(
           id: i,
-          state: 4,
+          counterstate: 4,
           name: gateId,
           wallets: [],
           hebname: '$i',
@@ -755,24 +757,26 @@ class _RotateSimpleState extends State<RotateSimple>
                   ],
                 ),
                 const Divider(color: Colors.green, thickness: 14),
-                Center(
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: chartWidth,
-                        height: chartHeight,
-                        decoration: BoxDecoration(
-                          // color: cardcolor, // Using your existing variable
-                          color: Colors.black87, // Using your existing variable
-                          border: Border.all(color: Colors.blue, width: 4),
-                        ),
-                        child: FittedBox(
-                          fit: BoxFit.contain,
-                          child: SizedBox(
-                            width: chartWidth,
-                            height: chartHeight,
-                            child: RepaintBoundary(
-                              // RotateSimple line 771 (approx)
+
+                RepaintBoundary(
+                  key: zbChartBoundaryKey,
+                  child: Center(
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: chartWidth,
+                          height: chartHeight,
+                          decoration: BoxDecoration(
+                            // color: cardcolor, // Using your existing variable
+                            color:
+                                Colors.black87, // Using your existing variable
+                            border: Border.all(color: Colors.blue, width: 4),
+                          ),
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: SizedBox(
+                              width: chartWidth,
+                              height: chartHeight,
                               child: ZBAccountChart(
                                 // No 'account' passed here. It stays a pure UI sandbox.
                                 key: const ValueKey('manual_sandbox_chart'),
@@ -814,47 +818,52 @@ class _RotateSimpleState extends State<RotateSimple>
                             ),
                           ),
                         ),
-                      ),
-                      PositionedDirectional(
-                        start: 10,
-                        bottom: 40,
-                        child: IconButton(
-                          icon: const CircleAvatar(
-                            //minRadius: 5,
-                            maxRadius: 20,
-                            foregroundImage: AssetImage(
-                              'assets/coins/fullcoins.png',
-                            ),
-                          ),
-                          tooltip: 'צבע לבחור',
-                          onPressed: () {
-                            showDialog(
-                              builder: (BuildContext context) => AlertDialog(
-                                title: const Text('צבע לבחור'),
-                                content: SingleChildScrollView(
-                                  child: HueRingPicker(
-                                    pickerColor: currentcolor,
-                                    onColorChanged: changeColor,
-                                    enableAlpha: true,
-                                  ),
-                                ),
-                                actions: <Widget>[
-                                  ElevatedButton(
-                                    child: const Text('נצבע'),
-                                    onPressed: () {
-                                      //setState(() => pickedcolor = currentcolor);
-                                      pickedcolor = currentcolor;
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
+                        PositionedDirectional(
+                          start: 10,
+                          bottom: 40,
+                          child: IconButton(
+                            icon: const CircleAvatar(
+                              //minRadius: 5,
+                              maxRadius: 20,
+                              foregroundImage: AssetImage(
+                                'assets/coins/fullcoins.png',
                               ),
-                              context: context,
-                            );
-                          },
+                            ),
+                            tooltip: 'צבע לבחור',
+                            onPressed: () {
+                              showDialog(
+                                builder: (BuildContext context) => AlertDialog(
+                                  title: const Text('צבע לבחור'),
+                                  content: SingleChildScrollView(
+                                    child: HueRingPicker(
+                                      pickerColor: currentcolor,
+                                      onColorChanged: changeColor,
+                                      enableAlpha: true,
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    ElevatedButton(
+                                      child: const Text('נצבע'),
+                                      onPressed: () {
+                                        //setState(() => pickedcolor = currentcolor);
+                                        pickedcolor = currentcolor;
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                context: context,
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                    ],
+                        const PositionedDirectional(
+                          end: 10,
+                          top: 10,
+                          child: ZBExportButton(color: Colors.green),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(height: 5),
@@ -2166,11 +2175,11 @@ class _RotateSimpleState extends State<RotateSimple>
       'solar',
       'root',
     ]) {
-      if (ZBData.counterMap[id]?.state != 5) {
-        ZBData.counterMap[id]?.state = 3;
+      if (ZBData.counterMap[id]?.counterstate != 5) {
+        ZBData.counterMap[id]?.counterstate = 3;
       }
     }
-    ZBData.counterMap['sacral']?.state = 4;
+    ZBData.counterMap['sacral']?.counterstate = 4;
   }
 
   void setSimpleChart() {
@@ -2296,7 +2305,7 @@ class _RotateSimpleState extends State<RotateSimple>
 
   // 1. Get the current numeric frequency (0-7)
   int getCounterState(String id) {
-    return ZBData.counterMap[id]?.state ?? 0;
+    return ZBData.counterMap[id]?.counterstate ?? 0;
   }
 
   // 2. Get the actual color from your ZBStory registry
@@ -2340,7 +2349,7 @@ class _RotateSimpleState extends State<RotateSimple>
       int current = getCounterState(id);
       // If it's not at frequency 7, set it to 7. Otherwise, drop to 3.
       int next = (current != 7) ? 7 : 3;
-      ZBData.counterMap[id]?.state = next;
+      ZBData.counterMap[id]?.counterstate = next;
     });
   }
 
@@ -2349,13 +2358,13 @@ class _RotateSimpleState extends State<RotateSimple>
     // Use _sandboxRegistry instead of ZBData.counterMap
     if (counters == null || counters.isEmpty || counters.contains('all')) {
       for (var counter in _sandboxRegistry.values) {
-        counter.state = counterstate;
+        counter.counterstate = counterstate;
         counter.isManual = false; // Presets should clear manual overrides
       }
     } else {
       for (var id in counters) {
         if (_sandboxRegistry.containsKey(id)) {
-          _sandboxRegistry[id]!.state = counterstate;
+          _sandboxRegistry[id]!.counterstate = counterstate;
           _sandboxRegistry[id]!.isManual = false;
         }
       }
@@ -2828,7 +2837,7 @@ class _RotateSimpleState extends State<RotateSimple>
         }
 
         // Update the Counter state so the Painter draws the correct color
-        counter.state = highestState;
+        counter.counterstate = highestState;
       }
     });
   }
