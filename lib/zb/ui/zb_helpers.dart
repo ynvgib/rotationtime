@@ -1047,21 +1047,22 @@ class ZBAssetManager {
 class ZBGateFactory {
   /// Generates a gatestatelist based on the "Attention Level"
   static List<int> generateAttentionList({
-    required List<int> activeGates, // The actual gates from the person's chart
+    required List<int>
+        activeWallets, // The actual gates from the person's chart
     bool isComplexMode = false, // The "Attention" toggle
   }) {
     // Start with the empty "Arithmetic" (65 slots of 0)
     List<int> list = List.filled(65, 0);
 
-    for (int gate in activeGates) {
+    for (int wallet in activeWallets) {
       if (isComplexMode) {
         // COMPLEX: High Attention.
         // We might distinguish between Design/Personality here later.
-        list[gate] = 2;
+        list[wallet] = 2;
       } else {
         // SIMPLE: Grounded Attention.
         // Maybe we only show a subset or simplified state.
-        list[gate] = 1;
+        list[wallet] = 1;
       }
     }
     return list;

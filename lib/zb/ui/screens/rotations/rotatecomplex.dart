@@ -1678,91 +1678,12 @@ class _RotateComplexState extends State<RotateComplex>
 
             // BLUE WHEEL
             const SizedBox(height: 10),
-            Stack(
-              children: [
-                Center(
-                  child: CircleList(
-                    rotateMode: RotateMode.stopRotate,
-                    innerRadius: Screen.width / 60,
-                    //innerRadius: -1,
-                    initialAngle: 4.55,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(14, (index) {
-                      return CircleAvatar(
-                        //backgroundColor: Colors.black12,
-                        backgroundColor: planetscolorList[index],
-                        minRadius: 1,
-                        maxRadius: 15,
-                        foregroundImage: AssetImage(planetsfullList[index]),
-                      );
-                    }),
-                  ),
-                ),
-                Center(
-                  child: CircleList(
-                    innerRadius: Screen.width / 60 + 70,
-                    initialAngle: 4.55,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(14, (index) {
-                      return Container(
-                        width: 35,
-                        height: 35,
-                        margin: const EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          //color: revZodiacColorList[index],
-                          image: DecorationImage(
-                            image: AssetImage(
-                              zodiacSwephImagelist[
-                                  (_planetsfullpersonList[index].zodiacid ??
-                                      0)],
-                            ),
-                            fit: BoxFit.scaleDown,
-                          ),
-                          shape: BoxShape.circle,
-                          border: Border.all(width: 1, color: Colors.blue),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-                Center(
-                  child: CircleList(
-                    rotateMode: RotateMode.stopRotate,
-                    innerRadius: Screen.width / 60 + 130,
-                    initialAngle: 4.55,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(14, (index) {
-                      return Container(
-                        width: 35,
-                        height: 35,
-                        margin: const EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(width: 1, color: Colors.blue),
-                        ),
-                        child: Center(
-                          child: AutoSizeText(
-                            (_planetsfullpersonList[index].walletNote)
-                                .toString(),
-                            minFontSize: 10,
-                            maxFontSize: 12,
-                            maxLines: 1,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-              ],
+            // const Text('new planets wheel'),
+            PlanetCircleWidget(
+              personalityPlanets: _planetspersonList,
+              designPlanets: _planetsdesignList,
             ),
+            // const Text('new planets wheel'),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1869,92 +1790,6 @@ class _RotateComplexState extends State<RotateComplex>
                       fontSize: 15,
                       color: Colors.black,
                     ),
-                  ),
-                ),
-              ],
-            ),
-
-            Stack(
-              children: [
-                // Center(child: Text('test')),
-                Center(
-                  child: CircleList(
-                    rotateMode: RotateMode.stopRotate,
-                    innerRadius: Screen.width / 60,
-                    //innerRadius: -1,
-                    initialAngle: 4.55,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(14, (index) {
-                      return CircleAvatar(
-                        //backgroundColor: Colors.black12,
-                        backgroundColor: planetscolorList[index],
-                        minRadius: 1,
-                        maxRadius: 15,
-                        foregroundImage: AssetImage(planetsfullList[index]),
-                      );
-                    }),
-                  ),
-                ),
-                Center(
-                  child: CircleList(
-                    innerRadius: Screen.width / 60 + 70,
-                    initialAngle: 4.55,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(14, (index) {
-                      return Container(
-                        width: 35,
-                        height: 35,
-                        margin: const EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          //color: revZodiacColorList[index],
-                          image: DecorationImage(
-                            image: AssetImage(
-                              zodiacSwephImagelist[
-                                  (_planetsfulldesignList[index].zodiacid ??
-                                      0)],
-                            ),
-                            fit: BoxFit.scaleDown,
-                          ),
-                          shape: BoxShape.circle,
-                          border: Border.all(width: 1, color: Colors.red),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-                Center(
-                  child: CircleList(
-                    rotateMode: RotateMode.stopRotate,
-                    innerRadius: Screen.width / 60 + 130,
-                    initialAngle: 4.55,
-                    childrenPadding: 0.1,
-                    origin: const Offset(0, 0),
-                    children: List.generate(14, (index) {
-                      return Container(
-                        width: 35,
-                        height: 35,
-                        margin: const EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(width: 1, color: Colors.red),
-                        ),
-                        child: Center(
-                          child: AutoSizeText(
-                            (_planetsfulldesignList[index].walletNote),
-                            minFontSize: 10,
-                            maxFontSize: 12,
-                            maxLines: 1,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      );
-                    }),
                   ),
                 ),
               ],
@@ -3469,11 +3304,11 @@ class _RotateComplexState extends State<RotateComplex>
               if (planet.id == 5) {
                 return Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text('Simple (Days)',
-                          style: TextStyle(color: Colors.green, fontSize: 10)),
-                    ),
+                    // const Padding(
+                    //   padding: EdgeInsets.symmetric(vertical: 8.0),
+                    //   child: Text('Simple (Days)',
+                    //       style: TextStyle(color: Colors.green, fontSize: 10)),
+                    // ),
                     _buildPlanetRow(
                       planet: planet,
                       designWallet: _planetsfulldesignList.length > index
@@ -3491,11 +3326,11 @@ class _RotateComplexState extends State<RotateComplex>
               if (planet.id == 9) {
                 return Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text('Breath (Years)',
-                          style: TextStyle(color: Colors.orange, fontSize: 10)),
-                    ),
+                    // const Padding(
+                    //   padding: EdgeInsets.symmetric(vertical: 8.0),
+                    //   child: Text('Breath (Years)',
+                    //       style: TextStyle(color: Colors.orange, fontSize: 10)),
+                    // ),
                     _buildPlanetRow(
                       planet: planet,
                       designWallet: _planetsfulldesignList.length > index
@@ -3513,11 +3348,11 @@ class _RotateComplexState extends State<RotateComplex>
               if (planet.id == 12) {
                 return Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text('Silence (Long Years)',
-                          style: TextStyle(color: Colors.red, fontSize: 10)),
-                    ),
+                    // const Padding(
+                    //   padding: EdgeInsets.symmetric(vertical: 8.0),
+                    //   child: Text('Silence (Long Years)',
+                    //       style: TextStyle(color: Colors.red, fontSize: 10)),
+                    // ),
                     _buildPlanetRow(
                       planet: planet,
                       designWallet: _planetsfulldesignList.length > index
@@ -3542,6 +3377,10 @@ class _RotateComplexState extends State<RotateComplex>
                     : null,
               );
             }),
+            const Divider(
+              color: Colors.blue,
+              thickness: 2,
+            ),
             SizedBox(
               width: Screen.width / 2,
               child: AutoSizeTextField(
@@ -3558,7 +3397,10 @@ class _RotateComplexState extends State<RotateComplex>
                 ),
               ),
             ),
-
+            const Divider(
+              color: Colors.blue,
+              thickness: 2,
+            ),
             SizedBox(
               height: 300,
               width: 350,
@@ -5721,13 +5563,5 @@ class _RotateComplexState extends State<RotateComplex>
 
   // Change this: void _handleComplexTap(int gate)
   // To this:
-  void _handleComplexTap(int gate, int state) {
-    // Keep your existing logic inside, but now it accepts the second 'state'
-    // // _refreshGateStates(gate); // This ensures the grid and mandala stay in sync
-
-    // // setState(() {
-    // //   _wallet = gate;
-    // //   // ... rest of your PageView/Controller logic
-    // });
-  }
+  void _handleComplexTap(int gate, int state) {}
 }

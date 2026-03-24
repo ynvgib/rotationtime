@@ -4,6 +4,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circle_list/circle_list.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/zb/data/zb_classes.dart';
+import 'package:finallyicanlearn/zb/ui/widgets/zb_cleanwidgets.dart';
 import 'package:finallyicanlearn/zb/ui/zb_helpers.dart';
 import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
 import 'package:finallyicanlearn/zb/data/zb_data.dart';
@@ -1823,6 +1824,7 @@ class WheelPainter extends CustomPainter {
 
     // 3. Draw the Spokes
     if (spokeCount > 0) {
+      // for (int i = 0; i < spokeCount; i++) {
       for (int i = 0; i < spokeCount; i++) {
         double angle = (2 * math.pi / spokeCount) * i;
 
@@ -3511,6 +3513,193 @@ class Screen {
   }
 }
 
+class PlanetCircleWidget extends StatelessWidget {
+  final List<ZBWallet> personalityPlanets;
+  final List<ZBWallet> designPlanets;
+
+  const PlanetCircleWidget({
+    super.key,
+    required this.personalityPlanets,
+    required this.designPlanets,
+  });
+  @override
+  Widget build(BuildContext context) {
+    final double side = MediaQuery.of(context).size.shortestSide;
+    final double center = side / 2;
+
+    // Radii for the 3 rings (Inner to Outer)
+    final double rDesPlanet = side * 0.22; // Inner Red
+    final double rGlyph = rDesPlanet * 1.45; // Middle Glyph
+    final double rPersPlanet = rGlyph * 1.30; // Outer Blue
+
+    return Center(
+      child: SizedBox(
+        width: side,
+        height: side,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            // Loop through the 13 planets
+            // Inside the Stack in PlanetCircleWidget
+            for (int i = 0;
+                i < 13;
+                i++) // Filtering happens here by limiting the count
+              ..._buildPlanetPillar(
+                index: i,
+                center: center,
+                radii: [rDesPlanet, rGlyph, rPersPlanet],
+                pData: personalityPlanets[i],
+                dData: designPlanets[i],
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  List<Widget> _buildPlanetPillar({
+    required int index,
+    required double center,
+    required List<double> radii,
+    required ZBWallet pData, // Personality Wallet
+    required ZBWallet dData, // Design Wallet
+  }) {
+    final double angle = calculate13PlanetAngle(index, 13);
+    // final ZBPlanet planetMeta = ZBData.getzbplanets[index];
+
+    return [
+      // 1. Inner Ring (Design - Red Border, Black Gate.Line text)
+      _buildPositionedItem(
+        center,
+        radii[0],
+        angle,
+        _buildWallet(dData, isPersonality: false),
+      ),
+
+      // 2. Middle Ring (Glyph - stays as the Planet Icon)
+      _buildPositionedItem(
+        center,
+        radii[1],
+        angle,
+        _buildGlyph(index),
+      ),
+
+      // 3. Outer Ring (Personality - Blue Border, Black Gate.Line text)
+      _buildPositionedItem(
+        center,
+        radii[2],
+        angle,
+        _buildWallet(pData, isPersonality: true),
+      ),
+    ];
+  }
+  // --- MATH ENGINE ---
+
+  /// Distributes 13 planets equally in a 360 degree circle
+  double calculate13PlanetAngle(int index, int totalPlanets) {
+    double angleStep = 360.0 / totalPlanets;
+    double degrees = index * angleStep;
+    // -90 starts the first planet at the top (12 o'clock)
+    return (degrees - 90.0) * (math.pi / 180.0);
+  }
+
+  /// Calculates angle based on the 64-gate wheel structure
+  double calculateGateAngle(int gate, int? line) {
+    int gateIndex = ZBData.orderWalletOnWheel.indexOf(gate);
+    if (gateIndex == -1) return 0.0;
+
+    const double gateWidth = 360.0 / 64.0;
+    // (gateIndex + 0.5) to center in gate, or line-based for precision
+    double totalDegrees =
+        (gateIndex * gateWidth) + (((line ?? 1) - 1) * (gateWidth / 6.0));
+
+    // -101.5 is a common offset for HD wheels starting Gate 41 at a specific degree
+    // Adjust to -90 if your background wheel is perfectly north-aligned
+    return (totalDegrees - 101.5) * (math.pi / 180.0);
+  }
+
+  // --- POSITIONING ---
+
+  Widget _buildPositionedItem(
+      double center, double radius, double angle, Widget child) {
+    // Large enough container to hold the icon + text bubble
+    const double containerSize = 40.0;
+
+    return Positioned(
+      left: center + (radius * math.cos(angle)) - (containerSize / 2),
+      top: center + (radius * math.sin(angle)) - (containerSize / 2),
+      child: SizedBox(
+        width: containerSize,
+        height: containerSize,
+        child: Center(child: child),
+      ),
+    );
+  }
+
+  // --- UI COMPONENTS ---
+
+  Widget _buildWallet(ZBWallet walletData, {required bool isPersonality}) {
+    // Define the ring color (Blue for Outer/Personality, Red for Inner/Design)
+    final Color ringColor = isPersonality ? Colors.blue : Colors.red;
+
+    return Container(
+      width: 35, // Increased slightly to fit text comfortably
+      height: 35,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.transparent,
+        border: Border.all(color: ringColor, width: 2),
+        boxShadow: [
+          BoxShadow(
+            color: ringColor.withValues(alpha: 0.1),
+            blurRadius: 4,
+            spreadRadius: 1,
+          )
+        ],
+      ),
+      child: Center(
+        child: Text(
+          walletData
+              .walletNote, // Accessing your getter: "$wallet.${note ?? 1}"
+          style: const TextStyle(
+            color: Colors.black, // Text is specifically Black
+            fontSize: 13, // Small enough to fit in the ring
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGlyph(int index) {
+    // Fetch metadata via the helper
+    final planet = ZBLogic.getPlanetByIndex(index);
+
+    // Contrast check for Black icons on Yellow/White backgrounds
+    // final bool isLightColor =
+    //     planet.color == Colors.yellow || planet.color == Colors.white;
+
+    return Container(
+      width: 35,
+      height: 35,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: planet.color
+            .withValues(alpha: 1.0), // Dynamic color from getzbplanets
+        border:
+            Border.all(color: Colors.black.withValues(alpha: 0.1), width: 1),
+      ),
+      child: Center(
+        child: Image.asset(
+          planet.asset,
+          width: 30,
+          color: Colors.black,
+        ),
+      ),
+    );
+  }
+}
+
 class ZBMandalaWidget extends StatefulWidget {
   final List<int> walletsState;
   // Update this line to accept TWO integers (int, int)
@@ -3534,6 +3723,18 @@ class _ZBMandalaWidgetState extends State<ZBMandalaWidget> {
     if (oldWidget.walletsState != widget.walletsState) {
       setState(() {});
     }
+  }
+
+  double _spokeOpacity = 0.2;
+  final List<double> _opacitySteps = [0.0, 0.2, 0.6, 1.0];
+
+  void _cycleOpacity() {
+    setState(() {
+      int currentIndex = _opacitySteps.indexOf(_spokeOpacity);
+      int nextIndex = (currentIndex + 1) % _opacitySteps.length;
+      _spokeOpacity = _opacitySteps[nextIndex];
+      // print('Setting opacity to: $_spokeOpacity'); // Verify the value here
+    });
   }
 
   @override
@@ -3575,6 +3776,32 @@ class _ZBMandalaWidgetState extends State<ZBMandalaWidget> {
                 0.0, // Set to 0.0 to fill that center white hole!
                 rZodiac * 2.2,
                 wheelRotation,
+              ),
+            ),
+
+            Transform.rotate(
+              angle: 0.02, // Matches your gateStartAngle exactly
+              child: SizedBox(
+                width: side *
+                    0.95, // "Force to smaller" to keep it inside the rings
+                height: side * 0.85,
+                child: SpokeWheel(
+                  spokeCount: 64,
+                  wheelColor: Colors.black
+                      .withValues(alpha: _spokeOpacity), // Fainter looks better
+                  size: side * 0.85,
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: _cycleOpacity,
+              child: Container(
+                width: 20, // Adjust size to match the center hub
+                height: 20,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.black, // Keeps it invisible but clickable
+                ),
               ),
             ),
 
@@ -3713,10 +3940,10 @@ class _ZBMandalaWidgetState extends State<ZBMandalaWidget> {
 }
 
 class ZodiacWheelPainter extends CustomPainter {
-  final List<Color> colors;
+  final List<Color> colors; // Pass a list of 4 colors here
   final double innerRadius;
   final double outerRadius;
-  final double startAngle; // <--- The key to alignment
+  final double startAngle;
 
   ZodiacWheelPainter(
     this.colors,
@@ -3728,58 +3955,35 @@ class ZodiacWheelPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
+    final double ringWidth = outerRadius - innerRadius;
+    final double middleRadius = innerRadius + (ringWidth / 2);
+
+    // Divide by 4 Quarters instead of 64 Gates
     final double sweepAngle = (2 * math.pi) / colors.length;
 
     for (int i = 0; i < colors.length; i++) {
       final paint = Paint()
         ..color = colors[i].withValues(alpha: 0.8)
-        ..style = PaintingStyle.fill;
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = ringWidth;
 
       double currentStartAngle = startAngle + (i * sweepAngle);
 
-      Path path = Path();
-
-      // 1. Move to the inner starting point
-      path.moveTo(
-        center.dx + innerRadius * math.cos(currentStartAngle),
-        center.dy + innerRadius * math.sin(currentStartAngle),
-      );
-
-      // 2. Draw line to the outer starting point
-      path.lineTo(
-        center.dx + outerRadius * math.cos(currentStartAngle),
-        center.dy + outerRadius * math.sin(currentStartAngle),
-      );
-
-      // 3. Draw the outer arc
-      path.arcTo(
-        Rect.fromCircle(center: center, radius: outerRadius),
+      // Using drawArc with a thick stroke is much cleaner than complex Paths
+      canvas.drawArc(
+        Rect.fromCircle(center: center, radius: middleRadius),
         currentStartAngle,
-        sweepAngle,
+        sweepAngle + 0.01, // Tiny overlap to hide the 4 main seams
         false,
+        paint,
       );
-
-      // 4. Draw line back to the inner ending point
-      path.lineTo(
-        center.dx + innerRadius * math.cos(currentStartAngle + sweepAngle),
-        center.dy + innerRadius * math.sin(currentStartAngle + sweepAngle),
-      );
-
-      // 5. Draw the inner arc (backwards) to close the shape
-      path.arcTo(
-        Rect.fromCircle(center: center, radius: innerRadius),
-        currentStartAngle + sweepAngle,
-        -sweepAngle,
-        false,
-      );
-
-      path.close();
-      canvas.drawPath(path, paint);
     }
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant ZodiacWheelPainter oldDelegate) {
+    return oldDelegate.startAngle != startAngle || oldDelegate.colors != colors;
+  }
 }
 
 Widget _buildCoin(Color color, double size) {
@@ -3790,7 +3994,7 @@ Widget _buildCoin(Color color, double size) {
       color: color,
       shape: BoxShape.circle,
       // Optional: Add a subtle border to make them pop on the Linux screen
-      border: Border.all(width: 1.0, color: Colors.black26),
+      border: Border.all(width: 1.0, color: Colors.black),
     ),
   );
 }

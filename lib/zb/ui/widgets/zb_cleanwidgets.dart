@@ -395,6 +395,14 @@ abstract class ZBAssets {
 // rotatecleanwidgets.dart
 
 abstract class ZBLogic {
+  static ZBPlanet getPlanetByIndex(int index) {
+    // Simple bounds check to prevent crashes
+    if (index >= 0 && index < ZBData.getzbplanets.length) {
+      return ZBData.getzbplanets[index];
+    }
+    return ZBData.getzbplanets[0]; // Fallback to Sun
+  }
+
   static ZBAccount? currentAccount;
   static String? _lastAccountSnapshot;
 
