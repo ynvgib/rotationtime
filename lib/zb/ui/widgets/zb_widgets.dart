@@ -543,7 +543,7 @@ Widget build384PopUp(BuildContext context) {
                     context: context,
                     builder: (BuildContext context) =>
                         //build384rtPop(context, rtlines390lst_heb),
-                        build384rtPop(context, rtlines384lst_heb),
+                        build384rtPop(context, zblines384heblst),
                   );
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
@@ -579,7 +579,7 @@ Widget build384PopUp(BuildContext context) {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) =>
-                        build384rtPop(context, rtlines384lst),
+                        build384rtPop(context, zblines384lst),
                   );
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
@@ -2582,33 +2582,54 @@ Widget buildBaseDataList(
   String title,
   List<String> data,
 ) {
+  final int total = data.length;
+  // Dynamic height: more items need more room, but cap it at 70% of screen height
+  final double dynamicHeight = total > 4 ? 0.6 : 0.4;
+
   return SelectionArea(
     child: AlertDialog(
       title: Text(title),
       content: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.8,
-        height: MediaQuery.of(context).size.height * 0.4, // Shorter for Base 4
+        width: MediaQuery.of(context).size.width * 0.85, // Slightly wider
+        height: MediaQuery.of(context).size.height * dynamicHeight,
         child: ListView.builder(
-          itemCount: data.length,
+          itemCount: total,
+          // Remove default padding that eats up space
+          padding: EdgeInsets.zero,
           itemBuilder: (context, index) {
-            bool isBase4 = data.length == 4; // Only apply if it's the 4-list
+            final Color rowBgColor = ZBStyles.getBaseToneColor(index, total);
+            final int displayNumber = total - index;
+            final bool isLight = rowBgColor == Colors.yellow ||
+                rowBgColor == Colors.green ||
+                rowBgColor == Colors.white;
+            final Color textCol = isLight ? Colors.black : Colors.white;
+
             return Card(
-              color: isBase4 ? getBase4Color(index) : Colors.white,
+              color: rowBgColor,
+              margin: const EdgeInsets.symmetric(vertical: 2), // Tighter margin
               child: ListTile(
+                dense: true, // Shrinks the vertical height of the tile
+                visualDensity: VisualDensity.compact,
                 leading: CircleAvatar(
+                  radius: 14, // Smaller circle
                   backgroundColor: Colors.white24,
                   child: Text(
-                    '${index + 1}',
+                    '$displayNumber',
                     style: TextStyle(
-                      color: isBase4 ? getBase4TextColor(index) : Colors.black,
-                    ),
+                        color: textCol,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
-                title: Text(
-                  data[index],
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: isBase4 ? getBase4TextColor(index) : Colors.black,
+                title: FittedBox(
+                  alignment: Alignment.centerLeft,
+                  fit: BoxFit.scaleDown, // Ensures path stays on one line
+                  child: Text(
+                    data[index],
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: textCol,
+                    ),
                   ),
                 ),
               ),
@@ -2618,10 +2639,8 @@ Widget buildBaseDataList(
       ),
       actions: [
         TextButton(
-          onPressed: () {
-            if (Navigator.of(context).canPop()) Navigator.of(context).pop();
-          },
-          child: const Text('X'),
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('X', style: TextStyle(color: Colors.black)),
         ),
       ],
     ),
@@ -2701,48 +2720,6 @@ Widget zbTriadRow({
                 ),
               ],
             ),
-          ),
-        ),
-      );
-    }).toList(),
-  );
-}
-
-// Use Wrap to handle all 36 transactions without crushing them
-Widget zbBuild36Grid(BuildContext context) {
-  return Wrap(
-    spacing: 8.0,
-    runSpacing: 8.0,
-    alignment: WrapAlignment.center,
-    children: transaction36.map((item) {
-      return SizedBox(
-        width: MediaQuery.of(context).size.width * 0.28, // 3 columns
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: item['color'],
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-          ),
-          onPressed: () {},
-          child: Column(
-            children: [
-              Text(
-                item['sentence_he'] ?? '',
-                style: const TextStyle(fontSize: 10, color: Colors.white),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 4),
-              Text(
-                item['zbcoin'] ?? '',
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ],
           ),
         ),
       );
@@ -4101,7 +4078,7 @@ class ZBCube extends StatelessWidget {
             child: CircleAvatar(
               //radius: 75,
               backgroundColor: Colors.transparent,
-              foregroundImage: AssetImage(coins6lst1[0]),
+              foregroundImage: AssetImage(coins6lst[0]),
             ),
           ),
         ),
@@ -4116,7 +4093,7 @@ class ZBCube extends StatelessWidget {
             child: CircleAvatar(
               //radius: 15,
               backgroundColor: Colors.transparent,
-              foregroundImage: AssetImage(coins6lst1[1]),
+              foregroundImage: AssetImage(coins6lst[1]),
             ),
           ),
         ),
@@ -4132,7 +4109,7 @@ class ZBCube extends StatelessWidget {
             child: CircleAvatar(
               //radius: 15,
               backgroundColor: Colors.transparent,
-              foregroundImage: AssetImage(coins6lst1[3]),
+              foregroundImage: AssetImage(coins6lst[3]),
             ),
           ),
         ),
@@ -4148,7 +4125,7 @@ class ZBCube extends StatelessWidget {
             child: CircleAvatar(
               //radius: 15,
               backgroundColor: Colors.transparent,
-              foregroundImage: AssetImage(coins6lst1[2]),
+              foregroundImage: AssetImage(coins6lst[2]),
             ),
           ),
         ),
@@ -4164,7 +4141,7 @@ class ZBCube extends StatelessWidget {
             child: CircleAvatar(
               //radius: 15,
               backgroundColor: Colors.black,
-              foregroundImage: AssetImage(coins6lst1[5]),
+              foregroundImage: AssetImage(coins6lst[5]),
             ),
           ),
         ),
@@ -4178,7 +4155,7 @@ class ZBCube extends StatelessWidget {
             child: CircleAvatar(
               //radius: 15,
               backgroundColor: Colors.transparent,
-              foregroundImage: AssetImage(coins6lst1[4]),
+              foregroundImage: AssetImage(coins6lst[4]),
             ),
           ),
         ),
@@ -4307,25 +4284,4 @@ String getZBState(String binary) {
   }
 
   return "${translate(ring3)} ${translate(ring2)} ${translate(ring1)}";
-}
-
-Color getBase4Color(int index) {
-  switch (index) {
-    case 0:
-      return Colors.blue; // 1. "COMPLEX"
-    case 1:
-      return Colors.green; // 2. Simple;
-    case 2:
-      return Colors.yellow; // 3. Breath,
-    case 3:
-      return Colors.red; // 4. silence.
-    default:
-      return Colors.black;
-  }
-}
-
-Color getBase4TextColor(int index) {
-  // Yellow and Green often need darker text for "Aliveness" (58)
-  if (index == 1 || index == 2) return Colors.black54;
-  return Colors.white;
 }

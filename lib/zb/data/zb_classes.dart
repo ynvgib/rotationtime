@@ -3,7 +3,7 @@
 // 1. TOP-LEVEL MODELS (The Blueprints)
 // ---------------------------------------------------------
 
-import 'dart:ui';
+// import 'dart:ui';
 import 'package:finallyicanlearn/zb/data/zb_data.dart';
 import 'package:finallyicanlearn/zb/ui/widgets/zb_cleanwidgets.dart';
 import 'package:flutter/material.dart';
@@ -215,10 +215,10 @@ class ZBCounter {
   set counterstate(int value) {
     // 🕵️ DEBUG: Catch the flip from Green (4) or Blue (2) back to Transparent (0)
     if (_counterstate != 0 && value == 0) {
-      debugPrint('🚨 STATE WIPE: Counter "$name" (ID: $id) reset to 0!');
+      // debugPrint('🚨 STATE WIPE: Counter "$name" (ID: $id) reset to 0!');
       // This prints the exact line of code in your project that triggered the reset
-      debugPrint(
-          '📍 Triggered by: ${StackTrace.current.toString().split('\n')[1]}');
+      // debugPrint(
+      //     '📍 Triggered by: ${StackTrace.current.toString().split('\n')[1]}');
     }
     _counterstate = value;
   }
@@ -598,4 +598,29 @@ class ZBPlanet {
 
   String get story =>
       "ID: $id | Role: $role\nOrbit: $orbit\n$keynote\n\n$keynoteHeb";
+}
+
+class ZBCodon {
+  String? name, hebname, zbname;
+  int? id;
+  List<int>? wallets;
+
+  ZBCodon({this.name, this.hebname, this.zbname, this.id, this.wallets});
+}
+
+class ZBDesignForm {
+  String? name, hebname, zbname, orient;
+  int? id;
+  List<int>? wallets;
+  List<String>? centers;
+
+  ZBDesignForm({
+    this.name,
+    this.hebname,
+    this.zbname,
+    this.id,
+    this.wallets,
+    this.centers,
+    this.orient,
+  });
 }

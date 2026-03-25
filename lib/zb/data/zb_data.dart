@@ -1794,6 +1794,36 @@ abstract class ZBData {
     'DNA': zbdna,
   };
 
+  static final Map<String, List<String>> base6Data = {
+    'coins1image': coins6lst,
+    'coins2image': coins6lst2,
+    'zb6notes': zb6notes,
+    'zb6coins': zb6coins,
+    'zb6hebcoins': zb6hebcoins,
+    'hd6profile': hd6profile,
+    'zb6hebprofile': zb6hebprofile,
+    'zb6TonesSilenceHeb': zb6TonesSilenceHeb,
+    'zb6ColorsSilenceHeb': zb6ColorsSilenceHeb,
+    'zb6TonesBreathHeb': zb6TonesBreathHeb,
+    'zb6ColorsBreathHeb': zb6ColorsBreathHeb,
+    'zb6TonesSimpleHeb': zb6TonesSimpleHeb,
+    'zb6ColorsSimpleHeb': zb6ColorsSimpleHeb,
+    'zb6TonesComplexHeb': zb6TonesComplexHeb,
+    'zb6ColorsComplexHeb': zb6ColorsComplexHeb,
+    'hd6DesignTones': hd6DesignTones,
+    'hd6PersonalityTones': hd6PersonalityTones,
+    'hd6DesignColorPHS': hd6DesignColorPHS,
+    'hd6DesignColorENV': hd6DesignColorENV,
+    'hd6PersonalityColorPER': hd6PersonalityColorPER,
+    'hd6PersonalityColorMOT': hd6PersonalityColorMOT,
+    'hd6DesignLeftFixedColorPHS': hd6DesignLeftFixedColorPHS,
+    'hd6DesignRightFixedColorPHS': hd6DesignRightFixedColorPHS,
+    'hd6DesLeftFixedColorEnv': hd6DesLeftFixedColorEnv,
+    'hd6DesRightFixedColorEnv': hd6DesRightFixedColorEnv,
+    'hd6PerLeftColorTrajectory': hd6PerLeftColorTrajectory,
+    'hd6PerRightColorTrajectory': hd6PerRightColorTrajectory,
+  };
+
   static final Map<String, List<String>> base36Data = {
     'Complex (Eng)': hdchannelcomplexList,
     'Breath (Eng)': hdchannelbreathList,
@@ -1829,16 +1859,16 @@ abstract class ZBData {
   };
 
   static final Map<String, List<String>> base384 = {
-    'סיבוב קווים': rtlines384lst_heb,
+    'סיבוב קווים': zblines384heblst,
     'קווי עיצוב': hdlines384lstHeb,
-    'Rotating Lines': rtlines384lst,
+    'Rotating Lines': zblines384lst,
     'HD Lines': hdlines384lst,
   };
 
   static final Map<String, List<String>> base384Mirror = {
     'Lines': hdlines384lst, // 384 items
-    'Exalted Text': hdlinesexalted, // 384 items
-    'Detriment Text': hdlinesdetriment, // 384 items
+    'Exalted Text': hdlines384exalted, // 384 items
+    'Detriment Text': hdlines384detriment, // 384 items
     'Exalt Planet': hdplanetexaltimg, // 384 items
     'Detrim Planet': hdplanetdetrimentimg, // 384 items
   };
@@ -1888,5 +1918,129 @@ abstract class ZBData {
     9, 5, 26, 11,
     10, 58, 38, 54,
     61, 60,
+  ];
+
+  static List<ZBDesignForm> designFormsList = [
+    // DesignForm(
+    //   id: 0,
+    //   name: 'form',
+    //   wallets: [0],
+    //   centers: ['none'],
+    //   zbname: 'zbform',
+    //   orient: 'updown',
+    // ),
+    ZBDesignForm(
+      id: 1,
+      name: 'inanimate',
+      wallets: [25],
+      centers: ['none'],
+      zbname: 'פשומם',
+      orient: 'updown',
+    ),
+    ZBDesignForm(
+      id: 2,
+      name: 'cell',
+      wallets: [3, 5, 15],
+      centers: ['sacral', 'self'],
+      zbname: 'אתא',
+      orient: 'updown',
+    ),
+    ZBDesignForm(
+      id: 3,
+      name: 'plant',
+      wallets: [10, 34, 57, 15],
+      centers: ['sacral', 'self', 'spleen'],
+      zbname: 'צומח',
+      orient: 'downup',
+    ),
+    ZBDesignForm(
+      id: 4,
+      name: 'insect',
+      wallets: [5, 10, 15, 20, 34, 57],
+      centers: ['sacral', 'self', 'spleen', 'throat'],
+      zbname: 'חרק',
+      orient: 'updown',
+    ),
+    ZBDesignForm(
+      id: 5,
+      name: 'birdReptileFish',
+      wallets: [1, 8, 5, 15, 34, 44, 57],
+      centers: ['sacral', 'self', 'spleen', 'throat'],
+      zbname: 'עופזוחלדג',
+      orient: 'leftright',
+    ),
+    ZBDesignForm(
+      id: 6,
+      name: 'mammal',
+      wallets: [1, 5, 8, 12, 15, 19, 20, 27, 28, 38, 42, 50, 53, 57, 62],
+      centers: ['sacral', 'self', 'spleen', 'throat', 'root'],
+      zbname: 'יונקלודם',
+      orient: 'rightleft',
+    ),
+    ZBDesignForm(
+      id: 7,
+      name: 'penta',
+      wallets: [1, 2, 5, 7, 8, 13, 14, 15, 29, 31, 33, 46],
+      centers: ['sacral', 'self', 'throat'],
+      zbname: 'קיבוץ קטן',
+      orient: 'none',
+    ),
+    ZBDesignForm(
+      id: 8,
+      name: 'wa',
+      wallets: [2, 3, 6, 14, 21, 25, 27, 45, 51, 50, 59, 60],
+      centers: ['sacral', 'self', 'spleen', 'solar', 'ego', 'throat', 'root'],
+      zbname: 'קיבוץ גדול',
+      orient: 'none',
+    ),
+    ZBDesignForm(
+      id: 9,
+      name: 'human',
+      wallets: numbers64,
+      centers: ['none'],
+      zbname: 'הואדם',
+      orient: 'updown',
+    ),
+  ];
+
+// Codon
+
+//final List<int> CodonIDs = List.filled(22, 0, growable: false);
+  static List<ZBCodon> codonLst = [
+    // Codon(id: 0, name: 'codon', wallets: [0], zbname: 'zbcodon'),
+    ZBCodon(id: 1, name: 'Methionine', wallets: [41], zbname: 'כלב'),
+    ZBCodon(id: 2, name: 'Glysine', wallets: [6, 40, 47, 64], zbname: 'גלי'),
+    ZBCodon(id: 3, name: 'Asparagine', wallets: [34, 43], zbname: 'אסף'),
+    ZBCodon(id: 4, name: 'Proline', wallets: [22, 36, 37, 63], zbname: 'פרו'),
+    ZBCodon(id: 5, name: 'Lysine', wallets: [1, 14], zbname: 'ליס'),
+    ZBCodon(id: 6, name: 'Isoleucine', wallets: [19, 60, 61], zbname: 'אסל'),
+    ZBCodon(
+      id: 7,
+      name: 'Arginine',
+      wallets: [10, 17, 21, 25, 38, 51],
+      zbname: 'ארג',
+    ),
+    ZBCodon(id: 8, name: 'Glutamic Acid', wallets: [44, 50], zbname: 'גלא'),
+    ZBCodon(id: 9, name: 'Apsaraginic Acid', wallets: [28, 32], zbname: 'אסי'),
+    ZBCodon(
+        id: 10,
+        name: 'Leucine',
+        wallets: [3, 20, 23, 24, 27, 42],
+        zbname: 'לוס'),
+    ZBCodon(id: 11, name: 'Threonine', wallets: [5, 9, 11, 26], zbname: 'תרא'),
+    ZBCodon(id: 12, name: 'Alanine', wallets: [46, 18, 48, 57], zbname: 'אלא'),
+    ZBCodon(id: 13, name: 'Tryptophan', wallets: [35], zbname: 'טרף'),
+    ZBCodon(id: 14, name: 'Tyrosine', wallets: [31, 62], zbname: 'תיר'),
+    ZBCodon(id: 15, name: 'Cysteine', wallets: [16, 45], zbname: 'סיס'),
+    ZBCodon(id: 16, name: 'Glutamine', wallets: [13, 30], zbname: 'גלו'),
+    ZBCodon(
+        id: 17,
+        name: 'Serine',
+        wallets: [15, 39, 52, 53, 54, 58],
+        zbname: 'סיר'),
+    ZBCodon(id: 18, name: 'Valine', wallets: [7, 4, 29, 59], zbname: 'ואל'),
+    ZBCodon(id: 19, name: 'Phenylalanine', wallets: [2, 8], zbname: 'פיה'),
+    ZBCodon(id: 20, name: 'Histidine', wallets: [49, 55], zbname: 'היס'),
+    ZBCodon(id: 21, name: 'Stop Codon', wallets: [12, 56, 33], zbname: 'גמל'),
   ];
 }

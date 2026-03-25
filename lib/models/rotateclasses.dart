@@ -147,31 +147,6 @@ class HDChannel {
   });
 }
 
-class Codon {
-  String? name, hebname, zbname;
-  int? id;
-  List<int>? gates;
-
-  Codon({this.name, this.hebname, this.zbname, this.id, this.gates});
-}
-
-class DesignForm {
-  String? name, hebname, zbname, orient;
-  int? id;
-  List<int>? gates;
-  List<String>? centers;
-
-  DesignForm({
-    this.name,
-    this.hebname,
-    this.zbname,
-    this.id,
-    this.gates,
-    this.centers,
-    this.orient,
-  });
-}
-
 class CityTime {
   String? city;
   String? cityAscii;

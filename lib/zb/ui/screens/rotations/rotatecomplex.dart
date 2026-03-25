@@ -323,7 +323,7 @@ class _RotateComplexState extends State<RotateComplex>
           List.filled(14, ZBWallet(wallet: 1), growable: true);
 
   List coins384List = rtmix390lstHeb;
-  List coinssidenamelist = rt6HEbcoins;
+  List coinssidenamelist = zb6hebcoins;
   List<Color> wheelwalletscolor = List.filled(
     64,
     Colors.black26,
@@ -1508,8 +1508,9 @@ class _RotateComplexState extends State<RotateComplex>
                           int syncednote = _planethex.note ?? 1;
 
                           // 1. UPDATE NUMERIC CONTROLLERS
-                          _controllerwallettext.text = syncedwallet.toString();
-                          _controllernotetext.text = syncednote.toString();
+                          // _controllerwallettext.text = syncedwallet.toString();
+                          _controllerwallettext.text = _planethex.walletNote;
+                          // _controllernotetext.text = syncednote.toString();
 
                           // 2. UPDATE STORY CONTROLLERS (Using ZBData Bridge)
                           // This prevents the "int is not a subtype of String" error by using the dictionary math
@@ -2124,6 +2125,7 @@ class _RotateComplexState extends State<RotateComplex>
               ],
             ),
             const Divider(color: Colors.blue),
+            // const Text('zodiacSwephGradeColorlist'),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -2159,126 +2161,86 @@ class _RotateComplexState extends State<RotateComplex>
                   ),
                 ),
                 const SizedBox(width: 10),
+                MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () => showSpecificRaveDialog(context, _planethex),
+                    behavior: HitTestBehavior.opaque,
+                    child: IgnorePointer(
+                      child: SizedBox(
+                        width: 60,
+                        height: 35,
+                        //margin: const EdgeInsets.only(top: 20, left: 40),
+                        child: AutoSizeTextField(
+                          fullwidth: false,
+                          minFontSize: 30,
+                          maxFontSize: 35,
+                          decoration: const InputDecoration.collapsed(
+                            hintText: '1',
+                            hintStyle: TextStyle(color: Colors.black),
+                          ),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            //fontSize: 35.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          controller: _controllerwallettext,
+                          readOnly: true,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 5),
                 Flex(
                   direction: Axis.vertical,
                   children: [
-                    InkWell(
-                      child: Container(
-                        width: 35,
-                        height: 35,
-                        margin: const EdgeInsets.all(2),
-                        decoration: BoxDecoration(
-                          //color: Colors.blue,
-                          image: DecorationImage(
-                            image: AssetImage(
-                              (imageIndex != null &&
-                                      imageIndex >= 0 &&
-                                      imageIndex < hdplanetexaltimg.length)
-                                  ? hdplanetexaltimg[imageIndex]
-                                  : 'assets/planets/sun.png', // Fallback for State 3 / Blueprint
-                            ),
-                            fit: BoxFit.scaleDown,
+                    Container(
+                      width: 35,
+                      height: 35,
+                      margin: const EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                        //color: Colors.blue,
+                        image: DecorationImage(
+                          image: AssetImage(
+                            (imageIndex != null &&
+                                    imageIndex >= 0 &&
+                                    imageIndex < hdplanetexaltimg.length)
+                                ? hdplanetexaltimg[imageIndex]
+                                : 'assets/planets/sun.png', // Fallback for State 3 / Blueprint
                           ),
-                          shape: BoxShape.rectangle,
-                          border: Border.all(color: Colors.blue, width: 2),
+                          fit: BoxFit.scaleDown,
                         ),
+                        shape: BoxShape.rectangle,
+                        border: Border.all(color: Colors.blue, width: 2),
                       ),
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetUpDownDialog(context, 1),
-                        );
-                        //setState(() {
-                        //});
-                      },
                     ),
-                    InkWell(
-                      child: Container(
-                        width: 35,
-                        height: 35,
-                        margin: const EdgeInsets.all(2),
-                        decoration: BoxDecoration(
-                          ///color: Colors.red,
-                          image: DecorationImage(
-                            image: AssetImage(
-                              (imageIndex != null &&
-                                      imageIndex >= 0 &&
-                                      imageIndex < hdplanetdetrimentimg.length)
-                                  ? hdplanetdetrimentimg[imageIndex]
-                                  : 'assets/planets/earth.png', // Fallback for State 3 / Blueprint
-                            ),
-                            fit: BoxFit.scaleDown,
+                    Container(
+                      width: 35,
+                      height: 35,
+                      margin: const EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                        ///color: Colors.red,
+                        image: DecorationImage(
+                          image: AssetImage(
+                            (imageIndex != null &&
+                                    imageIndex >= 0 &&
+                                    imageIndex < hdplanetdetrimentimg.length)
+                                ? hdplanetdetrimentimg[imageIndex]
+                                : 'assets/planets/earth.png', // Fallback for State 3 / Blueprint
                           ),
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.red, width: 2),
+                          fit: BoxFit.scaleDown,
                         ),
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.red, width: 2),
                       ),
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              _buildPlanetUpDownDialog(context, 0),
-                        );
-                        //_buildPlanetUpDownDialog(context, 0);
-                        //setState(() {
-                        //});
-                      },
                     ),
                   ],
-                ),
-                const SizedBox(width: 10),
-                SizedBox(
-                  width: 35,
-                  height: 35,
-                  //margin: const EdgeInsets.only(top: 20, left: 40),
-                  child: AutoSizeTextField(
-                    fullwidth: false,
-                    minFontSize: 30,
-                    maxFontSize: 35,
-                    decoration: const InputDecoration.collapsed(
-                      hintText: '1',
-                      hintStyle: TextStyle(color: Colors.black),
-                    ),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      //fontSize: 35.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    controller: _controllerwallettext,
-                    readOnly: true,
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 35,
-                  height: 35,
-                  //margin: const EdgeInsets.only(top: 20, left: 70),
-                  child: AutoSizeTextField(
-                    fullwidth: false,
-                    minFontSize: 20,
-                    maxFontSize: 25,
-                    decoration: const InputDecoration.collapsed(
-                      hintText: '1',
-                      hintStyle: TextStyle(color: Colors.black),
-                    ),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      //fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    controller: _controllernotetext,
-                    readOnly: true,
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                  ),
                 ),
               ],
             ),
@@ -2327,8 +2289,11 @@ class _RotateComplexState extends State<RotateComplex>
                                       _chosenhex = orderHexagramsWheel[
                                           _carouselvalueindex];
 
+                                      // _controllerwallettext.text =
+                                      //     _chosenhex.toString();
+
                                       _controllerwallettext.text =
-                                          _chosenhex.toString();
+                                          _planethex.walletNote;
 
                                       // idonotknow _currentline
                                       //_controllergatelinestory.text = 'test';
@@ -2402,7 +2367,7 @@ class _RotateComplexState extends State<RotateComplex>
                                   color: Colors.black,
                                   child: Icon(
                                     IconData(
-                                      rt6iconshex[6],
+                                      rt6iconshex[5],
                                       fontFamily: 'MaterialIcons',
                                     ),
                                     color: thirdcolor,
@@ -2414,7 +2379,7 @@ class _RotateComplexState extends State<RotateComplex>
                                   color: Colors.black,
                                   child: Icon(
                                     IconData(
-                                      rt6iconshex[5],
+                                      rt6iconshex[4],
                                       fontFamily: 'MaterialIcons',
                                     ),
                                     color: thirdcolor,
@@ -2433,7 +2398,7 @@ class _RotateComplexState extends State<RotateComplex>
                                     height: 30,
                                     color: thirdcolor,
                                     child: AutoSizeText(
-                                      coinssidenamelist[6],
+                                      coinssidenamelist[5],
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -2446,8 +2411,8 @@ class _RotateComplexState extends State<RotateComplex>
                                     isFamilyText = !isFamilyText;
                                     setState(() {
                                       isFamilyText == true
-                                          ? coinssidenamelist = rt6HEbcoins
-                                          : coinssidenamelist = rt6coins;
+                                          ? coinssidenamelist = zb6hebcoins
+                                          : coinssidenamelist = zb6coins;
                                     });
                                   },
                                 ),
@@ -2456,7 +2421,7 @@ class _RotateComplexState extends State<RotateComplex>
                                   height: 30,
                                   color: thirdcolor,
                                   child: AutoSizeText(
-                                    coinssidenamelist[5],
+                                    coinssidenamelist[4],
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -2503,8 +2468,11 @@ class _RotateComplexState extends State<RotateComplex>
                                       _chosenhex = orderHexagramsWheel[
                                           _carouselvalueindex];
 
+                                      // _controllerwallettext.text =
+                                      //     _chosenhex.toString();
+
                                       _controllerwallettext.text =
-                                          _chosenhex.toString();
+                                          _planethex.walletNote;
 
                                       //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
 
@@ -2579,7 +2547,7 @@ class _RotateComplexState extends State<RotateComplex>
                                   color: Colors.black,
                                   child: Icon(
                                     IconData(
-                                      rt6iconshex[4],
+                                      rt6iconshex[3],
                                       fontFamily: 'MaterialIcons',
                                     ),
                                     color: secondcolor,
@@ -2591,7 +2559,7 @@ class _RotateComplexState extends State<RotateComplex>
                                   color: Colors.black,
                                   child: Icon(
                                     IconData(
-                                      rt6iconshex[3],
+                                      rt6iconshex[2],
                                       fontFamily: 'MaterialIcons',
                                     ),
                                     color: secondcolor,
@@ -2609,7 +2577,7 @@ class _RotateComplexState extends State<RotateComplex>
                                   height: 30,
                                   color: secondcolor,
                                   child: AutoSizeText(
-                                    coinssidenamelist[4],
+                                    coinssidenamelist[3],
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -2623,7 +2591,7 @@ class _RotateComplexState extends State<RotateComplex>
                                   height: 30,
                                   color: secondcolor,
                                   child: AutoSizeText(
-                                    coinssidenamelist[3],
+                                    coinssidenamelist[2],
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -2671,8 +2639,11 @@ class _RotateComplexState extends State<RotateComplex>
                                         _chosenhex = orderHexagramsWheel[
                                             _carouselvalueindex];
 
+                                        // _controllerwallettext.text =
+                                        //     _chosenhex.toString();
+
                                         _controllerwallettext.text =
-                                            _chosenhex.toString();
+                                            _planethex.walletNote;
 
                                         //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
 
@@ -2748,7 +2719,7 @@ class _RotateComplexState extends State<RotateComplex>
                                   color: Colors.black,
                                   child: Icon(
                                     IconData(
-                                      rt6iconshex[2],
+                                      rt6iconshex[1],
                                       fontFamily: 'MaterialIcons',
                                     ),
                                     shadows: const [
@@ -2766,7 +2737,7 @@ class _RotateComplexState extends State<RotateComplex>
                                   color: Colors.black,
                                   child: Icon(
                                     IconData(
-                                      rt6iconshex[1],
+                                      rt6iconshex[0],
                                       fontFamily: 'MaterialIcons',
                                     ),
                                     color: firstcolor,
@@ -2785,7 +2756,7 @@ class _RotateComplexState extends State<RotateComplex>
                                   height: 30,
                                   color: firstcolor,
                                   child: AutoSizeText(
-                                    coinssidenamelist[2],
+                                    coinssidenamelist[1],
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -2799,7 +2770,7 @@ class _RotateComplexState extends State<RotateComplex>
                                   height: 30,
                                   color: firstcolor,
                                   child: AutoSizeText(
-                                    coinssidenamelist[1],
+                                    coinssidenamelist[0],
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -4505,7 +4476,7 @@ class _RotateComplexState extends State<RotateComplex>
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    rt6profile[_planetspersonList[0].note ?? 0].toString(),
+                    zb6hebprofile[_planetspersonList[0].note ?? 0].toString(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.white,
@@ -4570,7 +4541,7 @@ class _RotateComplexState extends State<RotateComplex>
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    rt6profile[_planetsdesignList[0].note ?? 0].toString(),
+                    zb6hebprofile[_planetsdesignList[0].note ?? 0].toString(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.black,
@@ -4899,13 +4870,13 @@ class _RotateComplexState extends State<RotateComplex>
 
     switch (exaltORdeter) {
       case 1:
-        planetString = hdlinesexalted[planetLinePos];
+        planetString = hdlines384exalted[planetLinePos];
         break;
       case 0:
-        planetString = hdlinesdetriment[planetLinePos];
+        planetString = hdlines384detriment[planetLinePos];
         break;
       default:
-        planetString = hdlinesexalted[planetLinePos];
+        planetString = hdlines384exalted[planetLinePos];
         break;
     }
     return AlertDialog(
@@ -5435,8 +5406,8 @@ class _RotateComplexState extends State<RotateComplex>
     _currentnote = note;
 
     // 1. Numbers
-    _controllerwallettext.text = wallet.toString();
-    _controllernotetext.text = note.toString();
+    _controllerwallettext.text = updWallet.walletNote;
+    // _controllernotetext.text = note.toString();
 
     // 2. Stories (Mapping from ZBData or your lists)
     _controllerwalletstory.text =

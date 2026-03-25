@@ -382,6 +382,36 @@ abstract class ZBStyles {
           id: 'perspective', label: "Perspective", zbState: 4, source: pNodes),
     ];
   }
+
+  static Color getBase4Color(int index) {
+    switch (index) {
+      case 0:
+        return Colors.blue; // 1. "COMPLEX"
+      case 1:
+        return Colors.green; // 2. Simple;
+      case 2:
+        return Colors.yellow; // 3. Breath,
+      case 3:
+        return Colors.red; // 4. silence.
+      default:
+        return Colors.black;
+    }
+  }
+
+  static Color getBase4TextColor(int index) {
+    // Yellow and Green often need darker text for "Aliveness" (58)
+    if (index == 1 || index == 2) return Colors.black54;
+    return Colors.white;
+  }
+
+  static Color getBaseToneColor(int index, int totalItems) {
+    // Base 4: index 0 is state 5. Base 6: index 0 is state 6.
+    // Formula: (totalItems == 4 ? 5 : 6) - index
+    int stateOffset = (totalItems == 4) ? 5 : 6;
+    int zbState = stateOffset - index;
+
+    return ZBStory.getfrequency(zbState).zbcolor;
+  }
 }
 
 /// GROUP D: THE SOUL (ASSET MAPPING)

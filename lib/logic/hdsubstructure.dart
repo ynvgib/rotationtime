@@ -1,5 +1,6 @@
 import 'package:finallyicanlearn/models/hebrew/lists_he.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
+import 'package:finallyicanlearn/zb/data/zb_data.dart';
 import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
 import 'package:sweph/sweph.dart';
 
@@ -64,7 +65,7 @@ Hexagram getGateStructure(double planetlongitude) {
 
   double percentageThroughWheel = planetlongitude / 360;
 
-  gate = orderHexagramsToCalulateWheel[(percentageThroughWheel * 64).floor()];
+  gate = ZBData.orderWalletOnWheel[(percentageThroughWheel * 64).floor()];
 
   // Line
   exactLine = 384 * percentageThroughWheel;

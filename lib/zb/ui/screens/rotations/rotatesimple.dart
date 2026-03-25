@@ -578,7 +578,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Divider(color: Colors.green, thickness: 5),
+                const Divider(color: Colors.green, thickness: 7),
                 ConstrainedBox(
                   constraints: BoxConstraints(
                     minHeight: 10,
@@ -723,7 +723,7 @@ class _RotateSimpleState extends State<RotateSimple>
                     ),
                   ),
                 ),
-                const Divider(color: Colors.green, thickness: 5),
+                const Divider(color: Colors.green, thickness: 7),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -732,6 +732,13 @@ class _RotateSimpleState extends State<RotateSimple>
                       context,
                       '4',
                       zbbuildBasePopUp(context, '4', ZBData.base4Data),
+                    ),
+
+                    // Base 4
+                    buildSelectionButton(
+                      context,
+                      '6',
+                      zbbuildBasePopUp(context, '6', ZBData.base6Data),
                     ),
 
                     // Base 36
@@ -756,7 +763,7 @@ class _RotateSimpleState extends State<RotateSimple>
                     ),
                   ],
                 ),
-                const Divider(color: Colors.green, thickness: 14),
+                const Divider(color: Colors.green, thickness: 7),
 
                 RepaintBoundary(
                   key: zbChartBoundaryKey,
@@ -867,71 +874,69 @@ class _RotateSimpleState extends State<RotateSimple>
                   ),
                 ),
                 const SizedBox(height: 5),
-                const Divider(color: Colors.green, thickness: 14),
+                const Divider(color: Colors.green, thickness: 7),
                 SelectionContainer.disabled(
                   child: SizedBox(
-                    height: 300,
-                    width: 300,
+                    width: 300, // Keep width constrained
                     child: GridView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
+                      // 1. REMOVE fixed height, use shrinkWrap to let it calculate its own height
+                      shrinkWrap: true,
+                      // 2. Use ClampingScrollPhysics so it doesn't fight with a parent ScrollView
+                      physics: const ClampingScrollPhysics(),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         childAspectRatio: 1,
-                        crossAxisCount: 8, // number of items in each row
-                        mainAxisSpacing: 8.0, // spacing between rows
-                        crossAxisSpacing: 8.0, // spacing between columns
+                        crossAxisCount: 8,
+                        mainAxisSpacing:
+                            4.0, // Reduced spacing for 8x8 to save room
+                        crossAxisSpacing: 4.0,
                       ),
-                      padding: const EdgeInsets.all(
-                        8.0,
-                      ), // padding around the grid
-                      itemCount: ZBData.getzbwallets
-                          .length, // Uses the 64 wallets from your refactored list
+                      padding: const EdgeInsets.all(4.0),
+                      itemCount: ZBData.getzbwallets.length,
                       itemBuilder: (context, index) {
                         final walletIndex = index + 1;
                         final int state = _walletstatelist[walletIndex];
-
-                        // 1. Get the list of colors for this state
                         final List<Color> walletColors =
                             ZBStyles.setWalletColor(state);
 
-                        return MouseRegion(
-                          cursor:
-                              SystemMouseCursors.click, // Hand pointer priority
-                          child: GestureDetector(
-                            onTap: () => _updateWallets(
-                                wallets: [walletIndex], cycle: true),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                // 2. Apply gradient if colors differ, otherwise use solid
-                                gradient: walletColors[0] != walletColors[1]
-                                    ? LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: walletColors,
-                                      )
-                                    : null,
-                                color: walletColors[0] == walletColors[1]
-                                    ? walletColors[0]
-                                    : null,
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: state == 6
-                                      ? Colors.black
-                                      : Colors.transparent,
-                                  width: 1,
-                                ),
+                        return GestureDetector(
+                          onTap: () => _updateWallets(
+                              wallets: [walletIndex], cycle: true),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: walletColors[0] != walletColors[1]
+                                  ? LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: walletColors,
+                                    )
+                                  : null,
+                              color: walletColors[0] == walletColors[1]
+                                  ? walletColors[0]
+                                  : null,
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: state == 6
+                                    ? Colors.black
+                                    : Colors.transparent,
+                                width: 1,
                               ),
-                              child: Center(
-                                child: Text(
-                                  '$walletIndex',
-                                  style: TextStyle(
-                                    // Keep your contrast logic
-                                    color:
-                                        (state == 1 || state == 5 || state == 7)
-                                            ? Colors.white
-                                            : Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10,
+                            ),
+                            child: Center(
+                              child: FittedBox(
+                                // 3. CRITICAL: Ensures the number scales to fit the tiny circle
+                                fit: BoxFit.scaleDown,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: Text(
+                                    '$walletIndex',
+                                    style: TextStyle(
+                                      color: {1, 4, 5, 7, 8, 9}.contains(state)
+                                          ? Colors.white
+                                          : Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -943,157 +948,163 @@ class _RotateSimpleState extends State<RotateSimple>
                   ),
                 ),
                 const SizedBox(height: 5),
-                const Divider(color: Colors.green, thickness: 14),
-                // HD CHART
-                Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 150,
-                      child: Slider(
-                        value: opacityLevel,
-                        min: 0,
-                        max: 1,
-                        //divisions: values.length - 1,
-                        //label: opacityLevel.toString(),
-                        activeColor: Colors.green,
-                        inactiveColor: Colors.yellow,
-                        onChanged: (double value) {
-                          setState(() {
-                            opacityLevel = value;
-                          });
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      width: 150,
-                      child: Slider(
-                        value: opacityLevelFigures,
-                        min: 0,
-                        max: 1,
-                        //divisions: values.length - 1,
-                        //label: opacityLevel.toString(),
-                        activeColor: Colors.green,
-                        inactiveColor: Colors.yellow,
-                        onChanged: (double value) {
-                          setState(() {
-                            opacityLevelFigures = value;
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+                const Divider(color: Colors.green, thickness: 7),
 
                 SelectionContainer.disabled(
-                  child: SizedBox(
-                      height: 300,
-                      width: 250,
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      // Allow it to be as wide as needed up to 300
+                      maxWidth: 300,
+                      // Set a MAX height instead of a FIXED height so it doesn't overflow the screen
+                      maxHeight: MediaQuery.of(context).size.height * 0.7,
+                    ),
+                    child: SingleChildScrollView(
+                      // 1. Allow scrolling if the grid is too tall
                       child: GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          childAspectRatio: 1,
-                          crossAxisCount: 3,
-                          mainAxisSpacing: 5.0,
-                          crossAxisSpacing: 5.0,
-                        ),
-                        itemCount: 9,
-                        itemBuilder: (context, index) {
-                          DesignForm designform = designFormsList[index];
-                          List<int> designformGates = designform.gates ?? [];
-                          // Check if this form's wallets are active (State 2)
-                          bool isActive = designformGates
-                              .any((id) => _walletstatelist[id] == 2);
+                          shrinkWrap:
+                              true, // 2. Tell GridView to only take needed space
+                          physics: const ScrollPhysics(), // 3. Enable scrolling
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            childAspectRatio: 1,
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 8.0,
+                            crossAxisSpacing: 8.0,
+                          ),
+                          itemCount: 9,
+                          itemBuilder: (context, index) {
+                            ZBDesignForm designform =
+                                ZBData.designFormsList[index];
+                            List<int> designformWallets =
+                                designform.wallets ?? [];
 
-                          return MouseRegion(
-                            cursor: SystemMouseCursors
-                                .click, // Hand pointer priority
-                            child: GestureDetector(
-                              onTap: () => _updateWallets(
-                                  wallets: designformGates, walletState: 2),
-                              child: Tooltip(
-                                message:
-                                    "${designform.name!}\n${designform.orient!}",
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: isActive
-                                        ? Colors.orange
-                                        : Colors.black, // Dynamic Color
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      width: 2,
-                                      color: isActive
-                                          ? Colors.orange
-                                          : Colors.white24,
-                                    ),
+                            // 1. Check for Manual State (Orange)
+                            bool isInternallyActive = designformWallets
+                                .any((id) => _walletstatelist[id] == 2);
+
+                            // 2. Check for Shared/Master State (Green on Master)
+                            bool isExternallyLit = designformWallets
+                                .any((id) => _walletstatelist[id] == 4);
+
+                            return GestureDetector(
+                              onTap: () {
+                                // We no longer 'return' on State 4 because 4 is our 'Simple' starting state.
+                                // This allows the 9-grid to toggle a '4' into a '2' immediately.
+
+                                int targetState = isInternallyActive ? 4 : 2;
+
+                                _updateWallets(
+                                  wallets: designformWallets,
+                                  walletState: targetState,
+                                );
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  // CHANGE: If it is State 4, show Black (or a unique 'Shared' color)
+                                  // Only show Orange if it's Internally Active (State 2)
+                                  color: isInternallyActive
+                                      ? Colors.yellow
+                                      : (isExternallyLit
+                                          ? Colors.green
+                                          : Colors.black),
+
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    width: 2,
+                                    // VISUAL CUE: Show a thin Orange border if it's State 4
+                                    // to indicate it's 'available' but not manually active.
+                                    color: isInternallyActive
+                                        ? Colors.yellow
+                                        : (isExternallyLit
+                                            ? Colors.black
+                                            : Colors.white24),
                                   ),
-                                  child: Center(
+                                ),
+                                child: Center(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
                                     child: Text(
                                       designform.zbname ?? '',
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
+                                      style: TextStyle(
+                                        color: isInternallyActive
+                                            ? Colors.black
+                                            : Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
-                      )),
+                            );
+                          }),
+                    ),
+                  ),
                 ),
-
                 SelectionContainer.disabled(
-                  child: SizedBox(
-                      height: 300,
-                      width: 250,
-                      child: GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          childAspectRatio: 1,
-                          crossAxisCount: 5,
-                          mainAxisSpacing: 8.0,
-                          crossAxisSpacing: 8.0,
-                        ),
-                        itemCount: 21,
-                        itemBuilder: (context, index) {
-                          Codon codon = codonLst[index];
-                          List<int> codongates = codon.gates ?? [];
-                          // Check if this codon's wallets are active (State 1)
-                          bool isActive =
-                              codongates.any((id) => _walletstatelist[id] == 1);
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: 250, // Keep your width preference
+                      maxHeight: MediaQuery.of(context).size.height *
+                          0.5, // Allow up to 50% of screen
+                    ),
+                    child: GridView.builder(
+                      // CRITICAL: Tells the grid to take ONLY the space it needs for the 21 items
+                      shrinkWrap: true,
+                      // Allow scrolling if it still exceeds the constrained height
+                      physics: const ClampingScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio: 1,
+                        crossAxisCount: 5,
+                        mainAxisSpacing: 8.0,
+                        crossAxisSpacing: 8.0,
+                      ),
+                      itemCount: 21,
+                      itemBuilder: (context, index) {
+                        ZBCodon codon = ZBData.codonLst[index];
+                        List<int> codonwallets = codon.wallets ?? [];
 
-                          return MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            child: GestureDetector(
-                              onTap: () => _updateWallets(
-                                  wallets: codongates, walletState: 1),
-                              child: Tooltip(
-                                message:
-                                    '${codon.name ?? ''}: ${codongates.join(', ')}',
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: isActive
-                                        ? Colors.blue
-                                        : Colors.black, // Dynamic Color
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      width: 2,
-                                      color: isActive
-                                          ? Colors.blue
-                                          : Colors.white24,
-                                    ),
-                                  ),
-                                  child: Center(
+                        bool isInternallyActive =
+                            codonwallets.any((id) => _walletstatelist[id] == 3);
+                        // bool isSimpleState =
+                        //     codonwallets.any((id) => _walletstatelist[id] == 4);
+
+                        return GestureDetector(
+                          onTap: () {
+                            int targetState = isInternallyActive ? 4 : 3;
+
+                            _updateWallets(
+                              wallets: codonwallets,
+                              walletState: targetState,
+                            );
+                          },
+                          child: Tooltip(
+                            message:
+                                '${codon.name ?? ''}: ${codonwallets.join(', ')}',
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: isInternallyActive
+                                    ? Colors.yellow
+                                    : Colors.green,
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  width: 2,
+                                  color: isInternallyActive
+                                      ? Colors.black
+                                      : Colors.white24,
+                                ),
+                              ),
+                              child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3.0),
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
                                     child: Text(
                                       codon.zbname ?? '',
-                                      style: const TextStyle(
-                                        color: Colors.white,
+                                      style: TextStyle(
+                                        color: isInternallyActive
+                                            ? Colors.black
+                                            : Colors.white,
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -1102,12 +1113,14 @@ class _RotateSimpleState extends State<RotateSimple>
                                 ),
                               ),
                             ),
-                          );
-                        },
-                      )),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ),
 
-                const Divider(color: Colors.green, thickness: 8),
+                const Divider(color: Colors.green, thickness: 7),
                 Flex(
                   direction: Axis.horizontal,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1204,13 +1217,10 @@ class _RotateSimpleState extends State<RotateSimple>
                         width: 90,
                         margin: const EdgeInsets.all(1),
                         decoration: BoxDecoration(
-                          //color: revZodiacColorList[index],
                           gradient: LinearGradient(
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight,
                             colors: [
-                              //Colors.purple.shade900,
-                              //Colors.purple.shade100,
                               revzodiacGradeColorlist[index * 2],
                               revzodiacGradeColorlist[index * 2 + 1],
                             ],
@@ -1225,7 +1235,7 @@ class _RotateSimpleState extends State<RotateSimple>
                     );
                   }),
                 ),
-                const Divider(color: Colors.green, thickness: 5),
+                const Divider(color: Colors.green, thickness: 7),
                 // 64 coins wheel
                 Stack(
                   children: [
@@ -1571,7 +1581,7 @@ class _RotateSimpleState extends State<RotateSimple>
                     ),
                   ],
                 ),
-                const Divider(color: Colors.green, thickness: 5),
+                const Divider(color: Colors.green, thickness: 7),
                 // 64 coins wheel
                 const SizedBox(height: 10),
                 Stack(
@@ -1774,7 +1784,7 @@ class _RotateSimpleState extends State<RotateSimple>
                     ),
                   ],
                 ),
-                const Divider(color: Colors.green, thickness: 5),
+                const Divider(color: Colors.green, thickness: 7),
                 Stack(
                   children: [
                     CircleList(
@@ -1886,7 +1896,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   ],
                 ),
 
-                const Divider(color: Colors.green, thickness: 5),
+                const Divider(color: Colors.green, thickness: 7),
                 const SizedBox(height: 10),
                 Container(
                   height: 35,
@@ -1952,7 +1962,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   ),
                 ),
 
-                const Divider(color: Colors.green, thickness: 5),
+                const Divider(color: Colors.green, thickness: 7),
                 SizedBox(
                   height: 200,
                   width: 350,
@@ -2018,7 +2028,7 @@ class _RotateSimpleState extends State<RotateSimple>
                     ),
                   ),
                 ),
-                const Divider(color: Colors.green, thickness: 5),
+                const Divider(color: Colors.green, thickness: 7),
 
                 Stack(
                   children: [
@@ -2071,7 +2081,7 @@ class _RotateSimpleState extends State<RotateSimple>
                     ),
                   ],
                 ),
-                const Divider(color: Colors.green, thickness: 5),
+                const Divider(color: Colors.green, thickness: 7),
                 const SizedBox(height: 50),
                 GestureDetector(
                   onTap: () {
@@ -2111,7 +2121,7 @@ class _RotateSimpleState extends State<RotateSimple>
                 ),
                 const SizedBox(height: 20),
 
-                const Divider(color: Colors.green, thickness: 5),
+                const Divider(color: Colors.green, thickness: 7),
                 Container(
                   alignment: Alignment.center,
                   child: const AutoSizeText(
@@ -2369,413 +2379,6 @@ class _RotateSimpleState extends State<RotateSimple>
         }
       }
     }
-  }
-
-  setformsChart(int design) {
-    for (var i = 0; i < designFormsList[design].gates!.length; i++) {
-      _walletstatelist[designFormsList[design].gates![i]] = 2;
-      _isBoldList[designFormsList[design].gates![i]] = true;
-    }
-  }
-
-  setinanimateChart() {
-    for (var i = 0; i < designFormsList[1].gates!.length; i++) {
-      _walletstatelist[designFormsList[1].gates![i]] = 1;
-      _isBoldList[designFormsList[1].gates![i]] = true;
-    }
-  }
-
-  setcellChart() {
-    for (var i = 0; i < designFormsList[2].gates!.length; i++) {
-      _walletstatelist[designFormsList[1].gates![i]] = 1;
-      _isBoldList[designFormsList[1].gates![i]] = true;
-    }
-  }
-
-  setplantChart() {
-    _walletstatelist[34] = 1;
-    _walletstatelist[5] = 1;
-    _walletstatelist[14] = 1;
-    _walletstatelist[29] = 1;
-    _walletstatelist[42] = 1;
-    _walletstatelist[3] = 1;
-    _walletstatelist[9] = 1;
-    _walletstatelist[59] = 1;
-    _walletstatelist[27] = 1;
-
-    _walletstatelist[10] = 1;
-    _walletstatelist[20] = 1;
-    _walletstatelist[57] = 1;
-    _walletstatelist[15] = 1;
-    _walletstatelist[2] = 1;
-    _walletstatelist[46] = 1;
-    _walletstatelist[53] = 1;
-    _walletstatelist[60] = 1;
-    _walletstatelist[52] = 1;
-    _walletstatelist[6] = 1;
-    _walletstatelist[50] = 1;
-
-    _isBoldList[34] = true;
-    _isBoldList[5] = true;
-    _isBoldList[14] = true;
-    _isBoldList[29] = true;
-    _isBoldList[42] = true;
-    _isBoldList[3] = true;
-    _isBoldList[9] = true;
-    _isBoldList[59] = true;
-    _isBoldList[27] = true;
-
-    _isBoldList[10] = true;
-    _isBoldList[20] = true;
-    _isBoldList[57] = true;
-    _isBoldList[15] = true;
-    _isBoldList[2] = true;
-    _isBoldList[46] = true;
-    _isBoldList[53] = true;
-    _isBoldList[60] = true;
-    _isBoldList[52] = true;
-    _isBoldList[6] = true;
-    _isBoldList[50] = true;
-
-    throatstate = 1;
-    gstate = 1;
-    sacralstate = 1;
-    rootstate = 1;
-    spleenstate = 1;
-    solarstate = 1;
-  }
-
-  setinsectChart() {
-    _walletstatelist[34] = 1;
-    _walletstatelist[5] = 1;
-    _walletstatelist[14] = 1;
-    _walletstatelist[29] = 1;
-    _walletstatelist[42] = 1;
-    _walletstatelist[3] = 1;
-    _walletstatelist[9] = 1;
-    _walletstatelist[59] = 1;
-    _walletstatelist[27] = 1;
-
-    _walletstatelist[10] = 1;
-    _walletstatelist[20] = 1;
-    _walletstatelist[57] = 1;
-    _walletstatelist[15] = 1;
-    _walletstatelist[2] = 1;
-    _walletstatelist[46] = 1;
-    _walletstatelist[53] = 1;
-    _walletstatelist[60] = 1;
-    _walletstatelist[52] = 1;
-    _walletstatelist[6] = 1;
-    _walletstatelist[50] = 1;
-
-    _isBoldList[34] = true;
-    _isBoldList[5] = true;
-    _isBoldList[14] = true;
-    _isBoldList[29] = true;
-    _isBoldList[42] = true;
-    _isBoldList[3] = true;
-    _isBoldList[9] = true;
-    _isBoldList[59] = true;
-    _isBoldList[27] = true;
-
-    _isBoldList[10] = true;
-    _isBoldList[20] = true;
-    _isBoldList[57] = true;
-    _isBoldList[15] = true;
-    _isBoldList[2] = true;
-    _isBoldList[46] = true;
-    _isBoldList[53] = true;
-    _isBoldList[60] = true;
-    _isBoldList[52] = true;
-    _isBoldList[6] = true;
-    _isBoldList[50] = true;
-
-    throatstate = 1;
-    gstate = 1;
-    sacralstate = 1;
-    rootstate = 1;
-    spleenstate = 1;
-    solarstate = 1;
-  }
-
-  setbirdReptileFishChart() {
-    _walletstatelist[34] = 1;
-    _walletstatelist[5] = 1;
-    _walletstatelist[14] = 1;
-    _walletstatelist[29] = 1;
-    _walletstatelist[42] = 1;
-    _walletstatelist[3] = 1;
-    _walletstatelist[9] = 1;
-    _walletstatelist[59] = 1;
-    _walletstatelist[27] = 1;
-
-    _walletstatelist[10] = 1;
-    _walletstatelist[20] = 1;
-    _walletstatelist[57] = 1;
-    _walletstatelist[15] = 1;
-    _walletstatelist[2] = 1;
-    _walletstatelist[46] = 1;
-    _walletstatelist[53] = 1;
-    _walletstatelist[60] = 1;
-    _walletstatelist[52] = 1;
-    _walletstatelist[6] = 1;
-    _walletstatelist[50] = 1;
-
-    _isBoldList[34] = true;
-    _isBoldList[5] = true;
-    _isBoldList[14] = true;
-    _isBoldList[29] = true;
-    _isBoldList[42] = true;
-    _isBoldList[3] = true;
-    _isBoldList[9] = true;
-    _isBoldList[59] = true;
-    _isBoldList[27] = true;
-
-    _isBoldList[10] = true;
-    _isBoldList[20] = true;
-    _isBoldList[57] = true;
-    _isBoldList[15] = true;
-    _isBoldList[2] = true;
-    _isBoldList[46] = true;
-    _isBoldList[53] = true;
-    _isBoldList[60] = true;
-    _isBoldList[52] = true;
-    _isBoldList[6] = true;
-    _isBoldList[50] = true;
-
-    throatstate = 1;
-    gstate = 1;
-    sacralstate = 1;
-    rootstate = 1;
-    spleenstate = 1;
-    solarstate = 1;
-  }
-
-  setmammalChart() {
-    _walletstatelist[34] = 1;
-    _walletstatelist[5] = 1;
-    _walletstatelist[14] = 1;
-    _walletstatelist[29] = 1;
-    _walletstatelist[42] = 1;
-    _walletstatelist[3] = 1;
-    _walletstatelist[9] = 1;
-    _walletstatelist[59] = 1;
-    _walletstatelist[27] = 1;
-
-    _walletstatelist[10] = 1;
-    _walletstatelist[20] = 1;
-    _walletstatelist[57] = 1;
-    _walletstatelist[15] = 1;
-    _walletstatelist[2] = 1;
-    _walletstatelist[46] = 1;
-    _walletstatelist[53] = 1;
-    _walletstatelist[60] = 1;
-    _walletstatelist[52] = 1;
-    _walletstatelist[6] = 1;
-    _walletstatelist[50] = 1;
-
-    _isBoldList[34] = true;
-    _isBoldList[5] = true;
-    _isBoldList[14] = true;
-    _isBoldList[29] = true;
-    _isBoldList[42] = true;
-    _isBoldList[3] = true;
-    _isBoldList[9] = true;
-    _isBoldList[59] = true;
-    _isBoldList[27] = true;
-
-    _isBoldList[10] = true;
-    _isBoldList[20] = true;
-    _isBoldList[57] = true;
-    _isBoldList[15] = true;
-    _isBoldList[2] = true;
-    _isBoldList[46] = true;
-    _isBoldList[53] = true;
-    _isBoldList[60] = true;
-    _isBoldList[52] = true;
-    _isBoldList[6] = true;
-    _isBoldList[50] = true;
-
-    throatstate = 1;
-    gstate = 1;
-    sacralstate = 1;
-    rootstate = 1;
-    spleenstate = 1;
-    solarstate = 1;
-  }
-
-  setpentaChart() {
-    _walletstatelist[34] = 1;
-    _walletstatelist[5] = 1;
-    _walletstatelist[14] = 1;
-    _walletstatelist[29] = 1;
-    _walletstatelist[42] = 1;
-    _walletstatelist[3] = 1;
-    _walletstatelist[9] = 1;
-    _walletstatelist[59] = 1;
-    _walletstatelist[27] = 1;
-
-    _walletstatelist[10] = 1;
-    _walletstatelist[20] = 1;
-    _walletstatelist[57] = 1;
-    _walletstatelist[15] = 1;
-    _walletstatelist[2] = 1;
-    _walletstatelist[46] = 1;
-    _walletstatelist[53] = 1;
-    _walletstatelist[60] = 1;
-    _walletstatelist[52] = 1;
-    _walletstatelist[6] = 1;
-    _walletstatelist[50] = 1;
-
-    _isBoldList[34] = true;
-    _isBoldList[5] = true;
-    _isBoldList[14] = true;
-    _isBoldList[29] = true;
-    _isBoldList[42] = true;
-    _isBoldList[3] = true;
-    _isBoldList[9] = true;
-    _isBoldList[59] = true;
-    _isBoldList[27] = true;
-
-    _isBoldList[10] = true;
-    _isBoldList[20] = true;
-    _isBoldList[57] = true;
-    _isBoldList[15] = true;
-    _isBoldList[2] = true;
-    _isBoldList[46] = true;
-    _isBoldList[53] = true;
-    _isBoldList[60] = true;
-    _isBoldList[52] = true;
-    _isBoldList[6] = true;
-    _isBoldList[50] = true;
-
-    throatstate = 1;
-    gstate = 1;
-    sacralstate = 1;
-    rootstate = 1;
-    spleenstate = 1;
-    solarstate = 1;
-  }
-
-  setwaChart() {
-    _walletstatelist[34] = 1;
-    _walletstatelist[5] = 1;
-    _walletstatelist[14] = 1;
-    _walletstatelist[29] = 1;
-    _walletstatelist[42] = 1;
-    _walletstatelist[3] = 1;
-    _walletstatelist[9] = 1;
-    _walletstatelist[59] = 1;
-    _walletstatelist[27] = 1;
-
-    _walletstatelist[10] = 1;
-    _walletstatelist[20] = 1;
-    _walletstatelist[57] = 1;
-    _walletstatelist[15] = 1;
-    _walletstatelist[2] = 1;
-    _walletstatelist[46] = 1;
-    _walletstatelist[53] = 1;
-    _walletstatelist[60] = 1;
-    _walletstatelist[52] = 1;
-    _walletstatelist[6] = 1;
-    _walletstatelist[50] = 1;
-
-    _isBoldList[34] = true;
-    _isBoldList[5] = true;
-    _isBoldList[14] = true;
-    _isBoldList[29] = true;
-    _isBoldList[42] = true;
-    _isBoldList[3] = true;
-    _isBoldList[9] = true;
-    _isBoldList[59] = true;
-    _isBoldList[27] = true;
-
-    _isBoldList[10] = true;
-    _isBoldList[20] = true;
-    _isBoldList[57] = true;
-    _isBoldList[15] = true;
-    _isBoldList[2] = true;
-    _isBoldList[46] = true;
-    _isBoldList[53] = true;
-    _isBoldList[60] = true;
-    _isBoldList[52] = true;
-    _isBoldList[6] = true;
-    _isBoldList[50] = true;
-
-    throatstate = 1;
-    gstate = 1;
-    sacralstate = 1;
-    rootstate = 1;
-    spleenstate = 1;
-    solarstate = 1;
-  }
-
-  sethumanChart() {
-    _walletstatelist[34] = 1;
-    _walletstatelist[5] = 1;
-    _walletstatelist[14] = 1;
-    _walletstatelist[29] = 1;
-    _walletstatelist[42] = 1;
-    _walletstatelist[3] = 1;
-    _walletstatelist[9] = 1;
-    _walletstatelist[59] = 1;
-    _walletstatelist[27] = 1;
-
-    _walletstatelist[10] = 1;
-    _walletstatelist[20] = 1;
-    _walletstatelist[57] = 1;
-    _walletstatelist[15] = 1;
-    _walletstatelist[2] = 1;
-    _walletstatelist[46] = 1;
-    _walletstatelist[53] = 1;
-    _walletstatelist[60] = 1;
-    _walletstatelist[52] = 1;
-    _walletstatelist[6] = 1;
-    _walletstatelist[50] = 1;
-
-    _isBoldList[34] = true;
-    _isBoldList[5] = true;
-    _isBoldList[14] = true;
-    _isBoldList[29] = true;
-    _isBoldList[42] = true;
-    _isBoldList[3] = true;
-    _isBoldList[9] = true;
-    _isBoldList[59] = true;
-    _isBoldList[27] = true;
-
-    _isBoldList[10] = true;
-    _isBoldList[20] = true;
-    _isBoldList[57] = true;
-    _isBoldList[15] = true;
-    _isBoldList[2] = true;
-    _isBoldList[46] = true;
-    _isBoldList[53] = true;
-    _isBoldList[60] = true;
-    _isBoldList[52] = true;
-    _isBoldList[6] = true;
-    _isBoldList[50] = true;
-
-    throatstate = 1;
-    gstate = 1;
-    sacralstate = 1;
-    rootstate = 1;
-    spleenstate = 1;
-    solarstate = 1;
-  }
-
-  void _resetwalletsState() {
-    setState(() {
-      for (var i = 0; i < _walletstatelist.length; i++) {
-        _writeWalletState(i, 0);
-        _isBoldList[i] = false;
-      }
-    });
-  }
-
-  void _resetcentersState() {
-    //setState(() {
-    allcounterstate = 4;
-    setCounters(allcounterstate);
   }
 
   // zb claude updates

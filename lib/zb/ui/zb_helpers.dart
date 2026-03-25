@@ -131,7 +131,8 @@ void consolidateWalletsToConsole() {
 /// Consolidated Utility to merge fragmented lists into wallets36
 void performOneTimeConsolidation() {
   // We use a local copy to avoid mutating the original
-  List<Map<String, dynamic>> master = List.from(transaction36);
+  // List<Map<String, dynamic>> master = List.from(transaction36);
+  List<Map<String, dynamic>> master = [];
 
   void merge(List<String> source, String newKey) {
     for (int i = 0; i < source.length; i += 2) {
@@ -250,7 +251,8 @@ void autoStandardizeFiles() async {
 }
 
 void performFinalBilingualStitch() {
-  List<Map<String, dynamic>> master = List.from(transaction36);
+  // List<Map<String, dynamic>> master = List.from(transaction36);
+  List<Map<String, dynamic>> master = [];
 
   String findAndClean(List<String> list, String id) {
     int idx = list.indexOf(id);
@@ -269,9 +271,9 @@ void performFinalBilingualStitch() {
     String id = entry['id'];
 
     // 1. Prepare safe strings with manual quotes
-    String sEn = findAndClean(new_rtransaction36Englst, id);
-    String sHe = findAndClean(rtransaction36Heblst, id);
-    String rEn = findAndClean(upd_rtransaction36Englst, id);
+    // String sEn = findAndClean(new_rtransaction36Englst, id);
+    // String sHe = findAndClean(rtransaction36Heblst, id);
+    // String rEn = findAndClean(upd_rtransaction36Englst, id);
     String rHe = (entry['silence_he'] ?? "").replaceAll("'", "\\'");
 
     // 2. Map ZB-Coin Pair
@@ -294,8 +296,8 @@ void performFinalBilingualStitch() {
     debugPrint("    'id': '$id',");
     debugPrint("    'color': $colorName,");
     debugPrint("    'zbcoin': ['$zEn', '$zHe'],");
-    debugPrint("    'sentence': ['$sEn', '$sHe'],");
-    debugPrint("    'rotation': ['$rEn', '$rHe'],");
+    // debugPrint("    'sentence': ['$sEn', '$sHe'],");
+    // debugPrint("    'rotation': ['$rEn', '$rHe'],");
     debugPrint("    'channel': '${entry['channel']}',");
     debugPrint("  },");
   }
@@ -1144,4 +1146,93 @@ Color getWalletLayerColor(int index, String layer, {bool isReversed = false}) {
     default:
       return Colors.transparent;
   }
+}
+
+void showSpecificRaveDialog(BuildContext context, ZBWallet currentWallet) {
+  // Using 'wallet' and 'note' variables directly from the object
+  int wallet = currentWallet.wallet;
+  int note = currentWallet.note ?? 1;
+
+  // Index calculation: (Wallet - 1) * 6 + (Note - 1)
+  int index = (wallet - 1) * 6 + (note - 1);
+
+  if (index < 0 || index >= 384) return;
+
+  // Pulling the label string directly from the ZBWallet getter
+  final String walletLabel = currentWallet.walletNote;
+
+  final String mainNote = ZBData.base384Mirror['Lines']?[index] ?? '';
+  final String lessonText =
+      ZBData.base384Mirror['Lesson']?[index] ?? "No Lesson";
+  final String exaltedText = ZBData.base384Mirror['Exalted Text']?[index] ?? "";
+  final String detrimentText =
+      ZBData.base384Mirror['Detriment Text']?[index] ?? "";
+  final String exaltImg =
+      ZBData.base384Mirror['Exalt Planet']?[index] ?? "assets/planets/sun.png";
+  final String detrimImg = ZBData.base384Mirror['Detrim Planet']?[index] ??
+      "assets/planets/earth.png";
+
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text(
+        walletLabel,
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+      ),
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              mainNote,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+            ),
+            const SizedBox(height: 5),
+            Text(
+              lessonText,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.blueGrey),
+            ),
+            const Divider(height: 30),
+
+            // Exalted Section
+            CircleAvatar(
+              radius: 13,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(exaltImg),
+            ),
+            const SizedBox(height: 5),
+            Text(exaltedText, textAlign: TextAlign.center),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                '+\n-',
+                textAlign: TextAlign.center,
+                style: TextStyle(height: 1.2, color: Colors.grey, fontSize: 18),
+              ),
+            ),
+
+            // Detriment Section
+            Text(detrimentText, textAlign: TextAlign.center),
+            const SizedBox(height: 5),
+            CircleAvatar(
+              radius: 13,
+              backgroundColor: Colors.transparent,
+              foregroundImage: AssetImage(detrimImg),
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => zbPop(context),
+          child: const Icon(Icons.close, color: Colors.black),
+        ),
+      ],
+    ),
+  );
 }
