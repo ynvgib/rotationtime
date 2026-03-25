@@ -373,14 +373,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.7.2"
-  inject_js:
-    dependency: transitive
-    description:
-      name: inject_js
-      sha256: "849eacfd4b7e9182a7e743843a820d74bf1abcb692bdbe09e34ef0f753ad7227"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.0"
   intl:
     dependency: "direct main"
     description:
@@ -389,14 +381,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.20.2"
-  js:
-    dependency: transitive
-    description:
-      name: js
-      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.6.7"
   json_annotation:
     dependency: transitive
     description:
@@ -790,10 +774,10 @@ packages:
     dependency: "direct main"
     description:
       name: sweph
-      sha256: e4b9b73a1224f754d568bbb3241452760137999036299d73d95fb49b25ff2c4d
+      sha256: "32067efbf3984857a970a590adb6502373d199add4867936485678130824a241"
       url: "https://pub.dev"
     source: hosted
-    version: "2.10.3+18"
+    version: "3.2.1+2.10.3"
   syncfusion_flutter_core:
     dependency: transitive
     description:
@@ -906,6 +890,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  universal_ffi:
+    dependency: transitive
+    description:
+      name: universal_ffi
+      sha256: f723a01ff2ff70729ff266037e37a125df9dd85c7322073eda18bc29987bd870
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   universal_io:
     dependency: transitive
     description:
@@ -1006,18 +998,10 @@ packages:
     dependency: transitive
     description:
       name: wasm_ffi
-      sha256: "5da66560305dd659d62caef535c5314abd9302c122e6eef8681e6879fbbfe358"
+      sha256: bb58f268afc14f2591b9d15c797e74ad7f14696f2b87f0d49e00cf41bde0dc7a
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.4"
-  wasm_interop:
-    dependency: transitive
-    description:
-      name: wasm_interop
-      sha256: b1b378f07a4cf0103c25faf34d9a64d2c3312135b9efb47e0ec116ec3b14e48f
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
+    version: "2.1.0"
   web:
     dependency: transitive
     description:

@@ -15,8 +15,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.1.4
-# add complex race iVing
+version: 1.1.4+1
+# updated complex sweph loading
 
 environment:
   sdk: ">=3.5.1 <4.0.0"
@@ -59,7 +59,7 @@ dependencies:
   country_state_city_pro: ^0.0.6
   flutter_colorpicker: ^1.1.0
   #sweph: ^3.2.1+2.10.3
-  sweph: ^2.10.3+18
+  #sweph: ^2.10.3+18
   intl: ^0.20.2
   flutter_localization: ^0.3.3
   syncfusion_flutter_pdfviewer: ^31.1.19
@@ -67,6 +67,7 @@ dependencies:
   sqflite: ^2.4.2
   sqflite_common_ffi: ^2.3.0+2  # Add this for Linux support
   path: ^1.9.1
+  sweph: ^3.2.1+2.10.3
 
 
 dev_dependencies:

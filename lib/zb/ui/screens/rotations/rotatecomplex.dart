@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:circle_list/circle_list.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/zb/data/zb_extensions.dart';
+import 'package:finallyicanlearn/zb/data/zb_services.dart';
 import 'package:finallyicanlearn/zb/ui/widgets/zb_widgethelpers.dart';
 import 'package:finallyicanlearn/zb/ui/zb_helpers.dart';
 import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
@@ -16,6 +17,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:sweph/sweph.dart';
 import 'dart:ui' as ui;
+import 'package:flutter/services.dart' show rootBundle;
 
 class RotateComplex extends StatefulWidget {
   const RotateComplex({super.key});
@@ -28,6 +30,9 @@ class RotateComplex extends StatefulWidget {
 
 class _RotateComplexState extends State<RotateComplex>
     with SingleTickerProviderStateMixin {
+  final FocusNode _noFocus =
+      FocusNode(canRequestFocus: false, skipTraversal: true);
+  bool _isDataLoaded = false; // Add this at the top of your State class
   // 1. GLOBAL UI & SEMANTIC STRINGS
   String _textlevel = '',
       _planettext = '',
@@ -196,114 +201,112 @@ class _RotateComplexState extends State<RotateComplex>
   );
 
   // 6. LATE INITIALIZED CONTROLLERS
-  late final TextEditingController _controllerType,
-      _controllerAuthority,
-      _controllerStrategy,
-      _controllerSentence,
-      _controllerFinalLine,
-      _controllerDefinition,
-      _controllerSetTime,
-      _controllerPersonTime,
-      _controllerDesignTime,
-      _controllerTimePick,
-      _controllerDatePick,
-      _controllermaintext,
-      _controllernotestory,
-      _controllerwallettext,
-      _controllernotetext;
+  final TextEditingController _controllerType = TextEditingController(),
+      _controllerAuthority = TextEditingController(),
+      _controllerStrategy = TextEditingController(),
+      _controllerSentence = TextEditingController(),
+      _controllerFinalLine = TextEditingController(),
+      _controllerDefinition = TextEditingController(),
+      _controllerSetTime = TextEditingController(),
+      _controllerPersonTime = TextEditingController(),
+      _controllerDesignTime = TextEditingController(),
+      _controllerTimePick = TextEditingController(),
+      _controllerDatePick = TextEditingController(),
+      _controllermaintext = TextEditingController(),
+      _controllernotestory = TextEditingController(),
+      _controllerwallettext = TextEditingController(),
+      _controllernotetext = TextEditingController();
 
-  late final TextEditingController _controllerSunHex,
-      _controllerSunText,
-      _controllerSunGate,
-      _controllerEarthHex,
-      _controllerEarthText,
-      _controllerEarthGate,
-      _controllerMoonHex,
-      _controllerMoonText,
-      _controllerMoonGate,
-      _controllerNorthNodeHex,
-      _controllerNorthNodeText,
-      _controllerNorthNodeGate,
-      _controllerSouthNodeHex,
-      _controllerSouthNodeText,
-      _controllerSouthNodeGate,
-      _controllerMercuryHex,
-      _controllerMercuryText,
-      _controllerMercuryGate,
-      _controllerVenusHex,
-      _controllerVenusText,
-      _controllerVenusGate,
-      _controllerMarsHex,
-      _controllerMarsText,
-      _controllerMarsGate,
-      _controllerJupiterHex,
-      _controllerJupiterText,
-      _controllerJupiterGate,
-      _controllerSaturnHex,
-      _controllerSaturnText,
-      _controllerSaturnGate,
-      _controllerUranusHex,
-      _controllerUranusText,
-      _controllerUranusGate,
-      _controllerNeptuneHex,
-      _controllerNeptuneText,
-      _controllerNeptuneGate,
-      _controllerPlutoHex,
-      _controllerPlutoText,
-      _controllerPlutoGate,
-      _controllerChironGate;
+  final TextEditingController _controllerSunHex = TextEditingController(),
+      _controllerSunText = TextEditingController(),
+      _controllerSunGate = TextEditingController(),
+      _controllerEarthHex = TextEditingController(),
+      _controllerEarthText = TextEditingController(),
+      _controllerEarthGate = TextEditingController(),
+      _controllerMoonHex = TextEditingController(),
+      _controllerMoonText = TextEditingController(),
+      _controllerMoonGate = TextEditingController(),
+      _controllerNorthNodeHex = TextEditingController(),
+      _controllerNorthNodeText = TextEditingController(),
+      _controllerNorthNodeGate = TextEditingController(),
+      _controllerSouthNodeHex = TextEditingController(),
+      _controllerSouthNodeText = TextEditingController(),
+      _controllerSouthNodeGate = TextEditingController(),
+      _controllerMercuryHex = TextEditingController(),
+      _controllerMercuryText = TextEditingController(),
+      _controllerMercuryGate = TextEditingController(),
+      _controllerVenusHex = TextEditingController(),
+      _controllerVenusText = TextEditingController(),
+      _controllerVenusGate = TextEditingController(),
+      _controllerMarsHex = TextEditingController(),
+      _controllerMarsText = TextEditingController(),
+      _controllerMarsGate = TextEditingController(),
+      _controllerJupiterHex = TextEditingController(),
+      _controllerJupiterText = TextEditingController(),
+      _controllerJupiterGate = TextEditingController(),
+      _controllerSaturnHex = TextEditingController(),
+      _controllerSaturnText = TextEditingController(),
+      _controllerSaturnGate = TextEditingController(),
+      _controllerUranusHex = TextEditingController(),
+      _controllerUranusText = TextEditingController(),
+      _controllerUranusGate = TextEditingController(),
+      _controllerNeptuneHex = TextEditingController(),
+      _controllerNeptuneText = TextEditingController(),
+      _controllerNeptuneGate = TextEditingController(),
+      _controllerPlutoHex = TextEditingController(),
+      _controllerPlutoText = TextEditingController(),
+      _controllerPlutoGate = TextEditingController(),
+      _controllerChironGate = TextEditingController();
 
-  late final TextEditingController _controllerDesignSunGate,
-      _controllerDesignEarthGate,
-      _controllerDesignMoonGate,
-      _controllerDesignNorthNodeGate,
-      _controllerDesignSouthNodeGate,
-      _controllerDesignMercuryGate,
-      _controllerDesignVenusGate,
-      _controllerDesignMarsGate,
-      _controllerDesignJupiterGate,
-      _controllerDesignSaturnGate,
-      _controllerDesignUranusGate,
-      _controllerDesignNeptuneGate,
-      _controllerDesignPlutoGate,
-      _controllerDesignChironGate;
+  final TextEditingController _controllerDesignSunGate =
+          TextEditingController(),
+      _controllerDesignEarthGate = TextEditingController(),
+      _controllerDesignMoonGate = TextEditingController(),
+      _controllerDesignNorthNodeGate = TextEditingController(),
+      _controllerDesignSouthNodeGate = TextEditingController(),
+      _controllerDesignMercuryGate = TextEditingController(),
+      _controllerDesignVenusGate = TextEditingController(),
+      _controllerDesignMarsGate = TextEditingController(),
+      _controllerDesignJupiterGate = TextEditingController(),
+      _controllerDesignSaturnGate = TextEditingController(),
+      _controllerDesignUranusGate = TextEditingController(),
+      _controllerDesignNeptuneGate = TextEditingController(),
+      _controllerDesignPlutoGate = TextEditingController(),
+      _controllerDesignChironGate = TextEditingController();
 
-  late final TextEditingController _controllerwalletstory,
-      _controllercointopfirsttext,
-      _controllercointopsecondtext,
-      _controllercointopthirdtext,
-      _controllercoinmidfirsttext,
-      _controllercoinmidsecondtext,
-      _controllercoinmidthirdtext,
-      _controllercoinbotfirsttext,
-      _controllercoinbotsecondtext,
-      _controllercoinbotthirdtext,
-      _controllerPlanetType,
-      _controllerPlanetSubType,
-      _controllergrampatxt,
-      _controllerpapaptxt,
-      _controllersontxt,
-      _controllerdaughtertxt,
-      _controllermamatxt,
-      _controllergrannytxt,
-      _controllersavetxt,
-      _controllerchartname,
-      country,
-      state,
-      city;
+  final TextEditingController _controllerwalletstory = TextEditingController(),
+      _controllercointopfirsttext = TextEditingController(),
+      _controllercointopsecondtext = TextEditingController(),
+      _controllercointopthirdtext = TextEditingController(),
+      _controllercoinmidfirsttext = TextEditingController(),
+      _controllercoinmidsecondtext = TextEditingController(),
+      _controllercoinmidthirdtext = TextEditingController(),
+      _controllercoinbotfirsttext = TextEditingController(),
+      _controllercoinbotsecondtext = TextEditingController(),
+      _controllercoinbotthirdtext = TextEditingController(),
+      _controllerPlanetType = TextEditingController(),
+      _controllerPlanetSubType = TextEditingController(),
+      _controllergrampatxt = TextEditingController(),
+      _controllerpapaptxt = TextEditingController(),
+      _controllersontxt = TextEditingController(),
+      _controllerdaughtertxt = TextEditingController(),
+      _controllermamatxt = TextEditingController(),
+      _controllergrannytxt = TextEditingController(),
+      _controllersavetxt = TextEditingController(),
+      _controllerchartname = TextEditingController();
 
-  late final CarouselSliderController _controllercoin,
-      _controllersubcoin,
-      _controllerconstate,
-      _controllerrotationstate,
-      _controllertop,
-      _controllermid,
-      _controllerbot,
-      _controlEvolutionContainerSlider,
-      _controlComplexSlider,
-      _controlSimpleSlider,
-      _controlBreathSlider,
-      _controlSilenceSlider;
+  final CarouselSliderController _controllercoin = CarouselSliderController(),
+      _controllersubcoin = CarouselSliderController(),
+      _controllerconstate = CarouselSliderController(),
+      _controllerrotationstate = CarouselSliderController(),
+      _controllertop = CarouselSliderController(),
+      _controllermid = CarouselSliderController(),
+      _controllerbot = CarouselSliderController(),
+      _controlEvolutionContainerSlider = CarouselSliderController(),
+      _controlComplexSlider = CarouselSliderController(),
+      _controlSimpleSlider = CarouselSliderController(),
+      _controlBreathSlider = CarouselSliderController(),
+      _controlSilenceSlider = CarouselSliderController();
 
   // --- 7. ADDITIONAL UI STATE & MISSING LISTS ---
   final List<bool> _isPlanetSelectedList = List<bool>.filled(
@@ -361,28 +364,7 @@ class _RotateComplexState extends State<RotateComplex>
     'ZBS': 'Zmansi Bob Story'
   };
 
-  @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    WidgetsFlutterBinding.ensureInitialized();
-    await Sweph.init(
-      // modulePath: 'sweph', // where to load module from.
-      epheAssets: [
-        //'packages/sweph/lib/zb/data/assets/ephe/seas_18.se1']);
-        // 'packages/sweph/lib/zb/data/assets/ephe/seas_18.se1',
-        // 'packages/sweph/lib/zb/data/assets/ephe/seas_12.se1',
-        // 'packages/sweph/lib/zb/data/assets/ephe/sepl_12.se1',
-        // 'packages/sweph/lib/zb/data/assets/ephe/sepl_18.se1'
-        'assets/ephe/seas_18.se1',
-        'assets/ephe/seas_12.se1',
-        'assets/ephe/sepl_12.se1',
-        'assets/ephe/sepl_18.se1',
-        'assets/ephe/semo_12.se1',
-        'assets/ephe/semo_18.se1',
-      ],
-    );
-    super.setState(() {}); // to update widget data
-  }
+  bool _isSwephInitialized = false;
 
   @override
   void dispose() {
@@ -477,9 +459,6 @@ class _RotateComplexState extends State<RotateComplex>
       _controllergrannytxt,
       _controllersavetxt,
       _controllerchartname,
-      country,
-      state,
-      city,
     ];
 
     // 4.2 The "Breath" way: Loop and destroy
@@ -494,24 +473,53 @@ class _RotateComplexState extends State<RotateComplex>
   void initState() {
     super.initState();
 
-    // Initialize everything in order
     _initTextControllers();
-    _initCarouselControllers();
 
-    // Set initial Time to UTC Now (replaces the static 00:00)
     final DateTime nowUtc = DateTime.now().toUtc();
     _selectedtime = TimeOfDay(hour: nowUtc.hour, minute: nowUtc.minute);
     _setDateTime(nowUtc);
 
-    // _applyInitialState3();
     _applyInitialSimpleState();
-    // 2. Background Generation
-    _initComplexData();
 
-    // Run this when the app starts or when a new chart is injected
+    // Trigger data generation after the first frame
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _initComplexData();
+    });
+
     _isPlanetSelectedList.fillRange(0, _isPlanetSelectedList.length, false);
-    _isPlanetSelectedList[0] = true; // Light up the Sun
-    _previousPlanetIndex = 0; // Set index to Sun
+    _isPlanetSelectedList[0] = true;
+    _previousPlanetIndex = 0;
+  }
+
+// REMOVE didChangeDependencies entirely to avoid double-initialization logic
+
+  Future<void> _initComplexData() async {
+    if (!_isSwephInitialized) {
+      await Sweph.init(
+        assetLoader: ZBAssetLoader(),
+        epheAssets: [
+          'assets/ephe/seas_18.se1',
+          'assets/ephe/seas_12.se1',
+          'assets/ephe/sepl_12.se1',
+          'assets/ephe/sepl_18.se1',
+          'assets/ephe/semo_12.se1',
+          'assets/ephe/semo_18.se1',
+        ],
+      );
+      _isSwephInitialized = true;
+    }
+
+    final DateTime initNow = DateTime.now().toUtc();
+    ZBAccount currentMoment =
+        await ZBHelpers.generateAccount(initNow, isNow: true);
+
+    if (mounted) {
+      setState(() {
+        _currentActiveAccount = currentMoment;
+        _syncUIWithAccount(currentMoment);
+        _isDataLoaded = true; // 👈 Everything is ready!
+      });
+    }
   }
 
   void _applyInitialSimpleState() {
@@ -526,147 +534,129 @@ class _RotateComplexState extends State<RotateComplex>
     });
   }
 
-  Future<void> _initComplexData() async {
-    await Sweph.init();
-    // This uses your fixed helper
-    final DateTime initNow = DateTime.now().toUtc();
-    _selectedtime = TimeOfDay(hour: initNow.hour, minute: initNow.minute);
-    _setDateTime(initNow);
-    ZBAccount currentMoment = await ZBHelpers.generateAccount(
-      initNow,
-      isNow: true,
-    );
-
-    if (mounted) {
-      setState(() {
-        _currentActiveAccount = currentMoment;
-        // Now the UI 'snaps' from Yellow to the calculated Birth states
-        _syncUIWithAccount(currentMoment);
-      });
-    }
-  }
-
   void _initTextControllers() {
     // 3.1 Main & Time
-    _controllerType = TextEditingController();
-    _controllerAuthority = TextEditingController();
-    _controllerStrategy = TextEditingController();
-    _controllerSentence = TextEditingController();
-    _controllerFinalLine = TextEditingController();
-    _controllerDefinition = TextEditingController();
-    _controllerSetTime = TextEditingController();
-    _controllerPersonTime = TextEditingController();
-    _controllerDesignTime = TextEditingController();
-    _controllerTimePick = TextEditingController();
-    _controllerDatePick = TextEditingController();
-    _controllermaintext = TextEditingController();
-    _controllernotestory = TextEditingController();
-    _controllerwallettext = TextEditingController();
-    _controllernotetext = TextEditingController();
+    _controllerType.text = "";
+    _controllerAuthority.text = "";
+    _controllerStrategy.text = "";
+    _controllerSentence.text = "";
+    _controllerFinalLine.text = "";
+    _controllerDefinition.text = "";
+    _controllerSetTime.text = "";
+    _controllerPersonTime.text = "";
+    _controllerDesignTime.text = "";
+    _controllerTimePick.text = "";
+    _controllerDatePick.text = "";
+    _controllermaintext.text = "";
+    _controllernotestory.text = "";
+    _controllerwallettext.text = "";
+    _controllernotetext.text = "";
 
     // 3.2 Personality Mapping
-    _controllerSunHex = TextEditingController();
-    _controllerSunText = TextEditingController();
-    _controllerSunGate = TextEditingController();
-    _controllerEarthHex = TextEditingController();
-    _controllerEarthText = TextEditingController();
-    _controllerEarthGate = TextEditingController();
-    _controllerMoonHex = TextEditingController();
-    _controllerMoonText = TextEditingController();
-    _controllerMoonGate = TextEditingController();
-    _controllerNorthNodeHex = TextEditingController();
-    _controllerNorthNodeText = TextEditingController();
-    _controllerNorthNodeGate = TextEditingController();
-    _controllerSouthNodeHex = TextEditingController();
-    _controllerSouthNodeText = TextEditingController();
-    _controllerSouthNodeGate = TextEditingController();
-    _controllerMercuryHex = TextEditingController();
-    _controllerMercuryText = TextEditingController();
-    _controllerMercuryGate = TextEditingController();
-    _controllerVenusHex = TextEditingController();
-    _controllerVenusText = TextEditingController();
-    _controllerVenusGate = TextEditingController();
-    _controllerMarsHex = TextEditingController();
-    _controllerMarsText = TextEditingController();
-    _controllerMarsGate = TextEditingController();
-    _controllerJupiterHex = TextEditingController();
-    _controllerJupiterText = TextEditingController();
-    _controllerJupiterGate = TextEditingController();
-    _controllerSaturnHex = TextEditingController();
-    _controllerSaturnText = TextEditingController();
-    _controllerSaturnGate = TextEditingController();
-    _controllerUranusHex = TextEditingController();
-    _controllerUranusText = TextEditingController();
-    _controllerUranusGate = TextEditingController();
-    _controllerNeptuneHex = TextEditingController();
-    _controllerNeptuneText = TextEditingController();
-    _controllerNeptuneGate = TextEditingController();
-    _controllerPlutoHex = TextEditingController();
-    _controllerPlutoText = TextEditingController();
-    _controllerPlutoGate = TextEditingController();
+    _controllerSunHex.text = "";
+    _controllerSunText.text = "";
+    _controllerSunGate.text = "";
+    _controllerEarthHex.text = "";
+    _controllerEarthText.text = "";
+    _controllerEarthGate.text = "";
+    _controllerMoonHex.text = "";
+    _controllerMoonText.text = "";
+    _controllerMoonGate.text = "";
+    _controllerNorthNodeHex.text = "";
+    _controllerNorthNodeText.text = "";
+    _controllerNorthNodeGate.text = "";
+    _controllerSouthNodeHex.text = "";
+    _controllerSouthNodeText.text = "";
+    _controllerSouthNodeGate.text = "";
+    _controllerMercuryHex.text = "";
+    _controllerMercuryText.text = "";
+    _controllerMercuryGate.text = "";
+    _controllerVenusHex.text = "";
+    _controllerVenusText.text = "";
+    _controllerVenusGate.text = "";
+    _controllerMarsHex.text = "";
+    _controllerMarsText.text = "";
+    _controllerMarsGate.text = "";
+    _controllerJupiterHex.text = "";
+    _controllerJupiterText.text = "";
+    _controllerJupiterGate.text = "";
+    _controllerSaturnHex.text = "";
+    _controllerSaturnText.text = "";
+    _controllerSaturnGate.text = "";
+    _controllerUranusHex.text = "";
+    _controllerUranusText.text = "";
+    _controllerUranusGate.text = "";
+    _controllerNeptuneHex.text = "";
+    _controllerNeptuneText.text = "";
+    _controllerNeptuneGate.text = "";
+    _controllerPlutoHex.text = "";
+    _controllerPlutoText.text = "";
+    _controllerPlutoGate.text = "";
 
     // 3.3 Design Mapping
-    _controllerDesignSunGate = TextEditingController();
-    _controllerDesignEarthGate = TextEditingController();
-    _controllerDesignMoonGate = TextEditingController();
-    _controllerDesignNorthNodeGate = TextEditingController();
-    _controllerDesignSouthNodeGate = TextEditingController();
-    _controllerDesignMercuryGate = TextEditingController();
-    _controllerDesignVenusGate = TextEditingController();
-    _controllerDesignMarsGate = TextEditingController();
-    _controllerDesignJupiterGate = TextEditingController();
-    _controllerDesignSaturnGate = TextEditingController();
-    _controllerDesignUranusGate = TextEditingController();
-    _controllerDesignNeptuneGate = TextEditingController();
-    _controllerDesignPlutoGate = TextEditingController();
-    _controllerChironGate = TextEditingController();
-    _controllerDesignChironGate = TextEditingController();
+    _controllerDesignSunGate.text = "";
+    _controllerDesignEarthGate.text = "";
+    _controllerDesignMoonGate.text = "";
+    _controllerDesignNorthNodeGate.text = "";
+    _controllerDesignSouthNodeGate.text = "";
+    _controllerDesignMercuryGate.text = "";
+    _controllerDesignVenusGate.text = "";
+    _controllerDesignMarsGate.text = "";
+    _controllerDesignJupiterGate.text = "";
+    _controllerDesignSaturnGate.text = "";
+    _controllerDesignUranusGate.text = "";
+    _controllerDesignNeptuneGate.text = "";
+    _controllerDesignPlutoGate.text = "";
+    _controllerChironGate.text = "";
+    _controllerDesignChironGate.text = "";
 
     // 3.4 UI & Location
-    _controllerwalletstory = TextEditingController();
-    _controllercointopfirsttext = TextEditingController();
-    _controllercointopsecondtext = TextEditingController();
-    _controllercointopthirdtext = TextEditingController();
-    _controllercoinmidfirsttext = TextEditingController();
-    _controllercoinmidsecondtext = TextEditingController();
-    _controllercoinmidthirdtext = TextEditingController();
-    _controllercoinbotfirsttext = TextEditingController();
-    _controllercoinbotsecondtext = TextEditingController();
-    _controllercoinbotthirdtext = TextEditingController();
-    _controllerPlanetType = TextEditingController();
-    _controllerPlanetSubType = TextEditingController();
-    _controllergrampatxt = TextEditingController();
-    _controllerpapaptxt = TextEditingController();
-    _controllersontxt = TextEditingController();
-    _controllerdaughtertxt = TextEditingController();
-    _controllermamatxt = TextEditingController();
-    _controllergrannytxt = TextEditingController();
-    _controllersavetxt = TextEditingController();
-    _controllerchartname = TextEditingController();
-    country = TextEditingController();
-    state = TextEditingController();
-    city = TextEditingController();
+    _controllerwalletstory.text = "";
+    _controllercointopfirsttext.text = "";
+    _controllercointopsecondtext.text = "";
+    _controllercointopthirdtext.text = "";
+    _controllercoinmidfirsttext.text = "";
+    _controllercoinmidsecondtext.text = "";
+    _controllercoinmidthirdtext.text = "";
+    _controllercoinbotfirsttext.text = "";
+    _controllercoinbotsecondtext.text = "";
+    _controllercoinbotthirdtext.text = "";
+    _controllerPlanetType.text = "";
+    _controllerPlanetSubType.text = "";
+    _controllergrampatxt.text = "";
+    _controllerpapaptxt.text = "";
+    _controllersontxt.text = "";
+    _controllerdaughtertxt.text = "";
+    _controllermamatxt.text = "";
+    _controllergrannytxt.text = "";
+    _controllersavetxt.text = "";
+    _controllerchartname.text = "";
   }
 
-  void _initCarouselControllers() {
-    _controllercoin = CarouselSliderController();
-    _controllersubcoin = CarouselSliderController();
-    _controllerconstate = CarouselSliderController();
-    _controllerrotationstate = CarouselSliderController();
-    _controllertop = CarouselSliderController();
-    _controllermid = CarouselSliderController();
-    _controllerbot = CarouselSliderController();
-    _controlEvolutionContainerSlider = CarouselSliderController();
-    _controlComplexSlider = CarouselSliderController();
-    _controlSimpleSlider = CarouselSliderController();
-    _controlBreathSlider = CarouselSliderController();
-    _controlSilenceSlider = CarouselSliderController();
-  }
+  // void _initCarouselControllers() {
+  //   _controllercoin = CarouselSliderController();
+  //   _controllersubcoin = CarouselSliderController();
+  //   _controllerconstate = CarouselSliderController();
+  //   _controllerrotationstate = CarouselSliderController();
+  //   _controllertop = CarouselSliderController();
+  //   _controllermid = CarouselSliderController();
+  //   _controllerbot = CarouselSliderController();
+  //   _controlEvolutionContainerSlider = CarouselSliderController();
+  //   _controlComplexSlider = CarouselSliderController();
+  //   _controlSimpleSlider = CarouselSliderController();
+  //   _controlBreathSlider = CarouselSliderController();
+  //   _controlSilenceSlider = CarouselSliderController();
+  // }
 
   @override
   Widget build(BuildContext context) {
+    if (!_isSwephInitialized || _currentActiveAccount == null) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator(color: Colors.amber)),
+      );
+    }
     final List<ZBTransformation> vars =
-        ZBStyles.buildTransformations(_currentActiveAccount);
+        ZBStyles.buildTransformations(_currentActiveAccount!);
 
     // Fallback if data is missing
     if (vars.isEmpty) return const SizedBox.shrink();
@@ -1261,6 +1251,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 70,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -1280,6 +1271,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 200,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -1319,6 +1311,7 @@ class _RotateComplexState extends State<RotateComplex>
               width: 250,
               height: 100,
               child: AutoSizeTextField(
+                focusNode: _noFocus,
                 maxLines: 2,
                 minFontSize: 25,
                 fullwidth: false,
@@ -1358,6 +1351,7 @@ class _RotateComplexState extends State<RotateComplex>
                   width: 260,
                   height: 30,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     maxLines: 1,
                     minFontSize: 15,
                     maxFontSize: 25,
@@ -1445,6 +1439,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 150,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -1536,6 +1531,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 150,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -1693,6 +1689,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 70,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -1712,6 +1709,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 200,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -2172,6 +2170,7 @@ class _RotateComplexState extends State<RotateComplex>
                         height: 35,
                         //margin: const EdgeInsets.only(top: 20, left: 40),
                         child: AutoSizeTextField(
+                          focusNode: _noFocus,
                           fullwidth: false,
                           minFontSize: 30,
                           maxFontSize: 35,
@@ -2797,6 +2796,7 @@ class _RotateComplexState extends State<RotateComplex>
               //width: Screen.width / 1.7,
               width: Screen.width / 1.5,
               child: AutoSizeTextField(
+                focusNode: _noFocus,
                 minLines: 2,
                 maxLines: 4,
                 minFontSize: 18,
@@ -2823,6 +2823,7 @@ class _RotateComplexState extends State<RotateComplex>
               //width: Screen.height / 3,
               width: Screen.width / 1.5,
               child: AutoSizeTextField(
+                focusNode: _noFocus,
                 minLines: 3,
                 maxLines: 4,
                 minFontSize: 15,
@@ -2851,6 +2852,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: botcoinnamelist[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -2868,6 +2870,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: botcoinnamelist[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -2885,6 +2888,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     minFontSize: 10,
                     maxFontSize: 30,
                     decoration: InputDecoration.collapsed(
@@ -2911,6 +2915,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: midcoinnamelist[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -2928,6 +2933,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: newcoinsHeb4lst[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -2945,6 +2951,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     minFontSize: 10,
                     maxFontSize: 30,
                     decoration: InputDecoration.collapsed(
@@ -2971,6 +2978,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: topcoinnamelist[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -2988,6 +2996,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: topcoinnamelist[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -3005,6 +3014,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     minFontSize: 10,
                     maxFontSize: 30,
                     decoration: InputDecoration.collapsed(
@@ -3145,6 +3155,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 70,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -3164,6 +3175,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 200,
                   child: AutoSizeTextField(
+                    focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -3355,6 +3367,7 @@ class _RotateComplexState extends State<RotateComplex>
             SizedBox(
               width: Screen.width / 2,
               child: AutoSizeTextField(
+                focusNode: _noFocus,
                 readOnly: false,
                 decoration: const InputDecoration.collapsed(
                   hintText: 'מחזיק מטבע לרגע',

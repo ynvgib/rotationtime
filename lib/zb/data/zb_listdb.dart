@@ -22562,7 +22562,7 @@ final List<String> hd6DesignTones = [
       'observer',
     ],
     hd6PerRightColorTrajectory = [
-      'personality right color trajectory',
+      // 'personality right color trajectory',
       'separativist',
       'anti-theist',
       'follower',

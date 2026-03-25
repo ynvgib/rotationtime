@@ -1,6 +1,17 @@
 import 'package:sweph/sweph.dart';
 import 'package:finallyicanlearn/zb/data/zb_classes.dart';
 import 'package:finallyicanlearn/zb/data/zb_extensions.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:typed_data';
+
+class ZBAssetLoader with AssetLoader {
+  @override
+  Future<Uint8List> load(String assetPath) async {
+    // This bridges your assets/ephe/ files to the Sweph C-engine
+    final byteData = await rootBundle.load(assetPath);
+    return byteData.buffer.asUint8List();
+  }
+}
 
 abstract class ZBExternalService {
   /// The 12 primary bodies we fetch from the Ephemeris.

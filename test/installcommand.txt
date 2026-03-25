@@ -23,8 +23,9 @@ all install
 // run web
 export CHROME_EXECUTABLE="/snap/bin/brave"
 flutter run -d chrome
-    
+ flutter run -d chrome --dart-define=FLUTTER_WEB_RENDERER=canvaskit
 flutter run -d web-server --web-port 8080 --web-hostname 0.0.0.0
+
 // then open browser 
 
 
