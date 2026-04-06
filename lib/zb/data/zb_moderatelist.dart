@@ -212,6 +212,7 @@ class TxtFilesList {
     'be_full_a_girl_en.txt',
     'be_en.txt',
     'appropriate_representation_en.txt',
+    'yoga_sutras_patanjali_en.txt',
   ];
 
   static final Map<String, String> cache = {};

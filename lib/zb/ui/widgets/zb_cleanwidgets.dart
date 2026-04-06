@@ -1,4 +1,6 @@
+import 'dart:math';
 import 'dart:ui' as ui;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
 import 'package:finallyicanlearn/zb/data/zb_classes.dart';
 import 'package:finallyicanlearn/zb/data/zb_data.dart';
@@ -348,7 +350,7 @@ abstract class ZBStyles {
     final ZBWallet pNodes = account.zbpersonality[2]; // External Personality
 
     // 2. Helper: Maps the Variable to the ZBStory Frequency State
-    ZBTransformation _mapToVar({
+    ZBTransformation mapToVar({
       required String id,
       required String label,
       required int zbState, // 2, 3, 4, or 5
@@ -369,16 +371,15 @@ abstract class ZBStyles {
     }
 
     return [
-      _mapToVar(
+      mapToVar(
           id: 'determination',
           label: "Determination",
           zbState: 2,
           source: dSun),
-      _mapToVar(
-          id: 'motivation', label: "Motivation", zbState: 5, source: pSun),
-      _mapToVar(
+      mapToVar(id: 'motivation', label: "Motivation", zbState: 5, source: pSun),
+      mapToVar(
           id: 'environment', label: "Environment", zbState: 3, source: dNodes),
-      _mapToVar(
+      mapToVar(
           id: 'perspective', label: "Perspective", zbState: 4, source: pNodes),
     ];
   }
@@ -425,6 +426,60 @@ abstract class ZBAssets {
 // rotatecleanwidgets.dart
 
 abstract class ZBLogic {
+  static int getBaseFreqForGodhead(int index) {
+    if (index < 4) return 5; // Blue Dog
+    if (index < 8) return 4; // Green Octopus
+    if (index < 12) return 2; // Red Dog
+    return 3; // Yellow Octopus
+  }
+
+  // The Surface Frequency (Rotating sequence)
+  // Sequence: Blue(5), Green(4), Yellow(3), Red(2) ... but shifted for your specific topfourzoonimal order
+  static int getTopFreqForGodhead(int index) {
+    const sequence = [5, 4, 3, 2, 5, 4, 3, 2, 2, 3, 4, 5, 2, 3, 4, 5];
+    return sequence[index];
+  }
+
+  static Color getWalletLayerColor(int index, String layer,
+      {bool isReversed = false}) {
+    // 1. Standardize index (0-63) for the CCW Master Wheel
+    int i = isReversed ? (63 - index) : index;
+
+    // 2. Foundation (bot) Layer
+    // Quadrants follow the DNA foundation: [5, 4, 2, 3]
+    int sectorIndex = (i ~/ 16) % 4;
+    int foundationFreqId = ZBStory.zbDNAstrand[sectorIndex];
+
+    if (layer == 'bot') {
+      return ZBStory.getfrequency(foundationFreqId).zbcolor;
+    }
+
+    // 3. The Symmetry Switch
+    // If the foundation is Red (2) or Yellow (3), we use the RNA Reversed strand.
+    // Otherwise, we use the standard DNA strand.
+    bool isContraction = (foundationFreqId == 2 || foundationFreqId == 3);
+
+    List<int> activeStrand = isContraction
+        ? ZBStory
+            .zbRNAstrandRev // [2, 3, 4, 5] (Silence, Breath, Simple, Complex)
+        : ZBStory
+            .zbRNAstrand; // [5, 4, 2, 3] (Complex, Simple, Silence, Breath)
+
+    switch (layer) {
+      case 'mid':
+        // Structure: Changes every 4 gates
+        int midFreqId = activeStrand[(i ~/ 4) % 4];
+        return ZBStory.getfrequency(midFreqId).zbcolor;
+      case 'top':
+        // Surface: Changes every 1 gate
+        int topFreqId = activeStrand[i % 4];
+        return ZBStory.getfrequency(topFreqId).zbcolor;
+      default:
+        return Colors.transparent;
+    }
+  }
+// Maps ZBWallet (Gate Number) -> iChing Font Character
+
   static ZBPlanet getPlanetByIndex(int index) {
     // Simple bounds check to prevent crashes
     if (index >= 0 && index < ZBData.getzbplanets.length) {
@@ -447,7 +502,7 @@ abstract class ZBLogic {
     // 2. Reset the Global Map to a neutral state (Ghost/Undefined)
     for (var counter in ZBData.counterMap.values) {
       counter.counterstate = 0;
-      print('counterstate set to ${counter.counterstate} in globalSync');
+      // print('counterstate set to ${counter.counterstate} in globalSync');
       counter.isManual = false;
     }
 
@@ -1501,5 +1556,385 @@ class ZBCounterPainter extends CustomPainter {
     // Only repaint if the state changes or the user picks a new color.
     // This is much more efficient than 'return false' or 'return true'
     return oldDelegate.state != state || oldDelegate.pickColor != pickColor;
+  }
+}
+
+Widget buildOrbitLayer({
+  required BuildContext context,
+  required double size,
+  required int count,
+  required Widget Function(int index) itemBuilder,
+  required double orbitRadius,
+  double startAngle = -0.8,
+}) {
+  final double angleStep = (2 * pi) / count;
+  final double stackDimension = (orbitRadius + size) * 2;
+
+  return SizedBox(
+    width: stackDimension,
+    height: stackDimension,
+    child: Stack(
+      clipBehavior: Clip.none,
+      children: List.generate(count, (index) {
+        final double angle = angleStep * index + startAngle;
+        final double cx = stackDimension / 2;
+        final double cy = stackDimension / 2;
+
+        final double left = cx + orbitRadius * cos(angle) - size / 2;
+        final double top = cy + orbitRadius * sin(angle) - size / 2;
+
+        return Positioned(
+          left: left,
+          top: top,
+          width: size,
+          height: size,
+          child: itemBuilder(index),
+        );
+      }),
+    ),
+  );
+}
+
+Widget buildOrbitCenter({
+  required double size,
+  String folder = 'camog',
+}) {
+  // Frequency 6 is the "Integration" / Center point
+  final freq = ZBStory.getfrequency(6);
+
+  return Stack(
+    alignment: Alignment.center,
+    children: [
+      // 1. The Background Coin (Always from /coins)
+      Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: Colors.white,
+            width: 2.0,
+          ),
+        ),
+        child: Opacity(
+          opacity: 0.5,
+          child: Image.asset(
+            'assets/coins/${freq.zbcoinimg}', // Updated property
+            height: size,
+            width: size,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
+
+      // 2. The Main Animal (Larger, sits on top)
+      Image.asset(
+        'assets/$folder/${freq.zbanimalimg}', // Updated property
+        height: size * 1.2,
+        width: size * 1.2,
+        fit: BoxFit.contain,
+      ),
+    ],
+  );
+}
+
+Widget buildZodiacOrbit({
+  required BuildContext context,
+  required double size,
+  double orbitRadius = 150.0,
+  double startAngle = 3.85, // Matches your original initialAngle
+}) {
+  const int count = 12;
+  const double angleStep = (2 * pi) / count;
+
+  return SizedBox(
+    width: orbitRadius * 2 + size,
+    height: orbitRadius * 2 + size,
+    child: Stack(
+      alignment: Alignment.center,
+      children: List.generate(count, (index) {
+        final double angle = angleStep * index + startAngle;
+        final double x = orbitRadius * cos(angle);
+        final double y = orbitRadius * sin(angle);
+
+        return Transform.translate(
+          offset: Offset(x, y),
+          child: Tooltip(
+            message:
+                '${revzodiacNameHeblist[index]}\n${revzodiacNamelist[index]}',
+            textAlign: TextAlign.center,
+            textStyle: const TextStyle(fontSize: 20, color: Colors.white),
+            child: Container(
+              width: size,
+              height: size,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  colors: [
+                    revzodiacGradeColorlist[index * 2],
+                    revzodiacGradeColorlist[index * 2 + 1],
+                  ],
+                ),
+                image: DecorationImage(
+                  image: AssetImage(revZodiacList[index]),
+                  fit: BoxFit.scaleDown,
+                ),
+              ),
+            ),
+          ),
+        );
+      }),
+    ),
+  );
+}
+
+class ZBMasterWheel extends StatelessWidget {
+  final double radius;
+  final Function(int gateId, String iChingKey) onTap;
+  final Widget? centerWidget;
+
+  const ZBMasterWheel({
+    super.key,
+    required this.radius,
+    required this.onTap,
+    this.centerWidget,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final double side = MediaQuery.of(context).size.shortestSide;
+
+    // 1. Using your updated relative spacing
+    final double rOuter = radius;
+    final double rMiddle = rOuter - 25;
+    final double rInner = rMiddle - 25;
+
+    // 2. Using your updated relative coin sizing
+    final double outerSize = side * 0.055;
+    final double midSize = outerSize * 0.64;
+    final double innerSize = midSize * 0.95;
+
+    return SelectionContainer.disabled(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          if (centerWidget != null) centerWidget!,
+
+          // RING 1: Inner Icons (Foundation Layer 'bot')
+          buildOrbitLayer(
+            context: context,
+            size: innerSize,
+            orbitRadius: rInner,
+            count: 64,
+            startAngle: -0.8,
+            itemBuilder: (index) {
+              // CCW FIX: Reverse the index mapping
+              final int revIndex = 63 - index;
+              final gateId = ZBData.orderWalletOnWheel[revIndex];
+
+              return Container(
+                decoration: BoxDecoration(
+                  color: ZBLogic.getWalletLayerColor(revIndex, 'bot',
+                      isReversed: false),
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Text(
+                    ZBData.walletToiChingKey[gateId] ?? '',
+                    style: TextStyle(
+                        fontSize: innerSize * 0.4, color: Colors.white),
+                  ),
+                ),
+              );
+            },
+          ),
+
+          // RING 2: Gate Numbers (Structure Layer 'mid')
+          buildOrbitLayer(
+            context: context,
+            size: midSize,
+            orbitRadius: rMiddle,
+            count: 64,
+            startAngle: -0.8,
+            itemBuilder: (index) {
+              // CCW FIX: Reverse the index mapping
+              final int revIndex = 63 - index;
+              final gateId = ZBData.orderWalletOnWheel[revIndex];
+
+              return Container(
+                decoration: BoxDecoration(
+                  color: ZBLogic.getWalletLayerColor(revIndex, 'mid',
+                      isReversed: true),
+                  shape: BoxShape.circle,
+                  border: Border.all(width: 0.5, color: Colors.black45),
+                ),
+                child: Center(
+                  child: Text(
+                    '$gateId',
+                    style: TextStyle(
+                        fontSize: midSize * 0.45, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              );
+            },
+          ),
+
+          // RING 3: Interactive iChing Icons (Surface Layer 'top')
+          buildOrbitLayer(
+            context: context,
+            size: outerSize,
+            orbitRadius: rOuter,
+            count: 64,
+            startAngle: -0.8,
+            itemBuilder: (index) {
+              final int revIndex = 63 - index;
+              final gateId = ZBData.orderWalletOnWheel[revIndex];
+              final key = ZBData.walletToiChingKey[gateId] ?? '';
+
+              return MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: SizedBox(
+                  width: outerSize,
+                  height: outerSize,
+                  child: GestureDetector(
+                    // CRITICAL: Ensures the entire area (including transparent parts) is clickable
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      print(
+                          "Tapped Gate: $gateId"); // If this prints, the fix below works
+
+                      // 2. UPDATE YOUR CONTROLLERS HERE
+                      // _controllernumtext.text = gateId.toString();
+                      // _controllerichingtext.text = key;
+                      // _controllerlettext.text = key; // Or whatever logic maps to the English letter
+
+                      // Call the parent onTap if provided
+                      onTap(gateId, key);
+                    },
+                    child: Center(
+                      child: AutoSizeText(
+                        key,
+                        style: const TextStyle(
+                          fontFamily: 'iChing',
+                          // Increase the hit area visually if needed
+                        ),
+                        maxFontSize: 18,
+                        minFontSize: 6,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+Widget buildGodheadPopUp(BuildContext context, ZBGodhead gh) {
+  return AlertDialog(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    title: Column(
+      children: [
+        // The Source Language name (Greek/Sanskrit/etc)
+        Text(
+          gh.sourceName,
+          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
+        ),
+        // The Modern Hebrew name
+        Text(
+          gh.hebName,
+          style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+        ),
+      ],
+    ),
+    content: SingleChildScrollView(
+      child: ListBody(
+        children: [
+          const Divider(),
+          // The English reference name
+          Center(
+            child: Text(
+              gh.name.toUpperCase(),
+              style: const TextStyle(letterSpacing: 1.5, color: Colors.grey),
+            ),
+          ),
+          const SizedBox(height: 20),
+          // The esoteric "New" Hebrew name
+          Text(
+            gh.newHeb,
+            textAlign: TextAlign.right,
+            style: const TextStyle(fontSize: 18),
+          ),
+          const SizedBox(height: 10),
+          // The "RT" (Rotation Time) Hebrew name
+          Text(
+            gh.rtHeb,
+            textAlign: TextAlign.right,
+            style: const TextStyle(fontSize: 16, color: Colors.blueGrey),
+          ),
+          const SizedBox(height: 20),
+          // Visual indicator of the Frequency Mix (Base vs Top)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildFreqIcon(gh.baseFreq, "Base"),
+              const Icon(Icons.arrow_forward_ios, size: 12),
+              _buildFreqIcon(gh.topFreq, "Top"),
+            ],
+          ),
+        ],
+      ),
+    ),
+    actions: [
+      TextButton(
+        onPressed: () => Navigator.of(context).pop(),
+        child: const Text("CLOSE"),
+      ),
+    ],
+  );
+}
+
+// Small helper for the popup's mini-icons
+Widget _buildFreqIcon(int freqId, String label) {
+  final freq = ZBStory.getfrequency(freqId);
+  return Column(
+    children: [
+      Image.asset('assets/camog/${freq.zbanimalimg}', width: 40),
+      Text(label, style: const TextStyle(fontSize: 10)),
+    ],
+  );
+}
+
+class ZBToggle extends StatelessWidget {
+  final bool isActive;
+  final VoidCallback onTap;
+  final double size;
+
+  // state 5 (blue/complex) when active, state 2 (red/silence) when inactive
+  static final _activeFrequency = ZBFrequency.getFrequencyByState(5);
+  static final _inactiveFrequency = ZBFrequency.getFrequencyByState(2);
+
+  const ZBToggle({
+    super.key,
+    required this.isActive,
+    required this.onTap,
+    this.size = 30,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final frequency = isActive ? _activeFrequency : _inactiveFrequency;
+
+    return GestureDetector(
+      onTap: onTap,
+      child: Image.asset(
+        'assets/coins/${frequency.zbcoinimg}',
+        width: size,
+        height: size,
+      ),
+    );
   }
 }

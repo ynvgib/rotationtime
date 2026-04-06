@@ -1,8 +1,6 @@
 import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:circle_list/circle_list.dart';
-import 'package:finallyicanlearn/models/rotateclasses.dart';
 import 'package:finallyicanlearn/zb/data/zb_classes.dart';
 import 'package:finallyicanlearn/zb/ui/widgets/zb_cleanwidgets.dart';
 import 'package:finallyicanlearn/zb/ui/zb_helpers.dart';
@@ -1028,40 +1026,6 @@ Widget buildWalletPopUp(BuildContext context, int walletindex) {
           if (Navigator.of(context).canPop()) {
             Navigator.of(context).pop();
           }
-        },
-        child: const Text('X', style: TextStyle(color: Colors.black)),
-      ),
-    ],
-  );
-}
-
-Widget buildGodheadPopUp(BuildContext context, int ghidx) {
-  return AlertDialog(
-    title: Center(
-      //child: Text('Wallet: $wallet\n'
-      // child: Text(revrtgodheads[ghidx]),
-      child: Text(revzbgodheads[ghidx]),
-    ),
-    content: SizedBox(
-      width: MediaQuery.of(context).size.width * 0.4,
-      height: 150,
-      child: Flex(
-        direction: Axis.vertical,
-        children: [
-          Text(revrtgodheads[ghidx]),
-          const SizedBox(height: 5),
-          Text(revhebgodheads[ghidx]),
-          const SizedBox(height: 5),
-          Text(revgodheads[ghidx]),
-          const SizedBox(height: 5),
-          Text(revhdgodheadsnew[ghidx]),
-        ],
-      ),
-    ),
-    actions: <Widget>[
-      TextButton(
-        onPressed: () {
-          Navigator.of(context).pop();
         },
         child: const Text('X', style: TextStyle(color: Colors.black)),
       ),
@@ -3411,49 +3375,6 @@ Widget buildCamelCenter() {
   );
 }
 
-Widget buildOrbitLayer({
-  required BuildContext context,
-  required double size,
-  required String imageKey,
-  required String folder,
-  double opacity = 1.0,
-  bool isInteractive = false,
-}) {
-  return CircleList(
-    innerRadius: 15,
-    initialAngle: 0.05,
-    origin: const Offset(0, 0),
-    // Only the middle/bottom layers need the Camel;
-    // Top layer center can be empty to let clicks pass through.
-    centerWidget: isInteractive
-        ? const SizedBox(width: 80, height: 80)
-        : buildCamelCenter(),
-    children: List.generate(5, (index) {
-      final int mapIndex = index + 1;
-      final freq = ZBStory.getfrequency(mapIndex);
-      Widget content = Opacity(
-        opacity: opacity,
-        child: Image.asset(
-          'assets/$folder/${freq.imageFor(imageKey)}',
-          height: size,
-          width: size,
-          fit: BoxFit.contain,
-        ),
-      );
-
-      // Only add InkWell to the sharpest, top-most layer
-      if (isInteractive) {
-        return InkWell(
-          onTap: () => Navigator.pushNamed(context, mainroutes[index]),
-          child: content,
-        );
-      }
-
-      return content;
-    }),
-  );
-}
-
 // new gemini wheel
 
 Color getWheelColor(int index, {required bool isInnerRing}) {
@@ -3582,7 +3503,7 @@ class PlanetCircleWidget extends StatelessWidget {
 
   /// Calculates angle based on the 64-gate wheel structure
   double calculateGateAngle(int gate, int? line) {
-    int gateIndex = ZBData.orderWalletOnWheel.indexOf(gate);
+    int gateIndex = ZBData.order41WalletStartWheel.indexOf(gate);
     if (gateIndex == -1) return 0.0;
 
     const double gateWidth = 360.0 / 64.0;
@@ -3799,18 +3720,18 @@ class _ZBMandalaWidgetState extends State<ZBMandalaWidget> {
                   rCoin1,
                   angle,
                   _buildCoin(
-                    getWalletLayerColor(i, 'bot', isReversed: true),
+                    ZBLogic.getWalletLayerColor(i, 'bot', isReversed: true),
                     coinSize,
                   ),
                 );
               }(),
               () {
-                double angle = -0.8 + (i * (2 * math.pi / 64));
+                double angle = -0.815 + (i * (2 * math.pi / 64));
                 return _positioned(
                   rCoin2,
                   angle,
                   _buildCoin(
-                    getWalletLayerColor(i, 'mid', isReversed: true),
+                    ZBLogic.getWalletLayerColor(i, 'mid', isReversed: true),
                     coinSize,
                   ),
                 );
@@ -3869,7 +3790,7 @@ class _ZBMandalaWidgetState extends State<ZBMandalaWidget> {
     // Stays "Dark" (Ghosted) for Transparent (0) and Simple Baseline (4)
     final bool isActive = state != 0 && state != 4;
 
-    final Color gateFillColor = getWalletLayerColor(
+    final Color gateFillColor = ZBLogic.getWalletLayerColor(
       index,
       'top',
       isReversed: true,
@@ -4068,7 +3989,7 @@ class ZBCube extends StatelessWidget {
       children: [
         Transform(
           transform: Matrix4.identity()
-            ..translate(0.0, -75.0, 0.0)
+            ..translateByDouble(0.0, -75.0, 0.0, 1.0)
             ..rotateX(-pi / 2),
           alignment: Alignment.center,
           child: Container(
@@ -4083,7 +4004,7 @@ class ZBCube extends StatelessWidget {
           ),
         ),
         Transform(
-          transform: Matrix4.identity()..translate(0.0, 0.0, 75.0),
+          transform: Matrix4.identity()..translateByDouble(0.0, 0.0, 75.0, 1.0),
           //..rotateY(-pi / 2),
           //alignment: Alignment.center,
           child: Container(
@@ -4099,7 +4020,7 @@ class ZBCube extends StatelessWidget {
         ),
         Transform(
           transform: Matrix4.identity()
-            ..translate(75.0, 0.0, 0.0)
+            ..translateByDouble(75.0, 0.0, 0.0, 1.0)
             ..rotateY(-pi / 2),
           alignment: Alignment.center,
           child: Container(
@@ -4115,7 +4036,7 @@ class ZBCube extends StatelessWidget {
         ),
         Transform(
           transform: Matrix4.identity()
-            ..translate(-75.0, 0.0, 0.0)
+            ..translateByDouble(-75.0, 0.0, 0.0, 1.0)
             ..rotateY(-pi / 2),
           alignment: Alignment.center,
           child: Container(
@@ -4131,7 +4052,7 @@ class ZBCube extends StatelessWidget {
         ),
         Transform(
           transform: Matrix4.identity()
-            ..translate(0.0, 75.0, 0.0)
+            ..translateByDouble(0.0, 75.0, 0.0, 1.0)
             ..rotateX(-pi / 2),
           alignment: Alignment.center,
           child: Container(
@@ -4146,7 +4067,8 @@ class ZBCube extends StatelessWidget {
           ),
         ),
         Transform(
-          transform: Matrix4.identity()..translate(0.0, 0.0, -75.0),
+          transform: Matrix4.identity()
+            ..translateByDouble(0.0, 0.0, -75.0, 1.0),
           alignment: Alignment.center,
           child: Container(
             height: 135,
@@ -4173,7 +4095,7 @@ class ZBCubeTwo extends StatelessWidget {
       children: [
         Transform(
           transform: Matrix4.identity()
-            ..translate(0.0, -75.0, 0.0)
+            ..translateByDouble(0.0, -75.0, 0.0, 1.0)
             ..rotateX(-pi / 2),
           alignment: Alignment.center,
           child: Container(
@@ -4188,7 +4110,7 @@ class ZBCubeTwo extends StatelessWidget {
           ),
         ),
         Transform(
-          transform: Matrix4.identity()..translate(0.0, 0.0, 75.0),
+          transform: Matrix4.identity()..translateByDouble(0.0, 0.0, 75.0, 1.0),
           //..rotateY(-pi / 2),
           //alignment: Alignment.center,
           child: Container(
@@ -4204,7 +4126,7 @@ class ZBCubeTwo extends StatelessWidget {
         ),
         Transform(
           transform: Matrix4.identity()
-            ..translate(75.0, 0.0, 0.0)
+            ..translateByDouble(75.0, 0.0, 0.0, 1.0)
             ..rotateY(-pi / 2),
           alignment: Alignment.center,
           child: Container(
@@ -4220,7 +4142,7 @@ class ZBCubeTwo extends StatelessWidget {
         ),
         Transform(
           transform: Matrix4.identity()
-            ..translate(-75.0, 0.0, 0.0)
+            ..translateByDouble(-75.0, 0.0, 0.0, 1.0)
             ..rotateY(-pi / 2),
           alignment: Alignment.center,
           child: Container(

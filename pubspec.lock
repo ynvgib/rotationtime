@@ -81,14 +81,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.4"
-  circle_list:
-    dependency: "direct main"
-    description:
-      name: circle_list
-      sha256: "671af906cacb5454bc71c6b01469562ccd765c10b31b3d2fd5b7e8f103868469"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.5"
   cli_util:
     dependency: transitive
     description:

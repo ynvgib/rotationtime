@@ -453,7 +453,6 @@ class ZBHelpers {
 
 // --- SEARCH ENGINE LOGIC ---
 // --- DATA HOLDER ---
-// import 'rtlists.dart'; // Ensure your script-generated lists are accessible
 
 class TextFileSearchDelegate extends SearchDelegate {
   // 1. Point these to your script-generated lists in rtlists.dart
@@ -869,10 +868,11 @@ List<Color> generateBridgeGradients() {
     int startGate = (i * (64 / 12)).floor();
     int endGate = ((i + 1) * (64 / 12)).floor() - 1;
 
-    Color colorStart = getWalletLayerColor(startGate, 'bot', isReversed: true);
+    Color colorStart =
+        ZBLogic.getWalletLayerColor(startGate, 'bot', isReversed: true);
     Color colorEnd = (endGate < 64)
-        ? getWalletLayerColor(endGate, 'bot', isReversed: true)
-        : getWalletLayerColor(0, 'bot', isReversed: true);
+        ? ZBLogic.getWalletLayerColor(endGate, 'bot', isReversed: true)
+        : ZBLogic.getWalletLayerColor(0, 'bot', isReversed: true);
 
     if (colorStart != colorEnd) {
       gradients.add(colorStart);
@@ -880,7 +880,8 @@ List<Color> generateBridgeGradients() {
     } else {
       gradients.add(colorStart);
       // Swapping hardcoded list for the math function on the 'mid' layer
-      gradients.add(getWalletLayerColor(startGate, 'mid', isReversed: true));
+      gradients
+          .add(ZBLogic.getWalletLayerColor(startGate, 'mid', isReversed: true));
     }
   }
   return gradients;
@@ -1102,49 +1103,6 @@ void syncMainWallet() {
     } else {
       ZBData.walletstatelist[i] = 0; // Undefined (Shadow)
     }
-  }
-}
-
-Color getWalletLayerColor(int index, String layer, {bool isReversed = false}) {
-  // Use index 0-63
-  int i = isReversed ? (63 - index) : index;
-
-  // Base Tribe Colors (Colors4lst logic)
-  // 0: Blue, 1: Green, 2: Yellow, 3: Red
-  final List<Color> bgry = [
-    Colors.blue,
-    Colors.green,
-    Colors.yellow,
-    Colors.red,
-  ];
-  final List<Color> rygb = [
-    Colors.red,
-    Colors.yellow,
-    Colors.green,
-    Colors.blue,
-  ];
-
-  // 1. Calculate the BOTTOM foundation (Changes every 16)
-  // This determines the "Flavor" of the sector
-  int botIndex = (i ~/ 16) % 4;
-  Color botColor = bgry[botIndex];
-
-  if (layer == 'bot') return botColor;
-
-  // 2. Determine sequence behavior for Mid and Top
-  // Logic: Blue/Green foundation uses BGRY, Yellow/Red uses RYGB
-  bool isCoolFoundation = (botIndex == 0 || botIndex == 1); // Blue or Green
-  List<Color> activeSequence = isCoolFoundation ? bgry : rygb;
-
-  switch (layer) {
-    case 'mid':
-      // Changes every 4
-      return activeSequence[(i ~/ 4) % 4];
-    case 'top':
-      // Changes every 1
-      return activeSequence[i % 4];
-    default:
-      return Colors.transparent;
   }
 }
 

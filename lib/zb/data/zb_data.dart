@@ -79,9 +79,89 @@ abstract class ZBStory {
       orElse: () => zbfrequencies[0], // Fallback to state 0 (Transparent)
     );
   }
+
+  static const List<int> zbDNAstrand = [5, 4, 2, 3]; // Blue, Green, Red, Yellow
+  static const List<int> zbRNAstrand = [5, 4, 3, 2];
+  static List<int> get zbDNAstrandRev => zbDNAstrand.reversed.toList();
+  static List<int> get zbRNAstrandRev => zbRNAstrand.reversed.toList();
 }
 
 abstract class ZBData {
+  // static final List<ZBGodhead> godheads16 = List.generate(
+  //     16,
+  //     (i) => ZBGodhead(
+  //           name: hdgodheads16lst[i],
+  //           hebName: hdgodheads16Heblst[i],
+  //           newHeb: newgh16Heblst[i],
+  //           rtHeb: rtgodheads16list_heb[i],
+  //         ));
+
+  static const Map<int, String> walletToiChingKey = {
+    1: 'a',
+    43: 'g',
+    14: 'f',
+    34: 'l',
+    9: 'e',
+    5: 'p',
+    26: 'k',
+    11: 'z',
+    10: 'd',
+    58: 's',
+    38: 'o',
+    54: 'C',
+    61: 'j',
+    60: 'F',
+    41: 'y',
+    19: 'S',
+    13: 'c',
+    49: 'u',
+    30: 'r',
+    55: 'H',
+    37: 'n',
+    63: 'O',
+    22: 'B',
+    36: 'U',
+    25: 'i',
+    17: 'J',
+    21: 'E',
+    51: 'W',
+    42: 'x',
+    3: 'Y',
+    27: 'R',
+    24: '6',
+    2: '@',
+    23: '!',
+    8: '0',
+    20: 'Q',
+    16: '9',
+    35: 'X',
+    45: '2',
+    12: 'w',
+    15: '8',
+    52: 'V',
+    39: '4',
+    53: 'D',
+    62: '1',
+    56: 'I',
+    31: 'L',
+    33: 'h',
+    7: '7',
+    4: 'T',
+    29: '3',
+    59: 'A',
+    40: '5',
+    64: 'P',
+    47: 'M',
+    6: 'm',
+    46: 'Z',
+    18: 'G',
+    48: 'N',
+    57: 'q',
+    32: 'K',
+    50: 't',
+    28: 'v',
+    44: 'b',
+  };
   static String getcounterforwallet(int walletId) {
     return counterMap.entries
         .firstWhere(
@@ -1795,33 +1875,33 @@ abstract class ZBData {
   };
 
   static final Map<String, List<String>> base6Data = {
-    'coins1image': coins6lst,
-    'coins2image': coins6lst2,
-    'zb6notes': zb6notes,
-    'zb6coins': zb6coins,
-    'zb6hebcoins': zb6hebcoins,
-    'hd6profile': hd6profile,
-    'zb6hebprofile': zb6hebprofile,
-    'zb6TonesSilenceHeb': zb6TonesSilenceHeb,
-    'zb6ColorsSilenceHeb': zb6ColorsSilenceHeb,
-    'zb6TonesBreathHeb': zb6TonesBreathHeb,
-    'zb6ColorsBreathHeb': zb6ColorsBreathHeb,
-    'zb6TonesSimpleHeb': zb6TonesSimpleHeb,
-    'zb6ColorsSimpleHeb': zb6ColorsSimpleHeb,
-    'zb6TonesComplexHeb': zb6TonesComplexHeb,
-    'zb6ColorsComplexHeb': zb6ColorsComplexHeb,
-    'hd6DesignTones': hd6DesignTones,
-    'hd6PersonalityTones': hd6PersonalityTones,
-    'hd6DesignColorPHS': hd6DesignColorPHS,
-    'hd6DesignColorENV': hd6DesignColorENV,
-    'hd6PersonalityColorPER': hd6PersonalityColorPER,
-    'hd6PersonalityColorMOT': hd6PersonalityColorMOT,
-    'hd6DesignLeftFixedColorPHS': hd6DesignLeftFixedColorPHS,
-    'hd6DesignRightFixedColorPHS': hd6DesignRightFixedColorPHS,
-    'hd6DesLeftFixedColorEnv': hd6DesLeftFixedColorEnv,
-    'hd6DesRightFixedColorEnv': hd6DesRightFixedColorEnv,
-    'hd6PerLeftColorTrajectory': hd6PerLeftColorTrajectory,
-    'hd6PerRightColorTrajectory': hd6PerRightColorTrajectory,
+    'Coins 1 Image': coins6lst,
+    'Coines 2 Image': coins6lst2,
+    'Strings': zb6notes,
+    'noone': zb6coins,
+    'אפאחת': zb6hebcoins,
+    'hd profile': hd6profile,
+    'זיבי בעד קובץ': zb6hebprofile,
+    'אף אחת לא מגוונת את האישה': zb6TonesSilenceHeb,
+    'כולם צובעים את האישה': zb6ColorsSilenceHeb,
+    'אף אחת לא מגוונת את האישה בסביבה': zb6TonesBreathHeb,
+    'כולם צובעים את האישה בסטודיו': zb6ColorsBreathHeb,
+    'אף אחת לא מגוונת את איות הסטודיו': zb6TonesSimpleHeb,
+    'כולם צובעים ונצבעים באיות הסטודיו': zb6ColorsSimpleHeb,
+    'כולם מגוונים ומגוונים באיות': zb6TonesComplexHeb,
+    'כולם צובעים ונצבעים באיות': zb6ColorsComplexHeb,
+    'determined envrionmental tones': hd6DesignTones,
+    'perspective tone': hd6PersonalityTones,
+    'determined PHS color': hd6DesignColorPHS,
+    'environmental color': hd6DesignColorENV,
+    'perspective color': hd6PersonalityColorPER,
+    'motivational color': hd6PersonalityColorMOT,
+    'left fixed PHS color': hd6DesignLeftFixedColorPHS,
+    'right fixed PHS color': hd6DesignRightFixedColorPHS,
+    'left fixed ENV color': hd6DesLeftFixedColorEnv,
+    'right fixed ENV color': hd6DesRightFixedColorEnv,
+    'personality left color trajectory': hd6PerLeftColorTrajectory,
+    'personality right color trajectory': hd6PerRightColorTrajectory,
   };
 
   static final Map<String, List<String>> base36Data = {
@@ -1892,7 +1972,7 @@ abstract class ZBData {
     return allSources.where((s) => s.base == targetBase).toList();
   }
 
-  static final List<int> orderWalletOnWheel = [
+  static final List<int> order41WalletStartWheel = [
     //qurater mutation complex
     41, 19,
 
@@ -1918,6 +1998,32 @@ abstract class ZBData {
     9, 5, 26, 11,
     10, 58, 38, 54,
     61, 60,
+  ];
+
+  static final List<int> orderWalletOnWheel = [
+    //qurater mutation complex
+    1, 43, 14, 34,
+    9, 5, 26, 11,
+    10, 58, 38, 54,
+    61, 60, 41, 19,
+
+    //quarter initation simple
+    13, 49, 30, 55,
+    37, 63, 22, 36,
+    25, 17, 21, 51,
+    42, 3, 27, 24,
+
+    //quarter civilization silence
+    2, 23, 8, 20,
+    16, 35, 45, 12,
+    15, 52, 39, 53,
+    62, 56, 31, 33,
+
+    //quarter duality breath
+    7, 4, 29, 59,
+    40, 64, 47, 6,
+    46, 18, 48, 57,
+    32, 50, 28, 44,
   ];
 
   static List<ZBDesignForm> designFormsList = [
@@ -2043,4 +2149,173 @@ abstract class ZBData {
     ZBCodon(id: 20, name: 'Histidine', wallets: [49, 55], zbname: 'היס'),
     ZBCodon(id: 21, name: 'Stop Codon', wallets: [12, 56, 33], zbname: 'גמל'),
   ];
+  static List<ZBGodhead> get getgodheads => [
+        // --- QUARTER 1: BLUE FOUNDATION (Indices 1-4) ---
+        const ZBGodhead(
+          index: 1,
+          name: 'Hades',
+          sourceName: 'ᾍδης',
+          hebName: 'האדס',
+          newHeb: 'אליל אתרוג',
+          rtHeb: 'אליל מורכב מורכב',
+          baseFreq: 5, // Blue Dog
+          topFreq: 5,
+        ),
+        const ZBGodhead(
+          index: 2,
+          name: 'Prometheus',
+          sourceName: 'Προμηθεύς',
+          hebName: 'פרומתאוס',
+          newHeb: 'אליל הבטחה מקצועית',
+          rtHeb: 'אליל מורכב פשוט',
+          baseFreq: 5,
+          topFreq: 4, // Green Octopus
+        ),
+        const ZBGodhead(
+          index: 3,
+          name: 'Vishnu',
+          sourceName: 'विष्‍णु',
+          hebName: 'וישנו',
+          newHeb: 'אליל ניגוב נוזף',
+          rtHeb: 'אליל מורכב נשימה',
+          baseFreq: 5,
+          topFreq: 3, // Yellow Octopus
+        ),
+        const ZBGodhead(
+          index: 4,
+          name: 'Keepers of the Wheel',
+          sourceName: 'למד-וו-כינויים',
+          hebName: 'שומרי הגלגל',
+          newHeb: 'אליל שומר זמן סיבוב',
+          rtHeb: 'אליל מורכב שתיקה',
+          baseFreq: 5,
+          topFreq: 2, // Red Dog
+        ),
+
+        // --- QUARTER 2: GREEN FOUNDATION (Indices 5-8) ---
+        const ZBGodhead(
+          index: 5,
+          name: 'Kali',
+          sourceName: 'काली',
+          hebName: 'קאלי',
+          newHeb: 'אליל קל לי',
+          rtHeb: 'אליל פשוט מורכב',
+          baseFreq: 4, // Green Octopus
+          topFreq: 5,
+        ),
+        const ZBGodhead(
+          index: 6,
+          name: 'Mitra',
+          sourceName: 'मित्र',
+          hebName: 'מיטרא',
+          newHeb: 'אליל מי תר גמל רע',
+          rtHeb: 'אליל פשוט פשוט',
+          baseFreq: 4,
+          topFreq: 4,
+        ),
+        const ZBGodhead(
+          index: 7,
+          name: 'Michael',
+          sourceName: 'מי כאל',
+          hebName: 'מיכאל',
+          newHeb: 'אליל מי כרטיס כאל',
+          rtHeb: 'אליל פשוט נשימה',
+          baseFreq: 4,
+          topFreq: 3,
+        ),
+        const ZBGodhead(
+          index: 8,
+          name: 'Janus',
+          sourceName: 'Iānus',
+          hebName: 'יאנוס',
+          newHeb: 'אליל בורח למחשב',
+          rtHeb: 'אליל פשוט שתיקה',
+          baseFreq: 4,
+          topFreq: 2,
+        ),
+
+        // --- QUARTER 3: RED FOUNDATION (Indices 9-12) ---
+        const ZBGodhead(
+          index: 9,
+          name: 'Maia',
+          sourceName: 'Μαῖα',
+          hebName: 'מאיה',
+          newHeb: 'האלילה מאי ה',
+          rtHeb: 'אלילה שתיקה שתיקה',
+          baseFreq: 2, // Red Dog
+          topFreq: 2,
+        ),
+        const ZBGodhead(
+          index: 10,
+          name: 'Lakshmi',
+          sourceName: 'लक्ष्मी',
+          hebName: 'לאקשמי',
+          newHeb: 'אלילת מי חברת הקש',
+          rtHeb: 'אלילה שתיקה נשימה',
+          baseFreq: 2,
+          topFreq: 3,
+        ),
+        const ZBGodhead(
+          index: 11,
+          name: 'Parvati',
+          sourceName: 'पार्वती',
+          hebName: 'פארוואטי',
+          newHeb: 'אלילה ואיתה הפרה',
+          rtHeb: 'אלילה שתיקה פשוט',
+          baseFreq: 2,
+          topFreq: 4,
+        ),
+        const ZBGodhead(
+          index: 12,
+          name: 'Maat',
+          sourceName: 'ⲙⲉⲓ',
+          hebName: 'מואט',
+          newHeb: 'אלילת מעט זה הרבה',
+          rtHeb: 'אלילה שתיקה מורכב',
+          baseFreq: 2,
+          topFreq: 5,
+        ),
+
+        // --- QUARTER 4: YELLOW FOUNDATION (Indices 13-16) ---
+        const ZBGodhead(
+          index: 13,
+          name: 'Toth',
+          sourceName: '𐤈𐤇𐤅𐤕',
+          hebName: 'תות',
+          newHeb: 'תות האלילה',
+          rtHeb: 'אלילה נשימה שתיקה',
+          baseFreq: 3, // Yellow Octopus
+          topFreq: 2,
+        ),
+        const ZBGodhead(
+          index: 14,
+          name: 'Harmonia',
+          sourceName: 'Ἁρμονία',
+          hebName: 'הרמוניה',
+          newHeb: 'אלילת הר הכסף',
+          rtHeb: 'אלילה נשימה נשימה',
+          baseFreq: 3,
+          topFreq: 3,
+        ),
+        const ZBGodhead(
+          index: 15,
+          name: 'Christ',
+          sourceName: 'christ',
+          hebName: 'ישו כריס',
+          newHeb: 'אלילת יש שעועית',
+          rtHeb: 'אלילה נשימה פשוט',
+          baseFreq: 3,
+          topFreq: 4,
+        ),
+        const ZBGodhead(
+          index: 16,
+          name: 'Minerva',
+          sourceName: 'mɪˈnɛru̯ä',
+          hebName: 'מינרווה',
+          newHeb: 'אלילת מינית רווה',
+          rtHeb: 'אלילה נשימה מורכב',
+          baseFreq: 3,
+          topFreq: 5,
+        ),
+      ];
 }

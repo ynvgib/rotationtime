@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:circle_list/circle_list.dart';
+// import 'package:circle_list/circle_list.dart';
 import 'package:fibonacci/fibonacci.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/models/rotateclasses.dart';
@@ -87,7 +87,7 @@ class _RotateSimpleState extends State<RotateSimple>
 
   final List<Color> _simplewgscolor = List.generate(
     64,
-    (index) => getWalletLayerColor(index, 'top', isReversed: true),
+    (index) => ZBLogic.getWalletLayerColor(index, 'top', isReversed: true),
   );
   void changeColor(Color color) => setState(() => currentcolor = color);
 
@@ -1171,6 +1171,7 @@ class _RotateSimpleState extends State<RotateSimple>
                     walletsState: _walletstatelist,
                   ),
                 ),
+
                 Flex(
                   direction: Axis.horizontal,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1199,523 +1200,20 @@ class _RotateSimpleState extends State<RotateSimple>
                     ),
                   ],
                 ),
-                CircleList(
-                  innerRadius: Screen.width / 10,
-                  initialAngle: 3.85,
-                  childrenPadding: 0.1,
-                  origin: const Offset(0, 0),
-                  children: List.generate(12, (index) {
-                    return Tooltip(
-                      message:
-                          '${revzodiacNameHeblist[index]}\n${revzodiacNamelist[index]}',
-                      textAlign: TextAlign.center,
-                      textStyle: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
-                      child: Container(
-                        width: 90,
-                        margin: const EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: [
-                              revzodiacGradeColorlist[index * 2],
-                              revzodiacGradeColorlist[index * 2 + 1],
-                            ],
-                          ),
-                          image: DecorationImage(
-                            image: AssetImage(revZodiacList[index]),
-                            fit: BoxFit.scaleDown,
-                          ),
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                    );
-                  }),
-                ),
+
                 const Divider(color: Colors.green, thickness: 7),
                 // 64 coins wheel
-                Stack(
-                  children: [
-                    CircleList(
-                      innerRadius: Screen.width / 60,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(16, (index) {
-                        return Container(
-                          width: 35,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: coincolors[0],
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.black),
-                          ),
-                        );
-                      }),
-                    ),
-                    CircleList(
-                      innerRadius: Screen.width / 12 + 10,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(16, (index) {
-                        return Container(
-                          width: 35,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: revmidyangcolor[index],
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.black),
-                          ),
-                        );
-                      }),
-                    ),
-                    //external wheel
-                    CircleList(
-                      rotateMode: RotateMode.stopRotate,
-                      innerRadius: Screen.width / 7 + 20,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      centerWidget: SizedBox(
-                        width: 100,
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(1),
-                          ),
-                          child: Image.asset(zoo4lst[0]),
-                        ),
-                      ),
-                      children: List.generate(16, (index) {
-                        return InkWell(
-                          child: Container(
-                            width: 35,
-                            margin: const EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                              color: revtopyangcolor[index],
-                              shape: BoxShape.circle,
-                              border: Border.all(width: 2, color: Colors.black),
-                            ),
-                            child: AutoSizeText(
-                              reversedHexagramsWheel[index + 48].toString(),
-                              minFontSize: 20,
-                              //maxFontSize: 85,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            _hexalignedList = hexagramAlignment(
-                              reversedHexagramsWheel[index + 48],
-                            );
-                            _controllertop.jumpToPage(_hexalignedList[0]);
-                            _controllermid.jumpToPage(_hexalignedList[1]);
-                            _controllerbot.jumpToPage(_hexalignedList[2]);
-                          },
-                        );
-                      }),
-                    ),
-                  ],
-                ),
-                Stack(
-                  children: [
-                    CircleList(
-                      innerRadius: Screen.width / 60,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(16, (index) {
-                        return Container(
-                          width: 35,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: coincolors[1],
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.black),
-                          ),
-                        );
-                      }),
-                    ),
-                    CircleList(
-                      innerRadius: Screen.width / 12 + 10,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(16, (index) {
-                        return Container(
-                          width: 35,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: revmidyangcolor[index],
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.black),
-                          ),
-                        );
-                      }),
-                    ),
-                    //external wheel
-                    CircleList(
-                      rotateMode: RotateMode.stopRotate,
-                      innerRadius: Screen.width / 7 + 20,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      centerWidget: SizedBox(
-                        width: 100,
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(1),
-                          ),
-                          child: Image.asset(zoo4lst[1]),
-                        ),
-                      ),
-                      children: List.generate(16, (index) {
-                        return InkWell(
-                          child: Container(
-                            width: 35,
-                            margin: const EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                              color: revtopyangcolor[index],
-                              shape: BoxShape.circle,
-                              border: Border.all(width: 2, color: Colors.black),
-                            ),
-                            child: AutoSizeText(
-                              reversedHexagramsWheel[index + 32].toString(),
-                              minFontSize: 20,
-                              //maxFontSize: 85,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            _hexalignedList = hexagramAlignment(
-                              reversedHexagramsWheel[index + 32],
-                            );
-                            _controllertop.jumpToPage(_hexalignedList[0]);
-                            _controllermid.jumpToPage(_hexalignedList[1]);
-                            _controllerbot.jumpToPage(_hexalignedList[2]);
-                          },
-                        );
-                      }),
-                    ),
-                  ],
-                ),
-                Stack(
-                  children: [
-                    CircleList(
-                      innerRadius: Screen.width / 60,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(16, (index) {
-                        return Container(
-                          width: 35,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: coincolors[2],
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.black),
-                          ),
-                        );
-                      }),
-                    ),
-                    CircleList(
-                      innerRadius: Screen.width / 12 + 10,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(16, (index) {
-                        return Container(
-                          width: 35,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: midyangcolor[index],
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.black),
-                          ),
-                        );
-                      }),
-                    ),
-                    //external wheel
-                    CircleList(
-                      rotateMode: RotateMode.stopRotate,
-                      innerRadius: Screen.width / 7 + 20,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      centerWidget: SizedBox(
-                        width: 100,
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(1),
-                          ),
-                          child: Image.asset(zoo4lst[2]),
-                        ),
-                      ),
-                      children: List.generate(16, (index) {
-                        return InkWell(
-                          child: Container(
-                            width: 35,
-                            margin: const EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                              color: topyangcolor[index],
-                              shape: BoxShape.circle,
-                              border: Border.all(width: 2, color: Colors.black),
-                            ),
-                            child: AutoSizeText(
-                              reversedHexagramsWheel[index].toString(),
-                              minFontSize: 20,
-                              //maxFontSize: 85,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            _hexalignedList = hexagramAlignment(
-                              reversedHexagramsWheel[index],
-                            );
-                            _controllertop.jumpToPage(_hexalignedList[0]);
-                            _controllermid.jumpToPage(_hexalignedList[1]);
-                            _controllerbot.jumpToPage(_hexalignedList[2]);
-                          },
-                        );
-                      }),
-                    ),
-                  ],
-                ),
-                Stack(
-                  children: [
-                    CircleList(
-                      innerRadius: Screen.width / 60,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(16, (index) {
-                        return Container(
-                          width: 35,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: coincolors[3],
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.black),
-                          ),
-                        );
-                      }),
-                    ),
-                    CircleList(
-                      innerRadius: Screen.width / 12 + 10,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(16, (index) {
-                        return Container(
-                          width: 35,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: midyangcolor[index],
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.black),
-                          ),
-                        );
-                      }),
-                    ),
-                    //external wheel
-                    CircleList(
-                      rotateMode: RotateMode.stopRotate,
-                      innerRadius: Screen.width / 7 + 20,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      centerWidget: SizedBox(
-                        width: 100,
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(1),
-                          ),
-                          child: Image.asset(zoo4lst[3]),
-                        ),
-                      ),
-                      children: List.generate(16, (index) {
-                        return InkWell(
-                          child: Container(
-                            width: 35,
-                            margin: const EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                              color: topyangcolor[index],
-                              shape: BoxShape.circle,
-                              border: Border.all(width: 2, color: Colors.black),
-                            ),
-                            child: AutoSizeText(
-                              reversedHexagramsWheel[index + 16].toString(),
-                              minFontSize: 20,
-                              //maxFontSize: 85,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            _hexalignedList = hexagramAlignment(
-                              reversedHexagramsWheel[index + 16],
-                            );
-                            _controllertop.jumpToPage(_hexalignedList[0]);
-                            _controllermid.jumpToPage(_hexalignedList[1]);
-                            _controllerbot.jumpToPage(_hexalignedList[2]);
-                          },
-                        );
-                      }),
-                    ),
-                  ],
-                ),
+                // const Text('zb 4 wheel stack circlist'),
+                ..._buildQuarterWheels(context),
+
                 const Divider(color: Colors.green, thickness: 7),
                 // 64 coins wheel
                 const SizedBox(height: 10),
-                Stack(
-                  children: [
-                    Positioned(
-                      top: Screen.height / 4,
-                      bottom: Screen.height / 4,
-                      left: Screen.width / 20,
-                      right: Screen.width / 20,
-                      child: Center(
-                        child: TextField(
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: '1',
-                            hintStyle: TextStyle(color: Colors.white),
-                            contentPadding: EdgeInsets.only(left: 30),
-                          ),
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 55.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'iChing',
-                          ),
-                          controller: _controllercointext,
-                          readOnly: true,
-                        ),
-                      ),
-                    ),
-                    CircleList(
-                      innerRadius: Screen.width / 60 + 40,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      rotateMode: RotateMode.stopRotate,
-                      children: List.generate(64, (index) {
-                        return Container(
-                          width: 20,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: getWalletLayerColor(
-                              index,
-                              'bot',
-                              isReversed: true,
-                            ),
-                            shape: BoxShape.circle,
-                          ),
-                          child: AutoSizeText(
-                            revfontWheelHexOrderList[index],
-                            minFontSize: 10,
-                            maxFontSize: 15,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              //fontFamily: 'iChing',
-                            ),
-                          ),
-                        );
-                      }),
-                    ),
-                    CircleList(
-                      rotateMode: RotateMode.stopRotate,
-                      innerRadius: Screen.width / 12 + 60,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(64, (index) {
-                        return Container(
-                          width: 35,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: getWalletLayerColor(
-                              index,
-                              'mid',
-                              isReversed: true,
-                            ),
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 1, color: Colors.black),
-                          ),
-                          child: AutoSizeText(
-                            reversedHexagramsWheel[index].toString(),
-                            minFontSize: 10,
-                            maxFontSize: 12,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        );
-                      }),
-                    ),
-                    CircleList(
-                      innerRadius: Screen.width / 7 + 80,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      rotateMode: RotateMode.stopRotate,
-                      children: List.generate(64, (index) {
-                        return InkWell(
-                          child: Container(
-                            width: 55,
-                            margin: const EdgeInsets.all(1),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 4),
-                              child: AutoSizeText(
-                                revfontWheelHexOrderList[index],
-                                minFontSize: 10,
-                                maxFontSize: 13,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  //color: Colors.white,
-                                  color: _simplewgscolor[index],
-                                  fontFamily: 'iChing',
-                                ),
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            _wallet = reversedHexagramsWheel[index];
-                            _controllerlettext.text =
-                                revfontWheelHexOrderList[index];
-                            _controllerichingtext.text =
-                                revfontWheelHexOrderList[index];
-                            _controllernumtext.text =
-                                reversedHexagramsWheel[index].toString();
-                            _controllercointext.text =
-                                revfontWheelHexOrderList[index];
-                          },
-                        );
-                      }),
-                    ),
-                  ],
-                ),
+
+                // const Text('zb hexagram wheel'),
+
+                _buildMasterWheel(context),
+
                 const SizedBox(height: 10),
                 Flex(
                   direction: Axis.horizontal,
@@ -1785,72 +1283,8 @@ class _RotateSimpleState extends State<RotateSimple>
                   ],
                 ),
                 const Divider(color: Colors.green, thickness: 7),
-                Stack(
-                  children: [
-                    CircleList(
-                      innerRadius: Screen.width / 16,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      centerWidget: ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(50),
-                        ),
-                        child: Image.asset(
-                          "assets/coins/fullrotateicon.png",
-                        ),
-                      ),
-                      children: List.generate(16, (index) {
-                        return Container(
-                          width: 50,
-                          margin: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(revbotfourzoonimal[index]),
-                              fit: BoxFit.scaleDown,
-                            ),
-                            //color: revfourbotcoincolor[index],
-                            //revbotfourzoonimal
-                            color: Colors.transparent,
-                            shape: BoxShape.circle,
-                          ),
-                        );
-                      }),
-                    ),
-                    CircleList(
-                      rotateMode: RotateMode.stopRotate,
-                      innerRadius: Screen.width / 5.5,
-                      initialAngle: -0.8,
-                      childrenPadding: 0.1,
-                      origin: const Offset(0, 0),
-                      children: List.generate(16, (index) {
-                        return InkWell(
-                          child: Container(
-                            width: 55,
-                            margin: const EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(topfourzoonimal[index]),
-                                fit: BoxFit.scaleDown,
-                              ),
-                              //topfourzoonimal
-                              color: Colors.transparent,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                          onTap: () {
-                            int newindex = index - 0;
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) =>
-                                  buildGodheadPopUp(context, newindex),
-                            );
-                          },
-                        );
-                      }),
-                    ),
-                  ],
-                ),
+                const Text('Godhead Wheel'),
+                _zbGodsWheel(context),
                 const Divider(
                   thickness: 5,
                   indent: 5,
@@ -2470,6 +1904,276 @@ class _RotateSimpleState extends State<RotateSimple>
       _hexalignedList = hexagramAlignment(_chosenhex);
       // Move your page controllers here
     });
+  }
+
+  List<Widget> _buildQuarterWheels(BuildContext context) {
+    // 1. Use the same "side" logic as ZBMandala for consistency
+    final double side = MediaQuery.of(context).size.shortestSide;
+
+    // 2. Define Radii as percentages of the screen (matching the Mandala feel)
+    final double rInner = side * 0.12; // Inner Ring
+    final double rMiddle = side * 0.22; // Middle Ring
+    final double rOuter = side * 0.38; // External Gate Ring (Max spread)
+
+    // 3. Define Element Sizes (matching Mandala look)
+    final double coin1Size = side * 0.045;
+    final double coin2Size = side * 0.06;
+    final double gateSize = side * 0.10;
+
+    // Total container height needs to clear the outer ring + gate size
+    final double totalWheelHeight = (rOuter * 2) + gateSize + 40;
+
+    return List.generate(4, (qIndex) {
+      final int frequencyId = ZBStory.zbRNAstrand[qIndex];
+      final freq = ZBStory.getfrequency(frequencyId);
+      final int dnaIndex = ZBStory.zbDNAstrand.indexOf(frequencyId);
+      final int startOffset = dnaIndex * 16;
+
+      final bool isContraction = (frequencyId == 2 || frequencyId == 3);
+
+      final List<int> activeStrand =
+          isContraction ? ZBStory.zbRNAstrandRev : ZBStory.zbRNAstrand;
+
+      return Container(
+        height: totalWheelHeight,
+        width: side,
+        margin: EdgeInsets.only(bottom: side * 0.1), // Proportional spacing
+        alignment: Alignment.center,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            // CENTER ANIMAL (Scaled)
+            Image.asset('assets/camog/${freq.zbanimalimg}', width: side * 0.2),
+
+            // INNER RING
+            buildOrbitLayer(
+              context: context,
+              size: coin1Size,
+              orbitRadius: rInner,
+              count: 16,
+              startAngle: -0.82,
+              itemBuilder: (i) => _buildClearCoin(freq.zbcoinimg, 1.0),
+            ),
+
+            // MIDDLE RING
+            buildOrbitLayer(
+              context: context,
+              size: coin2Size,
+              orbitRadius: rMiddle,
+              count: 16,
+              startAngle: -0.82,
+              itemBuilder: (i) {
+                final int step = i ~/ 4;
+                final List<int> coinOrder =
+                    (qIndex < 2) ? [2, 3, 4, 5] : [5, 4, 3, 2];
+                final stepFreq = ZBStory.getfrequency(coinOrder[step]);
+                return _buildClearCoin(stepFreq.zbcoinimg, 1.0);
+              },
+            ),
+
+            buildOrbitLayer(
+              context: context,
+              size: gateSize,
+              orbitRadius: rOuter,
+              count: 16,
+              startAngle: -0.82,
+              itemBuilder: (i) {
+                // 2. Keep your globalIndex for the gateId mapping
+                final int globalIndex = startOffset + (15 - i);
+                final int gateId = ZBData.orderWalletOnWheel[globalIndex];
+
+                // 3. FORCE the color switch here using the activeStrand
+                // We use (15 - i) % 4 to ensure the color sequence follows the
+                // direction of the gates (CW/CCW) correctly.
+                final int topFreqId = activeStrand[(15 - i) % 4];
+                final Color topColor = ZBStory.getfrequency(topFreqId).zbcolor;
+
+                return _buildGateButton(gateId, topColor);
+              },
+            ),
+          ],
+        ),
+      );
+    });
+  }
+
+// Helper for clean asset rendering without programmatic tint
+  Widget _buildClearCoin(String assetName, double opacity) {
+    return Opacity(
+      opacity: opacity,
+      child: Image.asset(
+        'assets/coins/$assetName',
+        fit: BoxFit.contain,
+      ),
+    );
+  }
+
+// Small helper for the actual Gate Circle button
+  Widget _buildGateButton(int gateId, Color color) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          _hexalignedList = hexagramAlignment(gateId);
+          _controllertop.jumpToPage(_hexalignedList[0]);
+          _controllermid.jumpToPage(_hexalignedList[1]);
+          _controllerbot.jumpToPage(_hexalignedList[2]);
+        });
+      },
+      child: Container(
+        width: 38,
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+          border: Border.all(width: 1.5, color: Colors.black87),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 4,
+              offset: const Offset(0, 2),
+            )
+          ],
+        ),
+        child: Center(
+          child: AutoSizeText(
+            '$gateId',
+            style: const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMasterWheel(BuildContext context) {
+    // 1. Unified scaling base
+    final double side = MediaQuery.of(context).size.shortestSide;
+
+    // 2. Define the radius as a percentage of the screen
+    // 0.38 is usually the 'sweet spot' for Master Wheels
+    final double responsiveRadius = side * 0.38;
+
+    // 3. Calculate exactly how much vertical space the wheel needs
+    // (Radius * 2) + Size of the buttons on the edge + bit of breathing room
+    final double gateSize = side * 0.10;
+    final double totalNeededHeight = (responsiveRadius * 2) + gateSize + 20;
+
+    return SizedBox(
+      height: totalNeededHeight, // This STOPs the overlapping
+      width: side,
+      child: Center(
+        child: ZBMasterWheel(
+          radius: responsiveRadius,
+
+          // Center Hexagram Display
+          centerWidget: SizedBox(
+            width: side * 0.25,
+            child: TextField(
+              controller: _controllercointext,
+              readOnly: true,
+              textAlign: TextAlign.center,
+              decoration: const InputDecoration(border: InputBorder.none),
+              style: TextStyle(
+                fontFamily: 'iChing',
+                fontSize: side * 0.15, // Responsive font
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+          onTap: (gateId, key) {
+            setState(() {
+              _wallet = gateId;
+              _controllerlettext.text = key;
+              _controllerichingtext.text = key;
+              _controllernumtext.text = gateId.toString();
+              _controllercointext.text = key;
+
+              _hexalignedList = hexagramAlignment(gateId);
+              _controllertop.jumpToPage(_hexalignedList[0]);
+              _controllermid.jumpToPage(_hexalignedList[1]);
+              _controllerbot.jumpToPage(_hexalignedList[2]);
+            });
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _zbGodsWheel(BuildContext context) {
+    final double side = MediaQuery.of(context).size.shortestSide;
+
+    final double rOuter = side / 5;
+    const double outerAnimalSize = 55.0;
+    final double outerOrbitRadius = rOuter + 40;
+
+    final double wheelDimension = (outerOrbitRadius * 2) + outerAnimalSize + 40;
+
+    return Padding(
+      padding: EdgeInsets.only(bottom: side * 0.1),
+      child: SizedBox(
+        width: wheelDimension,
+        height: wheelDimension,
+        child: Stack(
+          clipBehavior: Clip.none,
+          alignment: Alignment.center,
+          children: [
+            // INNER RING
+            buildOrbitLayer(
+              context: context,
+              size: 50,
+              orbitRadius: rOuter,
+              count: 16,
+              startAngle: -0.8,
+              itemBuilder: (i) {
+                final gh = ZBGodhead.at(16 - i);
+                final freq = ZBStory.getfrequency(gh.baseFreq);
+                return Image.asset('assets/camog/${freq.zbanimalimg}');
+              },
+            ),
+
+            // OUTER RING
+            // OUTER RING
+            buildOrbitLayer(
+              context: context,
+              size: 50,
+              orbitRadius: outerOrbitRadius,
+              count: 16,
+              startAngle: -0.8,
+              itemBuilder: (i) {
+                final gh =
+                    ZBGodhead.at(16 - i); // ← match inner ring's reversal
+                final freq = ZBStory.getfrequency(gh.topFreq);
+
+                return SizedBox(
+                  width: outerAnimalSize,
+                  height: outerAnimalSize,
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => buildGodheadPopUp(context, gh),
+                        );
+                      },
+                      child: Material(
+                        color: Colors.transparent,
+                        child: Image.asset('assets/camog/${freq.zbanimalimg}'),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 

@@ -1,7 +1,8 @@
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:circle_list/circle_list.dart';
 import 'package:finallyicanlearn/logic/hexagramaligment.dart';
 import 'package:finallyicanlearn/zb/data/zb_extensions.dart';
 import 'package:finallyicanlearn/zb/data/zb_services.dart';
@@ -15,6 +16,7 @@ import 'package:finallyicanlearn/zb/ui/widgets/zb_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sweph/sweph.dart';
 import 'dart:ui' as ui;
 import 'package:flutter/services.dart' show rootBundle;
@@ -34,8 +36,7 @@ class _RotateComplexState extends State<RotateComplex>
       FocusNode(canRequestFocus: false, skipTraversal: true);
   bool _isDataLoaded = false; // Add this at the top of your State class
   // 1. GLOBAL UI & SEMANTIC STRINGS
-  String _textlevel = '',
-      _planettext = '',
+  String _planettext = '',
       _formattedDate = '',
       _formattedTime = '',
       _settimestamp = 'דקות',
@@ -334,7 +335,7 @@ class _RotateComplexState extends State<RotateComplex>
   );
   List<Color> complexrevtopcoincolor = List.generate(
     64,
-    (index) => getWalletLayerColor(index, 'top', isReversed: true),
+    (index) => ZBLogic.getWalletLayerColor(index, 'top', isReversed: true),
   );
   // --- 8. MODE COLORS & DIRECTION ICONS ---
   Color firstcolor = Colors.blue,
@@ -491,34 +492,64 @@ class _RotateComplexState extends State<RotateComplex>
     _previousPlanetIndex = 0;
   }
 
-// REMOVE didChangeDependencies entirely to avoid double-initialization logic
+  bool _isInitializing = false; // Add this at the top with your other variables
 
   Future<void> _initComplexData() async {
+    // 1. Guard against multiple simultaneous calls (Crucial for Android)
+    if (_isSwephInitialized || _isInitializing) return;
+    _isInitializing = true;
+
     if (!_isSwephInitialized) {
-      await Sweph.init(
-        assetLoader: ZBAssetLoader(),
-        epheAssets: [
-          'assets/ephe/seas_18.se1',
-          'assets/ephe/seas_12.se1',
-          'assets/ephe/sepl_12.se1',
-          'assets/ephe/sepl_18.se1',
-          'assets/ephe/semo_12.se1',
-          'assets/ephe/semo_18.se1',
-        ],
-      );
-      _isSwephInitialized = true;
+      try {
+        // debugPrint("ZB_DEBUG: Starting Sweph.init...");
+
+        final Directory appDir = await getApplicationSupportDirectory();
+        final String ephePath = '${appDir.path}/ephe_files';
+        // debugPrint("ZB_DEBUG: ephePath = $ephePath");
+
+        await Sweph.init(
+          assetLoader: ZBAssetLoader(),
+          epheAssets: [
+            'assets/ephe/seas_18.se1',
+            'assets/ephe/seas_12.se1',
+            'assets/ephe/sepl_12.se1',
+            'assets/ephe/sepl_18.se1',
+            'assets/ephe/semo_12.se1',
+            'assets/ephe/semo_18.se1',
+          ],
+          epheFilesPath: ephePath,
+        );
+
+        _isSwephInitialized = true;
+        // debugPrint("ZB_DEBUG: Sweph.init Success");
+      } catch (e) {
+        // debugPrint("ZB_DEBUG: Sweph Init Error: $e");
+        _isInitializing = false;
+        return;
+      }
     }
 
-    final DateTime initNow = DateTime.now().toUtc();
-    ZBAccount currentMoment =
-        await ZBHelpers.generateAccount(initNow, isNow: true);
+    try {
+      final DateTime initNow = DateTime.now().toUtc();
+      // debugPrint("ZB_DEBUG: Generating Account...");
 
-    if (mounted) {
-      setState(() {
-        _currentActiveAccount = currentMoment;
-        _syncUIWithAccount(currentMoment);
-        _isDataLoaded = true; // 👈 Everything is ready!
-      });
+      ZBAccount currentMoment =
+          await ZBHelpers.generateAccount(initNow, isNow: true);
+
+      if (mounted) {
+        setState(() {
+          _currentActiveAccount = currentMoment;
+          _syncUIWithAccount(currentMoment);
+          _isDataLoaded = true;
+          _isInitializing = false;
+        });
+        // Unfocus AFTER data load rebuild settles
+        FocusScope.of(context).unfocus();
+        // debugPrint("ZB_DEBUG: Complex Data Loaded.");
+      }
+    } catch (e) {
+      // debugPrint("ZB_DEBUG: Account Generation Error: $e");
+      _isInitializing = false;
     }
   }
 
@@ -632,21 +663,6 @@ class _RotateComplexState extends State<RotateComplex>
     _controllersavetxt.text = "";
     _controllerchartname.text = "";
   }
-
-  // void _initCarouselControllers() {
-  //   _controllercoin = CarouselSliderController();
-  //   _controllersubcoin = CarouselSliderController();
-  //   _controllerconstate = CarouselSliderController();
-  //   _controllerrotationstate = CarouselSliderController();
-  //   _controllertop = CarouselSliderController();
-  //   _controllermid = CarouselSliderController();
-  //   _controllerbot = CarouselSliderController();
-  //   _controlEvolutionContainerSlider = CarouselSliderController();
-  //   _controlComplexSlider = CarouselSliderController();
-  //   _controlSimpleSlider = CarouselSliderController();
-  //   _controlBreathSlider = CarouselSliderController();
-  //   _controlSilenceSlider = CarouselSliderController();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -1251,7 +1267,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 70,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -1271,7 +1287,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 200,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -1311,7 +1327,7 @@ class _RotateComplexState extends State<RotateComplex>
               width: 250,
               height: 100,
               child: AutoSizeTextField(
-                focusNode: _noFocus,
+                // focusNode: _noFocus,
                 maxLines: 2,
                 minFontSize: 25,
                 fullwidth: false,
@@ -1351,7 +1367,7 @@ class _RotateComplexState extends State<RotateComplex>
                   width: 260,
                   height: 30,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     maxLines: 1,
                     minFontSize: 15,
                     maxFontSize: 25,
@@ -1439,7 +1455,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 150,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -1456,82 +1472,18 @@ class _RotateComplexState extends State<RotateComplex>
                   ),
                 ),
                 SizedBox(
-                  height: 30,
-                  width: 30,
-                  child: CarouselSlider(
-                    items: boolCoins,
-                    carouselController: _controllerconstate,
-                    options: CarouselOptions(
-                      scrollDirection: Axis.horizontal,
-                      autoPlay: false,
-                      enlargeCenterPage: true,
-                      aspectRatio: 1.3,
-                      // Line 2383 - Unified Lens Switch
-                      onPageChanged: (indexconstate, reason) {
-                        setState(() {
-                          _currentconstate = indexconstate;
-
-                          // zb update then delete
-
-                          if (_currentconstate == 0) {
-                            // --- 🔵 BLUE (Personality) ---
-                            _planetsfulldisplayList = _planetsfullpersonList;
-                            _setDateTime(_personTime);
-                            _controllerPlanetType.text =
-                                'אחר כך לחשוב'; // Think Later
-
-                            _textlevel = 'complex';
-                            _controllerrotationstate.jumpToPage(0);
-                          } else {
-                            // --- 🔴 RED (Design) ---
-                            _planetsfulldisplayList = _planetsfulldesignList;
-                            _setDateTime(_designTime);
-                            _controllerPlanetType.text =
-                                'קודם לחיות'; // Live First
-
-                            _textlevel = 'silence';
-                            _controllerrotationstate.jumpToPage(3);
-                          }
-
-                          // 💡 REFRESH ACTIVE PLANET DATA
-                          // Pull the data from the newly selected list (Personality or Design)
-                          _planethex =
-                              _planetsfulldisplayList[_previousPlanetIndex];
-
-                          // Use local variables to ensure clean integer handling
-                          int syncedwallet = _planethex.wallet;
-                          int syncednote = _planethex.note ?? 1;
-
-                          // 1. UPDATE NUMERIC CONTROLLERS
-                          // _controllerwallettext.text = syncedwallet.toString();
-                          _controllerwallettext.text = _planethex.walletNote;
-                          // _controllernotetext.text = syncednote.toString();
-
-                          // 2. UPDATE STORY CONTROLLERS (Using ZBData Bridge)
-                          // This prevents the "int is not a subtype of String" error by using the dictionary math
-                          _controllerwalletstory.text = ZBData.getWalletStory(
-                              syncedwallet, _selected64Category);
-
-                          _controllernotestory.text = ZBData.getWalletNoteStory(
-                              syncedwallet, syncednote, _selected384Category);
-
-                          // 3. REFRESH VISUALS
-                          _setCoins(); // Updates the visual coin/trigram state
-                          _controlPlanetWalletData();
-                          // _planetsfulldisplayList); // Re-calculates for the Bodygraph
-
-                          // Force the chart painter to recognize the state change
-                          resetChartColor();
-                        });
-                      },
-                    ),
-                  ),
-                ),
+                    height: 30,
+                    width: 30,
+                    child: ZBToggle(
+                      isActive: _currentconstate == 0,
+                      onTap: () =>
+                          _toggleComplexSilence(_currentconstate == 0 ? 1 : 0),
+                    )),
                 SizedBox(
                   height: 25,
                   width: 150,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -1578,8 +1530,6 @@ class _RotateComplexState extends State<RotateComplex>
                       foregroundImage: AssetImage('assets/coins/silence.png')),
                   onPressed: () => controlSetTime(false),
                 ),
-                // ... Dropdown and Textfield remain the same ...
-                // Inside your Flex row...
                 DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
                     value: _settimestamp,
@@ -1689,7 +1639,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 70,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -1709,7 +1659,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 200,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -2170,7 +2120,7 @@ class _RotateComplexState extends State<RotateComplex>
                         height: 35,
                         //margin: const EdgeInsets.only(top: 20, left: 40),
                         child: AutoSizeTextField(
-                          focusNode: _noFocus,
+                          // focusNode: _noFocus,
                           fullwidth: false,
                           minFontSize: 30,
                           maxFontSize: 35,
@@ -2796,7 +2746,7 @@ class _RotateComplexState extends State<RotateComplex>
               //width: Screen.width / 1.7,
               width: Screen.width / 1.5,
               child: AutoSizeTextField(
-                focusNode: _noFocus,
+                // focusNode: _noFocus,
                 minLines: 2,
                 maxLines: 4,
                 minFontSize: 18,
@@ -2823,7 +2773,7 @@ class _RotateComplexState extends State<RotateComplex>
               //width: Screen.height / 3,
               width: Screen.width / 1.5,
               child: AutoSizeTextField(
-                focusNode: _noFocus,
+                // focusNode: _noFocus,
                 minLines: 3,
                 maxLines: 4,
                 minFontSize: 15,
@@ -2852,7 +2802,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: botcoinnamelist[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -2870,7 +2820,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: botcoinnamelist[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -2888,7 +2838,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     minFontSize: 10,
                     maxFontSize: 30,
                     decoration: InputDecoration.collapsed(
@@ -2915,7 +2865,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: midcoinnamelist[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -2933,7 +2883,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: newcoinsHeb4lst[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -2951,7 +2901,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     minFontSize: 10,
                     maxFontSize: 30,
                     decoration: InputDecoration.collapsed(
@@ -2978,7 +2928,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: topcoinnamelist[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -2996,7 +2946,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     decoration: InputDecoration.collapsed(
                       hintText: topcoinnamelist[0],
                       hintStyle: const TextStyle(color: Colors.blue),
@@ -3014,7 +2964,7 @@ class _RotateComplexState extends State<RotateComplex>
                 SizedBox(
                   width: Screen.width * 0.33,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     minFontSize: 10,
                     maxFontSize: 30,
                     decoration: InputDecoration.collapsed(
@@ -3155,7 +3105,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 70,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -3175,7 +3125,7 @@ class _RotateComplexState extends State<RotateComplex>
                   height: 25,
                   width: 200,
                   child: AutoSizeTextField(
-                    focusNode: _noFocus,
+                    // focusNode: _noFocus,
                     minFontSize: 16,
                     readOnly: true,
                     decoration: InputDecoration.collapsed(
@@ -3367,7 +3317,7 @@ class _RotateComplexState extends State<RotateComplex>
             SizedBox(
               width: Screen.width / 2,
               child: AutoSizeTextField(
-                focusNode: _noFocus,
+                // focusNode: _noFocus,
                 readOnly: false,
                 decoration: const InputDecoration.collapsed(
                   hintText: 'מחזיק מטבע לרגע',
@@ -4754,7 +4704,24 @@ class _RotateComplexState extends State<RotateComplex>
     return finalcolor;
   }
 
-// zb new conteolsettime
+  void _toggleComplexSilence(int index) {
+    setState(() {
+      _currentconstate = index;
+      if (_currentconstate == 0) {
+        _planetsfulldisplayList = _planetsfullpersonList;
+        _setDateTime(_personTime);
+        // _textlevel = 'complex';
+      } else {
+        _planetsfulldisplayList = _planetsfulldesignList;
+        _setDateTime(_designTime);
+        // _textlevel = 'silence';
+      }
+      _planethex = _planetsfulldisplayList[_previousPlanetIndex];
+      _setCoins();
+      _controlPlanetWalletData();
+      resetChartColor();
+    });
+  }
 
   void controlSetTime(bool isIncrementing) async {
     int stepValue = int.tryParse(_controllerSetTime.text) ?? 1;

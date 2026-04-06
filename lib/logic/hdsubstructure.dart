@@ -65,7 +65,7 @@ Hexagram getGateStructure(double planetlongitude) {
 
   double percentageThroughWheel = planetlongitude / 360;
 
-  gate = ZBData.orderWalletOnWheel[(percentageThroughWheel * 64).floor()];
+  gate = ZBData.order41WalletStartWheel[(percentageThroughWheel * 64).floor()];
 
   // Line
   exactLine = 384 * percentageThroughWheel;

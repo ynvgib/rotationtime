@@ -76,6 +76,7 @@ class ZBWallet {
 
   // Cultural
   String? chinese;
+  // String? hexstroke;
 
   // Circuit
   String? circuitry;
@@ -109,6 +110,7 @@ class ZBWallet {
     this.verb,
     this.adverb,
     this.chinese,
+    // this.hexstroke,
     this.circuitry,
     this.circuit,
     this.isIntegration = false,
@@ -623,4 +625,32 @@ class ZBDesignForm {
     this.centers,
     this.orient,
   });
+}
+
+class ZBGodhead {
+  final int index;
+  final String name;
+  final String hebName;
+  final String newHeb;
+  final String rtHeb;
+  final String sourceName;
+  final int baseFreq;
+  final int topFreq;
+
+  const ZBGodhead({
+    required this.index,
+    required this.name,
+    required this.hebName,
+    required this.newHeb,
+    required this.rtHeb,
+    required this.sourceName,
+    required this.baseFreq,
+    required this.topFreq,
+  });
+
+  static ZBGodhead at(int index) {
+    // Ensuring we stay within bounds (1 to 16)
+    final safeIndex = index.clamp(1, 16);
+    return ZBData.getgodheads[safeIndex - 1];
+  }
 }

@@ -22,7 +22,7 @@ extension ZBWalletLogicExt on ZBWallet {
 
     // 🚀 CRITICAL: We retrieve the Gate ID from your ZBData list.
     // This ensures Wallet 0 becomes Gate 41, and Sun/Earth are true opposites.
-    final int actualGate = ZBData.orderWalletOnWheel[listIndex];
+    final int actualGate = ZBData.order41WalletStartWheel[listIndex];
 
     // 4. SUBSTRUCTURE: Precise multipliers (384, 2304, 13824, 69120)
     int line = ((percentage * 384) % 6).floor() + 1;

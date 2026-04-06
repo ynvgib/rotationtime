@@ -1,6 +1,7 @@
 import 'dart:math';
 // import 'package:flutter/foundation.dart'; // This defines kIsWeb
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:finallyicanlearn/zb/data/zb_data.dart';
 import 'package:finallyicanlearn/zb/ui/widgets/zb_cleanwidgets.dart';
 import 'package:finallyicanlearn/zb/ui/zb_helpers.dart';
 import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
@@ -351,6 +352,7 @@ class _RotateHomeState extends State<RotateHome> {
                       direction: Axis.horizontal,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        // 1. DROPDOWN
                         SizedBox(
                           height: 30,
                           width: 120,
@@ -359,10 +361,7 @@ class _RotateHomeState extends State<RotateHome> {
                             items: [0, 12, 30, 64, 640],
                             onChanged: (newValue) {
                               if (newValue != null) {
-                                setState(() {
-                                  userDefinedSeconds = newValue;
-                                });
-                                // L3: Breath, - Re-initiating the ONLY timer in main.dart
+                                setState(() => userDefinedSeconds = newValue);
                                 (mainStateKey.currentState as dynamic)
                                     ?._startVisualTimer();
                               }
@@ -370,27 +369,28 @@ class _RotateHomeState extends State<RotateHome> {
                           ),
                         ),
                         const SizedBox(width: 10),
+
+                        // 2. BLACK CAT ICON
                         Transform(
                           alignment: Alignment.center,
                           transform: Matrix4.rotationY(pi),
                           child: InkWell(
+                            onTap: () => setState(() {
+                              mainTitle = "לא יודעת מדיטציה";
+                              subTitle = "עידו לא יודע";
+                            }),
+                            onDoubleTap: () => setState(() {
+                              mainTitle = "I don't know Meditation";
+                              subTitle = "Ido Not Know";
+                            }),
                             child: Container(
                               height: 60,
                               width: 60,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.transparent,
-                                border: Border.all(
-                                  color: Colors
-                                      .transparent, //                   <--- border color
-                                  width: 1.0,
-                                ),
                                 image: DecorationImage(
-                                  //image: AssetImage(newminmaxcoins[index]),
                                   image: const AssetImage(
-                                    // 'assets/mink/minkupblack.webp',
-                                    'assets/camog/zblackcat.png',
-                                  ),
+                                      'assets/camog/zblackcat.png'),
                                   colorFilter: ColorFilter.mode(
                                     Colors.white.withValues(alpha: 1.0),
                                     BlendMode.modulate,
@@ -398,22 +398,24 @@ class _RotateHomeState extends State<RotateHome> {
                                 ),
                               ),
                             ),
-                            onTap: () {
-                              setState(() {
-                                mainTitle = "לא יודעת מדיטציה";
-                                subTitle = "עידו לא יודע";
-                              });
-                            },
-                            onDoubleTap: () {
-                              setState(() {
-                                mainTitle = "I don't know Meditation";
-                                subTitle = "Ido Not Know";
-                              });
-                            },
                           ),
                         ),
-                        const SizedBox(width: 20),
+                        const SizedBox(
+                            width: 10), // Reduced slightly from 20 to help fit
+
+                        // 3. GRADIENT CAMEL ICON (Full styling restored)
                         InkWell(
+                          onDoubleTap: () {
+                            isFullScreen = !isFullScreen;
+                            SystemChrome.setEnabledSystemUIMode(
+                              isFullScreen
+                                  ? SystemUiMode.manual
+                                  : SystemUiMode.immersive,
+                              overlays:
+                                  isFullScreen ? [SystemUiOverlay.bottom] : [],
+                            );
+                            setState(() {});
+                          },
                           child: ClipRRect(
                             borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.elliptical(50, 20),
@@ -426,7 +428,6 @@ class _RotateHomeState extends State<RotateHome> {
                               width: 60,
                               decoration: const BoxDecoration(
                                 gradient: LinearGradient(
-                                  //colors: [Colors.white, Colors.blue,Colors.green, Colors.yellow,Colors.red, Colors.black,],
                                   colors: [
                                     Colors.white,
                                     Colors.white,
@@ -443,34 +444,21 @@ class _RotateHomeState extends State<RotateHome> {
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                 ),
-                                //color: Colors.pink,
                                 image: DecorationImage(
-                                  image: AssetImage(
-                                    'assets/camog/mcameline.png',
-                                  ),
+                                  image:
+                                      AssetImage('assets/camog/mcameline.png'),
                                   fit: BoxFit.scaleDown,
                                 ),
                                 shape: BoxShape.rectangle,
                               ),
                             ),
                           ),
-                          onDoubleTap: () {
-                            //setState(() {
-                            //appBarHeight = 35; // After status bar hidden, make AppBar height smaller
-                            //});
-                            isFullScreen = !isFullScreen;
-                            isFullScreen == true
-                                ? SystemChrome.setEnabledSystemUIMode(
-                                    SystemUiMode.manual,
-                                    overlays: [SystemUiOverlay.bottom],
-                                  )
-                                : SystemChrome.setEnabledSystemUIMode(
-                                    SystemUiMode.immersive,
-                                  );
-                            setState(() {});
-                          },
                         ),
-                        const SizedBox(width: 60),
+
+                        // --- THE FIX ---
+                        // I removed the const SizedBox(width: 60) that was here.
+                        // Because mainAxisAlignment is center, you don't need padding at the end.
+                        // That 60px was the reason for the "7.0 pixels overflow" error.
                       ],
                     ),
                     const SizedBox(height: 20),
@@ -575,29 +563,12 @@ class _RotateHomeState extends State<RotateHome> {
                     ),
                     const Divider(color: Colors.white, thickness: 5),
                     // Text('test'),
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        buildOrbitLayer(
-                          context: context,
-                          size: 90,
-                          imageKey: 'coinimg',
-                          folder: 'coins',
-                          opacity: 0.7,
-                        ),
-
-                        // Layer 3: The Animals (Sharp/Interactive)
-                        buildOrbitLayer(
-                          context: context,
-                          size: 70,
-                          imageKey: 'animalimg',
-                          folder: 'camog',
-                          isInteractive: true,
-                        ),
-                      ],
+                    SizedBox(
+                      height: 400,
+                      child: _buildResponsiveOrbit(context),
                     ),
                     const Divider(color: Colors.grey, thickness: 5),
-                    const SizedBox(height: 10),
+                    // const SizedBox(height: 10),
                     const Divider(color: Colors.transparent, thickness: 5),
                     InkWell(
                       hoverColor: Colors.black12,
@@ -713,6 +684,76 @@ class _RotateHomeState extends State<RotateHome> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildResponsiveOrbit(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final double baseUnit = constraints.maxWidth < constraints.maxHeight
+            ? constraints.maxWidth
+            : constraints.maxHeight;
+
+        final double orbitRadius = baseUnit * 0.35;
+        final double coinSize = baseUnit * 0.20;
+        final double centerSize = baseUnit * 0.30;
+
+        return Center(
+          child: SizedBox(
+            width: baseUnit,
+            height: baseUnit,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                // 1. CENTER PIECE FIRST (This puts it BEHIND the coins)
+                buildOrbitCenter(
+                  size: centerSize,
+                  folder: 'camog',
+                ),
+
+                // 2. GENERATE COINS DIRECTLY IN THE STACK
+                // This ensures there is no "wrapper box" blocking the middle
+                ...List.generate(5, (index) {
+                  final double angle = ((2 * pi) / 5) * index - 0.1;
+                  final double x = orbitRadius * cos(angle);
+                  final double y = orbitRadius * sin(angle);
+                  final freq = ZBStory.getfrequency(index + 1);
+
+                  return Transform.translate(
+                    offset: Offset(x, y),
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        // behavior: HitTestBehavior.opaque is CRITICAL here
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          // print(
+                          //     "!!! CLICKED COIN $index !!!"); // Look for this!
+                          Navigator.pushNamed(
+                            context,
+                            mainroutes[index % mainroutes.length],
+                          );
+                        },
+                        child: SizedBox(
+                          width: coinSize,
+                          height: coinSize,
+                          child: Opacity(
+                            opacity: 0.7,
+                            child: Image.asset(
+                              'assets/coins/${freq.zbcoinimg}',
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

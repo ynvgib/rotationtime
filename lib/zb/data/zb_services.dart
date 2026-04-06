@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:sweph/sweph.dart';
 import 'package:finallyicanlearn/zb/data/zb_classes.dart';
 import 'package:finallyicanlearn/zb/data/zb_extensions.dart';
@@ -7,9 +8,22 @@ import 'dart:typed_data';
 class ZBAssetLoader with AssetLoader {
   @override
   Future<Uint8List> load(String assetPath) async {
-    // This bridges your assets/ephe/ files to the Sweph C-engine
-    final byteData = await rootBundle.load(assetPath);
-    return byteData.buffer.asUint8List();
+    // 1. Remove any leading slash that might cause a File-Not-Found on Android
+    final String key =
+        assetPath.startsWith('/') ? assetPath.substring(1) : assetPath;
+
+    // debugPrint("ZB_DEBUG: Loader attempting to fetch: $key");
+
+    try {
+      final byteData = await rootBundle.load(key);
+      // debugPrint(
+      //     "ZB_DEBUG: Successfully loaded $key (${byteData.lengthInBytes} bytes)");
+      return byteData.buffer.asUint8List();
+    } catch (e) {
+      // debugPrint(
+      //     "ZB_DEBUG: ERROR - Could not find asset: $key. Check pubspec.yaml!");
+      rethrow;
+    }
   }
 }
 
