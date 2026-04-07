@@ -1283,7 +1283,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   ],
                 ),
                 const Divider(color: Colors.green, thickness: 7),
-                const Text('Godhead Wheel'),
+                // const Text('Godhead Wheel'),
                 _zbGodsWheel(context),
                 const Divider(
                   thickness: 5,
@@ -1463,60 +1463,7 @@ class _RotateSimpleState extends State<RotateSimple>
                   ),
                 ),
                 const Divider(color: Colors.green, thickness: 7),
-
-                Stack(
-                  children: [
-                    Align(
-                      alignment: AlignmentGeometry.center,
-                      child: Container(
-                        height: MediaQuery.of(context).size.height / 2.5,
-                        width: MediaQuery.of(context).size.width / 1.5,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                              'assets/mink/minkmentalword.webp',
-                            ),
-                            fit: BoxFit.scaleDown,
-                          ),
-                          shape: BoxShape.rectangle,
-                        ),
-                      ),
-                    ),
-                    PositionedDirectional(
-                      start: 1,
-                      end: 1,
-                      top: 80,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        maxRadius: 70.0,
-                        child: CarouselSlider(
-                          items: mixPinkSlider,
-                          carouselController: _controllernew,
-                          options: CarouselOptions(
-                            initialPage: 1,
-                            autoPlay: false,
-                            enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                            enlargeCenterPage: true,
-                            aspectRatio: 1.3,
-                            onPageChanged: (indextop, reason) {
-                              setState(() {
-                                //_currenttop = indextop;
-                                //_controllertoptext.text = bimboxlist[indextop];
-                                //_controllerbottomtext.text = hexNamesList[indextop];
-                                //_controllerbottomtext.text = russianamelist[indextop];
-                                //mainText = puncNamesList[indextop];
-                                //maintextcolor = coincolors4lst[indextop];
-                                //controlbottxtcolor = coincolors4lst[indextop];
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const Divider(color: Colors.green, thickness: 7),
-                const SizedBox(height: 50),
+                const SizedBox(height: 1),
                 GestureDetector(
                   onTap: () {
                     // Generate random 1-64 and tell the wheel to spin

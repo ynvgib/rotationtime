@@ -572,15 +572,20 @@ abstract class ZBLogic {
   // Inside your Logic class or main State
   static void toggleCounter(String id, Color pickedColor,
       {Map<String, ZBCounter>? targetRegistry}) {
-    // Use the passed registry (Sandbox) OR fall back to the global one
     final registry = targetRegistry ?? ZBData.counterMap;
-
     final counter = registry[id];
+
     if (counter != null) {
       counter.isManual = !counter.isManual;
       counter.counterstate = counter.isManual ? 7 : 4;
-      // Note: The painter will use the 'pickedColor' you passed in
-      // when it sees state 7.
+
+      // FIX: Store the color in the object so it doesn't change
+      // when the global 'pickedcolor' changes later.
+      if (counter.isManual) {
+        counter.manualColor = pickedColor;
+      } else {
+        counter.manualColor = null;
+      }
     }
   }
 
@@ -1150,16 +1155,14 @@ class ZBAccountChart extends StatelessWidget {
     final int state = counter?.counterstate ?? 0;
     final bool manual = counter?.isManual ?? false;
 
-    if (id == "YOUR_TARGET_ID" && state == 0) {
-      print('painter is setting Counter $id to 0 in _painterForCounter');
-    }
-
+    // Use the counter's specific saved color,
+    // only falling back to pickedcolor if manualColor is null
     final Color color = ZBStyles.getCounterColor(
       id,
       state: state,
       isManual: manual,
-      pickedColor: pickedcolor,
-      zbtheme: zbtheme, // ADD
+      pickedColor: counter?.manualColor ?? pickedcolor,
+      zbtheme: zbtheme,
     );
 
     return ZBCounterPainter(
@@ -1800,15 +1803,6 @@ class ZBMasterWheel extends StatelessWidget {
                     // CRITICAL: Ensures the entire area (including transparent parts) is clickable
                     behavior: HitTestBehavior.opaque,
                     onTap: () {
-                      print(
-                          "Tapped Gate: $gateId"); // If this prints, the fix below works
-
-                      // 2. UPDATE YOUR CONTROLLERS HERE
-                      // _controllernumtext.text = gateId.toString();
-                      // _controllerichingtext.text = key;
-                      // _controllerlettext.text = key; // Or whatever logic maps to the English letter
-
-                      // Call the parent onTap if provided
                       onTap(gateId, key);
                     },
                     child: Center(

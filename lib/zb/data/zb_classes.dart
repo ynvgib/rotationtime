@@ -206,6 +206,7 @@ class ZBCounter {
   String? zbname;
   String? hebname;
   bool isManual;
+  Color? manualColor;
 
   // 1. Internal private storage for the state
   int _counterstate = 0;
@@ -235,6 +236,7 @@ class ZBCounter {
     this.zbname,
     this.hebname,
     this.isManual = false,
+    this.manualColor,
   }) : _counterstate = counterstate;
 
   // 4. Helper to clone the counter for Dialogs without losing state
