@@ -1936,10 +1936,14 @@ abstract class ZBData {
     'קווי עיצוב': hdlines384lstHeb,
     'Rotating Lines': zblines384lst,
     'HD Lines': hdlines384lst,
+    'HD Exalted': hdlines384exalted,
+    'HD Deteriment': hdlines384detriment,
+    'HD Lessons': hdlines384lessons
   };
 
   static final Map<String, List<String>> base384Mirror = {
     'Lines': hdlines384lst, // 384 items
+    'Lesson': hdlines384lessons,
     'Exalted Text': hdlines384exalted, // 384 items
     'Detriment Text': hdlines384detriment, // 384 items
     'Exalt Planet': hdplanetexaltimg, // 384 items

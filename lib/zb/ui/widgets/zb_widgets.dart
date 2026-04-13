@@ -1311,10 +1311,13 @@ Widget build384rtPlanetPop(BuildContext context) {
                 Text(
                   lessonText,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Colors.blueGrey,
+                    // 🎯 Conditional color: black for 'no lesson', blueGrey for actual content
+                    color: lessonText == 'no lesson'
+                        ? Colors.black
+                        : Colors.blueGrey,
                   ),
                 ),
                 const SizedBox(height: 10),

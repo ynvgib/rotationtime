@@ -736,22 +736,22 @@ abstract class ZBLogic {
     int incomingWeight = ZBStory.zbCounterPriority.indexOf(newState);
 
     // --- ENHANCED LOGGING ---
-    String cName = counter.name.toUpperCase();
-    String currentName = _getStateName(counter.counterstate);
-    String incomingName = _getStateName(newState);
+    // String cName = counter.name.toUpperCase();
+    // String currentName = _getStateName(counter.counterstate);
+    // String incomingName = _getStateName(newState);
 
-    print("--- 🛰️ LOG: $cName ---");
-    print("EXISTING: State $currentName (Weight $currentWeight)");
-    print("INCOMING: State $incomingName (Weight $incomingWeight)");
+    // print("--- 🛰️ LOG: $cName ---");
+    // print("EXISTING: State $currentName (Weight $currentWeight)");
+    // print("INCOMING: State $incomingName (Weight $incomingWeight)");
 
     // 🛡️ THE STORY GUARD
     if (incomingWeight > currentWeight) {
       counter.counterstate = newState;
-      print("✅ RESULT: UPDATED to $incomingName (New State: $newState)");
+      // print("✅ RESULT: UPDATED to $incomingName (New State: $newState)");
     } else {
-      print("❌ RESULT: REJECTED. $currentName holds the priority.");
+      // print("❌ RESULT: REJECTED. $currentName holds the priority.");
     }
-    print("--------------------");
+    // print("--------------------");
   }
 
   // Helper for cleaner logs
