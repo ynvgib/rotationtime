@@ -3896,7 +3896,7 @@ class _RotateComplexState extends State<RotateComplex>
   Widget _buildCountersPopUp(BuildContext context) {
     // 💡 Extract the 'state' from each HDCenter object
     final List<int> ppstates = _currentActiveAccount?.zbcounters
-            .map((center) => center.counterstate ?? 4) // Map Object to Int
+            .map((center) => center.counterstate) // Map Object to Int
             .toList() ??
         List<int>.filled(9, 4); // Fallback to Int list
     return AlertDialog(
@@ -5403,30 +5403,25 @@ class _RotateComplexState extends State<RotateComplex>
   }
 
   void _updateRegistryFromCounters(List<ZBTransaction> activeTX) {
-    // 1. Reset all Centers to State 0 (or 4)
-    for (var counter in ZBData.counterMap.values) {
-      counter.counterstate = 4; // Default to Green
-    }
+    // 1. Get the list of isolated clones from your logic engine
+    final List<ZBCounter> calculatedClones =
+        ZBLogic.calcActiveCounter(activeTX);
 
-    // 2. Inject active transaction states into the Centers
-    for (var tx in activeTX) {
-      int freq = tx.zbstate ?? 4;
-      // We pass the transaction state directly to the center
-      _applyFrequencyToRegistry(tx.mainCounterId, freq);
-      _applyFrequencyToRegistry(tx.subCounterId, freq);
-    }
-  }
+    setState(() {
+      for (var clone in calculatedClones) {
+        // 🎯 Direct Sync: Use the clone's name to update the Global Map.
+        // We lowercase it to match your registry keys (e.g., 'Root' -> 'root').
+        String key = clone.name.toLowerCase();
 
-  void _applyFrequencyToRegistry(String id, int incomingState) {
-    var counter = ZBData.counterMap[id.toLowerCase()];
-    if (counter == null) return;
+        if (ZBData.counterMap.containsKey(key)) {
+          ZBData.counterMap[key] = clone;
+        }
+      }
 
-    // Rule: State 9 (Both) always wins. Otherwise, keep existing if it's already defined.
-    if (incomingState == 9) {
-      counter.counterstate = 9;
-    } else if (counter.counterstate == 4 || counter.counterstate == 0) {
-      counter.counterstate = incomingState;
-    }
+      // 🚀 THE SIGNAL: Change the Map reference so ZBAccountChart repaints.
+      // Without this line, the CustomPainter might ignore the internal data change.
+      ZBData.counterMap = Map<String, ZBCounter>.from(ZBData.counterMap);
+    });
   }
 
   Future<void> _performZBTimeUpdate(DateTime targetTime) async {

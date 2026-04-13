@@ -84,18 +84,11 @@ abstract class ZBStory {
   static const List<int> zbRNAstrand = [5, 4, 3, 2];
   static List<int> get zbDNAstrandRev => zbDNAstrand.reversed.toList();
   static List<int> get zbRNAstrandRev => zbRNAstrand.reversed.toList();
+
+  static const List<int> zbCounterPriority = [0, 1, 4, 3, 5, 2, 6];
 }
 
 abstract class ZBData {
-  // static final List<ZBGodhead> godheads16 = List.generate(
-  //     16,
-  //     (i) => ZBGodhead(
-  //           name: hdgodheads16lst[i],
-  //           hebName: hdgodheads16Heblst[i],
-  //           newHeb: newgh16Heblst[i],
-  //           rtHeb: rtgodheads16list_heb[i],
-  //         ));
-
   static const Map<int, String> walletToiChingKey = {
     1: 'a',
     43: 'g',

@@ -595,7 +595,7 @@ abstract class ZBLogic {
 
     // 🕵️ DEBUG: Catch the transition
     if (counter == null) {
-      print('counterstate set to $counter in getCounterState');
+      // print('counterstate set to $counter in getCounterState');
     } else if (counter.counterstate == 0) {
       // You can uncomment this to see every "Transparent" call,
       // but the 'null' check above is usually the culprit during dialog swaps.
@@ -623,7 +623,7 @@ abstract class ZBLogic {
     for (int i = 0; i < counters.length; i++) {
       String counterID = counters[i];
 
-      print('counterstate set to $counterID in initializeCounters countermap');
+      // print('counterstate set to $counterID in initializeCounters countermap');
 
       ZBData.counterMap.putIfAbsent(
         counterID,
@@ -642,7 +642,7 @@ abstract class ZBLogic {
       ZBData.counterMap.putIfAbsent(
         walletId,
         () {
-          print('counterstate set 0 in initalizeCounters by Wallet');
+          // print('counterstate set 0 in initalizeCounters by Wallet');
 
           return ZBCounter(
             id: i, // 💡 IDs 1, 2, 3... up to 64
@@ -724,14 +724,51 @@ abstract class ZBLogic {
       Map<String, ZBCounter> objectMap, String counterId, int newState) {
     if (counterId == 'unknown') return;
 
-    // Find the actual object in the map
     final counter = objectMap[counterId];
     if (counter == null) return;
 
-    // Zmansi Priority Logic:
-    // Only update if the new state is "higher energy" than the current one.
-    if (newState > (counter.counterstate)) {
+    // 🎯 Use the index in your Priority Strand: [0, 1, 4, 3, 5, 2, 6]
+    // index 5 = State 2 (Red/Silence) -> High Priority
+    // index 4 = State 5 (Blue/Complex)
+    // index 3 = State 3 (Yellow/Breath)
+    // index 2 = State 4 (Green/Simple) -> Low Priority
+    int currentWeight = ZBStory.zbCounterPriority.indexOf(counter.counterstate);
+    int incomingWeight = ZBStory.zbCounterPriority.indexOf(newState);
+
+    // --- ENHANCED LOGGING ---
+    String cName = counter.name.toUpperCase();
+    String currentName = _getStateName(counter.counterstate);
+    String incomingName = _getStateName(newState);
+
+    print("--- 🛰️ LOG: $cName ---");
+    print("EXISTING: State $currentName (Weight $currentWeight)");
+    print("INCOMING: State $incomingName (Weight $incomingWeight)");
+
+    // 🛡️ THE STORY GUARD
+    if (incomingWeight > currentWeight) {
       counter.counterstate = newState;
+      print("✅ RESULT: UPDATED to $incomingName (New State: $newState)");
+    } else {
+      print("❌ RESULT: REJECTED. $currentName holds the priority.");
+    }
+    print("--------------------");
+  }
+
+  // Helper for cleaner logs
+  static String _getStateName(int state) {
+    switch (state) {
+      case 2:
+        return "SILENCE (RED)";
+      case 5:
+        return "COMPLEX (BLUE)";
+      case 3:
+        return "BREATH (YELLOW)";
+      case 4:
+        return "SIMPLE (GREEN)";
+      case 0:
+        return "GHOST (VOID)";
+      default:
+        return "OTHER ($state)";
     }
   }
 

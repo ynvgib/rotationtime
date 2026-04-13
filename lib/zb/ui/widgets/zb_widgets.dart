@@ -2547,36 +2547,52 @@ Widget buildBaseDataList(
   List<String> data,
 ) {
   final int total = data.length;
-  // Dynamic height: more items need more room, but cap it at 70% of screen height
+  final bool isBase64 = total == 64;
   final double dynamicHeight = total > 4 ? 0.6 : 0.4;
 
   return SelectionArea(
     child: AlertDialog(
-      title: Text(title),
+      backgroundColor: isBase64 ? Colors.white : null,
+      title:
+          Text(title, style: TextStyle(color: isBase64 ? Colors.black : null)),
       content: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.85, // Slightly wider
+        width: MediaQuery.of(context).size.width * 0.85,
         height: MediaQuery.of(context).size.height * dynamicHeight,
         child: ListView.builder(
           itemCount: total,
-          // Remove default padding that eats up space
+          // 🎯 STAGE 1: Ensure reverse is false so it starts at the top
+          reverse: isBase64,
           padding: EdgeInsets.zero,
           itemBuilder: (context, index) {
-            final Color rowBgColor = ZBStyles.getBaseToneColor(index, total);
-            final int displayNumber = total - index;
+            Color rowBgColor = isBase64
+                ? Colors.white
+                : ZBStyles.getBaseToneColor(index, total);
+
             final bool isLight = rowBgColor == Colors.yellow ||
                 rowBgColor == Colors.green ||
                 rowBgColor == Colors.white;
             final Color textCol = isLight ? Colors.black : Colors.white;
 
+            // 🎯 STAGE 2: Correct Numbering
+            // If the data is ordered [1...64], use: index + 1
+            // If the data is ordered [64...1], use: total - index
+            //final int displayNumber = total - index;
+            final int displayNumber = index + 1;
+
             return Card(
+              elevation: 0,
               color: rowBgColor,
-              margin: const EdgeInsets.symmetric(vertical: 2), // Tighter margin
+              shape: isBase64
+                  ? Border(
+                      bottom: BorderSide(color: Colors.grey.shade200, width: 1))
+                  : null,
+              margin: EdgeInsets.zero,
               child: ListTile(
-                dense: true, // Shrinks the vertical height of the tile
-                visualDensity: VisualDensity.compact,
+                dense: true,
                 leading: CircleAvatar(
-                  radius: 14, // Smaller circle
-                  backgroundColor: Colors.white24,
+                  radius: 14,
+                  backgroundColor:
+                      isBase64 ? Colors.grey.shade100 : Colors.white24,
                   child: Text(
                     '$displayNumber',
                     style: TextStyle(
@@ -2585,16 +2601,9 @@ Widget buildBaseDataList(
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                title: FittedBox(
-                  alignment: Alignment.centerLeft,
-                  fit: BoxFit.scaleDown, // Ensures path stays on one line
-                  child: Text(
-                    data[index],
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: textCol,
-                    ),
-                  ),
+                title: Text(
+                  data[index],
+                  style: TextStyle(fontWeight: FontWeight.bold, color: textCol),
                 ),
               ),
             );
@@ -3063,35 +3072,67 @@ Widget zbbuildBasePopUp(
   String title,
   Map<String, List<String>> dataMap,
 ) {
+  // 1. Identify the 64-gate list
+  final bool isBase64 = title == '64';
+
+  // 2. Prepare the entries
+  // We keep the original Map order (1 -> 64) for the 64-list
+  // so it starts with 1 at the top of the scroll.
+  final entries = dataMap.entries.toList();
+
   return Builder(
     builder: (dialogContext) {
       return SelectionArea(
         child: AlertDialog(
-          title: Text('Base $title'),
+          backgroundColor: isBase64 ? Colors.white : null,
+          title: Text(
+            isBase64 ? 'שערים' : 'Base $title',
+            style: TextStyle(color: isBase64 ? Colors.black : null),
+          ),
           content: SingleChildScrollView(
+            // Starts at the top (Gate 1)
+            reverse: false,
             child: SizedBox(
               width: MediaQuery.of(dialogContext).size.width * 0.7,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // THE REPLICATED DESIGN: All buttons from the Map
-                  ...dataMap.entries.map(
-                    (entry) => Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: zbChannelBtn(
-                        context: dialogContext,
-                        label: entry.key,
-                        bg: Colors.black,
-                        textCol: Colors.white,
-                        fontSize: 18,
-                        // Generic list displayer for all bases
-                        destination: buildBaseDataList(
-                          dialogContext,
-                          entry.key,
-                          entry.value,
+                  ...entries.map(
+                    (entry) {
+                      // final int index = int.tryParse(entry.key) ?? 0;
+
+                      Color bgColor;
+                      Color textCol;
+
+                      // if (isBase64) {
+                      // Simple Mode
+                      bgColor = Colors.white;
+                      textCol = Colors.black;
+                      // } else {
+                      //   // Frequency Mode for 4 and 6
+                      //   bgColor = ZBStory.getfrequency(index).zbcolor;
+                      //   // Determine if text should be black or white based on frequency
+                      //   textCol = (index == 6 || index == 3)
+                      //       ? Colors.black
+                      //       : Colors.white;
+                      // }
+
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: zbChannelBtn(
+                          context: dialogContext,
+                          label: entry.key,
+                          bg: bgColor,
+                          textCol: textCol,
+                          fontSize: 18,
+                          destination: buildBaseDataList(
+                            dialogContext,
+                            entry.key,
+                            entry.value,
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),

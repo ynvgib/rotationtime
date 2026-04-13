@@ -353,20 +353,6 @@ class ZBHelpers {
     final List<ZBCounter> activeCounters =
         ZBLogic.calcActiveCounter(activeTransactions);
 
-    // // debugPrint('=== activeTransactions (${activeTransactions.length}) ===');
-    // for (final tx in activeTransactions) {
-    //   debugPrint(
-    //       '  tx:${tx.id} state:${tx.zbstate} main:${tx.mainCounterId} sub:${tx.subCounterId}');
-    // }
-
-    // debugPrint('=== activeCounters (${activeCounters.length}) ===');
-    // for (final c in activeCounters) {
-    //   debugPrint('  counter:${c.name} id:${c.id} state:${c.state}');
-    // }
-    // debugPrint('==========================================');
-
-    // 4. STRATEGY & AUTHORITY ANALYSIS
-    // Now this analysis is "Clean" because it only sees the 13 planets
     final analysisMap = ZBLogic.zbstrategyauthority(
       zbtransactions: activeTransactions,
       counters: activeCounters,
@@ -382,12 +368,6 @@ class ZBHelpers {
     // 5. DATA MAPPING (Strings to IDs with DEBUG)
     final String resType = (analysisMap['type'] ?? '').trim();
     final String resAuth = (analysisMap['authority'] ?? '').trim();
-
-    // 🕵️ DEBUG LOGS - Check your VS Code Console!
-    // print("--------------------------------------------------");
-    // print("📊 LOGIC RESULTS for ${targetTime.toIso8601String()}");
-    // print("🔎 Raw Type from Logic: '$resType'");
-    // print("🔎 Raw Auth from Logic: '$resAuth'");
 
     int tId = 1; // Default fallback
     try {
