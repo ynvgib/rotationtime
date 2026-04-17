@@ -46,3 +46,5 @@ app.*.map.json
 
 # node modules
 /node_modules
+installations/apk
+installations/linux
