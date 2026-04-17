@@ -1915,6 +1915,7 @@ abstract class ZBData {
   static final Map<String, List<String>> base64Data = {
     'Hex Names': hexNames64lst,
     'HD Gates': hdgates64lst,
+    'HD Gate Desc': hd64gatesdesclst,
     'RT Names': hexRTNames64lst,
     'New RT Names': new_hexRTNames64lst,
     'iChing': iChingEng64lst,

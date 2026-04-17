@@ -317,6 +317,8 @@ class ZBHelpers {
   static Future<ZBAccount> generateAccount(
     DateTime targetTime, {
     bool isNow = false,
+    int cycleState = 2, // ✅ Added: Defaulting to 2 (Red Silence)
+    DateTime? cycleDate,
   }) async {
     // 1. TIMING LOGIC
     DateTime calculationTime = isNow ? DateTime.now() : targetTime;
@@ -422,6 +424,8 @@ class ZBHelpers {
       sentence: zbsentence.sentenceheb,
       typeid: tId,
       authid: aId,
+      cycleState: cycleState, // ✅ Pass it into the constructor
+      cycleDate: cycleDate ?? calculationTime,
     );
   }
 

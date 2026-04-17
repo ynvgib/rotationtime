@@ -18603,9 +18603,7 @@ final List hdgates = [
   'Transition, like birth, requires a determined strength for the passage through.',
 ];
 
-List<String> hdgatesdesc = [
-  //0, 'No Gate',
-  'no description',
+List<String> hd64gatesdesclst = [
   //1, 'Self Expression',
   'Creation as a primal force. The energy potential to manifest inspiration without limitation.',
   //2, 'Direction of the Self',

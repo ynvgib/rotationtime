@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:sweph/sweph.dart';
 import 'package:finallyicanlearn/zb/data/zb_classes.dart';
 import 'package:finallyicanlearn/zb/data/zb_extensions.dart';
@@ -66,11 +65,7 @@ abstract class ZBExternalService {
 
   /// Finds the Design Time (88 degrees before Birth Sun)
   static double _calculateJulianDay(DateTime now) {
-    // 🚀 CRITICAL: Swiss Ephemeris requires Universal Time (UTC)
-    final utc = now;
-    // final utc = now.toUtc();
-
-    // Include milliseconds for ultra-precise iterative convergence
+    final utc = now; // Ensure this is UTC if required by your UI logic
     final double hours = utc.hour +
         (utc.minute / 60.0) +
         (utc.second / 3600.0) +
@@ -93,40 +88,35 @@ abstract class ZBExternalService {
     double targetLong = (pSunLon - 88.0) % 360;
     if (targetLong < 0) targetLong += 360;
 
-    // Start slightly before 88 days to approach from the "past"
     DateTime currentGuess = birthTime.subtract(const Duration(days: 90));
 
-    // Step-down refinement
-    currentGuess = await _refineToTarget(
-        currentGuess, targetLong, const Duration(days: 1), 0.5);
-    currentGuess = await _refineToTarget(
-        currentGuess, targetLong, const Duration(hours: 1), 0.05);
-    currentGuess = await _refineToTarget(
-        currentGuess, targetLong, const Duration(minutes: 1), 0.0005);
-    currentGuess = await _refineToTarget(
-        currentGuess, targetLong, const Duration(seconds: 1), 0.000005);
+    // Refinement steps
+    currentGuess = await _refineToTarget(currentGuess, targetLong,
+        HeavenlyBody.SE_SUN, const Duration(days: 1), 0.5);
+    currentGuess = await _refineToTarget(currentGuess, targetLong,
+        HeavenlyBody.SE_SUN, const Duration(hours: 1), 0.05);
+    currentGuess = await _refineToTarget(currentGuess, targetLong,
+        HeavenlyBody.SE_SUN, const Duration(minutes: 1), 0.0005);
+    currentGuess = await _refineToTarget(currentGuess, targetLong,
+        HeavenlyBody.SE_SUN, const Duration(seconds: 1), 0.000005);
 
-    // print("DEBUG: Final Design Time: ${currentGuess.toIso8601String()}");
     return currentGuess;
   }
 
-  static Future<DateTime> _refineToTarget(
-      DateTime start, double target, Duration step, double tolerance) async {
+  static Future<DateTime> _refineToTarget(DateTime start, double target,
+      HeavenlyBody body, Duration step, double tolerance) async {
     DateTime current = start;
     double lastGap = 999.0;
 
     while (true) {
       final jd = _calculateJulianDay(current);
 
-      // ✅ FIX: Use HeavenlyBody.SE_SUN instead of 0
-      final res =
-          Sweph.swe_calc_ut(jd, HeavenlyBody.SE_SUN, SwephFlag.SEFLG_SWIEPH);
+      // ✅ FIXED: Changed SE_SUN to 'body' so it refines Saturn, Chiron, etc.
+      final res = Sweph.swe_calc_ut(jd, body, SwephFlag.SEFLG_SWIEPH);
       double currentLon = res.longitude;
-      // print("DEBUG: SWEPH SUN LONG: ${res.longitude}"); // 👈 Add
 
       double gap = target - currentLon;
 
-      // ✅ FIX: Enclose while statements in blocks {}
       while (gap > 180) {
         gap -= 360;
       }
@@ -136,9 +126,7 @@ abstract class ZBExternalService {
 
       if (gap.abs() < tolerance) break;
 
-      // If we are moving away from the target, we passed it
       if (gap.abs() > lastGap.abs()) {
-        // Back-step one unit to stay on the correct side
         if (gap > 0) {
           current = current.subtract(step);
         } else {
@@ -149,7 +137,6 @@ abstract class ZBExternalService {
 
       lastGap = gap;
 
-      // Move time forward or backward toward the target
       if (gap > 0) {
         current = current.add(step);
       } else {
@@ -218,4 +205,85 @@ abstract class ZBExternalService {
     // DEBUG: Verify the 180-degree axis
     // print("DEBUG: Sun Gate: ${list[0].wallet} | Earth Gate: ${list[1].wallet}");
   }
+
+  static Future<ZBPhase> getStep(DateTime birth, List<ZBWallet> natal) async {
+    final now = DateTime.now();
+
+    // 1. Saturn Return (~29 yrs)
+    final saturns = await findCycleWindows(
+      body: HeavenlyBody.SE_SATURN,
+      targetLon: natal[9].longitude!,
+      searchStart: birth.add(const Duration(days: 365 * 28)),
+    );
+    if (saturns.isEmpty || now.isBefore(saturns.first)) return ZBPhase.youth;
+
+    // 2. Uranus Opposition (~42 yrs)
+    double uOpp = (natal[10].longitude! + 180) % 360;
+    final uranusOpp = await findCycleWindows(
+      body: HeavenlyBody.SE_URANUS,
+      targetLon: uOpp,
+      searchStart: birth.add(const Duration(days: 365 * 38)),
+    );
+    if (uranusOpp.isEmpty || now.isBefore(uranusOpp.first))
+      return ZBPhase.prime;
+
+    // 3. Chiron Return (~50 yrs)
+    final chirons = await findCycleWindows(
+      body: HeavenlyBody.SE_CHIRON,
+      targetLon: natal[13].longitude!,
+      searchStart: birth.add(const Duration(days: 365 * 48)),
+    );
+    if (chirons.isEmpty || now.isBefore(chirons.first)) return ZBPhase.wisdom;
+
+    return ZBPhase.elder;
+  }
+
+  static Future<List<DateTime>> findCycleWindows({
+    required HeavenlyBody body,
+    required double targetLon,
+    required DateTime searchStart,
+    Duration scanWindow = const Duration(days: 365 * 2),
+  }) async {
+    List<DateTime> results = [];
+    DateTime current = searchStart;
+    DateTime end = searchStart.add(scanWindow);
+    double? lastGap;
+
+    Duration step = (body == HeavenlyBody.SE_MOON)
+        ? const Duration(hours: 1)
+        : const Duration(days: 1);
+
+    while (current.isBefore(end)) {
+      final jd = _calculateJulianDay(current);
+      final res = Sweph.swe_calc_ut(jd, body, SwephFlag.SEFLG_SWIEPH);
+      double gap = (res.longitude - targetLon);
+
+      while (gap > 180) {
+        gap -= 360;
+      }
+      while (gap < -180) {
+        gap += 360;
+      }
+
+      if (lastGap != null && (lastGap.isNegative != gap.isNegative)) {
+        DateTime exact = await _refineToTarget(
+          current.subtract(step),
+          targetLon,
+          body,
+          const Duration(minutes: 1),
+          0.000005,
+        );
+        results.add(exact);
+      }
+      lastGap = gap;
+      current = current.add(step);
+    }
+    return results;
+  }
 }
+
+abstract class ZBCycleService extends ZBExternalService {
+  /// Calculates planetary returns or oppositions.
+}
+
+enum ZBPhase { youth, prime, wisdom, elder }

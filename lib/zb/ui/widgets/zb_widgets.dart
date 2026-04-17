@@ -466,7 +466,7 @@ Widget build64PopUp(BuildContext context) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) =>
-                      build64rtPop(context, hdgatesdesc, titles64[7]),
+                      build64rtPop(context, hd64gatesdesclst, titles64[7]),
                 );
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
@@ -520,142 +520,6 @@ Widget build64PopUp(BuildContext context) {
         child: const Text('X', style: TextStyle(color: Colors.black)),
       ),
     ],
-  );
-}
-
-Widget build384PopUp(BuildContext context) {
-  return SelectionArea(
-    child: AlertDialog(
-      title: const Text('384'),
-      content: SingleChildScrollView(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.6,
-          child: Flex(
-            direction: Axis.vertical,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Heb
-              ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        //build384rtPop(context, rtlines390lst_heb),
-                        build384rtPop(context, zblines384heblst),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                child: const Text(
-                  'סיבוב קווים',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
-              ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) => SelectionArea(
-                      child: build384rtPop(context, hdlines384lstHeb),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                child: const Text(
-                  'קווי עיצוב',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
-              ),
-              const SizedBox(height: 10),
-              const Divider(color: Colors.black, thickness: 5),
-              // Eng
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        build384rtPop(context, zblines384lst),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                child: const Text(
-                  'Rotating Lines',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
-              ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        build384rtPop(context, hdlines384lst),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                child: const Text(
-                  'HD Lines',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                //child: const Text('COMPLEX', style: TextStyle(color: Colors.black,fontSize: 35))),
-              ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        build384rtPlanetPop(context),
-                  );
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                child: const SizedBox(
-                  width: 60,
-                  height: 60,
-                  child: Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: CircleAvatar(
-                          minRadius: 30,
-                          maxRadius: 30,
-                          backgroundColor: Colors.white,
-                          foregroundImage: AssetImage('assets/planets/sun.png'),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: CircleAvatar(
-                          minRadius: 15,
-                          maxRadius: 15,
-                          backgroundColor: Colors.white,
-                          foregroundImage: AssetImage(
-                            'assets/planets/earth.png',
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-            ],
-          ),
-        ),
-      ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            if (Navigator.canPop(context)) Navigator.pop(context);
-          },
-          child: const Text('X', style: TextStyle(color: Colors.black)),
-        ),
-      ],
-    ),
   );
 }
 
@@ -2989,23 +2853,6 @@ Widget zbbuild384PopUp(BuildContext context) {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // 1. DYNAMIC: Using the global 'base384' Map from rtlists.dart
-                  ...ZBData.base384.entries.map(
-                    (entry) => Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: zbChannelBtn(
-                        context: dialogContext,
-                        label: entry.key,
-                        bg: Colors.black,
-                        textCol: Colors.white,
-                        fontSize: 18,
-                        destination: build384rtPop(dialogContext, entry.value),
-                      ),
-                    ),
-                  ),
-
-                  const Divider(color: Colors.black, thickness: 3, height: 30),
-
                   // 2. THE COMPLEX GENIUS: Using the Sun/Earth Stack Helper
                   ElevatedButton(
                     onPressed: () {
@@ -3019,6 +2866,21 @@ Widget zbbuild384PopUp(BuildContext context) {
                       backgroundColor: Colors.black,
                     ),
                     child: _buildSunEarthStack(), // The Reflected Helper
+                  ),
+                  const Divider(color: Colors.black, thickness: 3, height: 30),
+                  // 1. DYNAMIC: Using the global 'base384' Map from rtlists.dart
+                  ...ZBData.base384.entries.map(
+                    (entry) => Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: zbChannelBtn(
+                        context: dialogContext,
+                        label: entry.key,
+                        bg: Colors.black,
+                        textCol: Colors.white,
+                        fontSize: 18,
+                        destination: build384rtPop(dialogContext, entry.value),
+                      ),
+                    ),
                   ),
                 ],
               ),

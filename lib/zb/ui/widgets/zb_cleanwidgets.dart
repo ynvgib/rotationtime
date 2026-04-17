@@ -4,8 +4,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
 import 'package:finallyicanlearn/zb/data/zb_classes.dart';
 import 'package:finallyicanlearn/zb/data/zb_data.dart';
+import 'package:finallyicanlearn/zb/data/zb_services.dart';
+import 'package:finallyicanlearn/zb/ui/zb_helpers.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
+import 'package:sweph/sweph.dart';
 
 // ##########################################################################
 // ABSTRACT CLASS GROUPS: FOR FUTURE REFACTORING
@@ -33,26 +37,29 @@ class ZBAccount {
   final String sentence;
   final int typeid;
   final int authid;
+  final int cycleState;
+  DateTime? cycleDate;
 
-  ZBAccount({
-    required this.zbpersonality,
-    this.zbdesign = const [],
-    required this.zbtransactions,
-    required this.zbcounters,
-    required this.timestamp,
-    required this.designtimestamp,
-    this.isJustNow = false,
-    // Add these to the constructor
-    this.type = "",
-    this.subtype = "",
-    this.authority = "",
-    this.subauthority = "",
-    this.strategy = "",
-    this.definition = "",
-    this.sentence = "",
-    this.typeid = 0,
-    this.authid = 0,
-  });
+  ZBAccount(
+      {required this.zbpersonality,
+      this.zbdesign = const [],
+      required this.zbtransactions,
+      required this.zbcounters,
+      required this.timestamp,
+      required this.designtimestamp,
+      this.isJustNow = false,
+      // Add these to the constructor
+      this.type = "",
+      this.subtype = "",
+      this.authority = "",
+      this.subauthority = "",
+      this.strategy = "",
+      this.definition = "",
+      this.sentence = "",
+      this.typeid = 0,
+      this.authid = 0,
+      this.cycleState = 2,
+      this.cycleDate});
 }
 
 /// GROUP A: THE BODY (GEOMETRY & PATHS)
@@ -426,6 +433,49 @@ abstract class ZBAssets {
 // rotatecleanwidgets.dart
 
 abstract class ZBLogic {
+// Logic for major milestones
+  static Future<Map<String, dynamic>?> getMilestoneData({
+    required HeavenlyBody body,
+    required DateTime birthTime,
+    required List<ZBWallet> natalWallets,
+  }) async {
+    double targetLon;
+    Duration offset;
+    int targetState;
+
+    // Mapping based on your specific Base6 progression:
+    // 2: Red (Birth/Silence) -> 3: Yellow (Saturn) -> 4: Green (Uranus) -> 5: Blue (Chiron)
+    if (body == HeavenlyBody.SE_SATURN) {
+      targetLon = natalWallets[9].longitude!;
+      offset = const Duration(days: 365 * 28);
+      targetState = 3; // Yellow (Breath)
+    } else if (body == HeavenlyBody.SE_URANUS) {
+      targetLon = (natalWallets[10].longitude! + 180) % 360;
+      offset = const Duration(days: 365 * 38);
+      targetState = 4; // Green (Simple)
+    } else if (body == HeavenlyBody.SE_CHIRON) {
+      targetLon = natalWallets[13].longitude!;
+      offset = const Duration(days: 365 * 48);
+      targetState = 5; // Blue (Complex)
+    } else {
+      return null;
+    }
+
+    final results = await ZBExternalService.findCycleWindows(
+      body: body,
+      targetLon: targetLon,
+      searchStart: birthTime.add(offset),
+      scanWindow: const Duration(days: 365 * 3),
+    );
+
+    if (results.isEmpty) return null;
+
+    return {
+      'time': results.first,
+      'state': targetState,
+    };
+  }
+
   static int getBaseFreqForGodhead(int index) {
     if (index < 4) return 5; // Blue Dog
     if (index < 8) return 4; // Green Octopus
@@ -489,7 +539,7 @@ abstract class ZBLogic {
   }
 
   static ZBAccount? currentAccount;
-  static String? _lastAccountSnapshot;
+  // static String? _lastAccountSnapshot;
 
   /// The "Golden Sync": Restores the global counterMap from the account data.
   /// This clears the 'Sandbox White' (state 4) residue from RotateSimple
@@ -734,15 +784,6 @@ abstract class ZBLogic {
     // index 2 = State 4 (Green/Simple) -> Low Priority
     int currentWeight = ZBStory.zbCounterPriority.indexOf(counter.counterstate);
     int incomingWeight = ZBStory.zbCounterPriority.indexOf(newState);
-
-    // --- ENHANCED LOGGING ---
-    // String cName = counter.name.toUpperCase();
-    // String currentName = _getStateName(counter.counterstate);
-    // String incomingName = _getStateName(newState);
-
-    // print("--- 🛰️ LOG: $cName ---");
-    // print("EXISTING: State $currentName (Weight $currentWeight)");
-    // print("INCOMING: State $incomingName (Weight $incomingWeight)");
 
     // 🛡️ THE STORY GUARD
     if (incomingWeight > currentWeight) {

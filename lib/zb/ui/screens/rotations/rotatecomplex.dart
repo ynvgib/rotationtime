@@ -86,7 +86,7 @@ class _RotateComplexState extends State<RotateComplex>
       _previousPlanetIndex = 0,
       _currentnote = 1,
       _linesListplace = 0,
-      _gatesListplace = 0;
+      _walletsListplace = 0;
 
   final DateTime _now = DateTime.now();
   DateTime _personTime = DateTime.now(),
@@ -296,18 +296,9 @@ class _RotateComplexState extends State<RotateComplex>
       _controllersavetxt = TextEditingController(),
       _controllerchartname = TextEditingController();
 
-  final CarouselSliderController _controllercoin = CarouselSliderController(),
-      _controllersubcoin = CarouselSliderController(),
-      _controllerconstate = CarouselSliderController(),
-      _controllerrotationstate = CarouselSliderController(),
-      _controllertop = CarouselSliderController(),
+  final CarouselSliderController _controllertop = CarouselSliderController(),
       _controllermid = CarouselSliderController(),
-      _controllerbot = CarouselSliderController(),
-      _controlEvolutionContainerSlider = CarouselSliderController(),
-      _controlComplexSlider = CarouselSliderController(),
-      _controlSimpleSlider = CarouselSliderController(),
-      _controlBreathSlider = CarouselSliderController(),
-      _controlSilenceSlider = CarouselSliderController();
+      _controllerbot = CarouselSliderController();
 
   // --- 7. ADDITIONAL UI STATE & MISSING LISTS ---
   final List<bool> _isPlanetSelectedList = List<bool>.filled(
@@ -348,12 +339,16 @@ class _RotateComplexState extends State<RotateComplex>
   List<int> _walletstatelist = List.filled(65, 0, growable: false);
   int tmpdesignwallet = 1, tmppersonwallet = 1;
   ZBAccount? _currentActiveAccount;
-  Color pickedcolor = Colors.white;
+  Color pickedcolor = Colors.white, cyclecolor = Colors.red;
   String _selected64Category = 'סיבוב ארנקים',
-      _selected384Category = 'סיבוב קווים'; // Default
+      _selected384Category = 'סיבוב קווים',
+      fetchCharttxt = 'לפלוט',
+      _currentWalletListName = 'מיקירנקים'; // Default title
   bool _isSyncing = false;
   ZBTheme _zbTheme = ZBTheme.zb;
   // final GlobalKey zbChartBoundaryKey = GlobalKey();
+  final List<List<String>> _rotationWalletRegistry =
+      ZBData.base64Data.values.toList();
 
   final Map<String, String> mstTranslator = {
     'CCG': 'Center Channel Gate',
@@ -492,7 +487,7 @@ class _RotateComplexState extends State<RotateComplex>
     _previousPlanetIndex = 0;
   }
 
-  bool _isInitializing = false; // Add this at the top with your other variables
+  bool _isInitializing = false, _isShowingCycleTime = false, _isLoading = false;
 
   Future<void> _initComplexData() async {
     // 1. Guard against multiple simultaneous calls (Crucial for Android)
@@ -563,6 +558,70 @@ class _RotateComplexState extends State<RotateComplex>
         counter.counterstate = 4;
       });
     });
+  }
+
+  void _toggleChartView() async {
+    if (_isLoading || _currentActiveAccount == null) return;
+
+    setState(() => _isLoading = true);
+
+    try {
+      if (!_isShowingCycleTime) {
+        // TRAVEL TO CYCLE: Switch to the Return/Opposition chart
+        // cycleDate was saved when you tapped the Saturn/Uranus/Chiron icon
+        ZBAccount cycleAccount = await ZBHelpers.generateAccount(
+          _currentActiveAccount!.cycleDate ?? _currentActiveAccount!.timestamp,
+          isNow: false,
+          cycleState: _currentActiveAccount!.cycleState,
+        );
+        _syncUIWithAccount(cycleAccount);
+      } else {
+        // RETURN TO NATAL: Switch back to the original Birth chart
+        // We pass 2 to return to the 'Silence' (Red) state
+        ZBAccount birthAccount = await ZBHelpers.generateAccount(
+          _personTime,
+          isNow: false,
+          cycleState: 2,
+        );
+        _syncUIWithAccount(birthAccount);
+      }
+
+      setState(() {
+        _isShowingCycleTime = !_isShowingCycleTime;
+      });
+    } catch (e) {
+      debugPrint("Zmansi Error during travel: $e");
+    } finally {
+      setState(() => _isLoading = false);
+    }
+  }
+
+  Future<void> _triggerMilestone(HeavenlyBody body) async {
+    if (_currentActiveAccount == null) return;
+
+    // 1. Get the pre-calculated time and target state from Logic
+    final data = await ZBLogic.getMilestoneData(
+      body: body,
+      birthTime: _personTime, // The natal birth date
+      natalWallets: _planetsfullpersonList, // Use the list already in memory
+    );
+
+    if (data != null) {
+      // 2. Build the Cycle Account.
+      // This creates a fresh ZBAccount with the cycle's unique planetary positions.
+      final milestoneAccount = await ZBHelpers.generateAccount(
+        data['time'],
+        isNow: false,
+        cycleState: data['state'], // 3, 4, or 5
+        cycleDate: data['time'],
+      );
+
+      // 3. Hand it to the UI
+      _syncUIWithAccount(milestoneAccount);
+
+      // Track that we are now looking at a cycle view
+      setState(() => _isShowingCycleTime = true);
+    }
   }
 
   void _initTextControllers() {
@@ -1502,8 +1561,48 @@ class _RotateComplexState extends State<RotateComplex>
                 ),
               ],
             ),
-            // zb new time code update
-
+            //zb placement for returns shift
+            // const Text('place for return buttons'),
+            // Flex(
+            //   direction: Axis.horizontal,
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     SizedBox(
+            //         height: 30,
+            //         width: 30,
+            //         child: ZBToggle(
+            //           isActive: _currentconstate == 0,
+            //           onTap: () =>
+            //               _toggleComplexSilence(_currentconstate == 0 ? 1 : 0),
+            //         )),
+            //     IconButton(
+            //       icon: const CircleAvatar(
+            //           foregroundImage: AssetImage('assets/planets/sun.png')),
+            //       onPressed: () => controlSetTime(false),
+            //     ),
+            //     IconButton(
+            //       icon: const CircleAvatar(
+            //           foregroundImage: AssetImage('assets/planets/moon.png')),
+            //       onPressed: () => controlSetTime(false),
+            //     ),
+            //     IconButton(
+            //       icon: const CircleAvatar(
+            //           foregroundImage: AssetImage('assets/planets/saturn.png')),
+            //       onPressed: () => controlSetTime(false),
+            //     ),
+            //     IconButton(
+            //       icon: const CircleAvatar(
+            //           foregroundImage: AssetImage('assets/planets/uranus.png')),
+            //       onPressed: () => controlSetTime(false),
+            //     ),
+            //     IconButton(
+            //       icon: const CircleAvatar(
+            //           foregroundImage: AssetImage('assets/planets/chiron.png')),
+            //       onPressed: () => controlSetTime(false),
+            //     ),
+            //   ],
+            // ),
+            const SizedBox(height: 5),
             Flex(
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1749,70 +1848,25 @@ class _RotateComplexState extends State<RotateComplex>
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: ZBToggle(
+                      isActive: _currentconstate == 0,
+                      onTap: () =>
+                          _toggleComplexSilence(_currentconstate == 0 ? 1 : 0),
+                    )),
                 IconButton(
                   icon: const Icon(Icons.recycling),
                   tooltip: 'להחליף ארנק',
-                  onPressed: () {
-                    switch (_gatesListplace) {
-                      case 0:
-                        coins64List = rtbimBox65List;
-                        _gatesListplace++;
-                        break;
-                      case 1:
-                        coins64List = hexRTNames65lst;
-                        _gatesListplace++;
-                        break;
-                      case 2:
-                        coins64List = new_hexRTNames65lst;
-                        _gatesListplace++;
-                        break;
-                      case 3:
-                        coins64List = rtwallets65lst_heb;
-                        _gatesListplace++;
-                        break;
-                      case 4:
-                        coins64List = new_rtbbwallet65lst_heb;
-                        _gatesListplace++;
-                        break;
-                      case 5:
-                        coins64List = hdgates65lst_heb;
-                        _gatesListplace++;
-                        break;
-                      case 6:
-                        coins64List = rtgateswallet65lst_heb;
-                        _gatesListplace++;
-                        break;
-                      case 7:
-                        coins64List = new_hexRTNames65lst;
-                        _gatesListplace++;
-                        break;
-                      case 8:
-                        coins64List = hexNames65lst;
-                        _gatesListplace++;
-                        break;
-                      case 9:
-                        coins64List = hdgates65lst;
-                        _gatesListplace++;
-                        break;
-                      case 10:
-                        coins64List = iChingEng65lst;
-                        _gatesListplace++;
-                        break;
-                      case 11:
-                        coins64List = rtminmic65List;
-                        _linesListplace = 0;
-                        break;
-                      default:
-                        break;
-                    }
-                  },
+                  onPressed: _rotateWalletNames, // Clean and direct
                 ),
                 ElevatedButton(
                   onPressed: () {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) =>
-                          _buildGatesDialog(context),
+                          _buildWalletsDialog(context),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -3078,9 +3132,9 @@ class _RotateComplexState extends State<RotateComplex>
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: const Text(
-                    'לפלוט',
-                    style: TextStyle(color: Colors.white),
+                  child: Text(
+                    fetchCharttxt,
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
               ],
@@ -4636,42 +4690,88 @@ class _RotateComplexState extends State<RotateComplex>
   }
 
   void _setWalletsState() {
-    _applyInitialSimpleState(); // Reset _walletstatelist to 4
+    _applyInitialSimpleState(); // Reset _walletstatelist to 4 (Green/Off)
 
+    // --- PASS 1: Map all Design Activations (Red) ---
+    // We do this first so the registry "knows" all red gates.
     for (int i = 0; i < 13; i++) {
-      int dGate = _planetsdesignList[i].wallet;
-      int pGate = _planetspersonList[i].wallet;
-
-      if (dGate > 0 && dGate < 65) {
-        _walletstatelist[dGate] = 2; // Red
-        _isBoldList[dGate] = true;
-      }
-      if (pGate > 0 && pGate < 65) {
-        _isBoldList[pGate] = true;
-        _walletstatelist[pGate] =
-            (_walletstatelist[pGate] == 2) ? 9 : 5; // Striped or Blue
+      int dWallet = _planetsdesignList[i].wallet;
+      if (dWallet > 0 && dWallet < 65) {
+        _walletstatelist[dWallet] = 2; // Red
+        _isBoldList[dWallet] = true;
       }
     }
 
-    // Sync the Transactions (Channels)
+    // --- PASS 2: Map Personality & Detect Overlaps (State 9) ---
+    for (int i = 0; i < 13; i++) {
+      int pWallet = _planetspersonList[i].wallet;
+      if (pWallet > 0 && pWallet < 65) {
+        _isBoldList[pWallet] = true;
+
+        // 🎯 THE CRITICAL CHECK:
+        // Since all Design gates are already in the list,
+        // we can reliably check for the Red (2) state here.
+        if (_walletstatelist[pWallet] == 2) {
+          _walletstatelist[pWallet] = 9; // Red + Blue Striped
+        } else if (_walletstatelist[pWallet] != 9) {
+          // Only set to Blue if it wasn't already upgraded to Striped
+          _walletstatelist[pWallet] = 5; // Blue
+        }
+      }
+    }
+
+    // --- PASS 3: Sync the Transactions (Channels) ---
     for (var tx in ZBData.getzbtransactions) {
       int sA = _walletstatelist[tx.mainWalletId];
       int sB = _walletstatelist[tx.subWalletId];
 
-      // A channel is ONLY active if BOTH ends are defined (not 4 or 0)
+      // A channel is active if both ends are defined (not 4 or 0)
       if (sA != 4 && sA != 0 && sB != 4 && sB != 0) {
-        if (sA == 9 || sB == 9)
+        if (sA == 9 || sB == 9) {
           tx.zbstate = 9;
-        else if (sA == 5 && sB == 5)
+        } else if (sA == 5 && sB == 5) {
           tx.zbstate = 5;
-        else if (sA == 2 && sB == 2)
+        } else if (sA == 2 && sB == 2) {
           tx.zbstate = 2;
-        else
-          tx.zbstate = 9; // Mixed Red/Blue = Defined
+        } else {
+          tx.zbstate = 9; // Fallback for mixed defined states
+        }
       } else {
         tx.zbstate = 4; // Off/Green
       }
     }
+
+    // --- 🚀 FULL REGISTRY DEBUG ---
+    // print("==================================================");
+    // print("        ZB REGISTRY: FULL ACTIVE WALLET MAP        ");
+    // print("==================================================");
+
+    // int overlapCount = 0;
+    // for (int i = 1; i <= 64; i++) {
+    //   int state = _walletstatelist[i];
+
+    //   if (state != 0 && state != 4) {
+    //     String label = "";
+    //     switch (state) {
+    //       case 2:
+    //         label = "🔴 DESIGN ONLY";
+    //         break;
+    //       case 5:
+    //         label = "🔵 PERSONALITY ONLY";
+    //         break;
+    //       case 9:
+    //         label = "🟣 OVERLAP (STRIPED)";
+    //         overlapCount++;
+    //         break;
+    //     }
+    //     print(
+    //         "Gate ${i.toString().padLeft(2, ' ')} | State: $state | $label | Bold: ${_isBoldList[i]}");
+    //   }
+    // }
+
+    // print("--------------------------------------------------");
+    // print("TOTAL OVERLAPS FOUND: $overlapCount");
+    // print("==================================================");
   }
 
   controlCollor(int colorcoin) {
@@ -4702,6 +4802,23 @@ class _RotateComplexState extends State<RotateComplex>
         break;
     }
     return finalcolor;
+  }
+
+  void _rotateWalletNames() {
+    setState(() {
+      // 1. Increment and wrap around using the Map length
+      _walletsListplace = (_walletsListplace + 1) % ZBData.base64Data.length;
+
+      // 2. Sync the name (for the Dialog title)
+      _currentWalletListName =
+          ZBData.base64Data.keys.elementAt(_walletsListplace);
+
+      // 3. Sync the data list
+      coins64List = ZBData.base64Data.values.elementAt(_walletsListplace);
+    });
+
+    // Optional: Print to console so you can see the switch happening
+    // print("Switched to Registry: $_currentListName (Index: $_walletsListplace)");
   }
 
   void _toggleComplexSilence(int index) {
@@ -4738,52 +4855,52 @@ class _RotateComplexState extends State<RotateComplex>
     await _performZBTimeUpdate(newTime);
   }
 
-  Widget _buildGatesDialog(BuildContext context) {
+  Widget _buildWalletsDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text('ארנקים'),
+      // Now the title updates as you recycle!
+      title: Text(_currentWalletListName, textAlign: TextAlign.center),
       content: SizedBox(
         width: Screen.width * 0.8,
         child: ListView.builder(
-          reverse: false,
           itemCount: 13,
-          itemBuilder: (context, index) => ListTile(
-            title: SizedBox(
-              child: Flex(
-                direction: Axis.vertical,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          itemBuilder: (context, index) {
+            final planet = _planetsfulldisplayList[index];
+            final walletId = planet.wallet;
+
+            return ListTile(
+              title: Column(
                 children: [
                   CircleAvatar(
                     maxRadius: 20,
                     backgroundColor: Colors.transparent,
                     foregroundImage: AssetImage(planetsimagelist[index]),
                   ),
+                  const SizedBox(height: 4),
                   Text(
-                    (_planetsfulldisplayList[index].wallet ?? 0).toString(),
+                    "$walletId",
+                    style: const TextStyle(fontSize: 13, color: Colors.black),
+                  ),
+                  Text(
+                    // Safety: Ensure we don't hit an out-of-bounds error
+                    (walletId < coins64List.length)
+                        ? coins64List[walletId]
+                        : "ארנק לא יודע",
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                      fontSize: 15,
                     ),
                   ),
-                  Text(
-                    coins64List[_planetsfulldisplayList[index].wallet ?? 0],
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    ),
-                  ),
+                  const Divider(),
                 ],
               ),
-            ),
-          ),
+            );
+          },
         ),
       ),
       actions: [
         TextButton(
-          onPressed: () {
-            zbPop(context);
-          },
+          onPressed: () => zbPop(context),
           child: const Icon(Icons.close, color: Colors.black),
         ),
       ],
@@ -5309,16 +5426,20 @@ class _RotateComplexState extends State<RotateComplex>
   // zb new gemini claude code
   void _syncUIWithAccount(ZBAccount account) {
     setState(() {
+      // 0. New: Context & Identity Sync
+      _currentActiveAccount = account;
+
+      // Update the global logical reference
       ZBLogic.currentAccount = account;
+
+      // 1. Lifecycle Visual Sync
+      final frequency = ZBStory.getfrequency(account.cycleState);
+      cyclecolor = frequency.zbcolor;
 
       // 2. Perform the actual data restoration immediately
       ZBLogic.restoreGlobalRegistry(account);
 
-      _currentActiveAccount = account;
-
       // 1. High-Precision Mapping
-      // Apply .getwalletsub to ensure the UI lists have the corrected
-      // Base/Tone/Color from the fixed +58/UTC logic.
       _planetsfullpersonList =
           account.zbpersonality.map((w) => w.getwalletsub).toList();
       _planetsfulldesignList =
@@ -5331,13 +5452,11 @@ class _RotateComplexState extends State<RotateComplex>
       _planetsdesignList = _planetsfulldesignList.take(13).toList();
 
       // 3. Update the RAM/Registry States
-      // This updates _walletstatelist [2, 5, or 9] and syncs ZBData.getzbtransactions
       _applyInitialSimpleState();
-      _setWalletsState();
+      _setWalletsState(); // This will also trigger the full registry debug we added earlier
       _walletstatelist = List<int>.from(_walletstatelist);
 
       // 4. Map the Active Transactions (Channels)
-      // We use the transactions directly from the account object.
       final List<ZBTransaction> activeTX = account.zbtransactions
           .where((t) => t.zbstate != 4 && t.zbstate != 0)
           .toList();
@@ -5345,7 +5464,6 @@ class _RotateComplexState extends State<RotateComplex>
       _updateRegistryFromCounters(activeTX);
 
       // 5. 🚀 DIRECT NARRATIVE SYNC
-      // This handles all TextControllers and the Carousel "Coins"
       _updateUIControllers(account);
 
       // 6. Time and Navigation Sync
@@ -5353,7 +5471,7 @@ class _RotateComplexState extends State<RotateComplex>
       _designTime = account.designtimestamp;
       _setDateTime(account.timestamp);
 
-      // Set initial focus to the Personality Sun (Gate 55.1...)
+      // Set initial focus to the Personality Sun
       _planethex = _planetsfullpersonList[0];
       _updateUITextFromPlanet(_planethex);
 
