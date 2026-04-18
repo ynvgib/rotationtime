@@ -141,6 +141,7 @@ class TxtFilesList {
     'preparatory_academy_he.txt',
     'we_find_he.txt',
     'the_world_as_usual_he.txt',
+    'kolshaon_he.txt'
   ];
 
   static const List<String> engFiles = [
