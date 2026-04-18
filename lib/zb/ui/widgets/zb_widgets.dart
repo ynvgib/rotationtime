@@ -2338,7 +2338,7 @@ Widget buildSelectionButton(
       );
     },
     style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.green,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(50),
       ),
@@ -2351,63 +2351,6 @@ Widget buildSelectionButton(
   );
 }
 
-// One function to rule them all (4, 36, 64, 384)
-Widget buildBasePopUp(
-  BuildContext context,
-  String baseName,
-  Map<String, List<String>> listsMap,
-) {
-  // Use a Builder to get a fresh local context for the Navigator
-  return Builder(
-    builder: (dialogContext) {
-      return SelectionArea(
-        child: AlertDialog(
-          title: Text('Base $baseName - Choose Category'),
-          content: SizedBox(
-            width: MediaQuery.of(dialogContext).size.width * 0.7,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: listsMap.keys.map((String title) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                      ),
-                      onPressed: () {
-                        showDialog(
-                          context: dialogContext, // Use dialogContext here
-                          builder: (innerContext) => buildBaseDataList(
-                            innerContext,
-                            title,
-                            listsMap[title]!,
-                          ),
-                        );
-                      },
-                      child: Text(
-                        title,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-          ),
-          actions: [
-            TextButton(
-              // Use dialogContext to ensure it pops the current AlertDialog
-              onPressed: () => Navigator.of(dialogContext).pop(),
-              child: const Text('X', style: TextStyle(color: Colors.black)),
-            ),
-          ],
-        ),
-      );
-    },
-  );
-}
-
 Widget buildBaseDataList(
   BuildContext context,
   String title,
@@ -2415,6 +2358,9 @@ Widget buildBaseDataList(
 ) {
   final int total = data.length;
   final bool isBase64 = total == 64;
+  final bool isBase4 = total == 4; // Identifying Base 4 for RNA mapping
+  final bool isBase6 = total == 6;
+
   final double dynamicHeight = total > 4 ? 0.6 : 0.4;
 
   return SelectionArea(
@@ -2427,24 +2373,36 @@ Widget buildBaseDataList(
         height: MediaQuery.of(context).size.height * dynamicHeight,
         child: ListView.builder(
           itemCount: total,
-          // 🎯 STAGE 1: Ensure reverse is false so it starts at the top
-          reverse: isBase64,
           padding: EdgeInsets.zero,
           itemBuilder: (context, index) {
-            Color rowBgColor = isBase64
-                ? Colors.white
-                : ZBStyles.getBaseToneColor(index, total);
+            int state;
+            int dataIndex;
+
+            // 🎯 LOGIC BRANCHING
+            if (isBase4) {
+              // 1. Use the RNA Strand sequence: [5, 4, 3, 2]
+              // index 0 -> state 5 (Blue)
+              // index 3 -> state 2 (Red)
+              state = ZBStory.zbRNAstrand[index];
+              dataIndex = index;
+            } else if (isBase6) {
+              // 2. Base 6 Descending (6 at top, 1 at bottom)
+              state = total - index;
+              dataIndex = total - 1 - index;
+            } else {
+              // 3. Base 64 Ascending (1 at top, 64 at bottom)
+              state = index + 1;
+              dataIndex = index;
+            }
+
+            // 🎨 COLORING: Pull frequency color based on the mapped state
+            Color rowBgColor =
+                isBase64 ? Colors.white : ZBStory.getfrequency(state).zbcolor;
 
             final bool isLight = rowBgColor == Colors.yellow ||
                 rowBgColor == Colors.green ||
                 rowBgColor == Colors.white;
             final Color textCol = isLight ? Colors.black : Colors.white;
-
-            // 🎯 STAGE 2: Correct Numbering
-            // If the data is ordered [1...64], use: index + 1
-            // If the data is ordered [64...1], use: total - index
-            //final int displayNumber = total - index;
-            final int displayNumber = index + 1;
 
             return Card(
               elevation: 0,
@@ -2461,7 +2419,8 @@ Widget buildBaseDataList(
                   backgroundColor:
                       isBase64 ? Colors.grey.shade100 : Colors.white24,
                   child: Text(
-                    '$displayNumber',
+                    // Base 4 shows 1-4 numbering, others show the State number
+                    isBase4 ? '${index + 1}' : '$state',
                     style: TextStyle(
                         color: textCol,
                         fontSize: 12,
@@ -2469,7 +2428,7 @@ Widget buildBaseDataList(
                   ),
                 ),
                 title: Text(
-                  data[index],
+                  data[dataIndex],
                   style: TextStyle(fontWeight: FontWeight.bold, color: textCol),
                 ),
               ),
@@ -2479,8 +2438,10 @@ Widget buildBaseDataList(
       ),
       actions: [
         TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('X', style: TextStyle(color: Colors.black)),
+          onPressed: () {
+            zbPop(context);
+          },
+          child: const Icon(Icons.close, color: Colors.black),
         ),
       ],
     ),
@@ -2937,26 +2898,29 @@ Widget zbbuildBasePopUp(
   String title,
   Map<String, List<String>> dataMap,
 ) {
-  // 1. Identify the 64-gate list
   final bool isBase64 = title == '64';
 
-  // 2. Prepare the entries
-  // We keep the original Map order (1 -> 64) for the 64-list
-  // so it starts with 1 at the top of the scroll.
-  final entries = dataMap.entries.toList();
+  // Convert Map to List of entries
+  var entries = dataMap.entries.toList();
+
+  // Reverse logic for vertical stacking
+  if (title == '6' || title == '4') {
+    entries = entries.reversed.toList();
+  }
 
   return Builder(
     builder: (dialogContext) {
       return SelectionArea(
         child: AlertDialog(
-          backgroundColor: isBase64 ? Colors.white : null,
+          // 🎯 FIX 1: Set white background for ALL bases, not just 64
+          backgroundColor: Colors.green,
+
           title: Text(
             isBase64 ? 'שערים' : 'Base $title',
-            style: TextStyle(color: isBase64 ? Colors.black : null),
+            // 🎯 FIX 2: Ensure the title text is Black for all bases
+            style: const TextStyle(color: Colors.white),
           ),
           content: SingleChildScrollView(
-            // Starts at the top (Gate 1)
-            reverse: false,
             child: SizedBox(
               width: MediaQuery.of(dialogContext).size.width * 0.7,
               child: Column(
@@ -2964,31 +2928,28 @@ Widget zbbuildBasePopUp(
                 children: [
                   ...entries.map(
                     (entry) {
-                      // final int index = int.tryParse(entry.key) ?? 0;
+                      // final int state = int.tryParse(entry.key) ?? 0;
+                      // final frequency = ZBStory.getfrequency(state);
 
-                      Color bgColor;
-                      Color textCol;
+                      // 🎯 FIX 3: Buttons inside should be white for 64, colored for others
+                      // final Color bgColor =
+                      //     isBase64 ? Colors.white : frequency.zbcolor;
 
-                      // if (isBase64) {
-                      // Simple Mode
-                      bgColor = Colors.white;
-                      textCol = Colors.black;
-                      // } else {
-                      //   // Frequency Mode for 4 and 6
-                      //   bgColor = ZBStory.getfrequency(index).zbcolor;
-                      //   // Determine if text should be black or white based on frequency
-                      //   textCol = (index == 6 || index == 3)
-                      //       ? Colors.black
-                      //       : Colors.white;
-                      // }
+                      // final bool isLight = bgColor == Colors.yellow ||
+                      //     bgColor == Colors.white ||
+                      //     bgColor == Colors.green;
+                      // final Color textCol =
+                      //     isLight ? Colors.black : Colors.white;
 
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: zbChannelBtn(
                           context: dialogContext,
                           label: entry.key,
-                          bg: bgColor,
-                          textCol: textCol,
+                          bg: Colors.white,
+                          // bg: bgColor,
+                          textCol: Colors.black,
+                          // textCol: textCol,
                           fontSize: 18,
                           destination: buildBaseDataList(
                             dialogContext,
@@ -3005,15 +2966,8 @@ Widget zbbuildBasePopUp(
           ),
           actions: [
             TextButton(
-              onPressed: () {
-                if (Navigator.of(dialogContext).canPop()) {
-                  Navigator.of(dialogContext).pop();
-                }
-              },
-              child: const Text(
-                'X',
-                style: TextStyle(color: Colors.black, fontSize: 18),
-              ),
+              onPressed: () => zbPop(dialogContext),
+              child: const Icon(Icons.close, color: Colors.white),
             ),
           ],
         ),

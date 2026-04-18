@@ -340,15 +340,27 @@ class _RotateComplexState extends State<RotateComplex>
   int tmpdesignwallet = 1, tmppersonwallet = 1;
   ZBAccount? _currentActiveAccount;
   Color pickedcolor = Colors.white, cyclecolor = Colors.red;
-  String _selected64Category = 'סיבוב ארנקים',
-      _selected384Category = 'סיבוב קווים',
-      fetchCharttxt = 'לפלוט',
-      _currentWalletListName = 'מיקירנקים'; // Default title
+  String fetchCharttxt = 'לפלוט',
+      _currentWalletListName = 'מיקירנקים',
+      _currentNotesName = 'סיבוב קווים',
+      _selected64Category = 'מיקירנקים',
+      _selected384Category = 'סיבוב קווים';
   bool _isSyncing = false;
   ZBTheme _zbTheme = ZBTheme.zb;
   // final GlobalKey zbChartBoundaryKey = GlobalKey();
   final List<List<String>> _rotationWalletRegistry =
       ZBData.base64Data.values.toList();
+
+  // The registry of all 384-item lists
+  // The registries
+  final List<List<String>> _rotationNotesRegistry =
+      ZBData.base384.values.toList();
+  final List<String> _notesNames = ZBData.base384.keys.toList();
+
+// The state pointers
+  int _notesListIndex = 0;
+  List<String> _currentNotesList = []; // Initialize as empty
+  String _currentNotesTitle = ''; // Initialize as empty
 
   final Map<String, String> mstTranslator = {
     'CCG': 'Center Channel Gate',
@@ -485,6 +497,9 @@ class _RotateComplexState extends State<RotateComplex>
     _isPlanetSelectedList.fillRange(0, _isPlanetSelectedList.length, false);
     _isPlanetSelectedList[0] = true;
     _previousPlanetIndex = 0;
+
+    _currentNotesList = ZBData.base384.values.first;
+    _currentNotesTitle = ZBData.base384.keys.first;
   }
 
   bool _isInitializing = false, _isShowingCycleTime = false, _isLoading = false;
@@ -1859,7 +1874,7 @@ class _RotateComplexState extends State<RotateComplex>
                 IconButton(
                   icon: const Icon(Icons.recycling),
                   tooltip: 'להחליף ארנק',
-                  onPressed: _rotateWalletNames, // Clean and direct
+                  onPressed: _rotateWalletLists, // Clean and direct
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -1911,28 +1926,7 @@ class _RotateComplexState extends State<RotateComplex>
                 IconButton(
                   icon: const Icon(Icons.recycling),
                   tooltip: 'להחליף מטבעות',
-                  onPressed: () {
-                    switch (_linesListplace) {
-                      case 0:
-                        coins384List = rtmix390lst;
-                        _linesListplace++;
-                        break;
-                      case 1:
-                        coins384List = hdmixlines390lst;
-                        _linesListplace++;
-                        break;
-                      case 2:
-                        coins384List = hdmixlines390lstHeb;
-                        _linesListplace++;
-                        break;
-                      case 3:
-                        coins384List = rtmix390lstHeb;
-                        _linesListplace = 0;
-                        break;
-                      default:
-                        break;
-                    }
-                  },
+                  onPressed: _rotateNotesLists, // Just call the function name
                 ),
               ],
             ),
@@ -2280,38 +2274,43 @@ class _RotateComplexState extends State<RotateComplex>
                                     setState(() {
                                       _currenttop = indextop;
 
+                                      // 1. Calculate the I Ching / Hexagram value based on slider positions
                                       _hexagramVal = ((_currenttop + 1) * 100 +
                                           (_currentmid + 1) * 10 +
                                           (_currentbot + 1));
 
+                                      // 2. Map that value to your wheel order index
                                       _carouselvalueindex =
-                                          hexCarouselWheelOrderList.indexOf(
-                                        _hexagramVal,
-                                      );
+                                          hexCarouselWheelOrderList
+                                              .indexOf(_hexagramVal);
 
+                                      // 3. Get the specific Wallet ID (1-64)
                                       _chosenhex = orderHexagramsWheel[
                                           _carouselvalueindex];
 
-                                      // _controllerwallettext.text =
-                                      //     _chosenhex.toString();
-
+                                      // 4. Update the visual numeric label (e.g., "3.3")
                                       _controllerwallettext.text =
                                           _planethex.walletNote;
 
-                                      // idonotknow _currentline
-                                      //_controllergatelinestory.text = 'test';
-                                      _controllernotestory.text =
-                                          coins384List[(coins384List.indexOf(
-                                                _chosenhex,
-                                              ) +
-                                              _currentnote)];
-
+                                      // 5. UNIFIED STORY UPDATE
+                                      // Pull the Wallet (64) story using the registry key
                                       _controllerwalletstory.text =
-                                          coins64List[_chosenhex];
+                                          ZBData.getWalletStory(
+                                        _chosenhex,
+                                        _selected64Category,
+                                      );
 
-                                      thirdcolor =
-                                          //controlCollor(coinsHeb4lst[_currenttop]);
-                                          controlCollor(_currenttop);
+                                      // Pull the Note (384) story using the registry key
+                                      // This uses the ((wallet-1)*6) + (note-1) math internally
+                                      _controllernotestory.text =
+                                          ZBData.getWalletNoteStory(
+                                        _chosenhex,
+                                        _currentnote,
+                                        _selected384Category,
+                                      );
+
+                                      // 6. UI Colors and Labels
+                                      thirdcolor = controlCollor(_currenttop);
                                       _controllercointopthirdtext.text =
                                           topcoinnamelist[_currenttop];
                                       _controllercoinmidthirdtext.text =
@@ -2459,38 +2458,42 @@ class _RotateComplexState extends State<RotateComplex>
                                     setState(() {
                                       _currentmid = indexmid;
 
+                                      // 1. Calculate the I Ching / Hexagram value based on all three sliders
                                       _hexagramVal = ((_currenttop + 1) * 100 +
                                           (_currentmid + 1) * 10 +
                                           (_currentbot + 1));
 
+                                      // 2. Map that value to your wheel order index
                                       _carouselvalueindex =
-                                          hexCarouselWheelOrderList.indexOf(
-                                        _hexagramVal,
-                                      );
+                                          hexCarouselWheelOrderList
+                                              .indexOf(_hexagramVal);
 
+                                      // 3. Get the specific Wallet ID (1-64)
                                       _chosenhex = orderHexagramsWheel[
                                           _carouselvalueindex];
 
-                                      // _controllerwallettext.text =
-                                      //     _chosenhex.toString();
-
+                                      // 4. Keep the numeric display updated
                                       _controllerwallettext.text =
                                           _planethex.walletNote;
 
-                                      //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-
+                                      // 5. UNIFIED STORY UPDATE
+                                      // Fetch the 64-item story
                                       _controllerwalletstory.text =
-                                          coins64List[_chosenhex];
+                                          ZBData.getWalletStory(
+                                        _chosenhex,
+                                        _selected64Category,
+                                      );
 
+                                      // Fetch the 384-item story using unified math: ((wallet-1)*6) + (note-1)
                                       _controllernotestory.text =
-                                          coins384List[(coins384List.indexOf(
-                                                _chosenhex,
-                                              ) +
-                                              _currentnote)];
+                                          ZBData.getWalletNoteStory(
+                                        _chosenhex,
+                                        _currentnote,
+                                        _selected384Category,
+                                      );
 
-                                      secondcolor =
-                                          //controlCollor(coinsHeb4lst[_currentmid]);
-                                          controlCollor(_currentmid);
+                                      // 6. Update UI Colors and secondary labels
+                                      secondcolor = controlCollor(_currentmid);
 
                                       _controllercointopsecondtext.text =
                                           topcoinnamelist[_currentmid];
@@ -2629,39 +2632,44 @@ class _RotateComplexState extends State<RotateComplex>
                                     onPageChanged: (indexbot, reason) {
                                       setState(() {
                                         _currentbot = indexbot;
+
+                                        // 1. Calculate the I Ching / Hexagram value based on all three sliders
                                         _hexagramVal =
                                             ((_currenttop + 1) * 100 +
                                                 (_currentmid + 1) * 10 +
                                                 (_currentbot + 1));
 
+                                        // 2. Map that value to your wheel order index
                                         _carouselvalueindex =
-                                            hexCarouselWheelOrderList.indexOf(
-                                          _hexagramVal,
-                                        );
+                                            hexCarouselWheelOrderList
+                                                .indexOf(_hexagramVal);
 
+                                        // 3. Get the specific Wallet ID (1-64)
                                         _chosenhex = orderHexagramsWheel[
                                             _carouselvalueindex];
 
-                                        // _controllerwallettext.text =
-                                        //     _chosenhex.toString();
-
+                                        // 4. Update numeric display
                                         _controllerwallettext.text =
                                             _planethex.walletNote;
 
-                                        //_hexsentence = getGateSentence(_chosenhex, _chosenlanguage);
-
+                                        // 5. UNIFIED STORY UPDATE
+                                        // Fetch the 64-item story using the current registry category
                                         _controllerwalletstory.text =
-                                            coins64List[_chosenhex];
+                                            ZBData.getWalletStory(
+                                          _chosenhex,
+                                          _selected64Category,
+                                        );
 
+                                        // Fetch the 384-item story using normalized math: ((wallet-1)*6) + (note-1)
                                         _controllernotestory.text =
-                                            coins384List[(coins384List.indexOf(
-                                                  _chosenhex,
-                                                ) +
-                                                _currentnote)];
+                                            ZBData.getWalletNoteStory(
+                                          _chosenhex,
+                                          _currentnote,
+                                          _selected384Category,
+                                        );
 
-                                        firstcolor =
-                                            //controlCollor(coinsHeb4lst[_currentbot]);
-                                            controlCollor(_currentbot);
+                                        // 6. Update UI Colors and primary labels
+                                        firstcolor = controlCollor(_currentbot);
 
                                         _controllercointopfirsttext.text =
                                             topcoinnamelist[_currentbot];
@@ -4804,21 +4812,46 @@ class _RotateComplexState extends State<RotateComplex>
     return finalcolor;
   }
 
-  void _rotateWalletNames() {
+  void _rotateWalletLists() {
     setState(() {
-      // 1. Increment and wrap around using the Map length
+      // 1. Increment and wrap around
       _walletsListplace = (_walletsListplace + 1) % ZBData.base64Data.length;
 
-      // 2. Sync the name (for the Dialog title)
+      // 2. Sync the name and the string key
       _currentWalletListName =
           ZBData.base64Data.keys.elementAt(_walletsListplace);
+      _selected64Category =
+          _currentWalletListName; // Ensure this category string is updated
 
       // 3. Sync the data list
       coins64List = ZBData.base64Data.values.elementAt(_walletsListplace);
     });
 
-    // Optional: Print to console so you can see the switch happening
-    // print("Switched to Registry: $_currentListName (Index: $_walletsListplace)");
+    // 4. CRITICAL: Push the new data into the text controllers
+    _updateUITextFromPlanet(_planethex);
+  }
+
+  void _rotateNotesLists() {
+    setState(() {
+      // 1. Get all the keys from your map
+      List<String> keys = ZBData.base384.keys.toList();
+
+      // 2. Find where we are currently
+      int currentIndex = keys.indexOf(_currentNotesTitle);
+
+      // 3. Move to the next one (looping back to 0 at the end)
+      int nextIndex = (currentIndex + 1) % keys.length;
+
+      // 4. Update the active state
+      _currentNotesTitle = keys[nextIndex];
+      _currentNotesList = ZBData.base384[_currentNotesTitle] ?? [];
+
+      // 5. Keep your 'selected' category in sync for other UI parts
+      _selected384Category = _currentNotesTitle;
+
+      // Optional: If you want to refresh the main screen text as you cycle
+      _updateUITextFromPlanet(_planethex);
+    });
   }
 
   void _toggleComplexSilence(int index) {
@@ -4881,10 +4914,10 @@ class _RotateComplexState extends State<RotateComplex>
                     style: const TextStyle(fontSize: 13, color: Colors.black),
                   ),
                   Text(
-                    // Safety: Ensure we don't hit an out-of-bounds error
-                    (walletId < coins64List.length)
-                        ? coins64List[walletId]
-                        : "ארנק לא יודע",
+                    // Subtract 1 from walletId to align with 0-based indexing
+                    (walletId > 0 && (walletId - 1) < coins64List.length)
+                        ? coins64List[walletId - 1]
+                        : "ארנק לא ידוע", // Corrected Hebrew spelling to 'Unknown'
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
@@ -4909,25 +4942,44 @@ class _RotateComplexState extends State<RotateComplex>
 
   Widget _buildLinesDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text('מטבעות'),
+      // title updates dynamically based on the current rotation
+      title: Text(_currentNotesTitle, textAlign: TextAlign.center),
       content: SizedBox(
         width: Screen.width * 0.8,
         child: ListView.builder(
-          reverse: false,
-          itemCount: 13,
-          itemBuilder: (context, index) => ListTile(
-            title: SizedBox(
-              child: Flex(
-                direction: Axis.vertical,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          // Safety: Pin count to asset list to prevent index out of bounds
+          itemCount: planetsimagelist.length,
+          itemBuilder: (context, index) {
+            // Safety: Prevent crash if data list is shorter than asset list
+            if (index >= _planetsfulldisplayList.length) {
+              return const SizedBox.shrink();
+            }
+
+            final planet = _planetsfulldisplayList[index];
+
+            // 1. Normalize Wallet (1-64) to (0-63)
+            final int walletBase = (planet.wallet > 0) ? planet.wallet - 1 : 0;
+
+            // 2. Normalize Note (1-6) to (0-5)
+            // The -1 here ensures that Note .3 pulls Index 2, not Index 3.
+            final int lineOffset = (planet.note != null && planet.note! > 0)
+                ? planet.note! - 1
+                : 0;
+
+            // 3. Simple 384 Math: (6 lines per wallet)
+            final int listPosition = (walletBase * 6) + lineOffset;
+
+            return ListTile(
+              title: Column(
                 children: [
                   CircleAvatar(
                     maxRadius: 20,
                     backgroundColor: Colors.transparent,
                     foregroundImage: AssetImage(planetsimagelist[index]),
                   ),
+                  const SizedBox(height: 4),
                   Text(
-                    _planetsfulldisplayList[index].walletNote,
+                    planet.walletNote, // Displays "3.3", "50.3", etc.
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
@@ -4935,25 +4987,28 @@ class _RotateComplexState extends State<RotateComplex>
                     ),
                   ),
                   Text(
-                    coins384List[((_planetsfulldisplayList[index].wallet) * 7) +
-                        (_planetsfulldisplayList[index].note ?? 0)],
+                    // Use the list selected by the recycling button
+                    (listPosition >= 0 &&
+                            listPosition < _currentNotesList.length)
+                        ? _currentNotesList[listPosition]
+                        : "שגיאת טווח ($listPosition)",
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 13,
+                      fontSize: 14,
+                      color: Colors.black,
                     ),
                   ),
+                  const Divider(),
                 ],
               ),
-            ),
-          ),
+            );
+          },
         ),
       ),
       actions: [
         TextButton(
-          onPressed: () {
-            zbPop(context);
-          },
+          onPressed: () => zbPop(context),
           child: const Icon(Icons.close, color: Colors.black),
         ),
       ],

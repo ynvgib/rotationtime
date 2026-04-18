@@ -734,7 +734,7 @@ class _RotateSimpleState extends State<RotateSimple>
                       zbbuildBasePopUp(context, '4', ZBData.base4Data),
                     ),
 
-                    // Base 4
+                    // Base 6
                     buildSelectionButton(
                       context,
                       '6',
