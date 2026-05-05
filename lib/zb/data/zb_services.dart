@@ -1,3 +1,4 @@
+import 'package:finallyicanlearn/zb/data/zb_listdb.dart';
 import 'package:sweph/sweph.dart';
 import 'package:finallyicanlearn/zb/data/zb_classes.dart';
 import 'package:finallyicanlearn/zb/data/zb_extensions.dart';
@@ -146,45 +147,48 @@ abstract class ZBExternalService {
     return current;
   }
 
-  static ZBWallet _buildWallet(String name, double lon) {
-    // 1. Create the 'Raw' wallet with just the longitude
+  // Update this line to accept 3 arguments
+  static ZBWallet _buildWallet(String name, double lon, int zodiacId) {
+    // 1. Create the 'Raw' wallet with the longitude AND the passed zodiacId
     final rawwallet = ZBWallet(
-      wallet: 0, // Placeholder, getwalletsub will overwrite this
+      wallet: 0,
       longitude: lon,
       planet: name,
+      zodiacid: zodiacId, // Now correctly populated
+      zodiacsign: zodiacSwephlist[zodiacId], // Map to string name
     );
 
-    // final withWallet = rawwallet.getwalletsub;
-    // print("DEBUG: $name Lon: $lon -> Calculated Wallet: ${withWallet.wallet}");
-
-    // 2. Run the extensions to calculate the Gate (walletid) and Story
+    // 2. Run extensions for Gate/Line/Story
     return rawwallet.getwalletsub.getwalletsentence;
   }
 
   /// MASTER FETCH: Sweph -> ZBWallets
   static Future<List<ZBWallet>> fetchWalletsForTime(DateTime time) async {
-    // print(
-    //     "DEBUG fetchWalletsForTime: input=${time.toIso8601String()} isUtc=${time.isUtc}");
-
     final jd = _calculateJulianDay(time);
     List<ZBWallet> wallets = [];
 
     try {
-      // 1. Fetch the 12 Primary Positions (Sun, NN, Moon, etc.)
       for (int i = 0; i < _fetchPlanetBodies.length; i++) {
+        // 1. Get raw position
         final res = Sweph.swe_calc_ut(
             jd, _fetchPlanetBodies[i], SwephFlag.SEFLG_SWIEPH);
-        // print(
-        //     "DEBUG: SWEPH RES ${_fetchPlanetBodies[i]} LONG: ${res.longitude}"); // 👈 Add
 
-        // _buildWallet must apply the +58 shift and Mandala list mapping internally
-        wallets.add(_buildWallet(_fetchPlanetNames[i], res.longitude));
+        // 2. Get Zodiac ID using SplitDegFlags (Moved here to keep Service logic together)
+        final planetDSP = Sweph.swe_split_deg(
+          res.longitude,
+          SplitDegFlags.SE_SPLIT_DEG_ZODIACAL,
+        );
+
+        // 3. Pass both longitude AND the pre-calculated Zodiac ID to the builder
+        wallets.add(_buildWallet(
+          _fetchPlanetNames[i],
+          res.longitude,
+          planetDSP.sign, // Pass the 0-11 index
+        ));
       }
 
-      // 2. Pass the full list to inject mirrors at the correct indices
       _injectMirrors(wallets);
     } catch (e) {
-      print("ZBExternalService Fetch Error: $e");
       return [];
     }
 
@@ -192,18 +196,25 @@ abstract class ZBExternalService {
   }
 
   static void _injectMirrors(List<ZBWallet> list) {
-    // Earth is Sun (Index 0) + 180°
-    // Using modulo 360 ensures it stays within the circle bounds
+    // 1. Earth is Sun (Index 0) + 180°
     double lonEarth = (list[0].longitude! + 180) % 360;
-    list.insert(1, _buildWallet('Earth', lonEarth));
 
-    // South Node is North Node (Now at Index 2) + 180°
-    // Because Earth was inserted at [1], North Node moved from [1] to [2]
+    // Calculate Zodiac ID for Earth
+    int earthZodiac =
+        Sweph.swe_split_deg(lonEarth, SplitDegFlags.SE_SPLIT_DEG_ZODIACAL).sign;
+
+    // Pass all 3 arguments: name, longitude, and zodiacId
+    list.insert(1, _buildWallet('Earth', lonEarth, earthZodiac));
+
+    // 2. South Node is North Node (Now at Index 2) + 180°
     double lonSN = (list[2].longitude! + 180) % 360;
-    list.insert(3, _buildWallet('South Node', lonSN));
 
-    // DEBUG: Verify the 180-degree axis
-    // print("DEBUG: Sun Gate: ${list[0].wallet} | Earth Gate: ${list[1].wallet}");
+    // Calculate Zodiac ID for South Node
+    int snZodiac =
+        Sweph.swe_split_deg(lonSN, SplitDegFlags.SE_SPLIT_DEG_ZODIACAL).sign;
+
+    // Pass all 3 arguments: name, longitude, and zodiacId
+    list.insert(3, _buildWallet('South Node', lonSN, snZodiac));
   }
 
   static Future<ZBPhase> getStep(DateTime birth, List<ZBWallet> natal) async {

@@ -141,7 +141,8 @@ class TxtFilesList {
     'preparatory_academy_he.txt',
     'we_find_he.txt',
     'the_world_as_usual_he.txt',
-    'kolshaon_he.txt'
+    'kolshaon_he.txt',
+    // 'fitgamheb_json_he.txt'
   ];
 
   static const List<String> engFiles = [
@@ -213,7 +214,11 @@ class TxtFilesList {
     'be_full_a_girl_en.txt',
     'be_en.txt',
     'appropriate_representation_en.txt',
-    'yoga_sutras_patanjali_en.txt',
+    // 'yoga_sutras_patanjali_en.txt',
+    // 'fitgameng_json_en.txt',
+    // 'isofgeng_json_en.txt',
+    'isofgeng_en.txt',
+    'fitgameng_en.txt'
   ];
 
   static final Map<String, String> cache = {};

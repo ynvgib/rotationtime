@@ -361,6 +361,7 @@ class _RotateComplexState extends State<RotateComplex>
   int _notesListIndex = 0;
   List<String> _currentNotesList = []; // Initialize as empty
   String _currentNotesTitle = ''; // Initialize as empty
+  int _currentZodiacIndex = 0;
 
   final Map<String, String> mstTranslator = {
     'CCG': 'Center Channel Gate',
@@ -2127,17 +2128,14 @@ class _RotateComplexState extends State<RotateComplex>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Tooltip(
-                  message: zodiacSwephNameHeblist[(_planethex.zodiacid ?? 0)],
+                  message: zodiacSwephNameHeblist[_currentZodiacIndex],
                   child: Container(
                     width: 80,
                     height: 80,
-                    //margin: const EdgeInsets.only(top: 70),
                     decoration: BoxDecoration(
-                      //color: Colors.blue,
                       image: DecorationImage(
                         image: AssetImage(
-                          zodiacSwephImagelist[(_planethex.zodiacid ?? 0)],
-                        ),
+                            zodiacSwephImagelist[_currentZodiacIndex]),
                         fit: BoxFit.scaleDown,
                       ),
                       shape: BoxShape.circle,
@@ -2145,12 +2143,9 @@ class _RotateComplexState extends State<RotateComplex>
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                         colors: [
-                          //Colors.purple.shade900,
-                          //Colors.purple.shade100,
+                          zodiacSwephGradeColorlist[_currentZodiacIndex * 2],
                           zodiacSwephGradeColorlist[
-                              (_planethex.zodiacid ?? 0) * 2],
-                          zodiacSwephGradeColorlist[
-                              (_planethex.zodiacid ?? 0) * 2 + 1],
+                              _currentZodiacIndex * 2 + 1],
                         ],
                       ),
                     ),
@@ -5551,22 +5546,30 @@ class _RotateComplexState extends State<RotateComplex>
   }
 
   void _updateUITextFromPlanet(ZBWallet updWallet) {
+    // 🔍 DEBUG SECTION
+    // print("--- ZODIAC DATA CHECK ---");
+    // print("Planet being viewed: ${updWallet.planet}");
+    // print("Raw Longitude: ${updWallet.longitude}");
+    // print("Stored Zodiac ID: ${updWallet.zodiacid}");
+    // print("Stored Zodiac Sign Name: ${updWallet.zodiacsign}");
+
     // Use local variables to avoid null issues
     int wallet = updWallet.wallet ?? 1;
     int note = updWallet.note ?? 1;
 
-    _planethex = updWallet; // Sync global state
+    _planethex = updWallet;
     _currentnote = note;
 
-    // 1. Numbers
-    _controllerwallettext.text = updWallet.walletNote;
-    // _controllernotetext.text = note.toString();
+    // If this prints '0' in the console but 'Stored Zodiac ID' was null,
+    // then the data was never assigned in the Service.
+    _currentZodiacIndex = updWallet.zodiacid ?? 0;
 
-    // 2. Stories (Mapping from ZBData or your lists)
+    // print("Resulting UI Index: $_currentZodiacIndex");
+    // print("-------------------------");
+
+    _controllerwallettext.text = updWallet.walletNote;
     _controllerwalletstory.text =
         ZBData.getWalletStory(wallet, _selected64Category);
-
-    // Note: Using your logic from ToggleButtons for the note story
     _controllernotestory.text =
         ZBData.getWalletNoteStory(wallet, note, _selected384Category);
 

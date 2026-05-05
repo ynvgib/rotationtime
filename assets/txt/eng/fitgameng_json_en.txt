@@ -1,0 +1,354 @@
+{
+    "id": "fitgameng",
+    "name": "Fitgameng",
+    "data": [
+        {
+            "p": 1,
+            "h": "from",
+            "c": "IT\nto\nGuruji and Mataji",
+            "rtl": false
+        },
+        {
+            "p": 2,
+            "h": "Page 2",
+            "c": "",
+            "rtl": false
+        },
+        {
+            "p": 3,
+            "h": "all rights and obligations",
+            "c": "",
+            "rtl": false
+        },
+        {
+            "p": 4,
+            "h": "Bye Bye",
+            "c": "Ido Not Know\n16:29\n12-September-2019\nVaranasi, India",
+            "rtl": false
+        },
+        {
+            "p": 5,
+            "h": "This is the second book wrITten",
+            "c": "by Ido Not Know.\nNow the handmade paper is made out of\n100% recycled matter of a sort.\nThe somewhat-short platform will be of use\nby us in the short journey in which most\nlikely I will describe very partly in a way\nsome kind of a journey that began wITh\nmy birth and up to the present moment\nbefore I begin the 16 days ceremony (Peter\nPaksh) for my father –\nIdo “Not Know” Ginton.\nThis book I recommend you read wITh\na pinch of belief.\nA pinch of belief in me\nA generous amount of belief in yourselves.",
+            "rtl": false
+        },
+        {
+            "p": 6,
+            "h": "Already have we passed one page and a main",
+            "c": "headline and IT might have taken you about\nthirty seconds to read.\nPerhaps even twenty seconds.\nBut in this journey there is no need to hurry.\nThere is no goal here to begin the reading\nand there is no goal here to end the story.\nThe story does not begin wITh the first letter\nof the book and does not end wITh the last\nletter or the period mark.\nMy stories I tell you at many times in order to\nhelp you get lost\nin the jungle of consciousness of our world.\nIn order to allow yourselves to get lost you\nfirst need a certain direction in your life.\nMost chances are that there is a direction\nwhich seems to you that guides you and\nmost chances are that this direction,\nalbeIT IT seems to provide some sort of\nan illusory securITy, does not answer an\nessential need in your life. Perhaps.\nAnd perhaps not.",
+            "rtl": false
+        },
+        {
+            "p": 7,
+            "h": "I don’t know and never have I known.",
+            "c": "You can close the book already now if that is\nnot your time to get lost.\nYou are allowed also to continue reading\neven if you are not ready to get lost and\nrelease a tiny bIT of the life in which\nyou believe.\nThe life in which you believe is “Your Life”.\nPerhaps you may discover reading the book\nthe secret buried in every single letter and\nsee the big joke of our lives, which is\ncomprised from a connection of points to\nshapes and to words and to sentences and\ncreates among the rest beliefs.\nIf you are not laughing from this joke -\nYou are not laughing from this joke.\nIf you are laughing from this joke -\nYou are laughing from this joke.\nAll that was needed in the sentences above\nwas to subtract one word only.\nOne word and the meaning changed.",
+            "rtl": false
+        },
+        {
+            "p": 8,
+            "h": "To me that is most amusing and IT seems",
+            "c": "from my meetings wITh most human beings,\nthat the joke of the language, the words, the\nletters, is not at all understandable and\ncauses a tremendous malfunctioning that is\nbased of the recipe -\n“To take Life seriously”.\nI have heard this mantra many a times in my\nlife, or to be more precise ITs opposITion -\n“You are not taking your life seriously”.\nI permIT myself saying, that the opposITe is\ntrue. I take life so seriously that IT only\nremains to see them as one big joke, an\nillusion, and the play of life, as Leela if you\nwish.\nPerhaps up to this point IT took you a minute\nand a half to read.\nCan you now dedicate a minute and a half of\nyour time to stop?\nSimply stop and observe.",
+            "rtl": false
+        },
+        {
+            "p": 9,
+            "h": "As a guideline I shall offer you to observe",
+            "c": "what your body is telling you and what your\nmind is telling you.\nFirst, your body provides you sensations,\nand second, your mind connects on top of\nthat sounds to words.\nThat is all – A minute and a half, 90 seconds.\nWhy do so? I don’t know.\nDid you turn the page?\nDid you observe for a minute and a half?\nDid you prefer observing for 90 seconds?\nAll I could share wITh you while you are\npassing so professionally from letter to\nletter, skipping form word to word, crossing\nsentence after sentence, drinking paragraph\nafter paragraph, ending page after page, all I\ncan do is repeat and ask -\nWere you aware during this time to the\nhappening in your body?\nWere you aware of the stories of the mind\nwhile reading?\nAre you now aware of the body?",
+            "rtl": false
+        },
+        {
+            "p": 10,
+            "h": "Are you now aware of the transcripts of the",
+            "c": "mind?\nFor if not, the only mathematical equation I\ncan deduct is that you are asleep.\nIT is not at all good and IT is not at all bad.\nI have experienced in my life and still\nexperiencing tasty sleeps and terrifying\nawakenings.\nHowever, the experience of being awaken to\nthe tasty sleep and being awaken to the\nterrifying awakening –\nthat is a reward I have not been prepared\ntruly to receive in the play called -\n“Wheel of Life”, or if you like,\n“Wheel of Fortune”.\nI may share wITh you the different tools at\nmy disposal between IT and Guruji and\nMataji.\nAnd I may not.\nI don’t know. In the meantime…\nAnd I will discover like you what the ink is",
+            "rtl": false
+        },
+        {
+            "p": 11,
+            "h": "interested in wrITing through the pen or what",
+            "c": "the pen allows the ink to smear. You. And\nme. Now wITh the wrITten language.\nIn my talks I also address the spoken\nlanguage, yet not now.\nNow, as preface’s time is nearing ITs end,\nthis I believe, feel and guess, in which there\npast along wITh 90 seconds (or the minute\nand a half) observation perhaps about four\nminutes.\nPerhaps your life has past over two, three,\nfour, six or more decades.\nPerhaps, and again I return to “Pareto’s law”\nwhich I have stated in my previous book, the\nrelation of 80-20 between sleeping and\nawakening leaned so far towards the\nthreshold of sleep.\nMaybe now arrives the time to awaken.\nThese were all in all four minutes and\nperhaps more (or less).",
+            "rtl": false
+        },
+        {
+            "p": 12,
+            "h": "I cannot guarantee a thing and never could I.",
+            "c": "I can only message you that awakening while\nwe are alive -\nThat is something-something, great-great.",
+            "rtl": false
+        },
+        {
+            "p": 13,
+            "h": "This page is dedicated",
+            "c": "To the memory of the days that passed\nin the Ganges\nin the Jordan\nor the Yarkon\nin the chapter of time\nThat has passed until you have arrived\nreading this page.\nAnd if you ask -\n“Have you lost IT?”\nI shall answer, “Aha, yes”. (Perhaps).\nIs IT your time to lose “IT”?",
+            "rtl": false
+        },
+        {
+            "p": 14,
+            "h": "Chapter 1 When the Name was given",
+            "c": "My name I had received after I had already\ngone on the way.\nI believe that IT is so wITh you as well.\nThus IT has been and thus will be.\nThe identITy crisis begins actually wITh\nreceiving our name from our parents.\nThis is the voice I heard this morning.\nThat is all.\nI remind you about the present journey\namong points, letters, words, sentences and\nparagraphs.\nI remind you about the possibilITy to get lost\nin the jungle of consciousness.\nFear, in a certain aspect, is comprised out of\nfour letters.",
+            "rtl": false
+        },
+        {
+            "p": 15,
+            "h": "This page is dedicated",
+            "c": "To whom you believed you were\nTo whom you believe you will be.\nMay their memory be blessed\nand casted in whom you always\nare.\nHe has been waITing for you forever.",
+            "rtl": false
+        },
+        {
+            "p": 16,
+            "h": "Chapter 2 This is how I was called",
+            "c": "Have you paid attention how so easily\nchapters in our lives pass?\nHave you paid attention to the shapes and\nthe sounds from which your life has come\ninto being?\nSince I have been given a name and along\nthe different time chapters I have been nick\nnamed and defined wITh different nicknames\nand definITions I shall describe here several\nof them on the timeline\n“From IT to Guruji and Mataji”.\nThe timeline in the memory began before the\nIT chapter in my life.\nDifferent names and\ntITles have I received.\nStarting from Yaniv Ginton and going through\nKibutznik and moving on to a Footballer and\nup to Winnie Pooh.\nThere were The Brother Of and The Son Of,",
+            "rtl": false
+        },
+        {
+            "p": 17,
+            "h": "and The Smart and The Innocent.",
+            "c": "Added to them The Good Boy and The Owner\nof the Azure Eyes coming\n“Be careful that the colour will not wash\naway from your eyes”.\nThere came along also the Israeli nickname\nand the Jobnick and\n“Your life is honey so we will not add sugar\nto your tea”.\nAll these have been accumulated in my head\ntogether wITh many more sounds and shapes\nbefore there were added sounds and shapes\nof the IT world corner of High Tech.\nIs there a reason I have told you all that?\nHave you passed by the shapes in the blink\nof an eye?\nMy names and descriptions have never been\nimportant. Never.\nWere you present to yourselves while reading\nthese meaningless shapes?\nIs the qualITy of this presence clear to you?",
+            "rtl": false
+        },
+        {
+            "p": 18,
+            "h": "“To Me” IT is clear and inasmuch Pheadrus",
+            "c": "through Robert Pirsig in “Zen and the Art of\nMotorcycle Maintenance”, or Robert Pirsig\nthrough Pheadrus, tried to describe “The\nQualITy”, IT is clear to me that these are only\nshapes (in the spoken language) and only\nsounds (in the wrITten language).\nI meant the other way around.\nOther way around, Guteh.\nThus IT was and thus IT shall be.\nAnd perhaps the name will continue to be\nblessed.\nThe IT world prior to Guruji and Mataji added\nto my names also The Hightechist and the\nSoftware Consultant, so as the Senior\nSoftware Consultant and a short attempt to\nadd a tITle of a Technical Team Manager (or\nsomething alike).\nThere were also a tITle “The One who earned\n10,000 Shekels a month and received a new\ncar at the age of 23” and more names I have\nnot requested yet received.",
+            "rtl": false
+        },
+        {
+            "p": 19,
+            "h": "More and more and more.",
+            "c": "Is the qualITy of The Presence beginning to\nclarify ITself in your life? And now?\nDo you try to understand?\nDo you identify? Detach?\nCompletely rhetorical questions and the\nsensation continues to rise and fall in your\nbody,\nand the mind continues to create ITs own\nsounds.",
+            "rtl": false
+        },
+        {
+            "p": 20,
+            "h": "A place to mark Stop Date:",
+            "c": "Here is the time to stop.\nStop and put aside the book.\nLet IT be for at least one week.\nThis is the time after that to read from the\nbeginning.\nFrom the beginning of your life, from the\nbeginning of your memory, and only then\ncontinue.\nIs IT so?\nReady for the way?",
+            "rtl": false
+        },
+        {
+            "p": 21,
+            "h": "Chapter 3 Time to continue?",
+            "c": "Did you put aside the book for a week?\nDid you continue reading straight away?\nDid you listen to me? Did you listen to\nyourselves?\nDid our paths separate for a certain\ntimeframe?\nDid you respond to my suggestion while\nlistening to yourselves?\nDid you respond to my suggestion while\nrefraining from listening to yourselves?\nAre you at all aware who are you listening to\nwhen you are listening to yourselves?\nDo you believe that you have the possibilITy\nto listen to yourselves?\nIs “I-myself” at all matters for you?\nMaterialises for you? Constantly?\nAgain rhetorical questions.\nOr barometrical questions.\nTime to continue?",
+            "rtl": false
+        },
+        {
+            "p": 22,
+            "h": "Place to mark continuation date:",
+            "c": "",
+            "rtl": false
+        },
+        {
+            "p": 23,
+            "h": "Chapter 4",
+            "c": "Continue of Shem after Noah\nOur lives we waste giving names and tITles,\nidentITies and nicknames.\nThe time is precious yet costs not a worn out\ndime only you are wasting your precious time\nin vain.\nAnd how shall I know that your time in vain is\nbeing wasted? I shall not know.\nBut your request is to ask my name and to\nanswer wITh your name, to reply your\nidentITy which does not request your name\nand does not acknowledge at all your name.\nAt all.\nThat is the be-all and end-all.\nThat is IT. IdentITy is not in name.",
+            "rtl": false
+        },
+        {
+            "p": 24,
+            "h": "Chapter 5 The name continues to roll on",
+            "c": "6 years I had been working in “Matrix IT”\ncompany.\n2006 – 2012.\nI was exposed to the yoga world and a bIT\nmore to the music while trying and mistaking\nin the material world and a salary that\nincreases from time to time and a new car\nfrom work every several years.\n“Welcome to the golden cage” -\nThe wish I received from an acquaintance\nfrom the Kibbutz.\nThere is no escape from treading our path\nsame as\nThere is no escape from receiving our names\nfrom our parents.\nThere is no escape.\nThere is nothing to run away from, not from\nthis and not from that -\nNo choice in our world and if you see\ndifferently, IT is because you see.\nDifferently.",
+            "rtl": false
+        },
+        {
+            "p": 25,
+            "h": "I will continue telling you that I did not",
+            "c": "choose my name as well as I did not choose\nmy life and do not wrITe here my words.\nI watch all this happening.\nThe name continues to unravel ITself to me\nas well as all my life, each and each moment,\nand I do not dedicate to that too much\nthought even if the thought tries to dedicate\nme for that and even to sacrifice me for that.\nTo sacrifice watching this rolling movie,\nwatching wITh no watch. No expectations.\nDo you understand the message?\nYes or no, IT matters not.\nI do not wrITe for you nor do I wrITe for me.\nI wrITe because the time has arrived.\nTime has arrived to watch the pen smearing\nthe ink and watch how the mind interprets\nevery ink smear crystallizes into shapes\n(=letters) from points woven in such a speed\non the recycled paper.\nThis book and all ITs words you have already\nread, already received, wITh each and each",
+            "rtl": false
+        },
+        {
+            "p": 26,
+            "h": "letter that I wrITe.",
+            "c": "We have a barrier in understating the\nmisunderstood, the hidden from the senses,\nand especially from the understanding limIT\nwhich has made us on one hand wise and on\nthe other blind.\nWe tread as sharp wise blind in our world and\nour intellect is sharpening the consciousness\nas much as IT is injuring us and refusing to\nallow us to see beyond the visible, to sense\nbeyond the sensible.\nFor already several years I have been\ndistancing from my name in an unpredictable\nway -\n“What is your name?”, I was being asked (and\nstill).\n“I don’t know”, I would answer (and still).\nThat same intellect (logical mind) did not\nunderstand what is the meaning of this\nanswer, for IT knows that my name is Yaniv\nor Yaniv Ginton.",
+            "rtl": false
+        },
+        {
+            "p": 27,
+            "h": "This experience which I have experienced",
+            "c": "(and still am) I cannot explain. IT will be of\nno use for you.\nLike many others you will try to understand\nIT instead of experiencing or experimenting\nand discovering what is happening in your\nconsciousness and what is being revealed in\nfront of your eyes from not knowing.\nYour real name will begin revealing ITself to\nyou.\nThe name all the people together give you,\nall the people on your path in life -\nThat is the name, and not.\nHere starts the real High-Tech.\nThe truly high technology springs from the\ndepth of not knowing.\nAll the High-Tech which exists in our\nexternal world has got nothing to do wITh\nthe truly high technology.",
+            "rtl": false
+        },
+        {
+            "p": 28,
+            "h": "Also the Information Technology, IT, that as",
+            "c": "well does not contain the technological\ninformation that exists in each and every\none.\nWe live in a world full of illusions, full of\ndeceptions and full of distractions.\nOne day or one moment perhaps IT will be\nyour serendipITy to discover that.\nFor then you will find out that earning 10,000\neuros in 3 weeks or even 1,000,000 Shekels a\nyear or being Prime Minister or President of\nthe UnITed States, all this is nothing\ncomparing to the real technology which is\nwIThin us.\nAre your understanding wheels still getting\nyou stuck from driving smooth?\nIs IT time to say goodbye to the\nunderstanding delusion in which you dwell?\nIs IT time to go out on a journey to\nunderstand the core of yourself and discover\nyour true name?",
+            "rtl": false
+        },
+        {
+            "p": 29,
+            "h": "There are no journey guarantees and there",
+            "c": "shall be none.",
+            "rtl": false
+        },
+        {
+            "p": 30,
+            "h": "Chapter 6",
+            "c": "IT is on the way\nThe story will not be interesting if you will\nnot see that this is only a story.\nAnd that is all the matter.\nIndeed, perhaps you will compare my story\nand a story alike, between my story and your\nstory, and IT matters not.\nThe story simply happened for ITself to me\nand I turned out to wITness, to be awaken\nand present to IT.\nFor most men the story happens but evades\ntheir eyes and that is all the difference.\nGuruji, Kailash Nishad, I met in May 2012 on\nmy first trip to India.\nCan you again pause now?\nDo you pay attention to your wheels of\nconsciousness and compare between this\ndetail or the other?\nDo you see that in your life?",
+            "rtl": false
+        },
+        {
+            "p": 31,
+            "h": "IT has no meaning if the details simply pass",
+            "c": "against your eyes and you do not see the\nstory of your life.\nNo use carrying on reading the rest of the\nstory.\nNo use carrying on reading the rest of the\nstory, for IT is just a story, like your life, like\nevery moment in your life.\nThe only difference is that IT happened for\nme and I could see IT, watch IT.\nAgain, that is all.\nFrom IT to Guruji and Mataji, and I have still\nnot met Mataji in this chronological story.\nI do not wrITe now to fascinate you into my\njourney.\nI do not wrITe now to connect you to my\nspirITual Indian parents.",
+            "rtl": false
+        },
+        {
+            "p": 32,
+            "h": "I do not wrITe now to move you out of your IT",
+            "c": "chair in which you are seated.\nI simply wrITe -\nLike my life that are wrITten,\nlike your life that are wrITten,\nand invITe you to go out on a journey\nfrom moment to moment\nand the watching of your wrITten life.\nNot only in a 10 days Vipassana course.\nNot only in a 90 minutes Yoga class\nin that studio or the other.\nNot only in a trip to India.\nNot only “by the way”.\n“IT” is by the way. All the time.\nAll the time.\nMost human beings I have met are\nimprisoned in the limITation of life’s\nhappening and the noise their mind is\ninterpreting from life’s experience.\nIT has always been simple, and IT will\nalways be simple.",
+            "rtl": false
+        },
+        {
+            "p": 33,
+            "h": "Guruji I have met in 2012 after I quIT from",
+            "c": "“Matrix IT” and bought a ticket to India, for\nhalf a year, or for 6 months, how you would\nlike to count that.\nBack then I did not know that he awaITs me\nwITh his Tabla in a small room in Bhagsu\n(Dharamsala), and that I will need to go\nthrough the Giardia virus and prior to that 10\nVipassana days and a meeting wITh Victor\nthe Mexican who played on an electric\nguITar wITh no amplifier -\n“Saturday night in San Francisco”\nby Al Di Meola and John McLaughlin on a\nbench watching over the valley and took me\nto Bhagsu.\n5 KM walking after 10 days I have not moved\nfrom the room except the toilet and eating\ncurd in the restaurant above the room.\n10 days of a typical India experience and\nthen 5 KM wITh special powers to meet that\nsame Tabla player in Bhagsu, 5 KM of\nwalking, because fate decides in such",
+            "rtl": false
+        },
+        {
+            "p": 34,
+            "h": "moments.",
+            "c": "This is just a story, don’t forget, and IT is\n“my” story, and “I” watch IT and that is all\nthe difference.\nDo you watch your movie?\nDo you see the subtITles?\nEach and each moment you are given an\nopportunITy.\nHow many moments in one day of yours?\nI don’t know.",
+            "rtl": false
+        },
+        {
+            "p": 35,
+            "h": "Chapter 7",
+            "c": "The Great Craziness\nThere were before me and there will be after\nme.\nThen what is the difference?\nWhat brings you to read my words here?\nWhat brings me to wrITe you here a story\nthat many of you already know?\nI don’t know.\nIn 2015 part of me entered a process which\nis called a crisis and some might even say an\nemotional and a mental one, and some might\neven rate IT on this scale or the other.\nI was becoming a father.\nTo add one more adjective as a name to the\nsack of names.\nIn July 2015 I bumped into Human Design\nand my journey continued towards the\nunknown.",
+            "rtl": false
+        },
+        {
+            "p": 36,
+            "h": "The stomach turned back again to be my",
+            "c": "inner decision maker.\nMy internal Guru.\nIn October 2015 I hired in Rishikesh, India, a\nfloor, two bedrooms, a kITchen, and I invITed\nGuruji to assist in my process.\nA whole month he was wITh me in Rishikesh,\ntaking out DNA leftovers from my genome\nwITh silken gloves.\nAnother month I was wITh him and his wife,\nMataji, in Varanasi.\nTwo months of cleansing emotional and\nmental wild weeds which successfully\nsapped layers of energy from me for several\nyears.\nGuru, the one that dispels darkness.\nVery simple.\nNo suITes and no cloaks,\nno yoga nor medITation,\nno tITles and no crowns.",
+            "rtl": false
+        },
+        {
+            "p": 37,
+            "h": "I had the luck -",
+            "c": "being in the right place, at the right time,\nwITh the right forces -\nIn order to get out the coma and awaken.\nI did not receive from them a new name.\nI was still called, and still am, by them -\nYaniv-ji.\nBut I received a new possibilITy.\nTo watch my life.\nIndeed, Human Design plays an integral part -\nan Inner Guru.\nBut we are living life in a Human fabric of\nmeetings one wITh the other.\nThe art of listening I have learnt to skilfully\nimprove through Guruji and Mataji.\nThe art of WaITing and Observing.\nIndeed, Vipassana was already there\nso as Yoga.",
+            "rtl": false
+        },
+        {
+            "p": 38,
+            "h": "But there are people that as if arrive wITh a",
+            "c": "sickle from past times and know to bend\ndown towards us and weed out the wild\nweeds in our life.\nMy daughter was born on February 2016.\nI have seen her for the first time on February\n2019.\nOn my 35th birthday, her 3rd birthday.\nOn September 2016 my father was killed\nin a motorbike accident being nearly 66.\nThat is just another story.\nThese are merely sounds and shapes which\nare gathered,\nand experiences into moments.\nAll are gathered inside my memory.\nYou are all gathered inside my memory.\nYou are all receiving the same layer of being\nin my life as anyone else in my life -\nMother, father, guru, the daughter, the\ngirlfriend, the brother, the guest, the\nrunaway, the laughing and the happy.",
+            "rtl": false
+        },
+        {
+            "p": 39,
+            "h": "Even if for one moment you will be able to",
+            "c": "experience that\namong the woven shapes in this book,\nin this story, the work of all the characters\nis done.",
+            "rtl": false
+        },
+        {
+            "p": 40,
+            "h": "Chapter 8",
+            "c": "The ceremony is over\nAre you still here?\nAm I still here?\nThen morning to us or good time to us\nwherever we shall be.\nIf you are looking for logic or rational you can\ncount until the number of the chapters\nexisting now.\nThere, in the meantime, we maintain\ntogether a fluent chronological order.\nPlenty of logic exists also in every wrITten\nword so far and is taken or noted in the\nEnglish language dictionary.\nNo one will solve for you the riddle of your\nlife, but there will be people that will smile\ntowards you and there will be people waITing\nfor you.\n“The bridge of the waITing and the smiling\nones”.",
+            "rtl": false
+        },
+        {
+            "p": 41,
+            "h": "So you are still here in this time?",
+            "c": "The ceremony is over.\nThree years of waITing to see my daughter\nfor the first time.\nThree years of waITing to do the soul\nmoksha (release) ceremony for my father, Ido\nGinton, and his forefathers and foremothers,\nand more sides in the family genealogical\ntree.\n16 days ceremony in Varanasi, India, wITh\nGuruji and Mataji has reached ITs end.\nFrom IT to Guruji and Mataji.\nThe ceremony is over.\nIf I did not “understand” the ceremony yet\nfound myself doing IT and following ITs\norder, how can I explain to you my life and\nyour life and our life? I don’t know.\nYet the ceremony is over.\nVery soon a gate is closed on the rational",
+            "rtl": false
+        },
+        {
+            "p": 42,
+            "h": "logical era.",
+            "c": "This is the time to get lost in the jungle of\nconsciousness in a totally conscious way.\nThere I might help you, perhaps I will be a\nlITtle pocket flashlight for you.\nThe ceremony is over.\n“Forget your logicalITies and fly on your\ncrazycalITies”,\nwrote my father.\n“Oh sweet Genie, carry me beyond\nmountains’ ridges. Perhaps I shall find what\nmy soul yearned for.”,\nhe added and wrote.\nThe ceremony is over dear father,\nYour time to find where your soul yearned.\nWe reach an age that our gentle soul yearns\nfor some time.\nYou are required to get completely lost and\nforget your logicalITies and discover what is\nthis crazycalITy of yours, that leads you your",
+            "rtl": false
+        },
+        {
+            "p": 43,
+            "h": "way, your logicalITy-crazycalITy way, and no",
+            "c": "one else’s, no your mother, not your father,\nnot your guru, not your religion, not your\nculture.\nFrom IT to Guruji and Mataji so that all this\nwill die and get carried away in the Ganges\nriver.\nThere is none but Him.\nHe abodes wIThin you.\nAlways aboded and always waITed.\nThe ceremony is over.\nYou are only remained to look inside.\nOh sweet Genie.\nHair and beard that were shed and shaved.\nTorrential rain that washed all past memory.\nWalking in crazycalITy among thousands and\nthousands of Indians, Indian men, on the date\n-\n28-September-2019.",
+            "rtl": false
+        },
+        {
+            "p": 44,
+            "h": "Why? I don’t know.",
+            "c": "And there will be those trying to tell and to\ndescribe and to explain.\nThere are.\nAnd I am not.\nThe torrential rain, the Indian Vedic priest,\nMataji and Gurji, and Sweet Genie observing.\nSeven leaves, seven clay cups, honey and\napples, bananas, and thousands of men and\nmillions of raindrops and indistinct prayers in\nthe air, because IT is.\nOh sweet Genie, the ceremony is over.\nDipping in torrential rain in Ganges river,\nback and forth, and people are doing that for\nme, for you, for us.\nAll is filthy and dirty, and pure and clean, and\nphoney and honest, and humane and natural,\nand expensive and cheap.\nAll is thrown on the floor and washed in the\nriver.",
+            "rtl": false
+        },
+        {
+            "p": 45,
+            "h": "All the moralITy and all the worry, all the",
+            "c": "pain and all the happiness.\nObservation, oh precious Genie.\nThis is only one more story out of\nA thousand and one nights stories. (Elef\nSipurey Leila veh’Leila – in Hebrew).\nLeila, my daughter.\nThree years I waITed for you and you came.\nAba (Father), Ido that does not know,\nThree years of waITing and the ceremony is\nover.\nAnd that Is all.\n“I have a chance to be rescued, I know.”\n(Evyatar from the Banai family).\nYou have a chance to be rescued, I don’t\nknow.\nThat is around the corner, and always have\nbeen waITing for you.",
+            "rtl": false
+        },
+        {
+            "p": 46,
+            "h": "Oh sweet Genie, the ceremony from",
+            "c": "logicalITy to crazycalITy is over, and nothing\nmore.\nToday is New year’s Ha’Tash’at (ט\"עשתה) -\nPen is worn out.\nThe power of the pen Is not worn out.\nThis evening another ceremony is coming.",
+            "rtl": false
+        },
+        {
+            "p": 47,
+            "h": "Oh sweet Genie.",
+            "c": "",
+            "rtl": false
+        },
+        {
+            "p": 48,
+            "h": "Chapter 9",
+            "c": "From here and until there\nIT represents one object.\nGuruji and Mataji represent a second object.\nThis is a journey from one object to the\nother.\nA journey between two points.\nA journey between a beginning and an end.\nA journey between life and a circle.\nA journey between death and a line.\nAt a certain stage the journey’s story had\nbeen wrITten as well -\nFrom Guruji to Mataji to the G center.\nBut not now.\nMy G center does not serve you yet.\nThis day shall come as well and then perhaps\nthis story will come towards you as well.\nYou are given here an opportunITy to read.\nYou are given here an opportunITy to call out\nloud all your ambITions.",
+            "rtl": false
+        },
+        {
+            "p": 49,
+            "h": "To put them into a sack and tie wITh a rope",
+            "c": "and lay ceremoniously in Ganges river, in the\nYarkon river, in the Dutch Rijn River or the\nriver outside your home.\nI am an object moving between objects.\nCircles, lines and points.\nThe geometrical journey sometimes\nacquaints us.\nIf there is a need and the time comes.\nThe pen decides what to wrITe and what to\nbring in front of me and in front of you.\nThose who know me know of the story\nFrom IT to Guruji and Mataji.\nIT is merely a story, like your lives, false\nimaginations, a realistic joke of a kind.\nWe sat once at the meeting table in Haifa, in\nthe shipping company.\nThe Matrix has always been an illusion and\ncollected victims as much as created life,\ndelivered finances and wIThdrew loggings.",
+            "rtl": false
+        },
+        {
+            "p": 50,
+            "h": "We sat once at the prayer table in a torrential",
+            "c": "rain wITh an Indian priest and wITh Mataji\nand Guruji and we dipped momentarily in the\nriver of gratITude and consciousness.\nThe Matrix has always been an illusion and\ncollected victims as much as created life,\ndelivered fiancés and wIThdrew longings.\nThis table or the other has been a setting in\nfront of our eyes.\nI did not understand you back then and I do\nnot understand you now.\nNow I accept and surrender and see.\nI see myself.\nI see you.\nI see the world.\nThe world shepherds me.\nThe world shepherds you.\nIf your ego does not allow you to see\nyourselves sheep, never will you also be the\nlITtle golden haired prince.",
+            "rtl": false
+        },
+        {
+            "p": 51,
+            "h": "I am a sheep and a lITtle prince.",
+            "c": "I am a rose and the accountant.\nI am the lamplighter and I am the plane that\ncrashed in the desert.\nIn all the worlds have I visITed and so have\nyou.\nWhen understanding shall stop perhaps there\nwill awaIT you\nGuruji and Mataji,\nyour father and mother.\nThey have always been there.\nThey gave you birth and brought you life.\nThey buried your previous life and ordered\nyou to a life of suffering.\nThe liberation as not being up to you, is upon\nyour neck as a pendant.\nIT is possible. Believe?\nDon’t believe in me or the story, you believe\nevery single one of the letters that were\nwrITten here.",
+            "rtl": false
+        },
+        {
+            "p": 52,
+            "h": "From A to Z.",
+            "c": "From IT to Guruji and Mataji.\nYou believe the story of your life in such an\nadamant way, most religious there is, most\ndeep there is, most attached there is.\nOne day you shall see that and then can you\ngo out and shepherd in the meadow the rest\nof the sheep until rain drops and the sheep\nshall turn to shepherds and again to sheep\nand again to shepherds.\nDo you believe that is possible?\nIf you don’t, you can close your eyes and\nimagine life\nFrom IT to Guruji and Mataji.\nIf you do, you can close your eyes and\nimagine life\nFrom IT to Guruji and Mataji.\nYou can imagine your life\nFrom “This” and until “your Parents”,",
+            "rtl": false
+        },
+        {
+            "p": 53,
+            "h": "From “Moment” and until “After”,",
+            "c": "From me and until you.",
+            "rtl": false
+        },
+        {
+            "p": 54,
+            "h": "You can open eyes.",
+            "c": "We have arrived the point.\nOne day you too\nshall shepherd the point.\nOne day I will be\nYour Sheep.\nWITh Love,\nThe LITtle Prince.",
+            "rtl": false
+        },
+        {
+            "p": 55,
+            "h": "Chapter 10",
+            "c": "We have scored a perfect mark\nfrom this journey.\nJ chapters by J\nI shall leave 3 pages\nEmpty.\nIn every book and every story.\nFor me\nFor you\nand for Guruji and Mataji.\nThat is all.\nYours,\nThe (Discoursing) Desert",
+            "rtl": false
+        },
+        {
+            "p": 56,
+            "h": "Page 56",
+            "c": "",
+            "rtl": false
+        },
+        {
+            "p": 57,
+            "h": "Page 57",
+            "c": "",
+            "rtl": false
+        },
+        {
+            "p": 58,
+            "h": "from",
+            "c": "IT\nto\nGuruji and Mataji",
+            "rtl": false
+        }
+    ]
+}

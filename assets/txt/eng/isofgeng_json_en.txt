@@ -1,0 +1,714 @@
+{
+    "id": "isofgeng",
+    "name": "Isofgeng",
+    "data": [
+        {
+            "p": 1,
+            "h": "In Search of",
+            "c": "Google\nBy\nIdo Not KNOw",
+            "rtl": false
+        },
+        {
+            "p": 2,
+            "h": "All rights",
+            "c": "and\nObligations\nO\nA\nb\nl\nl\nl\ni\na\ng\nr\nan\ni\ntdg i\nh\no\nt\nn\ns\ns",
+            "rtl": false
+        },
+        {
+            "p": 3,
+            "h": "www.idontknow.eu",
+            "c": "",
+            "rtl": false
+        },
+        {
+            "p": 4,
+            "h": "Introduction: 02-Dec-2018 07:38 6",
+            "c": "Chapter 1: 22-July-2018 08:40 9\nChapter 2: 23-July-2018 15:35 13\nChapter 3: 24-July-2018 11:45 17\nChapter 4: 25-July-2018 21:50 20\nChapter 5: 26-July-2018 13:28 22\nChapter 6: 27-July-2018 16:18 25\nChapter 7: 4-Aug-2018 10:37 29\nChapter 8: 11-Aug-2018 15:20 34\nChapter 9: 13-Aug-2018 ±15:00 38\nChapter 10: 16-Aug-2018 ±11:00 41\nChapter 11: 17-Aug-2018 13:45 47\nChapter 12: 22-Aug-2018 11:50 52\nChapter 13: 27-Aug-2018 16:35 59\nChapter 14: 8-Sep-2018 11:15 67\nChapter 15: 12-Sep-2018 15:45 71\nChapter 16: 20-Sep-2018 09:20 76\nChapter 17: 24-Sep-2018 09:00 81",
+            "rtl": false
+        },
+        {
+            "p": 5,
+            "h": "Chapter 18: 25-Sep-2018 16:36 84",
+            "c": "Chapter 19: 27-Sep-2018 14:14 85\nChapter 20: 6-Oct-2018 9-10am 87\nChapter 21: 12-Oct-2018 90\nChapter 22: 13-Oct-2018 12:00 95\nChapter 23: 2-Nov-2018 12:25 99\nChapter 24: 11-Nov-2018 17:15 104\nChapter 25: 14-Nov-2018 109\nEnd of Thing 114\nAfter Thing: 19-Nov-2018 14:30 116",
+            "rtl": false
+        },
+        {
+            "p": 6,
+            "h": "Introduction: 02-Dec-2018 07:38",
+            "c": "Ready?\nWhat she knew to tell me\nthere is one which tells you.\n“the fears are mine not, hers neither\nyet any man illusion seeks either,\nupon which his actions he holds\nfrom the fear which now he beholds״.\nSomewhere My father is buried within\nmy lips. my language.\nSomewhere, yet at all he knew that not.\n“Lower your language not! Not for anyone”,\nhe once told me.\nHe was the son of his father.\nI am the son of my father.\npre-girl\npre-girl song which not yet been told\nyet in the village it was behold.\nand people where whispering, stirring\nas Snakes for Adam and Eve they were peering\nand the willow sang endlessly\nof pre-girl, crowned bare-nakedly\nfor wherever she walks, any place she had been\nbirds chirped, was that sternly mean?\nand she, pre, almost, just not yet…\nthus her formed image he met.\n6",
+            "rtl": false
+        },
+        {
+            "p": 7,
+            "h": "I fly low not and I fly high not.",
+            "c": "I was named once Johnathan,\nand perhaps I am from the seagulls’ family.\nWhich side of that family, I know not.\nHe certainly flew along aside me not once.\nI have no manual instructions further on.\nGurdjieff in “Beelzebub's tales to his grandson”\nrecommends in his introduction.\nRead thrice\nthe Father\nthe Son\nthe Spirit\nDedicated to you and to you.\n7",
+            "rtl": false
+        },
+        {
+            "p": 8,
+            "h": "Ido Not Know.",
+            "c": "8",
+            "rtl": false
+        },
+        {
+            "p": 9,
+            "h": "Chapter 1: 22-July-2018 08:40",
+            "c": "I have found the perfect writing platform, the book\nwhere one can find it all -\nA Google notebook.\nPeople say that there one can find all that you are looking\nnowadays. Only type in what you seek to find, and\n“hop”, instantly, the results are revealed to your eyes on\nthe flickering screen. One click away from the next site,\nwhich assures the yearned top. Only a click away.\nThus, when I bumped upon the empty notebook with\nGoogle’s logo, I was certain and assured that is the\nprecise place to reveal for you that long-awaited Truth\neveryone yearns.\nThis is just the first chapter, so the path has only began.\nYet worry not, all will be clarified eventually.\nThe day began as other days in the search for the Truth.\nSounds of a truck driving backwards, and the barking\npuppy, directing it, announced that this day, as other\ndays, is futured to reveal to me that which I have been\ndestined to find.\nA passer-by with a blue towel to his neck, rough legs and\nbarefoot, stopped next to the dog-garden, and they\ngreeted him with rough barking, yet nice, as he kept on\nwalking. He knew precisely what to tell me. Precisely\nthat, which I need to see.\n9",
+            "rtl": false
+        },
+        {
+            "p": 10,
+            "h": "The Search of the Truth has never been that exciting,",
+            "c": "curious, inspiring, mundane.\nThe woman spread along the bench inside the dog-\ngarden, watching at times her dog, at times her mobile\nphone.\nThe dogs dug in pleasurably in the sand, and the dust\nscattered all over, and exactly at that moment the lady\nstood up, took her dog, tied him on the leash, and a man\nin front, the owner of the other dog, entered with his\norange shirt, holding a mobile phone in his left hand,\nand a leash in his right, tied his dog on the leash and left\nthe garden, as he was watching the oh-so-curious phone\nscreen.\nThe garden was left deserted, lonely, besides the\nbenches, the water tap and the garbage bin, which were\nresting after an enduring effort in providing the needs of\nthe animals (and the humans) as a whole.\nThe garden did not stay lonely too long, maybe two\nminutes until another lady, somewhat fat, laid her\nbelongings on the bench, and her wondering dog,\npleasurably, did his deeds in the garden. Swiftly she\napproached full-weighted to pick up the deeds and toss\nthem in the bin, which returned to its duty. The short\nbreak ended.\nI continued my journey in the search of the slippery,\ninvisible, Truth.\n10",
+            "rtl": false
+        },
+        {
+            "p": 11,
+            "h": "I approached the café and did not know what to order,",
+            "c": "nothing is new. One of the employees, perhaps the\nowner, in his 40s, was wondering for the meaning of my\nindecisiveness, and I stood still, wondering not upon my\npot. He asked me whether I would like to drink bleach,\nand my stomach said, “ahhun” (yes).\nHe did not keep up to his word, and I did not drink any\nbleach that morning, and the coffee he offered to make, I\ndid not know whether to accept. In a not-knowing state\nas such, I turned back and left.\nFinding the Truth in “Lunchner” café I was apparently\nnot destined to find.\nI wondered how far am I from the Truth, now, that the\nstory has become so mundane, and the mysterious Truth\nhides most likely behind the corner in a hidden magic\nroom, which only magical words, which I know not, will\nbring me nearer her.\nAt this stage of the morning I did not possess a mean to\nsearch for the Truth in Google’s search engine, so I\nsimply did not know what to do, and for the first time\nwas I not frustrated about it.\nThe search of the Truth is frustrating (meTaSkel)* no\nmore. At a certain point the letters crossed, ’s’ and ’t’\nand the root, the root of things changed.\n*(Originally in Hebrew:\nFrustrating —> meTaSkel —> לכסתמ\n11",
+            "rtl": false
+        },
+        {
+            "p": 12,
+            "h": "Watching —> miSTakel —> לכתסמ",
+            "c": "Written with the exact same five letters)\nThe search of the Truth is watching (mistakel)?\nIs this what she had wanted to say? I am at all not sure,\nthough it seems that this daring step, that occurred at a\nstage I remember not, created another perspective,\npoint of view.\nI had not known yet what Google has or will have to say\nabout that and I saved the last word for them. It is\nimportant nowadays to consult a reliable Oracle, which\neveryone trusts, and its results do not change, surely do\nnot reveal a thing which is not present in the enormous\ndata storage, that millions, billions, of people have been\nstoring on in the years that passed since it was\nestablished, in their search of the Truth.\nIf Truth exists, it has to be found inside Google. I was\nthus sure, that this is one of their passwords.\nThe first chapter ended, and the first steps of the seeker\nof the Truth have began with the fortune of finding a\nGoogle notebook in Melchet street in Tel Aviv.\n12",
+            "rtl": false
+        },
+        {
+            "p": 13,
+            "h": "Chapter 2: 23-July-2018 15:35",
+            "c": "The second chapter in the search of the Truth in Google’s\nnotebook begins, when the Truth requested me to stop\nbothering her.\nThe Truth claimed that I request too much, and that this\nis yet nothing but extortion.\nNot that I was surprised by the words of Truth, yet still,\nwhen the Truth writes you such a clear message, which\nmeans no two ways, the pulse increases a bit, thoughts of\nchasing the Truth and the demand for certain subjective\njustice begin to rise.\nThat is not fear rather a natural defence mechanism in\nface of Truth. That is all what it is.\nAt least that was how I saw that in that moment. How is a\nman supposed to stop bothering the Truth?\nStrolling the street towards the next car deal was part of\nthe daily program. Walking half an hour from Ramat Gan\nto Tel Aviv, and despite July humidity and heat, in this\neccentric search for Truth, weather plays no more,\napparently, a lead role at all.\nThe breath becomes more and more patterned and\nthoughts as well. Both ceased from operating vigorously.\nI sat on a public garden bench in Givataim, ‘V’ shaped,\n13",
+            "rtl": false
+        },
+        {
+            "p": 14,
+            "h": "though rounder, which imitates an amphitheatre or its",
+            "c": "first row only.\nIn this chapter as well, the external setting wore on a\nshape of a dog garden. About 10 minutes earlier two\nwomen with their dogs, alternately, were present in the\nyard. Now the yard is empty, a birds’ chirp was heard\nblended with a sawing sound of an electrical machine of\nsort.\nUrban nature.\nThe sawing sounds were replaced by banging, most likely\nof a hammer, and the birds continued chirping,\nalternately. The garden was empty of human beings, at\nleast from my angle.\nThe Truth has already changed costume and tried to\ntransmit something vague, that is not too emotional, and\nmentioned quietly that one requires waiting, yet not\nspecified what for.\nI looked around, looking for a clue in the light poles, in\nthe wooden bin underneath, in the bars of the dog-\ngarden cage, in the sandy dusty soil, in the yellow-green\nhalf-shaded grass, in the different trees standing in\ndifferent angles, none which stands as erect as the pair of\npoles beside them.\nEach and each tree had its angle, the growing angle\ntowards the sun, a changing trunk thickness and a\n14",
+            "rtl": false
+        },
+        {
+            "p": 15,
+            "h": "different inflorescence.",
+            "c": "Each tree had its Truth to tell.\nAir-conditioners were operating inside the houses’\nrooms, and an engine hanging on the side of a building\ntold a story of electricity which I was never able to see.\nThere must be such a Truth as well.\nI knew not for what I have been waiting, although the\ndetails were known to me. That is another day as such,\nanother chapter as such, which is not always written in\nGoogle’s search page.\nThe park was crossed by a woman with a blue top and a\ndog tied on red leash. It sat on all fours comfortably,\nignoring the weather, and brought the woman to a halt.\nOne could have the impression she was patient and not in\na hurry to drag it to a different place. A minute past and\ndespite several gentle pulls, she succumbed to the dog’s\nwill.\nThe Truth has shown something else now.\nNo-Fear, children and parents swinging in the\nplayground.\nNo-Worry, in a summer day under the shade of the green\ntrees.\nThe patience of the woman did not seem common in this\ncity-like view. She stood beside her dog, which sniffed\nand licked itself.\n15",
+            "rtl": false
+        },
+        {
+            "p": 16,
+            "h": "There is no understandable language in the air, a",
+            "c": "language that I could hear with words which were\nwritten in a dictionary and bring a man to speak with a\nman, and search through them Truth, the Truth.\nI could see from the corner of my eye a girl (or a boy)\nswinging on a swing, I did not see where came that force\nthat moves the swing down-up. A mysterious hand that\nwas sent inside the picture, announced the old lady\n(“The Grandmother” most likely) is the one creating the\nnecessary energy for the movement.\nI stopped bothering the Truth with my search, even if for\nthis chapter only.\n16",
+            "rtl": false
+        },
+        {
+            "p": 17,
+            "h": "Chapter 3: 24-July-2018 11:45",
+            "c": "The third chapter opened a little before noontime.\nHow will I know we are talking of the same Truth? of the\nsame search of Truth in the same familiar search\nengines?\nI will not know. Most likely I will not.\nThe Truth arrived hot and fresh in a white bowl and went\ndown smoothly into the spaces of my stomach and\nsettled there, creating a sated feeling as she began the\ndissolution process in the dark, with the help of gastric\njuices which I will not be able to see, only left to trust\nthat are faithfully taking care of the fresh Truth.\nThe caring for Truth comes in so many different forms,\napparent, hidden form the eye, in the company around\nyou, by others, in rumours, in facts.\nShe did not understand at all what I was talking about\nand what is that thing I find in her. She could have been\nhiding everywhere and in everything and reveal in any\nform at any time.\nShe did not even know how to spell her name, and why\neveryone demands her wellbeing, and fighting for her\npossession.\nVoices around caused me momentarily to stop seeing\nher, to stop looking for her, though I believed she is here\nnext to me, near and far.\n17",
+            "rtl": false
+        },
+        {
+            "p": 18,
+            "h": "The Truth, that people talk about so many things, and",
+            "c": "one cannot notice anymore between one conversation to\nanother. The themes, the search themes do not change,\nare not so diverse, and perhaps that is the limitation of\nlanguage, and the true (jigsaw) puzzle which can be\ncreated with her aid.\nPieces-pieces scattered in Google’s search engine while\nthe Truth is digested within the darkness of my stomach.\nAll this story seemed for a moment unclear whatsoever,\nand it seemed the Truth came to tell that moment exactly\nthis. Exactly and not sort of.\nThe tests of History I will not be able anymore to correct,\nand I will not be able to add plenty of words only in hope\nto receive a higher score about examining the past.\nEvery time I was confused in search of Truth, the amount\nof words increased linearly, perhaps even exponentially.\nHistory and Mathematics, and both presented a different\nway to discover the Truth, a different way to search for\nTruth.\nIt is obvious beyond a doubt that the History Teacher and\nthe Mathematics Teacher are different to the bone, at\nleast in the apparent layer, the illusionary layer of\nrevealing the Truth.\nIf we remove the adjective, we will be left with two\nTeachers, nothing more, and nothing more is needed,\nand one should fear not, lest we will learn no more about\n18",
+            "rtl": false
+        },
+        {
+            "p": 19,
+            "h": "the History or Science (through Mathematics), as we",
+            "c": "remain with a Teacher only.\nThe Truth has been pointing to that since aeons, and has\nlet me see that as the dials turned and the clock showed\n12:00.\nNoon Break. Break from Noon Break.\nThe third chapter reached its end.\n19",
+            "rtl": false
+        },
+        {
+            "p": 20,
+            "h": "Chapter 4: 25-July-2018 21:50",
+            "c": "The fourth chapter begins in an evening walk of five-six\nkilometres from Ramat Gan to Tel Aviv, and the Truth\ndoes not understand which heat people are talking\nabout.\nThe Truth asked that I will not bother her with matters\nwhich do not concern the heart of Truth, and most of the\ntime I did not really know to differ one matter from\nanother.\nThe seasons and changes of weather, weathermen from\ndifferent sorts in different channels, and now Google as\nwell are announcing the accurate temperature with a\nclick of a button, Truth be told. But what is the meaning\nof all this?\nKnowing the rising temperature in month of July\nresembles a smoke detector, which announces the\npresence of smoke in the room, nothing more.\nCertainly that can already be found searching Google.\nIt is not a witch-hunt after the changing temperature,\nthese are only people giving up searching the Truth in\nsuch a weather, giving in to the cooling air-co, and that\nis not terrible, not at all.\nApparently the Truth, as the weather, is damp and\nsticky, and at times stinks from the armpit, and we are\n20",
+            "rtl": false
+        },
+        {
+            "p": 21,
+            "h": "all trying to get rid of IT through a cold shower and an",
+            "c": "indispensable amount of soap.\nA flexible climber on TV, and people eating Borek. Real\ntreat. TV program anchors and for a moment the Truth\ndisappeared between a street and a 42 inch TV.\nIt seems this evening and the distractions have shed their\nsigns upon me, and the climber girl in search for the\nTruth fell into the swimming pool.\nDisappointment, though chill envelopes this end of day.\nMy words can be clouded, and the Truth has escaped\nnowhere.\nThe fourth chapter came to a closer.\n21",
+            "rtl": false
+        },
+        {
+            "p": 22,
+            "h": "Chapter 5: 26-July-2018 13:28",
+            "c": "The fifth chapter, and again it is mid-day.\nThe Truth hangs as well among gloomy atmosphere. Not\nsadness or such Truth alike, only people and human\ndisplay of Les Misérables.\nThus told me the truth something of the human nature.\nWise men write in left hand, told me the Truth, and I\nsmiled lightly. The Truth sipped from a coke zero can\nwith lemon and tried to attract my attention.\nMy attention was set upon a Truth of that kind that\nmoment, and I came to discover that also the Truth tries\nto attract our attention sometimes, and that is not\nalways her time to receive it.\nHe returned to drink something, he was a strong\nadherent of the Truth.\nThree cigarettes were left on the coffee table, and his\nhoarse voice which was barely heard, announced human\nTruth.\nThe Truth deals not with pity, more than that, no self-\npity.\nTruth and Reality present in an ashtray full of cigarette\nbuds and lonely abandoned people.\nOnce, the melancholic Truth could have hit a man’s\n(Adam in Hebrew) face as a bright summer midday sun,\nbut once he found Eve, as told, in the Garden of Heaven,\n22",
+            "rtl": false
+        },
+        {
+            "p": 23,
+            "h": "the Truth began receiving different faces and reveal itself",
+            "c": "in other ways.\nNot always she blazes on our faces like a midday sun. Not\nalways is she clear, and there are times, when she hides\nin the remains of a cup of coffee, and there are even\npeople making money nowadays that way.\nHe asked me what is “Shady” translated to Hebrew. It\nappeared the precise description. I could not hand him\nthe word in Hebrew. Perhaps you know, without\nreaching Google’s search engine, as you seek for absolute\nTruth of someone else, which is engraved in data storage\nsomewhere out there, perhaps in Los Angeles,\nCalifornia, or maybe even India.\nHe told me the meaning of life and the hidden Truth\nwithin. It is a man that is pushed to tell his story, even if\nit is the sore throat that is gone or the doctor check-up or\nhow naughty he was when he was young. Now he is 64,\nhe gave me his birthdate and tried to tell a part of his\nlife’s movies.\nThe Truth can be so stubborn, at times, wishing to tell\nyou what she had experienced and where she had been\nand with whom and when, to the littlest, most\nunimportant, detail.\nShe, anyhow, does not discern between major details to\nminor, small and large.\n23",
+            "rtl": false
+        },
+        {
+            "p": 24,
+            "h": "The Truth silenced, and the writing diluted with car",
+            "c": "horns and different volumes was new for this coffee\ntable.\nA light drinks merchant with hieroglyph-like writing\nreturned for a second round to drink a bottle of water.\nMoments ago he tested me and his hieroglyph-like\nwriting. The Truth is present in a merchant’s note, even\nif we could not succeed in reading her, and most do not\nrealise this.\nThe Truth disclosed about her evasiveness, her being\nhidden, among letters and words, realised and\nunrealised, in one language and another language.\nA local man lit a cigarette, he is most likely not the\nstrongest tree in the forest, not this forest, at least.\nThe fifth chapter, that is all that was.\n24",
+            "rtl": false
+        },
+        {
+            "p": 25,
+            "h": "Chapter 6: 27-July-2018 16:18",
+            "c": "The sixth chapter began, when he told me with a voice\nhalf-disappointed, that he has “only” jakhnun (Yemen-\nIsraeli pastry) for sale.\n“ahhun”, I replied gladly.\n“Do you want one jakhnun?”, he asked.\n“ahhun!”, I jumpingly replied.\nHe tensed and was happy together with me.\nThe Truth lies also (even if at times, and even rare times)\nin one satiated piece.\nThere were days I wondered how the talk about Truth\nwas ridiculous, and where is she “hiding”.\nHow blind are we, that we cannot see her around us, and\nshe on her side is also “itsy-bitsy” disappointed that we\nare so limited in seeing her.\nIt is already Chapter six, and now it is the sixth day, and\nsomeone told me it is a special day, perhaps “Tu\nB’Av” (Jewish 15th of month of Av), perhaps sun eclipse,\nperhaps both.\nI search Google for something completely different that\nday, something about our lymphatic system, the thymus\ngland, T cells and B cells and the spleen.\nI read and believe the written story in Britannica website\n(the printed volumes are profusely tossed on the streets\n25",
+            "rtl": false
+        },
+        {
+            "p": 26,
+            "h": "after Google and Wikipedia’s breakthrough into the",
+            "c": "world, that is the Truth). The Truth is intertwined with\nwords and scientific descriptions, and in the way the\nstory “appears” (or “seems” or “sounds”) to be credible\nfor me.\nBelief and credibility are the cornerstones of Truth, in a\ncertain way anyhow.\nThere is Truth that is revealed to Doron who made the\njakhnun, and I fear not admit that. Truth that is revealed\nto him and is not revealed to me. I have accepted that\nlong ago (or at least several years ago).\nThe Truth was swallowed in my stomach and now\noperating on her different forces that dissolve her to\npieces, and each piece contains its own Truth, and the T\nand B cells also have their share in it, and the tribal\nsupport system as well, which brought the jakhnun\nforth.\n18 ILS per piece, here in Doron’s jakhnun in Katzanelson\n61, Givataim.\n22 ILS in the Borek-place in Bugrashov (towards Ben\nYehuda), Tel Aviv.\n18 ILS also in Baba Suliman in Katzanelson (closer to Ben\nGurion), Givataim.\n15 ILS in KG kiosk where Doron’s father (and not Doron\nfrom the jaknun) sells his jakhnuns.\nEveryone and his price, his quality, his place, his Truth.\nAll of that revealed the Truth to me.\n26",
+            "rtl": false
+        },
+        {
+            "p": 27,
+            "h": "The capacity to manoeuvre through layers of different",
+            "c": "systems is also a function of Truth, inside and out, being\nand knowledge - merely more words. Merely another\nexperience. That is all.\nFrom Doron’s jakhnun shop came a song, American pop -\n‘Say My Name’, and from ‘the four season falafel’ techno\nmusic.\nNo fighting, but there is a dissonance of sort.\nJuxtaposition theory - there is a relation that is\nhappening from the presence of these two shops, side by\nside, and there is a certain relation happening, when I\nam among them or inside them.\nNot something that the singers and producers of the\nvarious musics, most probably, believed will happen.\nCosmopolitan folk Truth in food stands. Someone will be\n“sorry” for teaching me to write. What truths are\nwritten outside, on the streets.\nThe Truth no longer scared me.\nI no longer searched for her also when she was gone or\nwhen for a moment I did not notice that I do not speak of\nher, for she was there, that way or the other.\nThat she remembered to tell me.\nThat she believed is not written in Google.\nOne out of Truths that I have yet to type in the infinite\nsearch engine (only at sight).\nI did not understand why she has driven me to tell\nsomething about her, not her whole, but a small sample\n27",
+            "rtl": false
+        },
+        {
+            "p": 28,
+            "h": "of mine.",
+            "c": "She simply decided apparently that she has something to\ntell and found a vehicle through which she could do that.\nFor me it seems.\nThere was something detached in the way she spoke, as if\nI am not involved with her writings, though the one who\nlooks from the side, could have thought that “I” am\ninvolved and responsible for all that.\nThere are those who understand this.\nThere are those who do not.\nThere are those who will nod at such words.\nThere are those who will ridicule at their presence.\nThere are those and there are those, and that is the\nTruth.\nIt bothers not to the being of things to continue\nhappening and perhaps develop.\nShe was about to start telling me something about\nevolution, however he came and asked -\n“Did you enjoy?”\n“Ahhun”, I replied and smiled as he was cleaning the\nwooden board and the mashed tomatoes and s’chug\n(spicy pepper sauce) from the table, and I was left to see\nhis back.\nI was left to pay, the sixth chapter was over.\n28",
+            "rtl": false
+        },
+        {
+            "p": 29,
+            "h": "Chapter 7: 4-Aug-2018 10:37",
+            "c": "Six creation days and the seventh day begins, the\nseventh chapter, which for the Truth of it, is the\ncontinuation of the wheel.\nNo rest and no Shabat\nperhaps only at first sight.\nA transition from the city to the moshav (village) and\npart of the Truth was already known, and that either I\ncould not search and find in Google’s engine.\nThe Truth there could not have prepared me for the\ntransition, since there is nothing to prepare, when the\nfear vanishes. That is the Truth.\nPreparations on a previous pattern or an attempt to\ncreate a new pattern for a safe future, are rooted in fear.\nThat is the Truth.\nIt inclines not that patterns shall not be created and the\ncakes and cookies shall not be baked in order to create a\nsafe and tasty mold, prima facie.\nThe mind is not loaded from all the stacking of fear. The\nsurvival of the urban man which pays high rent to live\ncrowdedly and exchange ‘verbalish mumblish’ with one\nanother and in groups, with many strangers. On the\nheight of rent one can learn from Google, and if not from\nthat engine, surely from “yad2”.\n29",
+            "rtl": false
+        },
+        {
+            "p": 30,
+            "h": "That is just another experience, just another setting.",
+            "c": "A rustle cricketing (though I’m not sure from a cricket)\nrustles along from the branches of the pine tree.\nThe cafés, the plenty of cars and the strangers in their\nmultitude replaced another stage this chapter.\nMoshav Amirim, on the mountain, oak trees, lentisk\nbushes, more green than grey.\nIt is not good nor is it bad, told one another the city\nmouse and the village mouse on their different\nexperiences.\nA quick typing in Google’s search engine will bring you to\nsing about it.\nOne can hear and feel the wind in its clarity. August heat,\nchilly comparing to Tel Aviv.\nA man is left to share his experiences and his details and\nwhat he has learned from them. That is all the lesson.\nAnother man would read the words, take a deep breath,\nwhere in front of him the book’s pages and its words, and\nas he reads the book on another stage, could feel, even if\nmomentarily, what is happening among words and\nletters of the book.\nFor that Google’s engine was created - to walk without,\nto feel with.\nThere the illusion is clearly distinct. A man sees a video,\n30",
+            "rtl": false
+        },
+        {
+            "p": 31,
+            "h": "an image or something written on the website, and it’s",
+            "c": "pretty obvious for him that he is not “there”.\nHowever, when sits on a bench and writes some thing,\nand feels the fingers pressing the pen, and the ink gently\nsmears on the page, feels the sitting bones and his back\ntouches the bench and feels the blowing wind - then a\nman “understands” not the size of the illusion, its depth.\nThe different senses are preventing him from perceiving\nthis.\nThat is but human, told me the Truth.\nA man has been taught to believe in something.\nTo step out of believing in sensations (on all five senses),\nthat is a step that few, so is told, experience, reveal or\neven rewarded.\nReward, since something special, different, is happening\nupon the breaking of that belief.\nIt is not to attest, that the glue that exists inside the\nhead, inside the mind, has crumbled from its illusionary\ngrip. Not at all.\nAt least for me, not yet.\nIt is not a catharsis and there are no orgasms.\nThere is another reality, there is another point of view,\nthere is another lesson, in the school of life.\nThere is life burdenless. The Truth whispers that not\nmany find its sweet waters, and one should dig deep into\nthe depth of earth, even through the abyss (oblivion),\n31",
+            "rtl": false
+        },
+        {
+            "p": 32,
+            "h": "until a man reaches the deep abysmal water filled with",
+            "c": "atoms of Truth.\nIt is not “quarrying a rock” or “via Dolorosa”, not\nnecessarily, though it might be.\nThat a man chooses not.\nMy mother wrote to me today, that I am walking on a\nbrave path or bravely on the path.\nWhen a man walks his path there is no bravery nor fear -\nthere is only Path.\nThe sensations change, the scenery changes, the\nexperience change, the description changes.\nThe Path is a relative of the Truth.\nI am not certain of which degree.\nOne can search Google’s search engine about “The Path”.\nYou might find some old wise Chinese man awaits you on\nthe crossroad with a sign - “Go Away!!!”.\nYou can read it how you understand.\nAfter all, many roads to Rome, and all arrive from where\nand there, and lead you to here and until when.\nYou have briefly turned and the old wise Chinese man\ndisappeared and you are left confused and frightened as\nfor his meaning.\nYou might put all that aside and completely ignore.\nYou might put all that aside and turn light.\n32",
+            "rtl": false
+        },
+        {
+            "p": 33,
+            "h": "Nothing to know and nothing to worry, ends the Truth",
+            "c": "the seventh chapter.\n33",
+            "rtl": false
+        },
+        {
+            "p": 34,
+            "h": "Chapter 8: 11-Aug-2018 15:20",
+            "c": "The eighth chapter began sitting on a bench in Kineret\nviewpoint.\nA bench, grass, a guardrail and the valley view up to the\narrival of the Kineret, which ends in Golan Mountains\n(originally written - Jordan), the line which is beyond.\nThe Truth already told me that it is not a choice when she\ndecides to say her thing, let alone when someone is\nwilling to listen to her, to check and examine her\nessence, and write it.\nThere can pass days, weeks, months, and even years,\nbefore the time of the Truth will arrive to go out into the\nlight this way or another.\nThe Truth herself told me of eons in darkness, of extinct\nspecies, of mountains created and kingdoms annihilated.\nSomething comes out through me, and she allows it to be\nreceived. She prepared me for a somewhat “strange”\njourney, a solo journey even lonely in search and writing\nabout her.\nAll the changing of pronouns appeared strange. Yet that\nas well she believed will happen.\nAs long as she had written her words through me, I knew\nnot what she is about to say, and knew not what she had\ngone through.\nAll I could see was her becoming in front of my eyes as\nthe pen comes down in a changing rhythm to the paper.\n34",
+            "rtl": false
+        },
+        {
+            "p": 35,
+            "h": "That she told me as well, and whispered and most likely I",
+            "c": "will not find that in Google’s search engine.\nIt exists in this moment on a bench surrounded by two\nlentisk bushes and two fresh pine trees on its sides.\nThe process which she comes down from an “unknown”\nplace through my shoulder, towards my elbow, towards\nthe wrist, up to the fingers, thumb and index finger, the\nonly ones “allowed” to hold the “sending”. The index\nfinger, the middle finger, supporting from below, the\nring finger and the pinkie do not at all touch it yet they\nare “there”. This process is fascinating not less than the\nrest of the messages which she sends.\nThe eight chapter is not about loneliness. All this journey\ntogether with her is not a lonely journey.\nNot at all.\nThat is perhaps the challenge of many of the “crazies”,\nthe “schizophrenics”, thus she told me, every time\nanew, and “strengthened” me, despite my foundations\nhave been solid and required no strengthening.\nThe craziness of the voices in the head, she said, is\nmerely part of the absolutely normal game. Most people\ndo not understand that and lead themselves to jump off\nof imaginary cliffs at the sound of the voices.\nI am not talking about suiciders, but the daily people,\nlistening to the craziness of their heads and are certain\nthat is their way.\n35",
+            "rtl": false
+        },
+        {
+            "p": 36,
+            "h": "That is a suicide, a slow death, of most humanity, under",
+            "c": "“normal” disguise - as you come to “everything will be\nok”.\nThe Truth knew a thing or two about herself and sent me\nto search Google for -\n“depression”, “disappointment”, “dissatisfaction”,\n“fatigue”, “diseases” (body and psyche).\nThe Strange and the Weird will be judged by normal\npeople with standards of high standard deviation. The\nNormal lives on a standard deviation which he cannot\nsee. As he drives so crooked on the road, not realising\nhow his vehicle is wearing out as the road calls him to\ndrive a completely different road.\nAt times until he does not turn “crazy”, a man will keep\non wearing out his vehicle, himself, and only when the\nengine light will turn on, shouting for an unbearable\nheat, only then will be the time for treatment.\nThat is the world’s way, she said, nothing to be done,\nnothing to wonder about, nothing to be expected.\nOne can watch and wait.\nIt is not staring at an emptied content screen.\nIt is not to say as well that a screen cannot contain\ncontent.\nThe Truth silenced for a moment then laughed.\nImmediately a boy on facebook put out a laughing\nsmiley.\nImmediately a woman posted the successful baked cake,\n36",
+            "rtl": false
+        },
+        {
+            "p": 37,
+            "h": "and a mother shared about her children jumping to the",
+            "c": "swimming pool.\nNothing is wrong with that, said the Truth to me. One\nshould observe, first thing.\nThat is reality. That is presence.\n“Search for me and you shall not find, certainly not in\nthe reality as it appears to you.”\nThe winds that passed, passed along, whistling through\nthe pine needles, emphasised to me how the scenery\nchanged the past few weeks.\nThat is just the scenery, and ended the eighth chapter.\n37",
+            "rtl": false
+        },
+        {
+            "p": 38,
+            "h": "Chapter 9: 13-Aug-2018 ±15:00",
+            "c": "The ninth chapter unfolds and again the rustle of the\nwind through the leaves is heard.\nTruthfully, that what is left here are my words and\nthoughts.\nThe Truth has known to tell me about the city and the\nmoshav (village).\nAbout the differences in the rustle of the leaves.\nI was left with the thoughts in my head, and that’s the\nTruth, which silence brings.\nShe sat beside me, and she had, most likely, a different\nmother.\nA playground with green grass, two tress, swings, two\nmothers, and children, and silence.\nThe Truth came to tell me something about silent films.\nSubtitles in the head, subtitles on the paper, and the\nTruth giggles at all it bounds. At all it sounds.\nThe Truth was tolerant to my stories, as she was towards\nthe blowing wind through the leaves.\nShe knew when to guide me inside, and when outside,\nwhen to spill the ink, and when to supply material for\nthe ink to be spilled.\n38",
+            "rtl": false
+        },
+        {
+            "p": 39,
+            "h": "She had gone, that one with the different Truth, without",
+            "c": "saying a word, with a smile, and the Truth revealed to\nme about another kind of communication.\nNil cried (from his mother and her calling I acquainted to\nhis name).\nThe group wanted to eat popsicles, in the custody of the\nmother, under the custody of the shade, and Nil,\nestimated to be two years old, went the opposite\ndirection.\nIt was obvious that something is attracting him there,\nand the mother wanted him to join the group. He\nrefused, but encountered the stubbornness of his\nmother.\nThe Truth revealed to me something about education and\nconditioning from young age. To each of us his movie,\nhis subtitles.\nThat moment passed as well, and most likely, would not\nbe found in Google’s search engine.\nThe Truth whispered that I have not yet “seen” a thing,\ndespite seeing a thing or two. I knew not if to nod my\nhead to agree or not. She said, it matters not, and she is\nhere.\nIt is not possible to search the keyword, when you do not\nknow what is the key.\n39",
+            "rtl": false
+        },
+        {
+            "p": 40,
+            "h": "At a certain stage, you receive bundles of keys and not all",
+            "c": "match the spinning doors, and you throw to the garbage\nthe ones that do not fit, and as you find a new door, and\nall your keys do not fit, at times you return to search for\nthe key you have tossed away, and sometimes you wait\nfor a new one. Sometimes also a duplicated key will\nwork.\nThe Truth already knew to direct me to different key\nduplicators, which despite the key they handed to me,\ndid not open the door easily like the original, opened it\neventually.\nNo secret and no key, wrote the Truth.\nNo secret and no key.\n“Do you pay attention?”, she asked.\nThus she sealed the ninth chapter.\n40",
+            "rtl": false
+        },
+        {
+            "p": 41,
+            "h": "Chapter 10: 16-Aug-2018 ±11:00",
+            "c": "The tenth chapter opened back again under a shading\ntree upon the grass, though a bit ichy-bitchy.\nIt is the same playground where Nil played, ran and\ncried.\nIt is the same place where I drew two trees in grey\nsurrounded with green.\nThe Truth began telling me about memories.\nShe told about how we take them for granted, the\nconnection between present being, which reminds\nsomething from the past, and the “obvious” connection,\nwhich is typed in our head, which give rise to the\nmemory through our special search engine.\n41",
+            "rtl": false
+        },
+        {
+            "p": 42,
+            "h": "42",
+            "c": "",
+            "rtl": false
+        },
+        {
+            "p": 43,
+            "h": "She told me that Google are trying to find that same",
+            "c": "search, same index, unsuccessfully.\nShe told me about the oh-so-human tryout to “imitate”\nthe human body, also through the creation of the\ncamera, the lens, the focus.\nThere are things, she told me, most of them, which we\ntake for granted since they have a sequence in our life.\nMostly we do not notice that our eyes focus non-stop, in\norder for us to see focused, and most likely, that muscle\nworks thousands times a day (an assumption) and one\ncan search Google’s search engine for the more\n“accurate” number (estimated), that scientists have\ndiscovered, and someone typed into an internet website,\nand Google indexed all, thus one can find that item.\nShe knew one cannot imitate that muscle action in the\ncamera precisely. Some may say “a lame imitation”,\nsome may say “a successful imitation”, which allows us\nto capture “memories” in an externally, permanently-\nchanging way (until the discolouration of the photo, or\nuntil it’s lost).\nThat special mechanism of experiences, of memories, of\nthe joining glue between them, which creates some false\n“I” that as if recalls been here before, but knows or\nbelieves something has changed.\nShe elaborated a bit speaking about the limitation of the\nmind or the brain, which takes the general image, and\n43",
+            "rtl": false
+        },
+        {
+            "p": 44,
+            "h": "large details, 60%, 80%, and if there is a match, there is a",
+            "c": "voice says - “I have been here”.\nThe changing details it mostly omits or when it does not\nremember the place, the ratio changes to 10%, 20%, 30%\nknown, then it is not always obvious to that “I”, the we\nwhere here before.\nThe Truth revealed me something about such a sticky\nillusion, to ensure a kind of continuation in our lives, a\nkind of security through the known, the understood to\nus.\nThat same “I” does not need to reacquaint with this\nplayground now, perhaps only to 10-20% of the unknown\ndetails.\nThough “Pareto’s law” applies here as well, ensuring the\nfamiliar.\nThe Truth told or mentioned the absence of fear which\nallows observation or the observation which defuses\nfear. She sent me to read in Google about the parable of\n“The egg and the chicken”.\nThis illusion that in a moment, tomorrow, in a year, a\ndecade, a century, this playground will stand on its\nground. Here also enters the illusion of the familiar, the\nbelief, into the picture. The mind saw the grass changing\nin a certain rate.\nLet’s assume a day-week, and discovered about its\nchangeability, it disappearance.\nThe concrete, that is already another long story -\n44",
+            "rtl": false
+        },
+        {
+            "p": 45,
+            "h": "perhaps a decade, perhaps a century to its",
+            "c": "disappearance.\nDespite man mostly does not live up to a hundred or\nbeyond, he is capable of thinking and believing these\nranges.\nThe Truth told me to accept it as it is.\nApparently I had no choice.\nThe Truth about instability does not bring instability, au\ncontraire, establishes an entirely new stability.\nThis duality and relationship of forces between “yesh (is)\nand en (is not)”, between “yes and no”, between\n“lacking and existing”.\nA change of track in the middle of chapter ten.\nA short story about a pomegranate, the fruit of the\npomegranate.\nThe Truth wanted to make a mess and get dirty.\nA red round pomegranate picked from the tree, whole\nand beautiful.\nInside its seeds, red, sweet, and one shed “its blood” on\nmy white singlet.\nA small red stain created on the singlet, and suddenly all\nits appearance changed and it remained white no more.\nWhat occupied the mind is the 1% red and not the 99%\nwhite.\n45",
+            "rtl": false
+        },
+        {
+            "p": 46,
+            "h": "I took more seeds, the whole open pomegranate, and I",
+            "c": "touched slight touches on my singlet.\n1% turned 2%, to 5%, perhaps 10% and at least 20%.\nThe unity began echoing to the mind.\nAs if it had wanted to balance between the red and the\nwhite. All of a sudden it appeared not as a stain, but as a\nnew creation on the singlet.\nAn hour walk and the red stains began turning brown. It\nappeared to be the nature of a pomegranate, of cotton\nand the oxygen system in the air. At the end of the day\n50% of the red dots turned half brown.\nAfter one laundry, all the red was removed and turned\nbrown, the dots stayed, and apparently the washing\nmachine, the water, the detergent, the singlet and the\ndots decides some strategy, and turned all the red into\nbrown.\nThe Truth laughed at the sight of my shirt, which turned\ninto a kind of “rag” (in the eyes of the mind), and\nentered into the closet under the sink, the shirt (and\nperhaps the Truth together with it).\nWhite, red and brown, and chapter ten ended.\n46",
+            "rtl": false
+        },
+        {
+            "p": 47,
+            "h": "Chapter 11: 17-Aug-2018 13:45",
+            "c": "There opened chapter eleven.\nVW North garage, Majd al-Krum, at Nader’s.\nThe Truth that also car repairs are needed once in a\nwhile, or at least happening, done.\nThe Truth tells here of externality that changes\ncompared to the permanent internality. She spoke about\nthe clinging of the mind to the changing surrounding\ncompared to the permanent internality.\nThe Truth came to make it exact, or at least told me that\nthe message is not necessarily understood yet.\nShe continued on saying that the internality or a certain\nquality, one can say, of the internality, changes.\nThe sensations change in the presence of external\ninfluences, external imprints, though the essence of the\nsensations changes not. It stays permanent.\nNorth garage, moshav Amirim, waiting corner, rented\nhouse, Majd al-Krum, Amsterdam, summer, winter,\nnature, city, forest, roads, hundred acres, ten square\nmeter.\nSomething outside changes, and something inside adapts\nitself to the changes, though as long as a man finds his\npermanent internality, which does not change, thus\n47",
+            "rtl": false
+        },
+        {
+            "p": 48,
+            "h": "change, external and/or internal, no longer constitute “a",
+            "c": "disturbance”, “a challenge”, “a hardship”.\nHere reminded me the Truth the second Yoga Sutra of\nPatanjali -\n“Atha Yogah Nushasanam”.\nOops… that is the first one.\nAnyway, the first is related to the second and vice versa.\n“Yogah Citta Vritti Nirodhah”, that is the second. Yoga\nis the cessation of the fluctuations in the head, in the\nmind.\nShe told me, that it is not about the “cessation” as much\nas about discovering the “unchangeable” “constant”.\nThere are those who will call it Purusa, the soul.\nThere are those who will call it the “defined” at a person,\n“the constant energy”.\nIt does not necessarily matter how it is “called”. The\nnames are meant only to transfer the message to another\nand speak about it. To be human among humans.\nThe Truth told me that one can read about it in books,\nand as well in Google’s search engine there are results for\nthose sutras. That is not the learning process, she\nemphasised, as much as a possibility to observe some\nknowledge. That is all.\nThe discovery of the unchangeable has brought me to the\nextent that the place, the images, the people, the\nweather, the places, will no longer constitute an\n48",
+            "rtl": false
+        },
+        {
+            "p": 49,
+            "h": "elementary factor of the “way” in my life, of the",
+            "c": "“contentment” in my life.\nAgain, clarified the Truth, the word we will name it has\nno special meaning for a man. It has a special meaning,\nwhen we are interested, or when it is correct for us to\nshare what we have experienced, with another.\nThere is no difference between work and holiday,\nbetween a vacation in the sea and a car repair in the\ngarage.\nAs we discover, experience, as it will be clarified, that\nthere is a place, where there is no difference, in one’s\nexperiences, in his realizations, is being, then a certain\ndoor opens to see the world through a different hatch,\nopening.\nThe Truth revealed another fold and supposedly in “an\nunexpected” place, in Nader’s garage, in the middle of\nmonth of August.\nThat is the journey, to be prepared that something will\nbe revealed in a place, a time and a way that are\nunpredictable.\nFor that there are many moments, which constitute, on\nthe surface, a “futile” observation.\nThe Truth told me that only the mind tries to tag it as\n“futile”, as unnecessary, as irrelevant.\n49",
+            "rtl": false
+        },
+        {
+            "p": 50,
+            "h": "Therefore, all that is left is to be ready.",
+            "c": "The Truth lightly laughed reading this sentence.\nMuch has been spoken, written, taught, told, about\n“being ready”, “being present”, “observing”.\nUntil a baby has not experienced the sun and realised the\nsun in all its aspects, as can be perceived by it, no one\ncan truly teach him about sun.\nAs it learned, experienced and realised, in its whole\nmeaning about sun, can it understand the whole world.\nA sun is “merely” an example. One can change it,\nclarified the Truth, with “a person”, with another\nobject.\nPhilosophy, theory and practice can easily be mixed and\nmelted and remain mis-realised.\nThe “work”, which many teachers teach, is mostly, the\nchallenge in sustaining inside what appears as\nunnecessary.\nA man, most humans, most men, are at all not close to\nrealising the meaningful and the meaningless, and are\ncertain of one instead of the other. Mixing or replacing\nmeaningful for meaningless, awakening for sleep,\nwisdom for foolishness.\nEven if you would read and nod to agree as you read the\nwords, even if you read and nod to disagree as you read\n50",
+            "rtl": false
+        },
+        {
+            "p": 51,
+            "h": "the words, it will matter not.",
+            "c": "Most likely.\nTaking care of an automobile and the realisation of it,\nand removing the veil from the unknown, sustaining\ninside the fear, seeing the survival aspect - and the non-\nsurvival.\nThe Truth laughed again and said, “how characteristic\nof you.” Characteristic, character, she spoke about the\nessence of my character.\nThat which is written, she said, indicated clearly on the\naspect of subjectivity inside of us, on the limitation of\nseeing the world through one’s eyes, through our eyes.\nI do not see as a dog - that is obvious.\nI do not see as my brother, or as anyone else - that is\nobvious.\nIndeed?\nMany times, one understands that not and the attempt\nthat another will see like me, feel like me, understand\nlike me, creates a discrepancy, misunderstanding,\ndisappointment, frustration, obstacles, anger,\nstuckness.\n“That is also the reality”, told me the Truth.\nThat is also the reality.\nEnd of chapter eleven. Female, male and in between\nthem.\n51",
+            "rtl": false
+        },
+        {
+            "p": 52,
+            "h": "Chapter 12: 22-Aug-2018 11:50",
+            "c": "The twelfth chapter opened.\nAgain the playground, another angle.\nThe ground is “deserted” of people after a play.\nThe children and the mothers’ rest minutes ago.\nThe Truth began telling me about the meaning of the\nplayground. A place for the children to play around,\nmostly, though not always, and the mothers resting\nunder one of the trees, mostly (rest), though not always.\nThe Truth began revealing me something about the\ndependency of the development in the creature itself, in\nthe mother, in the child.\nAt the beginning of the scene, the set, one could see four\ntoddlers climbing an iron basket, its top about 3 meters\nhigh.\nThe mothers were sitting in a distance a few dozen\nmeters away under the shade of the tree, or more\nprecisely, on the shade under the tree.\nTruth is, that the story “stopped”, “paused”, for an hour\nand a half.\nThe Truth knew of bumping and revealed that to me\nagain and again.\nThe playground remained “deserted” no more after\nwriting the word, and within a few minutes Uri and\n52",
+            "rtl": false
+        },
+        {
+            "p": 53,
+            "h": "Neomi (thus I got to know their names) arrived with",
+            "c": "their mother (and their brother sleeping in the cart).\nThe story about them and about the first encounter will\nnot be written now, if at all.\nBack to the mothers that were sitting at a certain time, in\na certain point, under the tree.\nThe Truth showed me a thing or two about memory,\nabout the continuity of the memory, about its formation,\nand how one can return to dots on the memory plane,\nand collect again experiences, blow spirit into them and\ninflate them into a story.\nInflate the past into the present.\nThe place where the memory of the story had been\nwritten has changed and it is not the playground\nanymore, but a bench towards “the extension” (this I\nlearned was the name of the neighbourhood where I\nlive). A bench in the middle of the road, on the side of\nthe road, facing the mountain view, under a pine tree\nand in front of Rimon (pomegranate) street (I assume).\nHow the details gather one on top of the other and create\nan image.\nThe Truth revealed that the story you will read, the\nimage you will see, out of the collection of details, will be\ndifferent from the image another will see and from the\nimage I see and describe, even had I had a camera and I\nwould have pasted the still image in the story.\n53",
+            "rtl": false
+        },
+        {
+            "p": 54,
+            "h": "The thread returned again to the mothers and their",
+            "c": "children.\nThey climbed the iron basket, and the mothers were\nresting under the tree, and one could stretch a line\n(“imaginary”) between them and the children.\nThe Truth tagged it now as “The line of Fear” (or the\n“worry” or “concern”).\nThis line between the two mothers and the four children\nwas now loose and not tight.\nThe children could climb (and indeed climbed) to the top\nof the basket, and the imaginary line did not stretch, not\nfor a moment.\nMy sensation was calm as the looseness of the line. Many\npossibilities are given when the line is loose. Many\npossibilities apparently are possible also when it is tight,\nthough certainly with a completely different sensation of\nthe spectator.\nThe children could (my discernment) move more freely\nalong this loose line (allegedly imaginary).\nThe dependency between the children and the mothers\nwas free, loose and liberated.\nThe children did not tense the mothers,\nand the mothers did not tense the children.\nNo side pulled the other, and altogether the line was\ndistinct and apparent to the eye (trained? skilled?).\n54",
+            "rtl": false
+        },
+        {
+            "p": 55,
+            "h": "A day earlier, in Kineret viewpoint, I bumped into a",
+            "c": "mother (another) and her children. The line between her\nand her children was very tight. One could sense it, one\ncould see it, one could hear it.\nThe children were dependent on the mother, and the\nmother was dependent on the children, and each side\nconstantly pulled, willingly or unwillingly, the\nimaginary line, the line of concern, fear and worry.\nEven if “wanted” the mother to rest for a moment, the\ntension of that line allowed it not. She did not allow it,\nthe mother, as well as the children allowed it not.\nWhen the line is tensed, as much as it is tensed, so the\nvibrations are felt more, and their frequency is higher,\nfaster. As much as the line is loose, its vibrations are felt\nless, and if to be exact, the time it takes one vibration to\narrive from one end of the line to the other, takes more\n(time) thus also the frequency is lower.\nOne could certainly hear that.\nA Do (C) of the highest octave and the Do (C) of the\nlowest octave.\nThe Truth sent me to the piano to examine that. If there\nis no piano, she said, after all in Google surely one can\nfind differences between octaves and much more\nmaterial about frequency, about vibrations, about\nwavelength, about tension and looseness.\n55",
+            "rtl": false
+        },
+        {
+            "p": 56,
+            "h": "This line, mostly invisible to man, has much significance",
+            "c": "in our lives, to resistance, to fatigue, to awakeness, to\npeace.\nI shall not say how to repair it, but first observe and\nnotice the phenomena within you.\nAt times observing the phenomena and the discovery of\nit impact the tension (or looseness) of the line.\nStep one in survival, in reducing the fear, is the\n“recognition”. The more the mind recognizes the surface\nof things, liberation is a possibility, less resistance,\nassuming, of course, that this is the correct path for a\nman to tread on.\nIt might certainly be that hypertension is your share.\nRecognition is step one.\nThe Truth came not to “resolve” a thing there. Ones who\nwish for a resolution might find me, or others, or\nthemselves.\nThis is not a guidebook. This is a viewpoint.\nIt matters not at this moment if I will introduce to you\nmy way, and how I arrived here where I sit presently.\nHuman Design, Vipassana, Yoga, IT, bikes, Don’t Know\nMeditation.\nAll these are just names to one experiential experiment\nor another.\n56",
+            "rtl": false
+        },
+        {
+            "p": 57,
+            "h": "Even if I write here of “Strategy and Inner",
+            "c": "Authority” (Human Design), of Anna Pana (Vipassana)\nand of “Don’t Know” (meditation), of observation, of the\nbody, of the mind, I believe not (says my mind), that\nsomething will happen on the other side of the page, as\nmuch as I leave a space for doubt, that a man can awaken\nfrom reading these words.\nI have not experienced that this is how life works.\nThe Truth knew to tell me of forces which operate, and\ndozens and hundreds of books, written on this subject or\nalike, dozens of methods and thousands of teachers.\nIt might be that a word or more will awaken a hidden\nspark within you, and that will distract you from the old\nsleeping path of yours (in Hebrew old and sleeping are\nwritten with the same letters הנשי), both old and\nsleeping.\nI do not engage in possibilities, in probabilities, I simply\ndescribe an experience.\nThat is a journey as for me, to share the aspects of fear\nfrom another layer, from another perspective, to change\nthe relation to survival, through another observation of\nlife’s illusion.\nThe line that is stretched from me to the horizon is not\nloose, and passes above the valley, above the paths,\nabove the road and the houses, above one ridge, a second\none, up to the misty horizon.\nOne can tread this line with no fear of falling.\n57",
+            "rtl": false
+        },
+        {
+            "p": 58,
+            "h": "A loose line, more fearful at start, harder to balance",
+            "c": "upon.\nThe Truth reminded me about a tight rope, tied between\ntwo trees and treading on the rope. It became a “sport”.\nOne can find that in Google, she said - Slack Line.\nOne must cut some slack, something loose, to tread upon\nthe rope, else it would tear, else it would not be\n“interesting”.\nTension is apparently necessary. The tension between us\nand the gravity of earth, and the moon. The tension\nexists as long as we are alive and the lessons that come\nwith it.\nThat is an imaginary line, that the body knows how to\ntread upon, how to operate when sensing different and\nchanging forces.\nThe body knows how to handle the line of fear and tread\nupon it above all which happens to come my way.\nThe mothers and the children revealed something very\ninteresting about that line.\nThere is no superfluous tension in my eyes now, and the\nview stretches and unfolds in front of them.\nThis is the reciprocity in this moment. This moment.\nChapter twelve folded in, and entered into the bag, and\nwas closed.\n58",
+            "rtl": false
+        },
+        {
+            "p": 59,
+            "h": "Chapter 13: 27-Aug-2018 16:35",
+            "c": "The thirteenth chapter arrived with the Truth’s story\nabout powerlessness (En Onim in Hebrew).\nShe broke down in front of me the meaning of this term.\nEn —> lack\nOnim —> Powers\nShe began telling me about the limitation inhabited in\nthat it is not in the power of man to change reality, at\nleast that is how I saw her words.\nI was under a certain powerlessness lately, in a certain\nway anyhow. One can elucidate powerlessness in many\nways.\nNow it was not about, necessarily, lack of choice\ninherent as powerlessness.\nNow it was more of “a physical state”, something\n“simple” allegedly, daily.\nThe theme of breath, the asthma, floated upon the\nsurface in recent weeks, and as any phenomena, brought\nforth a lesson which the Truth had hoped to show me.\nSomething in the “definitions” appeared limiting and\nincreasing phenomenas which do not necessarily exist,\nwhich lead to increase of resistance.\nThe Truth began clarifying to me that there is a place\n“free” (supposedly) from the dependence on words,\nwhether a man defines his state or not.\n59",
+            "rtl": false
+        },
+        {
+            "p": 60,
+            "h": "The Truth revealed to me many times, that it appears",
+            "c": "people are sick and limited from knowing about their\ncondition, from the name given to their condition, more\nthan the condition itself.\nThe powerlessness in the breathing “issue”, the irregular\nnights lately, brought forth a lesson of a slightly different\nkind.\nThe Truth began splitting apart the term\n“issue” (problem), however, it was decided now, not to\nget into that excessively.\nAt this point, it is said, that this is simply an array of\ncomparison between two sides of the equation, and\nmostly with human beings, between past and present,\ndesirable and existing (future and present).\nAccepting the powerlessness must encapsulate within it\n(Yesh - opposite of En) Onim, Powers.\nThat I discover now. When from the equation one\nremoves the “lack” (‘En’ - Exists Not - in Hebrew). One\ncan remove the “Exists Not” (En), only when an equation\nis Existing Not.\nIn words simpler perhaps, when you do not compare\nyour present condition to your previous condition, you\ncannot be in lack .\nFor most human beings such revoking is almost\nimpossible. It leaves them power-less facing the present.\n60",
+            "rtl": false
+        },
+        {
+            "p": 61,
+            "h": "The physical, mental, emotional challenges are rooted in",
+            "c": "the comparing capacity which exists in the mind.\nThe Truth told me that many see that a mere\nphilosophical element (aspect), meaningless for the daily\nlife.\nShe made sure to clarify that this is the world’s way, and\nthis is the mind’s way to maintain the grip on people.\nAn attempt exists to “resolve” the “issue”, the\n“challenge”. An attempt exists only when there is an\nequation.\n61",
+            "rtl": false
+        },
+        {
+            "p": 62,
+            "h": "I Worry Knot",
+            "c": "(01:15 ,22-7-2017)\nAt times a smile appears on face If you will only observe, wait\nat times it is closed inside and decrease it not,\nnot because it wants not out nor increase, nor solve,\nbut cannot hold you will find brilliantly,\nface muscle’s work that the problem sinks in depths,\npresent a cloudy state no longer sticks\nbut fallen state and mood a firm stake inside the ground.\nlike paint on a smudged wall, Thus grow from wilderness,\ndries, fades and disappears Life, which wither in the end,\nand changes like all. just like those camels\nIndeed, at first appears which cross continents\nthat the condition is alike and take on their hump\nwhat you have past experienced people which fear emptiness,\nyet immediately a thing’s revealed. cling to preciseness\nDo you pay attention to changes? and the desert hence reveals\nDo you pay attention to nicknames, that the sand collects\nwhich you paste on the condition? life and death in circle,\nthus condition as a problem stands, like its friend, the wave,\nand starts a search for a solution. that rise and fall and crash,\nFor a problem is a matter of lack. the pattern it shatters,\nIt appears that plain adding drill among many oceans\nwill let you float in space, where fish procreate.\nbut the condition inside a boat it sails, Then comes a fisherman and Fish-a-Fish\npretends not to be decorated Longer Worry Knot,\nwith all kinds of titles as good or bad. thus a smile spreads on his thin lips\nThe condition is simply the occasion. as his thoughts have changed.\n62",
+            "rtl": false
+        },
+        {
+            "p": 63,
+            "h": "That which has happened (and is happening) inside of",
+            "c": "me I cannot fully expose, since that is not possible. There\nare reservoirs inside of me, experiences inside of me,\nwhich are for me alone, not because I “wish” not to share\nthem, but for I have no possibility of doing so.\nThat is for every man.\nThe essence cannot be revealed. There are, so called,\nsecrets, which remain in the custody of that man, and it\nmatters not whether another can read his thoughts or\nsense his feelings.\nThe limitation which exists in the mental capacity of\nman, which rely (the capacity) on the physical body, is\nparticularly fascinating.\nThe Truth continued unveiling the curtain and shedding\nmore light onto this subject. All her words were meant\nfor my ears only, and are written, since that is how it was\nsupposed to happen.\nThere are worn out words, repeated, among many\npeople’s mouths concerning observation, presence, and\nsuch alike. It appears to me that I either have\nmisunderstood many people, which have spoken about\nit, or I sense not my realization in theirs, or they have\nsimply not transmitted me, that they are really “there”,\nbut only borrowed the word from the dictionary.\nIt might certainly be possible that about me same is being\ntold. Certainly might be.\n63",
+            "rtl": false
+        },
+        {
+            "p": 64,
+            "h": "It matters not.",
+            "c": "Simply a point.\nThe ability to discover that inside the human structure, I\nam kind of inducting here, out of my experience, of\ncourse, that ability to discover, that parts exist within\nus, unchangeable parts, that thing is almost\ninexplicable .\nThat is a kind of an ice cream, that a man can only realise\nits taste on his own “flesh”, his “tongue”, his “palate”.\nTo be in the place I am in my life, supposedly in my\nchronological age (34), and see the Truth (the\nsubjective?) telling me all that, that is a special kind of an\nexperience.\nThe Truth continued revealing about inside and outside,\nchangeable and unchangeable, powerlessness and\npower.\nAll the time there is a movement (as long as one is alive,\nit appears) between absence of meaning and meaning,\nbetween health and sickness, etc.\nIn the recent period I have been exposed to see that\nsomething exists between them, between every duo of\nwords, duo of definitions, duo of limitations.\nI hear all that for myself, write all that for myself, forget\nand remembers all that for myself.\nThe human structure is so fascinating in each one of its\nparts, powerless and powerful as they may be.\n64",
+            "rtl": false
+        },
+        {
+            "p": 65,
+            "h": "The Truth began talking again about “fear”.",
+            "c": "As fear exists, exists lack of fear, thus the equation is\nbeing created and erased.\nIt is amazing to discover how the asthma and its effects,\nmostly, matter not anymore. That is, the result matters\nnot.\nI went to a doctor, I took a medicine, I slept well or not, I\nrefused to the medicine, how it all was resolved.\nSomething is bound to happen, and the perspective\nthrough which I see what I see, creates a space of time\nwhich appears not to exist for most people. So it appears\nto me from random encounters with several people\naround me.\nOne generalises very easily about the human species,\ndespite that in his life one meets, most likely, ten\nthousand people? a hundred thousand? I mean also\npeople we pass by in the street.\nOut of seven, eight billion people, we bump in our life a\nsmall sample, a tiny precentage, yet, our nature, the\nhuman nature (and again I generalise) is to generalise.\nI am apparently no different in this way, and I laugh\nhearing all that.\nAgain, that is also my limitation in my humanness, my\nstructure.\nInasmuch…\n65",
+            "rtl": false
+        },
+        {
+            "p": 66,
+            "h": "Well, it appears it is enough for the thirteenth chapter.",
+            "c": "Asthma, limitations and what is between them.\n66",
+            "rtl": false
+        },
+        {
+            "p": 67,
+            "h": "Chapter 14: 8-Sep-2018 11:15",
+            "c": "Chapter 14 opened with the idea of puberty.\nThe Truth began laying out to me, in relation to the place\nor life’s period where I lay now, about two maturing\nphases, different maturing periods.\nIf we would say “a teenager”, most likely, we would\npicture a boy (or a girl) of around 15 years old, more or\nless, and we as humans would accept more moderately\nhis behaviour, accepting it, relatively to his behaviour.\nAll under the title of “Puberty”.\nAll valid and is clear, existing and familiar.\nNow, several months after age 34, the second puberty,\nperhaps even more accurate chronologically, receives\ndifferent shade and relation from the surrounding.\nThe Truth was clear to me as for the existing challenge of\na teenager at age 30 to adapt his life style and his\nbehaviour according to his maturing age. He is after all\n“teenager 2”, if we wish to create a sequel.\nYet at this puberty (between 30-40) the external\nenvironment is no longer so, principally, tolerant,\naccepting and permissive towards that same maturing\nteenager of age 30.\nThe Truth has sent me to search in Google the song “דליה\n30 ןב” (“the kid is 30”) by Ehud Banai.\n67",
+            "rtl": false
+        },
+        {
+            "p": 68,
+            "h": "It is obvious for all, and most obvious that not obvious",
+            "c": "for all, that there is something special and different in\nthis puberty, age of 30.\nThe Truth began telling me about things I am still facing\nwith, according to my age, 34.\n“Teenager 1” (12-18 or even up to 30) sometimes\nexperiences the disarray and the resistance which come\nat his doorstep due to his biological development. His\nmental development is not yet standing aligned with his\nbiological-physiological, physical, development.\nThe dissonance is clearly apparent, to those who have\npast this phase.\nIn the second phase, “Teenager 2”, 30-40 (and perhaps\nup to 50, I do not know), the ratio between the physical\ndevelopment to the mental development is beginning to\nbalance, and the mental development, supposedly,\ncatches up the pace (in a metaphorical sort of way).\nThe Truth has spoken of, that with most of society, with\nmost people, with most relationships (in a generalisation\nwhich I know not where is taken), people are trying to\nhasten the mental development (which is, of course, not\nreally possible to hasten), and already at age 25, more or\nless, it is expected from a teenager, that his physical and\nmental levels to equate.\nThe recognition already exists that it is not achievable,\nyet the external influence is apparent.\n68",
+            "rtl": false
+        },
+        {
+            "p": 69,
+            "h": "Furthermore when this teenager crosses age 30, and I am",
+            "c": "at this stage can toll and tell up to 34.\nFew are the lucky ones which can experience successfully\nand with reduced environmental resistance the second\npuberty, the oh-so-vital, this I experience and others\ntell, to the “functional” development, the healthy one,\nof man.\nThe Truth laughed and guessed that one will ridicule or\nnod reading these words, and say “that is obvious”, but\nthere is a profound essential (in Hebrew requires just a\nreplace of two letters - יתוהמ, essential, and ימוהת,\nprofound) difference between an experience of that, a\ndeep realisation, to a nod and an acceptance like a dog\nnodding in front of a candy handed to him on the palm of\nhis owner.\nShe spoke not to those, that not at all see that and their\nexpectations of their children are double as much in\ncomparison to the child’s age, or even triple.\nThe ignorance that exists in the connection between a\nparent and a child can be seen, in most of these\nrelationships.\nIt is not “just” about inexperience, and some would say\n“a first child”.\nIt is a readiness and an awareness and a timing which are\ncorrect by the parent, the mechanism which is more\n“ready” to embrace into its life that infant.\nThat is our journey as human beings.\n69",
+            "rtl": false
+        },
+        {
+            "p": 70,
+            "h": "It is not a kitten which I see outside my balcony, which is",
+            "c": "born and all its concern is shelter, food, movement.\nInasmuch, when it is fed at two months of age by a\nhuman hand.\nA human-cub is in a different process, completely\ndifferent, and the comparison between man and animal,\nits place perhaps is in the movie “Tarzan”.\nThis is no complaint and no Truth, that is a perspective.\nThe Truth made sure to repeat that to me.\n“Puberty 2”, the sequel to “Puberty 1”, and the film\nkeeps on rolling, and the Truth as well.\nEnd of Chapter Fourteen.\n70",
+            "rtl": false
+        },
+        {
+            "p": 71,
+            "h": "Chapter 15: 12-Sep-2018 15:45",
+            "c": "The fifteenth chapter has opened.\nEnd of noon and an “unclear” dash, as it appears, to Rosh\nPina, to eat hummus at “Hummus Eliyahu”\nThat is the “outside”.\nTo three teenaged boys joined a teenaged girl and one\ncould notice how that “attracted” my attention.\nThat is also the “outside”.\nI rolled, literally, from Amirim to Moran Garage in the\nkibbutz and from there the body simply decided to drive,\nand the mind was left to guess only where we are\nheading.\nThere was a hunger sensation, and the mind inside\n“gambled” and tried to guess where would the stop spot\nbe.\n“Hummus Eliyahu” was one of the guesses, while during\nthat, the mind thinks of this place or the other which\nstands at the side of the road as we were driving the car.\nThat is also the “outside”.\nThe Truth tried to describe something about outside and\ninside. So many details attract our attention outside and\nare the themes of the discussion.\n71",
+            "rtl": false
+        },
+        {
+            "p": 72,
+            "h": "I could sense how the blond kid in front attracted my",
+            "c": "attention, and I could feel a certain sensation inside as I\nwatch him briefly.\nSo has happened with other objects.\nThe Truth already, and after that, and still, explains of a\npath with one arrow, with one direction. No cause and\neffect, allegedly. No walking a certain direction to return\nin a relative direction to it.\nThe Truth laughed and could see that the “subject” is not\nobvious, clear.\nA progress with no goal, on the surface.\nA progress with no plans.\n“I” am the prisoner (non-prisoner) that is most\nimprisoned-free there is with the utmost proud-humility\nthere is.\nSomething is happening “inside”.\nAll the time something is happening “inside” though the\n“outside” tries to claim ownership of it all the time, or\nmost of the time.\nI listen to the sounds outside, to the sensations inside,\nand these lack of goal and direction, anyhow those which\nare not accessible anymore to the mind, engender a\nsensation of a lake. An image.\nThe Truth already said that everything is as usual.\nDriving an unknown path. She elaborated on the world\n72",
+            "rtl": false
+        },
+        {
+            "p": 73,
+            "h": "of thrills.",
+            "c": "The Thrill of turning the unknown to known, and the\ndifficulty in remaining in the unknown, and simply\nwatch what rises out of it. All that in different temporary\nscales - a moment, an hour, a day, a month, a year, a\ndecade.\nI spoke with Zehra yesterday about that if we suggest to\npeople, most people, to practice a small portion, for a\nsmall period, the experiment we go through\n(separately), that would be a very difficult challenge for\nthem.\nA few years into these experiment and journey, there are\nthings which turn obvious, taken for granted anyhow.\nThe observation and the waiting for the “average\nperson” (a generalisation for this sake of matter) is\n“work”.\nExperimenting a life with no purpose, which fulfil them\nbeing life, thus fulfil their purpose, all that sounds like\nan impasse or hollow to most man.\nA philosophy at most.\nThe sensation of becoming free within the jailhouse is a\nunique sensation of a kind.\nThe “inside”, literally, cannot truly be described.\nThere are things that are meant for oneself only.\nThe Truth knew to tell of an observation for the sake of\nobservation, waiting for the sake of waiting, experience\n73",
+            "rtl": false
+        },
+        {
+            "p": 74,
+            "h": "for the sake of experience (waiting originally), writing",
+            "c": "for the sake of writing, breathing for the sake of\nbreathing.\nIt sounds at times very boring, like writing an equation,\n1=1.\nAt face value there is nothing “special” here, yet that is\nall what matters, and the moment that a man\nexperiences and realises from within, some would say\n“deeply”, this equation, supposedly many “things”, or\n“problems” in the language of many people, are\nresolved.\nThe Truth said that there are situations which a man\nprefers to suppress, to ignore, to change. They are called\nwith names as “stuck”, “fatigue”, “embarrassment” at\ntimes, “danger”, “boredom”, and those are just few\nexamples.\nIt seems this chapter is in the sign of “stuckness”.\nAs you read the words the time gaps between one line to\nanother, one paragraph to another, do not exist in what\nis written.\nOne could have imagined that, so each line represents a\nfew seconds or a minute, and many pages will remain\nempty in certain moments, which contain (the pages)\nthat same situation, to a certain degree even that same\nsensation.\n74",
+            "rtl": false
+        },
+        {
+            "p": 75,
+            "h": "At this stage since I have not left a number of empty",
+            "c": "pages, I will leave that to the imagination.\nIt seems these are still dictations of writing order.\nAll that was written in Rosh Pina.\nAll in all in Rosh Pina. That is all.\nThus got stuck here the fifteenth chapter.\n75",
+            "rtl": false
+        },
+        {
+            "p": 76,
+            "h": "Chapter 16: 20-Sep-2018 09:20",
+            "c": "Chapter sixteen began in a new place.\nA red table, fig, olive and oak trees, House 77.\nI am no longer certain whether I laugh at what the Truth\nspeaks or she laughs seeing my behaviour and my life.\nThe last days which are passing, are in sign of transition,\nin sign of air, acclimatisation and climate.\nIt appears that the outside stories tell mostly about two\nends of the rope, good and bad, happiness and sadness,\nhealth and sickness.\nThe Truth knew to touch the enormous gap which exists\nbetween two ends, two extremes.\nThat is something different than mediocrity, she began\ntelling me.\nThat part in between the ends does not necessarily\nresemble mediocrity but it is a collection of moments\nthat depends on the perspective - a binocular, a\ntelescope, a microscope, sun glasses, prescription\nglasses, etc - which change and could, or are, unique in\nand of themselves.\nThe Truth told me of words’ influences, of the different\ncontexts we attribute to them, of habits, of\nconditionings.\n76",
+            "rtl": false
+        },
+        {
+            "p": 77,
+            "h": "All this movement of the mind between one extreme to",
+            "c": "the other, each extreme is anchored with waiting, in to a\nlife force of a certain rhythm (until it changes, if at all).\nObservation.\nOne can approach Google and search for that word, she\nsaid.\nOne can also approach endless lessons, workshops,\nlectures, doctrines, theories, and hear and learn about\nobservation.\nThere is something interesting in that one can hear\nresemblance between תוננובתה (hitbonenut -\nobservation in Hebrew) and תוינוניב (beynoniyut -\nmediocrity in Hebrew).\nThe Truth has sent me to imagine a picture of an azure\nstill (?) lake, and if one wishes, go and search Google’s\nsearch engine for “Azure Lake”, if no picture one’s\nimagination engenders.\nEach one and his resources in hand.\nI assume that this day is in sign of unique mediocrity.\nHow this adjective change∞s the shade of the word. Also\nmediocrity can be described in a very broad spectrum.\nPerhaps even an infinite - -\nThe Truth began revealing me a thing about the\nconnection between observation and mediocrity.\nThat is a connection which can be interpreted and\n77",
+            "rtl": false
+        },
+        {
+            "p": 78,
+            "h": "experienced (not necessarily in this order) over a whole",
+            "c": "book, a whole life.\nThe enter and exit space from mediocrity upwards\ntowards uniqueness and downwards towards mundanity,\nbring with it a whole world.\nThe Truth told me that one could type searching Google\n“Death and Life are in the power of the Tongue”\nThere is such a book, in English.\nThere are stories about the influence of the tongue and in\nthis case the word, the language, and not the taste and\nthe touch which exist in the tongue, the power to turn\nillusion into reality or reality into illusion, turn\nexperience into a story and a story into an experience.\nWhen I was a child it appeared that one should avoid\ndeath by tongue, so I understood this maxim, the stories.\nToday already revealed to me the Truth more layers.\nHow the tongue and its stories bring death to that which\nis meant to die in order for something else to live\ninstead.\nThe other side exists - the Truth revives a story which is\nmeant to live.\n“and breathed into his nostrils the breath of life” - one\ncan search Google, she whispered, in the old and new\ntestament.\nStories like the tree, touch the ground, spread their\nroots, grow their trunk, split their branches, expand\ntheir leaves, and produce their fruits, and\n78",
+            "rtl": false
+        },
+        {
+            "p": 79,
+            "h": "“eventually” (?) blossom their flower, which detach from",
+            "c": "them coming time, not before the bee will come and take\ntheir sweetness and cast honey from it in a collaborative\ncraft with its coworkers, its sisters, as effoliation comes\nand detach the leaves from the tree, thus from the story,\nto create another.\nThe fledglings that have left the nest.\nThus one can connect between a story to a tree to\nfledglings in such a line.\nAssociation, context, the Truth has sent the user to\nsearch in Google in order to receive a stamp or at least a\nlight explanation and further description.\nThe Truth whispered in my ear, that the stories are\nmeant for me, and I laughed (or smiled) at this\ncognisance.\nLike the tree growing for itself, yet serves willingly and\nunwillingly the circle of life around it.\n“The Giving Tree” - she said again that one can approach\nGoogle and search the book in English, in Hebrew and\nmany languages.\nSome will judge the book “for good”, “for bad”,\n“positively”, “negatively”.\nThat she said as well can be found in Google’s search\nengine.\nPossibly one might bump an elucidation of the book from\nhis landlord who feeds 30 cats.\nIt is possible.\n79",
+            "rtl": false
+        },
+        {
+            "p": 80,
+            "h": "Fascinating mediocrity, and reticent observation?",
+            "c": "Distant observation?\nHesitant observation?\nAmused observation?\nReceding mediocrity.\nThe mediocre sixteenth chapter maundered to an end.\n80",
+            "rtl": false
+        },
+        {
+            "p": 81,
+            "h": "Chapter 17: 24-Sep-2018 09:00",
+            "c": "Chapter seventeen opened. Another chapter.\nStopping.\nWaiting.\nBreathing.\nLimitation.\nBreathing.\nWaiting.\nStopping.\nIt was obvious for the Truth that to write about the void\nmeaning to vanish it utterly.\nThere are things which can only exist when no one\nmentions them.\nNot to himself and not to others.\nAll the more not to others.\nThe good, the bad and the ugly -\nAnother movie which the Truth has sent one of us to\nsearch on the “shelves” of Google.\nThe limitation of being human.\nClouded and clung on our memories, our habits, our\nsensations, our wishes.\nThe transitions from good to bad to ugly, and even to\npretty, and to easy and used, to new, to old and to the\nchangeable.\n81",
+            "rtl": false
+        },
+        {
+            "p": 82,
+            "h": "The Truth broke in like an antidote, one day, a week, a",
+            "c": "month, a year, a period.\nIt is an encumbrance to be alive, to be a human being.\nNow began the Truth breaking down this term -\nencumbrance.\nShe began exposing to me the problematics of presenting\nencumbrance in a limited way. She began showing how a\ntransition from encumbrance to relief creates a life\nstory.\nThat is all.\nThe burden is not bad.\nThe relief is not good.\nBoth are neither ugly.\nHad their order, the adjectives, would have been\nreversed, then neither would it matter.\nThe limitation of seeing our encumbrance, of trying to\nsolve it, trying to linger and stay and stick with relief -\nthat is as well an encumbrance.\nSo the swing between burden and relief swings up-down\nand no child in the playground ever complains that now\nhe is up while his playmate is down.\nIt is obvious in a few playing moments the high would go\ndown, and the low would rise up.\nThere are people who tell of\ntheir optimistic experiences.\n82",
+            "rtl": false
+        },
+        {
+            "p": 83,
+            "h": "There are people who tell of",
+            "c": "their pessimistic experiences.\nThere are people who are neutralised\nfrom telling stories.\nYet each one has a story and each side comes with the\nhelp of the other.\nThat is sort of another day in which could the Truth have\nsent me searching after eucalyptus trees and birds’ chirp,\nand a hidden scenery of Kineret (Sea of Galilee)\nThere is an inner voice inside of me, which speaks in\nwords, and it guides me no longer.\nIt only wants to resolve the situation, to transit from\nhard to easy, from bad to good, etc.\nIt has a story to tell, in due time, and that is all, in due\npen-time (time is “et - תע” in Hebrew, and so is a pen,\n“et - טע”).\nThere is a laughter-daughter (a smile - Bat-Tzkhok in\nHebrew) which spreads on man’s face, no matter what\nhis “condition” is.\nThere is a laughter rolling on man’s face, no matter what\nhis “quality” is.\nThere are people and something in me, as well, some\ntimes.\nA bird on the right chirped, and a bird on the left chirped\nback.\nThey called to end chapter seventeen.\n83",
+            "rtl": false
+        },
+        {
+            "p": 84,
+            "h": "Chapter 18: 25-Sep-2018 16:36",
+            "c": "He stood in front of me in the playground.\nHe asked “what do you know?” (in Hebrew)\n“I don’t know”, I replied.\n“Do you pay attention?”, he asked.\n“I don’t know”, I replied.\n“Do you pay attention that you pay attention?”, he\ncontinued and asked.\n“I don’t know”, I replied again.\n“Do you notice that you are here?”, asked.\n“Ah-hun”, I replied.\n“Do you speak Hebrew?”, he asked.\n“I don’t know”, I replied.\n“There are people which pass through their life without\npaying attention to their life”, he said.\n“Ah-hun”, I replied.\n“You are ok!” (in English) he determined and laughed.\n“Ah-hun”, I replied.\nHe put out his hand at me, and I put out my hand which\nwas sticky from mango.\nHe shook it goodbye, smiled and went away.\nI continued towards the tap to wash my hand from the\nsticky mango, and the handshake stayed where we both\nstood on the grass.\nThus began and ended chapter י״ח (18 in gematria and\nalive in Hebrew).\n84",
+            "rtl": false
+        },
+        {
+            "p": 85,
+            "h": "Chapter 19: 27-Sep-2018 14:14",
+            "c": "She stopped in front of me outside the playground.\nIt appeared to be the first time we have met.\nAnyhow from the depth of my memory rose no inkling\nwhatsoever, which could incline I have seen her before.\n“How are you?”, she asked (in plural masculine Hebrew).\n“I don’t know”, I replied, and wondered who are those\n“we”.\n“How are you?” (Again plural) she continued asking me\nand myself.\nShe smiled.\n“Who are those we?”, I asked back.\nShe looked at me with eyes wide open, trying to figure\nout the meaning of my answers.\n“All is well with you?” (again plural) she did not give up,\nand all in an amusing atmosphere.\n“I don’t know”, again I replied.\nShe looked at me for a couple of seconds without saying a\nword.\n“Well, I guess I got confused”, she said and went up the\nchildren’s garden, and laughed from the random\nencounter.\nThat same day I saw the book “Man’s search for\nmeaning” in the bookcase, I took it out and read a few\npages.\n85",
+            "rtl": false
+        },
+        {
+            "p": 86,
+            "h": "I dozed while reading and went out afterwards to a round",
+            "c": "up and down the village.\nAs I came back, towards the end of the uphill, coming\nhome, she stopped, this time with her car and asked,\n“Do you get somewhere?”\n“Sometimes”, I replied.\nShe again laughed.\nShe carried on her drive and I my foot march, about\nanother 50 meters, home.\nIt appeared that the Truth presented herself in two\namusing characters.\nMr. “What do you know?” and Ms. “Do you get\nsomewhere?”\nBriefly sealed thus the Truth chapter 19.\n86",
+            "rtl": false
+        },
+        {
+            "p": 87,
+            "h": "Chapter 20: 6-Oct-2018 9-10am",
+            "c": "Chapter twenty opened.\nThe Truth knows to tell me of half world laughs and half\nworld cries (roughly estimated 50-50).\nShe also knew to tell me that half will ridicule reading of\nthe Truth here, and half will nod smilingly agreeing.\nThus world works.\nShe began showing her signs that Google’s search engine\nis Google’s search engine.\n“Did you understand?”, she asked me.\n“Yes, but not sure others will understand.”, I said.\nShe spread wide in her sit, wherever it is, and added,\n“such is the thing.”\nShe claimed that this is one of the reasons that Google’s\nsearch engine exists.\n“It exists because there is no certainty that others\nunderstand.”, thus spoke she.\nIt was the elucidating day in front of the Kineret-like\nview, old couple behind, young couple in front, a young\nwoman crouching, sitting on the grass, and I am settled\non the grass behind.\n“Lorenzia? Lorenzia?”, asked-called the old man.\n“Yes”, she answered (Lorenzia?)\n87",
+            "rtl": false
+        },
+        {
+            "p": 88,
+            "h": "“Shall we go?”, asked the old man, and added,",
+            "c": "“Vamos?”.\n“Yes”, answered Loernzia (the young woman), and stood\nup in his direction as they exchange several words in\nSpanish.\nThe Truth told me that one can take this experience and\nput it in Google’s search world.\n“Nothing bad nor good about it”, she clarified.\n“Nothing bad nor good about it”, she repeated and\nemphasised.\nAs you type into Google’s search engine your\nexperiences, and of course, it is done indirectly, mostly,\nwith the help of Google’s siblings and cousins, exist the\ntyping experience, the sharing, stamping the\nexperience, the memory of the experience, in a more\npreserved collective consciousness.\nThe Truth started saying about a fresh pineapple and a\npreserved pineapple.\nImmediately jumped people here and there.\nGood or bad, healthy or sickening, fresh or mouldy.\nThe Truth said it is none of her concern entering such\npiffling matters as these.\nThere are those who will eat a fresh pineapple, and those\nwho will eat a preserved pineapple.\n“It is merely a difference of experience”, she said.\n“There are those who will understand closer to the\nmessage which you are meant to deliver, and there are\n88",
+            "rtl": false
+        },
+        {
+            "p": 89,
+            "h": "those, who will understand farther from the message",
+            "c": "which you wish to deliver”, she said, as if to relieve the\nconcern.\n“I am not trying to relieve the concern!”, immediately\nshe exclaimed with a rolling laughing voice.\nI laughed along with her.\nMy Truth, myself and the pineapple.\nThus ended her sayings for chapter twenty.\n(and in the meantime the viewpoint emptied from all its\ninhabitants beside me).\n89",
+            "rtl": false
+        },
+        {
+            "p": 90,
+            "h": "Chapter 21: 12-Oct-2018",
+            "c": "Chapter twenty one was written in the sign of crossing\nthe bank (a telling - in Hebrew הדגה - ‘Hagada' can mean\nthe (river)bank or a telling(story)).\nThe Truth began describing to me the resemblance to\nSeder Pessakh (Passover Order).\nThere is none here which is spoken in Passover Telling\nneither “and you told to your sons” (ךינבל תדגהו -\nVe’higadeta Leh’banekha).\nShe knew to show me, that I have crossed the river and\npassed over to the other bank.\nSomething in life changed, and there are people hanging\non thread, hanging on a rope/bridge of Google’s search\nengine.\nThat is one example of many.\nShe has sent me to read of “a metaphor” in Google’s\nsearch engine, in that same invisible bridge of\ninformation.\nI have crossed to the other bank, and crossing the river\nusing that same bridge, one which is parallel to Google\nsearch engine’s bridge, where the path of the bridge is -\n“blocked”, “misunderstood”, “unknown”, “one that\ndoes not give answers”.\nThat was apparently the bridge which I have crossed,\npassing over to the other bank, thus told me the Truth.\n90",
+            "rtl": false
+        },
+        {
+            "p": 91,
+            "h": "All that as I was sitting back in the city after two months,",
+            "c": "next to the bus station.\nOne of many, in Ramat Gan, leaning on business door\nwhich had been closed and received a warning note not\nto place “for Rent” advertisement boards without\npermission.\nIt appears to be that when one crosses the bank, all that\nis left in due time is to speak of the bank (or speak of a\ntelling).\n“Ve’higadeta” - and you have told - to the one who was\ninterested hearing.\nThere are those which do not see that there is a bridge to\ncross, which do not see rivers and brooks, roads and\npaths.\nTheir path is neither more blocked nor more (or less)\nclear from your path.\nThus the Truth, truthfully, truthified that morning.\n91",
+            "rtl": false
+        },
+        {
+            "p": 92,
+            "h": "Way Out Road",
+            "c": "(8-8-2017,07:00)\nThe path is blocked? and that is precisely the way\nTurns magical, towards that Wu Wei.\nif you only fear not, Some minutes\nto get lost, driving anxiously,\nyou find in a blink, for a moment it appears,\nthat you are trapped. that you are but a scout.\nDriving thus Living in a cloud of dust\na crooked path, paying rent\ncertain that the spirit, in life of struggle,\nmust be dry, and in the next curve,\nindeed, there is dust, suddenly you see,\ndirt flies all over, for that part is over,\nonce you grasp, ahead lies a new road\ncalling out “what the hell?!?” marked and paved,\nA new path and to another turn,\nthus revealed to you, you are now invited.\nand crooked path Honoured down you go\nturns all of you, from old crooked path\nand as you drive upon it, up towards a path,\nknowing not to where a changing path.\na sensation rising floating, No bumps\ntruly drunk from wine. No obstacles nor pits,\nYou know not that is a unique way,\nwhich is beyond the corner for those who fail.\n92",
+            "rtl": false
+        },
+        {
+            "p": 93,
+            "h": "And as you have crossed the bank to some other side, and",
+            "c": "perhaps your life are “more” clear, “more” peaceful,\n“more” good, that is all that it is.\nThe Truth engendered a smile. On her face.\nAnd then on my face.\nShe recommended to search in Google’s search engine\nfor the word “grey”.\nSimply observe.\nAlso after several chapters, several decades, several falls\nand several stories - it is all that it is.\nNo more and no less.\nThe Truth said, that there is no place to elucidate, to\nsimplify, to explain. People should be treading their own\npath. You should be treading your path. She said to me,\nthat those who try all the time to search, to find, to\nunderstand, to know, those know well Google’s search\nengine. It is that food supplier, wonderful, as a supplier.\nIt distributes the food and there are the producers\nmaking for it matter to be distributed in the world of\nseekers.\nIn the real world, the virtual.\nI could feel the story, the present message of the Truth,\ncoming to its end.\nPerhaps it was from holding the left part of the notebook\n(written in Hebrew), and from the light thin sensation\nfrom holding the amount of pages.\n93",
+            "rtl": false
+        },
+        {
+            "p": 94,
+            "h": "She as well did not know to tell.",
+            "c": "We both smiled and knew not whether we understand\neach other.\nAnd we smiled.\nThus silenced chapter twenty one.\n94",
+            "rtl": false
+        },
+        {
+            "p": 95,
+            "h": "Chapter 22: 13-Oct-2018 12:00",
+            "c": "The twenty second chapter began.\nThe Truth knew to tell me of the tingling of waiting.\nThoughts pass through one’s head, sensations run across\nhis body.\n“Again the story of the egg and the chicken”, said the\nTruth.\nYou can search that in Google’s search engine for the\nPshat and Drash (Pshat - simple understanding, Drash -\nfurther understanding. in a rough translation - טשפ\nשרד).\nPerhaps even the Sod (Secret) and even perhaps the\nRemez (clue).\nDisclaimer, hinted me the Truth.\nThe part of the “סד_פ” (“P_DS”) I remembered. The\nterm itself and the second letter or the fourth term I\nforgot.\nGoogle’s search engine came to help me, adding up the\nletter “PaRDeS” (סדרפ - meaning Pshat, Remez, Drash,\nSod) and added the “Remez” (the Clue), just like in the\ngame of life.\nAnd the Truth returned talking about the egg and the\nchicken, of stories in the head and sensations in the body\n- some will say stories preceded sensations, and some\nwill say sensations caused stories.\n95",
+            "rtl": false
+        },
+        {
+            "p": 96,
+            "h": "The Truth ridiculed at those discussions, like that same",
+            "c": "farmer which throw seeds at the chickens, and continues\ncollecting their eggs, and not at all tries to understand\nwhere came this parable, as he approaches his breakfast\nor lunch.\nSo sometimes psychosomatic phenomenas, and\nsometimes somapsychotic, and this strange day as well,\ncontinued the Truth to tell, is part of the days of the year\nand from the chapter of life.\nShe carried on saying, that this book was not born for\nsome purpose, but simply to present for looks, an empty\none, in a not so glamorous window, her parts and twists,\nher wonders and her understandings.\nOr sometimes one should be exact, her\nmisunderstandings.\nThe alternative of boredom for thrill, and observation for\nfloating, and for dreams, and delusions, and again the\npull of the ground, or, again emphasised the Truth,\nNewton and the apple, and how one can search and find\nmany meanings and many images around that in\nGoogle’s search engine.\nThe challenge, thus she said, which occurs or presented\nin this book, is the “nothing”, the “boredom”, “lack of\nthrill”, “the tingling”, “filling up the vacuum” (illusion).\nThe Truth laughed (again) and said that she has no\nproblem seeing people distancing from her, may the\nreason be what it may be.\n96",
+            "rtl": false
+        },
+        {
+            "p": 97,
+            "h": "She added that her way is not to create or dictate",
+            "c": "anything, and not at all to force something or to interest\nor to upset.\nAnd these are merely few and specific infinitives, and the\nreader can, allowed to, choose infinitives which suit\nhim.\nThe Truth already came to light (was published) and on\nher way long time ago, and told me that she writes here\nand telling that for me, for you.\nStories with a message and with a meaning, with a plot\nand with heroes - all that exists a-mass, thus she clarified\nto me.\nShe, in the time who-knows-how-many, referred me to\nsearch that in Google, even in Amazon, and to those\nanalogues, also the library, perhaps the municipal.\nStories with purpose.\nStories with meaning.\nNo stories without meaning, yet with a meaning.\nNot to interest the reader, not to attract him, not to\nthrill him and not to reject him.\nNot to be worried from your fears, from your life, from\nits meaning, from the lack of it.\nYou will not find that in words.\nAnd even if you will find, you will lose it the moment\nafter.\n97",
+            "rtl": false
+        },
+        {
+            "p": 98,
+            "h": "“All that I have already revealed to you!”, exclaimed the",
+            "c": "Truth.\n“All that I have revealed to all the rest.”, She shared me\ninto her revealed secret.\nHumans which will see this - will see.\nHumans which will not see this - will not see.\nWe have spoken already of the simple law with is\ntreasured in the equation 1=1.\nAs I feared came - awareness.\nAnd the twenty second chapter was completed.\n98",
+            "rtl": false
+        },
+        {
+            "p": 99,
+            "h": "Chapter 23: 2-Nov-2018 12:25",
+            "c": "Chapter twenty three began.\nVoid.\nVoid.\nVoid.\nPeople sitting in different shapes in Café 77.\nIt appeared that all life’s message is to be meaning.\nThe Truth spoke of that those which could be\nunderstood, find themselves either outcasted or silenced\nin a corner, or both altogether.\nShe said that one should not conclude from that of the\noutcasts or the silenced in the corner, which are not\nnecessarily not possible to be understood.\nShe sent me searching Google for the terms “crazy”,\n“outcast”, “estranged”.\nMostly all relation we make between these words to\nreality itself is very slim.\nThe Truth told me that the majority perhaps will not\nagree with that, and that it is alright.\nMost probably.\nYes? Probable to the most.\nA neighbour asked me few days ago, in the beginning of\nthe week, if it does not bother me that I am being called\n“crazy” or being looked as “crazy”.\n99",
+            "rtl": false
+        },
+        {
+            "p": 100,
+            "h": "There was a moment of hesitation, which foretold",
+            "c": "apparently an “I do not know” answer.\nNonetheless, her question was surprising, since that was\nthe first moment we happened to “exchange words”.\nSeveral of my sentences brought her to a feeling of\nidentification with the “crazy” aspect.\nIt seems she meant more, in my eyes of course, to\n“stranger”, “other”.\nThe Truth has sent one to search for “The Stranger” by\nAlber Camus in Google’s search engine.\nShe shared (the neighbour) estranged feelings which she\nexperiences towards herself from an environment which\nonce apparently was supporting and familiar.\nThe distance from familiar to estranged is one letter\ndistance (in Hebrew - תרכומ and תרכונמ), 50 short steps,\nlight brush up and down towards the left.\n“It is crazy to be normal” - I heard this cliché once. Very\nfamiliar and like quiche - a bit mixed all together.\nThis whole book, the words, the ideas, the sights, all is\ninterwoven with a crimson thread estranged in one layer\nto next.\nFamiliar - Known - Understood.\nA triplet which people chase up to an upheaval.\nIn themselves, in others, inside, outside.\n100",
+            "rtl": false
+        },
+        {
+            "p": 101,
+            "h": "The strange matter is that in most of my layers, I appear",
+            "c": "to myself, I sense, I am been experienced - completely\nnormal.\nIt seems that people are confusing between -\nUniqueness and Madness.\nA book I was once sent to read, and the Truth began\ntyping its name -\n“Lila - an inquiry into morals” by Robert M. Pirsig.\nHow people are relieved that one can break (that is an\nillusion) the bothering of the not known - not familiar -\nnot understood, through opening the laptop (or the\nsmart cellular device which contains almost “only”\nmemory and a bit of limited processing capacity), and\ntype into Google or its daughter-business Youtube, and\nreceive the illusion of knowing-familiarising-\nunderstanding.\nThe problem or the theme treasured in craziness, in the\n“crazy”, is the fear inherent in uniqueness, in true\nuniqueness, in differentiating from the stream, from the\nrest, from the familiar to the estranged (in Hebrew -\nfrom רכומ to רכונמ).\nThat is a fear which the ultimate vast majority of us is not\nprepared for.\nI am no crazy and I am no unique, and I am not no crazy\nand I am not no unique.\n101",
+            "rtl": false
+        },
+        {
+            "p": 102,
+            "h": "The name we would call a specific phenomena is not the",
+            "c": "primary matter, as I see, true to the moment.\nThe last days, the weeks, perhaps even a month, seemed\nto have passed in a “standing”, “not moving” state -\ncompletely normal.\nThe “normals”, which mostly (here, again you\ngeneralise, said the Truth, and said that perhaps for the\nstory sometimes there is no choice, in order to deliver a\ncertain message, not a certain truth) get stuck, and it is\nhard for them with this strange state. It appears people\nwill do anything to break the stuck, remove the\nboredom.\nIt is not a journey of madness, to normalcy. There is a\npart definitions-free.\n“As long as you live in the realms of the word”, exposed\nthe Truth half-shining-white (and half..?) teeth, “there\nis no escape from definitions.”\n“The nature of the world exists not in the nature of the\nworld”, she added, “whether you understand, and\nwhether you do not.”\nAll that was said and written with no further thought.\nPerhaps the next pages will be filled.\nPerhaps not.\nHouse 77 menu is lying in front of me.\nMario Vargas Llosa through his book “The\nStoryteller” (El Hablador, ןרבדה), which belonged (the\nbook) to my father.\n102",
+            "rtl": false
+        },
+        {
+            "p": 103,
+            "h": "A man awaits an order.",
+            "c": "Of a waiter.\nAnd perhaps not.\nShabat Shalom chapter twenty three.\n103",
+            "rtl": false
+        },
+        {
+            "p": 104,
+            "h": "Chapter 24: 11-Nov-2018 17:15",
+            "c": "The twenty fourth chapter began.\nStrong sensations pushed me to go out of the house and\nsit down “at Yishai’s”.\nFears or rush, sensations or blush, when different sounds\ntry to interpret, many sounds on the water surface,\nexternally, already knew how to interpret things in the\npast and also in the recent time.\nThe Truth still knew to tell me that things which are not\nclear are sentenced to go out to the world, first not\nelucidated, and with time, perhaps, the right\ninterpreters will be found, and the accurate, the clear,\nones.\nDifferent interpreters of fear, seeded with fear, washed\nwith fear themselves.\nThe attempt to describe the reality by a man held in\nillusion, its sentence is as a claustrophobic which will\nremain calm at him being locked up in a cave.\nHe will only search for the exit and not for the light. He,\nfrom so much fear, mostly will not be able to see the\ncrack of light, which indicates the exit place (and the\nentrance).\nA sensation grabbed me, which the mind (head if you\nwish) interpreted, that my words no one will read, that I\nwill stay lonely.\n104",
+            "rtl": false
+        },
+        {
+            "p": 105,
+            "h": "I immediately smiled inside of me hearing such virus,",
+            "c": "and the Truth knew that she had nothing to add in such a\nmoment.\nOnly wait.\nI do not understand, sometimes, how one can feel\nlonely, forsaken , forlorn, when one has himself.\nA quite rhetorical question. I am one of many man, 8\nbillion if we punch some number which I have no true\nclue as to estimating it.\nHad that been dependant on my head (mind, if you\nwish), the fear would have stayed forever. It never knew\nhow to handle with the changing fear slides.\nThe Truth.\nA certain chapter, a certain story, a certain period,\nfutured to come to an end.\nAlso the Truth knew to tell that her end will come one\ntime. She could not hold forever, and perhaps never\nhave existed.\nShe herself laughed hearing and reading this thought.\nThe Truth knew that she exists in False as much as False\nexists in her.\nShe knew that the search for her would cease at one\npoint, perhaps she will be declared missing, perhaps a\ngravestone will be built for her, the epitaph will be\n105",
+            "rtl": false
+        },
+        {
+            "p": 106,
+            "h": "written in a language not yet existing, in meaningless",
+            "c": "words.\n“Who shall provide me a man who has lost the word, that\nI can exchange a word with him”, my father used to\nquote many times Chuang Tzu (it appears to me) from\n“The Sounds of Earth” by Yoel Hoffmann.\nI have not lost the words, and as it seems I shall not lose\nit, and good and bad for that, and reality and illusion for\nthat.\nSadness filled with happiness, and happiness saturated\nwith sadness.\nI stood up to drink lukewarm water.\nThe Truth. In between-time.\nChapter 24 settled for this end.\n106",
+            "rtl": false
+        },
+        {
+            "p": 107,
+            "h": "fi",
+            "c": "London’s on re\nor\nhow a wheel keeps on turning\n(9:00 ,15-6-17)\nSSiittttiinngg ttwwoo iinn hhoott mmoorrnniinngg hhooww eevveerryy JJeeww mmuusstt,,\nSShhmmuueell,, AAvvrraahhaamm aanndd II tthheeiirr gguueesstt ddeessttrrooyy tthheerree eevveerryy cciittiizzeenn\nsshhoorrttllyy nnaammeedd AAvvrraamm,, SShhmmuulliikk mmuusslliimm ssoonn ooff AArraabb llaanndd\nnniicckknnaammeedd mmee mmrr.. MMaassttuulliikk.. iinn ffrroozzeenn ddaayyss,, iinn bbuurrnniinngg ddaayyss..\nTThheeiirr aaggee sseevveennttyy,, nniinneettyy,, FFrroomm ddiissttaannccee oonnee CChhrriissttiiaann\nmmiinnee TThhiirrttyy,, II eemmpphhaassiissee tthhee mmaarrkk.. mmoossttllyy hhee iiss ssccaarreedd,,\nMMyy ttiimmee wwiitthh ssttoorriieess pplleeaassuurraabbllyy tthheeyy ppaassss llooookkss aatt tthhee ttwwoo hhoossttiillee mmeenn\nmmyy ffaaccee tthhuuss wweellccoommee.. aanndd lleettss tthhee eeggggss tthhuuss\nTThhiiss ttiimmee ““LLoonnddoonn oonn ffiirree,, hhaavvee yyoouu hheeaarrdd?? bbrreeaakk ttoo rriigghhtt,, ttoo lleefftt,,\niitt mmuusstt bbee ssoommee kkiinndd ooff ssiiggnn!! nnootthhiinngg iiss nneeww,, ssaammee ooll’’ yyeesstteerrddaayy,,\nAAllll aatt oonnccee tthhee wwhhoollee bbuuiillddiinngg uupp tthhee ddaayy bbeeffoorree,, ssuunn sseettss,,\niinn ffllaammeess wweenntt,, eeaassiillyy,, ssaammee ddaayy ttuurrnnss yyeett yyeesstteerrddaayy..\nhhooww ccoouulldd tthhaatt bbee??”” BBeeiinngg ttiimmeess tthheerree aarree mmoorree rreelliiggiioonnss\nwwoonnddeerreedd NNeeiigghhbboouurr SShhmmuulliikk.. aammoonngg tthheemm eevveenn ccuullttss,,\nEExxccllaaiimmeedd,, ““tthhaatt mmuusstt bbee aa hhaanndd ooff tteerrrroorr,, yyeett iinn eeaacchh ccllaasssseess mmoossttllyy\nwwhhiicchh ddeessppiiccaabbllyy iiff yyoouu llooookk tthheemm cclloosseellyy\nppoouurrss ssoo ffllaammmmaabbllee mmaatttteerr nnoottiiccee bbaacckkggrroouunndd mmaatttteerrss nnoott,,\naanndd tthhee bbaannddiitt sslliippss ttoo hhiiddee.. eeaacchh ccllaassss eedduuccaatteess ttoo sspplliitt,,\nMMuusslliimm ffiinnggeerrpprriinntt!! oobbvviioouuss!! wwiitthh sseeppaarraatteess tthhuuss rruulleess,,\nTThheeyy ccaallll iitt lliibbeerraattiioonn!! eevveerryy ffaaiilliinngg mmaann,,\nYYeett iinn ssuucchh mmeeaann wwaayy?? ddiiffffeerreennttiiaatteess nnoott ttrruutthh ffrroomm ffaallssee\nAAllll ssoonn ooff tthhiiss rreelliiggiioonn ssiinnnneedd!!”” aanndd cchhaasseess iinnvveessttiiggaattiioonn wwhhiicchh iinn tthhee\ntthhuuss ddeetteerrmmiinneedd uunnddoouubbtteeddllyy,, iinntteerrppeerrssoonnaall uunnddeerrssttaannddiinngg ffllaatt ttiirree\naannootthheerr jjuussttiiccee ccoouurrtt?? nnoo nneeeedd!! II ccllaaiimm ttoo mmyy cclliieenntt..\nOOnn tthhee ootthheerr ssiiddee ooff gglloobbee WWhhaatt II sseeee ttrruuee,,\nssiittss IIsshhmmaaeell ddrriivveenn yyoouu ttrruullyy ffaallssee,,\nMMoottiivvaattiioonn,, wwiillll aanndd ppoowweerr wwiilllliinngg ttoo sswweeaarr tthhaatt\npprroovveess ttoo aannyy bbrraaiinn ssoommeeoonnee ttooookk TTrruutthh\n107",
+            "rtl": false
+        },
+        {
+            "p": 108,
+            "h": "ppaaiidd hheerr ffoorr 55 ssttaarr hhootteell,, aanndd iiff hhee iiss aatt hheeaalltthh oorr nnoott",
+            "c": "sslleepptt wwiitthh hheerr tthheerreeooff.. bbeeccaauussee oonnccee nnoott dduuee ttoo hhiimm,,\nTThhuuss sspprreeaadd mmaannyy ttrruutthhss,, wwee mmiisssseedd aa ttrraaiinn tthheerree,,\nwwiitthh tthheeiirr mmootthheerr tthheeyy ccoonnffrroonntt,, ffoorr vveerryy ccoommpplleexx mmaapp,,\naanndd mmaannyy ddiiffffeerreenntt sseeaarrcchheerrss,, aanndd aallssoo ccoolloouurrffuull TTVV\ntthheeoorriieess tthheeyy mmoossttllyy bbuuiilldd,, aanndd vveeggaann rreessttaauurraanntt,,\naatttteemmppttiinngg ttoo ffiinndd tthhuuss tthhee mmootthheerr,, II wwaass ttoolldd aabboouutt tthhaatt cciittyy,,\naanndd eevveerryy ffiinnddiinngg aatt oonnccee ttaasstteess,, iitt iiss tthhee wwoorrkk ooff ttiinnyy bbrraaiinn..\nffrroomm ssiixxttyy sseeccoonnddss ffaammee MMuusslliimmss,, TTVV,, FFiirreettrruucckk,,\naanndd bbiittiinngg aafftteerr TTrruutthh aallll wweeaarrss nnaattuurraall ffoorrmm..\nddiissaappppeeaarrss aass ccaammee IIff tthhee ffoorrmm yyoouu ttrruusstt\nnneexxtt iinn lliinnee,, wweellccoommee.. aanndd aatt hheerr yyoouu ccllaaiimm\nWWee rreettuurrnn ttoo bbuurrnniinngg LLoonnddoonn,, tthhee ccaauussee ffoorr ooccccaassiioonn\naanndd wwhhiicchh rreelliiggiioonn ssttoorrmmss,, kknnooww tthhaatt iitt iiss nnoott aatt aallll bbaadd..\nhhee kkeeeeppss uuppddaattiinngg,, YYoouu aarree wwhheerree yyoouu aarree\n““EEvveerryy ppoooorr oonnee kknnoowwss,, aanndd aass lloonngg aass yyoouu bbrreeaatthh\ntthhee ffiirreettrruucckk mmuusstt bbee aatt hhaanndd bbyy yyoouurr lluunnggss\nttoo oovveerrttaakkee vvaasstt ffiirree,, yyoouu ccaann tteessttiiffyy yyoouurr ccaallllss\ntthhaatt iiss LLoonnddoonn!! nnoott PPeerrssiiaa!! ttoo aannyyoonnee oouutt tthheerree\nTThheerree iiss vvaasstt mmaattrriixx tthheerree,, wwiitthhoouutt mmiissssiinngg wwhhaatt iiss wwoorrtthhyy..\nhhooww ccaann tthhee rreessccuuee ffaaiill?? aanndd LLoonnddoonn’’ss eeyyee iiss nnoott pprreevveenntteedd\naanndd ppeeooppllee ddiivviinngg tthhuuss ffrroomm ccaarrrryyiinngg oonn tthhee mmoovvee\njjuummppiinngg ffrroomm ffiifftthh fflloooorr,, ffoorr eevveerryytthhiinngg ccoonnttiinnuueess rroouunndd\nwwhhaatt aa ssttuuppiidd ccoouunnttrryy!!”” bbeettwweeeenn jjooyy aanndd ppaaiinn..\naanndd aallll tthhaatt II rreeccaallll,,\niiss tthhaatt II hhaavvee aa ffeellllooww tthheerree\nSSoo tthheerree iiss aa ssttoorryy,, aa ppaarraabbllee,,\nCCaann UU CC wwhhaatt UU CC && wwhhaatt’’ss ccooookkeedd??\n108",
+            "rtl": false
+        },
+        {
+            "p": 109,
+            "h": "Chapter 25: 14-Nov-2018",
+            "c": "Chapter twenty five began and as it seems will last as\nlong as the twilight will allow its duration.\nThe sun has set (the earth rotated and turned its back at\nher in this side of the globe where I am, the north I\npresume).\nThe story, this chapter, was written in my head during\nthe walk from home and back.\nMore precisely, one could say that the ingredients were\ncollected and told in my head while walking, as the\ncolours that the sun painted along with the clouds,\ncreated different hues.\nThe story in this chapter, that I believed even\npreviously, is different from the cake I was trying to bake\nin my head from the different ingredients during the\nwalk.\nI sit on the roof and even the ingredient of the jumping\nchildren on the trampoline, and shouting-talking\n(including “metumtemet”, dumb-ass, that was sent to\nthe open air) changed the cake that is baked in these\npages.\nThe colours of dusk, the sunset, in this evening, made a\nnice (as no other words is in my head to describe it)\nbackground, to the end of the search for Truth in\nGoogle’s search engine, but I could not know for sure\n109",
+            "rtl": false
+        },
+        {
+            "p": 110,
+            "h": "whether I would write in the coming days, in the",
+            "c": "remaining pages.\nThe sensation that the colours brought with her, as the\nsunlight nearly disappeared completely as I write, told of\nsome kind of an end.\nThe Truth have known and have told of nearing end also\nof Google’s search engine, of her daughter-company,\nYoutube, as well.\nThe end of limit of the collective sharing, the whole\nhuman experience, all human experiences, are shared\nvisually-acoustically by billions.\nFrom the “small” and “mundane” experience, to the\n“big” intellectual, or the “enlightened” (only a story)\nexperience, and those are but few pastries.\nMy experience of the sunset today brought for me a clear\nmessage. The winter sunsets here in Amirim, the\nbeginning of winter, bring a wide spectrum of sky and\nclouds, of colours and even smells.\nI imagined to take the ingredients, to cook the dish, to\neat it, to watch and sense it making its way down my\ndigestion system until it exits the excretion holes, the\npart that was meant to be excreted, while the main part I\ncan not see nor clearly sense, except that I keep on\nbreathing, moving, living, on the basis of these\ningredients, from the digested nutrition.\n110",
+            "rtl": false
+        },
+        {
+            "p": 111,
+            "h": "Similar to the sharing experience.",
+            "c": "The pastel colours over the shades of blue background of\nthe evening sunset one can try to transmit in language.\nOne can shoot, video or still image, one can tell and\nwrite, one can draw.\nEnd of limit of sharing.\nThe primary ingredients have been digested in me -\ningredients of presence that my hand is too short from\nsharing. Human limitation.\nJust like the daylight that in these very moments breaths\nits last breath, its last steady breaths, unsounded,\ncasting upon me a writing limitation.\nI could turn on another light -\nA candle, a lamp, some sort of fire.\nNo doubt about it.\nAnd I could also not.\nThe experience of watching the last seconds, minutes, of\nthis chapter, perhaps this book.\nI almost no longer see that which my hands are writing.\nOne hand, right, holds the note-book, left hand writing.\nI am not disappearing.\nThe voices of the children are still heard in background.\n111",
+            "rtl": false
+        },
+        {
+            "p": 112,
+            "h": "The Truth in her breath turned me to search “end songs”",
+            "c": "in Google’s search engine -\nThe End by The Doors.\nA lightning split the sky.\nA thunder was heard seconds later.\nYesterday there was a lightning storm for long minutes.\nWhen I will die something of you will die as well.\nFor we are all one human tissue experience.\nIn Google one can search of “Khava Alberstein” (הווח\nןייטשרבלא) and the song “Human Tissue” (המקר\nתישונא), one can find there, said the Truth in another\none of her contexts, in Google’s daughter-company, in\nYoutube, one can watch the song and hear it.\nIt may soon rain.\nI still sit on the roof.\nThis is not the story which was generated in my head as I\nwas walking home.\nI never really know what will be written.\nThese are such days.\nOne can watch “Games of Chefs” on Youtube.\nOne can colour with water paints a paint which will be\nnamed “Children Paint”.\nOne can read the book “The Book of Disquiet” by Pessoa.\n112",
+            "rtl": false
+        },
+        {
+            "p": 113,
+            "h": "It seemed once that one thing is better than another or",
+            "c": "more meaningful than another.\nIt seemed once.\nThe days of experiences are counted.\nThat is reality, that is how this game works, life.\nTwo more lightenings in the evening sky.\nThe thunder has not yet arrived.\nPerhaps it is late for the train.\nIt is not a suicide letter.\nI never connected to this act.\nLife is too alive for that.\nThat is life’s book.\nTo life. For the time being.\nEnded chapter twenty five at time thunder came.\nPerhaps the book has ended too. Perhaps.\n113",
+            "rtl": false
+        },
+        {
+            "p": 114,
+            "h": "Th",
+            "c": "End of ing\n114",
+            "rtl": false
+        },
+        {
+            "p": 115,
+            "h": "115",
+            "c": "",
+            "rtl": false
+        },
+        {
+            "p": 116,
+            "h": "ft Th",
+            "c": "A er ing: 19-Nov-2018 14:30\nIt is not that my search after the Truth is over.\nIt is not that my search after the Truth had began.\nI believe marking the points of beginning, middle and\nend. I.\nEach story leads to its next, each truth to the\naccompanying false.\nEach false reveals to me truth, and her words are not\ncarved, certainly not in stone, Amen Selah.\nAll this apparent game with the words is a trick many of\nus fall into the bin it places in our faces.\nBegins a false chase after false magic.\nAfter an illusion.\nLike you - like me.\nThe fact that the ink in the pen is about to finish, can not\nprevent from this story to be counted, as well as to be\ntold.\nIt matters not whether I change colours, change\nlanguages, change identities.\nWhere a man cries, another laughs, another caresses.\nA baby in a dot in time.\nThe Truth indeed told me, still does, many stories, some\nslipped from me and away. Some adhered.\n116",
+            "rtl": false
+        },
+        {
+            "p": 117,
+            "h": "I am intoxicated from life.",
+            "c": "I am intoxicated from wine.\nIt matters not.\nIt matters not how you will imagine my image.\nIt matters not how my image will become still.\nThere were days where people.\nSimple. Simply there were days where people, and any\nclue and any relation between, was.\nThus disappeared the people, thus faded TRUTH.\nAnd yet, the people, they are still in tension.\nNot to be described as tension (current) passing between\ntwo electrical units.\nIt is not about negative or positive.\nIt is neither about the clear or the obvious.\nAmsterdam or Karmi’el.\nBasarela or that same café-restaurant in Amsterdam,\nwhich its name slipped my head, in the corner of\nOosterpark.\nSometimes people delay the time to remember a thing\nwhich was not meant to be remembered.\nChange of colours. Destiny. Necessity.\nI believe I shall read one day my words and burst into\nlaughter.\nOr at least burst.\n117",
+            "rtl": false
+        },
+        {
+            "p": 118,
+            "h": "The rest, the pause, the stop, the cease, from hearing",
+            "c": "the Truth whispering in my ear, inside my head, brought\ndifferent sunset shades.\nThe businessman to my right. It is him.\nMy message box is content empty, and there were days it\nwas hard to receive a message which is incoherent,\nwhich is not of clear message.\nIt is easier for man to digest a burger at noontime, food\nthat is insatiable - though the man knows satiation.\nThe menu of life, the daily menu written every moment\nanew.\nI forgot or gave up already long time ago to pay the tip,\nan extra.\nFor who knew that in 19-Nov-2018, I will see the world\nlike this, and myself.\nI surely did not believe. Of knowing nothing to be spoken\nof.\nMy partners for this journey are but few.\nDespite that it has an effect on my journey, from the\nvalidity of relationship of the natural forces which\noperate between human beings, it matters not for me,\nnot at all.\nAll the more, behold that is fine.\nAll the less, behold that is fine.\nOne day After Thing will come to its end.\n118",
+            "rtl": false
+        }
+    ]
+}
